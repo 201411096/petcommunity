@@ -29,5 +29,11 @@ public class JSONUtil {
 	}
 }
 
+/* 
+사용예시
 
-//file = System.getProperty("user.dir") + "\\src\\test\\sample.json"; //예시
+file = System.getProperty("user.dir") + "\\src\\test\\sample.json";
+JSONObject object = JSONUtil.readJsonFile(System.getProperty("user.dir") + "\\src\\test\\sample.json");		
+JSONUtil.writeJsonFile(System.getProperty("user.dir") + "\\src\\test\\sample3.json", object);
+
+*/

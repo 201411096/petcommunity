@@ -64,6 +64,10 @@
 								<input type="text" id="sample2_detailAddress" placeholder="상세주소">
 								<input type="text" id="sample2_extraAddress">
 							</div>
+							<div class="form-group">
+								<span><i class="zmdi zmdi-face"></i>생년월일</span>
+								<input type="date" name="birth" id="birth"/>
+							</div>
 							<div id="layer"
 								style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
 								<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
@@ -72,10 +76,7 @@
 									onclick="closeDaumPostcode()" alt="닫기 버튼">
 							</div>
 
-							<div class="form-group">
-								<span><i class="zmdi zmdi-face"></i>생년월일</span>
-								<input type="date" name="birth" id="birth"/>
-							</div>
+							
 							<div class="form-group">
 								<input type="checkbox" name="agree-term" id="agree-term"
 									class="agree-term" /> <label for="agree-term"

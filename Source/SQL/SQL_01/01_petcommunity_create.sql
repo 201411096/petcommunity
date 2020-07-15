@@ -22,7 +22,7 @@ create table animal(
 create table raise(
     raise_id number(20),
     member_id varchar2(50),
-    animal_id varchar2(20),
+    animal_id number(20),
     constraint raise_pk PRIMARY KEY(raise_id),
     constraint raise_fk_1 foreign key(member_id) references member(member_id),
     constraint raise_fk_2 foreign key(animal_id) references animal(animal_id)
@@ -39,7 +39,7 @@ create table lostboard(
     lostboard_uploadtime date,
     lostboard_time date,
     member_id varchar2(50),
-    animal_id varchar2(50),
+    animal_id number(20),
     constraint lostboard_pk PRIMARY KEY(lostboard_id),
     constraint lostboard_fk_1 FOREIGN KEY(member_id) references member(member_id),
     constraint lostboard_fk_2 FOREIGN KEY(animal_id) references animal(animal_id)
@@ -57,7 +57,7 @@ create table findboard(
     findboard_tel varchar2(50),
     findboard_name varchar2(50),
     member_id varchar2(50),
-    animal_id varchar2(50),
+    animal_id number(20),
     constraint findboard_pk PRIMARY KEY(findboard_id),
     constraint findboard_fk_1 FOREIGN KEY(member_id) references member(member_id)
 );
@@ -100,22 +100,53 @@ create table communityboard(
     constraint communityboard_fk_1 foreign key(member_id) references member(member_id)    
 );
 
-create table comment(
-    comment_id number(20),
-    comment_content varchar2(512),
-    comment_uploadtime date,
+create table boardcomment(
+    boardcomment_id number(20),
+    boardcomment_content varchar2(512),
+    boardcomment_uploadtime date,
     member_id varchar2(20),
     communityboard_id number(20),
-    constraint comment_pk primary key(comment_id),
-    constraint comment_fk_1 foreign key(member_id) references member(member_id),
-    constraint comment_fk_2 foreign key(communityboard_id) references communityboard(communityboard_id)
+    constraint boardcomment_pk primary key(boardcomment_id),
+    constraint boardcomment_fk_1 foreign key(member_id) references member(member_id),
+    constraint boardcomment_fk_2 foreign key(communityboard_id) references communityboard(communityboard_id)
 );
 
--- 테이블 삭제
-drop table animal;
-drop table member;
-drop table lostboard;
-drop table communityboard;
-drop table findboard;
-drop table questionboard;
-drop table shop;
+create sequence animal_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence boardcomment_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence communityboard_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence findboard_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence lostboard_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence questionboard_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence raise_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
+create sequence shop_id_seq
+start with 10000
+maxvalue 100000
+cycle;

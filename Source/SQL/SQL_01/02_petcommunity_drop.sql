@@ -1,0 +1,20 @@
+-- 테이블 삭제
+drop table boardcomment;
+drop table communityboard;
+drop table findboard;
+drop table lostboard;
+drop table questionboard;
+drop table shop;
+drop table raise;
+drop table animal;
+drop table member;
+
+-- 시퀀스 삭제
+drop sequence animal_id_seq;
+drop sequence boardcomment_id_seq;
+drop sequence communityboard_id_seq;
+drop sequence findboard_id_seq;
+drop sequence lostboard_id_seq;
+drop sequence questionboard_id_seq;
+drop sequence raise_id_seq;
+drop sequence shop_id_seq;

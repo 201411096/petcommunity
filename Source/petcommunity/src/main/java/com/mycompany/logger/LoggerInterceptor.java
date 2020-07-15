@@ -23,5 +23,4 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 		System.out.println("LoggerInterceptor.. in posthandler");
 	}
 	
-
 }

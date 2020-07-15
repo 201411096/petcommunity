@@ -55,19 +55,23 @@
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
 									type="email" name="email" id="email" placeholder="Email" />
 							</div>
+							
+							<div class="form-group">
+								<span><i class="zmdi zmdi-face"></i>생년월일</span>
+								<input type="date" name="birth" id="birth"/>
+							</div>
 
-							<div class="form-group zmdi zmdi-home">
-								<span>주소</span>
+							<div class="form-group">
+								<span class='zmdi zmdi-home'>주소</span>
 								<input type="text" id="sample2_postcode" placeholder="우편번호"> 
 								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="sample2_address" placeholder="주소"><br> 
 								<input type="text" id="sample2_detailAddress" placeholder="상세주소">
 								<input type="text" id="sample2_extraAddress">
 							</div>
-							<div class="form-group">
-								<span><i class="zmdi zmdi-face"></i>생년월일</span>
-								<input type="date" name="birth" id="birth"/>
-							</div>
+							
+							
+							
 							<div id="layer"
 								style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
 								<img src="//t1.daumcdn.net/postcode/resource/images/close.png"

@@ -38,6 +38,7 @@ create table lostboard(
     lostboard_status varchar2(50),
     lostboard_uploadtime date,
     lostboard_time date,
+    lostboard_readcount number(10),
     member_id varchar2(50),
     animal_id number(20),
     constraint lostboard_pk PRIMARY KEY(lostboard_id),
@@ -56,6 +57,7 @@ create table findboard(
     findboard_uploadtime date,
     findboard_tel varchar2(50),
     findboard_name varchar2(50),
+    findboard_readcount number(10),
     member_id varchar2(50),
     animal_id number(20),
     constraint findboard_pk PRIMARY KEY(findboard_id),
@@ -82,6 +84,7 @@ create table questionboard(
     questionboard_title varchar2(50),
     questionboard_content varchar2(2048),
     questionboard_uploadtime date,
+    questionboard_readcount number(10),
     member_id varchar2(50),
     constraint questionboard_pk primary key(questionboard_id),
     constraint questionboard_fk_1 foreign key(member_id) references member(member_id)
@@ -95,6 +98,7 @@ create table communityboard(
     communityboard_title varchar2(50),
     communityboard_content varchar2(2048),
     communityboard_uploadtime date,
+    communityboard_readcount number(10),
     member_id varchar2(20),
     constraint communityboard_pk primary key(communityboard_id),
     constraint communityboard_fk_1 foreign key(member_id) references member(member_id)    

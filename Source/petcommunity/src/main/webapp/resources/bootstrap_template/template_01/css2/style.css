@@ -188,9 +188,6 @@ h2 {
 .main {
   background: #f8f8f8;
   padding: 150px 0; }
- .main2 {
-  background: #f8f8f8;
-  padding: 60px 0; }
 
 .clear {
   clear: both; }
@@ -263,13 +260,13 @@ body {
   overflow: hidden; }
 
 .signup-image {
-  margin: 0 55px; }
+  margin: 0 10px; }
 
 .form-title {
   margin-bottom: 33px; }
 
 .signup-image {
-  margin-top: 45px; }
+  margin-top: 170px; }
 
 figure {
   margin-bottom: 50px;
@@ -306,7 +303,7 @@ figure {
   color: #222; }
 
 .signup-form {
-  margin-left: 75px;
+  margin-left: 180px;
   margin-right: 75px;
   padding-left: 34px; }
 

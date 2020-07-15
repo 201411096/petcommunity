@@ -12,7 +12,7 @@
    <!-- Alias 설정 -->
    <typeAliases>
 		<!-- <typeAlias alias="book" type="com.mycompany.domain.BookVO" ></typeAlias> -->
-
+		<typeAlias alias="shop" type="com.mycompany.domain.ShopVO"></typeAlias>
    </typeAliases>
    
 </configuration>

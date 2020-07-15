@@ -12,7 +12,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		System.out.println("LoggerInterceptor.. in prehandler");
+//		System.out.println("LoggerInterceptor.. in prehandler");
 		return super.preHandle(request, response, handler);
 	}
 
@@ -20,7 +20,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		super.postHandle(request, response, handler, modelAndView);
-		System.out.println("LoggerInterceptor.. in posthandler");
+//		System.out.println("LoggerInterceptor.. in posthandler");
 	}
 	
 }

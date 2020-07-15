@@ -188,6 +188,9 @@ h2 {
 .main {
   background: #f8f8f8;
   padding: 150px 0; }
+ .main2 {
+  background: #f8f8f8;
+  padding: 60px 0; }
 
 .clear {
   clear: both; }

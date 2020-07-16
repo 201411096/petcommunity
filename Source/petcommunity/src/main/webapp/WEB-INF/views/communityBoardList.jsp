@@ -8,23 +8,10 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 부가적인 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-		<style>
-			#keywordInput{
-				position: relative;
-       			left: 450px;
-			}
-			#searchBtn{
-				position: relative;
-       			left: 10px;
-				
-			}
-			#writeBtn{
-				
-				margin-left: 10px;
-			}
-		</style>
+		<link rel="stylesheet" href="./resources/css/communityBoardList.css"/>
+		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	 
+	 	<script src="resources/js/communityBoardList.js"  type="text/javascript"></script>
 	 	<title>게시판</title>
 	</head>
 	<body>
@@ -70,11 +57,13 @@
 						 
 						<div class="col-xs-10 col-sm-10">
 							<div class="input-group">
-								<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+								<input type="text" name="keyword" class='form-control'id="keywordInput" value="${scri.keyword}"/>
 								<span class="input-group-btn">
 									<button id="searchBtn" type="button" class="btn btn-default">검색</button> 									
-								</span>
-								<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 
+								</span>	
+								<span class="input-group-btn">
+									<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 									
+								</span>					
 							</div>
 							
 						</div>

@@ -7,7 +7,6 @@ create table member(
     member_tel varchar2(50),
     member_email varchar2(50),
     member_birthday varchar2(50),
-    member_nickname varchar2(50),
     constraint member_pk primary key(member_id)
 );
 create table animal(
@@ -24,8 +23,8 @@ create table raise(
     member_id varchar2(50),
     animal_id number(20),
     constraint raise_pk PRIMARY KEY(raise_id),
-    constraint raise_fk_1 foreign key(member_id) references member(member_id),
-    constraint raise_fk_2 foreign key(animal_id) references animal(animal_id)
+    constraint raise_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE,
+    constraint raise_fk_2 foreign key(animal_id) references animal(animal_id) ON DELETE CASCADE
 );
 
 create table lostboard(
@@ -35,15 +34,15 @@ create table lostboard(
     lostboard_location varchar2(512),
     lostboard_x varchar2(50),
     lostboard_y varchar2(50),
-    lostboard_status varchar2(50),
+    lostboard_status varchar2(50), --0 못찾음, 1 찾음
     lostboard_uploadtime date,
     lostboard_time date,
     lostboard_readcount number(10),
     member_id varchar2(50),
     animal_id number(20),
     constraint lostboard_pk PRIMARY KEY(lostboard_id),
-    constraint lostboard_fk_1 FOREIGN KEY(member_id) references member(member_id),
-    constraint lostboard_fk_2 FOREIGN KEY(animal_id) references animal(animal_id)
+    constraint lostboard_fk_1 FOREIGN KEY(member_id) references member(member_id) ON DELETE CASCADE,
+    constraint lostboard_fk_2 FOREIGN KEY(animal_id) references animal(animal_id) ON DELETE CASCADE
 );
 
 create table findboard(
@@ -53,7 +52,7 @@ create table findboard(
     findboard_location varchar2(512),
     findboard_x varchar2(50),
     findboard_y varchar2(50),
-    findboard_status varchar2(50),
+    findboard_status varchar2(50), --0 목격, 1 보관, 2 유기센터 이관
     findboard_uploadtime date,
     findboard_tel varchar2(50),
     findboard_name varchar2(50),
@@ -61,7 +60,7 @@ create table findboard(
     member_id varchar2(50),
     animal_id number(20),
     constraint findboard_pk PRIMARY KEY(findboard_id),
-    constraint findboard_fk_1 FOREIGN KEY(member_id) references member(member_id)
+    constraint findboard_fk_1 FOREIGN KEY(member_id) references member(member_id) ON DELETE CASCADE
 );
 
 create table shop(
@@ -70,7 +69,7 @@ create table shop(
     shop_category varchar2(50),
     shop_productname varchar2(50),
     shop_productprice varchar2(50),
-    shop_img varchar2(50),
+    shop_img varchar2(500),
     shop_link varchar2(500),
     constraint shop_pk primary key(shop_id)
 );
@@ -87,7 +86,7 @@ create table questionboard(
     questionboard_readcount number(10),
     member_id varchar2(50),
     constraint questionboard_pk primary key(questionboard_id),
-    constraint questionboard_fk_1 foreign key(member_id) references member(member_id)
+    constraint questionboard_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE
 );
 
 create table communityboard(
@@ -101,7 +100,7 @@ create table communityboard(
     communityboard_readcount number(10),
     member_id varchar2(20),
     constraint communityboard_pk primary key(communityboard_id),
-    constraint communityboard_fk_1 foreign key(member_id) references member(member_id)    
+    constraint communityboard_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE
 );
 
 create table boardcomment(
@@ -111,8 +110,8 @@ create table boardcomment(
     member_id varchar2(20),
     communityboard_id number(20),
     constraint boardcomment_pk primary key(boardcomment_id),
-    constraint boardcomment_fk_1 foreign key(member_id) references member(member_id),
-    constraint boardcomment_fk_2 foreign key(communityboard_id) references communityboard(communityboard_id)
+    constraint boardcomment_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE,
+    constraint boardcomment_fk_2 foreign key(communityboard_id) references communityboard(communityboard_id) ON DELETE CASCADE
 );
 
 create sequence animal_id_seq
@@ -154,3 +153,4 @@ create sequence shop_id_seq
 start with 10000
 maxvalue 100000
 cycle;
+

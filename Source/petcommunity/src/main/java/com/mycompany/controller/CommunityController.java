@@ -14,7 +14,7 @@ public class CommunityController {
 	
 	@RequestMapping("/getCommunityBoardList.do")
 	public String getCommunityBoardList() {
-		return "getCommunityBoardList";
+		return "communityBoardList";
 	}
 	
 }

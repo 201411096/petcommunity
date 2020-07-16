@@ -15,9 +15,8 @@ public class ShopDAOImpl implements ShopDAO{
 	private SqlSessionTemplate mybatis;
 	
 	@Override
-	public List<ShopVO> selectShop(ShopVO vo) {
-		List<ShopVO> result = mybatis.selectList("ShopDAO,selectShop", vo);
-		return result;
+	public List<ShopVO> selectShopAll() {
+		return mybatis.selectList("ShopDAO.selectShopAll"); 
 	}
 
 }

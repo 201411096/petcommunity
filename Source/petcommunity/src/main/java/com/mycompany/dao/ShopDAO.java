@@ -5,5 +5,6 @@ import java.util.List;
 import com.mycompany.domain.ShopVO;
 
 public interface ShopDAO {
-	public List<ShopVO> selectShop(ShopVO vo);
+
+	public List<ShopVO> selectShopAll();
 }

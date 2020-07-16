@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from urllib.request import urlretrieve
 from urllib.parse import urljoin
+import insertDB
 
 driver = webdriver.Chrome('./webdriver/chromedriver')
 driver.implicitly_wait(3)
@@ -40,8 +41,8 @@ for category in category_list:
     product_list = []
     downPath = 'product_image/'+ site_name + '/'
     for n, p, i, l in zip(name, price, img, link):
-        product_name = n.attrs['title']
-        product_price = p.text
+        product_name = n.attrs['title'].replace(",", " ")
+        product_price = p.text.replace(",", "")
         temp = i.attrs['src']
         if temp[0:5] == 'https':
             product_img = temp
@@ -63,3 +64,6 @@ csvWriter = csv.writer(f)
 for i in shop_list:
     csvWriter.writerow(i)
 f.close()
+
+# DB에 저장
+insertDB.insertData()

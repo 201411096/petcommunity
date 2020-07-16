@@ -6,6 +6,17 @@
 	<select id="getFindBoardList" resultType="findBoard">
 		select * from findboard
 	</select>
+	<select id="getFindBoardListWithPaging" parameterType="hashmap" resultType="findBoard">
+	<![CDATA[
+	    select *
+	    from (
+			SELECT WRITER_ID, WRITER_NAME, ROWNUM AS RNUM
+			FROM writer
+			where REGEXP_LIKE (WRITER_NAME, '(*)'||#{searchWord}||'(*)')
+			ORDER BY WRITER_ID ASC
+		) where RNUM>=#{startRow} and RNUM<=#{endRow}
+	]]>
+	</select>
 	<insert id="insertFindBoardList" parameterType="findBoard">
 	
 	</insert>

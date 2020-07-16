@@ -98,8 +98,8 @@
 			<!-- forEach 사용 -->
 			<c:forEach var="shop" items="${shops}">
 				<div class="col-lg-4 col-sm-6 artists-col">
+					<a href="${shop.shopLink }"></a>
 					<div class="artists-item">
-						<a href="${shop.shopLink }"></a>
 						<img src="./resources/imgs/product_image/pawInHand/${shop.shopProductname}.jpg" alt="">
 						<h4>${shop.shopProductname}</h4>
 						<span>${shop.shopProductprice}</span>
@@ -196,7 +196,7 @@
 			<div class="product-slider owl-carousel">
 				<div class="product-item">
 					<div class="pi-pic">
-						<img src="./resources/bootstrap_ain/img/product/1.jpg" alt="">
+						<img src="./resources/bootstrap_template/bootstrap_ain/img/product/1.jpg" alt="">
 						<div class="pi-links">
 							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
@@ -210,7 +210,7 @@
 				<div class="product-item">
 					<div class="pi-pic">
 						<div class="tag-new">New</div>
-						<img src="./resources/bootstrap_ain/img/product/2.jpg" alt="">
+						<img src="./resources/bootstrap_template/bootstrap_ain/img/product/2.jpg" alt="">
 						<div class="pi-links">
 							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
@@ -223,7 +223,7 @@
 				</div>
 				<div class="product-item">
 					<div class="pi-pic">
-						<img src="./resources/bootstrap_ain/img/product/3.jpg" alt="">
+						<img src="./resources/bootstrap_template/bootstrap_ain/img/product/3.jpg" alt="">
 						<div class="pi-links">
 							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
@@ -236,7 +236,7 @@
 				</div>
 				<div class="product-item">
 						<div class="pi-pic">
-							<img src="./resources/bootstrap_ain/img/product/4.jpg" alt="">
+							<img src="./resources/bootstrap_template/bootstrap_ain/img/product/4.jpg" alt="">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
@@ -249,7 +249,7 @@
 					</div>
 				<div class="product-item">
 						<div class="pi-pic">
-							<img src="./resources/bootstrap_ain/img/product/6.jpg" alt="">
+							<img src="./resources/bootstrap_template/bootstrap_ain/img/product/6.jpg" alt="">
 							<div class="pi-links">
 								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
 								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>

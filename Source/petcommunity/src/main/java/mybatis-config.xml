@@ -12,6 +12,8 @@
    <!-- Alias 설정 -->
    <typeAliases>
 		<typeAlias alias="shop" type="com.mycompany.domain.ShopVO"></typeAlias>
+		<typeAlias alias="member" type="com.mycompany.domain.MemberVO"></typeAlias>
    </typeAliases>
+   
    
 </configuration>

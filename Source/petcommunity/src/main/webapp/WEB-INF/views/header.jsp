@@ -32,7 +32,7 @@
 	<!-- header section -->
 	<header class="header-section">
 		<div class="header-warp">
-			<a href="header.html" class="site-logo">
+			<a href="header.jsp" class="site-logo">
 				<img src="./resources/bootstrap_template/template_01/img/logo2.png" alt="">
 			</a>
 			<ul class="main-menu">

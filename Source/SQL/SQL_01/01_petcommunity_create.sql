@@ -98,6 +98,7 @@ create table communityboard(
     communityboard_content varchar2(2048),
     communityboard_uploadtime date,
     communityboard_readcount number(10),
+    communityboard_recommend number(10),
     member_id varchar2(20),
     constraint communityboard_pk primary key(communityboard_id),
     constraint communityboard_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE
@@ -154,3 +155,5 @@ start with 10000
 maxvalue 100000
 cycle;
 
+drop table COMMUNITYBOARD;
+drop table boardcomment;

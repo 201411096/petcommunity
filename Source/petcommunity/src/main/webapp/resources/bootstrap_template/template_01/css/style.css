@@ -472,7 +472,6 @@
  
  .site-logo {
    display: inline-block;
-   padding: 8px 0;
  }
  
  .slicknav_menu {
@@ -481,6 +480,8 @@
  
  .main-menu {
    float: right;
+     margin-right: 20px;
+     margin-top: 30px;
  }
  
  .main-menu li {

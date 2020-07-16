@@ -11,8 +11,8 @@
    
    <!-- Alias 설정 -->
    <typeAliases>
-		<!-- <typeAlias alias="book" type="com.mycompany.domain.BookVO" ></typeAlias> -->
 		<typeAlias alias="shop" type="com.mycompany.domain.ShopVO"></typeAlias>
+		<typeAlias alias="findBoard" type="com.mycompany.domain.FindBoardVO"></typeAlias>
    </typeAliases>
    
 </configuration>

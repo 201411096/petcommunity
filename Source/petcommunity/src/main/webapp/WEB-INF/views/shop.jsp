@@ -99,6 +99,7 @@
 			<c:forEach var="shop" items="${shops}">
 				<div class="col-lg-4 col-sm-6 artists-col">
 					<div class="artists-item">
+						<a href="${shop.shopLink }"></a>
 						<img src="./resources/imgs/product_image/pawInHand/${shop.shopProductname}.jpg" alt="">
 						<h4>${shop.shopProductname}</h4>
 						<span>${shop.shopProductprice}</span>

@@ -8,6 +8,7 @@ import com.mycompany.domain.ShopVO;
 
 public interface ShopService {
 	public List<ShopVO> selectShopAll();
-
+	public List<ShopVO> selectShopCategory(ShopVO vo);
+	public List<ShopVO> selectShopName(ShopVO vo);
 	
 }

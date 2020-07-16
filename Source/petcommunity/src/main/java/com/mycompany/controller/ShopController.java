@@ -16,24 +16,35 @@ public class ShopController {
 	@Autowired
 	public ShopServiceImpl shopService;
 	
-	@RequestMapping(value="/shopAll.do")
+	//전체 쇼핑몰 품목 가져오기
+	@RequestMapping(value="/shop.do")
 	public ModelAndView shopListAll() {
 		ModelAndView mv = new ModelAndView();
 		List<ShopVO> shopList = shopService.selectShopAll();
-		
-		System.out.println("프린트"+ shopList);
 		mv.addObject("shops", shopList);
 		mv.setViewName("/shop");
 		return mv;
 	}
-//	@RequestMapping(value="/shop.do")
-//	public ModelAndView shopListName(@RequestParam(value = "shopName") String shopName, @RequestParam(value = "shopCategory") String shopCategory, ShopVO vo) {
-//		ModelAndView mv = new ModelAndView();
-//		vo.setShopName(shopName);
-//		vo.setShopCategory(shopCategory);
-//		List<ShopVO> shopList =shopService.selectShop(vo);
-//		mv.addObject("shopList", shopList);
-//		mv.setViewName("/shop.do");
-//		return mv;
-//	}
+	// 카테고리 별 쇼핑몰 품목 가져오기
+	@RequestMapping(value="/shopCategory.do")
+	public ModelAndView shopListCategory(@RequestParam(value = "shopCategory") String shopCategory, ShopVO vo) {
+		ModelAndView mv = new ModelAndView();
+		vo.setShopCategory(shopCategory);
+		List<ShopVO> shopList =shopService.selectShopCategory(vo);
+		System.out.println(shopList);
+		mv.addObject("shops", shopList);
+		mv.setViewName("/shop");
+		return mv;
+	}
+	// 쇼핑몰별 품목 가져오기
+	@RequestMapping(value="/shopName.do")
+	public ModelAndView shopListName(@RequestParam(value = "shopName") String shopName, ShopVO vo) {
+		ModelAndView mv = new ModelAndView();
+		vo.setShopName(shopName);
+		List<ShopVO> shopList =shopService.selectShopName(vo);
+		System.out.println(shopList);
+		mv.addObject("shops", shopList);
+		mv.setViewName("/shop");
+		return mv;
+	}
 }

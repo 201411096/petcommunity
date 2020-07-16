@@ -7,4 +7,32 @@
 		SELECT * FROM SHOP
 		order by SHOP_NAME desc
 	</select>
+	
+	<select id='selectShopCategory' parameterType='shop' resultType='shop'>
+		SELECT * FROM SHOP 
+		WHERE REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)')
+		order by SHOP_NAME desc
+		<!-- 
+		SELECT * FROM shop 
+		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_PRODUCTNAME, '(*)'||#{shopProductname}||'(*)')
+   		OR REGEXP_LIKE (SHOP_PRODUCTPRICE, '(*)'||#{shopProductprice}||'(*)')
+   		order by SHOP_NAME desc
+   		 -->
+	</select>
+	
+	<select id='selectShopName' parameterType='shop' resultType='shop'>
+		SELECT * FROM SHOP 
+		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)')
+		order by SHOP_NAME desc
+		<!-- 
+		SELECT * FROM shop 
+		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_PRODUCTNAME, '(*)'||#{shopProductname}||'(*)')
+   		OR REGEXP_LIKE (SHOP_PRODUCTPRICE, '(*)'||#{shopProductprice}||'(*)')
+   		order by SHOP_NAME desc
+   		 -->
+	</select>
 </mapper>

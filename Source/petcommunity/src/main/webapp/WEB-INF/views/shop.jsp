@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file ="../views/header.jsp" %>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -45,36 +46,16 @@
 </head>
 <body>
 	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-
-	<!-- header section -->
-	<header class="header-section hs-border">
-		<div class="header-warp">
-			<a href="index.html" class="site-logo">
-				<img src="./resources/bootstrap_template/template_01/img/logo.png" alt="">
-			</a>
-			<ul class="main-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="artists.html">artists</a></li>
-				<li><a href="elements.html">Shop</a></li>
-				<li><a href="blog.html">News</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
-	</header>
-	<!-- header section end -->
 
 	<!-- Artists page -->
-	<section class="artists-page page-warp">
+
+		<!-- 
 		<div class="sp-container">
 			<div class="page-title">
 				<h2>Artists</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis et augue non mollis. Sed sagittis.</p>
 			</div>
+			 -->
 			
 			<!-- Product filter section -->
 	<section class="product-filter-section">
@@ -84,12 +65,12 @@
 			</div>
 			<ul class="product-filter-menu">
 				<li><a href="/petcommunity/shop.do?">전체</a></li>
-				<li><a href="/petcommunity/shop.do?shopName=PAW IN HAND">PAW IN HAND</a></li>
-				<li><a href="/petcommunity/shop.do?shopCategory=폰케이스">폰케이스</a></li>
-				<li><a href="/petcommunity/shop.do?shopCategory=패션">패션</a></li>
-				<li><a href="/petcommunity/shop.do?shopCategory=악세서리">악세서리</a></li>
-				<li><a href="/petcommunity/shop.do?shopCategory=반려용품">반려용품</a></li>
-				<li><a href="/petcommunity/shop.do?shopCategory=매거진">매거진</a></li>
+				<li><a href="/petcommunity/shopName.do?shopName=pawInHand">PAW IN HAND</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=폰케이스">폰케이스</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=패션">패션</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=악세서리">악세서리</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=반려용품">반려용품</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=매거진">매거진</a></li>
 				<li><a href="/petcommunity/shop.do?shopCategory=기타 잡화">기타 잡화</a></li>
 			</ul>
 			<!-- Product filter section -->
@@ -98,13 +79,14 @@
 			<!-- forEach 사용 -->
 			<c:forEach var="shop" items="${shops}">
 				<div class="col-lg-4 col-sm-6 artists-col">
-					<a href="${shop.shopLink }"></a>
+					<a href="${shop.shopLink }" target="_blank">
 					<div class="artists-item">
 						<img src="./resources/imgs/product_image/pawInHand/${shop.shopProductname}.jpg" alt="">
 						<h4>${shop.shopProductname}</h4>
 						<span>${shop.shopProductprice}</span>
 						<p>${shop.shopName}</p>
 					</div>
+					</a>
 				</div>
 			</c:forEach>
 			

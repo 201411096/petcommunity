@@ -10,10 +10,10 @@
 	<![CDATA[
 	    select *
 	    from (
-			SELECT WRITER_ID, WRITER_NAME, ROWNUM AS RNUM
-			FROM writer
-			where REGEXP_LIKE (WRITER_NAME, '(*)'||#{searchWord}||'(*)')
-			ORDER BY WRITER_ID ASC
+			SELECT findboard_id, findboard_title, findboard_content, findboard_location, findboard_x, findboard_y, findboard_status, findboard_uploadtime, findboard_tel, findboard_name, findboard_readcount, member_id, animal_id, ROWNUM AS RNUM
+			FROM findboard
+			where REGEXP_LIKE (findboard_name, '(*)'||#{searchWord}||'(*)')
+			ORDER BY findboard_id DESC
 		) where RNUM>=#{startRow} and RNUM<=#{endRow}
 	]]>
 	</select>

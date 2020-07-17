@@ -14,6 +14,9 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/findboardlist.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+<script src="resources/js/findboardlist.js"></script>
+
 <title>게시판</title>
 </head>
 <body>
@@ -24,34 +27,29 @@
 		<hr />
 		<section id="container">
 			<form role="form" method="get">
-				<table class="table table-hover">
+				<table class="table table-hover" id="findboardTable">
 					<thead>
 						<tr>
 							<th>번호</th>
+							<th>상태</th>
 							<th>제목</th>
 							<th>작성자</th>
-							<th>등록일</th>
-							<th>추천</th>
 							<th>조회수</th>
+							<th>등록일</th>
 						</tr>
 					</thead>
-					<c:forEach items="${findBoardVOList}" var="item">
-						<tr>
-							<td><c:out value="${item.findboardId}" /></td>
-							<td><c:out value="${item.findboardTitle}" /></td>
-<%-- 							<td><c:out value="${item.bno}" /></td> --%>
-<!-- 							<td><a -->
-<%-- 								href="/board/readView?bno=${item.bno}&page=${item.page}&perPageNum=${item.perPageNum}&searchType=${item.searchType}&keyword=${item.keyword}"><c:out --%>
-<%-- 										value="${item.title}" /></a></td> --%>
-<%-- 							<td><c:out value="${item.writer}" /></td> --%>
-<%-- 							<td><fmt:formatDate value="${item.regdate}" --%>
-<%-- 									pattern="yyyy-MM-dd" /></td> --%>
-<%-- 							<td><fmt:formatDate value="${item.recommend}" --%>
-<%-- 									pattern="yyyy-MM-dd" /></td> --%>
-<%-- 							<td><fmt:formatDate value="${item.viewcount}" --%>
-<%-- 									pattern="yyyy-MM-dd" /></td> --%>
-						</tr>
-					</c:forEach>
+					<tbody id="findboardTbody">
+<%-- 					<c:forEach items="${findBoardVOList}" var="item"> --%>
+<!-- 						<tr> -->
+<%-- 							<td><c:out value="${item.findboardId}" /></td> --%>
+<%-- 							<td><c:out value="${item.findboardStatus}" /></td> --%>
+<%-- 							<td><c:out value="${item.findboardTitle}" /></td> --%>
+<%-- 							<td><c:out value="${item.findboardName}" /></td> --%>
+<%-- 							<td><c:out value="${item.findboardReadcount}" /></td> --%>
+<%-- 							<td><c:out value="${item.findboardUploadtime}" /></td> --%>
+<!-- 						</tr> -->
+<%-- 					</c:forEach> --%>
+					</tbody>
 				</table>
 				<div class="search row">
 					<div class="col-xs-2 col-sm-2">
@@ -80,26 +78,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-offset-3">
-					<ul class="pagination">
-						<c:if test="${pageMaker.prev}">
-							<li><a
-								href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-						</c:if>
-
-						<c:forEach begin="${pageMaker.startPage}"
-							end="${pageMaker.endPage}" var="idx">
-							<li
-								<c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
-								<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-							</li>
-						</c:forEach>
-
-						<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-							<li><a
-								href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-						</c:if>
-					</ul>
+				<div class="col-md-offset-3" id="pagination_container">
+					<ul id="pagination-demo" class="pagination-lg"></ul>
 				</div>
 			</form>
 		</section>

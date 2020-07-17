@@ -10,6 +10,11 @@ var defaultOpts = {
     }
 };
 
+$(function(){
+	getData();
+	$('#keywordInput').on('keyup', getData);
+});
+
 function getDataInPaging(){
 	$.ajax({
 		type : 'post',
@@ -21,7 +26,7 @@ function getDataInPaging(){
 				},
 		dataType : 'json',
 		success : function(resultData){
-			drawWriterTable(resultData);
+			drawTable(resultData);
 			console.log(resultData);
 		},
 		error:function(request,status,error){
@@ -35,14 +40,14 @@ function getData(){
 	$.ajax({
 		type : 'post',
 		async:true,
-		url : '/BookStore/admin/getWriterDataWithPaging.do',
+		url : '/petcommunity/findboardListWithPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		data : {"searchWord" : $('#keywordInput').val(),
 				"curPage" : curPage,
 				},
 		dataType : 'json',
 		success : function(resultData){
-			drawWriterTable(resultData);
+			drawTable(resultData);
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
@@ -53,7 +58,26 @@ function getData(){
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-		
+		}		
 	});
+}
+
+function drawTable(data){
+	$('#findboardTbody').empty();
+	var trPrefix = '<tr>';
+	var trSuffix = '</tr>';
+	var tdPrefix = '<td>';
+	var tdSuffix = '</td>';
+	for(var i=0; i<data.findBoardVOListSize; i++){
+		var listContent = 
+						trPrefix +
+						tdPrefix + data.findBoardVOList[i].findboardId + tdSuffix +
+						tdPrefix + data.findBoardVOList[i].findboardStatus + tdSuffix +
+						tdPrefix + data.findBoardVOList[i].findboardTitle + tdSuffix +
+						tdPrefix + data.findBoardVOList[i].findboardName + tdSuffix +
+						tdPrefix + data.findBoardVOList[i].findboardReadcount + tdSuffix +
+						tdPrefix + data.findBoardVOList[i].findboardUploadtime + tdSuffix +
+						trSuffix;
+		$('#findboardTbody').append(listContent);
+	}
 }

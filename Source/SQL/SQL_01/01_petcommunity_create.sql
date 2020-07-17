@@ -91,7 +91,7 @@ create table questionboard(
 
 create table communityboard(
     communityboard_id number(20),
-    commuityboard_location varchar2(512),
+    communityboard_location varchar2(512),
     communityboard_x varchar2(50),
     communityboard_y varchar2(50),
     communityboard_title varchar2(50),

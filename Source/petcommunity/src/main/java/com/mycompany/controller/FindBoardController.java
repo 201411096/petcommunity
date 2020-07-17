@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.PaginationVO;
@@ -42,9 +43,10 @@ public class FindBoardController {
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		
 		
+		findBoardVOList = findBoardService.selectProductWithPaging(searchMap);
 		result.put("pagination", paginationVO);
-//		result.put("writerList", writerList);
-//		result.put("writerListSize", writerList.size());
+		result.put("findBoardVOList", findBoardVOList);
+		result.put("findBoardVOListSize", findBoardVOList.size());
 		return result;
 	}
 }

@@ -14,8 +14,8 @@ public class FindBoardDAOImpl implements FindBoardDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<FindBoardVO> selectProduct(FindBoardVO findBoardVO){
-		return mybatis.selectList("findBoardDAO.getFindBoardList", findBoardVO);
+	public List<FindBoardVO> selectProduct(Map map){
+		return mybatis.selectList("findBoardDAO.getFindBoardList", map);
 	}
 
 	@Override

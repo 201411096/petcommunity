@@ -53,17 +53,11 @@
 				</table>
 				<div class="search row">
 					<div class="col-xs-2 col-sm-2">
-						<select name="searchType" class="form-control">
-							<option value="n"
-								<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-							<option value="t"
-								<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-							<option value="c"
-								<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-							<option value="w"
-								<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-							<option value="tc"
-								<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+						<select id="searchType" name="searchType" class="form-control">
+							<option value="title">제목</option>
+							<option value="content">내용</option>
+							<option value="writer">작성자</option>
+							<option value="titleandcontent">제목+내용</option>
 						</select>
 					</div>
 					<div class="col-xs-10 col-sm-10">

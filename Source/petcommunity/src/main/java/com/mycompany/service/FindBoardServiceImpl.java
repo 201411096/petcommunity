@@ -15,8 +15,8 @@ public class FindBoardServiceImpl implements FindBoardService{
 	FindBoardDAOImpl findBoardDAO;
 
 	@Override
-	public List<FindBoardVO> selectProduct(FindBoardVO findBoardVO) {
-		return findBoardDAO.selectProduct(findBoardVO);
+	public List<FindBoardVO> selectProduct(Map map){
+		return findBoardDAO.selectProduct(map);
 	}
 
 	@Override

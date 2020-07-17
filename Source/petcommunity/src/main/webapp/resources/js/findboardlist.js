@@ -1,18 +1,17 @@
 var curPage;
 var defaultOpts = {
-//    totalPages: 20,
 	visiblePages : 10,
     onPageClick: function (event, page) {
         $('#page-content').text('Page ' + page);
         curPage=page;
-        console.log('curPage확인 :' + curPage);
         getDataInPaging();
     }
 };
 
 $(function(){
 	getData();
-	$('#keywordInput').on('keyup', getData);
+//	$('#keywordInput').on('keyup', getData);
+	$('#searchBtn').on('click', getData);
 });
 
 function getDataInPaging(){
@@ -22,6 +21,7 @@ function getDataInPaging(){
 		url : '/petcommunity/findboardListWithPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		data : {"searchWord" : $('#keywordInput').val(),
+				"searchType" : $('#searchType').val(),
 				"curPage" : curPage,
 				},
 		dataType : 'json',
@@ -43,6 +43,7 @@ function getData(){
 		url : '/petcommunity/findboardListWithPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		data : {"searchWord" : $('#keywordInput').val(),
+				"searchType" : $('#searchType').val(),
 				"curPage" : curPage,
 				},
 		dataType : 'json',

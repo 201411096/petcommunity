@@ -115,6 +115,20 @@ create table boardcomment(
     constraint boardcomment_fk_2 foreign key(communityboard_id) references communityboard(communityboard_id) ON DELETE CASCADE
 );
 
+create table findhospital(
+   findhospital_id number(20),
+   findhospital_name varchar2(200),
+   findhospital_tel varchar2(50),
+   findhospital_address varchar2(500),
+   findhospital_x varchar2(500),
+   findhospital_y varchar2(500)
+   );
+
+create sequence findhospital_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+   
 create sequence animal_id_seq
 start with 10000
 maxvalue 100000

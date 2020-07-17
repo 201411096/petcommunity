@@ -2,3 +2,10 @@ input#keywordInput{
 	width: 90%;
 }
 
+table#findboardTable{
+	text-align:center;
+}
+table#findboardTable th{
+	text-align:center;
+}
+

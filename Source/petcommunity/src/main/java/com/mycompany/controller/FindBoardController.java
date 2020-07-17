@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.PaginationVO;
@@ -19,32 +20,22 @@ public class FindBoardController {
 	@Autowired
 	FindBoardServiceImpl findBoardService;
 	
-	//ajax 안 쓴 버전
-//	@RequestMapping("/findboardlist.do")
-//	public ModelAndView getCommunityBoardList() {
-//		ModelAndView mv = new ModelAndView();
-//		
-//		List<FindBoardVO> findBoardVOList = findBoardService.selectProduct(new FindBoardVO());		
-//		mv.setViewName("/findboardlist");
-//		mv.addObject("findBoardVOList", findBoardVOList);
-//		return mv;
-//	}
 	@ResponseBody
 	@RequestMapping(value = "/findboardListWithPaging.do", produces = "application/json; charset=utf-8")
-	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord) {
+	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType) {
 		Map result = new HashMap();
-		List<FindBoardVO> findBoardVOList = findBoardService.selectProduct(new FindBoardVO());		
-		int listCnt = findBoardVOList.size();
-		PaginationVO paginationVO = new PaginationVO(listCnt, curPage);
 		Map searchMap = new HashMap();
+		searchMap.put("searchType", searchType);
 		searchMap.put("searchWord", searchWord);
+		List<FindBoardVO> findBoardVOList = findBoardService.selectProduct(searchMap);		
+		PaginationVO paginationVO = new PaginationVO(findBoardVOList.size(), curPage);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		
-		
+				
+		findBoardVOList = findBoardService.selectProductWithPaging(searchMap);
 		result.put("pagination", paginationVO);
-//		result.put("writerList", writerList);
-//		result.put("writerListSize", writerList.size());
+		result.put("findBoardVOList", findBoardVOList);
+		result.put("findBoardVOListSize", findBoardVOList.size());
 		return result;
 	}
 }

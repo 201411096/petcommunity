@@ -41,7 +41,7 @@ for category in category_list:
     product_list = []
     downPath = 'product_image/'+ site_name + '/'
     for n, p, i, l in zip(name, price, img, link):
-        product_name = n.attrs['title'].replace(",", " ")
+        product_name = n.attrs['title'].replace(",", " ").replace("[", "(").replace("]", ")")
         product_price = p.text.replace(",", "")
         temp = i.attrs['src']
         if temp[0:5] == 'https':

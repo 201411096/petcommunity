@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="./resources/css/communityBoardContent.css" />
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="resources/js/communityBoardWrite.js"></script>
+<script src="resources/js/communityBoardContent.js"></script>
 
 <title>게시판</title>
 </head>
@@ -33,24 +33,34 @@
 				<div id=communityContentWriter>${boardContent.memberId} <br/></div>
 				<div id=communityContentTime>${boardContent.communityboardUploadtime }</div>
 			</div>
+			<hr/>
+			
 			<div class="form-group">
-				<label>댓글달기</label>
-				<textarea class="form-control" rows="5" name="communityboardContent" placeholder="댓글입력"></textarea>
+				<span id=communityContentTitle>${boardContent.communityboardContent}</span>
 			</div>
+			<hr/>
+					
+			
+			
+			
 			<div class="form-group">
 				<label>댓글달기</label>
-				<textarea class="form-control" rows="5" name="communityboardContent" placeholder="댓글입력"></textarea>
+				<textarea class="form-control" rows="5" id="commentTextarea" name="communityboardContent" placeholder="댓글입력"></textarea>		
 			</div>
 			
-			<div class="col-md-4 col-md-offset-10">			
-			<span class="input-group-btn">
-				<button type="submit" class="btn btn-default">수정하기</button>
-				<button type="submit" class="btn btn-default">삭제하기</button>
-				<button type="button" class="btn btn-default" id='cancelWrite'>목록보기</button>
-			</span>
-			</div>			
+				<div class="col-xs-10 col-sm-10">	
+				<button type="button" class="btn btn-default" id='goToList'>목록보기</button>
+				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId}">
+					<button type="button" class="btn btn-default">수정하기</button>
+					<button type="button" class="btn btn-default">삭제하기</button>
+				</c:if>
+				</div>	
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-default" id='commentBtn'>등록</button>
+				</span>			
+			</div>		
 	
 		
-	</div>
+
 </body>
 </html>

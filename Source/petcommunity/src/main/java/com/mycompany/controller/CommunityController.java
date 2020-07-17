@@ -46,11 +46,9 @@ public class CommunityController {
 	@RequestMapping("/getBoardContent.do")
 	public ModelAndView getBoardContent(CommunityVO vo, HttpServletRequest request, ModelAndView mv ) {
 		//parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
-		//CommunityVO vo = new CommunityVO();
 		String communityboardId = request.getParameter("communityboardId");
-		System.out.println(communityboardId);
 		vo.setCommunityboardId(communityboardId);
-				
+		
 		mv.addObject("boardContent", communityService.getBoardContent(vo));
 		mv.setViewName("communityBoardContent"); 
 		return mv;

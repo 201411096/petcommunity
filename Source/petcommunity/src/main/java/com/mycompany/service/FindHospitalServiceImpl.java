@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mycompany.dao.FindBoardDAOImpl;
-import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.FindHospitalVO;
 
 @Service("findHospitalService")

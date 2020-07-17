@@ -2,7 +2,6 @@ package com.mycompany.service;
 
 import java.util.List;
 
-import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.FindHospitalVO;
 
 public interface FindHospitalService {

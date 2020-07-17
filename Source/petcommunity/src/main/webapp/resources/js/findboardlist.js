@@ -12,6 +12,9 @@ $(function(){
 	getData();
 //	$('#keywordInput').on('keyup', getData);
 	$('#searchBtn').on('click', getData);
+	$('#writeBtn').on('click', function(){
+		location.href='findBoardWrite.do';
+	})
 });
 
 function getDataInPaging(){

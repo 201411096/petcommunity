@@ -81,3 +81,5 @@ insert into findboard(FINDBOARD_ID, FINDBOARD_TITLE, FINDBOARD_CONTENT, FINDBOAR
 values(34, '21title', '21content', '1location', '1x', '1y', '1', '200716', '0101111', 'aaa', 0, null);
 
 
+
+

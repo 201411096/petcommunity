@@ -20,8 +20,13 @@
 
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
-
-
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,7 +42,7 @@
 			</a>
 			<ul class="main-menu">
 				<li><a href="index.html">분실 동물 찾기</a></li>
-				<li><a href="gallery.html">커뮤니티</a></li>
+				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="elements.html">동물 병원 정보</a></li>
 				<li><a href="blog.html">고객 문의</a></li>

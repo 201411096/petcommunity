@@ -7,6 +7,7 @@ create table member(
     member_tel varchar2(50),
     member_email varchar2(50),
     member_birthday varchar2(50),
+    member_flag varchar2(50),
     constraint member_pk primary key(member_id)
 );
 create table animal(

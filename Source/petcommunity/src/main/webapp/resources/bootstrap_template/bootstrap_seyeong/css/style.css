@@ -647,7 +647,9 @@
  
  .gallery-text {
    margin-bottom: 110px;
+   font-family: 'Noto Sans KR', sans-serif;
  }
+
  
  .gallery-text h2 {
    margin-bottom: 20px;
@@ -655,6 +657,7 @@
  
  .gallery-item {
    margin-bottom: 123px;
+   font-family: 'Noto Sans KR', sans-serif;
  }
  
  .gallery-item img {
@@ -700,10 +703,10 @@
    width: 39%;
    float: left;
    max-width: 610px;
+   font-family: 'Noto Sans KR', sans-serif;
  }
  
  .blog-title-col h2 {
-   font-style: italic;
    margin-bottom: 40px;
  }
  
@@ -724,6 +727,16 @@
  .blog-item .blog-content {
    overflow: hidden;
  }
+ 
+/*  생성 */
+ .blog-item .blog-content .blog-cata-title{
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+/*  생성 */
+ .blog-item .blog-content .blog-cata-title .blog-cata p {
+	font-family: 'Noto Sans KR', sans-serif;
+}
  
  .blog-item .blog-thumb {
    width: 264px;
@@ -760,6 +773,7 @@
  
  .footer-section {
    background: #222222;
+   font-family: 'Noto Sans KR', sans-serif;
  }
  
  .footer-text {
@@ -768,8 +782,8 @@
  
  .footer-text h2 {
    color: #fff;
-   font-style: italic;
    margin-bottom: 17px;
+   font-size: 25px;
  }
  
  .footer-text p {
@@ -803,11 +817,15 @@
  .copyright {
    font-size: 13px;
    font-weight: 700;
-   font-style: italic;
    color: #515151;
    margin-top: -20px;
    padding-left: 15px;
  }
+ 
+/*  생성 */
+/* .footer-section spad .sp-container .row m-0 .col-lg-4 footer-text { */
+/* 	font-family: 'Neucha', cursive; */
+/* } */
  
  /* ----------------
  Other Page
@@ -871,14 +889,12 @@
  }
  
  .gallery-quite h2 {
-   font-style: italic;
    margin-bottom: 65px;
  }
  
  .gallery-quite h3 {
    font-size: 36px;
    color: #5c5c5c;
-   font-style: italic;
    font-weight: 400;
  }
  
@@ -964,7 +980,6 @@
  
  .artists-item span {
    font-size: 18px;
-   font-style: italic;
    font-weight: 300;
    color: #5c5c5c;
    display: block;

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="findBoardDAO">
+	<!-- mybatis 자료형 : int / hashmap / string -->
+	<select id="getFindBoardList" resultType="findBoard" parameterType="hashmap">
+		select * from findboard
+		<if test = "searchType == 'title'">
+			where REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')	
+		</if>
+		<if test = "searchType == 'writer'">
+			where REGEXP_LIKE (findboard_name, '(*)'||#{searchWord}||'(*)')	
+		</if>
+		<if test = "searchType == 'content'">
+			where REGEXP_LIKE (findboard_content, '(*)'||#{searchWord}||'(*)')	
+		</if>
+		<if test = "searchType == 'titleandcontent'">
+			where REGEXP_LIKE (findboard_content, '(*)'||#{searchWord}||'(*)')
+			or REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')
+		</if>
+		
+	</select>
+	<select id="getFindBoardListWithPaging" parameterType="hashmap" resultType="findBoard">	
+	    select *
+	    from (
+			SELECT findboard_id, findboard_title, findboard_content, findboard_location, findboard_x, findboard_y, findboard_status, findboard_uploadtime, findboard_tel, findboard_name, findboard_readcount, member_id, animal_id, ROWNUM AS RNUM
+			FROM findboard
+			<if test = "searchType == 'title'">
+				where REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')	
+			</if>
+			<if test = "searchType == 'writer'">
+				where REGEXP_LIKE (findboard_name, '(*)'||#{searchWord}||'(*)')	
+			</if>
+			<if test = "searchType == 'content'">
+				where REGEXP_LIKE (findboard_content, '(*)'||#{searchWord}||'(*)')	
+			</if>
+			<if test = "searchType == 'titleandcontent'">
+				where REGEXP_LIKE (findboard_content, '(*)'||#{searchWord}||'(*)')
+				or REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')
+			</if>
+			ORDER BY findboard_id DESC
+		)
+	<![CDATA[ 
+		where RNUM>=#{startRow} and RNUM<=#{endRow}
+	]]>
+	</select>
+	<insert id="insertFindBoardList" parameterType="findBoard">
+	
+	</insert>
+</mapper>

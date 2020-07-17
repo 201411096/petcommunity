@@ -7,5 +7,8 @@ import org.springframework.stereotype.Service;
 import com.mycompany.domain.ShopVO;
 
 public interface ShopService {
-	public List<ShopVO> selectShop(ShopVO vo);
+	public List<ShopVO> selectShopAll();
+	public List<ShopVO> selectShopCategory(ShopVO vo);
+	public List<ShopVO> selectShopName(ShopVO vo);
+	
 }

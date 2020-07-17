@@ -15,9 +15,18 @@ public class ShopServiceImpl implements ShopService{
 	
 	@Autowired
 	private ShopDAOImpl shopDAO;
-	@Override
-	public List<ShopVO> selectShop(ShopVO vo) {
-		return shopDAO.selectShop(vo);
-	}
 
+	@Override
+	public List<ShopVO> selectShopAll() {
+		return shopDAO.selectShopAll();
+	}
+	
+	@Override
+	public List<ShopVO> selectShopCategory(ShopVO vo) {
+		return shopDAO.selectShopCategory(vo);
+	}
+	@Override
+	public List<ShopVO> selectShopName(ShopVO vo) {
+		return shopDAO.selectShopName(vo);
+	}
 }

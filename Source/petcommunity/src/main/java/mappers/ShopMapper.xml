@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace='ShopDAO'>
+
+	<select id='selectShopAll' resultType="shop">
+		SELECT * FROM SHOP
+		order by SHOP_NAME desc
+	</select>
+	
+	<select id='selectShopCategory' parameterType='shop' resultType='shop'>
+		SELECT * FROM SHOP 
+		WHERE REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)')
+		order by SHOP_NAME desc
+		<!-- 
+		SELECT * FROM shop 
+		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_PRODUCTNAME, '(*)'||#{shopProductname}||'(*)')
+   		OR REGEXP_LIKE (SHOP_PRODUCTPRICE, '(*)'||#{shopProductprice}||'(*)')
+   		order by SHOP_NAME desc
+   		 -->
+	</select>
+	
+	<select id='selectShopName' parameterType='shop' resultType='shop'>
+		SELECT * FROM SHOP 
+		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)')
+		order by SHOP_NAME desc
+		<!-- 
+		SELECT * FROM shop 
+		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)') 
+   		OR REGEXP_LIKE (SHOP_PRODUCTNAME, '(*)'||#{shopProductname}||'(*)')
+   		OR REGEXP_LIKE (SHOP_PRODUCTPRICE, '(*)'||#{shopProductprice}||'(*)')
+   		order by SHOP_NAME desc
+   		 -->
+	</select>
+</mapper>

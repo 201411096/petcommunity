@@ -18,6 +18,7 @@
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/bootstrap.min.css" />
@@ -78,10 +79,12 @@
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item">
 				<div class="hs-bg set-bg sm-overlay"
-					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover.png"></div>
+					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1.png"></div>
 				<div class="sp-container">
 					<div class="hs-text">
-						<h2>The Look<br>Gallery</h2>
+						<h2 id="together">
+							Best&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Store&nbsp;
+						</h2>
 						<a href="#" class="site-btn sb-big">둘러보기<img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
@@ -90,11 +93,11 @@
 			</div>
 			<div class="hs-item">
 				<div class="hs-bg set-bg sm-overlay"
-					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover.png"></div>
+					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover6.png"></div>
 				<div class="sp-container">
 					<div class="hs-text">
-						<h2>
-							The Look<br>Store
+						<h2 id="together">
+							함께할개<br>&nbsp;&nbsp;&nbsp;&nbsp;사랑할개
 						</h2>
 						<a href="#" class="site-btn sb-big">둘러보기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
@@ -102,20 +105,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay"
-					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover.png"></div>
-				<div class="sp-container">
-					<div class="hs-text">
-						<h2>
-							The Look<br>Gallery
-						</h2>
-						<a href="#" class="site-btn sb-big">둘러보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</section>
 	<!-- Hero section end -->

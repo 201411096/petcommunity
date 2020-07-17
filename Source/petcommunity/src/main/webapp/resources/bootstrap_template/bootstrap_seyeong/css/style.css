@@ -96,7 +96,7 @@
  
  .set-bg {
    background-repeat: no-repeat;
-   background-size: cover;
+   background-size: 1200px,800px;
    background-position: top center;
  }
  
@@ -109,6 +109,7 @@
    max-width: 1584px;
    width: 100%;
    margin: 0 auto;
+   text-align: center;
  }
  
  .big-title,
@@ -500,12 +501,18 @@
  /* ----------------
  Hero section
   ---------------------*/
+ #together {
+ font-size: 150px;
+ font-family: 'Nanum Brush Script', cursive;
+ color : #082236;
+ }
  
  .hero-section {
    clear: both;
  }
  
  .hs-item {
+   margin-right : -40px;
    height: 950px;
    position: relative;
    display: -webkit-box;
@@ -774,10 +781,13 @@
  .footer-section {
    background: #222222;
    font-family: 'Noto Sans KR', sans-serif;
+   text-align: center;
  }
  
  .footer-text {
-   padding-right: 70px;
+    padding-right: 70px;
+   
+  
  }
  
  .footer-text h2 {

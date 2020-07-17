@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay" data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/2.jpg"></div>
+				<div class="hs-bg set-bg sm-overlay" data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1.png"></div>
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>

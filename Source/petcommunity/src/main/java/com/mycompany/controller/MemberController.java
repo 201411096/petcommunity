@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.MemberVO;
@@ -47,12 +48,26 @@ public class MemberController {
 	public ModelAndView signin(MemberVO vo , HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		ModelAndView mv = new ModelAndView();
+		
 		MemberVO result=memberService.signin(vo);
-		session.setAttribute("memberId",result.getMemberId());
-		mv.addObject("member",result);
+		session.setAttribute("memberVO",result);
+		
+		/* mv.addObject("member",session); */
 		mv.setViewName("header");
 		
-		return null;
+		return mv;
+		
+	}
+	
+	@RequestMapping(value="logout.do")
+	public ModelAndView logout(HttpServletRequest req) {
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = req.getSession(false);
+		if (session != null) {
+			session.invalidate();
+		}
+		mv.setViewName("header");
+		return mv;
 		
 	}
 

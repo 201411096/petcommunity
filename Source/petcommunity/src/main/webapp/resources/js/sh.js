@@ -1,84 +1,104 @@
 $(document).ready(function () {
 	
-
-//// 아이디 유효성 검사(1 = 중복 / 0 != 중복)
-//	$("#user_id").blur(function() {
-//		// id = "id_reg" / name = "userId"
-//		var user_id = $('#user_id').val();
-//		$.ajax({
-//			url : '${pageContext.request.contextPath}/user/idCheck?userId='+ user_id,
-//			type : 'get',
-//			success : function(data) {
-//				console.log("1 = 중복o / 0 = 중복x : "+ data);							
-//				
-//				if (data == 1) {
-//						// 1 : 아이디가 중복되는 문구
-//						$("#id_check").text("사용중인 아이디입니다 :p");
-//						$("#id_check").css("color", "red");
-//						$("#reg_submit").attr("disabled", true);
-//					} else {
-//						
-//						if(idJ.test(user_id)){
-//							// 0 : 아이디 길이 / 문자열 검사
-//							$("#id_check").text("");
-//							$("#reg_submit").attr("disabled", false);
-//				
-//						} else if(user_id == ""){
-//							
-//							$('#id_check').text('아이디를 입력해주세요 :)');
-//							$('#id_check').css('color', 'red');
-//							$("#reg_submit").attr("disabled", true);				
-//							
-//						} else {
-//							
-//							$('#id_check').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
-//							$('#id_check').css('color', 'red');
-//							$("#reg_submit").attr("disabled", true);
-//						}
-//						
-//					}
-//				}, error : function() {
-//						console.log("실패");
-//				}
-//			});
-//		});
-//	
-//	//비밀번호 유효성 검사
-//	   $('#register-form').validate({  
-//		      rules:{ 
-//		         mid :{
-//		              required:true, 
-//		              minlength:6,
-//		              maxlength:10 
-//		              },
-//		         mname:{required:true,
-//		               minlength:2,
-//		               hangul:true
-//		               },
-//		         email:{required:true,
-//		               email:true
-//		               },       
-//		         mpassword : {
-//		            required:true, 
-//		            minlength:8,
-//		            maxlength:16,
-//		            regx:/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@@@#$%^&+=]).*$/
-//		            },
-//		         passconf : {equalTo:'#mpassword'}   
-//		         },
-//		         mtel :{
-//		            required:true, 
-//		            maxlength:11,
-//		            number:true 
-//		         },
-//		         account:{
-//		            required:true, 
-//		            number:true  
-//		         },      
-//		      success:function(label){         
-//		      }  
-//		   });
-//	   
-});
+	$("#memberId").focusout(function(){
+        $.ajax({
+                type:'post',
+                async:true,
+                url : 'checkid.do',
+                contentType :'application/x-www-form-urlencoded;charset=UTF-8',
+                data : "memberId="+ $("#memberId").val(),
+                success : function(resultData){
+                    $("#idresult").html(resultData);
+                    if($("#memberId").val()==="")
+                        $("#idresult").html("ID를 입력하세요.");
+                }
+        
+        });
+        
+        
+    });
 	
+	$("#memberPassword").focusout(function(){
+		
+	var pass1 =$("#memberPassword").val()
+	var pass2 =$("#re_pass").val()
+	
+	if(pass1==="")
+		$("#passresult").html("비밀번호를 입력하세요.");
+	
+
+});
+	$("#re_pass").focusout(function(){
+		
+		var pass1 =$("#memberPassword").val()
+		var pass2 =$("#re_pass").val()
+		
+		if(pass1!=pass2 || pass1==="")
+			$("#passresult").html("비밀번호 확인이 틀립니다");
+			
+		else $("#passresult").html("비밀번호 확인 되었습니다");
+	});
+
+	
+	$('#register-form input[type=submit]').click(function(){
+		var re = /^[a-zA-Z0-9]{4,12}$/;
+		var email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+        var submit1 = false;
+        if($('#memberName').val()==="")
+        {
+            alert("이름을 입력하세요");return false;        
+        }
+        else if($('#memberTel').val()===""){
+            alert("전화번호를 입력하세요.");return false;
+        }
+        else if($('#memberId').val()===""){
+            alert("ID를 입력하세요.");return false;
+        }
+        else if($('#memberPassword').val()==="")
+        {
+            alert("비밀번호를 입력하세요.");return false;    
+        }
+        else if($('#re_pass').val()==="")
+        {
+            alert("비밀번호 확인을 입력하세요."); return false;       
+        }
+        else if($('#memberPassword').val()!==$('#re_pass').val())
+        {
+            alert("비밀번호 확인이 다릅니다.");return false;        
+        }
+        else if(!re.test($('#memberPassword').val()) || !re.test($('#re_pass').val()) ){
+        	alert("비밀번호는 4~12의 영문자와 숫자로 입력해주세요"); return false;
+        }
+        else if($('#memberEmail').val()==="")
+        {
+            alert("이메일을 입력하세요.");return false;
+        }else if(!email.test($('#memberEmail').val())){
+            	alert("이메일 형식이 아닙니다"); return false;
+        }
+        else if($('#memberBirthday').val()===""){
+            alert("생년월일을 입력하세요");return false;
+        }
+        else if($('#sample2_address').val()===""){
+            alert("주소를 입력하세요");return false;
+        }
+       
+        else if($("input:checkbox[id=agree-term]").is(":checked") == false) {
+            alert("필수 약관에 동의 하셔야합니다.");
+            return false;
+        }
+        else if($("input:checkbox[id=agree-term2]").is(":checked") == false) {
+            alert("필수 약관에 동의 하셔야합니다.");
+            return false;
+        }
+        
+        else
+        	submit1 = true;
+        if(submit1 === true)
+        	alert("회원가입되었습니다! 로그인페이지로 이동합니다")
+            $('#register-form').submit();
+    });
+
+
+});
 

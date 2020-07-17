@@ -32,18 +32,16 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">로그인</h2>
-                        <form method="POST" class="register-form" id="login-form">
+                        <form action="sign.do" method="POST" class="register-form" id="login-form">
                             <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="your_name" id="your_name" placeholder="ID"/>
+                                <label for="memberId"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="memberId" id="memberId" placeholder="ID"/>
                             </div>
                             <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
+                                <label for="memberPassword"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="memberPassword" id="memberPassword" placeholder="Password"/>
                             </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                            </div>
+      
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
                             </div>

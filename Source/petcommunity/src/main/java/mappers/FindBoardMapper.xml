@@ -45,6 +45,6 @@
 	]]>
 	</select>
 	<insert id="insertFindBoardList" parameterType="findBoard">
-	
+		
 	</insert>
 </mapper>

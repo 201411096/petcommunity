@@ -7,11 +7,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <insert id="signup" parameterType="member">
 
-insert into MEMBER(MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_ADDRESS,MEMBER_TEL,MEMBER_EMAIL,MEMBER_BIRTHDAY) 
-values(#{memberId},#{memberPassword},#{memberName},#{memberAddrss},#{memberTel},#{memberEmail},#{memberBirthday})
+insert into MEMBER(MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_ADDRESS,MEMBER_TEL,MEMBER_EMAIL,MEMBER_BIRTHDAY,MEMBER_FLAG) 
+values(#{memberId},#{memberPassword},#{memberName},#{memberAddrss},#{memberTel},#{memberEmail},#{memberBirthday},0)
 
 </insert>
 
+<select id="idcheck" parameterType="member" resultType="java.lang.Integer">
+SELECT NVL(COUNT(*),0)
+FROM MEMBER
+WHERE MEMBER_ID=#{memberId}
+</select>
 
+<select id="signin" parameterType="member" resultType="member">
+select MEMBER_ID ,MEMBER_NAME,MEMBER_FLAG from MEMBER where MEMBER_PASSWORD=#{memberPassword} and MEMBER_ID=#{memberId}
+</select>
 
 </mapper>

@@ -20,6 +20,8 @@
 		<typeAlias alias="findHospital" type="com.mycompany.domain.FindHospitalVO"></typeAlias>
 
 		<typeAlias alias="pagination" type="com.mycompany.domain.PaginationVO"></typeAlias>
+		
+		<typeAlias alias="community" type="com.mycompany.domain.CommunityVO"></typeAlias>
 
    </typeAliases>
    

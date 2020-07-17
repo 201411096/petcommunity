@@ -78,9 +78,6 @@ create table shop(
 create table questionboard(
     questionboard_id number(20),
     questionboard_gruop_id number(20),
-    questionboard_location varchar2(512),
-    questionboard_x varchar2(50),
-    questionboard_y varchar2(50),
     questionboard_title varchar2(50),
     questionboard_content varchar2(2048),
     questionboard_uploadtime date,

@@ -16,6 +16,8 @@
 		<typeAlias alias="member" type="com.mycompany.domain.MemberVO"></typeAlias>
 
 		<typeAlias alias="findBoard" type="com.mycompany.domain.FindBoardVO"></typeAlias>
+		
+		<typeAlias alias="findHospital" type="com.mycompany.domain.FindHospitalVO"></typeAlias>
 
    </typeAliases>
    

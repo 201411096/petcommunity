@@ -11,7 +11,7 @@
 <a href="/petcommunity/login.do">로그인</a><br>
 <a href="/petcommunity/signup.do">회원가입</a><br>
 <a href="/petcommunity/shop.do">쇼핑페이지</a><br>
-
+<a href="/petcommunity/findHospitalList.do">동물 병원 찾기</a><br>
 
 <a href="/petcommunity/header.do">헤더</a><br>
 </body>

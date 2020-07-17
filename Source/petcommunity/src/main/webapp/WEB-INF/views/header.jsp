@@ -67,7 +67,7 @@
 				<li><a href="index.html">분실 동물 찾기</a></li>
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
-				<li><a href="elements.html">동물 병원 정보</a></li>
+				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
 				<li><a href="blog.html">고객 문의</a></li>
 				<li><a href="contact.html">Contact</a></li>
 

@@ -13,16 +13,8 @@ public class MemberDAOImpl implements MemberDAO{
 	private SqlSessionTemplate mybatis;
 	@Override
 	public int signup(MemberVO vo) {
+		System.out.println(vo.getMemberAddrss());
 		return mybatis.insert("member.signup",vo);
-	}
-	@Override
-	public int idcheck(MemberVO vo) {
-		return  mybatis.selectOne("member.idcheck", vo);
-	}
-	@Override
-	public MemberVO signin(MemberVO vo) {
-		
-		return mybatis.selectOne("member.signin",vo);
 	}
 
 }

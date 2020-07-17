@@ -19,15 +19,4 @@ public class MemberServiceImpl implements MemberService {
 		
 	}
 
-	@Override
-	public int idcheck(MemberVO vo) {
-		return  memberDAO.idcheck(vo);
-	}
-
-	@Override
-	public MemberVO signin(MemberVO vo) {
-		
-		return memberDAO.signin(vo);
-	}
-
 }

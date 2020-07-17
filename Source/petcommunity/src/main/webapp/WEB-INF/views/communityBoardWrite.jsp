@@ -25,54 +25,55 @@
 			<h1> 게시글 작성하기</h1>
 	</header>
 	<br/><br/>
-		<form>
+		<form action="writeIntoBoard.do" method='get' enctype='multipart/form-data'>
+			<!-- 도시 고를 수 있는 셀렉트박스 -->
 			<div class="col-xs-0 col-sm-2">
-				<select class="form-control" id='cityName'>
-					<option >-------</option>
-					<option >서울특별시</option>
-					<option >인천광역시</option>
-					<option >대전광역시</option>
-					<option >광주광역시</option>
-					<option >울산광역시</option>
-					<option >대구광역시</option>
-					<option >부산광역시</option>
-					<option >세종특별자치시</option>
-					<option >경기도</option>
-					<option >강원도</option>
-					<option >충청북도</option>
-					<option >충청남도</option>
-					<option >전라북도</option>
-					<option >전라남도</option>
-					<option >경상북도</option>
-					<option >경상남도</option>
-					<option >제주도</option>
+				<select class="form-control" id='cityName' name ='cityName'>
+					<option >-----</option>
+					<option >서울</option>
+					<option >인천</option>
+					<option >대전</option>
+					<option >광주</option>
+					<option >울산</option>
+					<option >대구</option>
+					<option >부산</option>
+					<option >세종</option>
+					<option >경기</option>
+					<option >강원</option>
+					<option >충북</option>
+					<option >충남</option>
+					<option >전북</option>
+					<option >전남</option>
+					<option >경북</option>
+					<option >경남</option>
+					<option >제주</option>
 				</select>
 			</div>
 			<div class="col-xs-0 col-sm-2">
-				<select class="form-control" id='province'>
+				<select class="form-control" id='province' name ='province'>
 					<option >-----</option>					
 				</select>
 			</div>
+			
+			<!-- 글쓰기 -->
 			<br/><br/>
 			<div class="form-group">
-				<label for="exampleInputEmail1">글 제목</label> 
-				<input type="text" class="form-control" id="exampleInputEmail1" placeholder="title">
+				<label>글 제목</label> 
+				<input type="text" class="form-control" name="communityboardTitle" placeholder="title">
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">글 내용</label>
-				<textarea class="form-control" rows="5" id="comment" placeholder="contents"></textarea>
+				<label>글 내용</label>
+				<textarea class="form-control" rows="5" name="communityboardContent" placeholder="contents"></textarea>
 			</div>
 			<div>
-				<button type="button" class="btn btn-default" id='imgUpload'>이미지 첨부</button>
+				<button type="button" class="btn btn-default" name='imgUpload'>이미지 첨부</button>
 			</div>
 			<div class="col-md-4 col-md-offset-10">			
 			<span class="input-group-btn">
 				<button type="submit" class="btn btn-default">작성완료</button>
 				<button type="button" class="btn btn-default" id='cancelWrite'>글쓰기 취소</button>
 			</span>
-			</div>
-			
-			
+			</div>			
 		</form>
 
 

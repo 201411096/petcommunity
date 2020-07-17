@@ -16,10 +16,8 @@
 <!-- Main css -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/style.css">
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css3/main.css">
-<link rel="stylesheet"
-	href="./resources/css/sh.css">
+
+
 </head>
 <body>
 

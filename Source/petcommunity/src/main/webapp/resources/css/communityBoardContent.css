@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+
+
+#communityContentTitle{
+	color : #03C75A;
+}
+
+#communityContentWriter{
+	font-size:13px;
+	font-weight: 700;
+}
+
+#communityContentTime{
+	font-size:11px;
+	color : #979797;
+}
+
+

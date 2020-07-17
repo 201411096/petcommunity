@@ -24,22 +24,25 @@
 	
 			
 			<section id="container">
-				<form role="form" method="get">
+				<form role="form" method="post">
 					<table class="table table-hover">
 						<thead>
 							<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>추천</th><th>조회수</th></tr>
 						</thead>
 						
-						<c:forEach items="${list}" var = "list">
+						<c:forEach items="${communityBoardList}" var = "communityBoardList">
 							<tr>
-								<td><c:out value="${list.bno}" /></td>
+								<td>${communityBoardList.communityboardId}</td>
 								<td>
-									<a href="/board/readView?bno=${list.bno}&page=${scri.page}&perPageNum=${scri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}"><c:out value="${list.title}" /></a>
+									<a href='getBoardContent.do?communityboardId=${communityBoardList.communityboardId}'>
+									[<span id='locationTag'>${communityBoardList.communityboardLocation}</span>]
+									${communityBoardList.communityboardTitle}
+									</a>
 								</td>
-								<td><c:out value="${list.writer}" /></td>
-								<td><fmt:formatDate value="${list.regdate}" pattern="yyyy-MM-dd"/></td>
-								<td><fmt:formatDate value="${list.recommend}" pattern="yyyy-MM-dd"/></td>
-								<td><fmt:formatDate value="${list.viewcount}" pattern="yyyy-MM-dd"/></td>
+								<td>${communityBoardList.memberId}</td>
+								<td>${communityBoardList.communityboardUploadtime}</td>
+								<td>${communityBoardList.communityboardRecommend}</td>
+								<td>${communityBoardList.communityboardReadcount}</td>
 							</tr>
 						</c:forEach>
 						
@@ -47,11 +50,11 @@
 					<div class="search row">
 						<div class="col-xs-2 col-sm-2">
 							<select name="searchType" class="form-control">
-								<option value="n"<c:out value="${scri.searchType == null ? 'selected' : ''}"/>>-----</option>
-								<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-								<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-								<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-								<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+								<option>-----</option>
+								<option>제목</option>
+								<option>내용</option>
+								<option>작성자</option>
+								<option>제목+내용</option>
 							</select>
 						</div>
 						 
@@ -65,6 +68,7 @@
 									<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 									
 								</span>					
 							</div>
+							
 							
 						</div>
 						 

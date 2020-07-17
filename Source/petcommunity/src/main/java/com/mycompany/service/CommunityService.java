@@ -1,8 +1,12 @@
 package com.mycompany.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service("communityService")
-public class CommunityService {
-	
+import com.mycompany.domain.CommunityVO;
+
+
+public interface CommunityService {
+	public int writeIntoBoard(CommunityVO vo);
+	public List<CommunityVO> getBoardList();
+	public CommunityVO getBoardContent(CommunityVO vo);
 }

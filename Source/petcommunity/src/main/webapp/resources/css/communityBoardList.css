@@ -4,6 +4,9 @@
 #keywordInput{
 	width : 90%
 }
+#locationTag{
+	color : skyblue;
+}
 /* #searchBtn{
 	position: relative;
     left: 10px;

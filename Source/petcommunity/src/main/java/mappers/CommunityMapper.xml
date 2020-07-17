@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="communityDAO">
+
+<insert id="writeIntoBoard" parameterType="community">
+INSERT INTO communityboard(communityboard_id, COMMUNITYBOARD_LOCATION, COMMUNITYBOARD_TITLE, COMMUNITYBOARD_CONTENT, COMMUNITYBOARD_UPLOADTIME, COMMUNITYBOARD_READCOUNT, COMMUNITYBOARD_RECOMMEND, MEMBER_ID)
+VALUES(communityboard_id_seq.nextval, #{cityName}||' '||#{province}, #{communityboardTitle}, #{communityboardContent}, sysdate, 0, 0, 'a' )
+</insert>
+
+<select id="getBoardList" resultType="community">
+select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id,
+decode(To_char(communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(communityboard_uploadtime, 'hh24:mi:ss')), (To_char(communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
+from communityboard
+order by communityboard_id desc
+</select>  
+
+<select id="getBoardContent" parameterType="community" resultType="community">
+<![CDATA[
+select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id, communityboard_uploadtime
+from communityboard
+where communityboard_id=#{communityboardId}
+]]>
+</select>  
+
+</mapper>

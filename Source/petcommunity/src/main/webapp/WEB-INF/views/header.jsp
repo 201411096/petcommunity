@@ -36,10 +36,17 @@
 				<img src="./resources/bootstrap_template/template_01/img/logo2.png" alt="">
 			</a>
 			<ul class="main-menu">
+<<<<<<< Updated upstream
 				<li><a href="index.html">분실 동물 찾기</a></li>
 				<li><a href="gallery.html">커뮤니티</a></li>
 				<li><a href="artists.html">유기견 후원 스토어</a></li>
 				<li><a href="elements.html">동물 병원 정보</a></li>
+=======
+				<li><a href="findboardlist.do">분실 동물 찾기</a></li>
+				<li><a href="communityBoardList.do">커뮤니티</a></li>
+				<li><a href="shop.do">유기견 후원 스토어</a></li>
+				<li><a href="findHospitalList.do">동물 병원 정보</a></li>
+>>>>>>> Stashed changes
 				<li><a href="blog.html">고객 문의</a></li>
 				<li><a href="contact.html">Contact</a></li>
                 <li><a href="login.do">로그인/회원가입</a></li>	

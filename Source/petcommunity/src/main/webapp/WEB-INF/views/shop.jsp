@@ -24,14 +24,9 @@
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
 
-
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
 </head>
 <body>
+<<<<<<< Updated upstream
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -134,6 +129,40 @@
 					</a>
 				</div>
 			</div>
+=======
+	
+	<section class="product-filter-section">
+		<div class="container">
+			<div class="section-title">
+				<h2>반려동물을 위한 상품 리스트</h2>
+			</div>
+			<ul class="product-filter-menu">
+				<li><a href="/petcommunity/shop.do?">전체</a></li>
+				<li><a href="/petcommunity/shopName.do?shopName=pawInHand">PAW IN HAND</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=폰케이스">폰케이스</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=패션">패션</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=악세서리">악세서리</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=반려용품">반려용품</a></li>
+				<li><a href="/petcommunity/shopCategory.do?shopCategory=매거진">매거진</a></li>
+				<li><a href="/petcommunity/shop.do?shopCategory=기타 잡화">기타 잡화</a></li>
+			</ul>
+			<!-- Product filter section -->
+			
+			<div class="row artists-row">
+			<!-- forEach 사용 -->
+			<c:forEach var="shop" items="${shops}">
+				<div class="col-lg-4 col-sm-6 artists-col">
+					<a href="${shop.shopLink }" target="_blank">
+					<div class="artists-item">
+						<img src="./resources/imgs/product_image/pawInHand/${shop.shopProductname}.jpg" alt="">
+						<h4>${shop.shopProductname}</h4>
+						<span>${shop.shopProductprice}</span>
+						<p>${shop.shopName}</p>
+					</div>
+					</a>
+				</div>
+			</c:forEach>
+>>>>>>> Stashed changes
 		</div>
 	</section>
 	<!-- Artists page end -->

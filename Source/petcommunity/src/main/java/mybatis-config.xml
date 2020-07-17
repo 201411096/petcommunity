@@ -12,6 +12,16 @@
    <!-- Alias 설정 -->
    <typeAliases>
 		<typeAlias alias="shop" type="com.mycompany.domain.ShopVO"></typeAlias>
+<<<<<<< Updated upstream
+=======
+
+		<typeAlias alias="member" type="com.mycompany.domain.MemberVO"></typeAlias>
+
+		<typeAlias alias="findBoard" type="com.mycompany.domain.FindBoardVO"></typeAlias>
+		
+		<typeAlias alias="findHospital" type="com.mycompany.domain.FindHospitalVO"></typeAlias>
+
+>>>>>>> Stashed changes
    </typeAliases>
    
 </configuration>

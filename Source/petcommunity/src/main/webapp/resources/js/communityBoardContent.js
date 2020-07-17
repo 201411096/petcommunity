@@ -8,4 +8,9 @@ $(function(){
 			$('#commentBtn').attr('disabled',true);
 		}
 	});
+	
+	$('#goToList').click(function(){
+		window.location.href='/petcommunity/communityBoardList.do';
+	});
 });
+

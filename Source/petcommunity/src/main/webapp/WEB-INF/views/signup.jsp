@@ -36,23 +36,26 @@
 						<a href="login.do" class="signup-image-link">로그인 페이지로 이동</a>
 						<br>
 						<h2 class="form-title">회원가입</h2>
-						<form method="POST" class="register-form" id="register-form">
+						<form action="signup2.do" method="POST" class="register-form" id="register-form">
 							<div class="form-group">
 								<label for="name"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="name" id="name" placeholder="이름" />
+									type="text" name="memberName" id="memberName" placeholder="이름" />
 							</div>
 							<div class="form-group">
 								<label for="tel"><i class="zmdi zmdi-phone"></i></label> <input
-									type="text" name="tel" id="tel" placeholder="휴대폰 번호" />
+									type="text" name="memberTel" id="memberTel" placeholder="휴대폰 번호" />
 							</div>
 							<div class="form-group">
-								<label for="id"><i class="zmdi zmdi-account-box"></i></label> <input
-									type="email" name="id" id="id" placeholder="ID" />
+								<label for="id"><i class="zmdi zmdi-account-box"></i></label>
+								 <input type="text" name="memberId" id="memberId" placeholder="ID"/>	 
 							</div>
+							
+							<span id="idresult"></span>
+							
 							<div class="form-group">
 								<label for="pass"><i class="zmdi zmdi-lock"></i></label><input
-									type="password" name="pass" id="pass" placeholder="Password" />
+									type="password" name="memberPassword" id="memberPassword" placeholder="Password" />
 									
 							</div>
 							<div class="form-group">
@@ -60,21 +63,22 @@
 								<input type="password" name="re_pass" id="re_pass"
 									placeholder="password 확인" />
 							</div>
+							<span id="passresult"></span>
 							<div class="form-group">
 								<label for="email"><i class="zmdi zmdi-email"></i></label> <input
-									type="email" name="email" id="email" placeholder="Email" />
+									type="email" name="memberEmail" id="memberEmail" placeholder="Email" />
 							</div>
 							
 							<div class="form-group">
 								<span><i class="zmdi zmdi-face"></i>생년월일</span>
-								<input type="date" name="birth" id="birth"/>
+								<input type="date" name="memberBirthday" id="memberBirthday"/>
 							</div>
 
 							<div class="form-group">
 								<span class='zmdi zmdi-home'>주소</span>
 								<input type="text" id="sample2_postcode" placeholder="우편번호"> 
 								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-								<input type="text" id="sample2_address" placeholder="주소"><br> 
+								<input type="text" id="sample2_address" name="memberAddrss" placeholder="주소"><br> 
 								<input type="text" id="sample2_detailAddress" placeholder="상세주소">
 								<input type="text" id="sample2_extraAddress">
 							</div>
@@ -94,7 +98,14 @@
 								<input type="checkbox" name="agree-term" id="agree-term"
 									class="agree-term" /> <label for="agree-term"
 									class="label-agree-term"><span><span></span></span>개인정보
-									약관에 동의 하십니까?</label>
+									처리방침에 동의 하십니까? </label>
+							</div>
+							
+							<div class="form-group2">
+								<input type="checkbox" name="agree-term2" id="agree-term2"
+									class="agree-term2" /> <label for="agree-term2"
+									class="label-agree-term"><span><span></span></span>개인정보
+									수집 및 이용에 동의 하십니까?</label>
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signup" id="signup"
@@ -111,8 +122,19 @@
 	</div>
 
 	<!-- JS -->
+	<script src="./resources/js/sh.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+     function idCheck(){
+          $.ajax({
+              url : "idCheck.do",
+              success : function(data){
+                   alert(data);
+              }
+          });
+     }
+</script>
 <script>
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');

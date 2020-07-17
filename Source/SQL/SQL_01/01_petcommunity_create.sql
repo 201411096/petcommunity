@@ -7,6 +7,7 @@ create table member(
     member_tel varchar2(50),
     member_email varchar2(50),
     member_birthday varchar2(50),
+    member_flag varchar2(50),
     constraint member_pk primary key(member_id)
 );
 create table animal(
@@ -91,7 +92,7 @@ create table questionboard(
 
 create table communityboard(
     communityboard_id number(20),
-    commuityboard_location varchar2(512),
+    communityboard_location varchar2(512),
     communityboard_x varchar2(50),
     communityboard_y varchar2(50),
     communityboard_title varchar2(50),
@@ -115,6 +116,20 @@ create table boardcomment(
     constraint boardcomment_fk_2 foreign key(communityboard_id) references communityboard(communityboard_id) ON DELETE CASCADE
 );
 
+create table findhospital(
+   findhospital_id number(20),
+   findhospital_name varchar2(200),
+   findhospital_tel varchar2(50),
+   findhospital_address varchar2(500),
+   findhospital_x varchar2(500),
+   findhospital_y varchar2(500)
+   );
+
+create sequence findhospital_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+   
 create sequence animal_id_seq
 start with 10000
 maxvalue 100000

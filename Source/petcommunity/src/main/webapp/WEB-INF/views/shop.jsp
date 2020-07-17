@@ -61,23 +61,36 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>반려동물을 위한 상품 리스트</h2>
+						<h2>반려동물을 위한 상품 리스트</h2>
+							 <div style='display:inline;'><input type="text" name="serchList" id="serchList" value="${scri.keyword}" />
+								<button id="searchBtn" type="button">검색</button>
+							</div>
 			</div>
 			<ul class="product-filter-menu">
-				<li><a href="/petcommunity/shop.do?">전체</a></li>
-				<li><a href="/petcommunity/shopName.do?shopName=pawInHand">PAW IN HAND</a></li>
-				<li><a href="/petcommunity/shopCategory.do?shopCategory=폰케이스">폰케이스</a></li>
-				<li><a href="/petcommunity/shopCategory.do?shopCategory=패션">패션</a></li>
-				<li><a href="/petcommunity/shopCategory.do?shopCategory=악세서리">악세서리</a></li>
-				<li><a href="/petcommunity/shopCategory.do?shopCategory=반려용품">반려용품</a></li>
-				<li><a href="/petcommunity/shopCategory.do?shopCategory=매거진">매거진</a></li>
-				<li><a href="/petcommunity/shop.do?shopCategory=기타 잡화">기타 잡화</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="all">전체</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="pawInHand">PAW IN HAND</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="폰케이스">폰케이스</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="패션">패션</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="악세서리">악세서리</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="반려용품">반려용품</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="매거진">매거진</a></li>
+				<li><a href="#" id="acc" name="tagCategory" class="tagCategory" value="기타 잡화">기타 잡화</a></li>
+				<!-- 
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=all name="tagCategory" class="tagShopName" value="all"">전체</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=pawInHand" name="tagCategory" class="tagShopName" value="pawInHand">PAW IN HAND</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=폰케이스" name="tagCategory" class="tagCategory" value="폰케이스">폰케이스</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=패션" name="tagCategory" class="tagCategory" value="패션">패션</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=악세서리" name="tagCategory" class="tagCategory" value="악세서리">악세서리</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=반려용품" name="tagCategory" class="tagCategory" value="반려용품">반려용품</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=매거진" name="tagCategory" class="tagCategory" value="매거진">매거진</a></li>
+				<li><a href="/petcommunity/shopCategory.do?tagCategory=기타 잡화" name="tagCategory" class="tagCategory" value="기타 잡화">기타 잡화</a></li>
+				 -->
 			</ul>
 			<!-- Product filter section -->
 			
-			<div class="row artists-row">
+			<div id='shopTable' class="row artists-row">
 			<!-- forEach 사용 -->
-			<c:forEach var="shop" items="${shops}">
+			<c:forEach var="shop" items="${shopList}">
 				<div class="col-lg-4 col-sm-6 artists-col">
 					<a href="${shop.shopLink }" target="_blank">
 					<div class="artists-item">
@@ -291,6 +304,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+	<script src="./resources/js/shopListTagAjax.js"></script>
 	<!--====== carousel ======-->
 	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery-3.2.1.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/js/bootstrap.min.js"></script>

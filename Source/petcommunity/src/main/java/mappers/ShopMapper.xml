@@ -9,9 +9,20 @@
 	</select>
 	
 	<select id='selectShopCategory' parameterType='shop' resultType='shop'>
+		<if test="shopCategory.equals('all')">
+		SELECT * FROM SHOP
+		order by SHOP_NAME desc
+		</if>
+		<if test="!shopCategory.equals('all')">
+		SELECT * FROM SHOP 
+		WHERE SHOP_CATEGORY = #{shopCategory} OR SHOP_NAME = #{shopCategory}
+		order by SHOP_NAME desc
+		</if>
+		<!-- 
 		SELECT * FROM SHOP 
 		WHERE REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)')
 		order by SHOP_NAME desc
+		 -->
 		<!-- 
 		SELECT * FROM shop 
 		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)') 
@@ -20,19 +31,44 @@
    		OR REGEXP_LIKE (SHOP_PRODUCTPRICE, '(*)'||#{shopProductprice}||'(*)')
    		order by SHOP_NAME desc
    		 -->
+	</select>
+	<select id='selectShopCntByTag' parameterType='String' resultType='int'>
+		SELECT count(*)
+		FROM(
+			SELECT * FROM SHOP 
+			WHERE SHOP_CATEGORY = #{shopCategory} OR SHOP_NAME = #{shopCategory}
+		order by SHOP_NAME desc
+		)
 	</select>
 	
-	<select id='selectShopName' parameterType='shop' resultType='shop'>
-		SELECT * FROM SHOP 
-		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)')
-		order by SHOP_NAME desc
-		<!-- 
-		SELECT * FROM shop 
-		WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{shopName}||'(*)') 
-   		OR REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{shopCategory}||'(*)') 
-   		OR REGEXP_LIKE (SHOP_PRODUCTNAME, '(*)'||#{shopProductname}||'(*)')
-   		OR REGEXP_LIKE (SHOP_PRODUCTPRICE, '(*)'||#{shopProductprice}||'(*)')
-   		order by SHOP_NAME desc
-   		 -->
+	<select id='selectShopByTagWithPaging' parameterType="hashmap" resultType="shop">
+		<if test="tagCategory.equals('all')">
+			<![CDATA[
+			SELECT *
+			FROM(
+				SELECT ROWNUM AS RNUM, SHOP_ID, SHOP_NAME, 
+				SHOP_CATEGORY, SHOP_PRODUCTNAME, SHOP_PRODUCTPRICE, 
+				SHOP_IMG, SHOP_LINK
+				FROM SHOP 
+				order by SHOP_NAME desc
+				)
+			WHERE RNUM>=#{startRow} and RNUM<=#{endRow}
+			]]>
+		</if>
+		<if test="!tagCategory.equals('all')">
+		<![CDATA[
+			SELECT *
+			FROM(
+				SELECT ROWNUM AS RNUM, SHOP_ID, SHOP_NAME, 
+				SHOP_CATEGORY, SHOP_PRODUCTNAME, SHOP_PRODUCTPRICE, 
+				SHOP_IMG, SHOP_LINK
+				FROM SHOP 
+				WHERE SHOP_CATEGORY = #{tagCategory} OR SHOP_NAME = #{tagCategory}
+				order by SHOP_NAME desc
+				)
+			WHERE RNUM>=#{startRow} and RNUM<=#{endRow}
+		]]>
+		</if>
 	</select>
+
 </mapper>

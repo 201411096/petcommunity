@@ -17,6 +17,8 @@
 
 		<typeAlias alias="findBoard" type="com.mycompany.domain.FindBoardVO"></typeAlias>
 
+		<typeAlias alias="pagination" type="com.mycompany.domain.PaginationVO"></typeAlias>
+
    </typeAliases>
    
    

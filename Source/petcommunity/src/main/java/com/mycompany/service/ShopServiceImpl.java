@@ -1,5 +1,6 @@
 package com.mycompany.service;
 
+import java.util.Map;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.mycompany.dao.ShopDAOImpl;
+import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.ShopVO;
 
 
@@ -25,8 +27,14 @@ public class ShopServiceImpl implements ShopService{
 	public List<ShopVO> selectShopCategory(ShopVO vo) {
 		return shopDAO.selectShopCategory(vo);
 	}
+
 	@Override
-	public List<ShopVO> selectShopName(ShopVO vo) {
-		return shopDAO.selectShopName(vo);
+	public int selectShopCntByTag(String tagCategory) {
+		return shopDAO.selectShopCntByTag(tagCategory);
+	}
+
+	@Override
+	public List<ShopVO> selectShopByTagWithPaging(Map searchListMap) {
+		return shopDAO.selectShopByTagWithPaging(searchListMap);
 	}
 }

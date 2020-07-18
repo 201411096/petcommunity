@@ -41,7 +41,7 @@ public class FindBoardController {
 		result.put("findBoardVOListSize", findBoardVOList.size());
 		return result;
 	}
-	@RequestMapping(value = "/insertFindBoard.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/insertFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public ModelAndView insertFindBoard(FindBoardVO findBoardVO, HttpServletRequest request)
 	{
 		ModelAndView mv = new ModelAndView();

@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,5 +40,16 @@ public class FindBoardController {
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
 		return result;
+	}
+	@RequestMapping(value = "/insertFindBoard.do", method=RequestMethod.POST)
+	public ModelAndView insertFindBoard(FindBoardVO findBoardVO, HttpServletRequest request)
+	{
+		ModelAndView mv = new ModelAndView();
+		findBoardService.insertFindBoard(findBoardVO);
+		System.out.println("controller에서 타이틀 확인" + findBoardVO.getFindboardTitle());
+		System.out.println("controller에서 타이틀 확인" + request.getParameter("findboardTitle"));
+		
+		mv.setViewName("/findboardlist");
+		return mv;
 	}
 }

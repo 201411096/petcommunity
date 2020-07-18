@@ -24,7 +24,7 @@
 			<h1>게시글 작성하기</h1>
 		</header>
 		<br /> <br />
-		<form action="writeIntoBoard.do" method='get'
+		<form action="/petcommunity/insertFindBoard.do" method='post'
 			enctype='multipart/form-data'>
 			<!-- 글쓰기 -->
 			<br /> <br />

@@ -16,6 +16,7 @@ create table animal(
     animal_birthday varchar2(50),
     animal_gender varchar2(50),
     animal_feature varchar2(1024),
+    animal_type varchar2(50),
     constraint animal_pk PRIMARY KEY(animal_id)
 );
 
@@ -59,7 +60,7 @@ create table findboard(
     findboard_name varchar2(50),
     findboard_readcount number(10),
     member_id varchar2(50),
-    animal_id number(20),
+    animal_type varchar2(50),
     constraint findboard_pk PRIMARY KEY(findboard_id),
     constraint findboard_fk_1 FOREIGN KEY(member_id) references member(member_id) ON DELETE CASCADE
 );

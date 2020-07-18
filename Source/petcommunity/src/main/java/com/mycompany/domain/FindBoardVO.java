@@ -13,7 +13,7 @@ public class FindBoardVO {
 	private String findboardName;
 	private int findboardReadcount;
 	private String memberId;
-	private String animalId;
+	private String animalType;
 	public int getFindboardId() {
 		return findboardId;
 	}
@@ -86,10 +86,11 @@ public class FindBoardVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	public String getAnimalId() {
-		return animalId;
+	public String getAnimalType() {
+		return animalType;
 	}
-	public void setAnimalId(String animalId) {
-		this.animalId = animalId;
+	public void setAnimalType(String animalType) {
+		this.animalType = animalType;
 	}
+
 }

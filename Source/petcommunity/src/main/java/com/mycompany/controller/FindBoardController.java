@@ -54,10 +54,8 @@ public class FindBoardController {
 			System.out.println(request.getSession().getServletContext().getContextPath());
 			String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
 			System.out.println(contextRoot);
-			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"\findboard");
+			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard");
 		}
-		System.out.println("controller에서 타이틀 확인" + findBoardVO.getFindboardTitle());
-		System.out.println("controller에서 타이틀 확인" + request.getParameter("findboardTitle"));
 		
 		mv.setViewName("/findboardlist");
 		return mv;

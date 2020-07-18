@@ -14,10 +14,10 @@ public class FileUpload {
 		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 		long fileSize = mf.getSize(); // 파일 사이즈
 
-		String safeFile = path + originFileName + "__" + System.currentTimeMillis();
+		String filePath = path + "/" + System.currentTimeMillis() + "__" + originFileName ;
 
 		try {
-			mf.transferTo(new File(safeFile));
+			mf.transferTo(new File(filePath));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,10 +31,10 @@ public class FileUpload {
 			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 			long fileSize = mf.getSize(); // 파일 사이즈
 
-			String safeFile = path + "\\" + System.currentTimeMillis() + "__" + originFileName ;
+			String filePath = path + "/" + System.currentTimeMillis() + "__" + originFileName ;
 
 			try {
-				mf.transferTo(new File(safeFile));
+				mf.transferTo(new File(filePath));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

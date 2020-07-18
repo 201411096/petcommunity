@@ -63,6 +63,7 @@
 			<input type="hidden" name="findboardY" id="findboardY" value="">
 			<input type="hidden" name="findboardLocation" id="findboardLocation"
 				value="">
+			<input type="hidden" name="findboardLocationType" id="findboardLocationType" value="">
 			<div class="form-group">
 				<label>글 제목</label> <input type="text" class="form-control"
 					name="findboardTitle" placeholder="title">
@@ -87,7 +88,7 @@
 	</div>
 	
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb"></script>
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/findboardwrite.js"></script>
 </body>
 </html>

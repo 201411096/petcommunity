@@ -23,6 +23,9 @@ function kakaoMapAPI() {
 	// 지도에 마커를 표시합니다
 	marker.setMap(map);
 	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
 	// 일반 지도와 스카이뷰로 지도 타입을 전환할 수 있는 지도타입 컨트롤을 생성합니다
 	var mapTypeControl = new kakao.maps.MapTypeControl();
 
@@ -44,11 +47,34 @@ function kakaoMapAPI() {
 	    
 	    // 마커 위치를 클릭한 위치로 옮깁니다
 	    marker.setPosition(latlng);
-	    setLocation(latitude,  longitude)
+	    // hidden 태그에 위도 경도 표시
+	    setLocation(latitude,  longitude);
+	    
+	    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
+	        if (status === kakao.maps.services.Status.OK) {
+	        	if(!!result[0].road_address){
+	        		console.log('도로명 주소', result[0].road_address.address_name);
+	        		setAddress(result[0].road_address.address_name, 0);
+	        	}else{
+	        		console.log('지번 주소', result[0].address.address_name);
+	        		setAddress(result[0].address.address_name, 1);
+	        	}
+	        }   
+	    });
 	});
+	
+	function searchDetailAddrFromCoords(coords, callback) {
+	    // 좌표로 법정동 상세 주소 정보를 요청합니다
+	    geocoder.coord2Address(coords.getLng(), coords.getLat(), callback);
+	}
 }
 
 function setLocation(latitude,  longitude){
 	$('#findboardX').val(latitude);
 	$('#findboardY').val(longitude);
+}
+// 주소 타입 : 도로명 주소 0, 지번 주소 1
+function setAddress(addressname, addressType){
+	$('#findboardLocation').val(addressname);
+	$('#findboardLocationType').val(addressType);
 }

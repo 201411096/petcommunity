@@ -44,7 +44,12 @@
 		where RNUM>=#{startRow} and RNUM<=#{endRow}
 	]]>
 	</select>
-	<insert id="insertFindBoardList" parameterType="findBoard">
-		
+	<insert id="insertFindBoard" parameterType="findBoard">
+		INSERT INTO findboard
+		(
+			
+		)
+		VALUES(
+		)
 	</insert>
 </mapper>

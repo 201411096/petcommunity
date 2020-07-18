@@ -27,12 +27,12 @@ public class FindBoardController {
 		Map searchMap = new HashMap();
 		searchMap.put("searchType", searchType);
 		searchMap.put("searchWord", searchWord);
-		List<FindBoardVO> findBoardVOList = findBoardService.selectProduct(searchMap);		
+		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);		
 		PaginationVO paginationVO = new PaginationVO(findBoardVOList.size(), curPage);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 				
-		findBoardVOList = findBoardService.selectProductWithPaging(searchMap);
+		findBoardVOList = findBoardService.selectFindBoardWithPaging(searchMap);
 		result.put("pagination", paginationVO);
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());

@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="resources/css/findboardlist.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 
-
 <title>게시판</title>
 </head>
 <body>

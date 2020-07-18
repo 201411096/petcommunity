@@ -167,5 +167,3 @@ start with 10000
 maxvalue 100000
 cycle;
 
-drop table COMMUNITYBOARD;
-drop table boardcomment;

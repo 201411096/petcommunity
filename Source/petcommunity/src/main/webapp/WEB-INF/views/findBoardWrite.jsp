@@ -75,8 +75,10 @@
 					placeholder="contents"></textarea>
 			</div>
 			<div class="form-group">
-				<button type="button" class="btn btn-default" name='imgUpload'>이미지
-					첨부</button>
+<!-- 				<button type="button" class="btn btn-default" name='imgUpload'>이미지 -->
+<!-- 					첨부</button> -->
+				<input multiple="multiple" type="file" name="file" />
+
 			</div>
 			<div class="col-md-4 col-md-offset-10">
 				<span class="input-group-btn">

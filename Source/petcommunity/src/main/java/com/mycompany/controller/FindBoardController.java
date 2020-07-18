@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.FindBoardServiceImpl;
+import com.mycompany.util.FileUpload;
 
 @Controller
 public class FindBoardController {
@@ -42,10 +45,17 @@ public class FindBoardController {
 		return result;
 	}
 	@RequestMapping(value = "/insertFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
-	public ModelAndView insertFindBoard(FindBoardVO findBoardVO, HttpServletRequest request)
+	public ModelAndView insertFindBoard(FindBoardVO findBoardVO, HttpServletRequest request, MultipartHttpServletRequest mtfRequest)
 	{
 		ModelAndView mv = new ModelAndView();
-		findBoardService.insertFindBoard(findBoardVO);
+		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
+		if (insertFlag == 1) {
+			System.out.println(request.getSession().getServletContext().getRealPath(""));
+			System.out.println(request.getSession().getServletContext().getContextPath());
+			String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
+			System.out.println(contextRoot);
+			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"\findboard");
+		}
 		System.out.println("controller에서 타이틀 확인" + findBoardVO.getFindboardTitle());
 		System.out.println("controller에서 타이틀 확인" + request.getParameter("findboardTitle"));
 		

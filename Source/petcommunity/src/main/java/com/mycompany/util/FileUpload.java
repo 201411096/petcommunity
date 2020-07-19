@@ -15,7 +15,8 @@ public class FileUpload {
 		long fileSize = mf.getSize(); // 파일 사이즈
 
 		String filePath = path + "/" + System.currentTimeMillis() + "__" + originFileName ;
-
+		if(originFileName=="" || originFileName == null)
+			return;
 		try {
 			mf.transferTo(new File(filePath));
 		} catch (Exception e) {
@@ -32,7 +33,8 @@ public class FileUpload {
 			long fileSize = mf.getSize(); // 파일 사이즈
 
 			String filePath = path + "/" + System.currentTimeMillis() + "__" + originFileName ;
-
+			if(originFileName=="" || originFileName == null)
+				return;
 			try {
 				mf.transferTo(new File(filePath));
 			} catch (Exception e) {

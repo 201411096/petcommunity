@@ -59,6 +59,7 @@ public class FindBoardController {
 			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
+		System.out.println("findboardcontroller에서 글번호 인덱스 확인 " + findBoardVO.getFindboardId());
 		if (insertFlag == 1) {
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard");
 		}

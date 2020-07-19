@@ -56,6 +56,9 @@
 		VALUES(
 			findboard_id_seq.nextval, #{findboardTitle}, #{findboardContent}, #{findboardLocation}, #{findboardX}, #{findboardY}, #{findboardStatus}, SYSDATE, #{findboardTel}, #{findboardName}, #{findboardReadcount}, #{memberId}, #{animalType}
 		)
+		<selectKey keyProperty="findboardId" resultType="Integer" order="AFTER">
+			SELECT findboard_id_seq.currval FROM dual 
+		 </selectKey>
 	</insert>
 	<select id="getFindBoard" parameterType="findBoard" resultType="findBoard">
 		SELECT * FROM findboard

@@ -54,10 +54,13 @@ public class FindBoardController {
 		if(session.getAttribute("memberVO")!=null) {
 			findBoardVO.setMemberId( ((MemberVO)session.getAttribute("memberVO")).getMemberId() ); //로그인 되어있는 상태면 memberId값 세팅
 			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
-			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
 		if (insertFlag == 1) {
+			//System.out.println(request.getSession().getServletContext().getRealPath(""));
+			//System.out.println(request.getSession().getServletContext().getContextPath());
+			String contextRoot = new HttpServletRequestWrapper(request).getRealPath("/");
+			//System.out.println(contextRoot);
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard");
 		}
 		

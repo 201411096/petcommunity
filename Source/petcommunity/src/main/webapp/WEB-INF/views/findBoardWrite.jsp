@@ -31,10 +31,10 @@
 			<br /> <br />
 			<div class="form-group">
 				<label>상태</label> <select class="form-control" id='status'
-					name='status'>
-					<option value=0>목격</option>
-					<option value=1>보관</option>
-					<option value=2>유기센터 이관</option>
+					name='findboardStatus'>
+					<option value="목격">목격</option>
+					<option value="보관">보관</option>
+					<option value="유기센터 이관">유기센터 이관</option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -75,8 +75,6 @@
 					placeholder="contents"></textarea>
 			</div>
 			<div class="form-group">
-<!-- 				<button type="button" class="btn btn-default" name='imgUpload'>이미지 -->
-<!-- 					첨부</button> -->
 				<input multiple="multiple" type="file" name="file" />
 
 			</div>

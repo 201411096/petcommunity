@@ -60,6 +60,12 @@
 			SELECT findboard_id_seq.currval FROM dual 
 		 </selectKey>
 	</insert>
+	
+	<update id="increaseFindBoardReadcount" parameterType="findBoard">
+		UPDATE findboard set FINDBOARD_READCOUNT = FINDBOARD_READCOUNT + 1
+		where FINDBOARD_ID = ${findboardId}
+	</update>
+	
 	<select id="getFindBoard" parameterType="findBoard" resultType="findBoard">
 		SELECT * FROM findboard
 		where FINDBOARD_ID = #{findboardId}

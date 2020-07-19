@@ -61,7 +61,7 @@ public class FindBoardController {
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
 		System.out.println("findboardcontroller에서 글번호 인덱스 확인 " + findBoardVO.getFindboardId());
 		if (insertFlag == 1) {
-			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard");
+			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard/" + findBoardVO.getFindboardId() + "/");
 		}
 		
 		mv.setViewName("/findboardlist");
@@ -71,9 +71,7 @@ public class FindBoardController {
 	public ModelAndView getFindBoard(FindBoardVO findBoardVO) {
 		ModelAndView mv = new ModelAndView();
 		findBoardVO = findBoardService.getFindBoard(findBoardVO);
-		System.out.println(findBoardVO.getFindboardId());
-		System.out.println(findBoardVO.getFindboardTitle());
-		System.out.println(findBoardVO.getFindboardContent());
+		findBoardService.increaseFindBoardReadcount(findBoardVO);
 		mv.setViewName("/findBoardContent");
 		mv.addObject("findBoardContent", findBoardVO);
 		return mv;

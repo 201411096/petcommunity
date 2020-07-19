@@ -10,4 +10,5 @@ public interface FindBoardDAO {
 	public List<FindBoardVO> selectFindBoardWithPaging(Map map);
 	public int insertFindBoard(FindBoardVO findBoardVO);
 	public FindBoardVO getFindBoard(FindBoardVO findBoardVO);
+	public int increaseFindBoardReadcount(FindBoardVO findBoardVO);
 }

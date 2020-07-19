@@ -75,7 +75,7 @@
 					placeholder="contents"></textarea>
 			</div>
 			<div class="form-group">
-				<input multiple="multiple" type="file" name="file" />
+				<input multiple="multiple" type="file" name="file" accept="image/gif, image/jpeg, image/png"/>
 
 			</div>
 			<div class="col-md-4 col-md-offset-10">

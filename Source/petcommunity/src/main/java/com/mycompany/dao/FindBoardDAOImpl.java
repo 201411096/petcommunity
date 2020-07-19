@@ -27,5 +27,10 @@ public class FindBoardDAOImpl implements FindBoardDAO{
 	public int insertFindBoard(FindBoardVO findBoardVO) {
 		return mybatis.insert("findBoardDAO.insertFindBoard", findBoardVO);
 	}
+
+	@Override
+	public FindBoardVO getFindBoard(FindBoardVO findBoardVO) {
+		return mybatis.selectOne("findBoardDAO.getFindBoard", findBoardVO);
+	}
 	
 }

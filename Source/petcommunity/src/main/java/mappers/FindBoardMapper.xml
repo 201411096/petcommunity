@@ -57,4 +57,8 @@
 			findboard_id_seq.nextval, #{findboardTitle}, #{findboardContent}, #{findboardLocation}, #{findboardX}, #{findboardY}, #{findboardStatus}, SYSDATE, #{findboardTel}, #{findboardName}, #{findboardReadcount}, #{memberId}, #{animalType}
 		)
 	</insert>
+	<select id="getFindBoard" parameterType="findBoard" resultType="findBoard">
+		SELECT * FROM findboard
+		where FINDBOARD_ID = #{findboardId}
+	</select>
 </mapper>

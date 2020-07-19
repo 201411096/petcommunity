@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.dao.FindBoardDAO;
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
@@ -55,6 +56,7 @@ public class FindBoardController {
 			findBoardVO.setMemberId( ((MemberVO)session.getAttribute("memberVO")).getMemberId() ); //로그인 되어있는 상태면 memberId값 세팅
 			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
 			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
+			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
 		if (insertFlag == 1) {
@@ -62,6 +64,17 @@ public class FindBoardController {
 		}
 		
 		mv.setViewName("/findboardlist");
+		return mv;
+	}
+	@RequestMapping(value="/getFindBoard.do")
+	public ModelAndView getFindBoard(FindBoardVO findBoardVO) {
+		ModelAndView mv = new ModelAndView();
+		findBoardVO = findBoardService.getFindBoard(findBoardVO);
+		System.out.println(findBoardVO.getFindboardId());
+		System.out.println(findBoardVO.getFindboardTitle());
+		System.out.println(findBoardVO.getFindboardContent());
+		mv.setViewName("/findBoardContent");
+		mv.addObject("findBoardContent", findBoardVO);
 		return mv;
 	}
 }

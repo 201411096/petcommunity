@@ -28,4 +28,10 @@ public class FindBoardServiceImpl implements FindBoardService{
 	public int insertFindBoard(FindBoardVO findBoardVO) {
 		return findBoardDAO.insertFindBoard(findBoardVO);
 	}
+
+	@Override
+	public FindBoardVO getFindBoard(FindBoardVO findBoardVO) {
+		return findBoardDAO.getFindBoard(findBoardVO);
+	}
+	
 }

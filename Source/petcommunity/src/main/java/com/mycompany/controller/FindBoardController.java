@@ -2,6 +2,7 @@ package com.mycompany.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,12 +72,27 @@ public class FindBoardController {
 		return mv;
 	}
 	@RequestMapping(value="/getFindBoard.do")
-	public ModelAndView getFindBoard(FindBoardVO findBoardVO) {
+	public ModelAndView getFindBoard(FindBoardVO findBoardVO, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		findBoardVO = findBoardService.getFindBoard(findBoardVO);
 		findBoardService.increaseFindBoardReadcount(findBoardVO);
 		mv.setViewName("/findBoardContent");
 		mv.addObject("findBoardContent", findBoardVO);
+		
+//		String directoryPath = request.getSession().getServletContext().getRealPath("")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
+		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
+		File dir = new File(directoryPath);
+		File fileList [] = dir.listFiles();
+		ArrayList<File> fileArrayList = new ArrayList<File>();
+		for(File file : fileList) {
+			fileArrayList.add(file);
+		}
+		if(fileArrayList.size()>=1)
+			fileArrayList.remove(0);
+		mv.addObject("file", fileList[0]);
+		mv.addObject("fileList", fileArrayList);
+		//mv.addObject("fileList", fileList);
+		mv.addObject("directoryPath", directoryPath);
 		return mv;
 	}
 }

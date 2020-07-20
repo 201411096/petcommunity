@@ -62,8 +62,6 @@ public class FindBoardController {
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
 		String path = new File(".").getCanonicalPath();
 		if (insertFlag == 1) {
-//			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("")+"/findboard/");
-//			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard/" + findBoardVO.getFindboardId() + "/");
 			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/");
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
 		}
@@ -79,7 +77,6 @@ public class FindBoardController {
 		mv.setViewName("/findBoardContent");
 		mv.addObject("findBoardContent", findBoardVO);
 		
-//		String directoryPath = request.getSession().getServletContext().getRealPath("")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
 		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
 		File dir = new File(directoryPath);
 		File fileList [] = dir.listFiles();
@@ -89,7 +86,10 @@ public class FindBoardController {
 		}
 		if(fileArrayList.size()>=1)
 			fileArrayList.remove(0);
-		mv.addObject("file", fileList[0]);
+		if(fileList.length>=1)
+			mv.addObject("file", fileList[0]);
+		else
+			mv.addObject("fileflag", -1);
 		mv.addObject("fileList", fileArrayList);
 		//mv.addObject("fileList", fileList);
 		mv.addObject("directoryPath", directoryPath);

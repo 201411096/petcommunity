@@ -32,10 +32,16 @@
 					<div id="carouselExampleControls" class="carousel slide"
 						data-ride="carousel">
 						<div class="carousel-inner">
+						<c:if test="${not empty fileflag}">
 							<div class="carousel-item active" data-interval='3000'>
-<%-- 								<img src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${fileList[0].name}" class="d-block w-100" alt="..."> --%>
+								<img src="${pageContext.request.contextPath}/resources/imgs/findboard/default/1.png" class="d-block w-100" alt="...">
+							</div>
+						</c:if>
+						<c:if test="${empty fileflag}">
+							<div class="carousel-item active" data-interval='3000'>
 								<img src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${file.name}" class="d-block w-100" alt="...">
 							</div>
+						</c:if>
 							<c:forEach items="${fileList}" var="file">
 								<div class="carousel-item" data-interval='3000'>
 									<img src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${file.name}" class="d-block w-100" alt="...">

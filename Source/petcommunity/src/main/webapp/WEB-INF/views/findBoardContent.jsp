@@ -20,21 +20,28 @@
 <body>
 
 	<div class="container">
-		<header>
-			<h1>게시글</h1>
-		</header>
-		<br /> <br />
-		<div>${findBoardContent.findboardId}</div>
-		<div>${findBoardContent.findboardTitle}</div>
-		<div>${findBoardContent.findboardContent}</div>
-		<div>${findBoardContent.findboardLocation}</div>
-		<div>${findBoardContent.findboardX}</div>
-		<div>${findBoardContent.findboardY}</div>
-		<div>${findBoardContent.findboardName}</div>
+		<div class="card">
+<!-- 			<img src="..." class="card-img-top" alt="..."> -->
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">${findBoardContent.findboardId}</li>
+				<li class="list-group-item">${findBoardContent.findboardTitle}</li>
+				<li class="list-group-item">${findBoardContent.findboardStatus}</li>
+				<li class="list-group-item">${findBoardContent.findboardUploadtime}</li>
+				<li class="list-group-item"><div id="map"></div></li>
+			</ul>
+			<div class="card-body">
+<%-- 				<h5 class="card-title">${findBoardContent.findboardTitle}</h5> --%>
+				<p class="card-text">${findBoardContent.findboardContent}</p>
+			</div>
+			<div class="card-body">
+				<a href="#" class="card-link">Card link</a> <a href="#"
+					class="card-link">Another link</a>
+			</div>
+		</div>
 	</div>
-	
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
-<!-- 	<script src="resources/js/findboardwrite.js"></script> -->
+		<script src="resources/js/findboardcontent.js"></script>
 </body>
 </html>

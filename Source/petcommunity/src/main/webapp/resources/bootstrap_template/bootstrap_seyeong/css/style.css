@@ -832,6 +832,9 @@
    padding-left: 15px;
  }
  
+ .copyright h2 {
+ 	color: white;
+ }
 /*  생성 */
 /* .footer-section spad .sp-container .row m-0 .col-lg-4 footer-text { */
 /* 	font-family: 'Neucha', cursive; */

@@ -79,29 +79,29 @@
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item">
 				<div class="hs-bg set-bg sm-overlay"
-					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1.png"></div>
-				<div class="sp-container">
-					<div class="hs-text">
-						<h2 id="together">
-							Best&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Store&nbsp;
-						</h2>
-						<a href="#" class="site-btn sb-big">둘러보기<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-					</div>
-				</div>
-			</div>
-			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay"
 					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover6.png"></div>
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2 id="together">
 							함께할개<br>&nbsp;&nbsp;&nbsp;&nbsp;사랑할개
 						</h2>
-						<a href="#" class="site-btn sb-big">둘러보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
+<!-- 						<a href="#" class="site-btn sb-big">둘러보기<img -->
+<!-- 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png" -->
+<!-- 							alt=""></a> -->
+					</div>
+				</div>
+			</div>
+			<div class="hs-item">
+				<div class="hs-bg set-bg sm-overlay"
+					data-setbg="./resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1.png"></div>
+				<div class="sp-container">
+					<div class="hs-text">
+<!-- 						<h2 id="together"> -->
+<!-- 							Best&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;Store&nbsp; -->
+<!-- 						</h2> -->
+<!-- 						<a href="#" class="site-btn sb-big">둘러보기 <img -->
+<!-- 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png" -->
+<!-- 							alt=""></a> -->
 					</div>
 				</div>
 			</div>

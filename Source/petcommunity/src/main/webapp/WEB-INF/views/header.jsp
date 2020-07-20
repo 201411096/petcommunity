@@ -60,7 +60,7 @@
 					<!-- <div class="loginss"> -->
 				${sessionScope.memberVO.memberName}님, 안녕하세요
 				<a href="logout.do">[로그아웃하기]</a>
-
+				<li><a href="mypageselect.do">[마이페이지]</a></li>
 					<!-- </div> -->
 				</c:if>
 

@@ -66,6 +66,11 @@
 		where FINDBOARD_ID = ${findboardId}
 	</update>
 	
+	<delete id="deleteFindBoard" parameterType="findBoard">
+		delete from findboard
+		where FINDBOARD_ID = ${findboardId}
+	</delete>
+	
 	<select id="getFindBoard" parameterType="findBoard" resultType="findBoard">
 		SELECT * FROM findboard
 		where FINDBOARD_ID = #{findboardId}

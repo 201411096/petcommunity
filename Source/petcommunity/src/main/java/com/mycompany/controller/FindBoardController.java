@@ -92,7 +92,6 @@ public class FindBoardController {
 			mv.addObject("fileflag", -1);
 		
 		if( ((MemberVO)session.getAttribute("memberVO"))!=null ) { //로그인이 되어있는 상태라면
-			System.out.println("findboardcontroller에서 로그인 상태 확인");
 			if( ((MemberVO)session.getAttribute("memberVO")).getMemberId().equals(findBoardVO.getMemberId()) ) { //로그인이 되어있으면서 글 작성자와 같은 아이디면
 				mv.addObject("isWriterFlag", 1);
 			}else
@@ -102,6 +101,14 @@ public class FindBoardController {
 		}
 		mv.addObject("fileList", fileArrayList);
 		mv.addObject("directoryPath", directoryPath);
+		return mv;
+	}
+	@RequestMapping(value = "/deleteFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
+	public ModelAndView deleteFindBoard(FindBoardVO findBoardVO) {
+		ModelAndView mv = new ModelAndView();		
+		findBoardService.deleteFindBoard(findBoardVO);
+		
+		mv.setViewName("/findboardlist");
 		return mv;
 	}
 }

@@ -11,4 +11,5 @@ public interface FindBoardService {
 	public int insertFindBoard(FindBoardVO findBoardVO);
 	public FindBoardVO getFindBoard(FindBoardVO findBoardVO);
 	public int increaseFindBoardReadcount(FindBoardVO findBoardVO);
+	public int deleteFindBoard(FindBoardVO findBoardVO);
 }

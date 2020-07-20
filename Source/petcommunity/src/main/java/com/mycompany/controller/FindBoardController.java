@@ -1,11 +1,12 @@
 package com.mycompany.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mycompany.dao.FindBoardDAO;
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
@@ -48,7 +48,7 @@ public class FindBoardController {
 		return result;
 	}
 	@RequestMapping(value = "/insertFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
-	public ModelAndView insertFindBoard(FindBoardVO findBoardVO, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest)
+	public ModelAndView insertFindBoard(FindBoardVO findBoardVO, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest) throws IOException
 	{
 		ModelAndView mv = new ModelAndView();
 		findBoardVO.setFindboardReadcount(0); // 조회수 0으로 설정
@@ -59,9 +59,12 @@ public class FindBoardController {
 			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
-		System.out.println("findboardcontroller에서 글번호 인덱스 확인 " + findBoardVO.getFindboardId());
+		String path = new File(".").getCanonicalPath();
 		if (insertFlag == 1) {
-			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard/" + findBoardVO.getFindboardId() + "/");
+//			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("")+"/findboard/");
+//			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard/" + findBoardVO.getFindboardId() + "/");
+			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/");
+			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
 		}
 		
 		mv.setViewName("/findboardlist");

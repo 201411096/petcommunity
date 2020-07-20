@@ -44,12 +44,12 @@ public class FileUpload {
 	}
 
 	public static void makeDirectory(String path) {
-		File Folder = new File(path);
+		File folder = new File(path);
 
 		// 해당 디렉토리가 없을경우 디렉토리를 생성합니다.
-		if (!Folder.exists()) {
+		if (!folder.exists()) {
 			try {
-				Folder.mkdir(); // 폴더 생성합니다.
+				folder.mkdir(); // 폴더 생성합니다.
 //				System.out.println("폴더가 생성되었습니다.");
 			} catch (Exception e) {
 				e.getStackTrace();

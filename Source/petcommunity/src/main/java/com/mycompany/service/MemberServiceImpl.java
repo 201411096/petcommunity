@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.dao.MemberDAOImpl;
 import com.mycompany.domain.MemberVO;
 
-@Service
+@Service("MemberService")
 public class MemberServiceImpl implements MemberService {
 
 	

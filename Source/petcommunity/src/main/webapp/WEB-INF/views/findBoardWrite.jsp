@@ -25,7 +25,7 @@
 		</header>
 		<br /> <br />
 		<form action="/petcommunity/insertFindBoard.do" method='post'
-			enctype='multipart/form-data'>
+			enctype='multipart/form-data' id="findBoardWriteForm">
 <!-- 				<form action="/petcommunity/insertFindBoard.do" method='post'> -->
 			<!-- 글쓰기 -->
 			<br /> <br />
@@ -67,7 +67,7 @@
 			<input type="hidden" name="findboardLocationType" id="findboardLocationType" value="">
 			<div class="form-group">
 				<label>글 제목</label> <input type="text" class="form-control"
-					name="findboardTitle" placeholder="title">
+					name="findboardTitle" id="findboardTitle" placeholder="title">
 			</div>
 			<div class="form-group">
 				<label>글 내용</label>
@@ -80,7 +80,7 @@
 			</div>
 			<div class="col-md-4 col-md-offset-10">
 				<span class="input-group-btn">
-					<button type="submit" class="btn btn-default">작성완료</button>
+					<button type="submit" class="btn btn-default" id="writeButton">작성완료</button>
 					<button type="button" class="btn btn-default" id='cancelWrite'>글쓰기
 						취소</button>
 				</span>

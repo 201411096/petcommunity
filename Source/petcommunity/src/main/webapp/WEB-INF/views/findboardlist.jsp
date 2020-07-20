@@ -39,16 +39,7 @@
 						</tr>
 					</thead>
 					<tbody id="findboardTbody">
-<%-- 					<c:forEach items="${findBoardVOList}" var="item"> --%>
-<!-- 						<tr> -->
-<%-- 							<td><c:out value="${item.findboardId}" /></td> --%>
-<%-- 							<td><c:out value="${item.findboardStatus}" /></td> --%>
-<%-- 							<td><c:out value="${item.findboardTitle}" /></td> --%>
-<%-- 							<td><c:out value="${item.findboardName}" /></td> --%>
-<%-- 							<td><c:out value="${item.findboardReadcount}" /></td> --%>
-<%-- 							<td><c:out value="${item.findboardUploadtime}" /></td> --%>
-<!-- 						</tr> -->
-<%-- 					</c:forEach> --%>
+						
 					</tbody>
 				</table>
 				<div class="search row">

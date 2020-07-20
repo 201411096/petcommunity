@@ -9,3 +9,10 @@ table#findboardTable th{
 	text-align:center;
 }
 
+ul#pagination-demo{
+	text-align: center;
+}
+
+/* div#pagination_container{ */
+/* 	text-align: center; */
+/* } */

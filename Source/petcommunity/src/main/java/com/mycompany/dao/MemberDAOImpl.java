@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.domain.MemberVO;
 
-@Repository
+@Repository("MemberDAO")
 public class MemberDAOImpl implements MemberDAO{
 
 	@Autowired

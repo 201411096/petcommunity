@@ -21,7 +21,7 @@ import com.mycompany.service.MemberService;
 public class MemberController {
 
 	@Autowired
-	public MemberService memberService;
+	private MemberService memberService;
 	
 	@RequestMapping(value = "/signup2.do")
 	public ModelAndView signup(MemberVO vo) {
@@ -50,13 +50,17 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		
 		MemberVO result=memberService.signin(vo);
+		if(result != null) {
 		session.setAttribute("memberVO",result);
-		
-		/* mv.addObject("member",session); */
 		mv.setViewName("header");
-		
 		return mv;
+		}
 		
+		else {
+			mv.addObject("msg","asd");
+			mv.setViewName("login");
+			return mv;
+		}
 	}
 	
 	@RequestMapping(value="logout.do")
@@ -70,6 +74,8 @@ public class MemberController {
 		return mv;
 		
 	}
+
+	
 
 	
 }

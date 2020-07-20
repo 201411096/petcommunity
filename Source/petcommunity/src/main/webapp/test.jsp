@@ -12,8 +12,13 @@
 <a href="/petcommunity/signup.do">회원가입</a><br>
 <a href="/petcommunity/shop.do">쇼핑페이지</a><br>
 <a href="/petcommunity/findHospitalList.do">동물 병원 찾기</a><br>
-
+<a href="/petcommunity/findBoardWrite.do">분실 동물 페이지</a><br>
 <a href="/petcommunity/header.do">헤더</a><br>
+
 <a href="/petcommunity/findPostingBoard.do">분실동물 포스팅 게시판</a>
+
+
+<a href="/petcommunity/mypage.do">마이페이지</a><br>
+
 </body>
 </html>

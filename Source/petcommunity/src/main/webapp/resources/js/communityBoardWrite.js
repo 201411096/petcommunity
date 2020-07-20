@@ -101,8 +101,7 @@ $(function(){
     	}else if($('#communityboardContent').val()==""){
     		alert('글 내용을 입력해주세요');
     	}else{
-    		alert('submit');
-    		//버튼이지만 submit하기 jquery를 쓰니까 submit이 안된다.
+    		//버튼이지만 submit하기 -jquery를 쓰니까 submit이 안된다.
     		document.commitWrite.submit();
     	}
     });

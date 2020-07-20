@@ -52,6 +52,6 @@ public class QnaVO {
 	public void setMemberId(String memberId) {
 		this.memberId = memberId;
 	}
-	
+		
 	
 }

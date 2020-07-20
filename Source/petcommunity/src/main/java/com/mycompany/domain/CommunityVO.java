@@ -13,6 +13,22 @@ public class CommunityVO {
 	private String communityboardReadcount;
 	private String communityboardRecommend;
 	private String memberId;
+	private String keyWord;
+	private String searchType;
+	
+	public String getKeyWord() {
+		return keyWord;
+	}
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
+	}
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	
 	public String getCommunityboardId() {
 		return communityboardId;
 	}

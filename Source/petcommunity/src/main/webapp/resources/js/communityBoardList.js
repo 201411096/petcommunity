@@ -1,3 +1,4 @@
+
 $(function(){
 	
 	//cityName에 따라 province 동적생성되는 함수 		
@@ -68,10 +69,76 @@ $(function(){
         }
     }
     
+    getListByCategory = function(){
+    	$.ajax({
+			type : 'post',
+			async:true,
+			url : '/petcommunity/getBoardListByCategory.do?category=지역별&cityName='+$('#cityName').val()+'&province='+$('#province').val(),
+			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		
+			dataType : 'json',
+			success : function(resultData){
+				if(resultData==null){
+					var msg="검색결과가 없습니다.";
+					$('#communityList').html(msg);
+				}else{
+					drawTable(resultData);
+				}
+						
+			},
+			error:function(request,status,error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+			
+		});
+    }
+    //리스트 출력
+    function drawTable(data){
+    	
+    	$('#communityList').empty();
+    	$('#communityHide').empty();
+    	var trPrefix = '<tr>';
+    	var trSuffix = '</tr>';
+    	var tdPrefix = '<td>';
+    	var tdSuffix = '</td>';
+    	for(var i in data){
+    		
+    		var listContent = 
+    						trPrefix +
+    						tdPrefix + data[i].communityboardId + tdSuffix + 
+    						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data[i].communityboardId+'>'+
+    						"[<span id='locationTag'>"+data[i].communityboardLocation+"</span>]"
+    						+ data[i].communityboardTitle +'</a>' + tdSuffix +
+    						tdPrefix + data[i].memberId + tdSuffix +
+    						tdPrefix + data[i].communityboardUploadtime + tdSuffix +
+    						tdPrefix + data[i].communityboardRecommend + tdSuffix +
+    						tdPrefix + data[i].communityboardReadcount + tdSuffix +
+    						trSuffix;
+    		
+    		$('#communityList').append(listContent);
+    	}
+    }
+    
     //글쓰기 버튼 눌렀을때 페이지 이동
     $('#writeBtn').click(function(){
-    	window.location.href='/petcommunity/communityBoardWrite.do';
+    	//로그인 상태 체크 
+    	$.ajax({
+    		url: "/petcommunity/checkSession.do",
+    		type: "POST",
+    		success : function(data){
+    			if(data=="logout"){
+    				alert("로그인 후 사용해주세요");
+    			}else{
+    				window.location.href='/petcommunity/communityBoardWrite.do';
+    			}
+    		},
+    		error : function(){
+    			alert("에러");
+    		}
+    	});
     });
+    
+
     
     
     
@@ -96,25 +163,13 @@ $(function(){
     var jeju = ["제주시","서귀포시"];
     
   
-    //cityName 동적 생성
-  /*  $('#showBy').change(function(){
-    	var selectCity = $("#showBy").val();
-    	if(selectCity=="지역별"){
-    		$('#hiddenBox').show();
-    		$('#cityName').empty();
-    		 for(var count in cities){
-    			 var option = $("<option>"+cities[count]+"</option>");
-    			 $('#cityName').append(option);
-    	     }
-    	}else if(selectCity=="추천순"|selectCity=="조회순"|selectCity=="전체보기"){
-    		$('#hiddenBox').hide();
-    	}
-    });*/
+ 
     $('#hiddenBox').hide();
     $('#showBy').change(function(){
-    	var selectCity = $("#showBy").val();
-    	if(selectCity=="지역별"){
-    		
+    	
+    	
+    	var selectCate = $("#showBy").val();   	
+    	if(selectCate=="지역별"){   		
     		$('#hiddenBox').show();
     		$('#cityName').empty();
     		 for(var count in cities){
@@ -126,16 +181,80 @@ $(function(){
       	       var option = $("<option>"+seoul[count]+"</option>");
       	       $('#province').append(option);
       	    }
-    	}else if(selectCity=="추천순"|selectCity=="조회순"|selectCity=="전체보기"){
+    		getListByCategory();
+    		
+    	
+    	}else if(selectCate=="추천순"){
+    		$('#hiddenBox').hide(); 
+    		$.ajax({
+    			type : 'post',
+    			async:true,
+    			url : '/petcommunity/getBoardListByCategory.do?category=추천순',
+    			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+    		
+    			dataType : 'json',
+    			success : function(resultData){
+    				if(resultData==null){
+    					var msg="검색결과가 없습니다.";
+    					$('#communityList').html(msg);
+    				}else{
+    					drawTable(resultData);
+    				}
+    						
+    			},
+    			error:function(request,status,error){
+    				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    			}
+    			
+    		});
+    	}else if(selectCate=="조회순"){
     		$('#hiddenBox').hide();
+    		
+    		$.ajax({
+    			type : 'post',
+    			async:true,
+    			url : '/petcommunity/getBoardListByCategory.do?category=조회순',
+    			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+    		
+    			dataType : 'json',
+    			success : function(resultData){
+    				if(resultData==null){
+    					var msg="검색결과가 없습니다.";
+    					$('#communityList').html(msg);
+    				}else{
+    					drawTable(resultData);
+    				}
+    						
+    			},
+    			error:function(request,status,error){
+    				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    			}
+    			
+    		});
+    	}else if(selectCate=="전체보기"){
+    		window.location.href='/petcommunity/communityBoardList.do';
     	}
     });
    
-
-
+    $('#cityName').change(
+        selectProvince
+     )
     
     //도시선택시 province셀렉트 옵션생성
-    $('#cityName').change(selectProvince)
+    //ajax로 리스트 전환
+    $('#cityName').change(
+    	function(){
+    		getListByCategory();
+    	}
+    );
+    
+    $('#province').change(
+    	function(){
+    		getListByCategory();
+    	}
+    );
+    	
+    		
     		
     
     

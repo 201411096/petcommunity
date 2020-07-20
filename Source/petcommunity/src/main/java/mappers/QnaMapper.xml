@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qnaDAO">
+
+	<insert id="insertQna" parameterType="qna">
+		INSERT INTO QUESTIONBOARD (QUESTIONBOARD_ID, QUESTIONBOARD_GRUOP_ID, QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME, QUESTIONBOARD_READCOUNT, MEMBER_ID) 
+		VALUES (QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTION_GROUPID_SEQ.NEXTVAL, #{questionboardTitle}, #{questionboardContent}, SYSDATE, #{questionboardReadcount}, #{memberId})
+	</insert>
+	
+	<select id="selectQnaList" resultType="qna">
+		SELECT *
+		FROM QUESTIONBOARD
+	</select>
+	
+	<select id="selectOne" resultType="qna">
+		SELECT *
+		FROM QUESTIONBOARD
+		WHERE MEMBER_ID = #{memberId}
+	</select>
+
+</mapper>

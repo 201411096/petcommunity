@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="animal">
+
+<insert id="animalinsert" parameterType="animal">
+
+insert into ANIMAL(ANIMAL_ID,ANIMAL_NAME,ANIMAL_BIRTHDAY,ANIMAL_GENDER,ANIMAL_FEATURE) 
+values(ANIMAL_ID_SEQ.nextval,#{animalName},#{animalBirthday},#{animalGender},#{animalFeature})
+ <selectKey keyProperty="animalId" resultType="Integer" order="AFTER">
+    select ANIMAL_ID_SEQ.currval FROM dual 
+  </selectKey>
+  
+</insert>
+
+<insert id="raise" parameterType="hashmap">
+
+insert into raise(RAISE_ID,MEMBER_ID,ANIMAL_ID)
+values(RAISE_ID_SEQ.nextval,#{memberId},${animalId})
+</insert>
+
+
+<select id="animalselect" parameterType="member" resultType="animal">
+select a.ANIMAL_ID ANIMAL_ID ,a.ANIMAL_NAME ANIMAL_NAME ,a.ANIMAL_BIRTHDAY ANIMAL_BIRTHDAY ,a.ANIMAL_GENDER ANIMAL_GENDER,a.ANIMAL_FEATURE ANIMAL_FEATURE 
+from animal a,member m ,raise r where a.ANIMAL_ID=r.ANIMAL_ID and m.MEMBER_ID=r.MEMBER_ID and m.MEMBER_ID=#{memberId}
+</select>
+</mapper>

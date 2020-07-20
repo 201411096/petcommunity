@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.CommunityDAOImpl;
+import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
 
 
@@ -43,6 +44,9 @@ public class CommunityServiceImpl implements CommunityService{
 	public void addReadCount(CommunityVO vo) {
 		communityDAO.addReadCount(vo);
 	}
+	public void writeComment(CommentVO vo) {
+		communityDAO.writeComment(vo);
+	}
 	
 
 	@Override
@@ -53,6 +57,11 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public List<CommunityVO> getBoardListByRecommend() {
 		return communityDAO.getBoardListByRecommend();
+	}
+
+	@Override
+	public List<CommentVO> getCommentContent(CommentVO vo) {
+		return communityDAO.getCommentContent(vo);
 	}
 
 	

@@ -61,4 +61,17 @@ order by communityboard_recommend desc
 update communityboard set communityboard_readcount = communityboard_readcount+1 where communityboard_id=#{communityboardId}
 </update>  
 
+
+<insert id="writeComment" parameterType="comment">
+INSERT INTO boardcomment (BOARDCOMMENT_ID, BOARDCOMMENT_CONTENT, BOARDCOMMENT_UPLOADTIME, MEMBER_ID, COMMUNITYBOARD_ID)
+VALUES (BOARDCOMMENT_ID_SEQ.nextval, #{boardcommentContent}, SYSDATE, #{memberId},#{communityboardId})
+</insert>
+
+<select id="getCommentContent" parameterType="comment" resultType="comment">
+select boardcomment_id, boardcomment_content, boardcomment_uploadtime, member_id, communityboard_id
+from boardcomment
+where communityboard_id=#{communityboardId}
+</select>
+
+
 </mapper>

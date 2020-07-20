@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
 
 
@@ -62,6 +63,19 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper addReadCount() 호출");
 		mybatis.update("communityDAO.addReadCount", vo);
 		
+	}
+
+	@Override
+	public void writeComment(CommentVO vo) {
+		System.out.println("===>  CommunityMapper writeComment() 호출");
+		mybatis.insert("communityDAO.writeComment", vo);
+		
+	}
+
+	@Override
+	public List<CommentVO> getCommentContent(CommentVO vo) {
+		System.out.println("===>  CommunityMapper writeComment() 호출");
+		return mybatis.selectList("communityDAO.getCommentContent", vo);
 	}
 	
 	

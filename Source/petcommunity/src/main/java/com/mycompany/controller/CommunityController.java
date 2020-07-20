@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.service.CommunityService;
@@ -46,18 +47,7 @@ public class CommunityController {
 		return "redirect:communityBoardList.do";
 	}
 
-	// 게시판 글내용 가져오기
-	@RequestMapping("/getBoardContent.do")
-	public ModelAndView getBoardContent(CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
-		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
-		String communityboardId = request.getParameter("communityboardId");
-		vo.setCommunityboardId(communityboardId);
-
-		mv.addObject("boardContent", communityService.getBoardContent(vo));//해당 글 정보 가져오기
-		communityService.addReadCount(vo); //해당 글 조회수 올리기
-		mv.setViewName("communityBoardContent");
-		return mv;
-	}
+	
 
 	// 검색된 게시판 list 가져오기
 	@RequestMapping("/getBoardListBySearch.do")
@@ -124,6 +114,37 @@ public class CommunityController {
 			msg = "logout";
 		}
 		return msg;
+	}
+	
+	// 게시판 글내용 가져오기
+	@RequestMapping("/getBoardContent.do")
+	public ModelAndView getBoardContent(CommunityVO vo, CommentVO svo, HttpServletRequest request, ModelAndView mv) {
+		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
+		String communityboardId = request.getParameter("communityboardId");
+		vo.setCommunityboardId(communityboardId);//커뮤니티보드에 셋팅
+		svo.setCommunityboardId(communityboardId);//커멘트에 셋팅
+		mv.addObject("boardContent", communityService.getBoardContent(vo));//해당 글 정보 가져오기
+		mv.addObject("boardComment", communityService.getCommentContent(svo));//해당글에 관련된 커멘트 가져오기
+		communityService.addReadCount(vo); //해당 글 조회수 올리기
+		mv.setViewName("communityBoardContent");
+		return mv;
+	}
+	
+	// 커멘트 달기
+	@RequestMapping("/writeComment.do")
+	public ModelAndView writeComment(CommentVO cvo, CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
+		String communityboardId=request.getParameter("communityboardId");
+		System.out.println(communityboardId);
+		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
+		cvo.setCommunityboardId(communityboardId);
+		cvo.setMemberId(mvo.getMemberId());
+		communityService.writeComment(cvo);//커멘트 달기 완료 후
+		
+		//기존의 글로 다시 돌아감 
+		vo.setCommunityboardId(communityboardId);		
+		mv.addObject("boardContent", communityService.getBoardContent(vo));
+		mv.setViewName("communityBoardContent");
+		return mv;
 	}
 
 }

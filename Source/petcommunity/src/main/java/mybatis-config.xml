@@ -24,6 +24,8 @@
 		
 		<typeAlias alias="community" type="com.mycompany.domain.CommunityVO"></typeAlias>
 		
+		<typeAlias alias="comment" type="com.mycompany.domain.CommentVO"></typeAlias>
+		
 		<typeAlias alias="animal" type="com.mycompany.domain.AnimalVO"></typeAlias>
 
    </typeAliases>

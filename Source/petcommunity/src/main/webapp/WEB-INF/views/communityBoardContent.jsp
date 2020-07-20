@@ -39,16 +39,45 @@
 				<span id=communityContentTitle>${boardContent.communityboardContent}</span>
 			</div>
 			<hr/>
-					
 			
-			
+			<!-- 댓글내용 -->		
 			
 			<div class="form-group">
+				<label>댓글</label>
+				<hr/>
+				<c:forEach items="${boardComment}" var = "boardComment">		
+					<tr>
+				
+						<td>
+							${boardComment.boardcommentContent}					
+						</td>
+						<td>${boardComment.memberId}</td>
+						<td>${boardComment.boardcommentUploadtime}</td>
+					</tr>
+							
+				</c:forEach>
+				<hr/>
+			
+				
+			</div>			
+			
+			<form action="writeComment.do?">
+			<div class="form-group">
 				<label>댓글달기</label>
-				<textarea class="form-control" rows="5" id="commentTextarea" name="communityboardContent" placeholder="댓글입력"></textarea>		
+				
+				<input type='hidden' name='communityboardId' value='${boardContent.communityboardId}'>
+				<c:choose>
+				    <c:when test="${empty sessionScope.memberVO}">
+				        <textarea class="form-control" rows="5" id="commentTextarea" name="communityboardContent" placeholder="로그인 이후 이용 가능합니다" disabled></textarea>
+				    </c:when>			
+				
+				    <c:otherwise>
+				        <textarea class="form-control" rows="5" id="commentTextarea" name="boardcommentContent" placeholder="댓글입력"></textarea>
+				    </c:otherwise>			
+				</c:choose>
 			</div>
 			
-				<div class="col-xs-10 col-sm-10">	
+			<div class="col-xs-10 col-sm-10">	
 				<button type="button" class="btn btn-default" id='goToList'>목록보기</button>
 				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId}">
 					<button type="button" class="btn btn-default">수정하기</button>
@@ -57,9 +86,10 @@
 				</div>	
 				<span class="input-group-btn">
 					<button type="submit" class="btn btn-default" id='commentBtn'>등록</button>
-				</span>			
-			</div>		
-	
+				</span>	
+				</form>		
+		</div>		
+			
 		
 
 </body>

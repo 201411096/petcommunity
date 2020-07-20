@@ -5,39 +5,26 @@
 <%@ include file="../views/header.jsp"%>
 <html>
 <head>
-<head>
-	<title>The Look - Photo Gallery Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Instyle Fashion HTML Template">
-	<meta name="keywords" content="instyle, fashion, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<!-- Favicon -->
-	<link href="./resources/bootstrap_template/template_01/img/favicon.ico" rel="shortcut icon"/>
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
-
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/slicknav.min.css"/>
-	
-	<!-- carousel Stylesheets -->
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/flaticon.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/slicknav.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/animate.css"/>
+	<!-- nav bar -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
-	
-	
+
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
+	<!-- Paging -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="resources/css/findHospitalList.css" />
 
+
+<title>게시판</title>
 </head>
 <body>
 	
@@ -106,9 +93,15 @@
 	</div>
 </li>
 </ul>
-
-						</div>
-						<div id="map" style="width:785px;height:600px;"></div>
+	<div id="map">
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services"></script>
+	<script src="resources/js/findHospital.js"></script>
+	</div>
+		</div>
+		</br>
+		</br>
+				
 
 					</div>
 				</div>

@@ -52,6 +52,6 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/petcommunity/Source/petcommunity/src/main/java/com/mycompany/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/springwork/petwork/petcommunity/Source/petcommunity/src/main/java/com/mycompany/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

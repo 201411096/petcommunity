@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#pagination_container{
+	margin-center:70%;
+}
+#pagination-demo > li.page-item{
+}
+#pagination-demo{
+	max-width: 479px;
+	width:100%; position:relative; list-style:none;
+	text-align: center;
+}
+
+/* search part */
+#searchDiv{
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#serchSomething{
+	width : 10px;
+}
+#locationTag{
+	color : skyblue;
+}
+/* #searchBtn{
+	position: relative;
+    left: 10px;
+				
+}
+#writeBtn{			
+	margin-left: 10px;
+} */

@@ -9,8 +9,7 @@ import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.ShopVO;
 
 public interface ShopService {
-	public List<ShopVO> selectShopAll();
-	public List<ShopVO> selectShopCategory(ShopVO vo);
-	public int selectShopCntByTag(String tagCategory);
+	
 	public List<ShopVO> selectShopByTagWithPaging(Map searchListMap);
+	public List<ShopVO> selectShopCategoryList(Map searchMap);
 }

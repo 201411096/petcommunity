@@ -104,10 +104,10 @@ public class FindBoardController {
 		return mv;
 	}
 	@RequestMapping(value = "/deleteFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
-	public ModelAndView deleteFindBoard(FindBoardVO findBoardVO) {
+	public ModelAndView deleteFindBoard(FindBoardVO findBoardVO, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();		
 		findBoardService.deleteFindBoard(findBoardVO);
-		
+		FileUpload.deleteDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId());
 		mv.setViewName("/findboardlist");
 		return mv;
 	}

@@ -1,28 +1,29 @@
 @charset "UTF-8";
 
+
+#pagination-div{
+	text-align: center;
+	display: relative;
+}
+
 #pagination_container{
-	margin-center:70%;
-}
-#pagination-demo > li.page-item{
-}
-#pagination-demo{
-	max-width: 479px;
-	width:100%; position:relative; list-style:none;
 	text-align: center;
 }
 
 /* search part */
-#searchDiv{
+/* #searchDiv{
 	margin-right: auto;
 	margin-left: auto;
-}
+} */
 
 #serchSomething{
-	width : 10px;
+	width : 10%;
+/* 	text-align: center; */
 }
 #locationTag{
 	color : skyblue;
 }
+
 /* #searchBtn{
 	position: relative;
     left: 10px;

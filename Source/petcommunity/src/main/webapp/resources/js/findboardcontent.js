@@ -7,7 +7,8 @@ $(function() {
 		location.href='/petcommunity/findboardlist.do';
 	});
 	$('#deleteButton').on('click', function(){
-		
+		$('#findBoardContentForm').attr('action', '/petcommunity/deleteFindBoard.do');
+		$('#findBoardContentForm')[0].submit();
 	});
 });
 

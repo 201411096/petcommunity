@@ -2,14 +2,20 @@ var latitude = -1;
 var longitude = -1;
 $(function() {
 	kakaoMapAPI();
+	$('#findBoardWriteForm').on('submit',function(e){
+		e.preventDefault();
+		e.stopPropagation();
+		if(checkSubmit()==true){
+			$('#findBoardWriteForm')[0].submit(); // ***** [0].submit ***** 
+		}
+	});
 });
 
 function kakaoMapAPI() {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
 		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
-		level : 7
-	// 지도의 확대 레벨
+		level : 7 // 지도의 확대 레벨
 	};
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -70,12 +76,23 @@ function kakaoMapAPI() {
 }
 
 function setLocation(latitude,  longitude){
-	$('#findhospitalX').val(latitude);
-	$('#findhospitalY').val(longitude);
+	$('#findboardX').val(latitude);
+	$('#findboardY').val(longitude);
 }
-// 주소 타입 : 도로명 주소 0
+// 주소 타입 : 도로명 주소 0, 지번 주소 1
 function setAddress(addressname, addressType){
-	$('#findhospitaladdress').val(addressname);
-	$('#findhospitaladdresstype').val(addressType);
+	$('#findboardLocation').val(addressname);
+	$('#findboardLocationType').val(addressType);
+}
 
+function checkSubmit(){
+	if(latitude==-1){
+		alert('지도에 위치를 표시해주세요');
+		return false;
+	}
+	if($('#findboardTitle').val()=="" | $('#findboardTitle').val()==null){
+		alert('제목을 입력해주세요');
+		return false;
+	}
+	return true;
 }

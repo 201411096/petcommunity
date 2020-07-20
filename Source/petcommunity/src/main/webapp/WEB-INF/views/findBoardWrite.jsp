@@ -11,7 +11,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="./resources/css/findboardwrite.css" />
+<link rel="stylesheet" href="./resources/css/findboardupdate.css" />
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -90,6 +90,6 @@
 	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
-	<script src="resources/js/findboardwrite.js"></script>
+	<script src="resources/js/findboardupdate.js"></script>
 </body>
 </html>

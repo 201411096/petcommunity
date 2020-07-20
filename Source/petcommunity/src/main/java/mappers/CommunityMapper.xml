@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <insert id="writeIntoBoard" parameterType="community">
 INSERT INTO communityboard(communityboard_id, COMMUNITYBOARD_LOCATION, COMMUNITYBOARD_TITLE, COMMUNITYBOARD_CONTENT, COMMUNITYBOARD_UPLOADTIME, COMMUNITYBOARD_READCOUNT, COMMUNITYBOARD_RECOMMEND, MEMBER_ID)
-VALUES(communityboard_id_seq.nextval, #{cityName}||' '||#{province}, #{communityboardTitle}, #{communityboardContent}, sysdate, 0, 0, 'a' )
+VALUES(communityboard_id_seq.nextval, #{cityName}||' '||#{province}, #{communityboardTitle}, #{communityboardContent}, sysdate, 0, 0, #{memberId} )
 </insert>
 
 <select id="getBoardList" resultType="community">
@@ -23,6 +23,42 @@ select communityboard_id, communityboard_location, communityboard_title, communi
 from communityboard
 where communityboard_id=#{communityboardId}
 ]]>
+</select> 
+
+<select id="getBoardListBySearch" parameterType="community" resultType="community">
+<![CDATA[
+select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id,
+decode(To_char(communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(communityboard_uploadtime, 'hh24:mi:ss')), (To_char(communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
+from communityboard
+where ${searchType} like '%'||#{keyWord}||'%'
+order by communityboard_id desc
+]]>
 </select>  
+
+<select id="getBoardListByLocation" parameterType="community" resultType="community">
+select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id,
+decode(To_char(communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(communityboard_uploadtime, 'hh24:mi:ss')), (To_char(communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
+from communityboard
+where SUBSTR(communityboard_location, 0,2)=#{cityName} and SUBSTR(communityboard_location,4,2) = #{province}
+order by communityboard_id desc
+</select> 
+
+<select id="getBoardListByReadCount" resultType="community">
+select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id,
+decode(To_char(communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(communityboard_uploadtime, 'hh24:mi:ss')), (To_char(communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
+from communityboard
+order by communityboard_readcount desc
+</select> 
+
+<select id="getBoardListByRecommend" resultType="community">
+select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id,
+decode(To_char(communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(communityboard_uploadtime, 'hh24:mi:ss')), (To_char(communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
+from communityboard
+order by communityboard_recommend desc
+</select>
+
+<update id="addReadCount" parameterType="community">
+update communityboard set communityboard_readcount = communityboard_readcount+1 where communityboard_id=#{communityboardId}
+</update>  
 
 </mapper>

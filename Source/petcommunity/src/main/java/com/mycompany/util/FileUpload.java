@@ -12,9 +12,9 @@ public class FileUpload {
 		MultipartFile mf = mtfRequest.getFile("file");
 
 		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-		long fileSize = mf.getSize(); // 파일 사이즈
+//		long fileSize = mf.getSize(); // 파일 사이즈
 
-		String filePath = path + "/" + System.currentTimeMillis() + "__" + originFileName ;
+		String filePath = path + "/" + originFileName ;
 		if(originFileName=="" || originFileName == null)
 			return;
 		try {
@@ -30,9 +30,9 @@ public class FileUpload {
 
 		for (MultipartFile mf : fileList) {
 			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-			long fileSize = mf.getSize(); // 파일 사이즈
+//			long fileSize = mf.getSize(); // 파일 사이즈
 
-			String filePath = path + "/" + System.currentTimeMillis() + "__" + originFileName ;
+			String filePath = path + "/" + originFileName ;
 			if(originFileName=="" || originFileName == null)
 				return;
 			try {

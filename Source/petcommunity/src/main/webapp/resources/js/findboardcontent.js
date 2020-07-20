@@ -3,6 +3,12 @@ var longitude = $('#findboardY').val();
 var findboardLocation = $('#findboardLocation').val();
 $(function() {
 	kakaoMapAPI();
+	$('#listButton').on('click', function(){
+		location.href='/petcommunity/findboardlist.do';
+	});
+	$('#deleteButton').on('click', function(){
+		
+	});
 });
 
 function kakaoMapAPI() {

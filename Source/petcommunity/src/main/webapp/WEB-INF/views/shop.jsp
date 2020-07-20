@@ -16,7 +16,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/slicknav.min.css"/>
@@ -64,19 +64,25 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-						<h2>반려동물을 위한 상품 리스트</h2>
-						<div><a>&nbsp</a></div>
-							<form>
-								<div class="col-xs-5" id="searchDiv">
+					<h2>반려동물을 위한 상품 리스트</h2>	
+			</div>
+						<form>
+								<!-- <div id="searchDiv"> -->
 									<div class="input-group" id="searchBar">
-										<input class='form-control' type="text" name="serchList" id="serchSomething"/>
+										<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
+											
+											<!-- <span id="searchBar">class="col-lg-offset-4" 
+    											
+  											</span> -->
+  											<input class="col-xs-4" id="serchSomething" type="text">
 											<span class="input-group-btn">
+												
 												<button id="searchBtn" type="button" class="btn btn-default">검색</button>
 											</span>
 									</div>
-								</div>
+								<!-- </div> -->
 							</form>
-			</div>
+			
 			<ul class="product-filter-menu">
 				<li><a href="#" name="tagCategory" class="tagCategory" value="all">전체</a></li>
 				<li><a href="#" name="tagCategory" class="tagCategory" value="pawInHand">PAW IN HAND</a></li>
@@ -109,10 +115,12 @@
 				<!--forEach 사용 끝 -->
 				
 		</div>
-		<div class="col-md-offset-4" id="pagination_container">
+		<div id="pagination-div">
+		<div id="pagination_container"><!--  class="col-md-offset-4"  -->
 			<ul id="pagination-demo" class="pagination-lg"></ul>
 		</div>
-		
+		</div>
+		</div>
 	</section>
 	
 	<!-- Artists page end -->

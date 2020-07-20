@@ -57,13 +57,11 @@ public class FindBoardController {
 			findBoardVO.setMemberId( ((MemberVO)session.getAttribute("memberVO")).getMemberId() ); //로그인 되어있는 상태면 memberId값 세팅
 			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
 			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
-			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
+//			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
 		String path = new File(".").getCanonicalPath();
 		if (insertFlag == 1) {
-//			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("")+"/findboard/");
-//			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("")+"/findboard/" + findBoardVO.getFindboardId() + "/");
 			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/");
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
 		}
@@ -72,14 +70,13 @@ public class FindBoardController {
 		return mv;
 	}
 	@RequestMapping(value="/getFindBoard.do")
-	public ModelAndView getFindBoard(FindBoardVO findBoardVO, HttpServletRequest request) {
+	public ModelAndView getFindBoard(FindBoardVO findBoardVO, HttpServletRequest request, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		findBoardVO = findBoardService.getFindBoard(findBoardVO);
 		findBoardService.increaseFindBoardReadcount(findBoardVO);
 		mv.setViewName("/findBoardContent");
 		mv.addObject("findBoardContent", findBoardVO);
 		
-//		String directoryPath = request.getSession().getServletContext().getRealPath("")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
 		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
 		File dir = new File(directoryPath);
 		File fileList [] = dir.listFiles();
@@ -89,9 +86,21 @@ public class FindBoardController {
 		}
 		if(fileArrayList.size()>=1)
 			fileArrayList.remove(0);
-		mv.addObject("file", fileList[0]);
+		if(fileList.length>=1)
+			mv.addObject("file", fileList[0]);
+		else
+			mv.addObject("fileflag", -1);
+		
+		if( ((MemberVO)session.getAttribute("memberVO"))!=null ) { //로그인이 되어있는 상태라면
+			System.out.println("findboardcontroller에서 로그인 상태 확인");
+			if( ((MemberVO)session.getAttribute("memberVO")).getMemberId().equals(findBoardVO.getMemberId()) ) { //로그인이 되어있으면서 글 작성자와 같은 아이디면
+				mv.addObject("isWriterFlag", 1);
+			}else
+				mv.addObject("isWriterFlag", 0);
+		}else {
+			mv.addObject("isWriterFlag", 0);
+		}
 		mv.addObject("fileList", fileArrayList);
-		//mv.addObject("fileList", fileList);
 		mv.addObject("directoryPath", directoryPath);
 		return mv;
 	}

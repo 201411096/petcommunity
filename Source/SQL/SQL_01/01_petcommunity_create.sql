@@ -158,6 +158,11 @@ start with 10000
 maxvalue 100000
 cycle;
 
+create sequence questionboard_group_id_seq
+start with 10000
+maxvalue 100000
+cycle;
+
 create sequence raise_id_seq
 start with 10000
 maxvalue 100000

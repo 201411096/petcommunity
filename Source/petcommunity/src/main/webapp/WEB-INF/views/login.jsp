@@ -15,7 +15,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css2/style.css">
     
-
+	
 </head>
 <body>
     <div class="main">
@@ -25,11 +25,16 @@
                 <div class="signin-content">
                     <div class="signin-image">
                        <br>
+                       
+                       <c:if test="${! empty msg}">
+                        <input type="hidden" id="message" value='${msg}'/>
+                       </c:if>
+                       
                         <figure><img src="./resources/bootstrap_template/template_01/img/gallery/%EB%A1%9C%EA%B7%B8%EC%9D%B82.PNG" alt="sing up image"></figure>
                         <br><br>
                         <a href="signup.do" class="signup-image-link">회원이 아니신가요?</a>
                     </div>
-
+					
                     <div class="signin-form">
                         <h2 class="form-title">로그인</h2>
                         <form action="sign.do" method="POST" class="register-form" id="login-form">
@@ -54,6 +59,7 @@
     </div>
 
     <!-- JS -->
+    <script src="./resources/js/sh.js"></script>
     <script src="vendor/jquery/jquery-ui.min.js"></script>
     <script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->

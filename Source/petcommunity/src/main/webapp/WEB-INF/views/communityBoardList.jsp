@@ -45,12 +45,16 @@
 						</select>
 					</div>
 				</div>
+				
 					<table class="table table-hover">
 						<thead>
 							<tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>추천</th><th>조회수</th></tr>
 						</thead>
-						
+						<tbody id="communityList">
+						<tbody id="communityHide">
 						<c:forEach items="${communityBoardList}" var = "communityBoardList">
+							
+							
 							<tr>
 								<td>${communityBoardList.communityboardId}</td>
 								<td>
@@ -64,36 +68,38 @@
 								<td>${communityBoardList.communityboardRecommend}</td>
 								<td>${communityBoardList.communityboardReadcount}</td>
 							</tr>
+							
 						</c:forEach>
-						
+						</tbody>
+						</tbody>
 					</table>
-					<div class="search row">
-						<div class="col-xs-2 col-sm-2">
-							<select name="searchType" class="form-control">
-								<option>-----</option>
-								<option>제목</option>
-								<option>내용</option>
-								<option>작성자</option>
-								<option>제목+내용</option>
-							</select>
-						</div>
-						 
-						<div class="col-xs-10 col-sm-10">
-							<div class="input-group">
-								<input type="text" name="keyword" class='form-control'id="keywordInput" value="${scri.keyword}"/>
-								<span class="input-group-btn">
-									<button id="searchBtn" type="button" class="btn btn-default">검색</button> 									
-								</span>	
-								<span class="input-group-btn">
-									<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 									
-								</span>					
+				
+					<form action="getBoardListBySearch.do">
+						<div class="search row">
+							<div class="col-xs-2 col-sm-2">
+								<select name="type" class="form-control">
+									
+									<option>제목</option>
+									<option>내용</option>
+									<option>작성자</option>
+									
+								</select>
 							</div>
-							
-							
+							 
+							<div class="col-xs-10 col-sm-10">
+								<div class="input-group">
+									<input type="text" name="keyWord" class='form-control'id="keywordInput" value="${scri.keyword}"/>
+									<span class="input-group-btn">
+										<button id="searchBtn" type="submit" class="btn btn-default">검색</button> 									
+									</span>	
+									<span class="input-group-btn">
+										<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 									
+									</span>												
+								</div>														
+							</div>
+										 				
 						</div>
-						 
-						
-					</div>
+					</form>
 					<div class="col-md-offset-3">
 						<ul class="pagination">
 							<c:if test="${pageMaker.prev}">

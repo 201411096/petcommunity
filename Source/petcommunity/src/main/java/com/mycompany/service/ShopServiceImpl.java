@@ -19,22 +19,13 @@ public class ShopServiceImpl implements ShopService{
 	private ShopDAOImpl shopDAO;
 
 	@Override
-	public List<ShopVO> selectShopAll() {
-		return shopDAO.selectShopAll();
-	}
-	
-	@Override
-	public List<ShopVO> selectShopCategory(ShopVO vo) {
-		return shopDAO.selectShopCategory(vo);
-	}
-
-	@Override
-	public int selectShopCntByTag(String tagCategory) {
-		return shopDAO.selectShopCntByTag(tagCategory);
-	}
-
-	@Override
 	public List<ShopVO> selectShopByTagWithPaging(Map searchListMap) {
 		return shopDAO.selectShopByTagWithPaging(searchListMap);
+	}
+
+	
+	@Override
+	public List<ShopVO> selectShopCategoryList(Map searchMap) {
+		return shopDAO.selectShopCategoryList(searchMap);
 	}
 }

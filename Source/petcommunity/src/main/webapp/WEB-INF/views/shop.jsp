@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file ="../views/header.jsp" %>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -11,38 +12,40 @@
 	<meta name="keywords" content="instyle, fashion, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<!-- Favicon -->
-	<link href="./resources/bootstrap_template/template_01/img/favicon.ico" rel="shortcut icon"/>
-
-	<!-- Google font -->
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/slicknav.min.css"/>
+	<!-- nav bar -->
+	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
+	<!-- search -->
+	<link rel="stylesheet" href="resources/css/shop.css">
 	
 	<!-- carousel Stylesheets -->
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/bootstrap.min.css"/>
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/slicknav.min.css"/> -->
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/flaticon.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/slicknav.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css"/>
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/animate.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
+	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/animate.css"/> -->
+	
 	
 	
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
+	<!-- Paging -->
+	<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
+	
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -62,9 +65,17 @@
 		<div class="container">
 			<div class="section-title">
 						<h2>반려동물을 위한 상품 리스트</h2>
-							 <div style='display:inline;'><input type="text" name="serchList" id="serchList" value="${scri.keyword}" />
-								<button id="searchBtn" type="button">검색</button>
-							</div>
+						<div><a>&nbsp</a></div>
+							<form>
+								<div class="col-xs-5" id="searchDiv">
+									<div class="input-group" id="searchBar">
+										<input class='form-control' type="text" name="serchList" id="serchSomething"/>
+											<span class="input-group-btn">
+												<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+											</span>
+									</div>
+								</div>
+							</form>
 			</div>
 			<ul class="product-filter-menu">
 				<li><a href="#" name="tagCategory" class="tagCategory" value="all">전체</a></li>
@@ -75,21 +86,12 @@
 				<li><a href="#" name="tagCategory" class="tagCategory" value="반려용품">반려용품</a></li>
 				<li><a href="#" name="tagCategory" class="tagCategory" value="매거진">매거진</a></li>
 				<li><a href="#" id="acc" name="tagCategory" class="tagCategory" value="기타 잡화">기타 잡화</a></li>
-				<!-- 
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=all name="tagCategory" class="tagShopName" value="all"">전체</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=pawInHand" name="tagCategory" class="tagShopName" value="pawInHand">PAW IN HAND</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=폰케이스" name="tagCategory" class="tagCategory" value="폰케이스">폰케이스</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=패션" name="tagCategory" class="tagCategory" value="패션">패션</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=악세서리" name="tagCategory" class="tagCategory" value="악세서리">악세서리</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=반려용품" name="tagCategory" class="tagCategory" value="반려용품">반려용품</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=매거진" name="tagCategory" class="tagCategory" value="매거진">매거진</a></li>
-				<li><a href="/petcommunity/shopCategory.do?tagCategory=기타 잡화" name="tagCategory" class="tagCategory" value="기타 잡화">기타 잡화</a></li>
-				 -->
 			</ul>
 			<!-- Product filter section -->
 			
 			<div id='shopTable' class="row artists-row">
 			<!-- forEach 사용 -->
+			<!-- 
 			<c:forEach var="shop" items="${shopList}">
 				<div class="col-lg-4 col-sm-6 artists-col">
 					<a href="${shop.shopLink }" target="_blank">
@@ -102,88 +104,21 @@
 					</a>
 				</div>
 			</c:forEach>
+			 -->
 			
 				<!--forEach 사용 끝 -->
 				
-				<!-- 
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/1.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/2.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/3.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/4.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/5.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/6.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/7.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-6 artists-col">
-					<div class="artists-item">
-						<img src="./resources/bootstrap_template/template_01/img/artists/8.jpg" alt="">
-						<h4>John Doe</h4>
-						<span>Photographer</span>
-						<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollicitudin. </p>
-					</div>
-				</div>
-				<div class="col-lg-4 col-sm-12 artists-col">
-					<a class="artists-more-btn" href="#">
-						<img src="./resources/bootstrap_template/template_01/img/icons/arrow-big.png" alt="">
-					</a>
-				</div>
-			</div>
-		-->
 		</div>
+		<div class="col-md-offset-4" id="pagination_container">
+			<ul id="pagination-demo" class="pagination-lg"></ul>
+		</div>
+		
 	</section>
 	
 	<!-- Artists page end -->
 	
 	<!-- letest product section -->
-	<section class="top-letest-product-section">
+	<!-- <section class="top-letest-product-section">
 		<div class="container">
 			<div class="section-title">
 				<h2>LATEST PRODUCTS</h2>
@@ -257,7 +192,7 @@
 					</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- letest product section end -->
 	
 	
@@ -297,23 +232,16 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<!-- Footer section end -->
 
 	
-	<!--====== Javascripts & Jquery ======-->
-	<script src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/jquery.slicknav.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
-	<script src="./resources/js/shopListTagAjax.js"></script>
+	<script src="./resources/js/shopList.js"></script>
+	<!--  <script src="./resources/bootstrap_template/bootstrap_ain/js/bootstrap.min.js"></script>-->
 	<!--====== carousel ======-->
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery-3.2.1.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/bootstrap.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.slicknav.min.js"></script>
+	<!-- <script src="./resources/bootstrap_template/bootstrap_ain/js/jquery-3.2.1.min.js"></script> -->
+	<!-- <script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.slicknav.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/js/owl.carousel.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.nicescroll.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.zoom.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery-ui.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/main.js"></script>
+	<script src="./resources/bootstrap_template/bootstrap_ain/js/main.js"></script> -->
 
 
 	</body>

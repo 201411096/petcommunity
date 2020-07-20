@@ -17,25 +17,14 @@ public class ShopDAOImpl implements ShopDAO{
 	private SqlSessionTemplate mybatis;
 	
 	@Override
-	public List<ShopVO> selectShopAll() {
-		return mybatis.selectList("ShopDAO.selectShopAll"); 
-	}
-	
-	@Override
-	public List<ShopVO> selectShopCategory(ShopVO vo) {
-		List<ShopVO> result = mybatis.selectList("ShopDAO.selectShopCategory", vo);
-		return result;
-	}
-
-	@Override
-	public int selectShopCntByTag(String tagCategory) {
-		int result = mybatis.selectOne("ShopDAO.selectShopCntByTag", tagCategory);
-		return result;
-	}
-
-	@Override
 	public List<ShopVO> selectShopByTagWithPaging(Map searchListMap) {
 		List<ShopVO> result = mybatis.selectList("ShopDAO.selectShopByTagWithPaging", searchListMap);
+		return result;
+	}
+
+	@Override
+	public List<ShopVO> selectShopCategoryList(Map searchMap) {
+		List<ShopVO> result = mybatis.selectList("ShopDAO.selectShopCategoryList", searchMap);
 		return result;
 	}
 }

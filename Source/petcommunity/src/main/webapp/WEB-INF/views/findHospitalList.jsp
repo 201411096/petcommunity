@@ -49,7 +49,7 @@
 		</section>
  
 		
-<div class="fstoreArea">
+	<div class="fHsptlArea">
 					<%--
 					<div class="tabArea">
 					 
@@ -64,48 +64,60 @@
 						<a href="javascript:void(0);">제주도</a>
 					</div>
 					--%>
-					<div class="fssearch wo">
-						<div class="findqo"><img src="./resources/imgs/product_image/pawInHand/healing.jpg" alt="" /></div>
-						<!-- <p class="fs_txt" id="searchResultMsg">총 <strong>859개</strong>의 매장을 운영하고 있습니다.</p> -->
-						<div class="searchArea" style="padding:30px 0 30px">
-							<input type="text" id="storeSearchStr" name="" style="width:517px;" value="" placeholder="검색어, 매장명을 입력하세요."/>
-							<input type="image" name="" src="./resources/imgs/product_image/pawInHand/find.gif" onclick="storeSearch()" />
+					
+					
+					<div class="findHsptl">
+						<div class="div_img"><img src="./resources/imgs/product_image/pawInHand/healing.jpg" alt="" /></div></br>
+						<div class="searchArea">
+							<input type="text" id="findHsptStr" style="width: 536.22222px;"name="" placeholder="검색어, 매장명을 입력하세요."/></br>
+							<input type="image" id="findHsptBtn" name="" src="./resources/imgs/product_image/pawInHand/find.gif" onclick="storeSearch()" />
 						</div>
 					</div>
+					</div>
+					
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					</br>
+					
+					
+					
+					
 					<div class="mapArea">
 						<div class="maptxt">
 							<ul>
-<li>
-	<div class="cityarea">
-		<div class="citytit">제주도</div>
-		<div class="locarea">
-			<ul>
-				<li class="storeLI" data-name="첨단점">
-					<a href="javascript:void(0);" data-idx="2090">
-						<p class="loc_tit">첨단점</p>
-						<p class="loc_lo" data-coordx="33.4514041822" data-coordy="126.5764786372">제주특별자치도 제주시 첨단로동길 106 (월평동)</p>
-						<p class="loc_call">0647259246</p>
-					</a>
-					<div class="storeImg"></div>
-				</li>
-			</ul>
-		</div>
-	</div>
-</li>
-</ul>
+								<li>
+									<div class="cityarea">
+										<div class="citytit">세종시</div>
+											<div class="locarea active" style="">
+												<ul>
+													<li class="storeLI" data-name="첨단점">
+														<a href="javascript:void(0);" data-idx="2090">
+															<p class="loc_tit">첨단점</p>
+															<p class="loc_lo" data-coordx="33.4514041822" data-coordy="126.5764786372">제주특별자치도 제주시 첨단로동길 106 (월평동)</p>
+															<p class="loc_call">0647259246</p>
+														</a>
+											<div class="storeImg" style="display: block;"><div class="hsptlRoll">
+											</div></div></li></ul></div></div></li></ul></div>
 	<div id="map">
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services"></script>
 	<script src="resources/js/findHospital.js"></script>
-	</div>
-		</div>
-		</br>
-		</br>
-				
-
-					</div>
-				</div>
-	
-
+	</div></div></br></br>
 </body>
 </html>

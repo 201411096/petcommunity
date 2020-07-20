@@ -76,5 +76,6 @@ function setLocation(latitude,  longitude){
 // 주소 타입 : 도로명 주소 0
 function setAddress(addressname, addressType){
 	$('#findhospitaladdress').val(addressname);
+	$('#findhospitaladdresstype').val(addressType);
 
 }

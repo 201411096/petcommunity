@@ -14,12 +14,28 @@ public class FindBoardDAOImpl implements FindBoardDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public List<FindBoardVO> selectProduct(Map map){
+	public List<FindBoardVO> selectFindBoard(Map map){
 		return mybatis.selectList("findBoardDAO.getFindBoardList", map);
 	}
 
 	@Override
-	public List<FindBoardVO> selectProductWithPaging(Map map) {
+	public List<FindBoardVO> selectFindBoardWithPaging(Map map) {
 		return mybatis.selectList("findBoardDAO.getFindBoardListWithPaging", map);
 	}
+
+	@Override
+	public int insertFindBoard(FindBoardVO findBoardVO) {
+		return mybatis.insert("findBoardDAO.insertFindBoard", findBoardVO);
+	}
+
+	@Override
+	public FindBoardVO getFindBoard(FindBoardVO findBoardVO) {
+		return mybatis.selectOne("findBoardDAO.getFindBoard", findBoardVO);
+	}
+
+	@Override
+	public int increaseFindBoardReadcount(FindBoardVO findBoardVO) {
+		return mybatis.update("findBoardDAO.increaseFindBoardReadcount", findBoardVO);
+	}
+	
 }

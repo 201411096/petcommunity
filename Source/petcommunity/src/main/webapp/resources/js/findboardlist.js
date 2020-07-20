@@ -77,7 +77,7 @@ function drawTable(data){
 						trPrefix +
 						tdPrefix + data.findBoardVOList[i].findboardId + tdSuffix +
 						tdPrefix + data.findBoardVOList[i].findboardStatus + tdSuffix +
-						tdPrefix + data.findBoardVOList[i].findboardTitle + tdSuffix +
+						tdPrefix + '<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' + data.findBoardVOList[i].findboardTitle +'</a>' + tdSuffix +
 						tdPrefix + data.findBoardVOList[i].findboardName + tdSuffix +
 						tdPrefix + data.findBoardVOList[i].findboardReadcount + tdSuffix +
 						tdPrefix + data.findBoardVOList[i].findboardUploadtime + tdSuffix +

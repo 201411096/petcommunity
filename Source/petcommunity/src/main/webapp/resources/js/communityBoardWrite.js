@@ -24,7 +24,7 @@ $(function(){
     var kyungbuk = ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시"];
     var kyungnam = ["창원시","김해시","양산시","진주시","거제시","통영시","사천시","밀양시"];
     var jeju = ["제주시","서귀포시"];
-    
+    //province 항목 동적 생성하기
     $('#cityName').change(function(){
     	var selectItem = $("#cityName").val();
         	
@@ -83,15 +83,28 @@ $(function(){
         	changeItem = jeju;
             break;
       }
-        
-       
-         
+                
         $('#province').empty();
      
         for(var count in changeItem){
         	var option = $("<option>"+changeItem[count]+"</option>");
             $('#province').append(option);
         }
+    });
+    
+    //셀렉트박스, 인풋박스 공백시 submit막기
+    $('#commitWrite').click(function(){
+    	if($('#cityName').val()=='-----' || $('#province').val()=='-----'){
+    		alert('지역을 선택해주세요');
+    	}else if($('#communityboardTitle').val()==""){
+    		alert('제목을 입력해주세요');
+    	}else if($('#communityboardContent').val()==""){
+    		alert('글 내용을 입력해주세요');
+    	}else{
+    		alert('submit');
+    		//버튼이지만 submit하기 jquery를 쓰니까 submit이 안된다.
+    		document.commitWrite.submit();
+    	}
     });
     
 

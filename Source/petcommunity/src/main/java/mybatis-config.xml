@@ -23,6 +23,8 @@
 		<typeAlias alias="pagination" type="com.mycompany.domain.PaginationVO"></typeAlias>
 		
 		<typeAlias alias="community" type="com.mycompany.domain.CommunityVO"></typeAlias>
+		
+		<typeAlias alias="animal" type="com.mycompany.domain.AnimalVO"></typeAlias>
 
    </typeAliases>
    

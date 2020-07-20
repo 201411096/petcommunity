@@ -43,7 +43,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/petcommunity/Source/petcommunity/src/main/java/com/mycompany/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Canon/Documents/GitHub/petcommunity/Source/petcommunity/src/main/java/com/mycompany/lib/servlet-api.jar"/>
 	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
 		<attributes>
 			<attribute name="optional" value="true"/>

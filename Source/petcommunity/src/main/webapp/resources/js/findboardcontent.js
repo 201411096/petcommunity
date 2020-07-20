@@ -1,5 +1,6 @@
-var latitude = -1;
-var longitude = -1;
+var latitude = $('#findboardX').val();
+var longitude = $('#findboardY').val();
+var findboardLocation = $('#findboardLocation').val();
 $(function() {
 	kakaoMapAPI();
 });
@@ -7,8 +8,9 @@ $(function() {
 function kakaoMapAPI() {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
-		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
-		level : 7
+//		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+		center : new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+		level : 5
 	// 지도의 확대 레벨
 	};
 
@@ -17,11 +19,23 @@ function kakaoMapAPI() {
 	// 지도를 클릭한 위치에 표출할 마커입니다
 	var marker = new kakao.maps.Marker({ 
 	    // 지도 중심좌표에 마커를 생성합니다 
-	    //position: map.getCenter() 
+	    position: map.getCenter() 
 	});
 	
 	// 지도에 마커를 표시합니다
 	marker.setMap(map);
+	
+	var iwContent = '<div class="alert alert-light">'+ findboardLocation +'</div>'
+    iwPosition = new kakao.maps.LatLng(latitude, longitude); //인포윈도우 표시 위치입니다
+
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    position : iwPosition, 
+	    content : iwContent 
+	});
+	  
+	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	infowindow.open(map, marker);
 	
 	// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
@@ -36,32 +50,6 @@ function kakaoMapAPI() {
 	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 	var zoomControl = new kakao.maps.ZoomControl();
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);	
-	
-	// 지도 클릭 이벤트
-	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-	    
-	    // 클릭한 위도, 경도 정보를 가져옵니다 
-	    var latlng = mouseEvent.latLng;
-	    latitude = latlng.getLat();
-	    longitude = latlng.getLng();
-	    
-	    // 마커 위치를 클릭한 위치로 옮깁니다
-	    marker.setPosition(latlng);
-	    // hidden 태그에 위도 경도 표시
-	    setLocation(latitude,  longitude);
-	    
-	    searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-	        if (status === kakao.maps.services.Status.OK) {
-	        	if(!!result[0].road_address){
-	        		console.log('도로명 주소', result[0].road_address.address_name);
-	        		setAddress(result[0].road_address.address_name, 0);
-	        	}else{
-	        		console.log('지번 주소', result[0].address.address_name);
-	        		setAddress(result[0].address.address_name, 1);
-	        	}
-	        }   
-	    });
-	});
 	
 	function searchDetailAddrFromCoords(coords, callback) {
 	    // 좌표로 법정동 상세 주소 정보를 요청합니다

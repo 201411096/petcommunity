@@ -32,6 +32,37 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper getBoardContent() 호출");
 		return mybatis.selectOne("communityDAO.getBoardContent", vo);
 	}
+
+	@Override
+	public List<CommunityVO> getBoardListBySearch(CommunityVO vo) {	
+		System.out.println("===>  CommunityMapper getBoardListBySearch() 호출");
+		return mybatis.selectList("communityDAO.getBoardListBySearch", vo);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByLocation(CommunityVO vo) {
+		System.out.println("===>  CommunityMapper getBoardListByLocation() 호출");
+		return mybatis.selectList("communityDAO.getBoardListByLocation", vo);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByReadCount() {
+		System.out.println("===>  CommunityMapper getBoardListByReadCount() 호출");
+		return mybatis.selectList("communityDAO.getBoardListByReadCount");
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByRecommend() {
+		System.out.println("===>  CommunityMapper getBoardListByRecommend() 호출");
+		return mybatis.selectList("communityDAO.getBoardListByRecommend");
+	}
+
+	@Override
+	public void addReadCount(CommunityVO vo) {
+		System.out.println("===>  CommunityMapper addReadCount() 호출");
+		mybatis.update("communityDAO.addReadCount", vo);
+		
+	}
 	
 	
 }

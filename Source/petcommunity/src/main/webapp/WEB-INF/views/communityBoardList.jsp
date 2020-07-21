@@ -58,9 +58,12 @@
 							<tr>
 								<td>${communityBoardList.communityboardId}</td>
 								<td>
-									<a href='getBoardContent.do?communityboardId=${communityBoardList.communityboardId}'>
+									<a href='getBoardContent.do?communityboardId=${communityBoardList.communityboardId}' class="text-dark">
 									[<span id='locationTag'>${communityBoardList.communityboardLocation}</span>]
-									${communityBoardList.communityboardTitle}
+									${communityBoardList.communityboardTitle}		
+									<c:if test="${communityBoardList.commentCount > 0}">
+										<span class="text-warning">[${communityBoardList.commentCount}]</span>
+									</c:if> 
 									</a>
 								</td>
 								<td>${communityBoardList.memberId}</td>

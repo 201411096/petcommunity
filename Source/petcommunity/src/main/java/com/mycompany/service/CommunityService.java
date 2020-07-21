@@ -17,5 +17,8 @@ public interface CommunityService {
 	public void addReadCount(CommunityVO vo);
 	public void writeComment(CommentVO vo);
 	public List<CommentVO> getCommentContent(CommentVO vo);
-	
+	public void deleteOnCommunityBoard(CommunityVO vo);
+	public void deleteBoardComment(CommentVO vo);
+	public void modifyBoardContent(CommunityVO vo);
+	public void commentDelete(CommentVO vo);
 }

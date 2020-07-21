@@ -12,27 +12,19 @@
 	<meta name="keywords" content="instyle, fashion, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
 	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/slicknav.min.css"/>
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css"/> -->
+	
 	<!-- nav bar -->
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
+ 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
 	<!-- search -->
 	<link rel="stylesheet" href="resources/css/shop.css">
 	
-	<!-- carousel Stylesheets -->
-	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/slicknav.min.css"/> -->
-	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/flaticon.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/owl.carousel.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/animate.css"/> -->
 	
 	
 	
@@ -242,14 +234,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	
 	<script src="./resources/js/shopList.js"></script>
 	<!--  <script src="./resources/bootstrap_template/bootstrap_ain/js/bootstrap.min.js"></script>-->
-	<!--====== carousel ======-->
-	<!-- <script src="./resources/bootstrap_template/bootstrap_ain/js/jquery-3.2.1.min.js"></script> -->
-	<!-- <script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.slicknav.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/owl.carousel.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.nicescroll.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery.zoom.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/jquery-ui.min.js"></script>
-	<script src="./resources/bootstrap_template/bootstrap_ain/js/main.js"></script> -->
 
 
 	</body>

@@ -19,16 +19,19 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.insertQna(qnavo);
 	}
 
-
 	@Override
 	public List<QnaVO> selectQnaList(QnaVO qnavo) {
 		return qnaDAO.selectQnaList(qnavo);
 	}
 
-
 	@Override
 	public QnaVO selectOne(QnaVO qnavo) {
 		return qnaDAO.selectOne(qnavo);
+	}
+
+	@Override
+	public int updateQna(QnaVO qnavo) {
+		return qnaDAO.updateQna(qnavo);
 	}
 
 

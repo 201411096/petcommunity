@@ -15,10 +15,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM QUESTIONBOARD
 	</select>
 	
-	<select id="selectOne" resultType="qna">
+	<select id="selectOne" parameterType="qna" resultType="qna">
 		SELECT *
 		FROM QUESTIONBOARD
-		WHERE MEMBER_ID = #{memberId}
+		WHERE QUESTIONBOARD_ID = #{questionboardId}
 	</select>
+	
+	<update id="update" parameterType="qna">
+	 UPDATE QUESTIONBOARD
+	 SET QUESTIONBOARD_TITLE = #{questionboardTitle}, QUESTIONBOARD_CONTENT = #{questionboardContent}
+	 WHERE QUESTIONBOARD_ID = #{questionboardId}
+	</update>
 
 </mapper>

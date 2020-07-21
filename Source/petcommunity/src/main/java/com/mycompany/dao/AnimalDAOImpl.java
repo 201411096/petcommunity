@@ -34,6 +34,11 @@ public class AnimalDAOImpl implements AnimalDAO {
 		
 		return mybatis.delete("animal.animalDelete",vo);
 	}
+	@Override
+	public int animalUpdate(AnimalVO vo) {
+		
+		return mybatis.update("animal.animalUpdate",vo);
+	}
 	
 	
 

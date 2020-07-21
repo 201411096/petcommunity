@@ -68,15 +68,13 @@ public class AnimalController {
 	}
 	
 
-/*	//반려동물 정보 수정
-	@RequestMapping(value="updateAnimal.do")
+	//반려동물 정보 수정
+	@RequestMapping(value="animalUpdate.do")
 	public String animalUpdate(AnimalVO vo) {
 		
-		 * System.out.println(vo.getAnimalBirthday()+vo.getAnimalFeature()+vo.
-		 * getAnimalGender()+ vo.getAnimalId()+vo.getAnimalName());
-		 
-		return null;
+		animalService.animalUpdate(vo);
+		return "redirect:/mypageselect.do" ;
 		
-	}*/
+	}
 	
 }

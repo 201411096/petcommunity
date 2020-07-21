@@ -11,4 +11,6 @@ public interface AnimalDAO {
 	public List<AnimalVO> animalSelect(MemberVO mvo);
 	
 	public int animalDelete(AnimalVO vo);
+	
+	public int animalUpdate(AnimalVO vo);
 }

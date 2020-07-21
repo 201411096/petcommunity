@@ -33,4 +33,10 @@ public class AnimalServiceImpl implements AnimalService {
 		return animalDAO.animalDelete(vo);
 	}
 
+	@Override
+	public int animalUpdate(AnimalVO vo) {
+		
+		return animalDAO.animalUpdate(vo);
+	}
+
 }

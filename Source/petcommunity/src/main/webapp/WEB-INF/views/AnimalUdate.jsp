@@ -40,11 +40,9 @@
 								src="./resources/bootstrap_template/template_01/img/gallery/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.PNG"
 								alt="sing up image" style="width:300px ">
 						</figure> -->
-						<c:if test="${0 eq result}">
-							<input type="hidden" id="result" value='${msg}' />
-						</c:if>
+						
 						<h2 class="form-title">반려동물정보 수정</h2>
-						<form action="animalinsert.do" method="POST" class="register-form"
+						<form action="animalUpdate.do" method="POST" class="register-form"
 							id="register-form">
 							<input type="hidden" name="animalId" value="<%=animalId%>"/>
 							<div class="form-group">

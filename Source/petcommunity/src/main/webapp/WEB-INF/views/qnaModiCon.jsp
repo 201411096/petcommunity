@@ -52,7 +52,6 @@
 			<tr>
 				<td colspan="2" id="content-content" style="width: 80%">${qnaContent.questionboardContent}<hr
 						id="lineStyle">
-
 						</td>
 				<td></td>
 			</tr>
@@ -63,7 +62,7 @@
 				<td id="modi"><button id="qnaModifyBtn" type="button"
 						class="btn btn-default">
 						<a
-							href="/petcommunity/qnaModify.do?questionboardId=${qnaContent.questionboardId}&memberId=${qnaContent.memberId}&memberContent=${qnaContent.questionboardContent}">수정</a>
+							href="/petcommunity/qnaModify.do?questionboardId=${qnaContent.questionboardId}&memberId=${qnaContent.memberId}">수정</a>
 					</button>
 					<button id="qnaDeleteBtn" type="button" class="btn btn-default">삭제</button></td>
 			</tr>

@@ -1,6 +1,9 @@
 package com.mycompany.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,13 +11,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.service.CommunityService;
+import com.mycompany.util.FileUpload;
 
 @Controller
 public class CommunityController {
@@ -37,13 +43,16 @@ public class CommunityController {
 		return "communityBoardWrite";
 	}
 
-	// 쓰기 완료 후 boardList로 되돌아가기
-	@RequestMapping("/writeIntoBoard.do")
-	public String writeIntoBoard(CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
+	// 쓰기 완료 후 boardList로 되돌아가기//업로드 파일이 있다면 글번호 가져와서 셋팅해주기
+	@RequestMapping(value="/writeIntoBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
+	public String writeIntoBoard(CommunityVO vo, HttpServletRequest request, HttpSession session, MultipartHttpServletRequest mtfRequest) throws IOException{
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
-		mvo.getMemberId();
 		vo.setMemberId(mvo.getMemberId());
 		communityService.writeIntoBoard(vo);
+		
+				
+		FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/");
+		FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/" + vo.getCommunityboardId() + "/");	
 		return "redirect:communityBoardList.do";
 	}
 	
@@ -140,6 +149,18 @@ public class CommunityController {
 		mv.addObject("boardContent", communityService.getBoardContent(vo));//해당 글 정보 가져오기
 		mv.addObject("boardComment", communityService.getCommentContent(cvo));//해당글에 관련된 커멘트 가져오기
 		communityService.addReadCount(vo); //해당 글 조회수 올리기
+		
+		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+vo.getCommunityboardId();
+		
+		File dir = new File(directoryPath);
+		File fileList [] = dir.listFiles();
+		ArrayList<File> fileArrayList = new ArrayList<File>();
+		if(fileList!=null) {
+			for(File file : fileList) {
+				fileArrayList.add(file);			
+			}
+		}
+		mv.addObject("boardContentImg", fileArrayList);
 		mv.setViewName("communityBoardContent");
 		return mv;
 	}
@@ -169,7 +190,8 @@ public class CommunityController {
 		vo.setCommunityboardId(communityboardId);
 		cvo.setCommunityboardId(communityboardId);
 		
-		//게시글을 지우면서 관련된 댓글까지 삭제 해야함 
+		//게시글을 지우면서 관련된 댓글과 사진까지 삭제 해야함 
+		FileUpload.deleteDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/" + vo.getCommunityboardId());
 		communityService.deleteOnCommunityBoard(vo);
 		communityService.deleteBoardComment(cvo);	
 		return "redirect:communityBoardList.do";

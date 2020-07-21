@@ -8,6 +8,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="writeIntoBoard" parameterType="community">
 INSERT INTO communityboard(communityboard_id, COMMUNITYBOARD_LOCATION, COMMUNITYBOARD_TITLE, COMMUNITYBOARD_CONTENT, COMMUNITYBOARD_UPLOADTIME, COMMUNITYBOARD_READCOUNT, COMMUNITYBOARD_RECOMMEND, MEMBER_ID)
 VALUES(communityboard_id_seq.nextval, #{cityName}||' '||#{province}, #{communityboardTitle}, #{communityboardContent}, sysdate, 0, 0, #{memberId} )
+<selectKey keyProperty="communityboardId" resultType="String" order="AFTER">
+         SELECT communityboard_id_seq.currval FROM dual 
+</selectKey>
+
+
 </insert>
 
 <select id="getBoardList" resultType="community">
@@ -82,16 +87,17 @@ order by boardcomment_uploadtime desc
 </select>
 
 <delete id="deleteOnCommunityBoard" parameterType="community">
-	delete from communityboard where communityboard_id=#{communityboardId}
+delete from communityboard where communityboard_id=#{communityboardId}
 </delete>
 
 <delete id="deleteBoardComment" parameterType="comment">
-	delete from communityboard where communityboard_id=#{communityboardId}
+delete from communityboard where communityboard_id=#{communityboardId}
 </delete>
 
 <delete id="commentDelete" parameterType="comment">
-	delete from boardcomment where boardcomment_id=#{boardcommentId}
+delete from boardcomment where boardcomment_id=#{boardcommentId}
 </delete>
+
 
 
 

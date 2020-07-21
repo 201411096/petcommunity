@@ -13,7 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="resources/css/findboardlist.css">
+<link rel="stylesheet" href="resources/css/qnaList.css">
 <title>게시판</title>
 </head>
 <body>
@@ -36,12 +36,11 @@
 					</thead>
 					<c:forEach items="${qnavoList}" var="item">
 						<tr>
-							<td><c:out value="${item.questionboardId}" /></td>
-							<td><a href="/petcommunity/qnaContent.do?memberId=${item.memberId}"><c:out value="${item.questionboardTitle}" /></a></td>
-							<td><c:out value="${item.questionboardUploadtime}" /></td>
-							<td><c:out value="${item.questionboardReadcount}" /></td>
-							<td><c:out value="${item.memberId}" /></td>
-							
+							<td>${item.questionboardId}</td>
+							<td><a href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">${item.questionboardTitle}</a></td>
+							<td>${item.questionboardUploadtime}</td>
+							<td>${item.questionboardReadcount}</td>
+							<td>${item.memberId}</td>
 						</tr>
 						
 					</c:forEach>
@@ -68,7 +67,7 @@
 								class="input-group-btn">
 								<button id="qnaSearchBtn" type="button" class="btn btn-default">검색</button>
 							</span> <span class="input-group-btn">
-								<button id="qnaWriteBtn" type="button" class="btn btn-default">글쓰기</button>
+								<button id="qnaWriteBtn" type="button" class="btn btn-default"><a href="/petcommunity/write.do">글쓰기</a></button>
 							</span>
 						</div>
 					</div>

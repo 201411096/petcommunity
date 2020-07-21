@@ -61,6 +61,20 @@
 		 </selectKey>
 	</insert>
 	
+	<update id="updateFindBoard" parameterType="findBoard">
+		update findboard set 
+		FINDBOARD_TITLE = #{findboardTitle},
+		FINDBOARD_CONTENT = #{findboardContent},
+		FINDBOARD_LOCATION = #{findboardLocation},
+		FINDBOARD_X = #{findboardX},
+		FINDBOARD_Y = #{findboardY},
+		FINDBOARD_STATUS = #{findboardStatus},
+		FINDBOARD_TEL = #{findboardTel},
+		FINDBOARD_NAME = #{findboardName},
+		ANIMAL_TYPE = #{animalType}
+		where FINDBOARD_ID = #{findboardId}
+	</update>
+	
 	<update id="increaseFindBoardReadcount" parameterType="findBoard">
 		UPDATE findboard set FINDBOARD_READCOUNT = FINDBOARD_READCOUNT + 1
 		where FINDBOARD_ID = ${findboardId}

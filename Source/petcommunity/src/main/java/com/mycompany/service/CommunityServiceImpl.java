@@ -64,6 +64,26 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityDAO.getCommentContent(vo);
 	}
 
+	@Override
+	public void deleteOnCommunityBoard(CommunityVO vo) {
+		communityDAO.deleteOnCommunityBoard(vo);		
+	}
+
+	@Override
+	public void deleteBoardComment(CommentVO vo) {
+		communityDAO.deleteBoardComment(vo);		
+	}
+
+	@Override
+	public void modifyBoardContent(CommunityVO vo) {
+		communityDAO.modifyBoardContent(vo);	
+	}
+
+	@Override
+	public void commentDelete(CommentVO vo) {
+		communityDAO.commentDelete(vo);	
+	}
+
 	
 	
 }

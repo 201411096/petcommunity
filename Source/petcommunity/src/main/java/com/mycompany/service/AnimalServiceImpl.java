@@ -27,4 +27,16 @@ public class AnimalServiceImpl implements AnimalService {
 		return animalDAO.animalSelect(mvo);
 	}
 
+	@Override
+	public int animalDelete(AnimalVO vo) {
+		
+		return animalDAO.animalDelete(vo);
+	}
+
+	@Override
+	public int animalUpdate(AnimalVO vo) {
+		
+		return animalDAO.animalUpdate(vo);
+	}
+
 }

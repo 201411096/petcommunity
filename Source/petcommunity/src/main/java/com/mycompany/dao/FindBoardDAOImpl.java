@@ -42,6 +42,11 @@ public class FindBoardDAOImpl implements FindBoardDAO{
 	public int deleteFindBoard(FindBoardVO findBoardVO) {
 		return mybatis.delete("findBoardDAO.deleteFindBoard", findBoardVO);
 	}
+
+	@Override
+	public int updateFindBoard(FindBoardVO findBoardVO) {
+		return mybatis.update("findBoardDAO.updateFindBoard", findBoardVO);
+	}
 	
 	
 }

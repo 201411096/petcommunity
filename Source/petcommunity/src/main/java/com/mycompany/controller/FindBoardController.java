@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
+import com.mycompany.domain.StringListVO;
 import com.mycompany.service.FindBoardServiceImpl;
 import com.mycompany.util.FileUpload;
 
@@ -60,7 +61,6 @@ public class FindBoardController {
 //			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
-		String path = new File(".").getCanonicalPath();
 		if (insertFlag == 1) {
 			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/");
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
@@ -108,6 +108,52 @@ public class FindBoardController {
 		ModelAndView mv = new ModelAndView();		
 		findBoardService.deleteFindBoard(findBoardVO);
 		FileUpload.deleteDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId());
+		mv.setViewName("/findboardlist");
+		return mv;
+	}
+	@RequestMapping("/loadFindBoardUpdate.do")
+	public ModelAndView loadFindBoardUpdate(FindBoardVO findBoardVO, HttpServletRequest request, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		findBoardVO = findBoardService.getFindBoard(findBoardVO);
+		mv.addObject("findBoardContent", findBoardVO);
+		
+		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
+		File dir = new File(directoryPath);
+		File fileList [] = dir.listFiles();
+		ArrayList<String> fileNameList = new ArrayList<String>(); 
+		for(int i=0; i<fileList.length; i++)
+		{
+			fileNameList.add(fileList[i].getName());
+		}
+			
+		if(fileList.length<1)
+			mv.addObject("fileflag", -1);
+		
+		
+		mv.addObject("fileList", fileList);
+		mv.addObject("fileNameList", fileNameList);
+		mv.addObject("directoryPath", directoryPath);
+		
+		mv.setViewName("/findBoardUpdate");
+		return mv;
+	}
+	@RequestMapping(value="/updateFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
+	public ModelAndView updateFindBoard(FindBoardVO findBoardVO, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest, String [] filename) throws IOException{
+		ModelAndView mv = new ModelAndView();		
+		if(session.getAttribute("memberVO")!=null) {
+			findBoardVO.setMemberId( ((MemberVO)session.getAttribute("memberVO")).getMemberId() ); //로그인 되어있는 상태면 memberId값 세팅
+			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
+			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
+		}
+		//filename : 이미 올라가 있는 파일 중 삭제 되지 않은 파일
+		//System.out.println(filename.length);
+		
+		int updateFlag = findBoardService.updateFindBoard(findBoardVO);
+		if(updateFlag==1) {
+			FileUpload.deleteFileWithoutList(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId(), filename);
+			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
+		}
+			
 		mv.setViewName("/findboardlist");
 		return mv;
 	}

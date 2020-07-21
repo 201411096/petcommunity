@@ -1,16 +1,53 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-$("#animal").click(function(){
-		window.open("mypageAnimal.do", "반려동물 등록", "width=500,height=600")
+	$('#register-form input[type=submit]').click(function(){
+		
+        var submit = false;
+        if($('#animalName').val()==="")
+        {
+            alert("반려동물 이름을 입력하세요");return false;        
+        }
+        else if($("input:radio[name=animalGender]").is(":checked") == false) {
+            alert("반려동물의 성별을 선택하세요");
+            return false;
+        }
+        else if($('#animalBirthday').val()===""){
+            alert("반려동물 생일을 입력하세요");return false;
+        }
+        else if($('#animalFeature').val()==="")
+        {
+            alert("반려동물 특징을 입력하세요");return false;    
+        }
+        
+        else
+        	submit = true;
+        if(submit === true)
+            $('#register-form').submit();
 	});
 	
-	if ($("#result").val() == 0){
-		alert("오류 , 다시 등록 해주세요")
-	}
-
-	$("#exit22").click(function(){
-		alert("asdf");
+	$("#mypageButton").click(function() {
+		opener.parent.location.reload();
 		close();
 	});
+
+	$("#animal").click(function() {
+		window.open("mypageAnimal.do", "반려동물 등록", "width=520,height=750")
+	});
+
+	if ($("#result").val() == 0) {
+		alert("오류 , 다시 등록 해주세요")
+	};
+	
+	
+	$(document).on("click", "#dBtn", function() {
+		var result = confirm('삭제 하시겠습니까?');
+
+		if (result) {
+
+		} else {
+			event.preventDefault();
+		}
+	});
+
 	
 });

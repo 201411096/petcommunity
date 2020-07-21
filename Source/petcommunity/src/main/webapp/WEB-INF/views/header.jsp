@@ -47,7 +47,7 @@
 	<!-- header section -->
 	<header class="header-section">
 		<div class="header-warp">
-			<a href="header.jsp" class="site-logo"> <img
+			<a href="header.do" class="site-logo"> <img
 				src="./resources/bootstrap_template/template_01/img/logo2.png"
 				alt="">
 			</a>
@@ -57,18 +57,18 @@
 			<ul class="main-menu">
 
 				<c:if test="${! empty sessionScope.memberVO}">
-					<!-- <div class="loginss"> -->
+				
 				${sessionScope.memberVO.memberName}님, 안녕하세요
 				<a href="logout.do">[로그아웃하기]</a>
-				<li><a href="mypageselect.do">[마이페이지]</a></li>
-					<!-- </div> -->
+				<a href="mypageselect.do">[나의 반려동물]</a>
+			
 				</c:if>
 
 				<li><a href="index.html">분실 동물 찾기</a></li>
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
-				<li><a href="blog.html">고객 문의</a></li>
+				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
 				<li><a href="contact.html">Contact</a></li>
 
 				<c:if test="${empty sessionScope.memberVO}">

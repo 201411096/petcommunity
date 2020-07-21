@@ -145,11 +145,15 @@ public class FindBoardController {
 			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
 			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
 		}
-		System.out.println(filename.length);
-
+		//filename : 이미 올라가 있는 파일 중 삭제 되지 않은 파일
+		//System.out.println(filename.length);
+		
 		int updateFlag = findBoardService.updateFindBoard(findBoardVO);
-		if(updateFlag==1)
+		if(updateFlag==1) {
+			FileUpload.deleteFileWithoutList(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId(), filename);
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
+		}
+			
 		mv.setViewName("/findboardlist");
 		return mv;
 	}

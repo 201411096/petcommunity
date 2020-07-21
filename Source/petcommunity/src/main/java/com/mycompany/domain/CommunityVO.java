@@ -16,6 +16,8 @@ public class CommunityVO {
 	private String keyWord;//검색어
 	private String searchType;//검색타입
 	private String commentCount; //댓글개수 가져오기
+
+	
 	public String getCommentCount() {
 		return commentCount;
 	}

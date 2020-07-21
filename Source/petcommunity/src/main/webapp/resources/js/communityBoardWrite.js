@@ -93,7 +93,7 @@ $(function(){
     });
     
     //셀렉트박스, 인풋박스 공백시 submit막기
-    $('#commitWrite').click(function(){
+   $('#commitWrite').click(function(){
     	if($('#cityName').val()=='-----' || $('#province').val()=='-----'){
     		alert('지역을 선택해주세요');
     	}else if($('#communityboardTitle').val()==""){

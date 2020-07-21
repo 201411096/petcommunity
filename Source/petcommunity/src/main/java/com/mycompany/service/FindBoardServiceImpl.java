@@ -43,6 +43,11 @@ public class FindBoardServiceImpl implements FindBoardService{
 	public int deleteFindBoard(FindBoardVO findBoardVO) {
 		return findBoardDAO.deleteFindBoard(findBoardVO);
 	}
+
+	@Override
+	public int updateFindBoard(FindBoardVO findBoardVO) {
+		return findBoardDAO.updateFindBoard(findBoardVO);
+	}
 	
 	
 }

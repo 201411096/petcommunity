@@ -1,15 +1,8 @@
 @charset "UTF-8";
 
 #map{
-
 	width:100%;
-	width:700px;
-	height:500px;
-	position: relative;
-	overflow: hidden;
-	margin-right: 500px;
-	margin-left: 800px;
-
+	height:700px;
 }
 
 /* 매장찾기 */
@@ -67,7 +60,6 @@
 .div_img img{
 	width:100%; 
 	height:auto;
-	/* text-align: center;
-	position: center; */
+
 }
 

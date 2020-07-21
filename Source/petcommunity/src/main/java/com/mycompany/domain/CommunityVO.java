@@ -13,9 +13,15 @@ public class CommunityVO {
 	private String communityboardReadcount;
 	private String communityboardRecommend;
 	private String memberId;
-	private String keyWord;
-	private String searchType;
-	
+	private String keyWord;//검색어
+	private String searchType;//검색타입
+	private String commentCount; //댓글개수 가져오기
+	public String getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(String commentCount) {
+		this.commentCount = commentCount;
+	}
 	public String getKeyWord() {
 		return keyWord;
 	}

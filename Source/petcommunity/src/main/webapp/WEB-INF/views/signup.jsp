@@ -122,10 +122,10 @@
 	</div>
 
 	<!-- JS -->
-	<script src="./resources/js/sh.js"></script>
+	<script src="./resources/js/signup.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
      function idCheck(){
           $.ajax({
               url : "idCheck.do",
@@ -134,7 +134,7 @@
               }
           });
      }
-</script>
+</script> -->
 <script>
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');

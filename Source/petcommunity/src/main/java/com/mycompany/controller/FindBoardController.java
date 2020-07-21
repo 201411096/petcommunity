@@ -60,7 +60,6 @@ public class FindBoardController {
 //			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
-		String path = new File(".").getCanonicalPath();
 		if (insertFlag == 1) {
 			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/");
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
@@ -109,6 +108,40 @@ public class FindBoardController {
 		findBoardService.deleteFindBoard(findBoardVO);
 		FileUpload.deleteDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId());
 		mv.setViewName("/findboardlist");
+		return mv;
+	}
+	@RequestMapping("/loadFindBoardUpdate.do")
+	public ModelAndView loadFindBoardUpdate(FindBoardVO findBoardVO, HttpServletRequest request, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		findBoardVO = findBoardService.getFindBoard(findBoardVO);
+		mv.addObject("findBoardContent", findBoardVO);
+		
+		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
+		File dir = new File(directoryPath);
+		File fileList [] = dir.listFiles();
+		ArrayList<String> fileNameList = new ArrayList<String>(); 
+		for(int i=0; i<fileList.length; i++)
+		{
+			System.out.println(fileList[i]);
+			System.out.println(fileList[i].getName());
+			fileNameList.add(fileList[i].getName());
+		}
+			
+		if(fileList.length<1)
+			mv.addObject("fileflag", -1);
+		
+		
+		mv.addObject("fileList", fileList);
+		mv.addObject("fileNameList", fileNameList);
+		mv.addObject("directoryPath", directoryPath);
+		
+		mv.setViewName("/findBoardUpdate");
+		return mv;
+	}
+	@RequestMapping("/updateFindBoard.do")
+	public ModelAndView updateFindBoard(FindBoardVO findBoardVO, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest) throws IOException{
+		ModelAndView mv = new ModelAndView();
+		
 		return mv;
 	}
 }

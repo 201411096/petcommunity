@@ -9,6 +9,15 @@ $(function() {
 			$('#findBoardWriteForm')[0].submit(); // ***** [0].submit ***** 
 		}
 	});
+	$(document).on('change', 'input.file', function(e){
+		console.log($('input.file').val());
+		if($(this).val()!=''){
+			$('#file-list').append('<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>');
+		}else{
+			$(this).parent().remove();
+			console.log('파일 비어있음');
+		}
+	});
 });
 
 function kakaoMapAPI() {

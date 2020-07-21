@@ -19,7 +19,7 @@ WHERE MEMBER_ID=#{memberId}
 </select>
 
 <select id="signin" parameterType="member" resultType="member">
-select MEMBER_ID ,MEMBER_NAME,MEMBER_FLAG from MEMBER where MEMBER_PASSWORD=#{memberPassword} and MEMBER_ID=#{memberId}
+select * from MEMBER where MEMBER_PASSWORD=#{memberPassword} and MEMBER_ID=#{memberId}
 </select>
 
 </mapper>

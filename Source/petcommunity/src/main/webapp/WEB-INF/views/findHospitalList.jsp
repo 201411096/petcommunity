@@ -98,7 +98,7 @@
 				</div></div>
 	
 			
-			<div class="table_wrap hospital_search_table map_table">
+			<div class="map_table">
 				<table class="table">
 					<caption>병원 리스트 테이블</caption>
 					<colgroup>
@@ -116,9 +116,12 @@
 				</table>
 			</div>
 
+			<div id="pagination-div">
 			<div class="col-md-offset-3" id="pagination_container">
 				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>
+			</div>
+	
 		
 	
 	<!-- Footer -->

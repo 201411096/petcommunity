@@ -9,6 +9,26 @@ $(function() {
 			$('#findBoardWriteForm')[0].submit(); // ***** [0].submit ***** 
 		}
 	});
+//	$('input.file').on('change', function(e){
+//		if($('input.file').val()!=''){
+//			$('#file-list').append('<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>');
+//		}else{
+//			$('#file-group').remove($(this).parent().parent());
+//		}
+//	});
+	$(document).on('change', 'input.file', function(e){
+		console.log($('input.file').val());
+//		if($('input.file').val()!=''){
+//			$('#file-list').append('<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>');
+//		}
+		if($(this).val()!=''){
+			$('#file-list').append('<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>');
+		}else{
+//			$('#file-group').remove($(this).parent().parent());
+			$(this).parent().remove();
+			console.log('파일 비어있음');
+		}
+	});
 });
 
 function kakaoMapAPI() {

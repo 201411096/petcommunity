@@ -74,9 +74,12 @@
 				<textarea class="form-control" rows="5" name="findboardContent"
 					placeholder="contents"></textarea>
 			</div>
-			<div class="form-group">
-				<input multiple="multiple" type="file" name="file" accept="image/gif, image/jpeg, image/png"/>
-
+			<div class="form-group" id="file-group">
+<!-- 				<input multiple="multiple" type="file" name="file" accept="image/gif, image/jpeg, image/png"/> -->
+<!-- 				<input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> -->
+				<ul class="list-group" id="file-list">
+					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>
+				</ul>
 			</div>
 			<div class="col-md-4 col-md-offset-10">
 				<span class="input-group-btn">
@@ -90,6 +93,7 @@
 	
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
-	<script src="resources/js/findboardupdate.js"></script>
+	<script src="resources/js/findboardwrite.js"></script>
+	
 </body>
 </html>

@@ -78,12 +78,15 @@
 			</div>
 			<div class="form-group" id="file-group">
 				<ul class="list-group" id="file-list">
+					<c:set var="count" value="0" scope="page" />
 					<c:forEach items="${fileNameList}" var = "fileName">
+						
 						<li class="list-group-item">
 							<a class="btn btn-default file-button">파일 삭제</a>
 							${fileName}
-							<input type="hidden" name="fileName" readonly="readonly" value="${fileName}">
+							<input type="hidden" name="filename" readonly="readonly" value="${fileName}">
 						</li>
+						<c:set var="count" value="${count + 1}" scope="page"/>
 					</c:forEach>
 					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>
 				</ul>

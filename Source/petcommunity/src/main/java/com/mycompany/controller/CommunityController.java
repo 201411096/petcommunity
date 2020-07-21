@@ -25,8 +25,8 @@ public class CommunityController {
 	// 게시판 목록보기 페이지로 넘겨준다
 	@RequestMapping("/communityBoardList.do")
 	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv) {
-		List<CommunityVO> communityBoardList = communityService.getBoardList();
-		mv.addObject("communityBoardList", communityBoardList);
+		List<CommunityVO> communityBoardList = communityService.getBoardList();//게시판 리스트 가져오기
+		mv.addObject("communityBoardList", communityBoardList);  //게시판 리스트 저장
 		mv.setViewName("communityBoardList");
 		return mv;
 	}
@@ -45,6 +45,20 @@ public class CommunityController {
 		vo.setMemberId(mvo.getMemberId());
 		communityService.writeIntoBoard(vo);
 		return "redirect:communityBoardList.do";
+	}
+	
+	// 수정 완료 후 글내용으로 되돌아가기
+	@RequestMapping("/modifyBoardContent.do")
+	public ModelAndView modifyBoardContent(CommentVO cvo, CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
+		
+		
+		System.out.println(vo.getCommunityboardId());
+		communityService.modifyBoardContent(vo);
+		//수정 완료후 글 내용으로 되돌아가기
+		mv.addObject("boardContent", communityService.getBoardContent(vo));
+		mv.addObject("boardComment", communityService.getCommentContent(cvo));
+		mv.setViewName("communityBoardContent");
+		return mv;
 	}
 
 	
@@ -118,13 +132,13 @@ public class CommunityController {
 	
 	// 게시판 글내용 가져오기
 	@RequestMapping("/getBoardContent.do")
-	public ModelAndView getBoardContent(CommunityVO vo, CommentVO svo, HttpServletRequest request, ModelAndView mv) {
+	public ModelAndView getBoardContent(CommunityVO vo, CommentVO cvo, HttpServletRequest request, ModelAndView mv) {
 		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
 		String communityboardId = request.getParameter("communityboardId");
 		vo.setCommunityboardId(communityboardId);//커뮤니티보드에 셋팅
-		svo.setCommunityboardId(communityboardId);//커멘트에 셋팅
+		cvo.setCommunityboardId(communityboardId);//커멘트에 셋팅
 		mv.addObject("boardContent", communityService.getBoardContent(vo));//해당 글 정보 가져오기
-		mv.addObject("boardComment", communityService.getCommentContent(svo));//해당글에 관련된 커멘트 가져오기
+		mv.addObject("boardComment", communityService.getCommentContent(cvo));//해당글에 관련된 커멘트 가져오기
 		communityService.addReadCount(vo); //해당 글 조회수 올리기
 		mv.setViewName("communityBoardContent");
 		return mv;
@@ -132,7 +146,7 @@ public class CommunityController {
 	
 	// 커멘트 달기
 	@RequestMapping("/writeComment.do")
-	public ModelAndView writeComment(CommentVO cvo, CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
+	public ModelAndView writeComment(CommunityVO vo, CommentVO cvo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
 		String communityboardId=request.getParameter("communityboardId");
 		System.out.println(communityboardId);
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
@@ -143,8 +157,49 @@ public class CommunityController {
 		//기존의 글로 다시 돌아감 
 		vo.setCommunityboardId(communityboardId);		
 		mv.addObject("boardContent", communityService.getBoardContent(vo));
+		mv.addObject("boardComment", communityService.getCommentContent(cvo));
 		mv.setViewName("communityBoardContent");
 		return mv;
 	}
+	
+	//게시물 지우기 
+	@RequestMapping("/communityBoardDelete.do")
+	public String communityBoardDelete(CommunityVO vo, CommentVO cvo, HttpServletRequest request) {
+		String communityboardId = request.getParameter("communityboardId");
+		vo.setCommunityboardId(communityboardId);
+		cvo.setCommunityboardId(communityboardId);
+		
+		//게시글을 지우면서 관련된 댓글까지 삭제 해야함 
+		communityService.deleteOnCommunityBoard(vo);
+		communityService.deleteBoardComment(cvo);	
+		return "redirect:communityBoardList.do";
+	}
+	//게시물 내용 수정하기페이지로 넘김
+	@RequestMapping("/communityBoardModifyPage.do")
+	public ModelAndView communityBoardModify(CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
+		String communityboardId = request.getParameter("communityboardId");
+		vo.setCommunityboardId(communityboardId);//커뮤니티보드에 셋팅
+		mv.addObject("boardContent", communityService.getBoardContent(vo));//해당 글 정보 가져오기	
+		mv.setViewName("communityBoardModify");
+		return mv;
+	}
+	//커멘트 삭제하기
+	@RequestMapping("/commentDelete.do")
+	public ModelAndView commentDelete(CommentVO cvo, CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
+		String boardcommentId = request.getParameter("boardcommentId");
+		cvo.setBoardcommentId(boardcommentId);//커뮤니티보드에 셋팅
+		communityService.commentDelete(cvo);
+		
+		//댓글 삭제 후 기존글로 돌아오기
+		String communityboardId = request.getParameter("communityboardId");
+		cvo.setCommunityboardId(communityboardId);
+		vo.setCommunityboardId(communityboardId);
+		mv.addObject("boardContent", communityService.getBoardContent(vo));
+		mv.addObject("boardComment", communityService.getCommentContent(cvo));
+		mv.setViewName("communityBoardContent");
+		return mv;
+		
+	}
+	
 
 }

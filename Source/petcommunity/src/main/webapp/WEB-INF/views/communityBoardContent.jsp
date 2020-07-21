@@ -36,29 +36,39 @@
 			<hr/>
 			
 			<div class="form-group">
-				<span id=communityContentTitle>${boardContent.communityboardContent}</span>
+				<span id=communityContentContent>${boardContent.communityboardContent}</span>
 			</div>
-			<hr/>
 			
+			<br/><br/>
 			<!-- 댓글내용 -->		
-			
+			<hr/>
 			<div class="form-group">
-				<label>댓글</label>
-				<hr/>
-				<c:forEach items="${boardComment}" var = "boardComment">		
-					<tr>
-				
-						<td>
-							${boardComment.boardcommentContent}					
-						</td>
-						<td>${boardComment.memberId}</td>
-						<td>${boardComment.boardcommentUploadtime}</td>
-					</tr>
+				<h2>댓글</h2>	
+				<hr/>			
+				<table>			
+					<c:forEach items="${boardComment}" var = "boardComment">
 							
-				</c:forEach>
-				<hr/>
-			
-				
+						<tr><td id="commentWriter">${boardComment.memberId}</td></tr>								
+						<tr><td id="commentContent">${boardComment.boardcommentContent}	</td></tr>														
+						<tr><td id="commentUploadTime">
+						${boardComment.boardcommentUploadtime}
+						<c:if test="${boardComment.memberId ne sessionScope.memberVO.memberId}">
+							<hr/>
+						</c:if>
+						</td></tr>
+						<c:if test="${boardComment.memberId eq sessionScope.memberVO.memberId}">
+							<tr><td id="commentDelete">	
+								<a href="#" class="commentDelete">수정하기</a>
+								<a href="#" class="commentDelete" id='commentDelete'>삭제하기</a>
+								<input type="hidden" id="boardcommentId" value="${boardComment.boardcommentId}">
+								<input type="hidden" id="communityboardId" value="${boardContent.communityboardId}">
+								<hr/>
+							</td></tr>
+						</c:if>
+																
+					</c:forEach>
+						
+				</table>
 			</div>			
 			
 			<form action="writeComment.do?">
@@ -80,8 +90,8 @@
 			<div class="col-xs-10 col-sm-10">	
 				<button type="button" class="btn btn-default" id='goToList'>목록보기</button>
 				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId}">
-					<button type="button" class="btn btn-default">수정하기</button>
-					<button type="button" class="btn btn-default">삭제하기</button>
+					<button type="button" class="btn btn-default" id="communityBoardModify">수정하기</button>
+					<button type="button" class="btn btn-default" id="communityBoardDelete" value="${boardContent.communityboardId}">삭제하기</button>
 				</c:if>
 				</div>	
 				<span class="input-group-btn">

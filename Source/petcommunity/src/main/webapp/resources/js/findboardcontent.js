@@ -10,6 +10,11 @@ $(function() {
 		$('#findBoardContentForm').attr('action', '/petcommunity/deleteFindBoard.do');
 		$('#findBoardContentForm')[0].submit();
 	});
+	$('#updateButton').on('click', function(){
+		$('#findBoardContentForm').attr('action', '/petcommunity/loadFindBoardUpdate.do');
+		$('#findBoardContentForm')[0].submit();
+		
+	});
 });
 
 function kakaoMapAPI() {

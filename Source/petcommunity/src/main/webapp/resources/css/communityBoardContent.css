@@ -17,3 +17,21 @@
 }
 
 
+#commentWriter{
+	font-size:12px;
+	font-weight: 700;
+}
+
+#commentUploadTime{
+	font-size:10px;
+	color : #979797;
+	
+}
+table {
+	width: 100%;
+}
+.commentDelete{
+	font-size:11px;
+}
+
+

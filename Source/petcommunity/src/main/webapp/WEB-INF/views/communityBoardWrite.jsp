@@ -66,7 +66,7 @@
 				<textarea class="form-control" rows="5" name="communityboardContent" id="communityboardContent" placeholder="contents"></textarea>
 			</div>
 			<div>
-				<button type="button" class="btn btn-default" name='imgUpload'>이미지 첨부</button>
+				<input type="file" name='file' class="btn btn-default" name='imgUpload'>이미지 첨부</button>
 			</div>
 			<div class="col-md-4 col-md-offset-10">			
 			<span class="input-group-btn">

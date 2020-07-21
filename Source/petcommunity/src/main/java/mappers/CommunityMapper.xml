@@ -11,9 +11,12 @@ VALUES(communityboard_id_seq.nextval, #{cityName}||' '||#{province}, #{community
 </insert>
 
 <select id="getBoardList" resultType="community">
-select communityboard_id, communityboard_location, communityboard_title, communityboard_content, communityboard_readcount, communityboard_recommend, member_id,
-decode(To_char(communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(communityboard_uploadtime, 'hh24:mi:ss')), (To_char(communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
-from communityboard
+select c.communityboard_id communityboard_id, c.communityboard_location communityboard_location, c.communityboard_title communityboard_title, 
+c.communityboard_content communityboard_content, c.communityboard_readcount communityboard_readcount, c.communityboard_recommend communityboard_recommend, c.member_id member_id,
+decode(To_char(c.communityboard_uploadtime, 'YYYY-MM-DD'), to_char(sysdate,'YYYY-MM-DD'), (To_char(c.communityboard_uploadtime, 'hh24:mi:ss')), (To_char(c.communityboard_uploadtime, 'YYYY-MM-DD'))) communityboard_uploadtime 
+, nvl(b.commentCount,0) commentCount
+from communityboard c, (select communityboard_id, count(boardcomment_id) commentCount from boardcomment group by communityboard_id) b
+where c.communityboard_id = b.communityboard_id(+)
 order by communityboard_id desc
 </select>  
 
@@ -59,6 +62,10 @@ order by communityboard_recommend desc
 
 <update id="addReadCount" parameterType="community">
 update communityboard set communityboard_readcount = communityboard_readcount+1 where communityboard_id=#{communityboardId}
+</update> 
+ 
+<update id="modifyBoardContent" parameterType="community">
+update communityboard set communityboard_title = #{communityboardTitle}, communityboard_content = #{communityboardContent} where communityboard_id=#{communityboardId}
 </update>  
 
 
@@ -71,7 +78,21 @@ VALUES (BOARDCOMMENT_ID_SEQ.nextval, #{boardcommentContent}, SYSDATE, #{memberId
 select boardcomment_id, boardcomment_content, boardcomment_uploadtime, member_id, communityboard_id
 from boardcomment
 where communityboard_id=#{communityboardId}
+order by boardcomment_uploadtime desc
 </select>
+
+<delete id="deleteOnCommunityBoard" parameterType="community">
+	delete from communityboard where communityboard_id=#{communityboardId}
+</delete>
+
+<delete id="deleteBoardComment" parameterType="comment">
+	delete from communityboard where communityboard_id=#{communityboardId}
+</delete>
+
+<delete id="commentDelete" parameterType="comment">
+	delete from boardcomment where boardcomment_id=#{boardcommentId}
+</delete>
+
 
 
 </mapper>

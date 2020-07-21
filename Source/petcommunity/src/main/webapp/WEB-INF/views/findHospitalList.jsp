@@ -6,67 +6,74 @@
 <html>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="resources/css/findHospitalList.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="./resources/css/findHospitalList.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/findHospital.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 
 <title>게시판</title>
 </head>
 <body>
+<div class="container">
+	<header>
+			<h1>병원 찾기</h1>
+	</header>
+	<hr/>
 
-	<div id="container" >
-		<section id="contents"  class="hospital_contents">
-			<h2 class="cont_tit t_center">병원찾기</h2>
-			<form name="searchform" onsubmit="return false;">
-			<div class="hospital_search">
-			<input type="hidden" name="ex" value="Hospital" />
-			<input type="hidden" name="ac" value="selectHospital" />
-			<input type="hidden" name="sPage" value="1" />
+			<!-- 도시 고를 수 있는 셀렉트박스 -->
+		<section id="container">	
+			<div class="col-xs-0 col-sm-2">
+				<ul>
+					<li>
+						<p><label class="radio"><input name="sGubun" type="radio" checked value="0" ><span class="lbl">지역별 검색</span></label></p>
+							<select class="form-control" id='cityName' name ='cityName'>
+								<option >시/도</option>
+								<option >서울</option>
+								<option >인천</option>
+								<option >대전</option>
+								<option >광주</option>
+								<option >울산</option>
+								<option >대구</option>
+								<option >부산</option>
+								<option >세종</option>
+								<option >경기</option>
+								<option >강원</option>
+								<option >충북</option>
+								<option >충남</option>
+								<option >전북</option>
+								<option >전남</option>
+								<option >경북</option>
+								<option >경남</option>
+								<option >제주</option>
+							</select>
+			</div>
+			<div class="col-xs-0 col-sm-2">
+				<select class="form-control" id='province' name ='province'>
+					<option >구/군</option>					
+				</select>
+			</div>
 			
-			<input type="hidden" name="lat" id="lat" value="" />
-			<input type="hidden" name="lng" id="lng" value="" />
+			<div class="col-xs-0 col-sm-2">
+				<a href="" class="btn_mid btn_blk btn_search search_sel">검색</a>
+			</div>
+				</li>
+						<li>
+							<p><label class="radio"><input name="sGubun" type="radio" value="1" ><span class="lbl">병원명 검색</span></label></p>
+							<p class="name_search"><input type="text" name="sText" id="sText" value=""><a href="#" class="btn_mid btn_blk btn_search search_txt">검색</a></p>
+						</li></ul></div></div></form>
+							
+
+
+<!-- 
 				<div class="hospital_search_area">
 					<ul>
 						<li>
 							<p><label class="radio"><input name="sGubun" type="radio" checked value="0" ><span class="lbl">지역별 검색</span></label></p>
 							<p class="area_search">
-								<span>
-									<select name="sSelsi" id="sSelsi">
-										<option value="">시/도</option>
-										<option value="서울특별시">서울특별시</option>
-										<option value="경기도">경기도</option>
-										<option value="인천광역시">인천광역시</option>
-										<option value="강원도">강원도</option>
-										<option value="충청남도">충청남도</option>
-										<option value="대전광역시">대전광역시</option>
-										<option value="충청북도">충청북도</option>
-										<option value="세종특별자치시">세종특별자치시</option>
-										<option value="부산광역시">부산광역시</option>
-										<option value="울산광역시">울산광역시</option>
-										<option value="대구광역시">대구광역시</option>
-										<option value="경상북도">경상북도</option>
-										<option value="경상남도">경상남도</option>
-										<option value="전라남도">전라남도</option>
-										<option value="광주광역시">광주광역시</option>
-										<option value="전라북도">전라북도</option>
-										<option value="제주도">제주도</option>
-									</select>
-								</span>
-								
-								<span>
-									<select name="sSelgu" id="sSelgu">
-										<option value="">구/군</option>
-											<option value="강남구">강남구</option>
-											
-										
-									</select>
-								</span>
 								<a href="" class="btn_mid btn_blk btn_search search_sel">검색</a>
 							</p>
 						</li>
@@ -78,12 +85,17 @@
 				</div>
 			</div>
 			</form>
+			
+		 -->	
+			
 			<!-- 병원 리스트 맵 영역 -->
-			<div id="hospital_map" class="hospital_map" style="position: relative; overflow: hidden; background: url("http://t1.daumcdn.net/mapjsapi/images/bg_tile.png");">
+			<div class="hospital_map">
+			
+				<div id="map">
 				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  -->
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services"></script>
-				<script src="resources/js/findHospital.js"></script>
-			</div>
+				
+				</div></div>
 	
 			
 			<div class="table_wrap hospital_search_table map_table">
@@ -107,15 +119,11 @@
 			<div class="col-md-offset-3" id="pagination_container">
 				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>
-		</section>
-	</div>
-	
+		
 	
 	<!-- Footer -->
 	
-
-</body>
-</html>
+	</section></div></body></html>
 
 
 <%--
@@ -131,12 +139,5 @@
 					</div>
 					</div>
 
-	<div id="map">
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services"></script>
-	<script src="resources/js/findHospital.js"></script>
-	</div></div></br></br>
-</body>
-</html>
 
 --%>

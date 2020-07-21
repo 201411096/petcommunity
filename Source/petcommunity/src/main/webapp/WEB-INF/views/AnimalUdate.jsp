@@ -9,7 +9,12 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <title>Sign Up Form by Colorlib</title>
-
+<% String animalId =(String)request.getParameter("animalId"); %>
+<% String animalName =(String)request.getParameter("animalName"); %>
+<% String animalBirthday =(String)request.getParameter("animalBirthday"); %>
+<% String name =(String)request.getParameter("animalName"); %>
+<% String animalGender =(String)request.getParameter("animalGender"); %>
+<% String animalFeature =(String)request.getParameter("animalFeature"); %>
 <!-- Font Icon -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
@@ -38,18 +43,19 @@
 						<c:if test="${0 eq result}">
 							<input type="hidden" id="result" value='${msg}' />
 						</c:if>
-						<h2 class="form-title">반려동물 등록</h2>
+						<h2 class="form-title">반려동물정보 수정</h2>
 						<form action="animalinsert.do" method="POST" class="register-form"
 							id="register-form">
+							<input type="hidden" name="animalId" value="<%=animalId%>"/>
 							<div class="form-group">
 								<label for="animalName"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="animalName" id="animalName" placeholder="반려동물 이름"
+									type="text" name="animalName" id="animalName" value="<%= animalName %>"
 									/>
 							</div>
 							
 								<div class="form-group">
-
+									
 									<label for="animalGender">암컷</label> <input type="radio"
 										name="animalGender" id="animalGender" value="암컷" />
 								</div>
@@ -67,7 +73,7 @@
 
 								<div class="form-group">
 									<textarea name="animalFeature" id="animalFeature" cols="53"
-										rows="10" placeholder="반려동물 특징"></textarea>
+										rows="10" ><%= animalFeature %></textarea>
 								</div>
 								<div class="form-group form-button">
 									<input type="submit" name="animalIn" id="animalIn"

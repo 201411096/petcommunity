@@ -17,7 +17,6 @@ public class AnimalDAOImpl implements AnimalDAO {
 	private SqlSessionTemplate mybatis;
 	@Override
 	public int animalinsert(AnimalVO vo,MemberVO mvo) {
-
 		int a=mybatis.insert("animal.animalinsert",vo);
 		HashMap map = new HashMap();
 		map.put("animalId", vo.getAnimalId());
@@ -29,6 +28,11 @@ public class AnimalDAOImpl implements AnimalDAO {
 	@Override
 	public List<AnimalVO> animalSelect(MemberVO mvo) {
 		return mybatis.selectList("animal.animalselect",mvo);
+	}
+	@Override
+	public int animalDelete(AnimalVO vo) {
+		
+		return mybatis.delete("animal.animalDelete",vo);
 	}
 	
 	

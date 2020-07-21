@@ -27,6 +27,7 @@ public class AnimalController {
 		 * System.out.println(vo.getAnimalBirthday()+vo.getAnimalGender()+vo.
 		 * getAnimalFeature()+vo.getAnimalName());
 		 */
+		 
 		HttpSession session = req.getSession();
 		MemberVO mvo=(MemberVO) session.getAttribute("memberVO");
 		
@@ -58,6 +59,24 @@ public class AnimalController {
 		
 	}
 	
+	
+	//반려동물 정보 삭제 
+	@RequestMapping(value="animalDelete.do")
+	public String animalDelete(AnimalVO vo) {
+		animalService.animalDelete(vo);
+		return "redirect:/mypageselect.do";
+	}
+	
 
+/*	//반려동물 정보 수정
+	@RequestMapping(value="updateAnimal.do")
+	public String animalUpdate(AnimalVO vo) {
+		
+		 * System.out.println(vo.getAnimalBirthday()+vo.getAnimalFeature()+vo.
+		 * getAnimalGender()+ vo.getAnimalId()+vo.getAnimalName());
+		 
+		return null;
+		
+	}*/
 	
 }

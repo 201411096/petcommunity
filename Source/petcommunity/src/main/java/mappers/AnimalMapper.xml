@@ -26,4 +26,9 @@ values(RAISE_ID_SEQ.nextval,#{memberId},${animalId})
 select a.ANIMAL_ID ANIMAL_ID ,a.ANIMAL_NAME ANIMAL_NAME ,a.ANIMAL_BIRTHDAY ANIMAL_BIRTHDAY ,a.ANIMAL_GENDER ANIMAL_GENDER,a.ANIMAL_FEATURE ANIMAL_FEATURE 
 from animal a,member m ,raise r where a.ANIMAL_ID=r.ANIMAL_ID and m.MEMBER_ID=r.MEMBER_ID and m.MEMBER_ID=#{memberId}
 </select>
+
+
+<delete id="animalDelete" parameterType="animal">
+	delete from animal where ANIMAL_ID = #{animalId}
+</delete>
 </mapper>

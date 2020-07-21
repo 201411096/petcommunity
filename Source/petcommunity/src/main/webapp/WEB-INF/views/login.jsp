@@ -59,8 +59,17 @@
     </div>
 
     <!-- JS -->
+    <script
+		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/jquery.slicknav.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
     <script src="./resources/js/signup.js"></script>
-    <script src="vendor/jquery/jquery-ui.min.js"></script>
     <script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

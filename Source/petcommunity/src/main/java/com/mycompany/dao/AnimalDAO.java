@@ -9,4 +9,6 @@ public interface AnimalDAO {
 	public int animalinsert(AnimalVO vo,MemberVO mvo);
 	
 	public List<AnimalVO> animalSelect(MemberVO mvo);
+	
+	public int animalDelete(AnimalVO vo);
 }

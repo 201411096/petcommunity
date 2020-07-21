@@ -1,6 +1,8 @@
 var latitude = -1;
 var longitude = -1;
 $(function() {
+	latitude = $('#findboardX').val(); 
+	longitude = $('#findboardY').val(); 
 	kakaoMapAPI();
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
@@ -9,12 +11,24 @@ $(function() {
 			$('#findBoardWriteForm')[0].submit(); // ***** [0].submit ***** 
 		}
 	});
+	$(document).on('change', 'input.file', function(e){
+		console.log($('input.file').val());
+		if($(this).val()!=''){
+			$('#file-list').append('<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>');
+		}else{
+			$(this).parent().remove();
+			console.log('파일 비어있음');
+		}
+	});
+	$('a.file-button').on('click', function(){
+		$(this).parent().remove();
+	});
 });
 
 function kakaoMapAPI() {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
-		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+		center : new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
 		level : 7 // 지도의 확대 레벨
 	};
 
@@ -23,7 +37,7 @@ function kakaoMapAPI() {
 	// 지도를 클릭한 위치에 표출할 마커입니다
 	var marker = new kakao.maps.Marker({ 
 	    // 지도 중심좌표에 마커를 생성합니다 
-	    //position: map.getCenter() 
+	    position: map.getCenter() 
 	});
 	
 	// 지도에 마커를 표시합니다

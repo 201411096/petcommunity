@@ -59,7 +59,7 @@
     </div>
 
     <!-- JS -->
-    <script src="./resources/js/sh.js"></script>
+    <script src="./resources/js/signup.js"></script>
     <script src="vendor/jquery/jquery-ui.min.js"></script>
     <script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->

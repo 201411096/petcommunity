@@ -66,7 +66,7 @@
 	</div>
 
 	<!-- JS -->
-	<script src="./resources/js/sh.js"></script>
+	<script src="./resources/js/mypage.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 
 </body>

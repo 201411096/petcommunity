@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
+import com.mycompany.domain.StringListVO;
 import com.mycompany.service.FindBoardServiceImpl;
 import com.mycompany.util.FileUpload;
 
@@ -122,8 +123,6 @@ public class FindBoardController {
 		ArrayList<String> fileNameList = new ArrayList<String>(); 
 		for(int i=0; i<fileList.length; i++)
 		{
-			System.out.println(fileList[i]);
-			System.out.println(fileList[i].getName());
 			fileNameList.add(fileList[i].getName());
 		}
 			
@@ -138,10 +137,24 @@ public class FindBoardController {
 		mv.setViewName("/findBoardUpdate");
 		return mv;
 	}
-	@RequestMapping("/updateFindBoard.do")
-	public ModelAndView updateFindBoard(FindBoardVO findBoardVO, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest) throws IOException{
-		ModelAndView mv = new ModelAndView();
+	@RequestMapping(value="/updateFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
+	public ModelAndView updateFindBoard(FindBoardVO findBoardVO, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest, String [] filename) throws IOException{
+		ModelAndView mv = new ModelAndView();		
+		if(session.getAttribute("memberVO")!=null) {
+			findBoardVO.setMemberId( ((MemberVO)session.getAttribute("memberVO")).getMemberId() ); //로그인 되어있는 상태면 memberId값 세팅
+			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
+			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
+		}
+		//filename : 이미 올라가 있는 파일 중 삭제 되지 않은 파일
+		//System.out.println(filename.length);
 		
+		int updateFlag = findBoardService.updateFindBoard(findBoardVO);
+		if(updateFlag==1) {
+			FileUpload.deleteFileWithoutList(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId(), filename);
+			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/" + findBoardVO.getFindboardId() + "/");
+		}
+			
+		mv.setViewName("/findboardlist");
 		return mv;
 	}
 }

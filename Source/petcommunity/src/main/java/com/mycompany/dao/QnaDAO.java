@@ -8,4 +8,5 @@ public interface QnaDAO {
 	public int insertQna(QnaVO qnavo);
 	public List<QnaVO> selectQnaList(QnaVO qnavo);
 	public QnaVO selectOne(QnaVO qnavo);
+	public int updateQna(QnaVO qnavo);
 }

@@ -1,6 +1,8 @@
 package com.mycompany.util;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -76,6 +78,37 @@ public class FileUpload {
 					folder_list[i].delete();
 				}
 				folder.delete(); // 폴더 삭제
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+	}
+	public static void deleteFileWithoutList(String path, String [] fileNameList) {
+		File folder = new File(path);
+		ArrayList<String> fileNameArrayList = null;
+		if(fileNameList!=null)
+			fileNameArrayList = new ArrayList<String>(Arrays.asList(fileNameList));
+		else {
+			// 살려야 되는 파일 목록이 하나도 없을 경우
+			if (folder.exists()) {
+				File[] fileListInDirectory = folder.listFiles(); // 파일리스트 얻어오기
+				for(int i=0; i<fileListInDirectory.length; i++) {
+					fileListInDirectory[i].delete(); // fileNameList에 포함되어 있지 않은 파일을 삭제함	
+				}
+			}
+			return;
+		}
+		try {
+			//살려야 되는 파일 목록이 있는 경우
+			if (folder.exists()) {
+				File[] fileListInDirectory = folder.listFiles(); // 파일리스트 얻어오기
+				for(int i=0; i<fileListInDirectory.length; i++) {
+//					System.out.println(fileListInDirectory[i].getName());
+					if(!fileNameArrayList.contains(fileListInDirectory[i].getName())){
+						fileListInDirectory[i].delete(); // fileNameList에 포함되어 있지 않은 파일을 삭제함
+					}
+						
+				}
 			}
 		} catch (Exception e) {
 			e.getStackTrace();

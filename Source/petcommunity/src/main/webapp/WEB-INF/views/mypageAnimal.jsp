@@ -17,8 +17,10 @@
 <!-- Main css -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/style.css">
-
-
+<link rel="stylesheet"
+	href="./resources/css/mypage.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 </head>
 <body>
 
@@ -40,40 +42,37 @@
 						<form action="animalinsert.do" method="POST" class="register-form"
 							id="register-form">
 							<div class="form-group">
-								<label for="name"><i
+								<label for="animalName"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
-									type="text" name="animalName" id="memberName"
-									placeholder="반려동물 이름" />
+									type="text" name="animalName" id="animalName" placeholder="반려동물 이름"
+									/>
 							</div>
+							
+								<div class="form-group">
 
-							<div class="form-group">
+									<label for="animalGender">암컷</label> <input type="radio"
+										name="animalGender" id="animalGender" value="암컷" />
+								</div>
 
-								<label for="animalGender">암컷</label> <input type="radio"
-									name="animalGender" id="animalGender" value="female" />
-							</div>
+								<div class="form-group">
+									<label for="animalGender2">수컷</label> <input type="radio"
+										name="animalGender" id="animalGender2" value="수컷" />
 
-							<div class="form-group">
-								<label for="animalGender2">수컷</label> <input type="radio"
-									name="animalGender" id="animalGender2" value="male" />
+								</div>
 
-							</div>
+								<div class="form-group">
+									<span><i class="zmdi zmdi-face"></i>&nbsp;반려동물 생일</span> <input
+										type="date" name="animalBirthday" id="animalBirthday" />
+								</div>
 
-							<div class="form-group">
-								<span><i class="zmdi zmdi-face"></i>반려동물 생일</span> <input
-									type="date" name="animalBirthday" id="animalBirthday" />
-							</div>
-
-							<div class="form-group">
-								<textarea name="animalFeature" id="animalFeature" cols="53"
-									rows="10" placeholder="반려동물 특징"></textarea>
-
-							</div>
-
-							<div class="form-group form-button">
-								<input type="submit" name="signup" id="signup"
-									class="form-submit" value="등록" />
-							</div>
-
+								<div class="form-group">
+									<textarea name="animalFeature" id="animalFeature" cols="53"
+										rows="10" placeholder="반려동물 특징"></textarea>
+								</div>
+								<div class="form-group form-button">
+									<input type="submit" name="animalIn" id="animalIn"
+										class="form-submit" value="등록" />
+								</div>
 						</form>
 					</div>
 
@@ -84,9 +83,18 @@
 	</div>
 
 	<!-- JS -->
-	<script src="./resources/js/sh.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/jquery.slicknav.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
-
+	<script src="./resources/js/mypage.js"></script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

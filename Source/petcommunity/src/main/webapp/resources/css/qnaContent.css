@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+#title {
+	color: gray;
+
+}
+
+#content-content {
+	text-align: center;
+	padding-bottom: 50px;
+}
+
+#listButton {
+	float: left;
+}
+
+table {
+	width : 60%;
+	margin-left: 20%;
+}
+
+#lineStyle {
+	border: 0;
+    height: 1px;
+    background: #ccc;
+}
+
+#modi {
+	text-align: right;
+}
+
+
+
+
+
+
+
+
+

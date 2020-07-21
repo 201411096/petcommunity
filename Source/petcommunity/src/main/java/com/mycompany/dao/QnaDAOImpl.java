@@ -29,6 +29,12 @@ public class QnaDAOImpl implements QnaDAO {
 	public QnaVO selectOne(QnaVO qnavo) {
 		return mybatis.selectOne("qnaDAO.selectOne", qnavo);
 	}
+
+
+	@Override
+	public int updateQna(QnaVO qnavo) {
+		return mybatis.update("qnaDAO.update", qnavo);
+	}
 	
 
 

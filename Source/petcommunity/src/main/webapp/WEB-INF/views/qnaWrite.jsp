@@ -31,20 +31,14 @@
 			<br/><br/>
 			<div class="form-group">
 				<label>글 제목</label> 
-				<input type="text" class="form-control" name="questionboardTitle" id="questionboardTitle" placeholder="title">
+				<input type="text" class="form-control" name="questionboardTitle" id="questionboardTitle" placeholder="title">${qnaContent.questionboardTitle }
 			</div>
 			<div class="form-group">
 				<label>글 내용</label>
-					<input type="text" class="form-control" name="questionboardContent" id="questionboardContent" placeholder="contents">
-<!-- 				<textarea class="form-control" rows="5" name="questionboardContent" id="questionboardContent" placeholder="contents"></textarea> -->
+				<textarea class="form-control" rows="5" name="questionboardContent" id="questionboardContent" placeholder="contents">${qnaContent.questionboardContent}</textarea>
 			</div>
-<!-- 			<input type="hidden" name="questionboardId" id="questionboardId" value="0"> -->
-<!-- 			<input type="hidden" name="questionboardGroupId" id="questionboardGroupId" value="0"> -->
-<!-- 			<input type="hidden" name="questionboardUploadtime" id="questionboardUploadtime" value="0"> -->
-<!-- 			<input type="hidden" name="questionboardReadcount" id="questionboardReadcount" value="0"> -->
-<!-- 			<input type="hidden" name="memberId" id="memberId" value="0"> -->
-			
-			
+
+			<input type="hidden" name="questionboardReadcount" id="questionboardReadcount" value="0">
 			<div class="col-md-4 col-md-offset-10">			
 			<span class="input-group-btn">
 				<input>

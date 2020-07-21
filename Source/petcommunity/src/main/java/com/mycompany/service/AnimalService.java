@@ -10,4 +10,8 @@ public interface AnimalService {
 	public int animalinsert(AnimalVO vo, MemberVO mvo);
 	
 	public List<AnimalVO> animalSelect(MemberVO mvo);
+	
+	public int animalDelete(AnimalVO vo);
+	
+	public int animalUpdate(AnimalVO vo);
 }

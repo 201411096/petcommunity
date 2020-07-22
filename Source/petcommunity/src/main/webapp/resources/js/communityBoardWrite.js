@@ -94,7 +94,7 @@ $(function(){
     
     //셀렉트박스, 인풋박스 공백시 submit막기
    $('#commitWrite').click(function(){
-    	if($('#cityName').val()=='-----' || $('#province').val()=='-----'){
+    	if($('#cityName').val()=='시/도' || $('#province').val()=='구/군'){
     		alert('지역을 선택해주세요');
     	}else if($('#communityboardTitle').val()==""){
     		alert('제목을 입력해주세요');

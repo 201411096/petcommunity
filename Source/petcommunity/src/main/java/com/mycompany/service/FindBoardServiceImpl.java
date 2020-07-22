@@ -48,6 +48,11 @@ public class FindBoardServiceImpl implements FindBoardService{
 	public int updateFindBoard(FindBoardVO findBoardVO) {
 		return findBoardDAO.updateFindBoard(findBoardVO);
 	}
+
+	@Override
+	public List<String> selectString(Map map) {
+		return findBoardDAO.selectString(map);
+	}
 	
 	
 }

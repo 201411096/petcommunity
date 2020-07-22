@@ -28,6 +28,7 @@
 			<!-- 글내용 -->
 			<br/><br/><hr/>
 			<div class="form-group">
+				<input type="hidden" id="forRecommend" value="${boardContent.communityboardId}">
 				<span id=communityContentTitle>${boardContent.communityboardLocation}</span>
 				<h2>${boardContent.communityboardTitle}</h2>
 				<div id=communityContentWriter>${boardContent.memberId} <br/></div>
@@ -43,6 +44,10 @@
 			</div>
 			
 			<br/><br/>
+			<c:if test="${not empty sessionScope.memberVO}">
+				<a href='#'><img src='resources/imgs/communityboard/like/like.PNG' id='like'></a>
+				<span class='text-primary' id='recommendToContent'>추천</span>
+			</c:if>
 			<!-- 댓글내용 -->		
 			<hr/>
 			<div class="form-group">

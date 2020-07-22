@@ -28,4 +28,10 @@ public class ShopServiceImpl implements ShopService{
 	public List<ShopVO> selectShopCategoryList(Map searchMap) {
 		return shopDAO.selectShopCategoryList(searchMap);
 	}
+
+
+	@Override
+	public List<ShopVO> selectSearchKeyWordList(Map searchKeyWord) {
+		return shopDAO.selectSearchKeyWordList(searchKeyWord);
+	}
 }

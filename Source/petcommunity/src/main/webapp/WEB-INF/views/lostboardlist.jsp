@@ -61,10 +61,12 @@
 							</span>	
 							<span class="input-group-btn">
 								<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-							</span> 
+							</span>
+							<c:if test="${not empty sessionScope.memberVO}"> 
 							<span class="input-group-btn">
 								<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button>
 							</span>
+							</c:if>
 						</div>
 					</div>
 				</div>

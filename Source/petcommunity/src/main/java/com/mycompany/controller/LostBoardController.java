@@ -39,18 +39,12 @@ public class LostBoardController {
 		searchMap.put("searchType", searchType);
 		searchMap.put("searchWord", searchWord);
 		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
-		for(int i=0; i<lostBoardVOList.size(); i++) {
-			System.out.println(lostBoardVOList.get(i).getMemberId());
-		}
+		
 		PaginationVO paginationVO = new PaginationVO(lostBoardVOList.size(), curPage);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 				
 		lostBoardVOList = lostBoardService.selectLostBoardWithPaging(searchMap);
-		
-		for(int i=0; i<lostBoardVOList.size(); i++) {
-			System.out.println(lostBoardVOList.get(i).getMemberId());
-		}
 		
 		result.put("pagination", paginationVO);
 		result.put("lostBoardVOList", lostBoardVOList);

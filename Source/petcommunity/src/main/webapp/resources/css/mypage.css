@@ -138,3 +138,10 @@ width: 50%;
   .animal-submit:hover {
     background: #4292dc; }
   
+  
+ .imgAnimal{
+ border : 2px solid #47464d;
+ -webkit-border-radius: 75px;
+  -moz-border-radius: 75px;
+  border-radius: 75px
+ }

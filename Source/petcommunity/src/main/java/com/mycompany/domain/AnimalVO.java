@@ -7,7 +7,21 @@ public class AnimalVO {
 	private String animalBirthday;
 	private String animalGender;
 	private String animalFeature;
+	private String dateBirthday;
+	private String imgAnimal;
 	
+	public String getImgAnimal() {
+		return imgAnimal;
+	}
+	public void setImgAnimal(String imgAnimal) {
+		this.imgAnimal = imgAnimal;
+	}
+	public String getDateBirthday() {
+		return dateBirthday;
+	}
+	public void setDateBirthday(String dateBirthday) {
+		this.dateBirthday = dateBirthday;
+	}
 	public int getAnimalId() {
 		return animalId;
 	}

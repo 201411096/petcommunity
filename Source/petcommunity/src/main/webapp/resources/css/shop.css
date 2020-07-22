@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-
+#ul-div{
+	text-align: center;
+}
 #pagination-div{
 	text-align: center;
 	display: relative;
@@ -22,6 +24,13 @@
 } */
 #locationTag{
 	color : skyblue;
+}
+#searchDiv{
+	width:94%;
+}
+#searchBar{
+	width:200px;
+	float:right;
 }
 
 /* #searchBtn{

@@ -26,7 +26,6 @@
 		<br /> <br />
 		<form action="/petcommunity/updateFindBoard.do" method='post'
 			enctype='multipart/form-data' id="findBoardWriteForm">
-<!-- 				<form action="/petcommunity/insertFindBoard.do" method='post'> -->
 			<!-- 글쓰기 -->
 			<br /> <br />
 			<div class="form-group">

@@ -40,6 +40,12 @@ public class QnaDAOImpl implements QnaDAO {
 	public void updateReadcount(QnaVO qnavo) {
 		mybatis.update("qnaDAO.updateReadcount", qnavo);
 	}
+
+
+	public void delete(QnaVO qnavo) {
+		mybatis.delete("qnaDAO.delete", qnavo);
+		
+	}
 	
 
 

@@ -114,6 +114,19 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper dislikeContent() 호출");
 		mybatis.delete("communityDAO.dislikeContent", vo);		
 	}
+
+	@Override
+	public List<CommunityVO> communityBoardListByPaging(CommunityVO vo) {
+		System.out.println("===>  CommunityMapper communityBoardListByPaging() 호출");
+		return mybatis.selectList("communityDAO.communityBoardListByPaging", vo);
+	}
+
+	@Override
+	public List<CommunityVO> communityBoardListBySearchPaging(CommunityVO vo) {
+		System.out.println("===>  CommunityMapper communityBoardListBySearchPaging() 호출");
+		return mybatis.selectList("communityDAO.communityBoardListBySearchPaging", vo);
+		
+	}
 	
 	
 }

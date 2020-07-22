@@ -107,8 +107,12 @@ $(function(){
     						trPrefix +
     						tdPrefix + data[i].communityboardId + tdSuffix + 
     						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data[i].communityboardId+'>'+
-    						"[<span id='locationTag'>"+data[i].communityboardLocation+"</span>]"
-    						+ data[i].communityboardTitle +'</a>' + tdSuffix +
+    						"[<span id='locationTag' class='text-dark'>"+data[i].communityboardLocation+"</span>]"
+    						+ data[i].communityboardTitle  +
+    						'<span class="text-warning">'+
+    						'['+data[i].commentCount+']'+
+    						'</span>' +
+    						'</a>' + tdSuffix +
     						tdPrefix + data[i].memberId + tdSuffix +
     						tdPrefix + data[i].communityboardUploadtime + tdSuffix +
     						tdPrefix + data[i].communityboardRecommend + tdSuffix +
@@ -140,7 +144,15 @@ $(function(){
     
 
     
-    
+    var curPage;
+    var defaultOpts = {
+    	visiblePages : 10,
+        onPageClick: function (event, page) {
+            $('#page-content').text('Page ' + page);
+            curPage=page;
+            getDataInPaging();
+        }
+    };
     
     var cities=["서울","인천","대전","광주","대구","울산","부산","세종","경기","강원","충북","충남","전북","전남","경북","경남","제주"];
     var seoul = ["종로구","중구","용산구","성동구","광진구","동대문구","중랑구","성북구","강북구","도봉구","노원구","은평구","서대문구","마포구"
@@ -161,9 +173,7 @@ $(function(){
     var kyungbuk = ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시"];
     var kyungnam = ["창원시","김해시","양산시","진주시","거제시","통영시","사천시","밀양시"];
     var jeju = ["제주시","서귀포시"];
-    
-  
- 
+
     $('#hiddenBox').hide();
     $('#showBy').change(function(){
     	
@@ -235,7 +245,68 @@ $(function(){
     		window.location.href='/petcommunity/communityBoardList.do';
     	}
     });
+    
+    //검색버튼 클릭
+    $('#searchBtn').click( function(){
+    	$.ajax({
+			type : 'post',
+			async:true,
+			url : '/petcommunity/getBoardListBySearch.do',
+			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+			data:{"searchWord" : $('#keywordInput').val(),
+				"searchType" : $('#type').val(),
+				"curPage" : curPage
+				},
+			dataType : 'json',
+			success : function(resultData){		
+					searchTable(resultData);
+					$('#NormalPaging').empty();
+					 var totalPages = resultData.pagination.pageCnt;
+			            var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
+			            $('#pagination-demo').twbsPagination('destroy');
+			            $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+			                startPage: currentPage,
+			                totalPages: totalPages
+			            }));
+			},
+			error:function(request,status,error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+			
+		});
+    });
+    function searchTable(data){
+    	
+    	$('#communityList').empty();
+    	$('#communityHide').empty();
+    	$('#getBoardPaging').empty();
+    	var trPrefix = '<tr>';
+    	var trSuffix = '</tr>';
+    	var tdPrefix = '<td>';
+    	var tdSuffix = '</td>';
+    	for(var i in data.communityBoardListBySearch){
+    		
+    		var listContent = 
+    						trPrefix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardId + tdSuffix + 
+    						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data.communityBoardListBySearch[i].communityboardId+'>'+
+    						"[<span id='locationTag' class='text-dark'>"+data.communityBoardListBySearch[i].communityboardLocation+"</span>]"
+    						+ data.communityBoardListBySearch[i].communityboardTitle  +
+    						'<span class="text-warning">'+
+    						'['+data.communityBoardListBySearch[i].commentCount+']'+
+    						'</span>' +
+    						'</a>' + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].memberId + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardUploadtime + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardRecommend + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardReadcount + tdSuffix +
+    						trSuffix;
+    		
+    		$('#communityList').append(listContent);
+    	}
+    }
    
+    
     $('#cityName').change(
         selectProvince
      )
@@ -253,7 +324,38 @@ $(function(){
     		getListByCategory();
     	}
     );
-    	
+    
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null){
+           return 1;
+        }
+        else{
+           return results[1]||0;
+        }
+    }
+
+
+    
+    
+   $('#prevPage').click(function(){
+    	var pageNo=Number($.urlParam('pageNo'));
+    	if(pageNo==1){
+    		alert('첫번째 페이지입니다');
+    	}else{
+    		window.location.href='/petcommunity/communityBoardList.do?pageNo='+Number(pageNo-5);
+    	}    	
+    });
+    $('#nextPage').click(function(){
+    	var pageNo=Number($.urlParam('pageNo'));
+    	window.location.href='/petcommunity/communityBoardList.do?pageNo='+Number(pageNo+5);
+    });
+    
+    jQuery('#document_navi').jaPageNavigator({
+        page_row : "10" // 보여질 게시물 목록 수
+      , page_link : "10" // 보여질 페이지 링크 수
+      , total_count : "500" // 게시물 총 수
+    });
     		
     		
     

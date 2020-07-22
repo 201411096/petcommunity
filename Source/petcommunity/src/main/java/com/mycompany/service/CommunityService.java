@@ -9,6 +9,7 @@ import com.mycompany.domain.CommunityVO;
 public interface CommunityService {
 	public int writeIntoBoard(CommunityVO vo);
 	public List<CommunityVO> getBoardList();
+	public List<CommunityVO> communityBoardListByPaging(CommunityVO vo);
 	public CommunityVO getBoardContent(CommunityVO vo);
 	public List<CommunityVO> getBoardListBySearch(CommunityVO vo);
 	public List<CommunityVO> getBoardListByLocation(CommunityVO vo);
@@ -23,4 +24,5 @@ public interface CommunityService {
 	public void commentDelete(CommentVO vo);
 	public void likeContent(CommunityVO vo);
 	public void dislikeContent(CommunityVO vo);
+	public List<CommunityVO> communityBoardListBySearchPaging(CommunityVO vo);
 }

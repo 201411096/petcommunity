@@ -95,6 +95,16 @@ public class CommunityServiceImpl implements CommunityService{
 		communityDAO.dislikeContent(vo);	
 	}
 
+	@Override
+	public List<CommunityVO> communityBoardListByPaging(CommunityVO vo) {	
+		return communityDAO.communityBoardListByPaging(vo);
+	}
+
+	@Override
+	public List<CommunityVO> communityBoardListBySearchPaging(CommunityVO vo) {
+		return communityDAO.communityBoardListBySearchPaging(vo);
+	}
+
 	
 	
 }

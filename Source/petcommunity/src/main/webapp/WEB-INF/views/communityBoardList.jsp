@@ -9,7 +9,6 @@
 		<!-- 부가적인 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./resources/css/communityBoardList.css"/>
-	
 		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	 	<script src="resources/js/communityBoardList.js"  type="text/javascript"></script>
@@ -65,11 +64,17 @@
 										<span class="text-warning">[${communityBoardList.commentCount}]</span>
 									</c:if> 
 									</a>
+									<c:forEach items="${checkImg}" var = "checkImg">
+										<c:if test="${checkImg eq communityBoardList.communityboardId}">
+											<img src='resources/imgs/communityboard/like/image.PNG'>
+										</c:if>
+									</c:forEach>
 								</td>
 								<td>${communityBoardList.memberId}</td>
 								<td>${communityBoardList.communityboardUploadtime}</td>
 								<td>${communityBoardList.communityboardRecommend}</td>
 								<td>${communityBoardList.communityboardReadcount}</td>
+							
 							</tr>
 							
 						</c:forEach>
@@ -77,10 +82,10 @@
 						</tbody>
 					</table>
 				
-					<form action="getBoardListBySearch.do">
+					<form>
 						<div class="search row">
 							<div class="col-xs-2 col-sm-2">
-								<select name="type" class="form-control">
+								<select name="type" class="form-control" id='type'>
 									
 									<option>제목</option>
 									<option>내용</option>
@@ -91,9 +96,9 @@
 							 
 							<div class="col-xs-10 col-sm-10">
 								<div class="input-group">
-									<input type="text" name="keyWord" class='form-control'id="keywordInput" value="${scri.keyword}"/>
+									<input type="text" name="keyWord" class='form-control'id="keywordInput"/>
 									<span class="input-group-btn">
-										<button id="searchBtn" type="submit" class="btn btn-default">검색</button> 									
+										<button id="searchBtn" type="button" class="btn btn-default">검색</button> 									
 									</span>	
 									<span class="input-group-btn">
 										<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 									
@@ -103,22 +108,24 @@
 										 				
 						</div>
 					</form>
-					<div class="col-md-offset-3">
+					
+					<div class="col-md-offset-3" id='getBoardPaging'>
 						<ul class="pagination">
-							<c:if test="${pageMaker.prev}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
-							</c:if> 
+							<li><a href="/petcommunity/communityBoardList.do">&#60;&#60;</a></li>					
+							<li><a href="#" id='prevPage'>&#60;</a></li>						
+							<c:forEach begin="${showPageStart}" end="${showPageLast}" var="idx">					
+								<li><a href="/petcommunity/communityBoardList.do?pageNo=${idx}" id='curPage${idx}'>${idx}</a></li>
+							</c:forEach>	
 							
-							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-								<li <c:out value="${pageMaker.cri.page == idx ? 'class=info' : ''}" />>
-								<a href="list${pageMaker.makeSearch(idx)}">${idx}</a></li>
-							</c:forEach>
-							
-							<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-								<li><a href="list${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
-							</c:if> 
+							<li><a href="#" id='nextPage'>&#62;</a></li>											
+							<li><a href="/petcommunity/communityBoardList.do?pageNo=${amountOfPage}">&#62;&#62;</a></li>						
 						</ul>
+					</div>	
+					<div class="col-md-offset-3" id="pagination_container">
+						<ul id="pagination-demo" class="pagination-lg"></ul>
 					</div>
+					
+					
 			
 			</section>
 		</div>

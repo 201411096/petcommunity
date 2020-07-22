@@ -11,7 +11,7 @@ $(function(){
 	});
 	//목록보기 클릭
 	$('#goToList').click(function(){
-		window.location.href='/petcommunity/communityBoardList.do';
+		window.location.href='/petcommunity/communityBoardList.do?';
 	});
 	//게시글삭제버튼 클릭
 	$('#communityBoardDelete').click(function(){

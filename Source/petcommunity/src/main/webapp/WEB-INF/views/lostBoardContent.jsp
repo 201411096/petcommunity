@@ -30,6 +30,7 @@
 					<div id="carouselExampleControls" class="carousel slide"
 						data-ride="carousel">
 						<div class="carousel-inner">
+<!-- 						파일이 없을 경우 default image -->
 <%-- 						<c:if test="${not empty fileflag}"> --%>
 <!-- 							<div class="carousel-item active" data-interval='3000'> -->
 <%-- 								<img src="${pageContext.request.contextPath}/resources/imgs/lostboard/default/1.png" class="d-block w-100" alt="..."> --%>

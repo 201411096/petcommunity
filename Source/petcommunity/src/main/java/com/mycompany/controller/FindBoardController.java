@@ -126,8 +126,7 @@ public class FindBoardController {
 		}
 			
 		if(fileList.length<1)
-			mv.addObject("fileflag", -1);
-		
+			mv.addObject("fileflag", -1);		
 		
 		mv.addObject("fileList", fileList);
 		mv.addObject("fileNameList", fileNameList);

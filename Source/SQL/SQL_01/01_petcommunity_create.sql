@@ -248,8 +248,4 @@ start with 10000
 maxvalue 100000
 cycle;
 
-drop sequence product_id_seq;
-drop sequence productreview_id_seq;
-drop sequence buy_id_seq;
-drop sequence BUYLIST_ID_seq;
-drop sequence BUYCARTLIST_ID_seq;
+

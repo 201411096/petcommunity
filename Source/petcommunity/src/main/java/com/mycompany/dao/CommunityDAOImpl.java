@@ -102,6 +102,18 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper commentDelete() 호출");
 		mybatis.delete("communityDAO.commentDelete", vo);	
 	}
+
+	@Override
+	public void likeContent(CommunityVO vo) {
+		System.out.println("===>  CommunityMapper likeContent() 호출");
+		mybatis.delete("communityDAO.likeContent", vo);	
+	}
+
+	@Override
+	public void dislikeContent(CommunityVO vo) {
+		System.out.println("===>  CommunityMapper dislikeContent() 호출");
+		mybatis.delete("communityDAO.dislikeContent", vo);		
+	}
 	
 	
 }

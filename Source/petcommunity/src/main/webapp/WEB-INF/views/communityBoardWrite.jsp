@@ -29,7 +29,7 @@
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
 			<div class="col-xs-0 col-sm-2">
 				<select class="form-control" id='cityName' name ='cityName'>
-					<option >-----</option>
+					<option >시/도</option>
 					<option >서울</option>
 					<option >인천</option>
 					<option >대전</option>
@@ -51,7 +51,7 @@
 			</div>
 			<div class="col-xs-0 col-sm-2">
 				<select class="form-control" id='province' name ='province'>
-					<option >-----</option>					
+					<option >구/군</option>					
 				</select>
 			</div>
 			
@@ -68,7 +68,7 @@
 			<div class="form-group" id="file-group">
 
 				<ul class="list-group" id="file-list">
-					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png, image/jpg"/> </li>
+					<li class="list-group-item"> <input type="file" multiple="multiple" name="file" class="file" accept="image/gif, image/jpeg, image/png, image/jpg"/> </li>
 				</ul>
 			</div>
 			<div class="col-md-4 col-md-offset-10">			
@@ -80,6 +80,5 @@
 		</form>
 
 	</div>
-	<script src="resources/js/findboardwrite.js"></script>
 </body>
 </html>

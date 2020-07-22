@@ -138,6 +138,27 @@ public class CommunityController {
 		}
 		return msg;
 	}
+	// 추천 취소
+	@ResponseBody
+	@RequestMapping("/dislikeContent.do")
+	public String dislikeContent(HttpServletRequest request, CommunityVO vo) {
+		String communityboardId=request.getParameter("communityboardId");
+		System.out.println(communityboardId);
+		vo.setCommunityboardId(communityboardId);
+		communityService.dislikeContent(vo);
+		return "";
+	}
+	
+	//추천클릭
+	@ResponseBody
+	@RequestMapping("/likeContent.do")
+	public String likeContent(HttpServletRequest request, CommunityVO vo) {
+		String communityboardId=request.getParameter("communityboardId");
+		System.out.println(communityboardId);
+		vo.setCommunityboardId(communityboardId);
+		communityService.likeContent(vo);
+		return "";
+	}
 	
 	// 게시판 글내용 가져오기
 	@RequestMapping("/getBoardContent.do")
@@ -222,6 +243,8 @@ public class CommunityController {
 		return mv;
 		
 	}
+	
+	
 	
 
 }

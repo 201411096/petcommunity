@@ -18,7 +18,9 @@
 			where REGEXP_LIKE (findboard_content, '(*)'||#{searchWord}||'(*)')
 			or REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')
 		</if>
-		
+		<if test = "searchType == 'location'">
+					where REGEXP_LIKE (findboard_location, '(*)'||#{searchWord}||'(*)')
+		</if>
 	</select>
 	<select id="getFindBoardListWithPaging" parameterType="hashmap" resultType="findBoard">	
 	    select *
@@ -39,6 +41,9 @@
 				<if test = "searchType == 'titleandcontent'">
 					where REGEXP_LIKE (findboard_content, '(*)'||#{searchWord}||'(*)')
 					or REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')
+				</if>
+				<if test = "searchType == 'location'">
+					where REGEXP_LIKE (findboard_location, '(*)'||#{searchWord}||'(*)')
 				</if>
 				ORDER BY findboard_id DESC
 				)
@@ -88,5 +93,21 @@
 	<select id="getFindBoard" parameterType="findBoard" resultType="findBoard">
 		SELECT * FROM findboard
 		where FINDBOARD_ID = #{findboardId}
+	</select>
+
+	<select id="getStringForAutoComplete" resultType="string" parameterType="hashmap">
+	select 
+	<if test = "searchType == 'title'">
+		findboard_title from findboard
+		where REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')	
+	</if>
+	<if test = "searchType == 'writer'">
+		findboard_name from findboard
+		where REGEXP_LIKE (findboard_name, '(*)'||#{searchWord}||'(*)')	
+	</if>
+	<if test = "searchType == 'location'">
+		findboard_location from findboard
+		where REGEXP_LIKE (findboard_location, '(*)'||#{searchWord}||'(*)')
+	</if>
 	</select>
 </mapper>

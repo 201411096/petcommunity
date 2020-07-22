@@ -15,7 +15,10 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/findboardlist.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-
+<!-- autocomplete 3 cdn link -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>게시판</title>
 </head>
 <body>
@@ -49,15 +52,18 @@
 							<option value="content">내용</option>
 							<option value="writer">작성자</option>
 							<option value="titleandcontent">제목+내용</option>
+							<option value="location">지역</option>
 						</select>
 					</div>
 					<div class="col-xs-10 col-sm-10">
 						<div class="input-group">
-							<input type="text" name="keyword" id="keywordInput"
-								class="form-control" value="${scri.keyword}" /> <span
-								class="input-group-btn">
+							<span id="search-container">
+							<input type="text" name="keyword" id="keywordInput" class="form-control"/> 
+							</span>	
+							<span class="input-group-btn">
 								<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-							</span> <span class="input-group-btn">
+							</span> 
+							<span class="input-group-btn">
 								<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button>
 							</span>
 						</div>

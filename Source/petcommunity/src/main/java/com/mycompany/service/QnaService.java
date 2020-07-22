@@ -11,4 +11,6 @@ public interface QnaService {
 	public QnaVO selectOne(QnaVO qnavo);
 	public int updateQna(QnaVO qnavo);
 	public void updateReadcount(QnaVO qnavo);
+	public void delete(QnaVO qnavo);
+	
 }

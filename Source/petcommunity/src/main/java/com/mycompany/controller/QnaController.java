@@ -73,7 +73,12 @@ public class QnaController {
 	// 게시글 상세보기 출력
 	@RequestMapping("qnaContent.do")
 	public ModelAndView getQnaBoard(QnaVO qnavo) {
+		System.out.println("getQnaBoard 확인"+qnavo.getQuestionboardReadcount());
+		System.out.println("getQnaBoard 확인"+qnavo.getQuestionboardId());
 		ModelAndView mv = new ModelAndView();
+		// 조회수
+		qnaService.updateReadcount(qnavo);
+		System.out.println("getQnaBoard 확인2"+qnavo.getQuestionboardReadcount());
 		mv.addObject("qnaContent", qnaService.selectOne(qnavo));
 			
 		return mv;
@@ -82,9 +87,7 @@ public class QnaController {
 	// 게시글 수정페이지 이동하기 (조건 : 아이디 일치하면 페이지 이동)
 	@RequestMapping(value="qnaModify.do", produces = "application/text; charset=utf-8")
 	public ModelAndView modifyform(QnaVO qnavo, HttpSession session) {
-		// 동일아이디 조건 (매퍼) 로그인된 아이디(session) == 작성된 아이디(qnavo.id)
-//		System.out.println("modifyform ID확인1:"+((MemberVO)session.getAttribute("memberVO")).getMemberId());
-		System.out.println("modifyform ID확인2:"+qnavo.getMemberId());
+		System.out.println("확인"+qnavo.getQuestionboardReadcount());
 		ModelAndView mv = new ModelAndView();
 		
 		if(session.getAttribute("memberVO")==null){//로그인x 경우

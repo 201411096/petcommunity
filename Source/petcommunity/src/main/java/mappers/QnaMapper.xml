@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectQnaList" resultType="qna">
 		SELECT *
 		FROM QUESTIONBOARD
+		ORDER BY QUESTIONBOARD_UPLOADTIME DESC
 	</select>
 	
 	<select id="selectOne" parameterType="qna" resultType="qna">
@@ -25,6 +26,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 UPDATE QUESTIONBOARD
 	 SET QUESTIONBOARD_TITLE = #{questionboardTitle}, QUESTIONBOARD_CONTENT = #{questionboardContent}
 	 WHERE QUESTIONBOARD_ID = #{questionboardId}
+	</update>
+	
+	<update id="updateReadcount" parameterType="qna">
+	UPDATE QUESTIONBOARD
+	SET QUESTIONBOARD_READCOUNT = QUESTIONBOARD_READCOUNT+1
+	WHERE QUESTIONBOARD_ID = #{questionboardId}
 	</update>
 
 </mapper>

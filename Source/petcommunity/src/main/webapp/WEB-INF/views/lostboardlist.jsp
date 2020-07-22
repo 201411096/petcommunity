@@ -28,6 +28,9 @@
 		</header>
 		<hr />
 		<section id="container">
+			<div class="form-group">
+				<div id="map"></div>
+			</div>
 			<form role="form" method="get">
 				<table class="table table-hover" id="lostboardTable">
 					<thead>

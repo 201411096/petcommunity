@@ -98,7 +98,13 @@ delete from communityboard where communityboard_id=#{communityboardId}
 delete from boardcomment where boardcomment_id=#{boardcommentId}
 </delete>
 
+<update id="dislikeContent" parameterType="community">
+update communityboard set communityboard_recommend =  communityboard_recommend-1 where communityboard_id=${communityboardId}
+</update>
 
+<update id="likeContent" parameterType="community">
+update communityboard set communityboard_recommend =  communityboard_recommend+1 where communityboard_id=${communityboardId}
+</update>
 
 
 </mapper>

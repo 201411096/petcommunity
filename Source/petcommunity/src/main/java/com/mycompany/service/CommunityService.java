@@ -21,4 +21,6 @@ public interface CommunityService {
 	public void deleteBoardComment(CommentVO vo);
 	public void modifyBoardContent(CommunityVO vo);
 	public void commentDelete(CommentVO vo);
+	public void likeContent(CommunityVO vo);
+	public void dislikeContent(CommunityVO vo);
 }

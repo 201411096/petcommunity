@@ -1,6 +1,9 @@
-var latitude = -1;
-var longitude = -1;
+//var latitude = -1;
+//var longitude = -1;
+var latitude = 37.519972628243366;
+var longitude = 126.85287648507145;
 $(function() {
+//	getLocation();
 	kakaoMapAPI();
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
@@ -23,7 +26,7 @@ $(function() {
 function kakaoMapAPI() {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
-		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+		center : new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
 		level : 7 // 지도의 확대 레벨
 	};
 
@@ -105,3 +108,27 @@ function checkSubmit(){
 	}
 	return true;
 }
+
+//function getLocation() {
+//    if (navigator.geolocation) {	// GPS를 지원하면
+//      navigator.geolocation.getCurrentPosition(function(position) {
+//        latitude = position.coords.latitude;
+//        longitude = position.coords.longitude;
+//    	console.log(latitude);
+//    	console.log(longitude);
+//    	kakaoMapAPI();
+//      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
+//        latitude = 37.519972628243366;
+//        longitude = 126.85287648507145;
+//    	console.log(latitude);
+//    	console.log(longitude);
+//    	kakaoMapAPI();
+//      }, {
+//        enableHighAccuracy: false,
+//        maximumAge: 0,
+//        timeout: Infinity
+//      });
+//    } else {
+//      alert('GPS를 지원하지 않습니다');
+//    }
+//  }

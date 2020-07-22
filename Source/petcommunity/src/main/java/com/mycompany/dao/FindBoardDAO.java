@@ -13,4 +13,5 @@ public interface FindBoardDAO {
 	public int increaseFindBoardReadcount(FindBoardVO findBoardVO);
 	public int deleteFindBoard(FindBoardVO findBoardVO);
 	public int updateFindBoard(FindBoardVO findBoardVO);
+	public List<String> selectString(Map map);
 }

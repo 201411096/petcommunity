@@ -23,7 +23,7 @@ values(RAISE_ID_SEQ.nextval,#{memberId},${animalId})
 
 
 <select id="animalselect" parameterType="member" resultType="animal">
-select a.ANIMAL_ID ANIMAL_ID ,a.ANIMAL_NAME ANIMAL_NAME ,a.ANIMAL_BIRTHDAY ANIMAL_BIRTHDAY ,a.ANIMAL_GENDER ANIMAL_GENDER,a.ANIMAL_FEATURE ANIMAL_FEATURE 
+select trunc(sysdate-to_date(a.animal_birthday)) dateBirthday ,a.ANIMAL_ID ANIMAL_ID ,a.ANIMAL_NAME ANIMAL_NAME ,a.ANIMAL_BIRTHDAY ANIMAL_BIRTHDAY ,a.ANIMAL_GENDER ANIMAL_GENDER,a.ANIMAL_FEATURE ANIMAL_FEATURE 
 from animal a,member m ,raise r where a.ANIMAL_ID=r.ANIMAL_ID and m.MEMBER_ID=r.MEMBER_ID and m.MEMBER_ID=#{memberId} order by ANIMAL_ID
 </select>
 

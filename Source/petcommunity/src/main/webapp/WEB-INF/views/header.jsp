@@ -60,7 +60,7 @@
 				
 				${sessionScope.memberVO.memberName}님, 안녕하세요
 				<a href="logout.do">[로그아웃하기]</a>
-				<a href="mypageselect.do">[나의 반려동물]</a>
+				<a href="mypageselect.do">[마이 페이지]</a>
 			
 				</c:if>
 

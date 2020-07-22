@@ -1,0 +1,17 @@
+input#keywordInput{
+	width: 90%;
+}
+
+table#lostboardTable{
+	text-align:center;
+}
+table#lostboardTable th{
+	text-align:center;
+}
+
+ul#pagination-demo{
+	text-align: center;
+}
+#search-container{
+	width:100%;
+}

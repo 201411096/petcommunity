@@ -36,6 +36,9 @@
 			<hr/>
 			
 			<div class="form-group">
+				<c:forEach items="${boardContentImg}" var="file">
+					<img src="resources/imgs/communityboard/${boardContent.communityboardId}/${file.name}" class="d-block w-100" alt="...">															
+				</c:forEach>
 				<span id=communityContentContent>${boardContent.communityboardContent}</span>
 			</div>
 			
@@ -43,7 +46,7 @@
 			<!-- 댓글내용 -->		
 			<hr/>
 			<div class="form-group">
-				<h2>댓글</h2>	
+				<h4>댓글</h4>	
 				<hr/>			
 				<table>			
 					<c:forEach items="${boardComment}" var = "boardComment">

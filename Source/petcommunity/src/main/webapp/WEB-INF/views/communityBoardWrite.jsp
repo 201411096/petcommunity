@@ -25,7 +25,7 @@
 			<h1> 게시글 작성하기</h1>
 	</header>
 	<br/><br/>
-		<form action="writeIntoBoard.do" method='get' enctype='multipart/form-data' name="commitWrite">
+		<form action="writeIntoBoard.do" method='post' enctype="multipart/form-data" name="commitWrite">
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
 			<div class="col-xs-0 col-sm-2">
 				<select class="form-control" id='cityName' name ='cityName'>
@@ -65,8 +65,11 @@
 				<label>글 내용</label>
 				<textarea class="form-control" rows="5" name="communityboardContent" id="communityboardContent" placeholder="contents"></textarea>
 			</div>
-			<div>
-				<input type="file" name='file' class="btn btn-default" name='imgUpload'>이미지 첨부</button>
+			<div class="form-group" id="file-group">
+
+				<ul class="list-group" id="file-list">
+					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png, image/jpg"/> </li>
+				</ul>
 			</div>
 			<div class="col-md-4 col-md-offset-10">			
 			<span class="input-group-btn">
@@ -76,9 +79,7 @@
 			</div>			
 		</form>
 
-
-
-		
 	</div>
+	<script src="resources/js/findboardwrite.js"></script>
 </body>
 </html>

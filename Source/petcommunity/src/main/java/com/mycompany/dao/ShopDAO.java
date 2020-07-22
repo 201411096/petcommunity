@@ -10,4 +10,5 @@ public interface ShopDAO {
 
 	public List<ShopVO> selectShopByTagWithPaging(Map searchListMap);
 	public List<ShopVO> selectShopCategoryList(Map searchMap);
+	public List<ShopVO> selectSearchKeyWordList(Map searchKeyWord);
 }

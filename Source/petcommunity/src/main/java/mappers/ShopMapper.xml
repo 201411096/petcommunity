@@ -4,7 +4,6 @@
 <mapper namespace='ShopDAO'>
 	
 	<select id='selectShopByTagWithPaging' parameterType="hashmap" resultType="shop">
-
 			SELECT *
 			FROM(
 				SELECT ROWNUM AS RNUM, SHOP_ID, SHOP_NAME, 
@@ -20,7 +19,6 @@
 			<![CDATA[
 			WHERE RNUM>=#{startRow} and RNUM<=#{endRow}
 			]]>
-		
 	</select>
 	
 	<select id="selectShopCategoryList" parameterType='hashmap' resultType="shop">
@@ -31,5 +29,11 @@
 			<!-- WHERE REGEXP_LIKE (SHOP_NAME, '(*)'||#{tagCategory}||'(*)') OR REGEXP_LIKE (SHOP_CATEGORY, '(*)'||#{tagCategory}||'(*)') -->  
 		</if>
 		order by shop_name desc
+	</select>
+	
+	<select id="selectSearchKeyWordList" parameterType="hashmap" resultType="shop">
+		SELECT SHOP_PRODUCTNAME
+		FROM SHOP
+		WHERE SHOP_PRODUCTNAME LIKE '%'||#{searchSomething}||'%'
 	</select>
 </mapper>

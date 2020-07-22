@@ -35,6 +35,11 @@ public class QnaDAOImpl implements QnaDAO {
 	public int updateQna(QnaVO qnavo) {
 		return mybatis.update("qnaDAO.update", qnavo);
 	}
+
+
+	public void updateReadcount(QnaVO qnavo) {
+		mybatis.update("qnaDAO.updateReadcount", qnavo);
+	}
 	
 
 

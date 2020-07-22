@@ -84,6 +84,17 @@ public class CommunityServiceImpl implements CommunityService{
 		communityDAO.commentDelete(vo);	
 	}
 
+	@Override
+	public void likeContent(CommunityVO vo) {
+		communityDAO.likeContent(vo);
+		
+	}
+
+	@Override
+	public void dislikeContent(CommunityVO vo) {
+		communityDAO.dislikeContent(vo);	
+	}
+
 	
 	
 }

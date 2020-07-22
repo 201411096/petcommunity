@@ -12,6 +12,9 @@ table#findboardTable th{
 ul#pagination-demo{
 	text-align: center;
 }
+#search-container{
+	width:100%;
+}
 
 /* div#pagination_container{ */
 /* 	text-align: center; */

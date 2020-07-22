@@ -2,10 +2,10 @@ input#keywordInput{
 	width: 90%;
 }
 
-table#findboardTable{
+table#lostboardTable{
 	text-align:center;
 }
-table#findboardTable th{
+table#lostboardTable th{
 	text-align:center;
 }
 

@@ -14,5 +14,3 @@
 <a href="/petcommunity/login.do">로그인</a><br>
 </body>
 </html>
-
-]

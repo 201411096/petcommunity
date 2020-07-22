@@ -34,6 +34,11 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.updateQna(qnavo);
 	}
 
+	@Override
+	public void updateReadcount(QnaVO qnavo) {
+		qnaDAO.updateReadcount(qnavo);		
+	}
+
 
 
 

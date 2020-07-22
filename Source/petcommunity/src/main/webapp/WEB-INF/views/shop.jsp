@@ -12,8 +12,7 @@
 	<meta name="keywords" content="instyle, fashion, html">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-<!-- 	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+
 	
 	<!-- Stylesheets -->
 	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
@@ -24,25 +23,20 @@
  	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
 	<!-- search -->
 	<link rel="stylesheet" href="resources/css/shop.css">
-	
-	
-	
-	
 	<!-- Main Stylesheets -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
 	<!-- Paging -->
 	<script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 	
 </head>
 <body>
 	<!-- Page Preloder -->
 
-	<!-- Artists page -->
+	<!-- Products page -->
 
 		<!-- 
 		<div class="sp-container">
@@ -56,25 +50,27 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-					<h2>반려동물을 위한 상품 리스트</h2>	
+				<h2>반려동물들을 위한 상품 리스트</h2>
 			</div>
-						<form>
-								<!-- <div id="searchDiv"> -->
-									<div class="input-group" id="searchBar">
-										<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
+			<br/>
+				<form>
+					<div id="searchDiv">
+						<div class="input-group" id="searchBar">
+							<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
 											
-											<!-- <span id="searchBar">class="col-lg-offset-4" 
+								<!-- <span id="searchBar">class="col-lg-offset-4" 
     											
-  											</span> -->
-  											<input class="col-xs-4" id="serchSomething" type="text">
-											<span class="input-group-btn">
-												
-												<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-											</span>
-									</div>
-								<!-- </div> -->
-							</form>
-			
+  									</span> -->
+  								<input class="form-control" id="searchSomething" type="text">
+							<span class="input-group-btn">	
+								<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+							</span>
+						</div>
+						<p style="clear:both;"></p>
+					</div>
+				</form>
+			<br/>
+		<div id="ul-div">
 			<ul class="product-filter-menu">
 				<li><a href="#" name="tagCategory" class="tagCategory" value="all">전체</a></li>
 				<li><a href="#" name="tagCategory" class="tagCategory" value="pawInHand">PAW IN HAND</a></li>
@@ -85,6 +81,7 @@
 				<li><a href="#" name="tagCategory" class="tagCategory" value="매거진">매거진</a></li>
 				<li><a href="#" id="acc" name="tagCategory" class="tagCategory" value="기타 잡화">기타 잡화</a></li>
 			</ul>
+		</div>
 			<!-- Product filter section -->
 			
 			<div id='shopTable' class="row artists-row">
@@ -103,8 +100,7 @@
 				</div>
 			</c:forEach>
 			 -->
-			
-				<!--forEach 사용 끝 -->
+			<!--forEach 사용 끝 -->
 				
 		</div>
 		<div id="pagination-div">
@@ -114,86 +110,7 @@
 		</div>
 		</div>
 	</section>
-	
-	<!-- Artists page end -->
-	
-	<!-- letest product section -->
-	<!-- <section class="top-letest-product-section">
-		<div class="container">
-			<div class="section-title">
-				<h2>LATEST PRODUCTS</h2>
-			</div>
-			<div class="product-slider owl-carousel">
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="./resources/bootstrap_template/bootstrap_ain/img/product/1.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<div class="tag-new">New</div>
-						<img src="./resources/bootstrap_template/bootstrap_ain/img/product/2.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Black and White Stripes Dress</p>
-					</div>
-				</div>
-				<div class="product-item">
-					<div class="pi-pic">
-						<img src="./resources/bootstrap_template/bootstrap_ain/img/product/3.jpg" alt="">
-						<div class="pi-links">
-							<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-						</div>
-					</div>
-					<div class="pi-text">
-						<h6>$35,00</h6>
-						<p>Flamboyant Pink Top </p>
-					</div>
-				</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="./resources/bootstrap_template/bootstrap_ain/img/product/4.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-				<div class="product-item">
-						<div class="pi-pic">
-							<img src="./resources/bootstrap_template/bootstrap_ain/img/product/6.jpg" alt="">
-							<div class="pi-links">
-								<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$35,00</h6>
-							<p>Flamboyant Pink Top </p>
-						</div>
-					</div>
-			</div>
-		</div>
-	</section> -->
-	<!-- letest product section end -->
+	<!-- Products page end -->
 	
 	
 	<!-- Footer section  -->
@@ -233,7 +150,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 	
 	<script src="./resources/js/shopList.js"></script>
-	<!--  <script src="./resources/bootstrap_template/bootstrap_ain/js/bootstrap.min.js"></script>-->
+	<script src="./resources/js/shopAutoCompleteSearch.js"></script>
 
 
 	</body>

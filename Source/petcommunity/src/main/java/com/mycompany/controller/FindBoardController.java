@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
-import com.mycompany.domain.StringListVO;
 import com.mycompany.service.FindBoardServiceImpl;
 import com.mycompany.util.FileUpload;
 
@@ -58,7 +58,6 @@ public class FindBoardController {
 			findBoardVO.setMemberId( ((MemberVO)session.getAttribute("memberVO")).getMemberId() ); //로그인 되어있는 상태면 memberId값 세팅
 			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
 			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
-//			System.out.println(((MemberVO)session.getAttribute("memberVO")).getMemberTel()); //전화번호를 못 가져오고 있음 -> 로그인시 전화번호도 끌어오도록 수정 필요
 		}
 		int insertFlag = findBoardService.insertFindBoard(findBoardVO);
 		if (insertFlag == 1) {
@@ -127,8 +126,7 @@ public class FindBoardController {
 		}
 			
 		if(fileList.length<1)
-			mv.addObject("fileflag", -1);
-		
+			mv.addObject("fileflag", -1);		
 		
 		mv.addObject("fileList", fileList);
 		mv.addObject("fileNameList", fileNameList);
@@ -145,8 +143,6 @@ public class FindBoardController {
 			findBoardVO.setFindboardName( ((MemberVO)session.getAttribute("memberVO")).getMemberId() );
 			findBoardVO.setFindboardTel( ((MemberVO)session.getAttribute("memberVO")).getMemberTel() );
 		}
-		//filename : 이미 올라가 있는 파일 중 삭제 되지 않은 파일
-		//System.out.println(filename.length);
 		
 		int updateFlag = findBoardService.updateFindBoard(findBoardVO);
 		if(updateFlag==1) {
@@ -156,5 +152,25 @@ public class FindBoardController {
 			
 		mv.setViewName("/findboardlist");
 		return mv;
+	}
+	
+	@RequestMapping(value = "/autoCompleteForFindBoard.do", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String autoCompleteForFindBoard(FindBoardVO findBoardVO, String searchWord, String searchType) {
+		Map searchMap = new HashMap();
+		searchMap.put("searchType", searchType);
+		searchMap.put("searchWord", searchWord);
+		List<String> stringList = findBoardService.selectString(searchMap);
+		if(stringList!=null) {
+			String[] array = new String[stringList.size()];
+			for(int i=0; i< stringList.size(); i++) {
+				array[i] = stringList.get(i);
+			}
+			Gson gson = new Gson();
+			return gson.toJson(array);
+		}else {
+			return null;
+		}
+		
 	}
 }

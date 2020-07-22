@@ -79,7 +79,24 @@ insert into findboard(FINDBOARD_ID, FINDBOARD_TITLE, FINDBOARD_CONTENT, FINDBOAR
 values(33, '21title', '21content', '1location', '1x', '1y', '1', '200716', '0101111', 'aaa', 0, null);
 insert into findboard(FINDBOARD_ID, FINDBOARD_TITLE, FINDBOARD_CONTENT, FINDBOARD_LOCATION, FINDBOARD_X, FINDBOARD_Y, FINDBOARD_STATUS, FINDBOARD_UPLOADTIME, FINDBOARD_TEL, FINDBOARD_NAME, FINDBOARD_READCOUNT, MEMBER_ID) 
 values(34, '21title', '21content', '1location', '1x', '1y', '1', '200716', '0101111', 'aaa', 0, null);
+insert into findboard(FINDBOARD_ID, FINDBOARD_TITLE, FINDBOARD_CONTENT, FINDBOARD_LOCATION, FINDBOARD_X, FINDBOARD_Y, FINDBOARD_STATUS, FINDBOARD_UPLOADTIME, FINDBOARD_TEL, FINDBOARD_NAME, FINDBOARD_READCOUNT, MEMBER_ID) 
+values(findboard_id_seq.nextval, '21title', '21content', '1location', '1x', '1y', '1', '200716', '0101111', 'aaa', 0, null);
 
-
-
-
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);
+insert into lostboard(LOSTBOARD_ID) values(lostboard_id_seq.nextval);

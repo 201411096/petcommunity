@@ -39,7 +39,7 @@
 							<input type="hidden" id="result" value='${msg}' />
 						</c:if>
 						<h2 class="form-title">반려동물 등록</h2>
-						<form action="animalinsert.do" method="POST" class="register-form"
+						<form action="animalinsert.do" method="POST" class="register-form" enctype="multipart/form-data"
 							id="register-form">
 							<div class="form-group">
 								<label for="animalName"><i
@@ -70,6 +70,7 @@
 										rows="10" placeholder="반려동물 특징"></textarea>
 								</div>
 								<div class="form-group form-button">
+									 <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png, image/jpg"/>
 									<input type="submit" name="animalIn" id="animalIn"
 										class="form-submit" value="등록" />
 								</div>

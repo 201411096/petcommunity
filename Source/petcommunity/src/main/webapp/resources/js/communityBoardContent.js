@@ -16,12 +16,12 @@ $(function(){
 	//게시글삭제버튼 클릭
 	$('#communityBoardDelete').click(function(){
 		if(confirm("글을 삭제하시겠습니까?")) {
-			window.location.href='/petcommunity/communityBoardDelete.do?communityboardId='+$("#communityBoardDelete").val();
+			window.location.href='/petcommunity/communityBoardDelete.do?communityboardId='+$("#communityboardId").val();
 		}	
 	});
 	//게시글수정버튼 클릭
 	$('#communityBoardModify').click(function(){
-		window.location.href='/petcommunity/communityBoardModifyPage.do?communityboardId='+$("#communityBoardDelete").val();
+		window.location.href='/petcommunity/communityBoardModifyPage.do?communityboardId='+$("#communityboardId").val();
 	});
 	
 	//댓글삭제버튼 클릭
@@ -29,6 +29,35 @@ $(function(){
 		if(confirm("댓글을 삭제하시겠습니까?")) {	
 			window.location.href='/petcommunity/commentDelete.do?boardcommentId='+$("#boardcommentId").val()+'&communityboardId='+$("#communityboardId").val();
 		}	
+	});
+	
+	//추천 버튼
+	$('#like').click(function(){
+	
+		if($('#like').attr('src')=='resources/imgs/communityboard/like/like.PNG'){		
+			$.ajax({
+	    		url: '/petcommunity/likeContent.do?communityboardId='+$("#forRecommend").val(),
+	    		type: "POST",
+	    		success : function(data){
+	    			$('#like').attr('src','resources/imgs/communityboard/like/liked.PNG');
+	    		},
+	    		error : function(){
+	    			alert("에러");
+	    		}
+	    	});
+		}else{			
+			$.ajax({
+	    		url: "/petcommunity/dislikeContent.do?communityboardId="+$("#forRecommend").val(),
+	    		type: "POST",
+	    		success : function(data){
+	    			$('#like').attr('src','resources/imgs/communityboard/like/like.PNG');
+	    		},
+	    		error : function(){
+	    			alert("에러");
+	    		}
+	    	});
+		}
+		
 	});
 	
 	

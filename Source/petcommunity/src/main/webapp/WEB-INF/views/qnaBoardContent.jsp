@@ -15,9 +15,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/qnaBoardContent.css">
 <title>고객문의</title>
-
 </head>
-
 <body>
 	<table>
 		<tr>
@@ -52,11 +50,9 @@
 		<tr>
 			<td colspan="2" id="content-content" style="width: 80%">${qnaContent.questionboardContent}<hr
 					id="lineStyle">
-
 			</td>
 			<td></td>
 		</tr>
-
 		<tr>
 			<td colspan="2" id="listButton">
 				<button id="qnaListBtn" type="button" class="btn btn-default">목록보기</button>
@@ -67,7 +63,6 @@
 			</td>
 		</tr>
 	</table>
-
 	<script src="resources/js/qnaBoardContent.js"></script>
 </body>
 </html>

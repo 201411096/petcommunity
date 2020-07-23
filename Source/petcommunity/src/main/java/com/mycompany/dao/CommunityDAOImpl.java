@@ -1,6 +1,8 @@
 package com.mycompany.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,6 +128,12 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper communityBoardListBySearchPaging() 호출");
 		return mybatis.selectList("communityDAO.communityBoardListBySearchPaging", vo);
 		
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListBySearchWithPaging(Map map) {
+		System.out.println("===>  CommunityMapper getBoardListBySearchWithPaging() 호출");
+		return mybatis.selectList("communityDAO.getBoardListBySearchWithPaging", map);
 	}
 	
 	

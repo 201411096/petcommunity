@@ -7,10 +7,12 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.ShopVO;
 import com.mycompany.service.ShopServiceImpl;
@@ -33,6 +35,7 @@ public class ShopController {
 //		System.out.println("서치한 리스트"+shopList);
 		PaginationVO paginationVO = new PaginationVO(shopList.size(), curPage);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
+		paginationVO.setPageSize(9);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		
 		shopList = shopService.selectShopByTagWithPaging(searchMap);
@@ -44,18 +47,41 @@ public class ShopController {
 	
 	@ResponseBody
 	@RequestMapping(value="/shopAutoCompleteSearch.do", produces = "application/json; charset=utf-8")
-	public Map shopListCategory(String searchSomething, ShopVO vo) {
+	public String shopListCategory(String searchSomething, ShopVO vo) {
 		System.out.println("컨트롤 단 옴");
-		Map searchKeyWord = new HashMap();
-		Map result = new HashMap();
-		searchKeyWord.put("searchSomething", searchSomething);
+//		Map searchKeyWord = new HashMap();
+//		searchKeyWord.put("searchSomething", searchSomething);
 		
-		List<ShopVO> searchList = shopService.selectSearchKeyWordList(searchKeyWord);
-//		System.out.println(searchList);
-		for(ShopVO i : searchList) {
-			System.out.println(i.getShopProductname());
+		List<String> searchProductList = shopService.selectSearchAutoProduct(searchSomething);
+//		List<String> searchShopList = shopService.selectSearchAutoShop(searchSomething);
+//		List<String> searchCategoryList = shopService.selectSearchAutoCategory(searchSomething);
+
+		String[] productList = new String [searchProductList.size()];
+//		String[] shopList = new String [searchShopList.size()];
+//		String[] categoryList = new String [searchCategoryList.size()];
+		
+		if(searchProductList != null) {
+			for(int i=0; i<searchProductList.size(); i++) {
+				productList[i] = searchProductList.get(i); 
+			}
+			Gson gson = new Gson();
+			return gson.toJson(productList);
+			
+//		}else if (searchShopList != null) {
+//			for(int i=0; i<searchShopList.size(); i++) {
+//				shopList[i] = searchShopList.get(i); 
+//			}
+//			Gson gson = new Gson();
+//			return gson.toJson(shopList);
+//			
+//		}else if (searchCategoryList != null) {
+//			for(int i=0; i<searchCategoryList.size(); i++) {
+//				categoryList[i] = searchCategoryList.get(i); 
+//			}
+//			Gson gson = new Gson();
+//			return gson.toJson(categoryList);
+		}else {
+			return null;
 		}
-		result.put("searchList", searchList);
-		return result;
 	}
 }

@@ -9,8 +9,8 @@
 		<!-- 부가적인 테마 -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="./resources/css/communityBoardList.css"/>
-		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	 	<script src="resources/js/communityBoardList.js"  type="text/javascript"></script>
 	 	<title>게시판</title>
 	</head>
@@ -82,7 +82,7 @@
 						</tbody>
 					</table>
 				
-					<form>
+					
 						<div class="search row">
 							<div class="col-xs-2 col-sm-2">
 								<select name="type" class="form-control" id='type'>
@@ -107,7 +107,7 @@
 							</div>
 										 				
 						</div>
-					</form>
+				
 					
 					<div class="col-md-offset-3" id='getBoardPaging'>
 						<ul class="pagination">

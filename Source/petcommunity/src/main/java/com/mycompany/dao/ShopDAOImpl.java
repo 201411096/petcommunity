@@ -29,13 +29,20 @@ public class ShopDAOImpl implements ShopDAO{
 	}
 
 	@Override
-	public List<ShopVO> selectSearchKeyWordList(Map searchKeyWord) {
-		System.out.println("다오 키워드" + searchKeyWord);
-		List<ShopVO> result = mybatis.selectList("ShopDAO.selectSearchKeyWordList", searchKeyWord);
-		for(ShopVO i : result) {
-			System.out.println("dao"+i.getShopProductname());
-		}
-		System.out.println("dao"+result);
+	public List<String> selectSearchAutoProduct(String searchSomething) {
+		List<String> result = mybatis.selectList("ShopDAO.selectSearchAutoProduct", searchSomething);
+		return result;
+	}
+	
+	@Override
+	public List<String> selectSearchAutoShop(String searchSomething) {
+		List<String> result = mybatis.selectList("ShopDAO.selectSearchAutoShop", searchSomething);
+		return result;
+	}
+	
+	@Override
+	public List<String> selectSearchAutoCategory(String searchSomething) {
+		List<String> result = mybatis.selectList("ShopDAO.selectSearchAutoCategory", searchSomething);
 		return result;
 	}
 }

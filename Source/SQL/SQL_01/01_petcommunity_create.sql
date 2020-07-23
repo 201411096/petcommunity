@@ -148,20 +148,24 @@ create table productreview(
 CREATE TABLE BUYLIST(
     BUYLIST_ID NUMBER(30),
     BUYLIST_DATE DATE,
+    buylist_totalprice number(30),
     MEMBER_ID VARCHAR2(30),
     CONSTRAINT BUYLIST_PK PRIMARY KEY(BUYLIST_ID),
     CONSTRAINT BUYLIST_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID)
 );
+
 -- 구매
 create table buy(
     buy_id number(30),
     buylist_id number(30),
     product_id number(30),
     buy_cnt number(30),
+    buy_totalprice number(30),
     CONSTRAINT BUY_PK PRIMARY KEY(BUY_ID),
     CONSTRAINT BUY_FK_1 FOREIGN KEY(BUYLIST_ID) REFERENCES BUYLIST(BUYLIST_ID),
     CONSTRAINT BUY_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id)
 );
+
 -- 장바구니
 CREATE TABLE BUYCARTLIST(
     BUYCARTLIST_ID NUMBER(30),

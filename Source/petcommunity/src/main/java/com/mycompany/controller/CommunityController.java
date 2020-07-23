@@ -37,6 +37,7 @@ public class CommunityController {
 	// 게시판 목록보기 페이지로 넘겨준다
 	@RequestMapping("/communityBoardList.do")
 	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv, HttpServletRequest request) {
+		System.out.println("리스트 controller입장");
 		//db의 모든 데이터를 가져옴
 		List<CommunityVO> communityBoardList = communityService.getBoardList();//게시판 리스트 가져오기
 		
@@ -72,6 +73,7 @@ public class CommunityController {
 		
 		vo.setStartList(startList);
 		vo.setLastList(lastList);
+		
 		List<CommunityVO> communityBoardListByPaging = communityService.communityBoardListByPaging(vo);
 		//사진 유무 확인
 		ArrayList<String> checkImg = new ArrayList<String>();
@@ -79,8 +81,11 @@ public class CommunityController {
 			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+communityBoardList.get(i).getCommunityboardId();
 			File dir = new File(directoryPath);
 			File fileList [] = dir.listFiles();
+			
 			if(fileList!=null) {
-				checkImg.add(communityBoardList.get(i).getCommunityboardId());
+				if(fileList.length!=0) {
+					checkImg.add(communityBoardList.get(i).getCommunityboardId());
+				}
 			}	
 		}
 		mv.addObject("checkImg", checkImg); //이미지 있는 컨텐츠번호를 리스트에 담아서 mv에 저장
@@ -140,27 +145,38 @@ public class CommunityController {
 		System.out.println(searchType);
 		System.out.println(keyword);
 		String type = "";
+		Map searchMap = new HashMap();
 		// 검색타입에 따라 vo에 셋팅을 다르게 해줌
 		if (searchType.equals("제목")) {
 			type = "communityboard_title";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "communityboard_title");
 		} else if (searchType.equals("내용")) {
 			type = "communityboard_content";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "communityboard_content");
 		} else if (searchType.equals("작성자")) {
 			type = "member_id";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "member_id");
 		}
-
+		
 		vo.setKeyWord(keyword);
-		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearch(vo);
-		Map searchMap = new HashMap();
-		Map result = new HashMap();
-		PaginationVO paginationVO = new PaginationVO(communityBoardListBySearch.size(), curPage);
+		
+		
+		PaginationVO paginationVO = new PaginationVO(communityService.getBoardListBySearch(vo).size(), curPage, 20);
+		System.out.println(communityService.getBoardListBySearch(vo).size());
+		paginationVO.setRangeSize(20);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
+		System.out.println(paginationVO.getStartIndex()+1);
+		System.out.println(paginationVO.getStartIndex()+paginationVO.getPageSize());
+		System.out.println(paginationVO.getPageSize());
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		searchMap.put("searchType", searchType);
-		searchMap.put("searchWord", keyword);		
+		searchMap.put("searchType", type);
+		searchMap.put("keyWord", keyword);
+		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearchWithPaging(searchMap);
+		Map result = new HashMap();
+		
 		
 		result.put("pagination", paginationVO);
 		result.put("communityBoardListBySearch", communityBoardListBySearch);

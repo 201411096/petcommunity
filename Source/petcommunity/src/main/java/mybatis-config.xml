@@ -34,6 +34,8 @@
 		
 		<typeAlias alias="mybuy" type="com.mycompany.domain.MyBuyVO"></typeAlias>
 
+		<typeAlias alias="product" type="com.mycompany.domain.ProductVO"></typeAlias>
+
    </typeAliases>
    
    

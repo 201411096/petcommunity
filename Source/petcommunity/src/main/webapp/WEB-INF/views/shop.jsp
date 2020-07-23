@@ -6,31 +6,22 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-	<title>The Look - Photo Gallery Template</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Instyle Fashion HTML Template">
-	<meta name="keywords" content="instyle, fashion, html">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-
-	
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
-	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/font-awesome.min.css"/>
-	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css"/> -->
-	
+	<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>	 -->
+	<!-- Main Stylesheets -->
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/> -->
 	<!-- nav bar -->
  	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/style.css"/>
 	<!-- search -->
 	<link rel="stylesheet" href="resources/css/shop.css">
-	<!-- Main Stylesheets -->
-	<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
 	<!-- Paging -->
 	<script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
+	<!-- autocomplete 3 cdn link -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
 </head>
 <body>
@@ -61,13 +52,15 @@
 								<!-- <span id="searchBar">class="col-lg-offset-4" 
     											
   									</span> -->
+  							<span id="#searchInput-container">
   								<input class="form-control" id="searchSomething" type="text">
+							</span>
 							<span class="input-group-btn">	
 								<button id="searchBtn" type="button" class="btn btn-default">검색</button>
 							</span>
 						</div>
 						<p style="clear:both;"></p>
-					</div>
+					</div>	
 				</form>
 			<br/>
 		<div id="ul-div">
@@ -114,43 +107,12 @@
 	
 	
 	<!-- Footer section  -->
-	<footer class="footer-section spad">
-		<div class="sp-container">
-			<div class="row m-0">
-				<div class="col-lg-4 footer-text">
-					<h2>Get in touch</h2>
-					<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollic itudin. Aenean quis velit pulvinar, pellentesque neque vel, laoreet orci. Suspendisse potenti. </p>
-				</div>
-				<div class="col-lg-8">
-					<form class="contact-form">
-						<div class="row">
-							<div class="col-lg-4">
-								<input type="text" placeholder="Your Name">
-							</div>
-							<div class="col-lg-4">
-								<input type="text" placeholder="Your Email">
-							</div>
-							<div class="col-lg-4">
-								<input type="text" placeholder="Subject">
-							</div>
-							<div class="col-lg-12">
-								<textarea placeholder="Message"></textarea>
-								<button class="site-btn sb-light" type="submit">send message <img src="./resources/bootstrap_template/template_01/img/icons/arrow-right-white.png" alt=""></button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-		</div>
-	</footer>
+
 	<!-- Footer section end -->
 
 	
 	<script src="./resources/js/shopList.js"></script>
-	<script src="./resources/js/shopAutoCompleteSearch.js"></script>
+<!-- 	<script src="./resources/js/autoCompleteSearch.js"></script> -->
 
 
 	</body>

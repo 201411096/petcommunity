@@ -39,5 +39,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	FROM QUESTIONBOARD
 	WHERE QUESTIONBOARD_ID = #{questionboardId}
 	</delete>
+	
+	<select id="selectKeyword" parameterType="hashmap" resultType="qna">
+	SELECT *
+	FROM QUESTIONBOARD
+	<if test='searchType=="1"'>
+	WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{keyword} ||'(*)')
+	</if>
+	<if test='searchType=="2"'>
+	WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{keyword} ||'(*)')
+	</if>
+	<if test='searchType=="3"'>
+	WHERE REGEXP_LIKE(QUESTIONBOARD_ID,'(*)'|| #{keyword} ||'(*)')
+	</if>
+	<if test='searchType=="4"'>
+	WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE,'(*)'|| #{keyword} ||'(*)')
+	OR REGEXP_LIKE(QUESTIONBOARD_CONTENT,'(*)'|| #{keyword} ||'(*)')
+	</if>
+	</select>
+	
+	<insert id="insertReplyQna" parameterType="qna">
+	INSERT INTO QUESTIONBOARD (QUESTIONBOARD_GRUOP_ID, QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME, QUESTIONBOARD_READCOUNT, MEMBER_ID) 
+		VALUES (QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTION_GROUPID_SEQ.NEXTVAL, #{questionboardTitle}, #{questionboardContent}, SYSDATE, #{questionboardReadcount}+0, #{memberId})
+	</insert>
 
 </mapper>

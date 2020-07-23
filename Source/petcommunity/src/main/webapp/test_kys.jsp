@@ -15,6 +15,5 @@
 <a href="/petcommunity/communityBoardList.do">커뮤니티 보드</a><br>
 <a href="/petcommunity/findboardlist.do">findboardlist 페이지</a>
 <a href="/petcommunity/lostboardlist.do">lostboardlist 페이지</a>
-<a href="/petcommunity/geolocationtest.do">lostboardlist 페이지</a>
 </body>
 </html>

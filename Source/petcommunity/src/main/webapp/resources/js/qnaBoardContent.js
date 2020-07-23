@@ -1,8 +1,13 @@
 $(function(){
-
-// 목록보기 클릭시 qnaList 페이지 이동
-    $('#qnaListBtn').click(function(){
-    	window.location.href='/petcommunity/qnaList.do';
-    });
-
+	
+	// 삭제버튼
+	$('#deleteBtn').click(function(){
+		var result=confirm("삭제하시겠습니까?");
+		
+		if(result){
+			window.location.href="/petcommunity/delete.do?questionboardId="+$('#deleteBtn').val();
+		}
+	});
+	
+	
 });

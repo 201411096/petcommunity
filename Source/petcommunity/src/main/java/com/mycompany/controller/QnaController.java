@@ -138,7 +138,12 @@ public class QnaController {
 		
 		System.out.println("deleteQna (계정아이디) 확인 : " + qnavo.getMemberId());
 		System.out.println("deleteQna (세션아이디) 확인 : " + (MemberVO)session.getAttribute("memberVO"));
-
+		
+		// 관리자 권한 삭제
+		
+		
+		
+		// 연결계정 확인하여 삭제
 		if (sessionInfo == null) {
 			return "redirect:/login.do";
 		} else if (((MemberVO)sessionInfo).getMemberId().equals(id)) {
@@ -148,5 +153,7 @@ public class QnaController {
 			return "redirect:/main.do";
 		}
 	}
+	
+	// 
 
 }

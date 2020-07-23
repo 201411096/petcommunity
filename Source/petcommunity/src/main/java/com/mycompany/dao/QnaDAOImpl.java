@@ -1,6 +1,7 @@
 package com.mycompany.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,15 @@ public class QnaDAOImpl implements QnaDAO {
 	public void delete(QnaVO qnavo) {
 		mybatis.delete("qnaDAO.delete", qnavo);
 		
+	}
+
+	public List<QnaVO> selectKeywork(Map map) {
+		return mybatis.selectList("qnaDAO.selectKeyword", map);
+		
+	}
+
+	public void insertReplyQna(QnaVO qnavo) {
+		mybatis.insert("qnaDAO.insertReplyQna", qnavo);
 	}
 	
 

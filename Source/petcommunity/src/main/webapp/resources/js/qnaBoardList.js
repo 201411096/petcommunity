@@ -1,8 +1,8 @@
 //$(function(){
 //
-//// 글쓰기 버튼 눌렀을때 페이지 이동
-//    $('#qnaWriteBtn').click(function(){
-//    	window.location.href='/petcommunity/write.do';
+//// 검색 버튼 눌렀을때 페이지 이동
+//    $('#keywordInput').click(function(){
+//    	window.location.href="";
 //    });
 //    
 // 

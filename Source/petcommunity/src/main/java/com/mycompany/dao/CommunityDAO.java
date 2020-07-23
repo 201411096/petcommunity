@@ -15,7 +15,10 @@ public interface CommunityDAO {
 	public List<CommunityVO> getBoardListBySearch(CommunityVO vo);
 	public List<CommunityVO> getBoardListBySearchWithPaging(Map map);
 	public List<CommunityVO> getBoardListByLocation(CommunityVO vo);
+	public List<CommunityVO> getBoardListByLocationWithPaging(Map map);
 	public List<CommunityVO> getBoardListByReadCount();
+	public List<CommunityVO> getBoardListByRecommendWithPaging(Map map);
+	public List<CommunityVO> getBoardListByReadCountWithPaging(Map map);
 	public List<CommunityVO> getBoardListByRecommend();
 	public void addReadCount(CommunityVO vo);
 	public void writeComment(CommentVO vo);

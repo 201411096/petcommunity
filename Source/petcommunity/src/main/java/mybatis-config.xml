@@ -32,8 +32,10 @@
 		
 		<typeAlias alias="qna" type="com.mycompany.domain.QnaVO"></typeAlias>
 		
+		<typeAlias alias="mybuy" type="com.mycompany.domain.MyBuyVO"></typeAlias>
+
 		<typeAlias alias="product" type="com.mycompany.domain.ProductVO"></typeAlias>
-		
+
    </typeAliases>
    
    

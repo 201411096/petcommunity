@@ -1,6 +1,7 @@
 package com.mycompany.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mycompany.domain.QnaVO;
 
@@ -12,5 +13,7 @@ public interface QnaService {
 	public int updateQna(QnaVO qnavo);
 	public void updateReadcount(QnaVO qnavo);
 	public void delete(QnaVO qnavo);
+	public List<QnaVO> selectKeyword(Map map);
+	public void insertReplyQna(QnaVO qnavo);
 	
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.dao.FindHospitalDAOImpl;
+import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.FindHospitalVO;
 
 @Service("findHospitalService")
@@ -26,5 +27,13 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 	@Override
 	public FindHospitalVO getFindHospital(FindHospitalVO findHospitalVO) {
 		return findHospitalDAO.getFindHospital(findHospitalVO);
+	}
+
+	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo) {
+		return findHospitalDAO.getFindHospitalListByLocation(vo);
+	}
+
+	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo) {
+		return findHospitalDAO.getFindHospitalListBySearch(vo);
 	}
 }

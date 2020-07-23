@@ -15,8 +15,7 @@
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
 
 <!-- Main css -->
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css2/style.css">
+
 <link rel="stylesheet" href="./resources/css/mypage.css">
 
 </head>
@@ -62,15 +61,13 @@
 												type="hidden" name="animalFeature"
 												value="${animal.animalFeature}" />
 
+
 											<div class="tedoory">
-
 												<img class="imgAnimal"
-													src="resources/imgs/animal/${animal.animalId}/${animal.imgAnimal}">
-
+													src="resources/imgs/animal/${animal.animalId}/${animal.imgAnimal}"
+													style="width: 200px">
 												<div class="mypage-animal">
-													<h2>${animal.animalName}
-														태어난지<br> ${animal.dateBirthday}일
-													</h2>
+													<h3>${animal.animalName}태어난지${animal.dateBirthday}일</h3>
 												</div>
 												<div class="mypage-animal">
 													<label for='animalBirthday'>생일</label> <input type="text"
@@ -103,64 +100,52 @@
 							<br> <input type="submit" id="animal" class="animal-submit"
 								value="반려동물 등록" />
 						</div>
+
 						<div id="tab-2" class="tab-content">
-						<table class="mypage-table">
-						<thead>
-						<tr>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-							</tr>
-						</thead>
-							<tr>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-							</tr>
-							<tr>
-								<td>sadf
-								</td>
-								<td>sadf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-							</tr>
-							<tr>
-								<td>sadf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-								<td>sdf
-								</td>
-							</tr>
-							
-						
-						</table>
+							<c:choose>
+								<c:when test="${empty buyList}">
+									<h3>현재 주문 내역이 없습니다.</h3>
+								</c:when>
+
+								<c:otherwise>
+									<table class="mypage-table">
+										<colgroup>
+
+											<col style="width: 20%" />
+
+											<col style="width: 60%" />
+
+											<col style="width: 10%" />
+											<col style="width: 15%" />
+
+										</colgroup>
+										<thead>
+											<tr>
+												<td width="80">주문날짜</td>
+												<td width="100">상품명</td>
+												<td width="50">수량</td>
+												<td width="100">가격</td>
+
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach items="${buyList}" var="buy">
+												<tr>
+													<td>2020-7-21${buy.buylistDate}</td>
+													<td class="target"><a href="">${buy.productName}</a></td>
+													<td>${buy.buyCnt}</td>
+													<td>72000원${buy.buylistTotalprice}</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+
+
+									</table>
+								</c:otherwise>
+							</c:choose>
 						</div>
-						
-						
+
+
 					</div>
 
 				</div>

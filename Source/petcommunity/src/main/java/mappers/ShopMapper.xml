@@ -31,9 +31,21 @@
 		order by shop_name desc
 	</select>
 	
-	<select id="selectSearchKeyWordList" parameterType="hashmap" resultType="shop">
+	<select id="selectSearchAutoProduct" parameterType="string" resultType="string">
 		SELECT SHOP_PRODUCTNAME
 		FROM SHOP
 		WHERE SHOP_PRODUCTNAME LIKE '%'||#{searchSomething}||'%'
+	</select>
+	
+	<select id="selectSearchAutoShop" parameterType="string" resultType="string">
+		SELECT SHOP_NAME
+		FROM SHOP
+		WHERE SHOP_NAME LIKE '%'||#{searchSomething}||'%'
+	</select>
+	
+	<select id="selectSearchAutoCategory" parameterType="string" resultType="string">
+		SELECT SHOP_PRODUCTNAME
+		FROM SHOP
+		WHERE SHOP_CATEGORY LIKE '%'||#{searchSomething}||'%'
 	</select>
 </mapper>

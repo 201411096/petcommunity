@@ -29,7 +29,9 @@
 		<typeAlias alias="animal" type="com.mycompany.domain.AnimalVO"></typeAlias>
 		
 		<typeAlias alias="qna" type="com.mycompany.domain.QnaVO"></typeAlias>
-
+		
+		<typeAlias alias="product" type="com.mycompany.domain.ProductVO"></typeAlias>
+		
    </typeAliases>
    
    

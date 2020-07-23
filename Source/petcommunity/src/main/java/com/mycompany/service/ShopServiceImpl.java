@@ -31,7 +31,17 @@ public class ShopServiceImpl implements ShopService{
 
 
 	@Override
-	public List<ShopVO> selectSearchKeyWordList(Map searchKeyWord) {
-		return shopDAO.selectSearchKeyWordList(searchKeyWord);
+	public List<String> selectSearchAutoProduct(String searchSomething) {
+		return shopDAO.selectSearchAutoProduct(searchSomething);
+	}
+	
+	@Override
+	public List<String> selectSearchAutoShop(String searchSomething) {
+		return shopDAO.selectSearchAutoShop(searchSomething);
+	}
+	
+	@Override
+	public List<String> selectSearchAutoCategory(String searchSomething) {
+		return shopDAO.selectSearchAutoCategory(searchSomething);
 	}
 }

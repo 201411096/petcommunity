@@ -46,27 +46,34 @@
 	<!-- Footer section  -->
 	<footer class="footer-section spad">
 		<div class="sp-container">
-<!-- 			<div class="row m-0"> -->
-<!-- 				<div class="col-lg-4 footer-text"> -->
-<!-- 					<h2>OKI DOG HERE</h2> -->
-<!-- 					<p>(임시) 반려동물 분실시 신고기능과 gps기반 / 지역별 커뮤니티 서비스 / 동물병원 정보 알림 서비스 -->
-<!-- 						(임시)</p> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-			<div class="copyright">
-			<h2>OKI DOG HERE</h2>
-					<p>(임시) 반려동물 분실시 신고기능과 gps기반 / 지역별 커뮤니티 서비스 / 동물병원 정보 알림 서비스
-						(임시)</p>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-				Copyright &copy;
-				<script>
-					document.write(new Date().getFullYear());
-				</script>
-				All rights reserved | This template is made with <i
-					class="fa fa-heart-o" aria-hidden="true"></i> by <a
-					href="https://colorlib.com" target="_blank">Colorlib</a>
-				<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+			<div class="row m-0">
+				<div class="col-lg-4 footer-text">
+					<h2>OKI DOG HERE</h2>
+					<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla pretium, vitae ornare leo sollic itudin. Aenean quis velit pulvinar, pellentesque neque vel, laoreet orci. Suspendisse potenti. </p>
+				</div>
+				<div class="col-lg-8">
+					<form class="contact-form">
+						<div class="row">
+							<div class="col-lg-4">
+								<input type="text" placeholder="Your Name">
+							</div>
+							<div class="col-lg-4">
+								<input type="text" placeholder="Your Email">
+							</div>
+							<div class="col-lg-4">
+								<input type="text" placeholder="Subject">
+							</div>
+							<div class="col-lg-12">
+								<textarea placeholder="Message"></textarea>
+								<button class="site-btn sb-light" type="submit">send message <img src="img/icons/arrow-right-white.png" alt=""></button>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
+			<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 		</div>
 	</footer>
 	<!-- Footer section end -->

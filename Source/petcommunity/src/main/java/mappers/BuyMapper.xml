@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="buy">
+
+<select id="mybuyList" parameterType="member" resultType="mybuy">
+select a.BUYLIST_DATE BUYLIST_DATE, b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
+from BUYLIST a, PRODUCT b,BUY c
+where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=#{memberId}
+</select>
+
+</mapper>

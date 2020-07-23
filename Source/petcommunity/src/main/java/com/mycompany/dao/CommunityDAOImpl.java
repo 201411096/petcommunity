@@ -1,6 +1,8 @@
 package com.mycompany.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -126,6 +128,30 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper communityBoardListBySearchPaging() 호출");
 		return mybatis.selectList("communityDAO.communityBoardListBySearchPaging", vo);
 		
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListBySearchWithPaging(Map map) {
+		System.out.println("===>  CommunityMapper getBoardListBySearchWithPaging() 호출");
+		return mybatis.selectList("communityDAO.getBoardListBySearchWithPaging", map);
+	}
+	
+	@Override
+	public List<CommunityVO> getBoardListByLocationWithPaging(Map map) {
+		System.out.println("===>  CommunityMapper getBoardListByLocationWithPaging() 호출");
+		return mybatis.selectList("communityDAO.getBoardListByLocationWithPaging", map);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByRecommendWithPaging(Map map) {
+		System.out.println("===>  CommunityMapper getBoardListByRecommendWithPaging() 호출");
+		return mybatis.selectList("communityDAO.getBoardListByRecommendWithPaging", map);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByReadCountWithPaging(Map map) {
+		System.out.println("===>  CommunityMapper getBoardListByReadCountWithPaging() 호출");
+		return mybatis.selectList("communityDAO.getBoardListByReadCountWithPaging", map);
 	}
 	
 	

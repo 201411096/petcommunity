@@ -98,11 +98,12 @@ width: 50%;
   border-radius: 15px;
   }
   
-  .mypage-animal h2{
+  .mypage-animal h3{
   color: #6b854b;
   }
   
  .tedoory{
+ width:90%;
   border: 2px solid #898792;
   padding: 25px 30px;
   -webkit-border-radius: 35px;
@@ -147,10 +148,15 @@ width: 50%;
  }
  
  ul.tabs{
-	margin: 0px;
+	margin-left:12%;
 	padding: 0px;
 	list-style: none;
 }
+
+figure.tabs{
+	margin-left:5%;
+}
+
 ul.tabs li{
 	background: none;
 	color: #222;
@@ -169,6 +175,7 @@ ul.tabs li.current{
 	display: none;
 	background: #ffffff;
 	padding: 15px;
+	text-align: center;
 }
 
 .tab-content.current{
@@ -177,8 +184,15 @@ ul.tabs li.current{
 
 .mypage-table {
 	width:100%;
+	table-layout: fixed;
 }
 
 .mypage-table td{
 	border-bottom: 1px solid;
 }
+
+.target { 
+	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+	 }
+	 
+

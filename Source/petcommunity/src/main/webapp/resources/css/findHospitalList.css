@@ -5,61 +5,6 @@
 	height:500px;
 }
 
-/* 매장찾기 */
-.findHsptl{
-    width: 590px;
-    margin-top: 0px;
-    margin-right: 700px;
-    margin-left: 800px;
-    padding-left: 0px;
-    padding-right: 0px;
-    height: 100px;
-}
-
-
-.searchArea{
-	position: center;
+#pagination-demo{
 	text-align: center;
-	width: 550px;
-	height: 210px;	
-    padding-left: 30px;
-	
 }
-
-
-.searchArea #findHsptStr{
-	position: center;
-	height: 50px;
-	border:0; 
-	cursor:pointer; 
-	font-size:14px;
-	color:#b2b2b2;
-	border:1px solid #aea9a5;
-}
-
-#findHsptBtn{
-	position: center;
-	width:540px; 
-	height:50px; 
-	border:0; 
-	display:block; 
-	vertical-align: top; 
-	cursor:pointer;
-	margin-left:0px;
-	margin-top:5px;
-	}
-
-
-.div_img{
-	width:70%; 
-	text-align:center; 
-	margin:0px auto;
-}
-
-
-.div_img img{
-	width:100%; 
-	height:auto;
-
-}
-

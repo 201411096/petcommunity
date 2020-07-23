@@ -16,12 +16,25 @@ public class FindHospitalDAOImpl implements FindHospitalDAO{
 
 	@Override
 	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mybatis.selectList("findHospitalDAO.getFindHospitalListWithPaging", map);
 	}
+	
 	@Override
 	public List<FindHospitalVO> selectFindHospitalList(Map map) {
-		// TODO Auto-generated method stub
-		return null;
+		return mybatis.selectList("findHospitalDAO.getFindHospitalList", map);
 	}
+	
+	@Override
+	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo) {
+		System.out.println("===>  HospitalMapper getFindHospitalListByLocation() 호출");
+		return mybatis.selectList("findHospitalDAO.getFindHospitalListByLocation", vo);	
+	}
+	
+	@Override
+	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo) {
+		System.out.println("===>  HospitalMapper getFindHospitalListBySearch() 호출");
+		return mybatis.selectList("findHospitalDAO.getFindHospitalListBySearch", vo);
+	}
+
 }
+

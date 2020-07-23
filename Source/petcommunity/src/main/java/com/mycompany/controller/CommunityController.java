@@ -37,6 +37,7 @@ public class CommunityController {
 	// 게시판 목록보기 페이지로 넘겨준다
 	@RequestMapping("/communityBoardList.do")
 	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv, HttpServletRequest request) {
+		System.out.println("리스트 controller입장");
 		//db의 모든 데이터를 가져옴
 		List<CommunityVO> communityBoardList = communityService.getBoardList();//게시판 리스트 가져오기
 		
@@ -72,6 +73,7 @@ public class CommunityController {
 		
 		vo.setStartList(startList);
 		vo.setLastList(lastList);
+		
 		List<CommunityVO> communityBoardListByPaging = communityService.communityBoardListByPaging(vo);
 		//사진 유무 확인
 		ArrayList<String> checkImg = new ArrayList<String>();
@@ -79,8 +81,11 @@ public class CommunityController {
 			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+communityBoardList.get(i).getCommunityboardId();
 			File dir = new File(directoryPath);
 			File fileList [] = dir.listFiles();
+			
 			if(fileList!=null) {
-				checkImg.add(communityBoardList.get(i).getCommunityboardId());
+				if(fileList.length!=0) {
+					checkImg.add(communityBoardList.get(i).getCommunityboardId());
+				}
 			}	
 		}
 		mv.addObject("checkImg", checkImg); //이미지 있는 컨텐츠번호를 리스트에 담아서 mv에 저장
@@ -140,31 +145,38 @@ public class CommunityController {
 		System.out.println(searchType);
 		System.out.println(keyword);
 		String type = "";
+		Map searchMap = new HashMap();
 		// 검색타입에 따라 vo에 셋팅을 다르게 해줌
 		if (searchType.equals("제목")) {
 			type = "communityboard_title";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "communityboard_title");
 		} else if (searchType.equals("내용")) {
 			type = "communityboard_content";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "communityboard_content");
 		} else if (searchType.equals("작성자")) {
 			type = "member_id";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "member_id");
 		}
-
+		
 		vo.setKeyWord(keyword);
-		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearch(vo);
-		Map searchMap = new HashMap();
-		Map result = new HashMap();
-		PaginationVO paginationVO = new PaginationVO(communityBoardListBySearch.size(), curPage);
+		
+		
+		PaginationVO paginationVO = new PaginationVO(communityService.getBoardListBySearch(vo).size(), curPage, 20);
+		System.out.println(communityService.getBoardListBySearch(vo).size());
+		paginationVO.setRangeSize(20);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		searchMap.put("searchType", searchType);
-		searchMap.put("searchWord", keyword);		
+		searchMap.put("searchType", type);
+		searchMap.put("keyWord", keyword);
+		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearchWithPaging(searchMap);
+		Map result = new HashMap();
+		
 		
 		result.put("pagination", paginationVO);
 		result.put("communityBoardListBySearch", communityBoardListBySearch);
-		result.put("communityBoardListBySearchsize", communityBoardListBySearch.size());
 		//사진 유무 확인
 		ArrayList<String> checkImg = new ArrayList<String>();
 		for(int i = 0; i<communityBoardListBySearch.size(); i++) {
@@ -183,30 +195,129 @@ public class CommunityController {
 		// 카테고리에 선택된 게시판 내용 가져오기	
 	@ResponseBody
 	@RequestMapping("/getBoardListByCategory.do")
-	public List<CommunityVO> getBoardListByCategory(CommunityVO vo, HttpServletRequest request, ModelAndView mv) { 
+	public Map getBoardListByCategory(@RequestParam(defaultValue="1") int curPage, CommunityVO vo, HttpServletRequest request, ModelAndView mv) { 
 		String category = request.getParameter("category");
 		if (category.equals("지역별")) {
+			
 			String cityName = request.getParameter("cityName");
 			String province = request.getParameter("province");
-			
+			System.out.println(cityName);
 			vo.setCityName(cityName);
 			vo.setProvince(province.substring(0,2));//문자열 짤라서 '종로'처럼 두글자로 만들어줌
-		
+			
 			List<CommunityVO> getBoardListByLocation = communityService.getBoardListByLocation(vo);
-			return getBoardListByLocation;
+			Map categoryMap = new HashMap();
+			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByLocation(vo).size(), curPage, 20);
+			
+			paginationVO.setRangeSize(20);
+			categoryMap.put("startRow", paginationVO.getStartIndex()+1);
+		
+			categoryMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
+			categoryMap.put("cityName", cityName);
+			
+			categoryMap.put("province", province.substring(0,2));
+			List<CommunityVO> getBoardListByLocationWithPaging = communityService.getBoardListByLocationWithPaging(categoryMap);
+			
+			Map result = new HashMap();
+			
+			
+			result.put("pagination", paginationVO);
+			result.put("communityBoardListBySearch", getBoardListByLocationWithPaging);
+			//사진 유무 확인
+			ArrayList<String> checkImg = new ArrayList<String>();
+			for(int i = 0; i<getBoardListByLocationWithPaging.size(); i++) {
+				String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+getBoardListByLocationWithPaging.get(i).getCommunityboardId();
+				File dir = new File(directoryPath);
+				File fileList [] = dir.listFiles();
+				if(fileList!=null) {
+					checkImg.add(getBoardListByLocationWithPaging.get(i).getCommunityboardId());
+				}	
+			}
+			result.put("checkImg", checkImg);
+			
+			
+			return result;
 		} else if (category.equals("조회순")) {
+			System.out.println("조회순 입장");
 			List<CommunityVO> getBoardListByReadCount = communityService.getBoardListByReadCount();
-			return getBoardListByReadCount;
-		} else if (category.equals("추천순")) {
-			List<CommunityVO> getBoardListByRecommend = communityService.getBoardListByRecommend();
-			return getBoardListByRecommend;
-		} else {
-			List<CommunityVO> communityBoardList = communityService.getBoardList();
-			return communityBoardList;
-		}
+			Map categoryMap = new HashMap();
+			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByReadCount().size(), curPage, 20);
+			paginationVO.setRangeSize(20);
+			categoryMap.put("startRow", paginationVO.getStartIndex()+1);
+			categoryMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
+			List<CommunityVO> getBoardListByReadCountWithPaging = communityService.getBoardListByReadCountWithPaging(categoryMap);
+			Map result = new HashMap();	
+			result.put("pagination", paginationVO);
+			result.put("communityBoardListBySearch", getBoardListByReadCountWithPaging);
+			System.out.println("검색된 양" + getBoardListByReadCountWithPaging.size());
+			//사진 유무 확인
+			ArrayList<String> checkImg = new ArrayList<String>();
+			for(int i = 0; i<getBoardListByReadCountWithPaging.size(); i++) {
+				String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+getBoardListByReadCountWithPaging.get(i).getCommunityboardId();
+				File dir = new File(directoryPath);
+				File fileList [] = dir.listFiles();
+				if(fileList!=null) {
+					checkImg.add(getBoardListByReadCountWithPaging.get(i).getCommunityboardId());
+				}	
+			}
 
+			return result;
+		} else if (category.equals("추천순")) {
+			System.out.println("추천순 입장");
+			List<CommunityVO> getBoardListByRecommend = communityService.getBoardListByRecommend();
+			Map categoryMap = new HashMap();
+			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByRecommend().size(), curPage, 20);
+			paginationVO.setRangeSize(20);
+			categoryMap.put("startRow", paginationVO.getStartIndex()+1);
+			categoryMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
+			List<CommunityVO> getBoardListByRecommendWithPaging = communityService.getBoardListByRecommendWithPaging(categoryMap);
+			Map result = new HashMap();	
+			result.put("pagination", paginationVO);
+			result.put("communityBoardListBySearch", getBoardListByRecommendWithPaging);
+			System.out.println("검색된 양" + getBoardListByRecommendWithPaging.size());
+			//사진 유무 확인
+			ArrayList<String> checkImg = new ArrayList<String>();
+			for(int i = 0; i<getBoardListByRecommendWithPaging.size(); i++) {
+				String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+getBoardListByRecommendWithPaging.get(i).getCommunityboardId();
+				File dir = new File(directoryPath);
+				File fileList [] = dir.listFiles();
+				if(fileList!=null) {
+					checkImg.add(getBoardListByRecommendWithPaging.get(i).getCommunityboardId());
+				}	
+			}
+			result.put("checkImg", checkImg);
+
+			return result;
+		}else {
+			List<CommunityVO> getBoardListByReadCount = communityService.getBoardListByReadCount();
+			Map categoryMap = new HashMap();
+			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByReadCount().size(), curPage, 20);
+			paginationVO.setRangeSize(20);
+			categoryMap.put("startRow", paginationVO.getStartIndex()+1);
+			categoryMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
+			List<CommunityVO> getBoardListByReadCountWithPaging = communityService.getBoardListByReadCountWithPaging(categoryMap);
+			Map result = new HashMap();	
+			result.put("pagination", paginationVO);
+			result.put("communityBoardListBySearch", getBoardListByReadCountWithPaging);
+			//사진 유무 확인
+			ArrayList<String> checkImg = new ArrayList<String>();
+			for(int i = 0; i<getBoardListByReadCountWithPaging.size(); i++) {
+				String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+getBoardListByReadCountWithPaging.get(i).getCommunityboardId();
+				File dir = new File(directoryPath);
+				File fileList [] = dir.listFiles();
+				if(fileList!=null) {
+					checkImg.add(getBoardListByReadCountWithPaging.get(i).getCommunityboardId());
+				}	
+			}
+			result.put("checkImg", checkImg);
+
+			return result;
+		}
 	}
-	 
+	
+	
+	
+	
 	// 로그인 유무 체크후 값 리턴
 	@ResponseBody
 	@RequestMapping("/checkSession.do")

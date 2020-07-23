@@ -12,5 +12,7 @@ public interface ShopService {
 	
 	public List<ShopVO> selectShopByTagWithPaging(Map searchListMap);
 	public List<ShopVO> selectShopCategoryList(Map searchMap);
-	public List<ShopVO> selectSearchKeyWordList(Map searchKeyWord);
+	public List<String> selectSearchAutoProduct(String searchSomething);
+	public List<String> selectSearchAutoShop(String searchSomething);
+	public List<String> selectSearchAutoCategory(String searchSomething);
 }

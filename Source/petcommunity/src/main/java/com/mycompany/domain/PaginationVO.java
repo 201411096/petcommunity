@@ -62,6 +62,31 @@ public class PaginationVO {
         /** DB 질의를 위한 startIndex 설정 **/
         setStartIndex(curPage);
     }
+    public PaginationVO(int listCnt, int curPage, int pageSize){
+    	setPageSize(pageSize);
+    	/**
+    	 * 페이징 처리 순서
+    	 * 1. 총 페이지수
+    	 * 2. 총 블럭(range)수
+    	 * 3. range setting
+    	 */
+    	
+    	// 총 게시물 수와 현재 페이지를 Controller로 부터 받아온다.
+    	/** 현재페이지 **/
+    	setCurPage(curPage);
+    	/** 총 게시물 수 **/
+    	setListCnt(listCnt);
+    	
+    	/** 1. 총 페이지 수 **/
+    	setPageCnt(listCnt);
+    	/** 2. 총 블럭(range)수 **/
+    	setRangeCnt(pageCnt);
+    	/** 3. 블럭(range) setting **/
+    	rangeSetting(curPage);
+    	
+    	/** DB 질의를 위한 startIndex 설정 **/
+    	setStartIndex(curPage);
+    }
  
     public void setPageCnt(int listCnt) {
         this.pageCnt = (int) Math.ceil(listCnt*1.0/pageSize);

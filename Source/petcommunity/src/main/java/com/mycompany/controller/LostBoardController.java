@@ -20,9 +20,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.LostBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
+import com.mycompany.service.FindBoardServiceImpl;
 import com.mycompany.service.LostBoardServiceImpl;
 import com.mycompany.util.FileUpload;
 
@@ -30,7 +32,8 @@ import com.mycompany.util.FileUpload;
 public class LostBoardController {
 	@Autowired
 	LostBoardServiceImpl lostBoardService;
-	
+	@Autowired
+	FindBoardServiceImpl findBoardService;
 	@ResponseBody
 	@RequestMapping(value = "/lostboardListWithPaging.do", produces = "application/json; charset=utf-8")
 	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType) {
@@ -170,6 +173,22 @@ public class LostBoardController {
 		}else {
 			return null;
 		}
-		
+	}
+	
+	@RequestMapping(value = "/lostboardListWithoutPaging.do", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public Map getLostBoardListWithoutPaging(String searchWord, String searchType)
+	{
+		Map result = new HashMap();
+		Map searchMap = new HashMap();
+		searchMap.put("searchType", searchType);
+		searchMap.put("searchWord", searchWord);
+		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
+		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);
+		result.put("lostBoardVOList", lostBoardVOList);
+		result.put("lostBoardVOListSize", lostBoardVOList.size());
+		result.put("findBoardVOList", findBoardVOList);
+		result.put("findBoardVOListSize", findBoardVOList.size());
+		return result;		
 	}
 }

@@ -27,8 +27,9 @@
 			<h1>게시판</h1>
 		</header>
 		<hr />
+		<div id="map"></div>
 		<section id="container">
-			<div class="form-group">
+			<div class="card">
 				<div id="map"></div>
 			</div>
 			<form role="form" method="get">
@@ -79,6 +80,8 @@
 			</form>
 		</section>
 	</div>
+		<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/lostboardlist.js"></script>
 </body>
 

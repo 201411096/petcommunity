@@ -1,4 +1,6 @@
 var curPage;
+var latitude = 37.519972628243366;
+var longitude = 126.85287648507145;
 var defaultOpts = {
 	visiblePages : 10,
     onPageClick: function (event, page) {
@@ -15,6 +17,14 @@ $(function(){
 	searchWordEventHandler();
 	searchBtnEventHandler();
 	writeBtnEventHandler();
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 });
 
 function documentPreventKeyDown(){
@@ -128,6 +138,7 @@ function getData(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}		
 	});
+	//getDataWithoutPaging();
 }
 
 function drawTable(data){
@@ -149,3 +160,68 @@ function drawTable(data){
 		$('#lostboardTbody').append(listContent);
 	}
 }
+
+function getDataWithoutPaging(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/lostboardListWithoutPaging.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data : {"searchWord" : $('#keywordInput').val(),
+				"searchType" : $('#searchType').val(),
+				"curPage" : curPage,
+				},
+		dataType : 'json',
+		success : function(resultData){
+			//kakaoMapAPI(resultData);
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}		
+	});
+}
+//function kakaoMapAPI(data){
+//	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+//    mapOption = { 
+//        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+//        level: 7 // 지도의 확대 레벨
+//    };
+//
+//	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+//	
+//	var position =  new kakao.maps.LatLng(data.lostBoardVOList[0].lostboardX, data.lostBoardVOList[0].lostboardY);
+//	
+//	var marker = new kakao.maps.Marker({
+//		  position: position
+//		});
+//	marker.setMap(map);
+//	var iwContent = '<div class="alert alert-light"><a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[0].lostboardId+'>'+data.lostBoardVOList[0].lostboardLocation+'</a></div>';
+//	var infowindow = new kakao.maps.InfoWindow({
+//	    content : iwContent
+//	});
+//	kakao.maps.event.addListener(marker, 'mouseover', function() {
+//	    infowindow.open(map, marker);
+//	});
+//	kakao.maps.event.addListener(marker, 'mouseout', function() {
+//	    infowindow.close();
+//	});
+//	
+//	for(var i=0; i<data.lostBoardVOListSize; i++){
+//		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);
+//		
+//		var marker = new kakao.maps.Marker({
+//			  position: position
+//			});
+//		marker.setMap(map);
+//		var iwContent = '<div class="alert alert-light"><a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+data.lostBoardVOList[i].lostboardLocation+'</a></div>';
+//		var infowindow = new kakao.maps.InfoWindow({
+//		    content : iwContent
+//		});
+//		kakao.maps.event.addListener(marker, 'mouseover', function() {
+//		    infowindow.open(map, marker);
+//		});
+//		kakao.maps.event.addListener(marker, 'mouseout', function() {
+//		    infowindow.close();
+//		});
+//	}
+//}

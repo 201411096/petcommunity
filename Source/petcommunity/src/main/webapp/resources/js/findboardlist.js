@@ -17,7 +17,7 @@ $(function(){
 		location.href='findBoardWrite.do';
 	})
 });
-//https://jqueryui.com/autocomplete/ 참고
+
 function autoCompleteFunc(){
 	$('#keywordInput').autocomplete({
 		source : function( request, response ) {

@@ -1,4 +1,144 @@
+var cities=["서울","인천","대전","광주","대구","울산","부산","세종","경기","강원","충북","충남","전북","전남","경북","경남","제주"];
+var seoul = ["종로구","중구","용산구","성동구","광진구","동대문구","중랑구","성북구","강북구","도봉구","노원구","은평구","서대문구","마포구"
+    	,"양천구","강서구","구로구","금천구","영등포구","동작구","관악구","서초구","강남구","송파구","강동구"];
+var incheon = ["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"];
+var dajeon = ["동구","중구","서구","유성구","대덕구"];
+var gwangju = ["동구","서구","남구","북구","광산구"];
+var daegu = ["중구","동구","서구","남구","북구","수성구","달서구","달성군"];
+var ulsan = ["중구","남구","동구","북구","울주군"];
+var busan = ["중구","서구","동구","영도구","부산진구","동래구","남구","북구","강서구","해운대구","사하구","금정구","연제구","수영구","사상구","기장군"];
+var sejong = []
+var kyunggido = ["수원시","고양시","용인시","성남시","화성시","부천시","남양주시","안산시","안양시","평택시","광명시","하남시","의정부시","파주시","시흥시"];
+var ganwondo = ["춘천시","원주시","강릉시","동해시","태백시","속초시","삼척시"];
+var chungbuk = ["청주시","충주시","제천시"];
+var chungnam = ["천안시","공주시","보령시","아산시","서산시","논산시","계룡시","당진시"];
+var jeonbuk = ["전주시","익산시","군산시","정읍시","남원시","김제시"];
+var jeonnam = ["목포시","여수시","순천시","나주시","광양시"];
+var kyungbuk = ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시"];
+var kyungnam = ["창원시","김해시","양산시","진주시","거제시","통영시","사천시","밀양시"];
+var jeju = ["제주시","서귀포시"];
 
+var curPage;
+var defaultOpts = {
+    visiblePages : 5,
+    onPageClick: function (event, page) {
+        $('#page-content').text('Page ' + page);
+        curPage=page;
+        listBysearchWithPaging();
+            
+    }
+};
+    
+    //
+    function listBysearch(){
+    	$.ajax({
+			type : 'post',
+			async:true,
+			url : '/petcommunity/getBoardListBySearch.do',
+			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+			data:{"searchWord" : $('#keywordInput').val(),
+				"searchType" : $('#type').val(),
+				"curPage" : curPage
+				},
+			dataType : 'json',
+			success : function(resultData){		
+					searchTable(resultData);
+					$('#NormalPaging').empty();
+					 var totalPages = resultData.pagination.pageCnt;
+			         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
+			            $('#pagination-demo').twbsPagination('destroy');
+			            $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+			                startPage: currentPage,
+			                totalPages: totalPages
+			            }));
+			},
+			error:function(request,status,error){
+				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+			
+		});
+    }
+    function listBysearchWithPaging(){
+    	$.ajax({
+    		type : 'post',
+    		async:true,
+    		url : '/petcommunity/getBoardListBySearch.do',
+    		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+    		data:{"searchWord" : $('#keywordInput').val(),
+    			"searchType" : $('#type').val(),
+    			"curPage" : curPage
+    		},
+    		dataType : 'json',
+    		success : function(resultData){		
+    			searchTable(resultData);
+    			
+    		},
+    		error:function(request,status,error){
+    			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    		}
+    		
+    	});
+    }
+    function searchTable(data){
+    	
+    	$('#communityList').empty();
+    	$('#communityHide').empty();
+    	$('#getBoardPaging').empty();
+    	var trPrefix = '<tr>';
+    	var trSuffix = '</tr>';
+    	var tdPrefix = '<td>';
+    	var tdSuffix = '</td>';
+    	for(var i in data.communityBoardListBySearch){
+    		var listContent = 
+    						trPrefix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardId + tdSuffix + 
+    						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data.communityBoardListBySearch[i].communityboardId+'>'+
+    						"[<span id='locationTag' class='text-dark'>"+data.communityBoardListBySearch[i].communityboardLocation+"</span>]"
+    						+ data.communityBoardListBySearch[i].communityboardTitle  +
+    						'<span class="text-warning">'+
+    						'['+data.communityBoardListBySearch[i].commentCount+']'+
+    						'</span>' +
+    						'</a>' + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].memberId + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardUploadtime + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardRecommend + tdSuffix +
+    						tdPrefix + data.communityBoardListBySearch[i].communityboardReadcount + tdSuffix +
+    						trSuffix;
+    		
+    		$('#communityList').append(listContent);
+    	}
+    }
+    
+  //리스트 출력
+    function drawTable(data){
+    	
+    	$('#communityList').empty();
+    	$('#communityHide').empty();
+    	var trPrefix = '<tr>';
+    	var trSuffix = '</tr>';
+    	var tdPrefix = '<td>';
+    	var tdSuffix = '</td>';
+    	for(var i in data){
+    		
+    		var listContent = 
+    						trPrefix +
+    						tdPrefix + data[i].communityboardId + tdSuffix + 
+    						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data[i].communityboardId+'>'+
+    						"[<span id='locationTag' class='text-dark'>"+data[i].communityboardLocation+"</span>]"
+    						+ data[i].communityboardTitle  +
+    						'<span class="text-warning">'+
+    						'['+data[i].commentCount+']'+
+    						'</span>' +
+    						'</a>' + tdSuffix +
+    						tdPrefix + data[i].memberId + tdSuffix +
+    						tdPrefix + data[i].communityboardUploadtime + tdSuffix +
+    						tdPrefix + data[i].communityboardRecommend + tdSuffix +
+    						tdPrefix + data[i].communityboardReadcount + tdSuffix +
+    						trSuffix;
+    		
+    		$('#communityList').append(listContent);
+    	}
+    }
 $(function(){
 	
 	//cityName에 따라 province 동적생성되는 함수 		
@@ -63,8 +203,8 @@ $(function(){
                 
         $('#province').empty();
      
-        for(var count in changeItem){
-        	var option = $("<option>"+changeItem[count]+"</option>");
+        for(var cityName in changeItem){//배열에서 하나씩 빼서 count에 담는다 . 
+        	var option = $("<option>"+changeItem[cityName]+"</option>");
             $('#province').append(option);
         }
     }
@@ -92,36 +232,7 @@ $(function(){
 			
 		});
     }
-    //리스트 출력
-    function drawTable(data){
-    	
-    	$('#communityList').empty();
-    	$('#communityHide').empty();
-    	var trPrefix = '<tr>';
-    	var trSuffix = '</tr>';
-    	var tdPrefix = '<td>';
-    	var tdSuffix = '</td>';
-    	for(var i in data){
-    		
-    		var listContent = 
-    						trPrefix +
-    						tdPrefix + data[i].communityboardId + tdSuffix + 
-    						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data[i].communityboardId+'>'+
-    						"[<span id='locationTag' class='text-dark'>"+data[i].communityboardLocation+"</span>]"
-    						+ data[i].communityboardTitle  +
-    						'<span class="text-warning">'+
-    						'['+data[i].commentCount+']'+
-    						'</span>' +
-    						'</a>' + tdSuffix +
-    						tdPrefix + data[i].memberId + tdSuffix +
-    						tdPrefix + data[i].communityboardUploadtime + tdSuffix +
-    						tdPrefix + data[i].communityboardRecommend + tdSuffix +
-    						tdPrefix + data[i].communityboardReadcount + tdSuffix +
-    						trSuffix;
-    		
-    		$('#communityList').append(listContent);
-    	}
-    }
+    
     
     //글쓰기 버튼 눌렀을때 페이지 이동
     $('#writeBtn').click(function(){
@@ -144,35 +255,9 @@ $(function(){
     
 
     
-    var curPage;
-    var defaultOpts = {
-    	visiblePages : 10,
-        onPageClick: function (event, page) {
-            $('#page-content').text('Page ' + page);
-            curPage=page;
-            getDataInPaging();
-        }
-    };
     
-    var cities=["서울","인천","대전","광주","대구","울산","부산","세종","경기","강원","충북","충남","전북","전남","경북","경남","제주"];
-    var seoul = ["종로구","중구","용산구","성동구","광진구","동대문구","중랑구","성북구","강북구","도봉구","노원구","은평구","서대문구","마포구"
-    	,"양천구","강서구","구로구","금천구","영등포구","동작구","관악구","서초구","강남구","송파구","강동구"];
-    var incheon = ["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"];
-    var dajeon = ["동구","중구","서구","유성구","대덕구"];
-    var gwangju = ["동구","서구","남구","북구","광산구"];
-    var daegu = ["중구","동구","서구","남구","북구","수성구","달서구","달성군"];
-    var ulsan = ["중구","남구","동구","북구","울주군"];
-    var busan = ["중구","서구","동구","영도구","부산진구","동래구","남구","북구","강서구","해운대구","사하구","금정구","연제구","수영구","사상구","기장군"];
-    var sejong = []
-    var kyunggido = ["수원시","고양시","용인시","성남시","화성시","부천시","남양주시","안산시","안양시","평택시","광명시","하남시","의정부시","파주시","시흥시"];
-    var ganwondo = ["춘천시","원주시","강릉시","동해시","태백시","속초시","삼척시"];
-    var chungbuk = ["청주시","충주시","제천시"];
-    var chungnam = ["천안시","공주시","보령시","아산시","서산시","논산시","계룡시","당진시"];
-    var jeonbuk = ["전주시","익산시","군산시","정읍시","남원시","김제시"];
-    var jeonnam = ["목포시","여수시","순천시","나주시","광양시"];
-    var kyungbuk = ["포항시","경주시","김천시","안동시","구미시","영주시","영천시","상주시","문경시","경산시"];
-    var kyungnam = ["창원시","김해시","양산시","진주시","거제시","통영시","사천시","밀양시"];
-    var jeju = ["제주시","서귀포시"];
+    
+   
 
     $('#hiddenBox').hide();
     $('#showBy').change(function(){
@@ -247,64 +332,11 @@ $(function(){
     });
     
     //검색버튼 클릭
-    $('#searchBtn').click( function(){
-    	$.ajax({
-			type : 'post',
-			async:true,
-			url : '/petcommunity/getBoardListBySearch.do',
-			contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-			data:{"searchWord" : $('#keywordInput').val(),
-				"searchType" : $('#type').val(),
-				"curPage" : curPage
-				},
-			dataType : 'json',
-			success : function(resultData){		
-					searchTable(resultData);
-					$('#NormalPaging').empty();
-					 var totalPages = resultData.pagination.pageCnt;
-			            var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
-			            $('#pagination-demo').twbsPagination('destroy');
-			            $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
-			                startPage: currentPage,
-			                totalPages: totalPages
-			            }));
-			},
-			error:function(request,status,error){
-				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			}
-			
-		});
-    });
-    function searchTable(data){
-    	
-    	$('#communityList').empty();
-    	$('#communityHide').empty();
-    	$('#getBoardPaging').empty();
-    	var trPrefix = '<tr>';
-    	var trSuffix = '</tr>';
-    	var tdPrefix = '<td>';
-    	var tdSuffix = '</td>';
-    	for(var i in data.communityBoardListBySearch){
-    		
-    		var listContent = 
-    						trPrefix +
-    						tdPrefix + data.communityBoardListBySearch[i].communityboardId + tdSuffix + 
-    						tdPrefix + '<a href=getBoardContent.do?communityboardId='+data.communityBoardListBySearch[i].communityboardId+'>'+
-    						"[<span id='locationTag' class='text-dark'>"+data.communityBoardListBySearch[i].communityboardLocation+"</span>]"
-    						+ data.communityBoardListBySearch[i].communityboardTitle  +
-    						'<span class="text-warning">'+
-    						'['+data.communityBoardListBySearch[i].commentCount+']'+
-    						'</span>' +
-    						'</a>' + tdSuffix +
-    						tdPrefix + data.communityBoardListBySearch[i].memberId + tdSuffix +
-    						tdPrefix + data.communityBoardListBySearch[i].communityboardUploadtime + tdSuffix +
-    						tdPrefix + data.communityBoardListBySearch[i].communityboardRecommend + tdSuffix +
-    						tdPrefix + data.communityBoardListBySearch[i].communityboardReadcount + tdSuffix +
-    						trSuffix;
-    		
-    		$('#communityList').append(listContent);
-    	}
-    }
+    $('#searchBtn').on('click',
+    		listBysearch
+    	);
+    
+    
    
     
     $('#cityName').change(
@@ -351,11 +383,7 @@ $(function(){
     	window.location.href='/petcommunity/communityBoardList.do?pageNo='+Number(pageNo+5);
     });
     
-    jQuery('#document_navi').jaPageNavigator({
-        page_row : "10" // 보여질 게시물 목록 수
-      , page_link : "10" // 보여질 페이지 링크 수
-      , total_count : "500" // 게시물 총 수
-    });
+
     		
     		
     

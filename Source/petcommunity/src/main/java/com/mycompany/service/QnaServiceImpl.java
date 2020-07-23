@@ -39,6 +39,12 @@ public class QnaServiceImpl implements QnaService{
 		qnaDAO.updateReadcount(qnavo);		
 	}
 
+	@Override
+	public void delete(QnaVO qnavo) {
+		qnaDAO.delete(qnavo);
+		
+	}
+
 
 
 

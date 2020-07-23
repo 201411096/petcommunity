@@ -13,7 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="resources/css/qnaContent.css">
+<link rel="stylesheet" href="resources/css/qnaBoardContent.css">
 <title>고객문의</title>
 
 </head>
@@ -52,7 +52,6 @@
 			<tr>
 				<td colspan="2" id="content-content" style="width: 80%">${qnaContent.questionboardContent}<hr
 						id="lineStyle">
-
 						</td>
 				<td></td>
 			</tr>
@@ -60,15 +59,12 @@
 			<tr>
 				<td colspan="2" id="listButton"><button id="qnaListBtn"
 						type="button" class="btn btn-default">목록보기</button></td>
-				<td id="modi"><button id="qnaModifyBtn" type="button"
-						class="btn btn-default">
-						<a
-							href="/petcommunity/qnaModify.do?questionboardId=${qnaContent.questionboardId}&memberId=${qnaContent.memberId}&memberContent=${qnaContent.questionboardContent}">수정</a>
-					</button>
+				<td id="modi">
+						<a class="btn btn-default" href="/petcommunity/qnaModify.do?questionboardId=${qnaContent.questionboardId}">수정</a>
 					<button id="qnaDeleteBtn" type="button" class="btn btn-default">삭제</button></td>
 			</tr>
 		</table>
 	
-	<script src="resources/js/qnaContent.js"></script>
+	<script src="resources/js/qnaBoardContent.js"></script>
 </body>
 </html>

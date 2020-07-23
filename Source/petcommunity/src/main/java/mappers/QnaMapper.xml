@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="insertQna" parameterType="qna">
 		INSERT INTO QUESTIONBOARD (QUESTIONBOARD_ID, QUESTIONBOARD_GRUOP_ID, QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME, QUESTIONBOARD_READCOUNT, MEMBER_ID) 
-		VALUES (QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTION_GROUPID_SEQ.NEXTVAL, #{questionboardTitle}, #{questionboardContent}, SYSDATE, #{questionboardReadcount}, #{memberId})
+		VALUES (QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTION_GROUPID_SEQ.NEXTVAL, #{questionboardTitle}, #{questionboardContent}, SYSDATE, #{questionboardReadcount}+0, #{memberId})
 	</insert>
 	
 	<select id="selectQnaList" resultType="qna">
@@ -33,5 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	SET QUESTIONBOARD_READCOUNT = QUESTIONBOARD_READCOUNT+1
 	WHERE QUESTIONBOARD_ID = #{questionboardId}
 	</update>
+	
+	<delete id="delete">
+	DELETE 
+	FROM QUESTIONBOARD
+	WHERE QUESTIONBOARD_ID = #{questionboardId}
+	</delete>
 
 </mapper>

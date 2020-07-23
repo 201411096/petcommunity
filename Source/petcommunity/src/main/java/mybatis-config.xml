@@ -18,6 +18,8 @@
 
 		<typeAlias alias="findBoard" type="com.mycompany.domain.FindBoardVO"></typeAlias>
 		
+		<typeAlias alias="lostBoard" type="com.mycompany.domain.LostBoardVO"></typeAlias>
+		
 		<typeAlias alias="findHospital" type="com.mycompany.domain.FindHospitalVO"></typeAlias>
 
 		<typeAlias alias="pagination" type="com.mycompany.domain.PaginationVO"></typeAlias>

@@ -1,9 +1,11 @@
 package com.mycompany.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.MemberVO;
+import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.CommunityService;
 import com.mycompany.util.FileUpload;
 
@@ -27,12 +31,71 @@ public class CommunityController {
 
 	@Autowired
 	private CommunityService communityService;
-
+	
+	
+	
 	// 게시판 목록보기 페이지로 넘겨준다
 	@RequestMapping("/communityBoardList.do")
-	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv) {
+	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv, HttpServletRequest request) {
+		System.out.println("리스트 controller입장");
+		//db의 모든 데이터를 가져옴
 		List<CommunityVO> communityBoardList = communityService.getBoardList();//게시판 리스트 가져오기
-		mv.addObject("communityBoardList", communityBoardList);  //게시판 리스트 저장
+		
+		//20개씩 보여줄때 페이지 개수 계산
+		int amountOfPage=(communityBoardList.size()-1)/20+1; //페이지의 개수(20개씩 보여주므로 20으로 나눈후 1을 더해줌)
+		int showPage = (amountOfPage-1)/5+1; //page개수 구하기
+		
+		int pageNo=1;
+		if(request.getParameter("pageNo")!=null) {//pageNo가 파라미터로 넘어올때
+			pageNo=Integer.parseInt(request.getParameter("pageNo"));
+		}else {
+			pageNo=1;
+		}
+		if(pageNo>amountOfPage){		
+			pageNo=amountOfPage;
+		}
+			
+		
+		int showPageNo=(pageNo-1)/5;
+		int showPageStart=showPageNo*5+1; //page인덱스가 시작하는 위치
+		int showPageLast=0;
+		if((showPageNo*5+5)>amountOfPage) {//page인덱스가 마지막 인덱스를 포함한다면
+			showPageLast=showPageNo*5+amountOfPage%5;
+		}else {
+			showPageLast=showPageNo*5+5; //page인덱스가 끝나는 위치
+		}
+		
+		int startList= 20*(pageNo-1)+1;//게시판 해당 페이지 시작글
+		int lastList=startList+19; //게시판 해당 페이지 마지막글
+		if(startList-1==communityBoardList.size()/20) {//마지막 페이지일때 어디까지 불러와야 하는지 정해줌
+			lastList=communityBoardList.size();
+		}
+		
+		vo.setStartList(startList);
+		vo.setLastList(lastList);
+		
+		List<CommunityVO> communityBoardListByPaging = communityService.communityBoardListByPaging(vo);
+		//사진 유무 확인
+		ArrayList<String> checkImg = new ArrayList<String>();
+		for(int i = 0; i<communityBoardList.size(); i++) {
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+communityBoardList.get(i).getCommunityboardId();
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			
+			if(fileList!=null) {
+				if(fileList.length!=0) {
+					checkImg.add(communityBoardList.get(i).getCommunityboardId());
+				}
+			}	
+		}
+		mv.addObject("checkImg", checkImg); //이미지 있는 컨텐츠번호를 리스트에 담아서 mv에 저장
+		
+		
+		mv.addObject("showPageStart", showPageStart);
+		mv.addObject("showPageLast", showPageLast);
+		mv.addObject("amountOfPage", amountOfPage);
+		mv.addObject("communityBoardList", communityBoardListByPaging);  //게시판 리스트 저장
+		mv.addObject("boardList", "value");
 		mv.setViewName("communityBoardList");
 		return mv;
 	}
@@ -73,31 +136,64 @@ public class CommunityController {
 	
 
 	// 검색된 게시판 list 가져오기
+	@ResponseBody
 	@RequestMapping("/getBoardListBySearch.do")
-	public ModelAndView getBoardListBySearch(CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
+	public Map getBoardListBySearch(@RequestParam(defaultValue="1") int curPage, CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
 		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
-		String searchType = request.getParameter("type");
-		String keyword = request.getParameter("keyWord");
-		System.out.println(keyword + " " + searchType);
+		String searchType = request.getParameter("searchType");
+		String keyword = request.getParameter("searchWord");
+		System.out.println(searchType);
+		System.out.println(keyword);
 		String type = "";
+		Map searchMap = new HashMap();
 		// 검색타입에 따라 vo에 셋팅을 다르게 해줌
 		if (searchType.equals("제목")) {
 			type = "communityboard_title";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "communityboard_title");
 		} else if (searchType.equals("내용")) {
 			type = "communityboard_content";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "communityboard_content");
 		} else if (searchType.equals("작성자")) {
 			type = "member_id";
 			vo.setSearchType(type);
+			searchMap.put("searchType", "member_id");
 		}
-
+		
 		vo.setKeyWord(keyword);
-		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearch(vo);
-
-		mv.addObject("communityBoardList", communityBoardListBySearch);
-		mv.setViewName("communityBoardList");
-		return mv;
+		
+		
+		PaginationVO paginationVO = new PaginationVO(communityService.getBoardListBySearch(vo).size(), curPage, 20);
+		System.out.println(communityService.getBoardListBySearch(vo).size());
+		paginationVO.setRangeSize(20);
+		searchMap.put("startRow", paginationVO.getStartIndex()+1);
+		System.out.println(paginationVO.getStartIndex()+1);
+		System.out.println(paginationVO.getStartIndex()+paginationVO.getPageSize());
+		System.out.println(paginationVO.getPageSize());
+		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
+		searchMap.put("searchType", type);
+		searchMap.put("keyWord", keyword);
+		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearchWithPaging(searchMap);
+		Map result = new HashMap();
+		
+		
+		result.put("pagination", paginationVO);
+		result.put("communityBoardListBySearch", communityBoardListBySearch);
+		result.put("communityBoardListBySearchsize", communityBoardListBySearch.size());
+		//사진 유무 확인
+		ArrayList<String> checkImg = new ArrayList<String>();
+		for(int i = 0; i<communityBoardListBySearch.size(); i++) {
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+communityBoardListBySearch.get(i).getCommunityboardId();
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			if(fileList!=null) {
+				checkImg.add(communityBoardListBySearch.get(i).getCommunityboardId());
+			}	
+		}
+		result.put("checkImg", checkImg);
+		
+		return result;
 	}
 
 		// 카테고리에 선택된 게시판 내용 가져오기	
@@ -113,7 +209,6 @@ public class CommunityController {
 			vo.setProvince(province.substring(0,2));//문자열 짤라서 '종로'처럼 두글자로 만들어줌
 		
 			List<CommunityVO> getBoardListByLocation = communityService.getBoardListByLocation(vo);
-			System.out.println("결과값" + getBoardListByLocation);
 			return getBoardListByLocation;
 		} else if (category.equals("조회순")) {
 			List<CommunityVO> getBoardListByReadCount = communityService.getBoardListByReadCount();
@@ -138,6 +233,7 @@ public class CommunityController {
 		}
 		return msg;
 	}
+	
 	// 추천 취소
 	@ResponseBody
 	@RequestMapping("/dislikeContent.do")
@@ -170,7 +266,7 @@ public class CommunityController {
 		mv.addObject("boardContent", communityService.getBoardContent(vo));//해당 글 정보 가져오기
 		mv.addObject("boardComment", communityService.getCommentContent(cvo));//해당글에 관련된 커멘트 가져오기
 		communityService.addReadCount(vo); //해당 글 조회수 올리기
-		
+		//그림파일이 있으면 가져옴 
 		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+vo.getCommunityboardId();
 		
 		File dir = new File(directoryPath);

@@ -64,7 +64,8 @@
 							<hr/>
 						</c:if>
 						</td></tr>
-						<c:if test="${boardComment.memberId eq sessionScope.memberVO.memberId}">
+						<c:if test="${boardComment.memberId eq sessionScope.memberVO.memberId
+										or sessionScope.memberVO.member_flag eq '1'}">
 							<tr><td id="commentDelete">	
 								<a href="#" class="commentDelete">수정하기</a>
 								<a href="#" class="commentDelete" id='commentDelete'>삭제하기</a>
@@ -97,7 +98,7 @@
 			
 			<div class="col-xs-10 col-sm-10">	
 				<button type="button" class="btn btn-default" id='goToList'>목록보기</button>
-				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId}">
+				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId or sessionScope.memberVO.memberFlag eq '1'}">
 					<button type="button" class="btn btn-default" id="communityBoardModify">수정하기</button>
 					<button type="button" class="btn btn-default" id="communityBoardDelete" value="${boardContent.communityboardId}">삭제하기</button>
 				</c:if>

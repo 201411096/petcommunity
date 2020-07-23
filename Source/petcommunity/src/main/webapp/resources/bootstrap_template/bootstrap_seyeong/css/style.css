@@ -96,7 +96,7 @@
  
  .set-bg {
    background-repeat: no-repeat;
-   background-size: 1200px,800px;
+   background-size: cover;
    background-position: top center;
  }
  
@@ -109,7 +109,6 @@
    max-width: 1584px;
    width: 100%;
    margin: 0 auto;
-   text-align: center;
  }
  
  .big-title,
@@ -455,6 +454,7 @@
  
  .icon-box h5 {
    font-weight: 300;
+   font-style: italic;
    margin-bottom: 15px;
  }
  
@@ -472,6 +472,7 @@
  
  .site-logo {
    display: inline-block;
+   padding: 8px 0;
  }
  
  .slicknav_menu {
@@ -480,8 +481,6 @@
  
  .main-menu {
    float: right;
-     margin-right: 20px;
-     margin-top: 30px;
  }
  
  .main-menu li {
@@ -501,18 +500,12 @@
  /* ----------------
  Hero section
   ---------------------*/
- #together {
- font-size: 150px;
- font-family: 'Nanum Brush Script', cursive;
- color : #082236;
- }
  
  .hero-section {
    clear: both;
  }
  
  .hs-item {
-   margin-right : -40px;
    height: 950px;
    position: relative;
    display: -webkit-box;
@@ -654,17 +647,20 @@
  
  .gallery-text {
    margin-bottom: 110px;
-   font-family: 'Noto Sans KR', sans-serif;
  }
-
  
  .gallery-text h2 {
    margin-bottom: 20px;
  }
  
+.gallery-item {
+   margin-bottom: 123px; 
+    font-family: 'Poor Story', cursive;
+}
+
+//생성
  .gallery-item {
-   margin-bottom: 123px;
-   font-family: 'Noto Sans KR', sans-serif;
+    
  }
  
  .gallery-item img {
@@ -710,7 +706,6 @@
    width: 39%;
    float: left;
    max-width: 610px;
-   font-family: 'Noto Sans KR', sans-serif;
  }
  
  .blog-title-col h2 {
@@ -735,16 +730,6 @@
    overflow: hidden;
  }
  
-/*  생성 */
- .blog-item .blog-content .blog-cata-title{
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
-/*  생성 */
- .blog-item .blog-content .blog-cata-title .blog-cata p {
-	font-family: 'Noto Sans KR', sans-serif;
-}
- 
  .blog-item .blog-thumb {
    width: 264px;
    float: left;
@@ -765,6 +750,11 @@
  .blog-item span.blog-cata {
    letter-spacing: 3px;
  }
+
+    //세영
+ .blog-cata-cata h4 {
+    font-family: 'Poor Story', cursive;
+}
  
  .blog-item h4 {
    margin-bottom: 10px;
@@ -780,20 +770,16 @@
  
  .footer-section {
    background: #222222;
-   font-family: 'Noto Sans KR', sans-serif;
-   text-align: center;
  }
  
  .footer-text {
-    padding-right: 70px;
-   
-  
+   padding-right: 70px;
  }
  
  .footer-text h2 {
    color: #fff;
+   font-style: italic;
    margin-bottom: 17px;
-   font-size: 25px;
  }
  
  .footer-text p {
@@ -831,14 +817,6 @@
    margin-top: -20px;
    padding-left: 15px;
  }
- 
- .copyright h2 {
- 	color: white;
- }
-/*  생성 */
-/* .footer-section spad .sp-container .row m-0 .col-lg-4 footer-text { */
-/* 	font-family: 'Neucha', cursive; */
-/* } */
  
  /* ----------------
  Other Page

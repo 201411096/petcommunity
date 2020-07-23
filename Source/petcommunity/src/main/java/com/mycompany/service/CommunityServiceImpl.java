@@ -1,6 +1,8 @@
 package com.mycompany.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,6 +95,21 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public void dislikeContent(CommunityVO vo) {
 		communityDAO.dislikeContent(vo);	
+	}
+
+	@Override
+	public List<CommunityVO> communityBoardListByPaging(CommunityVO vo) {	
+		return communityDAO.communityBoardListByPaging(vo);
+	}
+
+	@Override
+	public List<CommunityVO> communityBoardListBySearchPaging(CommunityVO vo) {
+		return communityDAO.communityBoardListBySearchPaging(vo);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListBySearchWithPaging(Map map) {
+		return communityDAO.getBoardListBySearchWithPaging(map);
 	}
 
 	

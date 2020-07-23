@@ -9,8 +9,15 @@ public class MemberVO {
 	private String memberTel;
 	private String memberEmail;
 	private String memberBirthday;
+	private String memberFlag;
 	
 	
+	public String getMemberFlag() {
+		return memberFlag;
+	}
+	public void setMemberFlag(String memberFlag) {
+		this.memberFlag = memberFlag;
+	}
 	public String getMemberId() {
 		return memberId;
 	}

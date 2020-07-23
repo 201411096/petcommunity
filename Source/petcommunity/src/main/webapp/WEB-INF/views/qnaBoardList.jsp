@@ -26,52 +26,52 @@
 <body>
 	<div class="container">
 		<section id="container">
-			<form role="form" method="get">
-				<h4>
-					<strong>고객센터</strong>
-				</h4>
-				<hr id="lineStyle" />
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>등록일</th>
-							<th>조회수</th>
-							<th>아이디</th>
-						</tr>
-					</thead>
-					<c:forEach items="${qnavoList}" var="item">
-						<tr>
-							<td>${item.questionboardId}</td>
-							<td><a
-								href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">
-									${item.questionboardTitle}</a></td>
-							<td>${item.questionboardUploadtime}</td>
-							<td>${item.questionboardReadcount}</td>
-							<td>${item.memberId}</td>
-						</tr>
+			<!-- 			<form role="form" method="get"> -->
+			<h4>
+				<strong>고객센터</strong>
+			</h4>
+			<hr id="lineStyle" />
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>등록일</th>
+						<th>조회수</th>
+						<th>아이디</th>
+					</tr>
+				</thead>
+				<c:forEach items="${qnavoList}" var="item">
+					<tr>
+						<td>${item.questionboardId}</td>
+						<td><a
+							href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">
+								${item.questionboardTitle}</a></td>
+						<td>${item.questionboardUploadtime}</td>
+						<td>${item.questionboardReadcount}</td>
+						<td>${item.memberId}</td>
+					</tr>
 
-					</c:forEach>
-				</table>
+				</c:forEach>
+			</table>
+			<form id="searchK" name="searchK" action="/petcommunity/keyword.do">
 				<div class="search row">
 					<div class="col-xs-2 col-sm-2">
-						<select name="searchType" class="form-control">
-							<option value="n" <c:out value="0"/>>-----</option>
-							<option value="t" <c:out value="1"/>>제목</option>
-							<option value="c" <c:out value="2"/>>내용</option>
-							<option value="w" <c:out value="3"/>>작성자</option>
-							<option value="tc" <c:out value="4"/>>제목+내용</option>
+						<select name="searchType" id="searchType" class="form-control">
+							<option value="0">-----</option>
+							<option value="1">제목</option>
+							<option value="2">내용</option>
+							<option value="3">아이디</option>
+							<option value="4">제목+내용</option>
 						</select>
 					</div>
 					<div class="col-xs-10 col-sm-10">
 						<div class="input-group">
-							<input type="text" name="keyword" id="keywordInput"
-								class="form-control" value="${scri.keyword}" /> <span
-								class="input-group-btn">
-								<button id="qnaSearchBtn" type="button" class="btn btn-default">검색</button>
-							</span> <span class="input-group-btn"> <a
-								href="/petcommunity/write.do" class="btn btn-default">글쓰기</a>
+							<input type="text" name="keyword" id="keywordInput" 
+								class="form-control" /> <span class="input-group-btn"> 								
+								<button id="qnaSearchBtn" type="submit" class="btn btn-default">검색</button>
+							</span> <span class="input-group-btn"> 
+							<a href="/petcommunity/write.do" class="btn btn-default">글쓰기</a>
 							</span>
 						</div>
 					</div>

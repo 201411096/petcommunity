@@ -2,7 +2,6 @@ package com.mycompany.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.AnimalVO;
 import com.mycompany.domain.MemberVO;
+import com.mycompany.domain.MyBuyVO;
 import com.mycompany.service.AnimalService;
+import com.mycompany.service.BuyService;
 import com.mycompany.util.FileUpload;
 
 @Controller
@@ -25,6 +26,9 @@ public class AnimalController {
 
 	@Autowired
 	private AnimalService animalService;
+
+	@Autowired
+	private BuyService buyService;
 
 	@RequestMapping(value = "animalinsert.do", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public ModelAndView animalinsert(AnimalVO vo, HttpServletRequest request, MultipartHttpServletRequest mtfRequest)
@@ -60,27 +64,29 @@ public class AnimalController {
 	public ModelAndView animalSelect(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
-
+		
 		List<AnimalVO> list = animalService.animalSelect(mvo);
 		
-		
+		  List<MyBuyVO> list2=buyService.buyList(mvo);
+		 	 
 		for (AnimalVO i : list) {
 
-			String directoryPath = req.getSession().getServletContext().getRealPath("resources/imgs")
-					+ "/animal/" + i.getAnimalId();
-		
+			String directoryPath = req.getSession().getServletContext().getRealPath("resources/imgs") + "/animal/"
+					+ i.getAnimalId();
+
 			File dir = new File(directoryPath);
 			File fileList[] = dir.listFiles();
-		
+
 			if (fileList != null) {
 				for (File file : fileList) {
 					i.setImgAnimal(file.getName());
 				}
 			}
 		}
-		
+
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("animalList", list);
+		mv.addObject("buyList", list2); 
 		mv.setViewName("mypage");
 		return mv;
 
@@ -88,8 +94,10 @@ public class AnimalController {
 
 	// 반려동물 정보 삭제
 	@RequestMapping(value = "animalDelete.do")
-	public String animalDelete(AnimalVO vo) {
+	public String animalDelete(AnimalVO vo, HttpServletRequest req) {
 		animalService.animalDelete(vo);
+		FileUpload.deleteDirectory(
+				req.getSession().getServletContext().getRealPath("resources/imgs") + "/animal/" + vo.getAnimalId());
 		return "redirect:/mypageselect.do";
 	}
 

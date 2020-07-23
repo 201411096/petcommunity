@@ -184,8 +184,12 @@ public class CommunityController {
 			File dir = new File(directoryPath);
 			File fileList [] = dir.listFiles();
 			if(fileList!=null) {
-				checkImg.add(communityBoardListBySearch.get(i).getCommunityboardId());
+				if(fileList.length!=0) {
+					checkImg.add(communityBoardListBySearch.get(i).getCommunityboardId());
+				}
+				
 			}	
+			
 		}
 		result.put("checkImg", checkImg);
 		
@@ -230,7 +234,10 @@ public class CommunityController {
 				File dir = new File(directoryPath);
 				File fileList [] = dir.listFiles();
 				if(fileList!=null) {
-					checkImg.add(getBoardListByLocationWithPaging.get(i).getCommunityboardId());
+					
+					if(fileList.length!=0) {
+						checkImg.add(getBoardListByLocationWithPaging.get(i).getCommunityboardId());
+					}
 				}	
 			}
 			result.put("checkImg", checkImg);
@@ -257,10 +264,14 @@ public class CommunityController {
 				File dir = new File(directoryPath);
 				File fileList [] = dir.listFiles();
 				if(fileList!=null) {
-					checkImg.add(getBoardListByReadCountWithPaging.get(i).getCommunityboardId());
-				}	
+					if(fileList.length!=0) {
+						checkImg.add(getBoardListByReadCountWithPaging.get(i).getCommunityboardId());
+					}
+					
+				}
+				
 			}
-
+			result.put("checkImg", checkImg);
 			return result;
 		} else if (category.equals("추천순")) {
 			System.out.println("추천순 입장");
@@ -282,7 +293,10 @@ public class CommunityController {
 				File dir = new File(directoryPath);
 				File fileList [] = dir.listFiles();
 				if(fileList!=null) {
-					checkImg.add(getBoardListByRecommendWithPaging.get(i).getCommunityboardId());
+					if(fileList.length!=0) {
+						checkImg.add(getBoardListByRecommendWithPaging.get(i).getCommunityboardId());
+					}
+					
 				}	
 			}
 			result.put("checkImg", checkImg);
@@ -306,7 +320,10 @@ public class CommunityController {
 				File dir = new File(directoryPath);
 				File fileList [] = dir.listFiles();
 				if(fileList!=null) {
-					checkImg.add(getBoardListByReadCountWithPaging.get(i).getCommunityboardId());
+					if(fileList.length!=0) {
+						checkImg.add(getBoardListByReadCountWithPaging.get(i).getCommunityboardId());
+					}
+					
 				}	
 			}
 			result.put("checkImg", checkImg);

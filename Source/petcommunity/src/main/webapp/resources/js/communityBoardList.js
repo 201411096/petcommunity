@@ -425,11 +425,25 @@ function searchTable(data){
 	$('#communityList').empty();
 	$('#communityHide').empty();
 	$('#getBoardPaging').empty();
+	var imageCheck=""
+	var commentCount=""
 	var trPrefix = '<tr>';
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
 	for(var i in data.communityBoardListBySearch){
+		if(data.communityBoardListBySearch[i].commentCount>0){
+			commentCount='['+data.communityBoardListBySearch[i].commentCount+']'
+		}else{
+			commentCount=""
+		}
+		for(var k in data.checkImg){
+			if(data.checkImg[k]==data.communityBoardListBySearch[i].communityboardId){
+				imageCheck="<img src='resources/imgs/communityboard/like/image.PNG'>"
+			}else{
+				imageCheck=""
+			}
+		}
 		var listContent = 
 						trPrefix +
 						tdPrefix + data.communityBoardListBySearch[i].communityboardId + tdSuffix + 
@@ -437,9 +451,9 @@ function searchTable(data){
 						"[<span id='locationTag' class='text-dark'>"+data.communityBoardListBySearch[i].communityboardLocation+"</span>]"
 						+ data.communityBoardListBySearch[i].communityboardTitle  +
 						'<span class="text-warning">'+
-						'['+data.communityBoardListBySearch[i].commentCount+']'+
+						commentCount+
 						'</span>' +
-						'</a>' + tdSuffix +
+						'</a>' + imageCheck + tdSuffix +
 						tdPrefix + data.communityBoardListBySearch[i].memberId + tdSuffix +
 						tdPrefix + data.communityBoardListBySearch[i].communityboardUploadtime + tdSuffix +
 						tdPrefix + data.communityBoardListBySearch[i].communityboardRecommend + tdSuffix +

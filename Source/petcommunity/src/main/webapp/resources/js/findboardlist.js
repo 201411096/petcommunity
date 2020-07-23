@@ -9,14 +9,42 @@ var defaultOpts = {
 };
 
 $(function(){
+	documentPreventKeyDown();
 	getData();
 	autoCompleteFunc();
-//	$('#keywordInput').on('keyup', getData);
+	searchWordEventHandler();
+	searchBtnEventHandler();
+	writeBtnEventHandler();
+	
+});
+
+function documentPreventKeyDown(){
+	document.addEventListener('keydown', function(event) {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		}, true);
+}
+
+function searchWordEventHandler(){
+	$('#keywordInput').on('keydown', function(e){
+//		e.preventDefault();
+//		e.stopPropagation();
+		if(e.keyCode === 13){
+			$('#searchBtn').click();
+		}
+	});
+}
+
+function searchBtnEventHandler(){
 	$('#searchBtn').on('click', getData);
+}
+function writeBtnEventHandler(){
 	$('#writeBtn').on('click', function(){
 		location.href='findBoardWrite.do';
 	})
-});
+}
+
 //https://jqueryui.com/autocomplete/ 참고
 function autoCompleteFunc(){
 	$('#keywordInput').autocomplete({
@@ -51,7 +79,7 @@ function autoCompleteFunc(){
            },
            appendTo :'#search-container',
            minLength: 1,		 // 최소 글자수
-           autoFocus: true,		 //첫번째 항목 자동 포커스 기본값 false
+           autoFocus: false,		 //첫번째 항목 자동 포커스 기본값 false
            delay : 500,
 	});
 }

@@ -11,10 +11,10 @@ from findhospital
 </select>
 
 <!-- 지역별 검색 -->
-<select id="getFindHospitalListByAddress" parameterType="findHospital" resultType="findHospital">
+<select id="getFindHospitalListByLocation" parameterType="findHospital" resultType="findHospital">
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
 from findhospital
-where SUBSTR(findhospital_address,2,1)=#{cityName} and SUBSTR(findhospital_address,4,2) = #{province}
+where SUBSTR(findhospital_address,1,2)=#{cityName} and SUBSTR(findhospital_address,4,2) = #{province}
 </select> 
 
 <!--병원명, 검색어 typing해서 검색-->

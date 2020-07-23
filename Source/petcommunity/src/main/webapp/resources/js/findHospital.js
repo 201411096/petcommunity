@@ -80,13 +80,15 @@ $(function(){
         
        $('#province').empty();
      
-        for(var count in changeItem){
-        	var option = $("<option>"+changeItem[count]+"</option>");
+        for(var cityName in changeItem){
+        	var option = $("<option>"+changeItem[cityName]+"</option>");
             $('#province').append(option);
         }
     });
 });    
     
+
+
 var curPage;
 var defaultOpts = {
 	visiblePages : 10,
@@ -96,6 +98,31 @@ var defaultOpts = {
         getDataInPaging();
     }
 };
+
+
+$(function(){
+$('#prevPage').click(function(){
+	var pageNo=Number($.urlParam('pageNo'));
+	if(pageNo==1){
+		alert('첫번째 페이지입니다');
+	}else{
+		window.location.href='/petcommunity/communityBoardList.do?pageNo='+Number(pageNo-5);
+	}    	
+});
+$('#nextPage').click(function(){
+	var pageNo=Number($.urlParam('pageNo'));
+	window.location.href='/petcommunity/communityBoardList.do?pageNo='+Number(pageNo+5);
+});
+
+jQuery('#document_navi').jaPageNavigator({
+    page_row : "10" // 보여질 게시물 목록 수
+  , page_link : "10" // 보여질 페이지 링크 수
+  , total_count : "500" // 게시물 총 수
+});
+});
+
+
+
 
 
 

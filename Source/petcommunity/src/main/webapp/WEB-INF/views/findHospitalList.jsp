@@ -99,7 +99,6 @@
 					
 					<thead>
 						<tr>
-							<th>번호</th>
 							<th>병원명</th>
 							<th>전화 번호</th>
 							<th>주소</th>

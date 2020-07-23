@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.FindHospitalVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.FindHospitalServiceImpl;
@@ -76,7 +75,7 @@ public class HospitalController {
 		
 		vo.setKeyWord(keyword);
 		
-		List<CommunityVO> getFindHospitalListBySearch = findHospitalService.getFindHospitalListBySearch(vo);
+		List<FindHospitalVO> getFindHospitalListBySearch = findHospitalService.getFindHospitalListBySearch(vo);
 		Map searchMap = new HashMap();
 		Map result = new HashMap();
 		PaginationVO paginationVO = new PaginationVO(getFindHospitalListBySearch.size(), curPage);

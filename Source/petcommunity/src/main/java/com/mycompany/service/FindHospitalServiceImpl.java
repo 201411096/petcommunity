@@ -33,7 +33,7 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 		return findHospitalDAO.getFindHospitalListByLocation(vo);
 	}
 
-	public List<CommunityVO> getFindHospitalListBySearch(FindHospitalVO vo) {
+	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo) {
 		return findHospitalDAO.getFindHospitalListBySearch(vo);
 	}
 }

@@ -6,7 +6,7 @@
     margin-bottom: 0px; }
    
 .mypage-animal input {
-  width: 70%;
+  width: 80%;
   margin-left:10%;
   display: block;
   border: ridge;
@@ -39,7 +39,7 @@
       
       
 .mypage-animal textarea {
-  width: 90%;
+  width: 80%;
   height : 170px;
   margin-left:10%;
   display: block;
@@ -116,7 +116,15 @@ width: 50%;
  margin-left: 37%;
   }
   
-
+.tedoory2{
+    margin-left:10%;
+ width:80%;
+  border: 2px solid #898792;
+  padding: 25px 30px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
   
  @media screen and (max-width: 768px){
  
@@ -147,7 +155,7 @@ ul.tabs{
   border-radius: 35px;
   }
   
-    .tedoory2{
+.tedoory2{
     margin-left:10%;
  width:80%;
   border: 2px solid #898792;
@@ -163,7 +171,7 @@ ul.tabs{
   }
   
   .mypage-animal input {
-  width: 90%;
+  width: 80%;
   margin-left:10%;
   display: block;
   border: ridge;
@@ -174,6 +182,22 @@ ul.tabs{
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
+  }
+  
+  .mypage-animal textarea {
+  width: 80%;
+  height : 170px;
+  margin-left:10%;
+  display: block;
+  border: ridge;
+  border-bottom: 1px solid #2f2f2f;
+  padding: 6px 30px;
+  font-family: Poppins;
+  box-sizing: border-box; 
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+   resize: vertical;
   }
   
   

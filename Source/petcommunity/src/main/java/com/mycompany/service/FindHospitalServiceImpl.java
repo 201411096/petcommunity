@@ -18,6 +18,7 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 	@Override
 	public List<FindHospitalVO> getFindHospitalList(Map map) {
 		return findHospitalDAO.getFindHospitalList(map);
+		
 	}
 
 	@Override

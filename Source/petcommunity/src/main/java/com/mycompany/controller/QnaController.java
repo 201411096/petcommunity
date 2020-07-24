@@ -62,41 +62,58 @@ public class QnaController {
 	}
 
 	// 글 입력 후 리스트에서 출력
+//	@RequestMapping("qnaList.do")
+//	public ModelAndView selectQnaList(QnaVO qnavo, HttpSession session) {
+//		ModelAndView mv = new ModelAndView();
+//		List<QnaVO> qnavoList = qnaService.selectQnaList(qnavo);
+//		// 관리자 확인
+//		MemberVO membervo= (MemberVO)session.getAttribute("memberVO");
+//			mv.setViewName("/qnaBoardList");
+//			mv.addObject("qnavoList", qnavoList);
+//		
+//		
+//		return mv;
+//	}
 	@RequestMapping("qnaList.do")
-	public ModelAndView selectQnaList(QnaVO qnavo) {
+	public ModelAndView selectQnaList(QnaVO qnavo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		List<QnaVO> qnavoList = qnaService.selectQnaList(qnavo);
-		mv.setViewName("/qnaBoardList");
-		mv.addObject("qnavoList", qnavoList);
-
+		// 관리자 확인
+		MemberVO membervo= (MemberVO)session.getAttribute("memberVO");
+			mv.setViewName("/qnaBoardList");
+			mv.addObject("qnavoList", qnavoList);
+			mv.addObject("membervo", membervo);
+		
 		return mv;
 	}
-
+	
 	// 게시글 상세보기 출력
 	@RequestMapping("qnaContent.do")
 	public ModelAndView getQnaBoard(QnaVO qnavo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		qnavo=qnaService.selectOne(qnavo);
-		qnavo.getQuestionboardReadcount();
-		session.getAttribute("memberVO");
-		
-		if((MemberVO)session.getAttribute("memberVO")==null) {
+		MemberVO membervo=(MemberVO)session.getAttribute("memberVO");
+		if(membervo==null) {
 			qnaService.updateReadcount(qnavo);
 			mv.setViewName("qnaBoardContent");
 			mv.addObject("qnaContent", qnaService.selectOne(qnavo));
-		}else if((MemberVO)session.getAttribute("memberVO")!=null) {
+			
+		}else if(membervo.getMemberFlag().equals("0")) {
 			qnaService.updateReadcount(qnavo);
 			mv.setViewName("qnaBoardContent");
 			mv.addObject("qnaContent", qnaService.selectOne(qnavo));
-		}else if(((MemberVO)session.getAttribute("memberVO")).getMemberFlag()=="1") {
+			
+		}else if(membervo.getMemberFlag().equals("1")) {
+			System.out.println("플래그값 확인"+(MemberVO)session.getAttribute("memberVO"));
 			qnaService.updateReadcount(qnavo); // 조회수
-			MemberVO mf=((MemberVO)session.getAttribute("memberVO"));
-			System.out.println("mf확인1"+mf);
-			System.out.println("mf확인2"+mf.getMemberFlag());
+			String admin=((MemberVO)session.getAttribute("memberVO")).getMemberFlag();
+			System.out.println("admin값 확인 : "+admin);
+			List<QnaVO> listQna= qnaService.selectListRe(qnavo);
 			mv.setViewName("qnaBoardContent");
 			mv.addObject("qnaContent", qnaService.selectOne(qnavo));
-			mv.addObject("mf", mf);	
-			System.out.println("getQnaBoard flag확인 : "+mf);
+			mv.addObject("admin",admin);
+			int groupListSize = listQna.size();
+			mv.addObject("groupListSize", groupListSize);
 		}
 		
 		return mv;
@@ -104,12 +121,7 @@ public class QnaController {
 
 	// 게시글 수정페이지 이동하기 (조건 : 아이디 일치하면 페이지 이동)
 	@RequestMapping(value = "qnaModify.do", produces = "application/text; charset=utf-8")
-	public ModelAndView modifyform(QnaVO qnavo, HttpSession session) {
-//		System.out.println("확인" + qnavo.getQuestionboardReadcount());
-//		System.out.println("확인" + qnavo.getMemberId());
-		System.out.println("확인" + qnavo.getQuestionboardId());
-		
-		
+	public ModelAndView modifyform(QnaVO qnavo, HttpSession session) {		
 		ModelAndView mv = new ModelAndView();
 		qnavo=qnaService.selectOne(qnavo);
 		String id = null;
@@ -152,16 +164,12 @@ public class QnaController {
 		ModelAndView mv = new ModelAndView();
 		Object sessionInfo = (MemberVO) session.getAttribute("memberVO");
 		qnavo=qnaService.selectOne(qnavo);
-		
 		String id = qnavo.getMemberId();
-		System.out.println("deleteQna (계정아이디) 확인 : " + qnavo.getMemberId());
-		System.out.println("deleteQna (세션아이디) 확인 : " + (MemberVO)session.getAttribute("memberVO"));
-		
 		// 연결계정 확인하여 삭제
 		if (sessionInfo == null) {
 			mv.setViewName("redirect:/login.do"); 
 		
-			// 계정아이디와 작성아이디 일치 or 관리자인 경우 삭제
+		// 계정아이디와 작성아이디 일치 or 관리자인 경우 삭제
 		} else if (((MemberVO)sessionInfo).getMemberId().equals(id) || ((MemberVO)sessionInfo).getMemberFlag().equals("1")) {
 			
 			qnaService.delete(qnavo);
@@ -180,9 +188,7 @@ public class QnaController {
 			ModelAndView mv = new ModelAndView();
 			map.put("searchType", searchType);
 			map.put("keyword", keyword);
-			
 			List<QnaVO> qnavoList = qnaService.selectKeyword(map);
-			
 			mv.addObject("qnavoList", qnavoList);
 			mv.setViewName("/qnaBoardList");
 			
@@ -193,15 +199,21 @@ public class QnaController {
 		@RequestMapping("reply.do")
 		public ModelAndView replyQna(QnaVO qnavo) {
 			ModelAndView mv = new ModelAndView();
-			mv.setViewName("redirect:/qnaList.do");
+			qnavo=qnaService.selectGroupId(qnavo);
+			mv.addObject("qnaReplyContent", qnavo);
+			mv.setViewName("qnaReplyBoardWrite");
 			
 			return mv;
 		}
 		
-		// 관리자 답변 입력
+		// 관리자 작성완료 버튼 클릭시 입력 후 리스트페이지로 연결
 		@RequestMapping("replyWrite.do")
-		public ModelAndView replyWrite(QnaVO qnavo) {
+		public ModelAndView replyWrite(QnaVO qnavo, HttpSession session) {
 			ModelAndView mv = new ModelAndView();
+			qnavo.getQuestionboardContent();
+			String re = "RE : ";
+			qnavo.setQuestionboardTitle(re+qnavo.getQuestionboardTitle());
+			qnavo.setMemberId(((MemberVO)session.getAttribute("memberVO")).getMemberId());
 			qnaService.insertReplyQna(qnavo);
 			mv.setViewName("redirect:/qnaList.do");
 			

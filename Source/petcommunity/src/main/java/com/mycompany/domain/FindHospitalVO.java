@@ -9,6 +9,9 @@ public class FindHospitalVO {
 	private String findhospitalAddress;
 	private String findhospitalX;
 	private String findhospitalY;
+	private String findhospitalOpenhour;
+	
+	
 	private String keyWord;//검색어
 	private String searchType;//검색타입
 	
@@ -22,6 +25,12 @@ public class FindHospitalVO {
 	
 	
 	
+	public String getFindhospitalOpenhour() {
+		return findhospitalOpenhour;
+	}
+	public void setFindhospitalOpenhour(String findhospitalOpenhour) {
+		this.findhospitalOpenhour = findhospitalOpenhour;
+	}
 	public int getStartList() {
 		return startList;
 	}

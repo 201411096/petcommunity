@@ -56,6 +56,17 @@ public class QnaDAOImpl implements QnaDAO {
 	public void insertReplyQna(QnaVO qnavo) {
 		mybatis.insert("qnaDAO.insertReplyQna", qnavo);
 	}
+
+
+	public QnaVO selectGroupId(QnaVO qnavo) {
+		return mybatis.selectOne("qnaDAO.selectGroupId", qnavo);
+		
+	}
+
+
+	public List<QnaVO> selectListRe(QnaVO qnavo) {
+		return mybatis.selectList("qnaDAO.selectListRe", qnavo);
+	}
 	
 
 

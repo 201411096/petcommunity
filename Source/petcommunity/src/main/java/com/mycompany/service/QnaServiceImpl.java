@@ -56,6 +56,16 @@ public class QnaServiceImpl implements QnaService{
 		qnaDAO.insertReplyQna(qnavo);
 		
 	}
+
+	@Override
+	public QnaVO selectGroupId(QnaVO qnavo) {
+		return qnaDAO.selectGroupId(qnavo);
+	}
+
+	@Override
+	public List<QnaVO> selectListRe(QnaVO qnavo) {
+		return qnaDAO.selectListRe(qnavo);
+	}
 	
 
 

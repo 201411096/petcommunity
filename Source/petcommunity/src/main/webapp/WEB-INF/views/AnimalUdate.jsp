@@ -22,8 +22,7 @@
 <!-- Main css -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/style.css">
-<link rel="stylesheet"
-	href="./resources/css/mypage.css">
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 </head>
@@ -34,7 +33,7 @@
 		<section class="signup">
 			<div class="container">
 				<div class="signup-content">
-					<div class="signup-form">
+					<div class="signup-form"> 
 						<!-- <figure>
 							<img
 								src="./resources/bootstrap_template/template_01/img/gallery/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.PNG"

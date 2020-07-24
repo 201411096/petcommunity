@@ -9,8 +9,58 @@ public class FindHospitalVO {
 	private String findhospitalAddress;
 	private String findhospitalX;
 	private String findhospitalY;
+	private String findhospitalOpenhour;
+	
+	
 	private String keyWord;//검색어
 	private String searchType;//검색타입
+	
+	//paging변수들
+	private int startList; //페이징이 시작하는 페이지
+	private int pageSize=10; //한 페이지에 보이는 글의 수
+	private int lastList; 
+	private int prevPage;//이전페이지
+	private int nextPage;//다음페이지
+	
+	
+	
+	
+	public String getFindhospitalOpenhour() {
+		return findhospitalOpenhour;
+	}
+	public void setFindhospitalOpenhour(String findhospitalOpenhour) {
+		this.findhospitalOpenhour = findhospitalOpenhour;
+	}
+	public int getStartList() {
+		return startList;
+	}
+	public void setStartList(int startList) {
+		this.startList = startList;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public int getLastList() {
+		return lastList;
+	}
+	public void setLastList(int lastList) {
+		this.lastList = lastList;
+	}
+	public int getPrevPage() {
+		return prevPage;
+	}
+	public void setPrevPage(int prevPage) {
+		this.prevPage = prevPage;
+	}
+	public int getNextPage() {
+		return nextPage;
+	}
+	public void setNextPage(int nextPage) {
+		this.nextPage = nextPage;
+	}
 	
 	public String getKeyWord() {
 		return keyWord;

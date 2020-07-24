@@ -1,6 +1,7 @@
 var curPage;
 var latitude = 37.519972628243366;
 var longitude = 126.85287648507145;
+var contextPath = getContextPath();
 var defaultOpts = {
 	visiblePages : 10,
     onPageClick: function (event, page) {
@@ -16,15 +17,7 @@ $(function(){
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();
-	writeBtnEventHandler();
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-
-// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+	writeBtnEventHandler(); 
 });
 
 function documentPreventKeyDown(){
@@ -138,7 +131,7 @@ function getData(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}		
 	});
-	//getDataWithoutPaging();
+	getDataWithoutPaging();
 }
 
 function drawTable(data){
@@ -167,61 +160,97 @@ function getDataWithoutPaging(){
 		async:true,
 		url : '/petcommunity/lostboardListWithoutPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data : {"searchWord" : $('#keywordInput').val(),
-				"searchType" : $('#searchType').val(),
-				"curPage" : curPage,
-				},
+		data : {
+			
+		},
 		dataType : 'json',
 		success : function(resultData){
-			//kakaoMapAPI(resultData);
+			kakaoMapAPI(resultData);
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}		
 	});
 }
-//function kakaoMapAPI(data){
-//	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-//    mapOption = { 
-//        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-//        level: 7 // 지도의 확대 레벨
-//    };
-//
-//	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-//	
-//	var position =  new kakao.maps.LatLng(data.lostBoardVOList[0].lostboardX, data.lostBoardVOList[0].lostboardY);
-//	
-//	var marker = new kakao.maps.Marker({
-//		  position: position
-//		});
-//	marker.setMap(map);
-//	var iwContent = '<div class="alert alert-light"><a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[0].lostboardId+'>'+data.lostBoardVOList[0].lostboardLocation+'</a></div>';
-//	var infowindow = new kakao.maps.InfoWindow({
-//	    content : iwContent
-//	});
-//	kakao.maps.event.addListener(marker, 'mouseover', function() {
-//	    infowindow.open(map, marker);
-//	});
-//	kakao.maps.event.addListener(marker, 'mouseout', function() {
-//	    infowindow.close();
-//	});
-//	
-//	for(var i=0; i<data.lostBoardVOListSize; i++){
-//		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);
-//		
-//		var marker = new kakao.maps.Marker({
-//			  position: position
-//			});
-//		marker.setMap(map);
-//		var iwContent = '<div class="alert alert-light"><a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+data.lostBoardVOList[i].lostboardLocation+'</a></div>';
-//		var infowindow = new kakao.maps.InfoWindow({
-//		    content : iwContent
-//		});
-//		kakao.maps.event.addListener(marker, 'mouseover', function() {
-//		    infowindow.open(map, marker);
-//		});
-//		kakao.maps.event.addListener(marker, 'mouseout', function() {
-//		    infowindow.close();
-//		});
-//	}
-//}
+function kakaoMapAPI(data){
+	$('#map').empty();
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    mapOption = { 
+        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };
+
+	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+	for(var i=0; i<data.lostBoardVOListSize; i++){
+		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);
+		
+		var imageSrc = contextPath + '/resources/imgs/marker/red.png', // 마커이미지의 주소입니다    
+	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		
+		var marker = new kakao.maps.Marker({
+			  position: position
+			  ,image: markerImage // 마커이미지 설정
+			});
+		marker.setMap(map);
+		marker.setRange(1000);
+		var iwContent = '<div class="card marker-infowindow">'+
+						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
+						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
+						'</div>';
+		var infowindow = new kakao.maps.InfoWindow({
+		    content : iwContent
+		});
+		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+	}
+	for(var i=0; i<data.findBoardVOListSize; i++){
+		var position =  new kakao.maps.LatLng(data.findBoardVOList[i].findboardX, data.findBoardVOList[i].findboardY);
+		
+		var imageSrc = contextPath + '/resources/imgs/marker/blue.png', // 마커이미지의 주소입니다    
+	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		
+		var marker = new kakao.maps.Marker({
+			  position: position
+			  ,image: markerImage // 마커이미지 설정
+			});
+		marker.setMap(map);
+		marker.setRange(1000);
+		var iwContent = '<div class="card marker-infowindow">'+
+						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
+						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
+						'</div>';
+		var infowindow = new kakao.maps.InfoWindow({
+		    content : iwContent
+		});
+		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+	}
+}
+
+//marker click event
+//closure를 이용한 infowindow on/off
+function makeClickListener(map, marker, infowindow) {
+	var status = 0;
+	return function() {
+		if(status==0){
+			infowindow.open(map, marker);
+			status=1;
+		}else{
+			infowindow.close(map, marker);
+			status=0;
+		}
+			
+	};
+}
+
+// 현재 작업경로를 가져오는 함수
+function getContextPath() {
+	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+}

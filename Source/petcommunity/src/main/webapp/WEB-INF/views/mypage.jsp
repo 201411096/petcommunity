@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title></title>
+<title>마이페이지</title>
 
 <!-- Font Icon -->
 <link rel="stylesheet"
@@ -24,10 +24,7 @@
 	<div class="main2">
 
 		<!-- Sign up form -->
-		<section class="signup">
-			<div class="container">
 				<div class="signup-content">
-					<div class="signup-form">
 						<figure>
 							<img
 								src="./resources/bootstrap_template/template_01/img/gallery/mypage.PNG"
@@ -104,20 +101,17 @@
 						<div id="tab-2" class="tab-content">
 							<c:choose>
 								<c:when test="${empty buyList}">
-									<h3>현재 주문 내역이 없습니다.</h3>
+									<h3>현재 주문 내역이 없습니다</h3>
 								</c:when>
 
 								<c:otherwise>
+								<div class="tedoory2">
 									<table class="mypage-table">
 										<colgroup>
-
 											<col style="width: 20%" />
-
 											<col style="width: 60%" />
-
 											<col style="width: 10%" />
 											<col style="width: 15%" />
-
 										</colgroup>
 										<thead>
 											<tr>
@@ -130,28 +124,21 @@
 										</thead>
 										<tbody>
 											<c:forEach items="${buyList}" var="buy">
-												<tr>
+												<tr height="50">
 													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="">${buy.productName}</a></td>
+													<td class="target"><a href="buyReceipt.do?buy=${buy.buyId}">${buy.productName}</a></td>
 													<td>${buy.buyCnt}</td>
-													<td>72000원${buy.buylistTotalprice}</td>
+													<td>${buy.buylistTotalprice}원</td>
 												</tr>
 											</c:forEach>
+											
 										</tbody>
-
-
 									</table>
+									</div>
 								</c:otherwise>
 							</c:choose>
 						</div>
-
-
-					</div>
-
 				</div>
-			</div>
-		</section>
-
 	</div>
 
 	<!-- JS -->

@@ -1,12 +1,19 @@
 package com.mycompany.domain;
 
 public class MyBuyVO {
+	private String buyId;
 	private String buylistDate;
 	private String productName;
 	private int buyCnt;
 	private String buylistTotalprice; 
 	
 	
+	public String getBuyId() {
+		return buyId;
+	}
+	public void setBuyId(String buyId) {
+		this.buyId = buyId;
+	}
 	public String getBuylistDate() {
 		return buylistDate;
 	}

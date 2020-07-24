@@ -4,15 +4,11 @@
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
-<title>The Look - Photo Gallery Template</title>
+<title>oki doghere</title>
 <meta charset="UTF-8">
 <meta name="description" content="Instyle Fashion HTML Template">
 <meta name="keywords" content="instyle, fashion, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script type="text/javascript">
-	jQuery.noConflict();
-</script>
 
 <!-- Google font -->
 <link

@@ -11,29 +11,36 @@ import com.mycompany.domain.FindHospitalVO;
 
 @Service("findHospitalService")
 public class FindHospitalServiceImpl implements FindHospitalService{
+	
 	@Autowired
 	FindHospitalServiceImpl findHospitalDAO;
 
 	@Override
-	public List<FindHospitalVO> selectFindHospital(Map map) {
-		return findHospitalDAO.selectFindHospital(map);
+	public List<FindHospitalVO> getFindHospitalList(Map map) {
+		return findHospitalDAO.getFindHospitalList(map);
+		
 	}
 
 	@Override
-	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map) {
-		return findHospitalDAO.selectFindHospitalWithPaging(map);
-	}
-
-	@Override
-	public FindHospitalVO getFindHospital(FindHospitalVO findHospitalVO) {
-		return findHospitalDAO.getFindHospital(findHospitalVO);
+	public List<FindHospitalVO> getFindHospitalListWithPaging(Map map) {
+		return findHospitalDAO.getFindHospitalListWithPaging(map);
 	}
 
 	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo) {
 		return findHospitalDAO.getFindHospitalListByLocation(vo);
 	}
 
+	@Override
+	public List<FindHospitalVO> getFindHospitalListByLocationWithPaging(Map map) {
+		return findHospitalDAO.getFindHospitalListByLocationWithPaging(map);
+	}
+	
 	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo) {
 		return findHospitalDAO.getFindHospitalListBySearch(vo);
+	}
+	
+	@Override
+	public List<FindHospitalVO> getFindHospitalListBySearchWithPaging(Map map) {
+		return findHospitalDAO.getFindHospitalListBySearchWithPaging(map);
 	}
 }

@@ -6,9 +6,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="buy">
 
 <select id="mybuyList" parameterType="member" resultType="mybuy">
-select a.BUYLIST_DATE BUYLIST_DATE, b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
+select c.BUY_ID BUY_ID,a.BUYLIST_DATE BUYLIST_DATE, b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
 from BUYLIST a, PRODUCT b,BUY c
 where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=#{memberId}
+</select>
+
+<resultMap type="hashmap" id="selectList">
+		<id column="BUY_ID" property="buyId" />
+		<id column="member_name" property="memberName" />
+		<id column="member_tel" property="memberTel" />
+		<id column="member_address" property="memberAddress" />
+		<id column="BUYLIST_DATE" property="buyListDate" />
+		<id column="PRODUCT_NAME" property="productName" />
+		<id column="BUY_CNT" property="buyCnt" />
+		<id column="product_price" property="productPrice" />
+		<id column="BUYLIST_TOTALPRICE" property="buyListTotalprice" />
+</resultMap>
+
+<select id="buyReceipt" parameterType="String" resultMap="selectList">
+select c.BUY_ID BUY_ID,m.member_name member_name,m.member_tel member_tel,m.member_address member_address,TO_CHAR(a.BUYLIST_DATE,'YYYY-MM-DD') BUYLIST_DATE,
+b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT, b.product_price product_price,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
+from BUYLIST a, PRODUCT b,BUY c,member m
+where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.member_id and c.buy_id=#{id}
 </select>
 
 </mapper>

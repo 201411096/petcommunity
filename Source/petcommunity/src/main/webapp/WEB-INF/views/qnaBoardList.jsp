@@ -44,8 +44,8 @@
 				<c:forEach items="${qnavoList}" var="item">
 					<tr>
 						<td>${item.questionboardId}</td>
-						<td><a
-							href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">
+						<td>
+						<a href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">
 								${item.questionboardTitle}</a></td>
 						<td>${item.questionboardUploadtime}</td>
 						<td>${item.questionboardReadcount}</td>

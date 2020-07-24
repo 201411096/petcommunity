@@ -17,48 +17,15 @@ ul#pagination-demo{
 	display: grid;
 
 }
+
+
 #lineStyle {
 	border: 0;
     height: 1px;
     background: #ccc;
 }
-/* 아코디언 */
 
-#accordion {
-	width: 100%;
-	height: 60%; 
+
+td a{
+	color : black;
 }
-
-.accordion_left{
-	margin-right: 10%;
-	margin-left: 20%;
-	margin-top: 20%;
-}
-
-.col-md-6 {
-	display: grid;
-	grid-template-columns: 70% 100%;
-    grid-template-rows: 50%;
-    width: 100%;
-    height: 80%;
-    padding-left:20%;
-}
-
-
-/* .col-md-6{ */
-/* 	flex:0 0 50%; */
-/* /* 	max-width:50%; */ */
-/* /* 	position:relative; */ */
-/* /* 	width:100%; */ */
-	
-/* 	} */
-	
-.card{position:relative;display:flex;flex-direction:column;min-width:0;word-wrap:break-word;background-color:#fff;background-clip:border-box;border:1px solid rgba(26,54,126,0.125);border-radius:.25rem}
-.accordion-wrapper{border-radius:.25rem;border:#e9ecef solid 1px}
-.accordion-wrapper>.card{box-shadow:0 0 0 0 transparent}
-.accordion-wrapper>.card>.card-header{padding:1rem;height:auto}
-.accordion-wrapper>.card>.card-header .btn:active,.accordion-wrapper>.card>.card-header .btn:focus,.accordion-wrapper>.card>.card-header .btn:hover{text-decoration:none}
-.accordion-wrapper>.card>.card-header .form-heading p{margin:0}.accordion-wrapper>.card .collapse{border-bottom:transparent solid 1px}
-.accordion-wrapper>.card .collapse.show{border-bottom-color:#e9ecef}
-
-

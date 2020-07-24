@@ -14,7 +14,8 @@
 
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="resources/js/qnaBoardWrite.js"></script>
+<link rel="stylesheet" href="resources/css/qnaReplyBoardWrite.css">
+
 
 <title>게시판</title>
 </head>
@@ -24,31 +25,31 @@
 		<header>
 			<h1>게시글 작성하기</h1>
 		</header>
-		<br />
-		<br />
-		<form action="writeIntoQna.do" method='get' name="commitWrite">
+		<br /> <br />
+		<form action="replyWrite.do" method='get' name="commitReplyWrite">
 
-			<!-- 글쓰기 -->
-			<br />
-			<br />
+			<br /> <br />
+			<div class="form-group">
+					<input type="hidden" name="questionboardGroupId" value="${qnaReplyContent.questionboardGroupId}" />
+			</div>
 			<div class="form-group">
 				<label>글 제목</label> <input type="text" class="form-control"
 					name="questionboardTitle" id="questionboardTitle"
-					placeholder="title">${qnaContent.questionboardTitle }
+					placeholder="title" value="">
 			</div>
 			<div class="form-group">
 				<label>글 내용</label>
 				<textarea class="form-control" rows="5" name="questionboardContent"
-					id="questionboardContent" placeholder="contents">${qnaContent.questionboardContent}</textarea>
+					id="questionboardContent" placeholder="contents"></textarea>
 			</div>
 
 			<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
 			<div class="col-md-4 col-md-offset-10">
-				<span class="input-group-btn"> <input>
-					<button type="submit" class="btn btn-default" id='commitWrite'>작성완료</button>
-					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/qnaList.do">돌아가기</a>
-<!-- 					<button type="button" class="btn btn-default" id='cancelWrite'>글쓰기 취소</button> -->
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-default" name='commitReplyWrite' id='commitReplyWrite'>작성완료</button>
+					<a class="btn btn-default" id='cancelWrite'
+					href="/petcommunity/qnaList.do">돌아가기</a>
 				</span>
 			</div>
 		</form>

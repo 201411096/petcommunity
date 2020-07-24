@@ -15,5 +15,7 @@ public interface QnaService {
 	public void delete(QnaVO qnavo);
 	public List<QnaVO> selectKeyword(Map map);
 	public void insertReplyQna(QnaVO qnavo);
+	public QnaVO selectGroupId(QnaVO qnavo);
+	public List<QnaVO> selectListRe(QnaVO qnavo);
 	
 }

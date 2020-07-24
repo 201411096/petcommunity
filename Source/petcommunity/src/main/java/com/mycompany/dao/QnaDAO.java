@@ -14,4 +14,6 @@ public interface QnaDAO {
 	public void delete(QnaVO qnavo);
 	public List<QnaVO> selectKeywork(Map map);
 	public void insertReplyQna(QnaVO qnavo);
+	public QnaVO selectGroupId(QnaVO qnavo);
+	public List<QnaVO> selectListRe(QnaVO qnavo);
 }

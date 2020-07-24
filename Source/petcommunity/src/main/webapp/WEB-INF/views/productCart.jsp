@@ -22,6 +22,7 @@
 	    <script src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
 	    <script src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	    <script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+	    <script src="./resources/js/productCart.js"></script>
 		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
@@ -48,44 +49,24 @@
 						<th>상품</th>
 						<th>가격</th>
 						<th>개수</th>
-						<th> </th>
+						<th>이미지</th>
 					</tr>
 				</thead>
-				<tbody id="table">
-					<tr class='cartList'>
-						<td><span><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' id='cartListImg'/></a></span></td>
-						<td><span>상품이름</span></td>
-						<td><span>25000원</span></td>
+				<tbody id="cartLists">
+				<!-- 	<tr class='cartList'>
+						<td><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' id='cartListImg'/></a></td>
+						<td><span id='productName1'>상품이름 </span>&nbsp;(<span id='productPrice1'>25000</span>원)</td>
+						<td><span id='productTotalPrice1'>25000</span>원</td>
 						<td>
 							<span>
-								<input type='number' id='productAmount' class='form-control' min="0" value='1'/>
+								<input type='number' id='productAmount1' class='form-control' min="0" value='1'/>
 							</span>
 						</td>
 						<td><a href='#'><img src='resources/imgs/product_image/cartImg/cancelButton.png'></a></td>
 						
-					</tr>
-					<tr class='cartList'>
-						<td><span><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' id='cartListImg'/></a></span></td>
-						<td><span>상품이름</span></td>
-						<td><span>25000원</span></td>
-						<td>
-							<span>
-								<input type='number' id='productAmount' class='form-control' min="0" value='1'/>
-							</span>
-						</td>
-						<td><a href='#'><img src='resources/imgs/product_image/cartImg/cancelButton.png'></a></td>
-					</tr>
-					<tr class='cartList'>
-						<td><span><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' id='cartListImg'/></a></span></td>
-						<td><span>상품이름</span></td>
-						<td><span>25000원</span></td>
-						<td>
-							<span>
-								<input type='number' id='productAmount' class='form-control' min="0" value='1'/>
-							</span>
-						</td>
-						<td><a href='#'><img src='resources/imgs/product_image/cartImg/cancelButton.png'></a></td>					
-					</tr>					
+					</tr> -->
+					
+								
 				</tbody>
 			</table>
 			<br/>

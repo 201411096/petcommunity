@@ -96,7 +96,7 @@
 	</select>
 
 	<select id="getStringForAutoComplete" resultType="string" parameterType="hashmap">
-	select 
+	select distinct
 	<if test = "searchType == 'title'">
 		findboard_title from findboard
 		where REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')	

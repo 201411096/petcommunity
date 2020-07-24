@@ -177,12 +177,10 @@ public class LostBoardController {
 	
 	@RequestMapping(value = "/lostboardListWithoutPaging.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public Map getLostBoardListWithoutPaging(String searchWord, String searchType, HttpServletRequest request)
+	public Map getLostBoardListWithoutPaging(HttpServletRequest request)
 	{
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
-		searchMap.put("searchType", searchType);
-		searchMap.put("searchWord", searchWord);
 		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
 		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);
 		result.put("lostBoardVOList", lostBoardVOList);

@@ -13,12 +13,21 @@ var defaultOpts = {
 
 $(function(){
 	getData();
+	getDataWithoutPaging();
 	autoCompleteFunc();
+	autoCompleteFuncForMap();
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();
-	writeBtnEventHandler(); 
+	writeBtnEventHandler();
+	searchForMapEventHandler();
 });
+
+function searchForMapEventHandler(){
+	$('#timeForSearch')
+	$('#locationForSearch')
+	getDataWithoutPaging
+}
 
 function documentPreventKeyDown(){
 	document.addEventListener('keydown', function(event) {
@@ -84,6 +93,44 @@ function autoCompleteFunc(){
 	});
 }
 
+function autoCompleteFuncForMap(){
+	$('#locationForSearch').autocomplete({
+		source : function( request, response ) {
+            $.ajax({
+                   type: 'get',
+                   url: "/petcommunity/autoCompleteForLostBoard.do",
+                   dataType: "json",
+                   data:{
+                	   	"searchWord" : $('#locationForSearch').val(),
+       					"searchType" : 'location'
+                   },
+                   success: function(data) {
+                	   console.log('autocomplete success');
+                       //서버에서 json 데이터 response 후 목록에 추가
+                       response(
+                           $.map(data, function(item) {    //json[i] 번째 에 있는게 item 임.
+                               return {
+                                   label: item,    			//UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+                                   value: item,    		   //사용자 값
+                               }
+                           })
+                       );
+                   },
+                   error: function(data){
+                	   console.log('autocomplete error');
+                   }
+              });
+           },
+           select : function(event, ui){
+        	   
+           },
+//           appendTo :'#search-container',
+           minLength: 1,		 // 최소 글자수
+           autoFocus: false,		 //첫번째 항목 자동 포커스 기본값 false
+           delay : 500,
+	});
+}
+
 function getDataInPaging(){
 	$.ajax({
 		type : 'post',
@@ -131,7 +178,6 @@ function getData(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}		
 	});
-	getDataWithoutPaging();
 }
 
 function drawTable(data){
@@ -161,7 +207,8 @@ function getDataWithoutPaging(){
 		url : '/petcommunity/lostboardListWithoutPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		data : {
-			
+			"locationForSearch" : $('#locationForSearch').val(),
+			"timeForSearch" : $('#timeForSearch').val()
 		},
 		dataType : 'json',
 		success : function(resultData){

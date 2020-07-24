@@ -1,10 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- <%@include file ="../views/header.jsp" %> --%>
+
 
 <!doctype html>
 <head>
+	<!-- header 시작-->
+	<!-- Stylesheets -->
+	<link rel="stylesheet"
+	href="./resources/bootstrap_template/template_01/css/style.css" />
+	<link rel="stylesheet" href="./resources/css/login.css" />
+	<!-- main.js -->
+	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+	
+	
+	<!-- header 끝 -->
+	
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,18 +25,59 @@
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/css/bootstrap.css">
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/linericon/style.css">
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/css/font-awesome.min.css">
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/owl-carousel/owl.carousel.min.css">
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/lightbox/simpleLightbox.css">
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/nice-select/css/nice-select.css">
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/animate-css/animate.css">
-	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/jquery-ui/jquery-ui.css"> 
+<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/owl-carousel/owl.carousel.min.css"> -->
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/lightbox/simpleLightbox.css"> -->
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/nice-select/css/nice-select.css"> -->
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/animate-css/animate.css"> -->
+	<!-- <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/jquery-ui/jquery-ui.css"> --> 
 	<!-- main css -->
 
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/css/style.css">
+	<!-- 아래거는 리뷰 별 -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/css/responsive.css">
+		
 </head>
 
 <body>
+<!-- header section -->
+	<header class="header-section">
+		<div class="header-warp">
+			<a href="header.do" class="site-logo"> <img
+				src="./resources/bootstrap_template/template_01/img/logo2.png"
+				alt="">
+			</a>
+
+
+
+			<ul class="main-menu">
+
+				<c:if test="${! empty sessionScope.memberVO}">
+				
+				${sessionScope.memberVO.memberName}님, 안녕하세요
+				<a href="logout.do">[로그아웃하기]</a>
+				<a href="mypageselect.do">[마이 페이지]</a>
+			
+				</c:if>
+
+				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
+				<li><a href="shop.do">유기견 후원 스토어</a></li>
+				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
+				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
+				<li><a href="contact.html">Contact</a></li>
+
+				<c:if test="${empty sessionScope.memberVO}">
+					<li><a href="login.do">로그인/회원가입</a></li>
+				</c:if>
+
+				<c:if test="${sessionScope.memberVO.memberId eq 'admin1234'}">
+					<li><a href="login.do">관리자페이지</a></li>
+				</c:if>
+
+			</ul>
+			<hr>
+		</div>
+	</header>
 	<!--================Single Product Area =================-->
 	<div class="product_image_area">
 		<div class="container">
@@ -251,7 +303,7 @@
 									</li>
 								</ul>
 								<p>Outstanding</p>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+								<!-- <form class="row contact_form" action="/petcommunity/insertProductReview.do" method="post" id="contactForm" novalidate="novalidate"> -->
 									<div class="col-md-12">
 										<div class="form-group">
 											<input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
@@ -264,18 +316,20 @@
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
+											<input type="text" class="form-control" id="productreviewScore">
 										</div>
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Review"></textarea>
+											<input type="text" class="form-control" id="productreviewContent" rows="1"/>
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="btn submit_btn">Submit Now</button>
+										<button type="button" value="submit" id="btn_reviewSubmit" class="btn submit_btn">작성하기</button>
+										<input type="hidden" id="reviewProductId" name="productId" value="${productInfo.productId }">
+										<input type="hidden" id="loginCheck" name="loginCheck" value="${loginCheck }">
 									</div>
-								</form>
+								<!-- </form> -->
 							</div>
 						</div>
 					</div>
@@ -288,6 +342,7 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<!-- 프로덕트뷰 -->
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/js/jquery-3.2.1.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/js/popper.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/js/bootstrap.min.js"></script>
@@ -303,6 +358,8 @@
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/counter-up/jquery.waypoints.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/counter-up/jquery.counterup.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/js/theme.js"></script>
+	<!-- js 이벤트 -->
+	<script src="./resources/js/productReview.js"></script>
 </body>
 
 </html>

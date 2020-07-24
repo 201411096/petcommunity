@@ -191,6 +191,7 @@ public class LostBoardController {
 		result.put("findBoardVOListSize", findBoardVOList.size());
 		
 		List<HashMap> lostBoardFileList = new ArrayList<HashMap>();
+		List<HashMap> findBoardFileList = new ArrayList<HashMap>();
 		for(int i=0; i<lostBoardVOList.size(); i++) {
 			HashMap map = new HashMap();
 			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+Integer.toString(lostBoardVOList.get(i).getLostboardId());
@@ -203,8 +204,21 @@ public class LostBoardController {
 			}
 			lostBoardFileList.add(map);
 		}
+		for(int i=0; i<findBoardVOList.size(); i++) {
+			HashMap map = new HashMap();
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVOList.get(i).getFindboardId());
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			if(fileList!=null && fileList.length>=1) {
+				map.put("filename",  fileList[0].getName());
+			}else {
+				map.put("filename",  "??");
+			}
+			findBoardFileList.add(map);
+		}
 		
 		result.put("lostBoardFileList", lostBoardFileList);
+		result.put("findBoardFileList", findBoardFileList);
 		return result;		
 	}
 }

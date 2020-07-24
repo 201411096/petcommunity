@@ -160,10 +160,9 @@ function getDataWithoutPaging(){
 		async:true,
 		url : '/petcommunity/lostboardListWithoutPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data : {"searchWord" : $('#keywordInput').val(),
-				"searchType" : $('#searchType').val(),
-				"curPage" : curPage,
-				},
+		data : {
+			
+		},
 		dataType : 'json',
 		success : function(resultData){
 			kakaoMapAPI(resultData);
@@ -174,7 +173,8 @@ function getDataWithoutPaging(){
 	});
 }
 function kakaoMapAPI(data){
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	$('#map').empty();
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = { 
         center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
         level: 7 // 지도의 확대 레벨
@@ -185,8 +185,14 @@ function kakaoMapAPI(data){
 	for(var i=0; i<data.lostBoardVOListSize; i++){
 		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);
 		
+		var imageSrc = contextPath + '/resources/imgs/marker/red.png', // 마커이미지의 주소입니다    
+	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		
 		var marker = new kakao.maps.Marker({
 			  position: position
+			  ,image: markerImage // 마커이미지 설정
 			});
 		marker.setMap(map);
 		marker.setRange(1000);
@@ -200,8 +206,31 @@ function kakaoMapAPI(data){
 		    content : iwContent
 		});
 		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
-//	    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-//	    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+	}
+	for(var i=0; i<data.findBoardVOListSize; i++){
+		var position =  new kakao.maps.LatLng(data.findBoardVOList[i].findboardX, data.findBoardVOList[i].findboardY);
+		
+		var imageSrc = contextPath + '/resources/imgs/marker/blue.png', // 마커이미지의 주소입니다    
+	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+		
+		var marker = new kakao.maps.Marker({
+			  position: position
+			  ,image: markerImage // 마커이미지 설정
+			});
+		marker.setMap(map);
+		marker.setRange(1000);
+		var iwContent = '<div class="card marker-infowindow">'+
+						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
+						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
+						'</div>';
+		var infowindow = new kakao.maps.InfoWindow({
+		    content : iwContent
+		});
+		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
 	}
 }
 
@@ -221,20 +250,7 @@ function makeClickListener(map, marker, infowindow) {
 	};
 }
 
-//// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-//function makeOverListener(map, marker, infowindow) {
-//    return function() {
-//        infowindow.open(map, marker);
-//    };
-//}
-//
-//// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-//function makeOutListener(infowindow) {
-//    return function() {
-//        infowindow.close();
-//    };
-//}
-
+// 현재 작업경로를 가져오는 함수
 function getContextPath() {
 	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 }

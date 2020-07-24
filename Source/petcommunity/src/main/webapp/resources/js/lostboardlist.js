@@ -13,13 +13,21 @@ var defaultOpts = {
 
 $(function(){
 	getData();
+	getDataWithoutPaging();
 	autoCompleteFunc();
 	autoCompleteFuncForMap();
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();
-	writeBtnEventHandler(); 
+	writeBtnEventHandler();
+	searchForMapEventHandler();
 });
+
+function searchForMapEventHandler(){
+	$('#timeForSearch')
+	$('#locationForSearch')
+	getDataWithoutPaging
+}
 
 function documentPreventKeyDown(){
 	document.addEventListener('keydown', function(event) {
@@ -170,7 +178,6 @@ function getData(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}		
 	});
-	getDataWithoutPaging();
 }
 
 function drawTable(data){
@@ -200,7 +207,8 @@ function getDataWithoutPaging(){
 		url : '/petcommunity/lostboardListWithoutPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		data : {
-			
+			"locationForSearch" : $('#locationForSearch').val(),
+			"timeForSearch" : $('#timeForSearch').val()
 		},
 		dataType : 'json',
 		success : function(resultData){

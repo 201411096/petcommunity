@@ -253,6 +253,7 @@ body {
   margin-bottom: 150px; }
 
 .signup-content {
+margin-top: 10%;
   padding: 75px 0; }
 
 .signup-form, .signup-image, .signin-form, .signin-image {
@@ -318,7 +319,7 @@ figure {
     margin-bottom: 0px; }
 
 input {
-  width: 100%;
+  width: 90%;
   display: block;
   border: none;
   border-bottom: 1px solid #999;
@@ -397,6 +398,13 @@ input[type=checkbox]:not(old):checked + label > span:before {
   display: inline-block;
   width: auto; }
 
+textarea{
+	width: 90%;
+}
+
+h4{
+
+}
 label {
   position: absolute;
   left: 0;

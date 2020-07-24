@@ -101,21 +101,17 @@
 						<div id="tab-2" class="tab-content">
 							<c:choose>
 								<c:when test="${empty buyList}">
-									<h3>현재 주문 내역이 없습니다.</h3>
+									<h3>현재 주문 내역이 없습니다</h3>
 								</c:when>
 
 								<c:otherwise>
 								<div class="tedoory2">
 									<table class="mypage-table">
 										<colgroup>
-
 											<col style="width: 20%" />
-
 											<col style="width: 60%" />
-
 											<col style="width: 10%" />
 											<col style="width: 15%" />
-
 										</colgroup>
 										<thead>
 											<tr>
@@ -130,38 +126,13 @@
 											<c:forEach items="${buyList}" var="buy">
 												<tr height="50">
 													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="">${buy.productName}</a></td>
+													<td class="target"><a href="buyReceipt.do?buy=${buy.buyId}">${buy.productName}</a></td>
 													<td>${buy.buyCnt}</td>
-													<td>72000원${buy.buylistTotalprice}</td>
+													<td>${buy.buylistTotalprice}원</td>
 												</tr>
 											</c:forEach>
-											<c:forEach items="${buyList}" var="buy">
-												<tr height="50">
-													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="">${buy.productName}</a></td>
-													<td>${buy.buyCnt}</td>
-													<td>72000원${buy.buylistTotalprice}</td>
-												</tr>
-											</c:forEach>
-											<c:forEach items="${buyList}" var="buy">
-												<tr height="50">
-													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="">${buy.productName}</a></td>
-													<td>${buy.buyCnt}</td>
-													<td>72000원${buy.buylistTotalprice}</td>
-												</tr>
-											</c:forEach>
-											<c:forEach items="${buyList}" var="buy">
-												<tr height="50">
-													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="">${buy.productName}</a></td>
-													<td>${buy.buyCnt}</td>
-													<td>72000원${buy.buylistTotalprice}</td>
-												</tr>
-											</c:forEach>
+											
 										</tbody>
-
-
 									</table>
 									</div>
 								</c:otherwise>

@@ -1,0 +1,61 @@
+body {text-align:center; margin:20px auto;}
+
+
+#Layout {width:100%; border:1px solid #543f36; margin-top: 5%;}
+#Print {width:500px; text-align:right; padding:3px 5px;}
+.basicDiv {border:1px solid #543f36; padding:7px 0; color:#543f36;}
+
+.tblTop {border-collapse: collapse; border:1px solid #543f36; border-bottom:0px;}
+.tblTop td {padding:5px 0 10px 30px; font:bold 24px gulim; color:#4b4b4b; }
+.titstxt {font:bold 12px gulim; color:#543f36;}
+
+.tblTop2 {border-collapse: collapse; border-right:1px solid #543f36; border-left:1px solid #543f36;}
+.tblTop2 .noTd {border-top:1px solid #543f36; border-right:1px solid #543f36; padding:4px;}
+.tblTop2 .noTd .noStxt { font:bold 13px gulim; color:#666666;}
+.tblTop2 td {font:bold 14px gulim; color:#543f36; padding:4px; }
+.tblTop2 .name {font:bold 14px gulim; color:#353535; text-align:right;}
+
+.tbl {border-collapse: collapse; border:1px solid #543f36; }
+.tbl td {border:1px solid #543f36; padding:4px;}
+.tbl td.titTd {font:bold 14px gulim; color:#543f36;}
+.tbl th {font:bold 13px gulim; color:#543f36; border:1px solid #543f36; background:#f7feeb; padding:4px;text-align:center;}
+
+.tbl .item {font:13px gulim; padding-left:15px;}
+.tbl .article {font:13px gulim; text-align:center;}
+.tbl .price {font:normal 13px gulim; color:#4b4b4b; text-align:right; padding-right:7px;}
+.tbl .sum {font:bold 13px gulim; color:#4b4b4b; text-align:right; padding-right:7px;}
+
+.tbl .date {font:bold 13px gulim; color:#4b4b4b; text-align:center;}
+.tbl .total {font:bold 16px gulim; color:#000000; text-align:right; padding-right:7px; border:2px solid #543f36; background:url(../image/won.gif) no-repeat 5% 40%;}
+
+.stamp {background:url(../image/stamp.gif) no-repeat 98% 20%;}
+
+.txt1 {font:bold 15px dotum;}
+
+.tedoory{
+ margin-left:25%;
+ width:50%;
+  border: 2px solid #898792;
+  padding: 25px 30px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+
+@media screen and (max-width: 768px){
+	
+#Layout {
+	width:97%; border:1px solid #543f36; margin-left: 1%; margin-top: 10%;
+	}
+	
+	
+	.tedoory{
+ margin-left:6%;
+ width:90%;
+  border: 2px solid #898792;
+  padding: 25px 30px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+	}

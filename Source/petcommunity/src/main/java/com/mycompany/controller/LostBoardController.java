@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -167,6 +168,14 @@ public class LostBoardController {
 			String[] array = new String[stringList.size()];
 			for(int i=0; i< stringList.size(); i++) {
 				array[i] = stringList.get(i);
+				if(searchType.equals("location")) {
+					StringTokenizer st= new StringTokenizer(stringList.get(i));
+					String temp = "";
+					temp+=st.nextToken()+" ";
+					temp+=st.nextToken();
+					array[i]=temp;
+				}
+					 
 			}
 			Gson gson = new Gson();
 			return gson.toJson(array);

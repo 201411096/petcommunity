@@ -177,7 +177,7 @@ public class LostBoardController {
 	
 	@RequestMapping(value = "/lostboardListWithoutPaging.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public Map getLostBoardListWithoutPaging(String searchWord, String searchType)
+	public Map getLostBoardListWithoutPaging(String searchWord, String searchType, HttpServletRequest request)
 	{
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
@@ -189,6 +189,23 @@ public class LostBoardController {
 		result.put("lostBoardVOListSize", lostBoardVOList.size());
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
+		
+		List<HashMap> lostBoardFileList = new ArrayList<HashMap>();
+		for(int i=0; i<lostBoardVOList.size(); i++) {
+			HashMap map = new HashMap();
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+Integer.toString(lostBoardVOList.get(i).getLostboardId());
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			if(fileList!=null && fileList.length>=1) {
+				map.put("filename",  fileList[0].getName());
+			}else {
+				map.put("filename",  "??");
+			}
+			lostBoardFileList.add(map);
+		}
+		
+		result.put("lostBoardFileList", lostBoardFileList);
+		System.out.println("lostboardcontroller 확인");
 		return result;		
 	}
 }

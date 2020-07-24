@@ -1,6 +1,7 @@
 var curPage;
 var latitude = 37.519972628243366;
 var longitude = 126.85287648507145;
+var contextPath = getContextPath();
 var defaultOpts = {
 	visiblePages : 10,
     onPageClick: function (event, page) {
@@ -188,25 +189,12 @@ function kakaoMapAPI(data){
 			  position: position
 			});
 		marker.setMap(map);
-		var iwContent = '<div class="alert alert-light"><a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+data.lostBoardVOList[i].lostboardLocation+'</a></div>';
-//		var iwContent = '<div class="wrap">' + 
-//        '    <div class="info">' + 
-//        '        <div class="title">' + 
-//        data.lostBoardVOList[i].lostboardTitle + 
-//        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
-//        '        </div>' + 
-//        '        <div class="body">' + 
-//        '            <div class="img">' +
-//        '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
-//        '           </div>' + 
-//        '            <div class="desc">' + 
-//        '                <div class="ellipsis">'+ data.lostBoardVOList[i].lostboardLocation +'</div>' + 
-//        '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
-//        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">게시글</a></div>' + 
-//        '            </div>' + 
-//        '        </div>' + 
-//        '    </div>' +    
-//        '</div>';
+		var iwContent = '<div class="card marker-infowindow">'+
+						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
+						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
+						'</div>';
 		var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
 		});
@@ -217,9 +205,18 @@ function kakaoMapAPI(data){
 }
 
 //marker click event
+//closure를 이용한 infowindow on/off
 function makeClickListener(map, marker, infowindow) {
+	var status = 0;
 	return function() {
-		infowindow.open(map, marker);
+		if(status==0){
+			infowindow.open(map, marker);
+			status=1;
+		}else{
+			infowindow.close(map, marker);
+			status=0;
+		}
+			
 	};
 }
 
@@ -236,3 +233,7 @@ function makeClickListener(map, marker, infowindow) {
 //        infowindow.close();
 //    };
 //}
+
+function getContextPath() {
+	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+}

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<title>Sign Up Form by Colorlib</title>
+<title>반려동물 정보 수정</title>
 <% String animalId =(String)request.getParameter("animalId"); %>
 <% String animalName =(String)request.getParameter("animalName"); %>
 <% String animalBirthday =(String)request.getParameter("animalBirthday"); %>
@@ -22,8 +22,7 @@
 <!-- Main css -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/style.css">
-<link rel="stylesheet"
-	href="./resources/css/mypage.css">
+
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 </head>
@@ -34,7 +33,7 @@
 		<section class="signup">
 			<div class="container">
 				<div class="signup-content">
-					<div class="signup-form">
+					<div class="signup-form"> 
 						<!-- <figure>
 							<img
 								src="./resources/bootstrap_template/template_01/img/gallery/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.PNG"

@@ -6,9 +6,13 @@ import java.util.Map;
 import com.mycompany.domain.FindHospitalVO;
 
 public interface FindHospitalDAO {
-	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map);
-	public List<FindHospitalVO> selectFindHospitalList(Map map);
+	
+	public List<FindHospitalVO> getFindHospitalList(Map map);
+	public List<FindHospitalVO> getFindHospitalListWithPaging(Map map);
 	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo);
+	public List<FindHospitalVO> getFindHospitalListByLocationWithPaging(Map map);
 	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo);
+	public List<FindHospitalVO> getFindHospitalListBySearchWithPaging(Map map);
+	
 }
  

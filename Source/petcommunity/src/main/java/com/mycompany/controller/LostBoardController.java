@@ -177,18 +177,46 @@ public class LostBoardController {
 	
 	@RequestMapping(value = "/lostboardListWithoutPaging.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public Map getLostBoardListWithoutPaging(String searchWord, String searchType)
+	public Map getLostBoardListWithoutPaging(HttpServletRequest request)
 	{
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
-		searchMap.put("searchType", searchType);
-		searchMap.put("searchWord", searchWord);
 		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
 		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);
 		result.put("lostBoardVOList", lostBoardVOList);
 		result.put("lostBoardVOListSize", lostBoardVOList.size());
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
+		
+		List<HashMap> lostBoardFileList = new ArrayList<HashMap>();
+		List<HashMap> findBoardFileList = new ArrayList<HashMap>();
+		for(int i=0; i<lostBoardVOList.size(); i++) {
+			HashMap map = new HashMap();
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+Integer.toString(lostBoardVOList.get(i).getLostboardId());
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			if(fileList!=null && fileList.length>=1) {
+				map.put("filename",  fileList[0].getName());
+			}else {
+				map.put("filename",  "??");
+			}
+			lostBoardFileList.add(map);
+		}
+		for(int i=0; i<findBoardVOList.size(); i++) {
+			HashMap map = new HashMap();
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVOList.get(i).getFindboardId());
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			if(fileList!=null && fileList.length>=1) {
+				map.put("filename",  fileList[0].getName());
+			}else {
+				map.put("filename",  "??");
+			}
+			findBoardFileList.add(map);
+		}
+		
+		result.put("lostBoardFileList", lostBoardFileList);
+		result.put("findBoardFileList", findBoardFileList);
 		return result;		
 	}
 }

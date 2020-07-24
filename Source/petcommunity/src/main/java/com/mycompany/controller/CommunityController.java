@@ -34,7 +34,12 @@ public class CommunityController {
 	
 	
 	
-	// 게시판 목록보기 페이지로 넘겨준다
+	
+	/* 
+	    * 함수 이름 : getCommunityBoardList
+	    * 주요 기능 : 게시판 목록보기 페이지로 넘겨준다
+	    * 함수 내용 : 조회된 게시판 목록 가져온 후 페이징처리, 댓글 유무 확인, 사진 유무 확인
+	    */
 	@RequestMapping("/communityBoardList.do")
 	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv, HttpServletRequest request) {
 		System.out.println("리스트 controller입장");
@@ -100,13 +105,22 @@ public class CommunityController {
 		return mv;
 	}
 
-	// 게시판 쓰기 페이지로 넘겨준다
+	
+	/* 
+	    * 함수 이름 : getCommunityBoardwrite
+	    * 주요 기능 : 게시판 쓰기 페이지로 넘겨준다
+	    * 함수 내용 : 조회된 게시판 목록 가져온 후 페이징처리, 댓글 유무 확인, 사진 유무 확인
+	    */
 	@RequestMapping("/communityBoardWrite.do")
 	public String getCommunityBoardwrite() {
 		return "communityBoardWrite";
 	}
 
-	// 쓰기 완료 후 boardList로 되돌아가기//업로드 파일이 있다면 글번호 가져와서 셋팅해주기
+	/* 
+	    * 함수 이름 : writeIntoBoard
+	    * 주요 기능 : 쓰기 완료 후 게시판 리스트 페이지로 이동
+	    * 함수 내용 : 입력된 내용 받아와서 db저장, 이미지가 있다면 업로드
+	    */
 	@RequestMapping(value="/writeIntoBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public String writeIntoBoard(CommunityVO vo, HttpServletRequest request, HttpSession session, MultipartHttpServletRequest mtfRequest) throws IOException{
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
@@ -119,7 +133,12 @@ public class CommunityController {
 		return "redirect:communityBoardList.do";
 	}
 	
-	// 수정 완료 후 글내용으로 되돌아가기
+	
+	/* 
+	    * 함수 이름 : modifyBoardContent
+	    * 주요 기능 : 수정 완료 후 글내용으로 되돌아가기
+	    * 함수 내용 : 
+	    */
 	@RequestMapping("/modifyBoardContent.do")
 	public ModelAndView modifyBoardContent(CommentVO cvo, CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
 		
@@ -135,7 +154,12 @@ public class CommunityController {
 
 	
 
-	// 검색된 게시판 list 가져오기
+
+	/* 
+	    * 함수 이름 : getBoardListBySearch
+	    * 주요 기능 : 검색된 게시판 list 가져오기
+	    * 함수 내용 : 조회된 게시판 목록 가져온 후 페이징처리, 댓글 유무 확인, 사진 유무 확인
+	    */
 	@ResponseBody
 	@RequestMapping("/getBoardListBySearch.do")
 	public Map getBoardListBySearch(@RequestParam(defaultValue="1") int curPage, CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
@@ -197,6 +221,11 @@ public class CommunityController {
 	}
 
 		// 카테고리에 선택된 게시판 내용 가져오기	
+	/* 
+	    * 함수 이름 : getBoardListByCategory
+	    * 주요 기능 : 카테고리에 선택된 게시판 내용 가져오기	
+	    * 함수 내용 : 조회된 게시판 목록 가져온 후 페이징처리, 댓글 유무 확인, 사진 유무 확인
+	    */
 	@ResponseBody
 	@RequestMapping("/getBoardListByCategory.do")
 	public Map getBoardListByCategory(@RequestParam(defaultValue="1") int curPage, CommunityVO vo, HttpServletRequest request, ModelAndView mv) { 
@@ -335,7 +364,12 @@ public class CommunityController {
 	
 	
 	
-	// 로그인 유무 체크후 값 리턴
+	
+	/* 
+	    * 함수 이름 : checkSession
+	    * 주요 기능 : 로그인 유무 체크후 값 리턴
+	    * 함수 내용 : ajax통신으로 logout이라는 문자열 반환
+	    */
 	@ResponseBody
 	@RequestMapping("/checkSession.do")
 	public String checkSession(HttpSession session, ModelAndView mv) {
@@ -346,7 +380,12 @@ public class CommunityController {
 		return msg;
 	}
 	
-	// 추천 취소
+
+	/* 
+	    * 함수 이름 : dislikeContent
+	    * 주요 기능 : 게시글 추천 취소
+	    * 함수 내용 : 
+	    */	
 	@ResponseBody
 	@RequestMapping("/dislikeContent.do")
 	public String dislikeContent(HttpServletRequest request, CommunityVO vo) {
@@ -357,7 +396,12 @@ public class CommunityController {
 		return "";
 	}
 	
-	//추천클릭
+
+	/* 
+	    * 함수 이름 : likeContent
+	    * 주요 기능 : 추천클릭시 게시글 추천
+	    * 함수 내용 : 
+	    */	
 	@ResponseBody
 	@RequestMapping("/likeContent.do")
 	public String likeContent(HttpServletRequest request, CommunityVO vo) {
@@ -368,7 +412,13 @@ public class CommunityController {
 		return "";
 	}
 	
-	// 게시판 글내용 가져오기
+
+	/* 
+	    * 함수 이름 : getBoardContent
+	    * 주요 기능 : 게시판 글내용 가져오기
+	    * 함수 내용 : 리스트에서 글 클릭시 해당 글내용 페이지 이동
+	    * 			사진 유무 체크 후 이미지 전달
+	    */	
 	@RequestMapping("/getBoardContent.do")
 	public ModelAndView getBoardContent(CommunityVO vo, CommentVO cvo, HttpServletRequest request, ModelAndView mv) {
 		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
@@ -394,7 +444,12 @@ public class CommunityController {
 		return mv;
 	}
 	
-	// 커멘트 달기
+	
+	/* 
+	    * 함수 이름 : writeComment
+	    * 주요 기능 : 커멘트 달기
+	    * 함수 내용 : 
+	    */	
 	@RequestMapping("/writeComment.do")
 	public ModelAndView writeComment(CommunityVO vo, CommentVO cvo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
 		String communityboardId=request.getParameter("communityboardId");
@@ -412,7 +467,12 @@ public class CommunityController {
 		return mv;
 	}
 	
-	//게시물 지우기 
+	
+	/* 
+	    * 함수 이름 : communityBoardDelete
+	    * 주요 기능 : 게시물 지우기 
+	    * 함수 내용 : 게시글 삭제시 관련 댓글 모두 삭제
+	    */	
 	@RequestMapping("/communityBoardDelete.do")
 	public String communityBoardDelete(CommunityVO vo, CommentVO cvo, HttpServletRequest request) {
 		String communityboardId = request.getParameter("communityboardId");
@@ -425,7 +485,13 @@ public class CommunityController {
 		communityService.deleteBoardComment(cvo);	
 		return "redirect:communityBoardList.do";
 	}
-	//게시물 내용 수정하기페이지로 넘김
+	
+
+	/* 
+	    * 함수 이름 : communityBoardModifyPage
+	    * 주요 기능 : 게시물 내용 수정하기페이지로 넘김
+	    * 함수 내용 :
+	    */	
 	@RequestMapping("/communityBoardModifyPage.do")
 	public ModelAndView communityBoardModify(CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
 		String communityboardId = request.getParameter("communityboardId");
@@ -434,7 +500,13 @@ public class CommunityController {
 		mv.setViewName("communityBoardModify");
 		return mv;
 	}
+	
 	//커멘트 삭제하기
+	/* 
+	    * 함수 이름 : commentDelete
+	    * 주요 기능 : 커멘트 삭제하기
+	    * 함수 내용 :
+	    */
 	@RequestMapping("/commentDelete.do")
 	public ModelAndView commentDelete(CommentVO cvo, CommunityVO vo, HttpServletRequest request, ModelAndView mv) {
 		String boardcommentId = request.getParameter("boardcommentId");

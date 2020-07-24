@@ -1,6 +1,8 @@
 package com.mycompany.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,12 @@ public class BuyDAOImpl implements BuyDAO {
 	@Override
 	public List<MyBuyVO> buyList(MemberVO vo) {
 		return mybatis.selectList("buy.mybuyList",vo);
+	}
+
+	@Override
+	public List<Map<String, String>> buyReceipt(String id) {
+		System.out.println(id);
+		return mybatis.selectList("buy.buyReceipt",id);
 	}
 	
 }

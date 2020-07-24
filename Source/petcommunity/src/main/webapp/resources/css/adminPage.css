@@ -29,7 +29,8 @@ ul.tabs li.current{
 }
 
 .input-admin-btn input{
-	width: 11%;
+	
+	width:11%;
 }
 #keywordadmin{
 	width:78%;
@@ -47,3 +48,17 @@ ul.tabs li.current{
 .target { 
 	white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 	 }
+	 
+.mypage-table{
+	margin-top: 3%;
+}
+@media ( max-width: 767px ) {
+  .input-admin-btn input{
+	
+	width:20%;
+}
+.mypage-table{
+	margin-top: 8%;
+}
+
+}

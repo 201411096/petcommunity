@@ -15,25 +15,42 @@ public class FindHospitalDAOImpl implements FindHospitalDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map) {
+	public List<FindHospitalVO> getFindHospitalList(Map map) {
+		System.out.println("===>  HospitalMapper getFindHospitalList() 호출");
+		return mybatis.selectList("findHospitalDAO.getFindHospitalList", map);
+		
+	}
+
+	@Override
+	public List<FindHospitalVO> getFindHospitalListWithPaging(Map map) {
+		System.out.println("===>  HospitalMapper getFindHospitalListWithPaging() 호출");
 		return mybatis.selectList("findHospitalDAO.getFindHospitalListWithPaging", map);
 	}
 	
-	@Override
-	public List<FindHospitalVO> selectFindHospitalList(Map map) {
-		return mybatis.selectList("findHospitalDAO.getFindHospitalList", map);
-	}
 	
 	@Override
 	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo) {
 		System.out.println("===>  HospitalMapper getFindHospitalListByLocation() 호출");
 		return mybatis.selectList("findHospitalDAO.getFindHospitalListByLocation", vo);	
 	}
+
+	@Override
+	public List<FindHospitalVO> getFindHospitalListByLocationWithPaging(Map map) {
+		System.out.println("===>  HospitalMapper getFindHospitalListByLocationWithPaging() 호출");
+		return mybatis.selectList("findHospitalDAO.getFindHospitalListByLocationWithPaging", map);
+	}
 	
 	@Override
 	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo) {
 		System.out.println("===>  HospitalMapper getFindHospitalListBySearch() 호출");
 		return mybatis.selectList("findHospitalDAO.getFindHospitalListBySearch", vo);
+	}
+
+
+	@Override
+	public List<FindHospitalVO> getFindHospitalListBySearchWithPaging(Map map) {
+		System.out.println("===>  HospitalMapper getFindHospitalListBySearchWithPaging() 호출");
+		return mybatis.selectList("findHospitalDAO.getFindHospitalListBySearchWithPaging", map);
 	}
 
 }

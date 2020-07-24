@@ -27,7 +27,7 @@
 			<h1>게시판</h1>
 		</header>
 		<hr />
-		<div id="map"></div>
+		
 		<section id="container">
 			<div class="card">
 				<div id="map"></div>

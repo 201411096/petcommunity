@@ -16,12 +16,12 @@ $(function(){
 	//게시글삭제버튼 클릭
 	$('#communityBoardDelete').click(function(){
 		if(confirm("글을 삭제하시겠습니까?")) {
-			window.location.href='/petcommunity/communityBoardDelete.do?communityboardId='+$("#communityboardId").val();
+			window.location.href='/petcommunity/communityBoardDelete.do?communityboardId='+$("#communityBoardDelete").val();
 		}	
 	});
 	//게시글수정버튼 클릭
 	$('#communityBoardModify').click(function(){
-		window.location.href='/petcommunity/communityBoardModifyPage.do?communityboardId='+$("#communityboardId").val();
+		window.location.href='/petcommunity/communityBoardModifyPage.do?communityboardId='+$("#communityBoardDelete").val();
 	});
 	
 	//댓글삭제버튼 클릭

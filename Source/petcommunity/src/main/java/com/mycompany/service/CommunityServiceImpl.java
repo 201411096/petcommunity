@@ -111,6 +111,20 @@ public class CommunityServiceImpl implements CommunityService{
 	public List<CommunityVO> getBoardListBySearchWithPaging(Map map) {
 		return communityDAO.getBoardListBySearchWithPaging(map);
 	}
+	@Override
+	public List<CommunityVO> getBoardListByLocationWithPaging(Map map) {
+		return communityDAO.getBoardListByLocationWithPaging(map);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByRecommendWithPaging(Map map) {
+		return communityDAO.getBoardListByRecommendWithPaging(map);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardListByReadCountWithPaging(Map map) {
+		return communityDAO.getBoardListByReadCountWithPaging(map);
+	}
 
 	
 	

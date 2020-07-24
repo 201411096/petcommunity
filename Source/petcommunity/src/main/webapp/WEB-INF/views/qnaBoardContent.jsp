@@ -54,13 +54,17 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td colspan="2" id="listButton">
-				<button id="qnaListBtn" type="button" class="btn btn-default">목록보기</button>
-			</td>
-			<td id="modi">
-					<a class="btn btn-default" href="/petcommunity/qnaModify.do?questionboardId=${qnaContent.questionboardId}">수정</a>
-					<a class="btn btn-default" href="/petcommunity/delete.do?questionboardId=${qnaContent.questionboardId}">삭제</a>
-			</td>
+			<td colspan="2" id="listButton"><a class="btn btn-default"
+				id="qnaListBtn" href="/petcommunity/qnaList.do">목록보기</a></td>
+			<td id="modi"><a id="modifyBtn" class="btn btn-default"
+				href="/petcommunity/qnaModify.do?questionboardId=${qnaContent.questionboardId}">수정</a>
+				<button type="submit" id="deleteBtn" class="btn btn-default"
+					value="${qnaContent.questionboardId}">삭제</button> 
+<%-- 					<c:if test="${mf eq '1'}"> --%>
+					<a href="/petcommunity/reply.do?questionboardId=${qnaContent.questionboardId}" class="btn btn-default" id="replyBtn">답변하기</a> 
+<!-- 					<button id="replyBtn" class="btn btn-default">답변하기</button> -->
+<%-- 				</c:if> --%>
+				</td>
 		</tr>
 	</table>
 	<script src="resources/js/qnaBoardContent.js"></script>

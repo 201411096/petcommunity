@@ -59,15 +59,21 @@
 
 
 			<ul class="main-menu">
+				<c:choose>
+					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
+						${sessionScope.memberVO.memberName}님, 안녕하세요
+						<a href="logout.do">[로그아웃하기]</a>
 
-				<c:if test="${! empty sessionScope.memberVO}">
-				
-				${sessionScope.memberVO.memberName}님, 안녕하세요
-				<a href="logout.do">[로그아웃하기]</a>
-				<a href="mypageselect.do">[마이 페이지]</a>
-			
-				</c:if>
+					</c:when>
+					
+					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
+						${sessionScope.memberVO.memberName}님, 안녕하세요
+						<a href="logout.do">[로그아웃하기]</a>
+						<a href="mypageselect.do">[마이 페이지]</a>
 
+					</c:when>
+
+				</c:choose>
 				<li><a href="index.html">분실 동물 찾기</a></li>
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
@@ -80,8 +86,8 @@
 					<li><a href="login.do">로그인/회원가입</a></li>
 				</c:if>
 
-				<c:if test="${sessionScope.memberVO.memberId eq 'admin1234'}">
-					<li><a href="login.do">관리자페이지</a></li>
+				<c:if test="${sessionScope.memberVO.memberFlag eq '1'}">
+					<li><a href="adminPage.do">관리자페이지</a></li>
 				</c:if>
 
 			</ul>

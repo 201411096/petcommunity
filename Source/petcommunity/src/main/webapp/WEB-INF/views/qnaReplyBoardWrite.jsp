@@ -48,6 +48,7 @@
 				<span class="input-group-btn"> <input>
 					<button type="submit" class="btn btn-default" id='commitWrite'>작성완료</button>
 					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/qnaList.do">돌아가기</a>
+<!-- 					<button type="button" class="btn btn-default" id='cancelWrite'>글쓰기 취소</button> -->
 				</span>
 			</div>
 		</form>

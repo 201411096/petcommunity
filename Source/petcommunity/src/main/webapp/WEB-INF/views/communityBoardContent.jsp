@@ -37,9 +37,13 @@
 			<hr/>
 			
 			<div class="form-group">
-				<c:forEach items="${boardContentImg}" var="file">
-					<img src="resources/imgs/communityboard/${boardContent.communityboardId}/${file.name}" class="d-block w-100" alt="...">															
-				</c:forEach>
+				<div>
+					<c:forEach items="${boardContentImg}" var="file">
+						<div>
+							<img src="resources/imgs/communityboard/${boardContent.communityboardId}/${file.name}"  alt="...">															
+						</div>
+					</c:forEach>
+				</div>
 				<span id=communityContentContent>${boardContent.communityboardContent}</span>
 			</div>
 			
@@ -99,7 +103,7 @@
 			<div class="col-xs-10 col-sm-10">	
 				<button type="button" class="btn btn-default" id='goToList'>목록보기</button>
 				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId or sessionScope.memberVO.memberFlag eq '1'}">
-					<button type="button" class="btn btn-default" id="communityBoardModify">수정하기</button>
+					<!-- <button type="button" class="btn btn-default" id="communityBoardModify">수정하기</button> -->
 					<button type="button" class="btn btn-default" id="communityBoardDelete" value="${boardContent.communityboardId}">삭제하기</button>
 				</c:if>
 				</div>	

@@ -30,6 +30,9 @@
 		
 		<section id="container">
 			<div class="card">
+				
+			</div>
+			<div class="card">
 				<div id="map"></div>
 			</div>
 			<form role="form" method="get">

@@ -10,6 +10,10 @@
 <meta name="keywords" content="instyle, fashion, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script type="text/javascript">
+	jQuery.noConflict();
+</script>
+
 <!-- Google font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"
@@ -73,6 +77,7 @@
 				<li><a href="index.html">분실 동물 찾기</a></li>
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
+				<li><a href="/petcommunity/productList.do">오키도키 굿즈</a></li>
 				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
 				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
 				<li><a href="contact.html">Contact</a></li>
@@ -91,8 +96,7 @@
 	</header>
 
 	<!--====== Javascripts & Jquery ======-->
-	<script
-		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
+	<script src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
 	<script
@@ -102,5 +106,8 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+
+
+
 </body>
 </html>

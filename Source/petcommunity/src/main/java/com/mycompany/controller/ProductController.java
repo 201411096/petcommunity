@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.ProductVO;
 import com.mycompany.domain.ShopVO;
@@ -42,7 +45,7 @@ public class ProductController {
 		result.put("productListSize", productList.size());
 		return result;
 	}
-	
+	// 검색창 자동완성 기능
 	@ResponseBody
 	@RequestMapping(value="/productAutoCompleteSearch.do", produces = "application/json; charset=utf-8")
 	public String productAutoCompleteSearch(String searchSomething, ProductVO vo) {
@@ -60,17 +63,27 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/productView.do")
-	public ModelAndView productView(ProductVO vo) {
+	public ModelAndView productView(HttpSession session, ProductVO vo) {
 		ModelAndView mv = new ModelAndView();
+		//로그인 check
+		MemberVO memberVo = (MemberVO) session.getAttribute("MemberVO");
 		int productId = vo.getProductId(); 
-		System.out.println(productId);
+		System.out.println("상품상세설명 컨트롤러 "+productId);
 		ProductVO productInfo =productService.selectProductInfo(productId);
+		mv.addObject("loginCheck", memberVo);
 		mv.addObject("productInfo", productInfo);
 		mv.setViewName("productView");
 		return mv;
 	}
+	
+	// 카트 리스트로 넘어감
 	@RequestMapping(value="/buyCartList.do")
-	public ModelAndView test(ProductVO vo, String qty) {
+	public ModelAndView test(ProductVO vo, String qty, HttpSession session) {
+		MemberVO memberVo = (MemberVO) session.getAttribute("MemberVO");
+		// 로그인 체크
+//		if( memberVo != null) {
+//			
+//		}
 		System.out.println("넘어온 상품"+vo.getProductId());
 		System.out.println("넘어온 개수"+qty);
 		ModelAndView mv = new ModelAndView();

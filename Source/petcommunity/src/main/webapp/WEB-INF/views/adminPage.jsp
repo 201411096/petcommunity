@@ -51,28 +51,28 @@
 							<table class="mypage-table">
 										<colgroup>
 											<col style="width: 20%" />
-											<col style="width: 55%" />
+											<col style="width: 50%" />
 											<col style="width: 10%" />
-											<col style="width: 15%" />
+											<col style="width: 20%" />
 										</colgroup>
 										<thead>
 											<tr>
-												<td width="80">주문날짜</td>
-												<td width="100">상품명</td>
-												<td width="50">수량</td>
-												<td width="100">가격</td>
+												<td>주문날짜</td>
+												<td>상품명</td>
+												<td>수량</td>
+												<td>가격</td>
 
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach items="${buyList}" var="buy">
+											<%-- <c:forEach items="${buyList}" var="buy"> --%>
 												<tr>
-													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="sdf.do">${buy.productName}</a></td>
-													<td>${buy.buyCnt}</td>
-													<td>72000원${buy.buylistTotalprice}</td>
+													<td>2020-7-21</td>
+													<td><a href="sdf.do">상품명 들어올 자리</a></td>
+													<td>수량 </td>
+													<td>72000원</td>
 												</tr>
-											</c:forEach>
+											<%-- </c:forEach> --%>
 										</tbody>
 									</table>
 										 				
@@ -80,6 +80,7 @@
 			
 			</div>
 			<div id="tab-2" class="tab-content">
+			
 			</div>
 			<div id="tab-3" class="tab-content"
 			></div>

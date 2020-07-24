@@ -91,11 +91,6 @@
 		<section id="container">
 			<form role="form" method="get">
 				<table class="table table-hover" id="findHospitalTable">
-					<colgroup>
-						<col style="width:15%;">
-						<col style="width:20%;">
-						<col/>
-					</colgroup>
 					
 					<thead>
 						<tr>

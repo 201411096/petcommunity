@@ -7,8 +7,11 @@ import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.FindHospitalVO;
 
 public interface FindHospitalService {
-	public List<FindHospitalVO> selectFindHospital(Map map);
-	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map);
-	public FindHospitalVO getFindHospital(FindHospitalVO findHospitalVO);
+	public List<FindHospitalVO> getFindHospitalList(Map map);
+	public List<FindHospitalVO> getFindHospitalListWithPaging(Map map);
 	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo);
+	public List<FindHospitalVO> getFindHospitalListByLocationWithPaging(Map map);
+	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo);
+	public List<FindHospitalVO> getFindHospitalListBySearchWithPaging(Map map);
 }
+

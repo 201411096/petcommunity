@@ -189,23 +189,50 @@ function kakaoMapAPI(data){
 			});
 		marker.setMap(map);
 		var iwContent = '<div class="alert alert-light"><a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+data.lostBoardVOList[i].lostboardLocation+'</a></div>';
+//		var iwContent = '<div class="wrap">' + 
+//        '    <div class="info">' + 
+//        '        <div class="title">' + 
+//        data.lostBoardVOList[i].lostboardTitle + 
+//        '            <div class="close" onclick="closeOverlay()" title="닫기"></div>' + 
+//        '        </div>' + 
+//        '        <div class="body">' + 
+//        '            <div class="img">' +
+//        '                <img src="https://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">' +
+//        '           </div>' + 
+//        '            <div class="desc">' + 
+//        '                <div class="ellipsis">'+ data.lostBoardVOList[i].lostboardLocation +'</div>' + 
+//        '                <div class="jibun ellipsis">(우) 63309 (지번) 영평동 2181</div>' + 
+//        '                <div><a href="https://www.kakaocorp.com/main" target="_blank" class="link">게시글</a></div>' + 
+//        '            </div>' + 
+//        '        </div>' + 
+//        '    </div>' +    
+//        '</div>';
 		var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
 		});
-	    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-	    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-	}
-	// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
-	function makeOverListener(map, marker, infowindow) {
-	    return function() {
-	        infowindow.open(map, marker);
-	    };
-	}
-
-	// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
-	function makeOutListener(infowindow) {
-	    return function() {
-	        infowindow.close();
-	    };
+		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+//	    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+//	    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
 	}
 }
+
+//marker click event
+function makeClickListener(map, marker, infowindow) {
+	return function() {
+		infowindow.open(map, marker);
+	};
+}
+
+//// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+//function makeOverListener(map, marker, infowindow) {
+//    return function() {
+//        infowindow.open(map, marker);
+//    };
+//}
+//
+//// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+//function makeOutListener(infowindow) {
+//    return function() {
+//        infowindow.close();
+//    };
+//}

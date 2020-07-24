@@ -189,6 +189,7 @@ function kakaoMapAPI(data){
 			  position: position
 			});
 		marker.setMap(map);
+		marker.setRange(1000);
 		var iwContent = '<div class="card marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+

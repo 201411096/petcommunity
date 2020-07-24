@@ -205,7 +205,6 @@ public class LostBoardController {
 		}
 		
 		result.put("lostBoardFileList", lostBoardFileList);
-		System.out.println("lostboardcontroller 확인");
 		return result;		
 	}
 }

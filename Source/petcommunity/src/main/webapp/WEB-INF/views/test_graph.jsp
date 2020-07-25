@@ -9,6 +9,7 @@
 <body>
 graph 테스트 페이지
 <div id="test_container_01"></div>
+<div id="test_container_02"></div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

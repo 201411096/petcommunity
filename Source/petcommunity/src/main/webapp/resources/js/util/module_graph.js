@@ -17,6 +17,7 @@ class GraphClass{
 //차트를 그려주는 함수
 //차트의 데이터를 받는 과정을 포함함
 	static makeChartWithAjax(graphClass){
+		console.log("GraphClass.makeChartWithAjax() 호출");
 		$('#'+graphClass.chartContainerId).empty();
 		$('#'+graphClass.chartContainerId).append('<canvas id="'+graphClass.chartElementId+'"></canvas>');
 		$.ajax({
@@ -26,13 +27,8 @@ class GraphClass{
 //		      contentType : 'application/x-www-form-urlencoded;charset=UTF-8', //넘어가는 데이터를 인코딩하기 위함
 		      contentType : "application/json; charset=UTF-8",
 		      data : JSON.stringify(graphClass.inputData),
-//		      			{
-//		    	  		"option" : $('#termOption').val(),
-//		    	  		"chartDataCnt" : $('#chartDataCntOption').val()
-//		      },
 		      dataType : 'json',
 		      success : function(outputData){
-//		    	  chartType = $(chartShapeOption).val();
 		    	  graphClass.chartType= outputData.chartType; // controller단에서 차트 모양을 정해줌
 		    	  graphClass.chartData= GraphClass.makeChartData(graphClass, outputData);
 		    	  GraphClass.makeChart(graphClass, graphClass.chartData, graphClass.chartOptions);		    	  

@@ -30,12 +30,6 @@
 		
 		<section id="container">
 			<div class="form-group">
-				<label>마커 표시 지역 검색</label>
-				<div id="searchForMap-container">
-					<input id="locationForSearch" type="text" class="form-control">
-				</div>
-			</div>
-			<div class="form-group">
 				<label>마커 표시 시간</label>
 				<select id="timeForSearch" class="form-control">
 				<option value="0">전체</option>
@@ -48,6 +42,13 @@
 				<option value="7">한달</option>
 				</select>
 			</div>
+			<div class="form-group">
+				<label>마커 표시 지역 검색</label>
+				<span id="searchForMap-container">
+					<input id="locationForSearch" type="text" class="form-control">
+				</span>
+			</div>
+
 			<div class="card">
 				<div id="map"></div>
 			</div>

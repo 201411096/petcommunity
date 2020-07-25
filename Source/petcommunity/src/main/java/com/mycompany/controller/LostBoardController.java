@@ -184,8 +184,6 @@ public class LostBoardController {
 		searchMap.put("searchWord", searchWord);
 		List<String> stringList = lostBoardService.selectString(searchMap);
 		List<String> stringList2 = findBoardService.selectString(searchMap);
-		System.out.println(stringList.size());
-		System.out.println(stringList2.size());
 		if(stringList!=null || stringList2!=null) {
 			String[] array = new String[stringList.size() + stringList2.size()];
 			for(int i=0; i< stringList.size(); i++) {
@@ -199,7 +197,7 @@ public class LostBoardController {
 //				}
 			}
 			for(int i=0; i<stringList2.size(); i++) {
-				array[stringList.size()-1+i] = stringList2.get(i);
+				array[stringList.size()+i] = stringList2.get(i);
 			}
 			Gson gson = new Gson();
 			return gson.toJson(array);
@@ -209,16 +207,24 @@ public class LostBoardController {
 	
 	@RequestMapping(value = "/lostboardListWithoutPaging.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
-	public Map getLostBoardListWithoutPaging(HttpServletRequest request, @RequestParam(defaultValue="")String locationForSearch, String timeForSearch)
+	public Map getLostBoardListWithoutPaging(HttpServletRequest request, @RequestParam(defaultValue="")String locationForSearch, int timeForSearch)
 	{
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
-		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
-		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);
+		Double timeForSearchArray [] = {0.0, 1.0/48, 1.0/24, 1.0/8, 1.0/2, 1.0, 7.0, 30.0};
+		searchMap.put("locationForSearch", locationForSearch);
+		searchMap.put("timeForSearch", timeForSearchArray[timeForSearch]);
+		
+		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoardForMap(searchMap);
+		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoardForMap(searchMap);
+		
 		result.put("lostBoardVOList", lostBoardVOList);
 		result.put("lostBoardVOListSize", lostBoardVOList.size());
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
+		System.out.println("lostboardController에서 timeForSearchArray  확인" + timeForSearchArray[timeForSearch]);
+		System.out.println("lostboardController에서 lostboardvolist의 size 확인" + lostBoardVOList.size());
+		System.out.println("lostboardController에서 findboardvolist의 size 확인" + findBoardVOList.size());
 		
 		List<HashMap> lostBoardFileList = new ArrayList<HashMap>();
 		List<HashMap> findBoardFileList = new ArrayList<HashMap>();

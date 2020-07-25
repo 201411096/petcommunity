@@ -222,9 +222,6 @@ public class LostBoardController {
 		result.put("lostBoardVOListSize", lostBoardVOList.size());
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
-		System.out.println("lostboardController에서 timeForSearchArray  확인" + timeForSearchArray[timeForSearch]);
-		System.out.println("lostboardController에서 lostboardvolist의 size 확인" + lostBoardVOList.size());
-		System.out.println("lostboardController에서 findboardvolist의 size 확인" + findBoardVOList.size());
 		
 		List<HashMap> lostBoardFileList = new ArrayList<HashMap>();
 		List<HashMap> findBoardFileList = new ArrayList<HashMap>();

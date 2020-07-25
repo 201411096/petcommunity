@@ -13,6 +13,35 @@ class GraphClass{
 		this.mainColor = "rgba(75,192,192,1)"; // generator 사용전
 		this.subColor = "rgba(75,192,192,0.4)"; // generator 사용전
 	}
+	
+//차트를 그려주는 함수
+//차트의 데이터를 받는 과정을 포함함
+	static makeChartWithAjax(graphClass){
+		$('#'+graphClass.chartContainerId).empty();
+		$('#'+graphClass.chartContainerId).append('<canvas id="'+graphClass.chartElementId+'"></canvas>');
+		$.ajax({
+		      type:'post',
+		      async:true,
+		      url:graphClass.url,
+//		      contentType : 'application/x-www-form-urlencoded;charset=UTF-8', //넘어가는 데이터를 인코딩하기 위함
+		      contentType : "application/json; charset=UTF-8",
+		      data : JSON.stringify(graphClass.inputData),
+//		      			{
+//		    	  		"option" : $('#termOption').val(),
+//		    	  		"chartDataCnt" : $('#chartDataCntOption').val()
+//		      },
+		      dataType : 'json',
+		      success : function(outputData){
+//		    	  chartType = $(chartShapeOption).val();
+		    	  graphClass.chartType= outputData.chartType; // controller단에서 차트 모양을 정해줌
+		    	  graphClass.chartData= GraphClass.makeChartData(graphClass, outputData);
+		    	  GraphClass.makeChart(graphClass, graphClass.chartData, graphClass.chartOptions);		    	  
+		      },
+		      error:function(request,status,error){
+		         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		      }
+		   });
+	}
 //ajax에서 받아온 json 데이터를 가공하여 차트의 데이터를 만들어주는 과정
 	static makeChartData(graphClass, outputData){
 		var dataLabels = new Array();
@@ -52,34 +81,6 @@ class GraphClass{
 			   };
 	   return chartData;
 	}
-//차트를 그려주는 함수
-//차트의 데이터를 받는 과정을 포함함
-	static makeChartWithAjax(graphClass){
-		$('#'+graphClass.chartContainerId).empty();
-		$('#'+graphClass.chartContainerId).append('<canvas id="'+graphClass.chartElementId+'"></canvas>');
-		$.ajax({
-		      type:'post',
-		      async:true,
-		      url:graphClass.url,
-		      contentType : 'application/x-www-form-urlencoded;charset=UTF-8', //넘어가는 데이터를 인코딩하기 위함
-		      data : JSON.stringify(graphClass.inputData),
-//		      			{
-//		    	  		"option" : $('#termOption').val(),
-//		    	  		"chartDataCnt" : $('#chartDataCntOption').val()
-//		      },
-		      dataType : 'json',
-		      success : function(outputData){
-//		    	  chartType = $(chartShapeOption).val();
-		    	  graphClass.chartType= outputData.chartType; // controller단에서 차트 모양을 정해줌
-		    	  graphClass.chartData= GraphClass.makeChartData(graphClass, outputData);
-		    	  GraphClass.makeChart(graphClass, graphClass.chartData, graphClass.chartOptions);		    	  
-		      },
-		      error:function(request,status,error){
-		         console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		      }
-		   });
-	}
-
 //makeChartWithAjax에서 내부적으로 불리는 함수 : chart.js에서 제공하는 기본함수
 	static makeChart(graphClass, chartData, chartOptions){
 		   var ctx = document.getElementById(graphClass.chartElementId).getContext('2d');
@@ -92,7 +93,7 @@ class GraphClass{
 //차트의 색깔을 구성해주는 함수
 //		ㄴ 차트의 데이터 개수만큼 색깔을 만들어서 반환함
 //		ㄴ makeChartData에서 내부적으로 불림
-	mainColorGenerator(size){
+	static mainColorGenerator(size){
 		var resultColor;
 		var rRanNum =  Math.floor(Math.random()*255);
 		var gRanNum =  Math.floor(Math.random()*255);
@@ -104,7 +105,7 @@ class GraphClass{
 				rRanNum =  Math.floor(Math.random()*255);
 				gRanNum =  Math.floor(Math.random()*255);
 				bRanNum =  Math.floor(Math.random()*255);
-				temp = 'rgba(' +rRanNum + ', ' + gRanNum + ', ' + bRanNum + ')';
+				var temp = 'rgba(' +rRanNum + ', ' + gRanNum + ', ' + bRanNum + ')';
 				resultColor.push(temp);
 			}
 		}else if(size==1){

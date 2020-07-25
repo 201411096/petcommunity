@@ -167,15 +167,7 @@ public class LostBoardController {
 		if(stringList!=null) {
 			String[] array = new String[stringList.size()];
 			for(int i=0; i< stringList.size(); i++) {
-				array[i] = stringList.get(i);
-				if(searchType.equals("location")) {
-					StringTokenizer st= new StringTokenizer(stringList.get(i));
-					String temp = "";
-					temp+=st.nextToken()+" ";
-					temp+=st.nextToken();
-					array[i]=temp;
-				}
-					 
+				array[i] = stringList.get(i);					 
 			}
 			Gson gson = new Gson();
 			return gson.toJson(array);
@@ -184,13 +176,41 @@ public class LostBoardController {
 		}
 	}
 	
+	@RequestMapping(value = "/autoCompleteForMap.do", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
+	@ResponseBody
+	public String autoCompleteForMap(String searchWord, String searchType) {
+		Map searchMap = new HashMap();
+		searchMap.put("searchType", searchType);
+		searchMap.put("searchWord", searchWord);
+		List<String> stringList = lostBoardService.selectString(searchMap);
+		List<String> stringList2 = findBoardService.selectString(searchMap);
+		System.out.println(stringList.size());
+		System.out.println(stringList2.size());
+		if(stringList!=null || stringList2!=null) {
+			String[] array = new String[stringList.size() + stringList2.size()];
+			for(int i=0; i< stringList.size(); i++) {
+				array[i] = stringList.get(i);
+//				if(searchType.equals("location")) {
+//					StringTokenizer st= new StringTokenizer(stringList.get(i));
+//					String temp = "";
+//					temp+=st.nextToken()+" ";
+//					temp+=st.nextToken();
+//					array[i]=temp;
+//				}
+			}
+			for(int i=0; i<stringList2.size(); i++) {
+				array[stringList.size()-1+i] = stringList2.get(i);
+			}
+			Gson gson = new Gson();
+			return gson.toJson(array);
+		}
+		return "";
+	}
+	
 	@RequestMapping(value = "/lostboardListWithoutPaging.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map getLostBoardListWithoutPaging(HttpServletRequest request, @RequestParam(defaultValue="")String locationForSearch, String timeForSearch)
 	{
-		System.out.println(timeForSearch);
-		System.out.println(locationForSearch);
-		
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);

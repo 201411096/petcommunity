@@ -16,5 +16,6 @@
 <a href="/petcommunity/productCart.do">장바구니</a><br>
 <a href="/petcommunity/findboardlist.do">findboardlist 페이지</a>
 <a href="/petcommunity/lostboardlist.do">lostboardlist 페이지</a>
+<a href="/petcommunity/test_graph.do">그래프 테스트 페이지</a>
 </body>
 </html>

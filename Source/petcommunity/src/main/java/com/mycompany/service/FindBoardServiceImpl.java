@@ -53,6 +53,11 @@ public class FindBoardServiceImpl implements FindBoardService{
 	public List<String> selectString(Map map) {
 		return findBoardDAO.selectString(map);
 	}
+
+	@Override
+	public List<FindBoardVO> selectFindBoardForMap(Map map) {
+		return findBoardDAO.selectFindBoardForMap(map);
+	}
 	
 	
 }

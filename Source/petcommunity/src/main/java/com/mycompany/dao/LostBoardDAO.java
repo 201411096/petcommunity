@@ -14,4 +14,5 @@ public interface LostBoardDAO {
 	public int deleteLostBoard(LostBoardVO lostBoardVO);
 	public int updateLostBoard(LostBoardVO lostBoardVO);
 	public List<String> selectString(Map map);
+	public List<LostBoardVO> selectLostBoardForMap(Map map);
 }

@@ -24,9 +24,8 @@ $(function(){
 });
 
 function searchForMapEventHandler(){
-	$('#timeForSearch')
-	$('#locationForSearch')
-	getDataWithoutPaging
+	$('#timeForSearch').on('change', getDataWithoutPaging);
+	$('#locationForSearch').on('keydown', getDataWithoutPaging);
 }
 
 function documentPreventKeyDown(){
@@ -98,7 +97,7 @@ function autoCompleteFuncForMap(){
 		source : function( request, response ) {
             $.ajax({
                    type: 'get',
-                   url: "/petcommunity/autoCompleteForLostBoard.do",
+                   url: "/petcommunity/autoCompleteForMap.do",
                    dataType: "json",
                    data:{
                 	   	"searchWord" : $('#locationForSearch').val(),
@@ -246,9 +245,17 @@ function kakaoMapAPI(data){
 		var iwContent = '<div class="card marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
-						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
+		if(data.lostBoardFileList[i].filename=='??'){
+			iwContent  = '<div class="card marker-infowindow">'+
+						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
+						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
+						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/default/1.png" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'</div>';
+		}
 		var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
 		});
@@ -271,9 +278,17 @@ function kakaoMapAPI(data){
 		var iwContent = '<div class="card marker-infowindow">'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
-						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
+		if(data.findBoardFileList[i].filename=='??'){
+			iwContent = '<div class="card marker-infowindow">'+
+			'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
+			'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
+			'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
+			'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/default/1.png" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+			'</div>';
+		}
 		var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
 		});

@@ -6,8 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mycompany.dao.FindHospitalDAOImpl;
-import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.FindHospitalVO;
+
 
 @Service("findHospitalService")
 public class FindHospitalServiceImpl implements FindHospitalService{
@@ -16,16 +16,16 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 	FindHospitalServiceImpl findHospitalDAO;
 
 	@Override
-	public List<FindHospitalVO> getFindHospitalList(Map map) {
-		return findHospitalDAO.getFindHospitalList(map);
-		
+	public List<FindHospitalVO> selectFindHospital(Map map) {
+		return findHospitalDAO.selectFindHospital(map);
 	}
 
 	@Override
-	public List<FindHospitalVO> getFindHospitalListWithPaging(Map map) {
-		return findHospitalDAO.getFindHospitalListWithPaging(map);
+	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map) {
+		return findHospitalDAO.selectFindHospitalWithPaging(map);
 	}
 
+	@Override
 	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo) {
 		return findHospitalDAO.getFindHospitalListByLocation(vo);
 	}
@@ -35,6 +35,7 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 		return findHospitalDAO.getFindHospitalListByLocationWithPaging(map);
 	}
 	
+	@Override
 	public List<FindHospitalVO> getFindHospitalListBySearch(FindHospitalVO vo) {
 		return findHospitalDAO.getFindHospitalListBySearch(vo);
 	}
@@ -43,4 +44,16 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 	public List<FindHospitalVO> getFindHospitalListBySearchWithPaging(Map map) {
 		return findHospitalDAO.getFindHospitalListBySearchWithPaging(map);
 	}
+	
+	@Override
+	public List<String> selectString(Map map) {
+		return findHospitalDAO.selectString(map);
+	}
+	
+	@Override
+	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
+		return findHospitalDAO.selectFindHospitalForMap(map);
+	}
+	
+
 }

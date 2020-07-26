@@ -101,7 +101,14 @@
 						</tr>
 					</thead>
 					<tbody id="findHospitalTbody">
-						
+					<c:forEach items="${findHospitalList}" var = "findHospitalList">
+						<tr>
+							<td>${findHospitalList.findhospitalName}</td>
+							<td>${findHospitalList.findhospitalTel}</td>
+							<td>${findHospitalList.findhospitalAddress}</td>
+							<td>${findHospitalList.findhospitalOpenhour}</td>
+						</tr>				
+					</c:forEach>
 					</tbody>
 				</table>
 			</form>

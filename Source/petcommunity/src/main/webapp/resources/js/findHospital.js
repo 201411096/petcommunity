@@ -100,11 +100,42 @@ var defaultOpts = {
 };
 
 $(function(){
+	alert('입장');
 	getData();
+	getDataWithoutPaging();
 	autoCompleteFunc();
-	$('#searchBtn').on('click', getData);
-
+	autoCompleteFuncForMap();
+	documentPreventKeyDown();
+	searchWordEventHandler();
+	searchBtnEventHandler();
+	writeBtnEventHandler();
+	searchForMapEventHandler();
 });
+	
+function searchForMapEventHandler(){
+	$('#locationForSearch').on('keydown', getDataWithoutPaging);
+}
+
+function documentPreventKeyDown(){
+	document.addEventListener('keydown', function(event) {
+		  if (event.keyCode === 13) {
+		    event.preventDefault();
+		  };
+		}, true);
+}
+
+
+function searchWordEventHandler(){
+	$('#keywordInput').on('keydown', function(e){
+		if(e.keyCode === 13){
+			$('#searchBtn').click();
+		}
+	});
+}
+
+function searchBtnEventHandler(){
+	$('#searchBtn').on('click', getData);
+}
 
 function autoCompleteFunc(){
 	$('#keywordInput').autocomplete({
@@ -143,6 +174,45 @@ function autoCompleteFunc(){
 	});
 }
 
+function autoCompleteFuncForMap2(){
+	$('#locationForSearch').autocomplete({
+		source : function( request, response ) {
+            $.ajax({
+                   type: 'get',
+                   url: "/petcommunity/autoCompleteForMap2.do",
+                   dataType: "json",
+                   data:{
+                	   	"searchWord" : $('#locationForSearch').val(),
+       					"searchType" : 'location'
+                   },
+                   success: function(data) {
+                	   console.log('autocomplete success');
+                       //서버에서 json 데이터 response 후 목록에 추가
+                       response(
+                           $.map(data, function(item) {    //json[i] 번째 에 있는게 item 임.
+                               return {
+                                   label: item,    			//UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+                                   value: item,    		   //사용자 값
+                               }
+                           })
+                       );
+                   },
+                   error: function(data){
+                	   console.log('autocomplete error');
+                   }
+              });
+           },
+           select : function(event, ui){
+        	   
+           },
+
+           minLength: 1,		 // 최소 글자수
+           autoFocus: false,		 //첫번째 항목 자동 포커스 기본값 false
+           delay : 500,
+	});
+}
+
+
 function getDataInPaging(){
 	$.ajax({
 		type : 'post',
@@ -175,6 +245,7 @@ function getData(){
 				},
 		dataType : 'json',
 		success : function(resultData){
+			alert('list가져오기');
 			drawTable(resultData);
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
@@ -185,6 +256,7 @@ function getData(){
             }));
 		},
 		error:function(request,status,error){
+			
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}		
 	});
@@ -208,13 +280,13 @@ function drawTable(data){
 	}
 }
 
-var latitude = -1;
-var longitude = -1;
+
 $(function() {
 	kakaoMapAPI();
 });
 
 function kakaoMapAPI() {
+
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
 		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
@@ -288,4 +360,9 @@ function setLocation(latitude, longitude){
 function setAddress(addressname, addressType){
 	$('#findhospitaladdress').val(addressname);
 	$('#findhospitaladdresstype').val(addressType);     
+}
+
+//현재 작업경로를 가져오는 함수
+function getContextPath() {
+	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 }

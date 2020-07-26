@@ -21,6 +21,18 @@ public class ProductCartServiceImpl implements ProductCartService {
 	public List<ProductCartVO> getCartListById(ProductCartVO vo) {
 		return productCartDAO.getCartListById(vo);
 	}
+
+
+	@Override
+	public void changeProductCntOnCart(ProductCartVO vo) {
+		productCartDAO.changeProductCntOnCart(vo);		
+	}
+
+
+	@Override
+	public void deleteProductFromCart(ProductCartVO vo) {
+		productCartDAO.deleteProductFromCart(vo);		
+	}
 	
 
 

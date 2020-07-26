@@ -28,10 +28,17 @@ where ${searchType} like '%'||#{keyWord}||'%'
 
 <!-- 동물 병원 페이징 처리 -->
 <select id="getFindHospitalListWithPaging" parameterType="hashmap" resultType="findHospital">
-<![CDATA[
+
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
-from findhospital
-where RNUM>=#{startList} and RNUM<=#{lastList}
+from (
+	select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour, ROWNUM AS RNUM
+	from
+		(select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
+		from findhospital
+		)
+	)
+<![CDATA[
+	where RNUM>=#{startList} and RNUM<=#{lastList}
 ]]>
 </select>  
 

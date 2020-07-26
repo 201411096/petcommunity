@@ -7,4 +7,6 @@ import com.mycompany.domain.ProductCartVO;
 
 public interface ProductCartService {
 	public List<ProductCartVO> getCartListById(ProductCartVO vo);
+	public void changeProductCntOnCart(ProductCartVO vo);
+	public void deleteProductFromCart(ProductCartVO vo);
 }

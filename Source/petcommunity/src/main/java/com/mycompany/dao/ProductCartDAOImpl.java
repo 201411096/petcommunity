@@ -20,6 +20,20 @@ public class ProductCartDAOImpl implements ProductCartDAO{
 		return mybatis.selectList("productCartDAO.getCartListById", vo);
 	}
 
+	@Override
+	public void changeProductCntOnCart(ProductCartVO vo) {
+		System.out.println("===>  productMapper changeProductCntOnCart() 호출");
+		mybatis.update("productCartDAO.changeProductCntOnCart", vo);
+		
+	}
+
+	@Override
+	public void deleteProductFromCart(ProductCartVO vo) {
+		System.out.println("===>  productMapper deleteProductFromCart() 호출");
+		mybatis.delete("productCartDAO.deleteProductFromCart", vo);
+		
+	}
+
 
 
 }

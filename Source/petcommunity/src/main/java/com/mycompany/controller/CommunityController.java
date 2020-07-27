@@ -193,7 +193,6 @@ public class CommunityController {
 		paginationVO.setRangeSize(20);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		searchMap.put("searchType", type);
 		searchMap.put("keyWord", keyword);
 		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearchWithPaging(searchMap);
 		Map result = new HashMap();

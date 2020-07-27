@@ -16,5 +16,10 @@ public class GraphServiceImpl implements GraphService{
 	public List<Map> getLostGraph(Map map) {
 		return graphDAO.getLostGraph(map);
 	}
+
+	@Override
+	public List<Map> getFindGraphFromLostBoard(Map map) {
+		return graphDAO.getFindGraphFromLostBoard(map);
+	}
 	
 }

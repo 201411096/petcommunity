@@ -5,4 +5,5 @@ import java.util.Map;
 
 public interface GraphService {
 	List<Map> getLostGraph(Map map);
+	List<Map> getFindGraphFromLostBoard(Map map);
 }

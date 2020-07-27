@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.annotation.SessionScope;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.ProductreviewVO;
 import com.mycompany.service.ProductreviewServiceImpl;
@@ -43,26 +44,47 @@ public class ProductReviewController {
 			searchMap.put("productreviewScore", vo.getProductreviewScore());
 			searchMap.put("productreviewContent", vo.getProductreviewContent());
 			searchMap.put("memberId", memberVo.getMemberId());
-			//작성한 리뷰 유무 check
-			vo = productreviewService.reviewCheck(searchMap);
-			if(vo != null) { // 이미 리뷰를 작성한 경우
-				result.put("reviewCheck", "alreadyWriteReview");
+			// 제품 구매유무 확인
+			int resultBuy = productreviewService.selectBuy(searchMap); 
+			if( resultBuy > 0 ) {//제품을 구매했다면
+				//작성한 리뷰 유무 check
+				vo = productreviewService.reviewCheck(searchMap);
+				if(vo != null) { // 이미 리뷰를 작성한 경우
+					result.put("reviewCheck", "alreadyWriteReview");
+					return result;
+				}else {//리뷰를 처음작성하는 경우
+					int writeComplete = productreviewService.insertReview(searchMap);
+					System.out.println(writeComplete);
+					List<ProductreviewVO> reviewList = productreviewService.selectListReview(searchMap);
+					result.put("productId", productId);
+				}
+			}else {//제품을 구매하지 않았다면
+				result.put("notBuyProduct", "notBuyProduct");
 				return result;
-			}else {
-				/*
-				 * int resultBuy = productreviewService.selectBuy(searchMap); if( resultBuy >0 )
-				 * {
-				 * 
-				 * }
-				 */
-				int writeComplete = productreviewService.insertReview(searchMap);
-				System.out.println(writeComplete);
-				List<ProductreviewVO> reviewList = productreviewService.selectListReview(searchMap);
-				result.put("productId", productId);
-			}
+			}		
 		}
 		return result;
 	}
+	
+//	vo = productreviewService.reviewCheck(searchMap);
+//	if(vo != null) { // 이미 리뷰를 작성한 경우
+//		result.put("reviewCheck", "alreadyWriteReview");
+//		return result;
+//	}else {
+//		 BuyListVO resultBuy = productreviewService.selectBuy(searchMap); 
+//		 if( resultBuy !=null ) {
+//			 int writeComplete = productreviewService.insertReview(searchMap);
+//			 System.out.println(writeComplete);
+//			 List<ProductreviewVO> reviewList = productreviewService.selectListReview(searchMap);
+//			 result.put("productId", productId);
+//		 }
+//		 
+//	}
+//}
+//return result;
+//}
+	
+	
 	@ResponseBody
 	@RequestMapping(value="/reiviewModifyOrDelete.do", produces = "application/json; charset=utf-8")
 	public Map reiviewModifyOrDelete(HttpServletRequest req, String writerId, String funcKind, String productId, ProductreviewVO vo) {

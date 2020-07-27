@@ -9,7 +9,14 @@ public class ProductCartVO {
 	String productName;
 	String productPrice;
 	String productCnt;
+	String buyListId;
 	
+	public String getBuyListId() {
+		return buyListId;
+	}
+	public void setBuyListId(String buyListId) {
+		this.buyListId = buyListId;
+	}
 	public String getBuycartlistId() {
 		return buycartlistId;
 	}

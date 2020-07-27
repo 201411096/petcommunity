@@ -12,4 +12,5 @@ public interface ProductreviewService {
 	public int deleteReview(Map searchMap);
 	public String selectAReview(Map searchMap);
 	public List<ProductreviewVO> selectReviewByTagWithPaging(Map searchMap);
+	public int selectBuy(Map searchMap);
 }

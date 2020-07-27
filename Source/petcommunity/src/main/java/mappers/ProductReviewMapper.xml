@@ -44,4 +44,6 @@
     	where RNUM>=#{startRow} AND RNUM<=#{endRow}
         ]]>
 	</select>
+	
+
 </mapper>

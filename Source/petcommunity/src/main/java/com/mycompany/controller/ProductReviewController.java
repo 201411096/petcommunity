@@ -49,6 +49,12 @@ public class ProductReviewController {
 				result.put("reviewCheck", "alreadyWriteReview");
 				return result;
 			}else {
+				/*
+				 * int resultBuy = productreviewService.selectBuy(searchMap); if( resultBuy >0 )
+				 * {
+				 * 
+				 * }
+				 */
 				int writeComplete = productreviewService.insertReview(searchMap);
 				System.out.println(writeComplete);
 				List<ProductreviewVO> reviewList = productreviewService.selectListReview(searchMap);

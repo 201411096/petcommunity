@@ -43,5 +43,10 @@ public class ProductreviewServiceImpl implements ProductreviewService{
 		List<ProductreviewVO> result = ProductreviewDAO.selectReviewByTagWithPaging(searchMap);
 		return result;
 	}
+	@Override
+	public int selectBuy(Map searchMap) {
+		int result = ProductreviewDAO.selectBuy(searchMap);
+		return result;
+	}
 	
 }

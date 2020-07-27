@@ -36,6 +36,7 @@
 
 		<typeAlias alias="product" type="com.mycompany.domain.ProductVO"></typeAlias>
 
+		<typeAlias alias="productReview" type="com.mycompany.domain.ProductreviewVO"></typeAlias>
    </typeAliases>
    
    

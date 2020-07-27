@@ -35,9 +35,19 @@ public class BuyDAOImpl implements BuyDAO {
 		map.put("totalPrice", totalPrice);
 		map.put("memberId", vo.getMemberId());
 		
-
 		mybatis.insert("buy.buyListInsert",map);
 		
+		HashMap map2 = new HashMap();
+		for(ProductCartVO i :cartList) {
+			map2.put("cnt", i.getBuycartlistCnt());
+			map2.put("price", i.getProductPrice());
+			map2.put("productId", i.getProductId());
+			map2.put("buyListId",map.get("buyListId"));
+
+		mybatis.insert("buy.buyInsert",map2);
+		
+		mybatis.delete("buy.deleteCart",map);
+		}
 	}
 	
 }

@@ -179,6 +179,27 @@ CREATE TABLE BUYCARTLIST(
     CONSTRAINT BUYCARTLIST_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id)
 );
 
+CREATE OR REPLACE VIEW buylistview AS
+select 
+b.buy_id as buy_id, 
+b.buylist_id as buylist_id, 
+b.product_id as product_id, 
+b.buy_cnt as buy_cnt, 
+b.buy_totalprice as buy_totalprice, 
+bl.buylist_date as buylist_date, 
+bl.member_id as member_id, 
+bl.buylist_totalprice as buylist_totalprice,
+p.product_name as product_name,
+p.product_price as product_price,
+p.product_cnt as product_cnt,
+p.product_feature as product_feature,
+p.product_content as product_content
+from buy b 
+inner join buylist bl 
+on b.buylist_id = bl.buylist_id
+inner join product p
+on b.product_id = p.product_id;
+
 create sequence findhospital_id_seq
 start with 10000
 maxvalue 100000

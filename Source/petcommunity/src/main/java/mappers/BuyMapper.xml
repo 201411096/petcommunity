@@ -40,5 +40,18 @@ where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.
 
 <insert id="buyListInsert" parameterType="hashmap">
 insert into BUYLIST values(BUYLIST_ID_SEQ.nextval,sysdate,#{memberId},#{totalPrice})
+
+ <selectKey keyProperty="buyListId" resultType="Integer" order="AFTER">
+    select BUYLIST_ID_SEQ.currval FROM dual 
+  </selectKey>
 </insert>
+
+<insert id="buyInsert" parameterType="hashmap">
+insert into buy values(BUY_ID_SEQ.nextval,${buyListId},${productId},${cnt},${price})
+</insert>
+
+
+<delete id="deleteCart" parameterType="hashmap">
+delete from BUYCARTLIST where MEMBER_ID=#{memberId}
+</delete>
 </mapper>

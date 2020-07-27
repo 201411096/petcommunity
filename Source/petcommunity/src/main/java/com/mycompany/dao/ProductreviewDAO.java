@@ -3,6 +3,7 @@ package com.mycompany.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.ProductreviewVO;
 
 public interface ProductreviewDAO {

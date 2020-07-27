@@ -43,7 +43,7 @@ public class BuyController {
 	}
 	
 	@RequestMapping(value="buyInsert.do")
-	public ModelAndView buyInsert(HttpServletRequest request,ProductCartVO cvo) {
+	public String buyInsert(HttpServletRequest request,ProductCartVO cvo) {
 		HttpSession session = request.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
 		int totalPrice=0;
@@ -51,12 +51,14 @@ public class BuyController {
 		
 		ModelAndView mv = new ModelAndView();
 		List<ProductCartVO> cartList = productCartService.getCartListById(cvo);
-		for(int i=0;i<cartList.size();i++) {
-		totalPrice+=Integer.parseInt(cartList.get(i).getBuycartlistCnt())*Integer.parseInt(cartList.get(i).getProductPrice());
-		}
+		/*
+		 * for(int i=0;i<cartList.size();i++) {
+		 * totalPrice+=Integer.parseInt(cartList.get(i).getBuycartlistCnt())*Integer.
+		 * parseInt(cartList.get(i).getProductPrice()); }
+		 */
 		
-		buyService.buyInsert(totalPrice,cvo,cartList); 
-		mv.setViewName("mypage");
-		return mv;
+		buyService.buyInsert(totalPrice,cvo,cartList);  
+		
+		return "redirect:/mypageselect.do";
 	}
 }

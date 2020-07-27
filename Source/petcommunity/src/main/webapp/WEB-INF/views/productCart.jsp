@@ -44,17 +44,17 @@
 					<col id='col5'/>
 				</colgroup>
 				<thead>
-					<tr>						
+					<tr>				
 						<th>이미지</th>
 						<th>상품</th>
 						<th>가격</th>
 						<th>개수</th>
-						<th>이미지</th>
+						<th> </th>
 					</tr>
 				</thead>
 				<tbody id="cartLists">
 				<!-- 	<tr class='cartList'>
-						<td><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' id='cartListImg'/></a></td>
+						<td><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' class='cartListImg'/></a></td>
 						<td><span id='productName1'>상품이름 </span>&nbsp;(<span id='productPrice1'>25000</span>원)</td>
 						<td><span id='productTotalPrice1'>25000</span>원</td>
 						<td>
@@ -75,9 +75,9 @@
 					<tr>
 						<td>
 							<span class='totalTable'> 
-								<span class='text-primary'>상품이름</span> 외 
-								<span class='text-primary'>x</span>개 품목  &nbsp;&nbsp;총 
-								<span class='text-danger' id='totalPrice'>10000</span>원
+								<span class='text-primary' id='totalTableProductName'></span> <span id='why'>외</span> 
+								<span class='text-primary' id='amountOfCartList'></span>개 품목  &nbsp;&nbsp;총 
+								<span class='text-danger' id='totalPrice'></span>원
 						
 							</span>
 						</td>

@@ -24,9 +24,8 @@ $(function(){
 });
 
 function searchForMapEventHandler(){
-	$('#timeForSearch')
-	$('#locationForSearch')
-	getDataWithoutPaging
+	$('#timeForSearch').on('change', getDataWithoutPaging);
+	$('#locationForSearch').on('keydown', getDataWithoutPaging);
 }
 
 function documentPreventKeyDown(){

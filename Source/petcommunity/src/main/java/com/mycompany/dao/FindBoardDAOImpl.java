@@ -52,6 +52,11 @@ public class FindBoardDAOImpl implements FindBoardDAO{
 	public List<String> selectString(Map map) {
 		return mybatis.selectList("findBoardDAO.getStringForAutoComplete", map);
 	}
+
+	@Override
+	public List<FindBoardVO> selectFindBoardForMap(Map map) {
+		return mybatis.selectList("findBoardDAO.getFindBoardForMap", map);
+	}
 	
 	
 }

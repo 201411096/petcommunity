@@ -15,18 +15,15 @@ public class FindHospitalDAOImpl implements FindHospitalDAO{
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<FindHospitalVO> getFindHospitalList(Map map) {
-		System.out.println("===>  HospitalMapper getFindHospitalList() 호출");
-		return mybatis.selectList("findHospitalDAO.getFindHospitalList", map);
-		
+	public List<FindHospitalVO> selectFindHospital(Map map) {
+		System.out.println("===>  HospitalMapper selectFindHospital() 호출");
+		return mybatis.selectList("findHospitalDAO.getFindHospitalList", map);		
 	}
 
 	@Override
-	public List<FindHospitalVO> getFindHospitalListWithPaging(Map map) {
-		System.out.println("===>  HospitalMapper getFindHospitalListWithPaging() 호출");
+	public List<FindHospitalVO> selectFindHospitalWithPaging(Map map) {
 		return mybatis.selectList("findHospitalDAO.getFindHospitalListWithPaging", map);
 	}
-	
 	
 	@Override
 	public List<FindHospitalVO> getFindHospitalListByLocation(FindHospitalVO vo) {
@@ -52,6 +49,18 @@ public class FindHospitalDAOImpl implements FindHospitalDAO{
 		System.out.println("===>  HospitalMapper getFindHospitalListBySearchWithPaging() 호출");
 		return mybatis.selectList("findHospitalDAO.getFindHospitalListBySearchWithPaging", map);
 	}
+
+	@Override
+	public List<String> selectString(Map map) {
+		
+		return mybatis.selectList("findHospitalDAO.getStringForAutoComplete", map);
+	}
+
+	@Override
+	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
+		return mybatis.selectList("findHospitalDAO.getFindHospitalForMap", map);
+	}
+
 
 }
 

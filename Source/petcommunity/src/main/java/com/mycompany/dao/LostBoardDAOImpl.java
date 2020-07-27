@@ -52,6 +52,11 @@ public class LostBoardDAOImpl implements LostBoardDAO{
 	public List<String> selectString(Map map) {
 		return mybatis.selectList("lostBoardDAO.getStringForAutoComplete", map);
 	}
+
+	@Override
+	public List<LostBoardVO> selectLostBoardForMap(Map map) {
+		return mybatis.selectList("lostBoardDAO.getLostBoardForMap", map);
+	}
 	
 	
 }

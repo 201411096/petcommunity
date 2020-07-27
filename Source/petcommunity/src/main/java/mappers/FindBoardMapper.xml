@@ -110,4 +110,15 @@
 		where REGEXP_LIKE (findboard_location, '(*)'||#{searchWord}||'(*)')
 	</if>
 	</select>
+	<select id="getFindBoardForMap" parameterType="hashmap" resultType="findBoard">
+		select * from findboard
+		where findboard_id is not null
+		<if test="timeForSearch != ''">
+		and findboard_uploadtime > sysdate - #{timeForSearch}
+		</if>
+		<if test = "locationForSearch != ''">
+		and REGEXP_LIKE (findboard_location, '(*)'||#{locationForSearch}||'(*)')
+		</if>
+		 
+	</select>
 </mapper>

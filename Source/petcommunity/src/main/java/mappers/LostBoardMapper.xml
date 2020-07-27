@@ -110,6 +110,12 @@
 	</select>
 	<select id="getLostBoardForMap" parameterType="hashmap" resultType="lostBoard">
 		select * from lostboard
-		where lostboard_status = '찾는 중' 
+		where lostboard_status = '찾는 중'
+		<if test = "locationForSearch != ''">
+		and REGEXP_LIKE (lostboard_location, '(*)'||#{locationForSearch}||'(*)')
+		</if>
+		<if test="timeForSearch != ''">
+		and lostboard_uploadtime > sysdate - #{timeForSearch}
+		</if> 
 	</select>
 </mapper>

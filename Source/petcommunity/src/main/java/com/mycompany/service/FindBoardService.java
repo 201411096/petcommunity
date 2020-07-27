@@ -14,4 +14,5 @@ public interface FindBoardService {
 	public int deleteFindBoard(FindBoardVO findBoardVO);
 	public int updateFindBoard(FindBoardVO findBoardVO);
 	public List<String> selectString(Map map);
+	public List<FindBoardVO> selectFindBoardForMap(Map map);
 }

@@ -53,6 +53,10 @@ public class LostBoardServiceImpl implements LostBoardService{
 	public List<String> selectString(Map map) {
 		return lostBoardDAO.selectString(map);
 	}
-	
+
+	@Override
+	public List<LostBoardVO> selectLostBoardForMap(Map map) {
+		return lostBoardDAO.selectLostBoardForMap(map);
+	}
 	
 }

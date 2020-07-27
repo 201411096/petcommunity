@@ -26,7 +26,6 @@
 <body>
 	<div class="container">
 		<section id="container">
-			<!-- 			<form role="form" method="get"> -->
 			<h4>
 				<strong>고객센터</strong>
 			</h4>
@@ -41,20 +40,22 @@
 						<th>아이디</th>
 					</tr>
 				</thead>
-				<c:forEach items="${qnavoList}" var="item">
-					<tr>
-						<td>${item.questionboardId}</td>
-						<td><a
-							href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">
-								${item.questionboardTitle}</a></td>
-						<td>${item.questionboardUploadtime}</td>
-						<td>${item.questionboardReadcount}</td>
-						<td>${item.memberId}</td>
-					</tr>
+				<tbody id="QnaBoardTbody">
+				</tbody>
+<%-- 				<c:forEach items="${qnavoList}" var="item"> --%>
+<!-- 					<tr> -->
+<%-- 						<td>${item.questionboardId}</td> --%>
+<!-- 						<td> -->
+<%-- 						<a href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}"> --%>
+<%-- 								${item.questionboardTitle}</a></td> --%>
+<%-- 						<td>${item.questionboardUploadtime}</td> --%>
+<%-- 						<td>${item.questionboardReadcount}</td> --%>
+<%-- 						<td>${item.memberId}</td> --%>
+<!-- 					</tr> -->
 
-				</c:forEach>
+<%-- 				</c:forEach> --%>
 			</table>
-			<form id="searchK" name="searchK" action="/petcommunity/keyword.do">
+			<form id="searchK" name="searchK" action="/petcommunity/qnaBoardListPaging.do">
 				<div class="search row">
 					<div class="col-xs-2 col-sm-2">
 						<select name="searchType" id="searchType" class="form-control">
@@ -62,7 +63,6 @@
 							<option value="1">제목</option>
 							<option value="2">내용</option>
 							<option value="3">아이디</option>
-							<option value="4">제목+내용</option>
 						</select>
 					</div>
 					<div class="col-xs-10 col-sm-10">

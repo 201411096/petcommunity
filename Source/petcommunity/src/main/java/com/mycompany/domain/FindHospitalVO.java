@@ -9,8 +9,15 @@ public class FindHospitalVO {
 	private String findhospitalAddress;
 	private String findhospitalX;
 	private String findhospitalY;
+	private String findhospitalOpenhour;
 	private String keyWord;//검색어
-	private String searchType;//검색타입
+	
+	public String getFindhospitalOpenhour() {
+		return findhospitalOpenhour;
+	}
+	public void setFindhospitalOpenhour(String findhospitalOpenhour) {
+		this.findhospitalOpenhour = findhospitalOpenhour;
+	}
 	
 	public String getKeyWord() {
 		return keyWord;
@@ -18,12 +25,7 @@ public class FindHospitalVO {
 	public void setKeyWord(String keyWord) {
 		this.keyWord = keyWord;
 	}
-	public String getSearchType() {
-		return searchType;
-	}
-	public void setSearchType(String searchType) {
-		this.searchType = searchType;
-	}
+	
 	public int getFindhospitalId() {
 		return findhospitalId;
 	}

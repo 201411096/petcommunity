@@ -96,7 +96,7 @@
 	</select>
 
 	<select id="getStringForAutoComplete" resultType="string" parameterType="hashmap">
-	select 
+	select distinct
 	<if test = "searchType == 'title'">
 		findboard_title from findboard
 		where REGEXP_LIKE (findboard_title, '(*)'||#{searchWord}||'(*)')	
@@ -109,5 +109,16 @@
 		findboard_location from findboard
 		where REGEXP_LIKE (findboard_location, '(*)'||#{searchWord}||'(*)')
 	</if>
+	</select>
+	<select id="getFindBoardForMap" parameterType="hashmap" resultType="findBoard">
+		select * from findboard
+		where findboard_id is not null
+		<if test="timeForSearch != ''">
+		and findboard_uploadtime > sysdate - #{timeForSearch}
+		</if>
+		<if test = "locationForSearch != ''">
+		and REGEXP_LIKE (findboard_location, '(*)'||#{locationForSearch}||'(*)')
+		</if>
+		 
 	</select>
 </mapper>

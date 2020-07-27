@@ -5,20 +5,20 @@
 	<!-- mybatis 자료형 : int / hashmap / string -->
 	
 <!-- 전체 동물 병원 리스트 가져오기 -->
-<select id="getFindHospitalList" resultType="findHospital">
+<select id="getFindHospitalList" parameterType="hashmap" resultType="findHospital">
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
-from findhospital
+from FINDHOSPITAL
 </select>
 
 <!-- 지역별 검색 -->
-<select id="getFindHospitalListByLocation" parameterType="findHospital" resultType="findHospital">
+<select id="getFindHospitalListByLocation" parameterType="hashmap" resultType="findHospital">
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
-from findhospital
+from FINDHOSPITAL
 where SUBSTR(findhospital_address,1,2)=#{cityName} and SUBSTR(findhospital_address,4,2) = #{province}
 </select> 
 
 <!--병원명, 검색어 typing해서 검색-->
-<select id="getFindHospitalListBySearch" parameterType="findHospital" resultType="findHospital">
+<select id="getFindHospitalListBySearch" parameterType="hashmap" resultType="findHospital">
 <![CDATA[
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
 from findhospital
@@ -26,12 +26,19 @@ where ${searchType} like '%'||#{keyWord}||'%'
 ]]>
 </select>  
 
-<!--동물 병원 페이징 처리-->
-<select id="getFindHospitalListByPaging" parameterType="findHospital" resultType="findHospital">
-<![CDATA[
+<!-- 동물 병원 페이징 처리 -->
+<select id="getFindHospitalListWithPaging" parameterType="hashmap" resultType="findHospital">
+
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
-from findhospital
-where RNUM>=#{startList} and RNUM<=#{lastList}
+from (
+	select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour, ROWNUM AS RNUM
+	from
+		(select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
+		from findhospital
+		)
+	)
+<![CDATA[
+	where RNUM>=#{startList} and RNUM<=#{lastList}
 ]]>
 </select>  
 

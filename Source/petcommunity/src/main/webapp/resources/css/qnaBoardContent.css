@@ -1,36 +1,28 @@
 @charset "UTF-8";
 
-#title {
-	color: gray;
+table {
+	width : 65%;
+	height : 60%;
+	margin-left: 20%;
+	margin-right: 60%;
+}
+
+#title{
+	width : 20%;
+}
+
+#content{
+	width : 80%;
 }
 
 #content-content {
+	height : 30%;
 	text-align: center;
-	padding-bottom: 50px;
 }
 
-#listButton {
-	float: left;
+#mulBtn{
+	margin-left: 75%;
 }
-
-table {
-	width : 60%;
-	margin-left: 20%;
-}
-
-#lineStyle {
-	border: 0;
-    height: 1px;
-    background: #ccc;
-}
-
-#modi {
-	text-align: right;
-}
-
-
-
-
 
 
 

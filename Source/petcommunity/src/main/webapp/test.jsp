@@ -6,8 +6,12 @@
 <meta charset="UTF-8">
 
 
+<<<<<<< HEAD
 <title
 >Insert t	itle here</title>
+=======
+<title>Insert title here</title>
+>>>>>>> 8ef9e836e93061578ab04ce4e0664248b12c4459
 
 </head>
 <body>
@@ -22,10 +26,10 @@
 <a href="/petcommunity/productView.do">상품설명 페이지</a><br>
 <a href="/petcommunity/productList.do">품목 리스트</a><br>
 
-<a href="/petcommunity/findPostingBoard.do">분실동물 포스팅 게시판</a>
+<a href="/petcommunity/findPostingBoard.do">분실동물 포스팅 게시판</a><br>
 
 
-
+<a href="/petcommunity/buy.do">결제페이지</a><br>
 
 <a href="/petcommunity/mypage.do">마이페이지</a><br>
 <a href="/petcommunity/adminPage.do">관리자 페이지</a>

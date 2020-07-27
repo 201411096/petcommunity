@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productCartDAO">
+
+<select id="getCartListById" parameterType="productCart" resultType="productCart">
+select p.product_id, p.product_name, p.product_price, p.product_cnt, m.member_id, c.buycartlist_cnt, c.buycartlist_id
+from product p, member m, buycartlist c
+where c.product_id=p.product_id 
+and c.member_id=m.member_id
+and c.member_id=#{memberId}
+</select>
+
+<update id="changeProductCntOnCart" parameterType="productCart">
+update buycartlist set buycartlist_cnt =#{buycartlistCnt} where buycartlist_id=#{buycartlistId} and member_id=#{memberId}
+</update>
+
+<delete id="deleteProductFromCart" parameterType="productCart">
+delete from buycartlist where buycartlist_id=#{buycartlistId} and member_id=#{memberId}
+</delete>
+
+</mapper> 

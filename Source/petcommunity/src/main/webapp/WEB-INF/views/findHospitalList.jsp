@@ -15,6 +15,7 @@
 <script src="resources/js/findHospital.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 
+
 <title>게시판</title>
 </head>
 <body>
@@ -25,7 +26,7 @@
 	<hr/>
 
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
-		<section id="container">	
+		<section id="container">			
 			<div class="col-xs-0 col-sm-3">
 				<label class="radio">
 					<input name="sGubun" type="radio" checked value="0" >
@@ -55,7 +56,7 @@
 							</select>
 										
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" id='searcsGubun'>지역별 검색
+							<button type="button" class="btn btn-default" id='searchBtn'>지역별 검색
 							</button>
 						</span>
 			</div>
@@ -65,10 +66,10 @@
 				<label class="radio">
 					<input name="sGubun" type="radio" value="1">
 						<span class="lbl">병원명 검색</span></label>
-							<input type="text" class="form-control" id="findHsptStr" value="${str.keyword}" placeholder="검색어, 병원명을 입력하세요."/>
+							<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
 							
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" id='searchHName'>병원명 검색
+							<button type="button" class="btn btn-default" id='searchBtn'>병원명 검색
 							</button>
 						</span>					
 			</div>
@@ -90,13 +91,7 @@
 	<div class="container">	
 		<section id="container">
 			<form role="form" method="get">
-				<table class="table table-hover" id="findHospitalTable">
-					<colgroup>
-						<col style="width:15%;">
-						<col style="width:20%;">
-						<col/>
-					</colgroup>
-					
+				<table class="table table-hover" id="findHospitalTable">	
 					<thead>
 						<tr>
 							<th>병원명</th>
@@ -105,7 +100,15 @@
 							<th>운영 시간</th>
 						</tr>
 					</thead>
-					<tbody id="findHospitalTbody">	
+					<tbody id="findHospitalTbody">
+					<c:forEach items="${findHospitalList}" var = "findHospitalList">
+						<tr>
+							<td>${findHospitalList.findhospitalName}</td>
+							<td>${findHospitalList.findhospitalTel}</td>
+							<td>${findHospitalList.findhospitalAddress}</td>
+							<td>${findHospitalList.findhospitalOpenhour}</td>
+						</tr>				
+					</c:forEach>
 					</tbody>
 				</table>
 			</form>

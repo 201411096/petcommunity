@@ -16,18 +16,18 @@ public class QnaServiceImpl implements QnaService{
 	private QnaDAOImpl qnaDAO;
 	
 	@Override
-	public int insertQna(QnaVO qnavo) {
-		return qnaDAO.insertQna(qnavo);
+	public int insertQnaBoard(QnaVO qnavo) {
+		return qnaDAO.insertQnaBoard(qnavo);
 	}
 
 	@Override
-	public List<QnaVO> selectQnaList(QnaVO qnavo) {
-		return qnaDAO.selectQnaList(qnavo);
+	public List<QnaVO> getQnaBoardList(QnaVO qnavo) {
+		return qnaDAO.getQnaBoardList(qnavo);
 	}
 
 	@Override
-	public QnaVO selectOne(QnaVO qnavo) {
-		return qnaDAO.selectOne(qnavo);
+	public QnaVO getQnaBoardContent(QnaVO qnavo) {
+		return qnaDAO.getQnaBoardContent(qnavo);
 	}
 
 	@Override
@@ -41,30 +41,35 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public void delete(QnaVO qnavo) {
-		qnaDAO.delete(qnavo);
+	public void deleteQnaBoard(QnaVO qnavo) {
+		qnaDAO.deleteQnaBoard(qnavo);
 	}
 
 
 	@Override
 	public List<QnaVO> selectKeyword(Map map) {
-		return qnaDAO.selectKeywork(map);
+		return qnaDAO.selectKeyword(map);
 	}
 
 	@Override
-	public void insertReplyQna(QnaVO qnavo) {
-		qnaDAO.insertReplyQna(qnavo);
+	public void insertReply(QnaVO qnavo) {
+		qnaDAO.insertReply(qnavo);
 		
 	}
-	
 
+	@Override
+	public QnaVO selectGroupId(QnaVO qnavo) {
+		return qnaDAO.selectGroupId(qnavo);
+	}
 
+	@Override
+	public List<QnaVO> selectListRe(QnaVO qnavo) {
+		return qnaDAO.selectListRe(qnavo);
+	}
 
-
-
-
-
-	
-	
+	@Override
+	public List<QnaVO> selectFindBoardWithPaging(Map map) {
+		return qnaDAO.selectFindBoardWithPaging(map);
+	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mycompany.domain.FindBoardVO;
+import com.mycompany.domain.LostBoardVO;
 
 public interface FindBoardDAO {
 	public List<FindBoardVO> selectFindBoard(Map map);
@@ -14,4 +15,5 @@ public interface FindBoardDAO {
 	public int deleteFindBoard(FindBoardVO findBoardVO);
 	public int updateFindBoard(FindBoardVO findBoardVO);
 	public List<String> selectString(Map map);
+	public List<FindBoardVO> selectFindBoardForMap(Map map);
 }

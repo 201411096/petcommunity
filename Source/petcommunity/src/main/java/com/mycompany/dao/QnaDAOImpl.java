@@ -15,26 +15,26 @@ public class QnaDAOImpl implements QnaDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
+	
 	@Override
-	public int insertQna(QnaVO qnavo) {
-		int result = mybatis.insert("qnaDAO.insertQna", qnavo);
+	public int insertQnaBoard(QnaVO qnavo) {
+		int result = mybatis.insert("qnaDAO.insertQnaBoard", qnavo);
 		return result;
 	}
 	
-
-	public List<QnaVO> selectQnaList(QnaVO qnavo) {
-		return mybatis.selectList("qnaDAO.selectQnaList", qnavo);
+	public List<QnaVO> getQnaBoardList(QnaVO qnavo) {
+		return mybatis.selectList("qnaDAO.getQnaBoardList", qnavo);
 	}
 
 
-	public QnaVO selectOne(QnaVO qnavo) {
-		return mybatis.selectOne("qnaDAO.selectOne", qnavo);
+	public QnaVO getQnaBoardContent(QnaVO qnavo) {
+		return mybatis.selectOne("qnaDAO.getQnaBoardContent", qnavo);
 	}
 
 
 	@Override
 	public int updateQna(QnaVO qnavo) {
-		return mybatis.update("qnaDAO.update", qnavo);
+		return mybatis.update("qnaDAO.updateQna", qnavo);
 	}
 
 
@@ -43,27 +43,34 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 
 
-	public void delete(QnaVO qnavo) {
-		mybatis.delete("qnaDAO.delete", qnavo);
+	public void deleteQnaBoard(QnaVO qnavo) {
+		mybatis.delete("qnaDAO.deleteQnaBoard", qnavo);
 		
 	}
 
-	public List<QnaVO> selectKeywork(Map map) {
+	public List<QnaVO> selectKeyword(Map map) {
 		return mybatis.selectList("qnaDAO.selectKeyword", map);
 		
 	}
 
-	public void insertReplyQna(QnaVO qnavo) {
-		mybatis.insert("qnaDAO.insertReplyQna", qnavo);
+	public void insertReply(QnaVO qnavo) {
+		mybatis.insert("qnaDAO.insertReply", qnavo);
 	}
-	
 
 
+	public QnaVO selectGroupId(QnaVO qnavo) {
+		return mybatis.selectOne("qnaDAO.selectGroupId", qnavo);
+		
+	}
 
 
+	public List<QnaVO> selectListRe(QnaVO qnavo) {
+		return mybatis.selectList("qnaDAO.selectListRe", qnavo);
+	}
 
-	
 
-	
+	public List<QnaVO> selectFindBoardWithPaging(Map map) {
+		return mybatis.selectList("qnaDAO.selectFindBoardWithPaging", map);
+	}
 
 }

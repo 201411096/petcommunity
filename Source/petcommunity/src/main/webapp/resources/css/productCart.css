@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+.main_btn {
+  display: inline-block;
+  background: #a8c767;
+  padding: 0px 40px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 48px;
+  border: 1px solid #ffffff;
+  border-radius: 0px;
+  outline: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  transition: all 300ms linear 0s;
+  border-radius: 5px; 
+  }
+.main_btn:hover {
+    background: transparent;
+    color: #004000; }
+  
+#col1{
+	width : 16%;
+}   
+#col2{
+	width : 55%;
+}   
+#col3{
+	width : 17%;
+}   
+#col4{
+	width : 7%;
+}   
+#col5{
+	width : 5%;
+}   
+
+.cartList{
+	height : 78px;
+}
+.cartListImg{
+	width : 78px;
+	height : 78px;
+}
+
+.table tr:first-child{
+	text-align: center;
+	font-size: 14px;
+
+}
+.container table.table tbody tr td{
+	text-align: center;	
+	vertical-align: middle;
+	border-bottom: 1px solid #d8d7e1;
+	font-size: 14px;
+}
+
+#totalAmount{
+	border:1px solid #d8d7e1;
+}
+
+.totalTable{
+	text-align: right;	
+	font-size:20px;
+}
+
+#totalPrice{
+	font-weight:bolder;
+}
+
+.buttons{
+	text-align: center;	
+	width:100%;
+	align-items: center;
+}
+
+

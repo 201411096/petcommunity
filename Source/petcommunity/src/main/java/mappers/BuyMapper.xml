@@ -5,14 +5,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="buy">
 
-<select id="mybuyList" parameterType="member" resultType="mybuy">
-select c.BUY_ID BUY_ID,a.BUYLIST_DATE BUYLIST_DATE, b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
-from BUYLIST a, PRODUCT b,BUY c
-where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=#{memberId}
+<resultMap type="hashmap" id="mypageBuyList">
+		<id column="BUYLIST_ID" property="buyListId" />
+		<id column="BUYLIST_DATE" property="buyListDate" />
+		<id column="BUYLIST_TOTALPRICE" property="buyListTotalprice" />
+</resultMap>
+
+
+<select id="mybuyList" parameterType="member" resultMap="mypageBuyList">
+select BUYLIST_ID,BUYLIST_DATE,BUYLIST_TOTALPRICE
+from BUYLIST
+where member_id=#{memberId}
 </select>
 
 <resultMap type="hashmap" id="selectList">
-		<id column="BUY_ID" property="buyId" />
+		<id column="BUYLIST_ID" property="buyId" />
 		<id column="member_name" property="memberName" />
 		<id column="member_tel" property="memberTel" />
 		<id column="member_address" property="memberAddress" />
@@ -24,10 +31,10 @@ where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=#{
 </resultMap>
 
 <select id="buyReceipt" parameterType="String" resultMap="selectList">
-select c.BUY_ID BUY_ID,m.member_name member_name,m.member_tel member_tel,m.member_address member_address,TO_CHAR(a.BUYLIST_DATE,'YYYY-MM-DD') BUYLIST_DATE,
+select a.BUYLIST_ID BUYLIST_ID,m.member_name member_name,m.member_tel member_tel,m.member_address member_address,TO_CHAR(a.BUYLIST_DATE,'YYYY-MM-DD') BUYLIST_DATE,
 b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT, b.product_price product_price,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
 from BUYLIST a, PRODUCT b,BUY c,member m
-where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.member_id and c.buy_id=#{id}
+where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.member_id and a.buylist_id=#{id}
 </select>
 
 </mapper>

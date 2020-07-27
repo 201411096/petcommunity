@@ -25,7 +25,6 @@ public class ProductCartController {
 	@ResponseBody
 	@RequestMapping(value="/productCartByAjax.do")
 	public List<ProductCartVO> productSelectList (HttpSession session, ProductCartVO cvo) {
-		System.out.println("장바구니 페이지 입장!~ ");
 		MemberVO vo = (MemberVO)session.getAttribute("memberVO");
 	
 		cvo.setMemberId(vo.getMemberId());

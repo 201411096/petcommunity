@@ -31,7 +31,6 @@ $(function(){
 });
 
 function searchAutoComplete(){
-	alert("자동완성 js 도착")
 	$('#searchSomething').autocomplete({
 		source : function( request, response ) {
             $.ajax({

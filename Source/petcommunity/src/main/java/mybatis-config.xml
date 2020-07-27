@@ -39,6 +39,7 @@
 		<typeAlias alias="productCart" type="com.mycompany.domain.ProductCartVO"></typeAlias>
 		
 
+		<typeAlias alias="productReview" type="com.mycompany.domain.ProductreviewVO"></typeAlias>
    </typeAliases>
    
    

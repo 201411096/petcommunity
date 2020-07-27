@@ -55,7 +55,7 @@
 						</select>
 										
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" id='searchBtn'>지역별 검색
+							<button type="button" class="btn btn-default" id='searchRegion'>지역별 검색
 							</button>
 						</span>
 			</div>
@@ -67,7 +67,7 @@
 						<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
 							
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" id='searchBtn'>병원명 검색
+							<button type="button" class="btn btn-default" id='searchName'>병원명 검색
 							</button>
 						</span>					
 			</div>

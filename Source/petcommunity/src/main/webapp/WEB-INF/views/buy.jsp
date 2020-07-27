@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 
@@ -122,37 +123,28 @@
 								</div>
 							</div>
 							<table class="buy-table">
+							<colgroup>
+									<col style="width: 15%" />
+									<col style="width: 50%" />
+									<col style="width: 10%" />
+									<col style="width: 15%" />
+									<col style="width: 10%" />
+							</colgroup>
+								<thead>
+									<tr>
+										<th>이미지</th>
+										<th>상품정보</th>
+										<th>판매가</th>
+										<th>수량</th>
+										<th>합계</th>
+									</tr>
+								</thead>
+								<tbody id='listBeforePaying'>
+									
+								</tbody>
 								<tr>
-									<td>이미지</td>
-									<td>상품정보</td>
-									<td>판매가</td>
-									<td>수량</td>
-									<td>합계</td>
-								</tr>
-								<tr>
-									<td height="100">사진</td>
-									<td>다이어트식 건사료</td>
-									<td>15000원</td>
-									<td>2</td>
-									<td>30000원</td>
-								</tr>
-								<tr>
-									<td height="100">사진</td>
-									<td>다이어트식 건사료</td>
-									<td>15000원</td>
-									<td>2</td>
-									<td>30000원</td>
-								</tr>
-								<tr>
-									<td height="100">사진</td>
-									<td>다이어트식 건사료</td>
-									<td>15000원</td>
-									<td>2</td>
-									<td>30000원</td>
-								</tr>
-								<tr>
-									<td height="50" colspan="5">상품구매금액[5,000] + 배송비[2,500]
-										=합계: 7500원</td>
+									<td height="50" colspan="5">
+										합계: <span id='finalPrice'>7500</span>원
 								</tr>
 
 							</table>
@@ -164,19 +156,18 @@
 							<ul class="list">
 								<li><a href="#">상품 <span>금액</span>
 								</a></li>
-								<li><a href="#">Fresh Blackberry <span class="middle">x
+							</ul>
+							<ul class="list" id='forEmptyList'>							
+								<!-- <li><a href="#">Fresh Blackberry <span class="middle">x
 											01</span> <span class="last">2,500</span>
 								</a></li>
 								<li><a href="#">Fresh Blackberry <span class="middle">x
 											01</span> <span class="last">2,500</span>
-								</a></li>
+								</a></li> -->
+								
 							</ul>
 							<ul class="list list_2">
-								<li><a href="#">중간 합계 <span>5,000원</span>
-								</a></li>
-								<li><a href="#">배송비 <span>2,500원</span>
-								</a></li>
-								<li><a href="#">최종 결제 금액 <span>7,500원</span>
+								<li><a href="#">최종 결제 금액 <span id='finalPriceBeforePaying'></span>
 								</a></li>
 							</ul>
 							<div class="payment_item">
@@ -221,6 +212,7 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+	<script src="./resources/js/buy.js"></script>
 
 </body>
 

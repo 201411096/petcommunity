@@ -103,6 +103,7 @@ public class HospitalController {
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		searchMap.put("keyWord", keyword);		
 		List<FindHospitalVO> getFindHospitalListBySearch = findHospitalService.getFindHospitalListBySearchWithPaging(searchMap);
+		System.out.println(getFindHospitalListBySearch);
 		Map result = new HashMap();
 		result.put("pagination", paginationVO);
 		result.put("getFindHospitalListBySearch", getFindHospitalListBySearch);

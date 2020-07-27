@@ -10,6 +10,22 @@ select findhospital_name, findhospital_tel, findhospital_address, findhospital_o
 from FINDHOSPITAL
 </select>
 
+<!-- 동물 병원 페이징 처리 -->
+<select id="getFindHospitalListWithPaging" parameterType="hashmap" resultType="findHospital">
+
+select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
+from (
+	select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour, ROWNUM AS RNUM
+	from
+		(select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
+		from findhospital
+		)
+	)
+<![CDATA[
+where RNUM>=#{startRow} and RNUM<=#{endRow}
+]]>
+</select>
+
 
 <!-- 지역별 검색 -->
 <select id="getFindHospitalListByLocation" parameterType="hashmap" resultType="findHospital">
@@ -25,19 +41,20 @@ select findhospital_name, findhospital_tel, findhospital_address, findhospital_o
 from findhospital
 where findhospital_name like '%'||#{keyWord}||'%'
 or findhospital_tel like '%'||#{keyWord}||'%'
-or findhospital_address like '%'||#{keyWord}||'%';
+or findhospital_address like '%'||#{keyWord}||'%'
 </select>  
 
-
-<!-- 동물 병원 페이징 처리 -->
-<select id="getFindHospitalListWithPaging" parameterType="hashmap" resultType="findHospital">
+<select id="getFindHospitalListBySearchWithPaging" parameterType="hashmap" resultType="findHospital">
 
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
 from (
 	select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour, ROWNUM AS RNUM
 	from
 		(select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
-		from findhospital
+			from findhospital
+			where findhospital_name like '%'||#{keyWord}||'%'
+			or findhospital_tel like '%'||#{keyWord}||'%'
+			or findhospital_address like '%'||#{keyWord}||'%'
 		)
 	)
 <![CDATA[

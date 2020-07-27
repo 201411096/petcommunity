@@ -3,6 +3,7 @@ package com.mycompany.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.AnimalVO;
 import com.mycompany.domain.MemberVO;
-import com.mycompany.domain.MyBuyVO;
 import com.mycompany.service.AnimalService;
 import com.mycompany.service.BuyService;
 import com.mycompany.util.FileUpload;
@@ -77,7 +77,7 @@ public class AnimalController {
 		
 		List<AnimalVO> list = animalService.animalSelect(mvo);
 		
-		List<MyBuyVO> list2=buyService.buyList(mvo);
+		List<Map<String,String>> list2=buyService.buyList(mvo);
 		 	 
 		for (AnimalVO i : list) {
 

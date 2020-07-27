@@ -1,6 +1,6 @@
 package com.mycompany.domain;
 
-public class MyBuyVO {
+public class BuyVO {
 	private String buyId;
 	private String buylistDate;
 	private String productName;

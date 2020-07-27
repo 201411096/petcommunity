@@ -13,7 +13,7 @@ import com.mycompany.domain.FindHospitalVO;
 public class FindHospitalServiceImpl implements FindHospitalService{
 	
 	@Autowired
-	FindHospitalServiceImpl findHospitalDAO;
+	FindHospitalDAOImpl findHospitalDAO;
 
 	@Override
 	public List<FindHospitalVO> selectFindHospital(Map map) {

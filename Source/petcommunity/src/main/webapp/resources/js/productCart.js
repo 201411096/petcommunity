@@ -74,7 +74,8 @@ function cartTable(data){
 			var listContent = 
 							'<tr class=cartList>' +
 							tdPrefix + 
-							"<a href=#><img src='resources/imgs/product_image/pawInHand/".concat(data[i].productName) +".jpg' class=cartListImg /></a>"+ tdSuffix +
+							"<a href=# id=productId"+[i]+" value="+data[i].productId +"><img src='resources/imgs/product_image/pawInHand/".concat(data[i].productName) +".jpg' class=cartListImg /></a>"+ tdSuffix +
+							'<input type=hidden  value="+data[i].productId +" >'+
 							tdPrefix + "<span id=productName"+[i]+'>' + data[i].productName +'</span>&nbsp;(<span id=productPrice'+[i]+'>'+ data[i].productPrice + '</span>원)' +tdSuffix +
 							tdPrefix + "<span id=productTotalPrice"+[i]+">"+data[i].productPrice*data[i].buycartlistCnt+'</span>원' + tdSuffix +
 							tdPrefix + 
@@ -127,6 +128,16 @@ $(function(){
 	$(document).on('change keyup', "input[id^='productAmount']", function(){		
 		changeProductCntOnCart($(this).val(), $(this).attr('buycartlistId'));	
 	});
+	
+	$(document).on('click', "a[id^='productId']", function(){
+		window.location.href='/petcommunity/productView.do?productId='+$(this).attr('value');
+	});
+	
+	$(document).on('click', "#goToPay", function(){
+		window.location.href='/petcommunity/buy.do';
+	});
+	
+	
 	
 
 });

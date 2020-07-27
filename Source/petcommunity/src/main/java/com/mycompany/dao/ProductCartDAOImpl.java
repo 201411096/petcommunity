@@ -34,6 +34,24 @@ public class ProductCartDAOImpl implements ProductCartDAO{
 		
 	}
 
+	@Override
+	public void insertProductToCart(ProductCartVO vo) {
+		mybatis.insert("productCartDAO.insertProductToCart", vo);
+		
+	}
+
+	@Override
+	public void addProductCnt(ProductCartVO vo) {
+		mybatis.update("productCartDAO.addProductCnt",vo);
+		
+	}
+
+	@Override
+	public ProductCartVO getProductInfoFromCart(ProductCartVO vo) {
+		return mybatis.selectOne("productCartDAO.getProductInfoFromCart",vo);
+		
+	}
+
 
 
 }

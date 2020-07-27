@@ -9,4 +9,4 @@ graph2.inputData.option1 = "gggg";
 graph2.inputData.option2 = "hhhh";
 
 setInterval(function(){GraphClass.makeChartWithAjax(graph2)}, 1000);
-setInterval(function(){console.log('aa')}, 1000);
+

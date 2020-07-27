@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 
@@ -86,31 +87,29 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<h3>결제정보</h3>
-						<form class="row contact_form" action="#" method="post"
+						<form class="row contact_form" id="buyfrm" action="buyInsert.do" method="post"
 							novalidate="novalidate">
 							<div class="col-md-6 form-group p_star">
 								<input type="text" class="form-control" id="first" name="name"
-									placeholder="주문자 성함"> <span class="placeholder"></span>
+									placeholder="" value="${sessionScope.memberVO.memberName}"> <span class="placeholder"></span>
 							</div>
 							<div class="col-md-6 form-group p_star">
 								<input type="text" class="form-control" id="number"
-									name="number" placeholder="휴대폰 번호"> <span
+									name="number" placeholder="휴대폰 번호" value="${sessionScope.memberVO.memberTel}"> <span
 									class="placeholder"></span>
 							</div>
 							<div class="col-md-12 form-group p_star">
 								<input type="text" class="form-control" id="add2" name="add2"
-									placeholder="email"> <span class="placeholder"></span>
+									placeholder="email" value="${sessionScope.memberVO.memberEmail}"> <span class="placeholder"></span>
 							</div>
 							<div class="col-md-12 form-group p_star">
-								<input type="text" class="form-control" id="email"
-									name="compemailany" placeholder="주소"> <span
-									class="placeholder"></span>
+								<input type="text" class="form-control" id="email" name="compemailany" 
+								value="${sessionScope.memberVO.memberAddress}"> <span class="placeholder" ></span>
 							</div>
 							<div class="col-md-12 form-group p_star">
 								<input type="text" class="form-control" id="add1" name="add1"
 									placeholder="상세주소"> <span class="placeholder"></span>
 							</div>
-
 
 							<div class="col-md-12 form-group">
 								<textarea class="form-control" name="message" id="message"
@@ -122,37 +121,28 @@
 								</div>
 							</div>
 							<table class="buy-table">
+							<colgroup>
+									<col style="width: 15%" />
+									<col style="width: 50%" />
+									<col style="width: 10%" />
+									<col style="width: 15%" />
+									<col style="width: 10%" />
+							</colgroup>
+								<thead>
+									<tr>
+										<th>이미지</th>
+										<th>상품정보</th>
+										<th>판매가</th>
+										<th>수량</th>
+										<th>합계</th>
+									</tr>
+								</thead>
+								<tbody id='listBeforePaying'>
+									
+								</tbody>
 								<tr>
-									<td>이미지</td>
-									<td>상품정보</td>
-									<td>판매가</td>
-									<td>수량</td>
-									<td>합계</td>
-								</tr>
-								<tr>
-									<td height="100">사진</td>
-									<td>다이어트식 건사료</td>
-									<td>15000원</td>
-									<td>2</td>
-									<td>30000원</td>
-								</tr>
-								<tr>
-									<td height="100">사진</td>
-									<td>다이어트식 건사료</td>
-									<td>15000원</td>
-									<td>2</td>
-									<td>30000원</td>
-								</tr>
-								<tr>
-									<td height="100">사진</td>
-									<td>다이어트식 건사료</td>
-									<td>15000원</td>
-									<td>2</td>
-									<td>30000원</td>
-								</tr>
-								<tr>
-									<td height="50" colspan="5">상품구매금액[5,000] + 배송비[2,500]
-										=합계: 7500원</td>
+									<td height="50" colspan="5">
+										합계: <span id='finalPrice'></span>원
 								</tr>
 
 							</table>
@@ -164,19 +154,18 @@
 							<ul class="list">
 								<li><a href="#">상품 <span>금액</span>
 								</a></li>
-								<li><a href="#">Fresh Blackberry <span class="middle">x
+							</ul>
+							<ul class="list" id='forEmptyList'>							
+								<!-- <li><a href="#">Fresh Blackberry <span class="middle">x
 											01</span> <span class="last">2,500</span>
 								</a></li>
 								<li><a href="#">Fresh Blackberry <span class="middle">x
 											01</span> <span class="last">2,500</span>
-								</a></li>
+								</a></li> -->
+								
 							</ul>
 							<ul class="list list_2">
-								<li><a href="#">중간 합계 <span>5,000원</span>
-								</a></li>
-								<li><a href="#">배송비 <span>2,500원</span>
-								</a></li>
-								<li><a href="#">최종 결제 금액 <span>7,500원</span>
+								<li><a href="#">최종 결제 금액 <span id='finalPriceBeforePaying'></span>
 								</a></li>
 							</ul>
 							<div class="payment_item">
@@ -221,6 +210,7 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+	<script src="./resources/js/buy.js"></script>
 
 </body>
 

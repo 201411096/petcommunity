@@ -19,4 +19,20 @@ update buycartlist set buycartlist_cnt =#{buycartlistCnt} where buycartlist_id=#
 delete from buycartlist where buycartlist_id=#{buycartlistId} and member_id=#{memberId}
 </delete>
 
+<insert id="insertProductToCart" parameterType="productCart">
+insert into BUYCARTLIST(BUYCARTLIST_ID, BUYCARTLIST_CNT, MEMBER_ID, PRODUCT_ID)
+values(BUYCARTLIST_ID_SEQ.nextval, #{productCnt}, #{memberId}, #{productId})
+</insert>
+
+<update id="addProductCnt" parameterType="productCart">
+update BUYCARTLIST set BUYCARTLIST_CNT = #{productCnt}
+where MEMBER_ID = #{memberId} AND PRODUCT_ID = #{productId}
+</update>
+
+<select id="getProductInfoFromCart" parameterType="productCart" resultType="productCart">
+select *
+from BUYCARTLIST
+where MEMBER_ID = #{memberId} AND PRODUCT_ID = #{productId}
+</select>
+
 </mapper> 

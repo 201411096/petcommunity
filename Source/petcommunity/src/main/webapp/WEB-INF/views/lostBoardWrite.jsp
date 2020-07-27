@@ -33,7 +33,7 @@
 				<label>상태</label> <select class="form-control" id='status'
 					name='lostboardStatus'>
 					<option value="찾는 중">찾는 중</option>
-					<option value="찾음">찾음</option>
+<!-- 					<option value="찾음">찾음</option> -->
 				</select>
 			</div>
 			<div class="form-group">

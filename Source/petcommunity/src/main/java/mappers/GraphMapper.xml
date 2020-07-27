@@ -5,7 +5,13 @@
 	<select id="getLostGraph" resultType="map" parameterType="map">
 		select count(*) as count, time from (
 		    select lostboard_id, to_char(lostboard_uploadtime, #{timeOption}) as time from lostboard
-		)group by time order by time
-		
+		)group by time order by time		
+	</select>
+	<select id="getFindGraphFromLostBoard" resultType="map" parameterType="map">
+		select count, time from(
+			select count(*) as count, time from (
+			    select lostboard_id, to_char(lostboard_findtime, #{timeOption}) as time from lostboard
+			)group by time order by time
+		)where time is not null		
 	</select>
 </mapper>

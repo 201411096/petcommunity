@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.BuyDAOImpl;
 import com.mycompany.domain.MemberVO;
-import com.mycompany.domain.MyBuyVO;
+
 
 @Service("BuyService")
 public class BuyServiceImpl implements BuyService{

@@ -10,12 +10,9 @@
 <meta name="keywords" content="instyle, fashion, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<<<<<<< HEAD
 <script type="text/javascript">
 </script>
 
-=======
->>>>>>> 8ef9e836e93061578ab04ce4e0664248b12c4459
 <!-- Google font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"

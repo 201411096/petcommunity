@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.domain.MemberVO;
-import com.mycompany.domain.MyBuyVO;
+
 
 
 @Repository("BuyDAO")

@@ -1,7 +1,5 @@
 package com.mycompany.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.service.BuyService;
 
 @Controller
@@ -31,6 +30,14 @@ public class BuyController {
 
 		mv.addObject("buyReceipt", buyList);
 		mv.setViewName("buyReceipt");
+		return mv;
+	}
+	
+	@RequestMapping(value="buyInsert.do")
+	public ModelAndView buyInsert(BuyListVO vo) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println(vo.getBuyCnt()+vo.getProductId()+vo.getProductTotalPrice()+vo.getTotalPrice());
+		mv.setViewName("mypage");
 		return mv;
 	}
 }

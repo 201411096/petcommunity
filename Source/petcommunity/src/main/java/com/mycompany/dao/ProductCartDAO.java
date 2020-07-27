@@ -9,4 +9,7 @@ public interface ProductCartDAO {
 	public List<ProductCartVO> getCartListById(ProductCartVO vo);
 	public void changeProductCntOnCart(ProductCartVO vo);
 	public void deleteProductFromCart(ProductCartVO vo);
+	public void insertProductToCart(ProductCartVO vo);
+	public void addProductCnt(ProductCartVO vo);
+	public ProductCartVO getProductInfoFromCart(ProductCartVO vo);
 }

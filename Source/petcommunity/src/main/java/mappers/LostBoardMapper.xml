@@ -75,6 +75,9 @@
 		LOSTBOARD_Y = #{lostboardY},
 		LOSTBOARD_STATUS = #{lostboardStatus},
 		ANIMAL_ID = #{animalId}
+		<if test="lostboardStatus == '찾음'">
+		,LOSTBOARD_FINDTIME = SYSDATE
+		</if>
 		where LOSTBOARD_ID = #{lostboardId}
 	</update>
 	

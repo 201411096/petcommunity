@@ -108,27 +108,23 @@
 								<div class="tedoory2">
 									<table class="mypage-table">
 										<colgroup>
-											<col style="width: 20%" />
-											<col style="width: 60%" />
-											<col style="width: 10%" />
-											<col style="width: 15%" />
+											<col style="width: 30%" />
+											<col style="width: 30%" />
+											<col style="width: 30%" />
 										</colgroup>
 										<thead>
 											<tr>
-												<td width="80">주문날짜</td>
-												<td width="100">상품명</td>
-												<td width="50">수량</td>
-												<td width="100">가격</td>
-
+												<td>주문번호</td>
+												<td>주문날짜</td>
+												<td>총가격</td>
 											</tr>
 										</thead>
 										<tbody>
 											<c:forEach items="${buyList}" var="buy">
 												<tr height="50">
-													<td>2020-7-21${buy.buylistDate}</td>
-													<td class="target"><a href="buyReceipt.do?buy=${buy.buyId}">${buy.productName}</a></td>
-													<td>${buy.buyCnt}</td>
-													<td>${buy.buylistTotalprice}원</td>
+													<td><a href="buyReceipt.do?buy=${buy.buyListId}">${buy.buyListId}</a></td>
+													<td>2020-7-21${buy.buyListDate}</td>
+													<td>${buy.buyListTotalprice}원</td>
 												</tr>
 											</c:forEach>
 											

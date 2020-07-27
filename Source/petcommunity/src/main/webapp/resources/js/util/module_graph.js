@@ -17,7 +17,6 @@ class GraphClass{
 //차트를 그려주는 함수
 //차트의 데이터를 받는 과정을 포함함
 	static makeChartWithAjax(graphClass){
-		console.log("GraphClass.makeChartWithAjax() 호출");
 		$('#'+graphClass.chartContainerId).empty();
 		$('#'+graphClass.chartContainerId).append('<canvas id="'+graphClass.chartElementId+'"></canvas>');
 		$.ajax({

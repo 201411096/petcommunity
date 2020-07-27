@@ -101,13 +101,13 @@ var defaultOpts = {
 
 $(function(){
 	getData();
+	
 	getDataWithoutPaging();
 	autoCompleteFunc();
 	autoCompleteFuncForMap();
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();
-	writeBtnEventHandler();
 	searchForMapEventHandler();
 });
 	
@@ -145,6 +145,7 @@ function autoCompleteFunc(){
                    dataType: "json",
                    data:{
                 	   	"searchWord" : $('#keywordInput').val()
+                	   	
                    },
                    success: function(data) {
                 	   console.log('autocomplete success');
@@ -244,6 +245,7 @@ function getData(){
 				},
 		dataType : 'json',
 		success : function(resultData){
+			
 			drawTable(resultData);
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');

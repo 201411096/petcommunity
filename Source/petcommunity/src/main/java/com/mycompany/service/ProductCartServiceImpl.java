@@ -33,6 +33,27 @@ public class ProductCartServiceImpl implements ProductCartService {
 	public void deleteProductFromCart(ProductCartVO vo) {
 		productCartDAO.deleteProductFromCart(vo);		
 	}
+
+
+	@Override
+	public void insertProductToCart(ProductCartVO vo) {
+		productCartDAO.insertProductToCart(vo);
+		
+	}
+
+
+	@Override
+	public void addProductCnt(ProductCartVO vo) {
+		productCartDAO.addProductCnt(vo);
+		
+	}
+
+
+	@Override
+	public ProductCartVO getProductInfoFromCart(ProductCartVO vo) {
+		return productCartDAO.getProductInfoFromCart(vo);
+		
+	}
 	
 
 

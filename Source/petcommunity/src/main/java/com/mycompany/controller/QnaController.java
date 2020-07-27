@@ -64,7 +64,7 @@ public class QnaController {
     * 주요 기능 : 작성한 글 입력, 목록 페이지 이동 
     * 함수 내용 : 로그인의 경우 아이디 세팅, 로그인이 안 되어 있는 경우 메인페이지로 이동
     */
-	@ResponseBody
+
 	@RequestMapping(value = "/writeIntoQna.do", produces = "application/text; charset=utf-8")
 	public String insertQnaBoard(QnaVO qnavo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
@@ -83,25 +83,30 @@ public class QnaController {
     * 주요 기능 : 게시판 목록 이동
     * 함수 내용 : 연결된 계정 아이디 얻어옴
     */
-	@RequestMapping(value="qnaList.do", produces = "application/json; charset=utf-8")
-	public ModelAndView selectQnaBoardList(@RequestParam(defaultValue="1") int curPage,QnaVO qnavo, String searchType, HttpSession session) {
+	@ResponseBody
+	@RequestMapping(value="/qnaList.do", produces = "application/json; charset=utf-8")
+	public Map selectQnaBoardList(@RequestParam(defaultValue="1") int curPage,QnaVO qnavo, String searchType, HttpSession session, String searchWord) {
 			ModelAndView mv = new ModelAndView();
 			Map map = new HashMap();
-			
+			Map result = new HashMap();
 			MemberVO membervo= (MemberVO)session.getAttribute("memberVO");
 			List<QnaVO> qnavoList = qnaService.getQnaBoardList(qnavo);
 			
+			map.put("searchType", searchType);
+			map.put("searchWord", searchWord);
+			qnavoList = qnaService.selectKeyword(map);
+		
 			PaginationVO paginationVO = new PaginationVO(qnavoList.size(), curPage);
 			map.put("startRow", paginationVO.getStartIndex()+1);
-			paginationVO.setPageSize(9);
+
 			map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 			qnavoList = qnaService.selectFindBoardWithPaging(map);
-
-			mv.addObject("pagination", paginationVO);
-			mv.addObject("qnavoList", qnavoList);
-			mv.addObject("qnavoListSize",qnavoList.size());
-			mv.addObject("membervo", membervo);
-		return mv;
+			System.out.println(qnavoList.size()+"qnavoList.size()");
+			result.put("pagination", paginationVO);
+			result.put("QnaBoardVOList", qnavoList);
+			result.put("QnaBoardVOListSize",qnavoList.size());
+			result.put("membervo", membervo);
+		return result;
 	}
 	
 	/* 
@@ -201,32 +206,7 @@ public class QnaController {
 		}return mv;
 	}
 		
-		/* 
-	    * 함수 이름 : selectKeyword
-	    * 주요 기능 : 검색버튼 눌렀을 때 입력한 키워드와 일치하는 db정보 출력, 페이징처리
-	    * 함수 내용 : 
-	    */
-		@RequestMapping(value="qnaBoardListPaging.do", produces = "application/json; charset=utf-8") //페이징 같이
-		public ModelAndView selectKeyword(@RequestParam(defaultValue="1") int curPage,QnaVO qnavo, String searchType, String keyword) {
-			Map map = new HashMap();
-			Map result = new HashMap();
-			ModelAndView mv = new ModelAndView();
-			map.put("searchType", searchType);
-			map.put("keyword", keyword);
-			List<QnaVO> qnavoList = qnaService.selectKeyword(map);
-			
-			PaginationVO paginationVO = new PaginationVO(qnavoList.size(), curPage);
-			map.put("startRow", paginationVO.getStartIndex()+1);
-			map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-					
-			qnavoList = qnaService.selectFindBoardWithPaging(map);
-			
-			result.put("pagination", paginationVO);
-			mv.addObject("qnavoList", qnavoList);
-			mv.setViewName("/qnaBoardList");
-			
-			return mv;
-		}
+		
 		
 		/* 
 	    * 함수 이름 : getReplyQnaBoard

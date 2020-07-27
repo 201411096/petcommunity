@@ -104,7 +104,7 @@
 						<div class="product_count">
 							<form action="/petcommunity/buyCartList.do">
 							<label for="qty">개수:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+							<input type="text" name="productCnt" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 							 class="increase items-count" type="button">
 								<i class="lnr lnr-chevron-up"></i>

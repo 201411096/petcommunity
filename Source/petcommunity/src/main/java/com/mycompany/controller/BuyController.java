@@ -3,19 +3,28 @@ package com.mycompany.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mycompany.domain.BuyListVO;
+import com.mycompany.domain.MemberVO;
+import com.mycompany.domain.ProductCartVO;
 import com.mycompany.service.BuyService;
+import com.mycompany.service.ProductCartService;
 
 @Controller
 public class BuyController {
 
 	@Autowired
 	private BuyService buyService;
+	
+	@Autowired
+	private ProductCartService productCartService;
+	
 
 	/* 
 	    * 함수 이름 : buyReceipt
@@ -34,9 +43,19 @@ public class BuyController {
 	}
 	
 	@RequestMapping(value="buyInsert.do")
-	public ModelAndView buyInsert(BuyListVO vo) {
+	public ModelAndView buyInsert(HttpServletRequest request,ProductCartVO cvo) {
+		HttpSession session = request.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
+		int totalPrice=0;
+		cvo.setMemberId(mvo.getMemberId());
+		
 		ModelAndView mv = new ModelAndView();
-		System.out.println(vo.getBuyCnt()+vo.getProductId()+vo.getProductTotalPrice()+vo.getTotalPrice());
+		List<ProductCartVO> cartList = productCartService.getCartListById(cvo);
+		for(int i=0;i<cartList.size();i++) {
+		totalPrice+=Integer.parseInt(cartList.get(i).getBuycartlistCnt())*Integer.parseInt(cartList.get(i).getProductPrice());
+		}
+		
+		buyService.buyInsert(totalPrice,cvo,cartList); 
 		mv.setViewName("mypage");
 		return mv;
 	}

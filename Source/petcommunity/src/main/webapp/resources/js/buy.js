@@ -40,17 +40,17 @@ function buyTable(data){
 							'<tr class=buyListHeight>' +
 							tdPrefix + 
 							"<img src='resources/imgs/product_image/pawInHand/".concat(data[i].productName) +".jpg' id=cartListImg+"+[i]+" />"+ tdSuffix +
-							'<input type=hidden name="productId" value='+data[i].productId +' >'+
+							'<input type=hidden name=productId value='+data[i].productId +' >'+
 							tdPrefix + "<span id=productName"+[i]+'>' + data[i].productName.substr(0,30) +'</span>' +tdSuffix +
 							tdPrefix + '<span id=productPrice'+[i]+'>'+ data[i].productPrice + '</span>원' + tdSuffix +
-							tdPrefix + '<span name="buyCnt">'+data[i].buycartlistCnt+'</span>' + tdSuffix +
-							tdPrefix + "<span name="productTotalPrice" id=productTotalPrice"+[i]+">"+data[i].productPrice*data[i].buycartlistCnt+'</span>원' + tdSuffix +						
+							tdPrefix + '<span name=buyCnt>'+data[i].buycartlistCnt+'</span>' + tdSuffix +
+							tdPrefix + "<span name=productTotalPrice id=productTotalPrice"+[i]+">"+data[i].productPrice*data[i].buycartlistCnt+'</span>원' + tdSuffix +						
 							trSuffix;
 			$('#listBeforePaying').append(listContent);
 			//주문 리스트 목록 생성
 			var finalList=
 				'<li><a href=#>' + data[i].productName.substr(0,15) + 
-				'<span class=middle>x' + data[i].buycartlistCnt + '</span> <span name="totalPrice" class="last">'
+				'<span class=middle>x' + data[i].buycartlistCnt + '</span> <span name=totalPrice class="last">'
 				+data[i].productPrice*data[i].buycartlistCnt +'</span></a></li>';
 			$('#forEmptyList').append(finalList);
 			//총 합계 금액 구하기

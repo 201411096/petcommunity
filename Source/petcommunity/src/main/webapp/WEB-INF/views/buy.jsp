@@ -177,7 +177,7 @@
 							</div>
 							<div class="payment_item active">
 								<div class="radion_btn">
-									<input type="radio" id="f-option6" name="selector"> <label
+									<input type="radio" class="" id="f-option6" name="selector"> <label
 										for="f-option6">신용카드</label> <img
 										src="./resources/imgs/buy/card.jpg" alt="">
 									<div class="check"></div>

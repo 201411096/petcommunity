@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.ProductreviewDAOImpl;
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.ProductreviewVO;
 
 @Service("productreviewService")

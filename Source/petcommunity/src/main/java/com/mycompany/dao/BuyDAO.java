@@ -9,7 +9,7 @@ import com.mycompany.domain.MyBuyVO;
 
 public interface BuyDAO {
 	
-	public List<MyBuyVO> buyList(MemberVO vo);
+	public List<Map<String,String>> buyList(MemberVO vo);
 	
 	public List<Map<String,String>> buyReceipt(String id);
 }

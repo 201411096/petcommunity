@@ -18,7 +18,7 @@ public class BuyServiceImpl implements BuyService{
 	BuyDAOImpl buyDAO;
 
 	@Override
-	public List<MyBuyVO> buyList(MemberVO vo) {
+	public List<Map<String,String>> buyList(MemberVO vo) {
 		
 		return buyDAO.buyList(vo);
 	}

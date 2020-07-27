@@ -42,6 +42,13 @@ public class BuyController {
 		return mv;
 	}
 	
+	
+	/* 
+	    * 함수 이름 : buyInsert
+	    * 주요 기능 : 결제 입력 페이지
+	    * 함수 내용 : DB의 buyList 테이블에 입력되는 getCartListById 함수와 
+	    * 		  buy 테이블에 입력되는 buyInsert를 연결하여 결제하는 product정보, member정보, 토탈가격을 계산하여 데이터를 넘겨줌.
+	    */
 	@RequestMapping(value="buyInsert.do")
 	public String buyInsert(HttpServletRequest request,ProductCartVO cvo) {
 		HttpSession session = request.getSession();

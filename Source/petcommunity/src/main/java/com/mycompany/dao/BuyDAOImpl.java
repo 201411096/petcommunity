@@ -34,7 +34,6 @@ public class BuyDAOImpl implements BuyDAO {
 		HashMap map = new HashMap();
 		map.put("totalPrice", totalPrice);
 		map.put("memberId", vo.getMemberId());
-		System.out.println("총가격"+  totalPrice);
 		
 		mybatis.insert("buy.buyListInsert",map);
 		

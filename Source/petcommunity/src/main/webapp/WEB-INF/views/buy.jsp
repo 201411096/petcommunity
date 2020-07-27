@@ -87,31 +87,29 @@
 				<div class="row">
 					<div class="col-lg-8">
 						<h3>결제정보</h3>
-						<form class="row contact_form" action="#" method="post"
+						<form class="row contact_form" id="buyfrm" action="buyInsert.do" method="post"
 							novalidate="novalidate">
 							<div class="col-md-6 form-group p_star">
 								<input type="text" class="form-control" id="first" name="name"
-									placeholder="주문자 성함"> <span class="placeholder"></span>
+									placeholder="" value="${sessionScope.memberVO.memberName}"> <span class="placeholder"></span>
 							</div>
 							<div class="col-md-6 form-group p_star">
 								<input type="text" class="form-control" id="number"
-									name="number" placeholder="휴대폰 번호"> <span
+									name="number" placeholder="휴대폰 번호" value="${sessionScope.memberVO.memberTel}"> <span
 									class="placeholder"></span>
 							</div>
 							<div class="col-md-12 form-group p_star">
 								<input type="text" class="form-control" id="add2" name="add2"
-									placeholder="email"> <span class="placeholder"></span>
+									placeholder="email" value="${sessionScope.memberVO.memberEmail}"> <span class="placeholder"></span>
 							</div>
 							<div class="col-md-12 form-group p_star">
-								<input type="text" class="form-control" id="email"
-									name="compemailany" placeholder="주소"> <span
-									class="placeholder"></span>
+								<input type="text" class="form-control" id="email" name="compemailany" 
+								value="${sessionScope.memberVO.memberAddress}"> <span class="placeholder" ></span>
 							</div>
 							<div class="col-md-12 form-group p_star">
 								<input type="text" class="form-control" id="add1" name="add1"
 									placeholder="상세주소"> <span class="placeholder"></span>
 							</div>
-
 
 							<div class="col-md-12 form-group">
 								<textarea class="form-control" name="message" id="message"
@@ -144,7 +142,7 @@
 								</tbody>
 								<tr>
 									<td height="50" colspan="5">
-										합계: <span id='finalPrice'>7500</span>원
+										합계: <span id='finalPrice'></span>원
 								</tr>
 
 							</table>

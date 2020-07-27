@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.AnimalVO;
 import com.mycompany.domain.MemberVO;
-import com.mycompany.domain.MyBuyVO;
 import com.mycompany.service.AnimalService;
 import com.mycompany.service.BuyService;
 import com.mycompany.util.FileUpload;

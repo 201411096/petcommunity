@@ -105,9 +105,4 @@ $(function(){
     		document.commitWrite.submit();
     	}
     });
-    
-
-
-  
-    
 });

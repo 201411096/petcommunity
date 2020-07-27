@@ -103,7 +103,7 @@
 			<div class="col-xs-10 col-sm-10">	
 				<button type="button" class="btn btn-default" id='goToList'>목록보기</button>
 				<c:if test="${boardContent.memberId eq sessionScope.memberVO.memberId or sessionScope.memberVO.memberFlag eq '1'}">
-					<!-- <button type="button" class="btn btn-default" id="communityBoardModify">수정하기</button> -->
+					<button type="button" class="btn btn-default" id="communityBoardModify">수정하기</button>
 					<button type="button" class="btn btn-default" id="communityBoardDelete" value="${boardContent.communityboardId}">삭제하기</button>
 				</c:if>
 				</div>	

@@ -9,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.domain.MemberVO;
-import com.mycompany.domain.MyBuyVO;
+import com.mycompany.domain.ProductCartVO;
+
 
 
 @Repository("BuyDAO")
@@ -26,6 +27,17 @@ public class BuyDAOImpl implements BuyDAO {
 	@Override
 	public List<Map<String, String>> buyReceipt(String id) {
 		return mybatis.selectList("buy.buyReceipt",id);
+	}
+
+	@Override
+	public void buyInsert(int totalPrice , ProductCartVO vo,List<ProductCartVO> cartList) {
+		HashMap map = new HashMap();
+		map.put("totalPrice", totalPrice);
+		map.put("memberId", vo.getMemberId());
+		
+
+		mybatis.insert("buy.buyListInsert",map);
+		
 	}
 	
 }

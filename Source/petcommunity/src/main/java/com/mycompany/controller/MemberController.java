@@ -38,7 +38,6 @@ public class MemberController {
 	}
 	
 	
-
 	/* 
 	    * 함수 이름 : checkid
 	    * 주요 기능 : 회원가입시 아이디 사용여부 체크

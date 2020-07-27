@@ -21,11 +21,11 @@
 <body>
 
 	<div class="container">
-	<header>
-			<h1> 게시글 수정하기</h1>
-	</header>
-	<br/><br/>
-		<form action="modifyBoardContent.do" method='get' enctype='multipart/form-data'>			
+		<header>
+				<h1> 게시글 수정하기</h1>
+		</header>
+		<br/><br/>
+		<form action="modifyBoardContent.do" method='get' enctype='multipart/form-data' name='commitWrite'>			
 			<input type="hidden" name="communityboardId" value="${boardContent.communityboardId}">
 			<!-- 글쓰기 -->
 			<br/><br/>
@@ -37,20 +37,18 @@
 				<label>글 내용</label>
 				<textarea class="form-control" rows="5" name="communityboardContent" id="communityboardContent" placeholder="contents">${boardContent.communityboardContent}</textarea>
 			</div>
-			<div>
-				<button type="button" class="btn btn-default" name='imgUpload'>이미지 첨부</button>
-			</div>
+			<div class="form-group" id="file-group">
+				<ul class="list-group" id="file-list">
+					<li class="list-group-item"> <input type="file" multiple="multiple" name="file" class="file" accept="image/gif, image/jpeg, image/png, image/jpg"/></li>
+				</ul>
+			</div> 
 			<div class="col-md-4 col-md-offset-10">			
 			<span class="input-group-btn">
-				<button type="butto+n" class="btn btn-default" id='commitWrite'>수정완료</button>
+				<button type="button" class="btn btn-default" name='commitWrite' id='commitWrite'>수정완료</button>
 				<button type="button" class="btn btn-default" id='cancelWrite'>수정하기 취소</button>
 			</span>
 			</div>			
 		</form>
-
-
-
-		
 	</div>
 </body>
 </html>

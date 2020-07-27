@@ -1,29 +1,25 @@
 package com.mycompany.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.AdminDAOImpl;
+import com.mycompany.domain.ProductVO;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private AdminDAOImpl adminDAO;
-	
+
 	@Override
-	public List<Map> getSaleshistoryList(Map map) {
+	public List<ProductVO> getSalesList() {
 		
-		return adminDAO.getSaleshistoryList(map);
+		return adminDAO.getSalesList(); 
 	}
-
-//	@Override
-//	public List<Map> selectFindBoardWithPaging(Map map) {
-//		
-//		return adminDAO.selectFindBoardWithPaging(map);
-//	}
-
+	
+	
+	
 }

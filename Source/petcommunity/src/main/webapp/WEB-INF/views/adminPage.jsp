@@ -65,12 +65,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${saleshistoryList}" var="sale">
+							<c:forEach items="${productvoList}" var="sale">
 								<tr>
-									<td>${sale.buylistDate}</td>
+									<td>날짜</td>
 									<td><a href="sdf.do">${sale.productName}</a></td>
-									<td>${sale.buyCnt}</td>
-									<td>${sale.buyTotalprice}원</td>
+									<td>${sale.productPrice}</td>
+									<td>${sale.productCnt}원</td>
 								</tr>
 							</c:forEach>
 						</tbody>

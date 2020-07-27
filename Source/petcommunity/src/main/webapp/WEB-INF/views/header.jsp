@@ -10,12 +10,9 @@
 <meta name="keywords" content="instyle, fashion, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<<<<<<< HEAD
 <script type="text/javascript">
 </script>
 
-=======
->>>>>>> 8ef9e836e93061578ab04ce4e0664248b12c4459
 <!-- Google font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"
@@ -72,6 +69,7 @@
 						${sessionScope.memberVO.memberName}님, 안녕하세요
 						<a href="logout.do">[로그아웃하기]</a>
 						<a href="mypageselect.do">[마이 페이지]</a>
+						<a href="productCart.do">[장바구니]</a>
 
 					</c:when>
 

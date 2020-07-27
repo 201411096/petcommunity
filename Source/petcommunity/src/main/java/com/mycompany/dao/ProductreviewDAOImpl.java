@@ -53,4 +53,10 @@ public class ProductreviewDAOImpl implements ProductreviewDAO{
 		return result;
 	}
 
+	@Override
+	public int selectBuy(Map searchMap) {
+		int result = mybatis.selectOne("ProductreviewDAO.selectOne", searchMap);
+		return result;
+	}
+
 }

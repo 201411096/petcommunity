@@ -5,13 +5,7 @@
 <head>
 <meta charset="UTF-8">
 
-
-<<<<<<< HEAD
-<title
->Insert t	itle here</title>
-=======
 <title>Insert title here</title>
->>>>>>> 8ef9e836e93061578ab04ce4e0664248b12c4459
 
 </head>
 <body>

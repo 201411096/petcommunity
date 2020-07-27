@@ -28,32 +28,31 @@
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
 		<section id="container">			
 			<div class="col-xs-0 col-sm-3">
-				<label class="radio">
-					<input name="sGubun" type="radio" checked value="0" >
-						<span class="lbl">지역별 검색</span></label>
-							<select class="form-control" id='cityName' name ='cityName'>
-								<option >시/도</option>
-								<option >서울</option>
-								<option >인천</option>
-								<option >대전</option>
-								<option >광주</option>
-								<option >울산</option>
-								<option >대구</option>
-								<option >부산</option>
-								<option >세종</option>
-								<option >경기</option>
-								<option >강원</option>
-								<option >충북</option>
-								<option >충남</option>
-								<option >전북</option>
-								<option >전남</option>
-								<option >경북</option>
-								<option >경남</option>
-								<option >제주</option>
-							</select>
-							<select class="form-control" id='province' name ='province'>
-								<option >구/군</option>					
-							</select>
+				<input name="sGubun" type="radio" checked value="0" >
+					<label class="radio">지역별 검색</label>
+						<select class="form-control" id='cityName' name ='cityName'>
+							<option >시/도</option>
+							<option >서울</option>
+							<option >인천</option>
+							<option >대전</option>
+							<option >광주</option>
+							<option >울산</option>
+							<option >대구</option>
+							<option >부산</option>
+							<option >세종</option>
+							<option >경기</option>
+							<option >강원</option>
+							<option >충북</option>
+							<option >충남</option>
+							<option >전북</option>
+							<option >전남</option>
+							<option >경북</option>
+							<option >경남</option>
+							<option >제주</option>
+						</select>
+						<select class="form-control" id='province' name ='province'>
+							<option >구/군</option>					
+						</select>
 										
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-default" id='searchBtn'>지역별 검색
@@ -63,33 +62,29 @@
 								
 
 			<div class="col-xs-0 col-sm-3">		
-				<label class="radio">
-					<input name="sGubun" type="radio" value="1">
-						<span class="lbl">병원명 검색</span></label>
-							<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
+				<input name="sGubun" type="radio" value="1">
+					<label class="radio">병원명 검색</label>
+						<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
 							
 						<span class="input-group-btn">
 							<button type="button" class="btn btn-default" id='searchBtn'>병원명 검색
 							</button>
 						</span>					
 			</div>
-		</section>
-	</div></br></br></br>
+		
+	<br/><br/><br/>	
 
 			<!-- 병원 리스트 맵 영역 -->
-	<div class="container">	
-		<section id="container">
+
 			<div class="form-group">
 				<div id="map">
 				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  -->
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services"></script>	
 				</div>
 			</div>
-		</section>
-	</div></br></br></br>		
 	
-	<div class="container">	
-		<section id="container">
+	<br/><br/><br/>	
+	
 			<form role="form" method="get">
 				<table class="table table-hover" id="findHospitalTable">	
 					<thead>
@@ -101,6 +96,7 @@
 						</tr>
 					</thead>
 					<tbody id="findHospitalTbody">
+					<!--
 					<c:forEach items="${findHospitalList}" var = "findHospitalList">
 						<tr>
 							<td>${findHospitalList.findhospitalName}</td>
@@ -108,14 +104,12 @@
 							<td>${findHospitalList.findhospitalAddress}</td>
 							<td>${findHospitalList.findhospitalOpenhour}</td>
 						</tr>				
-					</c:forEach>
+					</c:forEach> -->
 					</tbody>
 				</table>
 			</form>
-		</section>
-	</div>			
-
-	
+		
+		
 	<div class="col-md-offset-3" id="pagination_container">		
 		<ul id="pagination-demo" class="pagination-lg"></ul>
 	</div>
@@ -124,5 +118,5 @@
 	
 	<!-- Footer -->
 	
-	</body></html>
+	</section></div></body></html>
 

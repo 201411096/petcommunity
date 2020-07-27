@@ -17,9 +17,11 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
+import com.mycompany.domain.ProductCartVO;
 import com.mycompany.domain.ProductVO;
 import com.mycompany.domain.ProductreviewVO;
 import com.mycompany.domain.ShopVO;
+import com.mycompany.service.ProductCartService;
 import com.mycompany.service.ProductServiceImpl;
 import com.mycompany.service.ProductreviewServiceImpl;
 
@@ -31,6 +33,8 @@ public class ProductController {
 	public ProductServiceImpl productService;
 	@Autowired
 	public ProductreviewServiceImpl productreviewService;
+	@Autowired
+	public ProductCartService productCartService;
 	
 	@ResponseBody
 	@RequestMapping(value="/productSelect.do", produces = "application/json; charset=utf-8")
@@ -123,24 +127,36 @@ public class ProductController {
 		mv.addObject("avgScore", avgScore);
 		mv.addObject("loginCheck", memberVo);
 		mv.addObject("productInfo", productInfo);
-		mv.setViewName("productView");
 		mv.addObject("reviewListSize", reviewListSize);
 		mv.addObject("reviewList", reviewList);
 		mv.addObject("pagination", paginationVO);
+		mv.setViewName("productView");
 		return mv;
 	}
 	
 	// 카트 리스트로 넘어감
 	@RequestMapping(value="/buyCartList.do")
-	public ModelAndView test(ProductVO vo, String qty, HttpSession session) {
-		MemberVO memberVo = (MemberVO) session.getAttribute("MemberVO");
-		// 로그인 체크
-//		if( memberVo != null) {
-//			
-//		}
-		System.out.println("넘어온 상품"+vo.getProductId());
-		System.out.println("넘어온 개수"+qty);
+	public ModelAndView test(ProductCartVO vo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		return mv;
+		Map searchMap = new HashMap();
+		// 로그인 체크
+		MemberVO memberVo = (MemberVO) session.getAttribute("memberVO");
+		if( memberVo != null) {
+			String memberId = memberVo.getMemberId();
+			vo.setMemberId(memberId);
+			// 장바구니DB에 입력(기존 장바구니 상품은 개수 추가 / 없다면 새로 입력)
+			ProductCartVO selectCartList = productCartService.getProductInfoFromCart(vo);
+			if(selectCartList != null) {
+				productCartService.addProductCnt(vo);
+			}else {
+				productCartService.insertProductToCart(vo);
+			}	
+			mv.addObject("ProductCartVO",vo);	
+			mv.setViewName("productCart");
+			return mv;
+		}else {
+			mv.setViewName("login");
+			return mv;
+		}	
 	}
 }

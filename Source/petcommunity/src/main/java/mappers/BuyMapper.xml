@@ -37,4 +37,8 @@ from BUYLIST a, PRODUCT b,BUY c,member m
 where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.member_id and a.buylist_id=#{id}
 </select>
 
+
+<insert id="buyListInsert" parameterType="hashmap">
+insert into BUYLIST values(BUYLIST_ID_SEQ.nextval,sysdate,#{memberId},#{totalPrice})
+</insert>
 </mapper>

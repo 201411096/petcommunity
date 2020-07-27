@@ -71,7 +71,9 @@ function loginCheck(){
 			}else if(resultData.reviewCheck=="alreadyWriteReview"){
 				alert("이미 리뷰를 작성하셨습니다")
 				
-			}else{
+			}/*else if(resultData.notBuyProduct=="notBuyProduct"){
+				alert("제품을 구매한 고객만 작성할 수 있습니다.")
+			}*/else{
 				alert("리뷰 작성 완료");
 				window.location.reload();
 			}

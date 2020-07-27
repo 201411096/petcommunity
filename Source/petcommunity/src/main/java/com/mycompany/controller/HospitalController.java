@@ -31,17 +31,18 @@ public class HospitalController {
 	@ResponseBody
 	@RequestMapping(value="/findHospitalListWithPaging.do", produces="application/json; charset=utf-8")
 	public Map getFindHospitalList(@RequestParam(defaultValue="1") int curPage, String searchWord) {
-		System.out.println("동물 병원 찾기 컨트럴 입장");
+		System.out.println("동물 병원 찾기 컨트롤러 입장");
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
+	
 		searchMap.put("searchWord", searchWord);
-		System.out.println(searchMap);
+	
 		List<FindHospitalVO> findHospitalVOList = findHospitalService.selectFindHospital(searchMap);
 	
 		PaginationVO paginationVO = new PaginationVO(findHospitalVOList.size(), curPage);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		
+	
 		findHospitalVOList = findHospitalService.selectFindHospitalWithPaging(searchMap);
 		
 		result.put("pagination", paginationVO);
@@ -55,6 +56,7 @@ public class HospitalController {
 	@ResponseBody
 	@RequestMapping("/getFindHospitalListByLocation.do")
 	public Map getFindHospitalListByLocation(int curPage, FindHospitalVO vo, HttpServletRequest request, ModelAndView mv ){
+		System.out.println("지역별로 검색하기");
 		String cityName = request.getParameter("cityName");
 		String province = request.getParameter("province");
 		System.out.println(cityName);
@@ -84,26 +86,23 @@ public class HospitalController {
 	//검색어, 병원명 typing하여 검색된 list 가져오기
 	@ResponseBody
 	@RequestMapping("/getFindHospitalListBySearch.do")
-	public Map getFindHospitalListBySearch(int curPage, FindHospitalVO vo, HttpServletRequest request, ModelAndView mv) {
+	public Map getFindHospitalListBySearch(@RequestParam(defaultValue = "1") int curPage, FindHospitalVO vo, HttpServletRequest request, ModelAndView mv) {
 	//값이 전송되지 않으면 기본값을 1로 만든다  : defaultValue=1
-	
+		System.out.println("타이핑해서 검색하기");
 		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
 		String keyword = request.getParameter("searchWord");
 		System.out.println(keyword);
-		String type = "";
-		
-		vo.setKeyWord(keyword);
-		
-		
 		Map searchMap = new HashMap();
+
+		vo.setKeyWord(keyword);
 		
 		PaginationVO paginationVO = new PaginationVO(findHospitalService.getFindHospitalListBySearch(vo).size(), curPage, 10);
 		System.out.println(findHospitalService.getFindHospitalListBySearch(vo).size());
 		paginationVO.setRangeSize(10);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		searchMap.put("searchWord", keyword);		
-		List<FindHospitalVO> getFindHospitalListBySearch = findHospitalService.getFindHospitalListBySearch(vo);
+		searchMap.put("keyWord", keyword);		
+		List<FindHospitalVO> getFindHospitalListBySearch = findHospitalService.getFindHospitalListBySearchWithPaging(searchMap);
 		Map result = new HashMap();
 		result.put("pagination", paginationVO);
 		result.put("getFindHospitalListBySearch", getFindHospitalListBySearch);

@@ -21,5 +21,10 @@ public class GraphDAOImpl implements GraphDAO{
 	public List<Map> getFindGraphFromLostBoard(Map map) {
 		return mybatis.selectList("graphDAO.getFindGraphFromLostBoard", map);
 	}
+
+	@Override
+	public List<Map> makeSalesHistoryChartWithGrouping(Map map) {
+		return mybatis.selectList("graphDAO.makeSalesHistoryChartWithGrouping", map);
+	}
 	
 }

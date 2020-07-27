@@ -12,7 +12,7 @@ $('#graph_01_chartTime_option').on('change', function(){
 });
 
 //게시글 수 (찾은 실종동물 요일별, 시간별 통계)
-var graph_02 = new GraphClass("/petcommunity/findGraphFromLostBOard.do", "graph_02_container", "graph_02", "graph_02");
+var graph_02 = new GraphClass("/petcommunity/findGraphFromLostBoard.do", "graph_02_container", "graph_02", "graph_02");
 GraphClass.makeChartWithAjax(graph_02);
 
 $('#graph_02_chartShape_option').on('change', function(){
@@ -22,4 +22,17 @@ $('#graph_02_chartShape_option').on('change', function(){
 $('#graph_02_chartTime_option').on('change', function(){
 	graph_02.inputData.timeOption=$('#graph_02_chartTime_option').val();	
 	GraphClass.makeChartWithAjax(graph_02)
+});
+
+//매출 통계 ( 요일별, 시간별 통계)
+var graph_03 = new GraphClass("/petcommunity/makeSalesHistoryChartWithGrouping.do", "graph_03_container", "graph_03", "graph_03");
+GraphClass.makeChartWithAjax(graph_03);
+
+$('#graph_03_chartShape_option').on('change', function(){
+	graph_03.inputData.chartType=$('#graph_03_chartShape_option').val();
+	GraphClass.makeChartWithAjax(graph_03)
+});
+$('#graph_03_chartTime_option').on('change', function(){
+	graph_03.inputData.timeOption=$('#graph_03_chartTime_option').val();	
+	GraphClass.makeChartWithAjax(graph_03)
 });

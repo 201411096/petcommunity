@@ -14,4 +14,9 @@
 			)group by time order by time
 		)where time is not null		
 	</select>
+	<select id="makeSalesHistoryChartWithGrouping" resultType="map" parameterType="map">
+		select sum(buylist_totalprice) as sum, time from (
+	    	select buylist_totalprice, to_char(buylist_date, #{timeOption}) as time from buylist
+		)group by time
+	</select>
 </mapper>

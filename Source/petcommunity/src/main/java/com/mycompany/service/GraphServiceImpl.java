@@ -21,5 +21,10 @@ public class GraphServiceImpl implements GraphService{
 	public List<Map> getFindGraphFromLostBoard(Map map) {
 		return graphDAO.getFindGraphFromLostBoard(map);
 	}
+
+	@Override
+	public List<Map> makeSalesHistoryChartWithGrouping(Map map) {
+		return graphDAO.makeSalesHistoryChartWithGrouping(map);
+	}
 	
 }

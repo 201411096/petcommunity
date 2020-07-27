@@ -61,14 +61,13 @@ public class GraphController {
 			data.put("value", selectList.get(i).get("COUNT"));
 			dataList.add(data);
 		}
-		System.out.println(selectList.size());
 		result.put("chartType", inputData.get("chartType"));
 		result.put("data", dataList);
 		result.put("dataSize", dataList.size());
 		return result;
 	}
 	
-	@RequestMapping(value = "/findGraphFromLostBOard.do", produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/findGraphFromLostBoard.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map makeFindGraphFromLostBOard(@RequestBody HashMap inputData) {
 		Map result = new HashMap();
@@ -92,6 +91,38 @@ public class GraphController {
 				data.put("name", selectList.get(i).get("TIME"));
 			}
 			data.put("value", selectList.get(i).get("COUNT"));
+			dataList.add(data);
+		}
+		result.put("chartType", inputData.get("chartType"));
+		result.put("data", dataList);
+		result.put("dataSize", dataList.size());
+		return result;
+	}
+	
+	@RequestMapping(value = "/makeSalesHistoryChartWithGrouping.do", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public Map makeSalesHistoryChartWithGrouping(@RequestBody HashMap inputData) {
+		Map result = new HashMap();
+		Map graphOption = new HashMap();
+		if(inputData.get("chartType")==null) {
+			inputData.put("chartType", "bar");
+		}
+		if(inputData.get("timeOption")==null) {
+			inputData.put("timeOption", "0");
+		}		
+		String timeOptionArray [] = {"HH24", "D", "YYYYMM", "YYYY"};
+		String dayArray [] = {"일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"};
+		graphOption.put("timeOption", timeOptionArray[Integer.parseInt((String)inputData.get("timeOption"))]);
+		List<Map> selectList = graphService.makeSalesHistoryChartWithGrouping(graphOption);
+		List<Map> dataList = new ArrayList();
+		for(int i=0; i<selectList.size(); i++) {
+			HashMap data = new HashMap();
+			if(graphOption.get("timeOption").equals("D")) {
+				data.put("name", dayArray[Integer.parseInt((String)selectList.get(i).get("TIME"))-1]); //숫자로 반환되는  요일을 한글로 변경
+			}else {
+				data.put("name", selectList.get(i).get("TIME"));
+			}
+			data.put("value", selectList.get(i).get("SUM"));
 			dataList.add(data);
 		}
 		result.put("chartType", inputData.get("chartType"));

@@ -92,7 +92,8 @@ var listBysearchWithPaging = {
 	    onPageClick: function (event, page) {
 	    	$('#page-content').text('Page ' + page);
 	    	    curPage=page;
-	    	    listBysearch2();         
+	    	    listBysearch(); 
+	    	    listBysearch2(); 
 	    	}
 	    };
 
@@ -130,29 +131,6 @@ function listBysearch(){
 	});
 }
 
-
-
-function listByLocation(){
-	$.ajax({
-		type : 'post',
-		async:true,
-		url : '/petcommunity/getBoardListByLocation.do?&cityName='+$('#cityName').val()+'&province='+$('#province').val(),
-		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data:{"searchWord" : $('#keywordInput').val(),
-			"searchType" : $('#type').val(),
-			"curPage" : curPage
-		},
-		dataType : 'json',
-		success : function(resultData){		
-			searchTable(resultData);
-			
-		},
-		error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-		
-	});
-}
 
 function listBysearch2(){
 	$.ajax({

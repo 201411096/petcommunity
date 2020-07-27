@@ -140,10 +140,7 @@ public class CommunityController {
 	    * 함수 내용 : 
 	    */
 	@RequestMapping("/modifyBoardContent.do")
-	public ModelAndView modifyBoardContent(CommentVO cvo, CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
-		
-		
-		System.out.println(vo.getCommunityboardId());
+	public ModelAndView modifyBoardContent(CommentVO cvo, CommunityVO vo, HttpServletRequest request, HttpSession session, ModelAndView mv) {	
 		communityService.modifyBoardContent(vo);
 		//수정 완료후 글 내용으로 되돌아가기
 		mv.addObject("boardContent", communityService.getBoardContent(vo));
@@ -193,7 +190,6 @@ public class CommunityController {
 		paginationVO.setRangeSize(20);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
-		searchMap.put("searchType", type);
 		searchMap.put("keyWord", keyword);
 		List<CommunityVO> communityBoardListBySearch = communityService.getBoardListBySearchWithPaging(searchMap);
 		Map result = new HashMap();

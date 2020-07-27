@@ -10,6 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.ProductreviewVO;
 
 @Repository("productreviewDAO")
@@ -50,6 +51,12 @@ public class ProductreviewDAOImpl implements ProductreviewDAO{
 	@Override
 	public List<ProductreviewVO> selectReviewByTagWithPaging(Map searchMap) {
 		List<ProductreviewVO> result = mybatis.selectList("ProductreviewDAO.selectReviewByTagWithPaging", searchMap);
+		return result;
+	}
+
+	@Override
+	public int selectBuy(Map searchMap) {
+		int result = mybatis.selectOne("ProductreviewDAO.selectBuy", searchMap);
 		return result;
 	}
 

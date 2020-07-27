@@ -44,4 +44,10 @@
     	where RNUM>=#{startRow} AND RNUM<=#{endRow}
         ]]>
 	</select>
+	<select id="selectBuy" parameterType="hashmap" resultType="int">
+		select count(buy_id)
+		from BUY
+		where  PRODUCT_ID = #{productId}
+	</select>
+
 </mapper>

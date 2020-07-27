@@ -3,6 +3,7 @@ package com.mycompany.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.ProductreviewVO;
 
 public interface ProductreviewDAO {
@@ -12,4 +13,5 @@ public interface ProductreviewDAO {
 	public int deleteReview(Map searchMap);
 	public String selectAReview(Map searchMap);
 	public List<ProductreviewVO> selectReviewByTagWithPaging(Map searchMap);
+	public int selectBuy(Map searchMap);
 }

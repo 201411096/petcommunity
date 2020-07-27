@@ -11,6 +11,7 @@ public class FindHospitalVO {
 	private String findhospitalY;
 	private String findhospitalOpenhour;
 	private String keyWord;//검색어
+
 	
 	public String getFindhospitalOpenhour() {
 		return findhospitalOpenhour;

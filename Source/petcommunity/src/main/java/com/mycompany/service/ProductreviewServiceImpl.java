@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.ProductreviewDAOImpl;
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.ProductreviewVO;
 
 @Service("productreviewService")
@@ -41,6 +42,11 @@ public class ProductreviewServiceImpl implements ProductreviewService{
 	@Override
 	public List<ProductreviewVO> selectReviewByTagWithPaging(Map searchMap) {
 		List<ProductreviewVO> result = ProductreviewDAO.selectReviewByTagWithPaging(searchMap);
+		return result;
+	}
+	@Override
+	public int selectBuy(Map searchMap) {
+		int result = ProductreviewDAO.selectBuy(searchMap);
 		return result;
 	}
 	

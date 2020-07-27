@@ -14,8 +14,9 @@
 <a href="/petcommunity/shop.do">쇼핑페이지</a><br>
 <a href="/petcommunity/communityBoardList.do">커뮤니티 보드</a><br>
 <a href="/petcommunity/productCart.do">장바구니</a><br>
-<a href="/petcommunity/findboardlist.do">findboardlist 페이지</a>
-<a href="/petcommunity/lostboardlist.do">lostboardlist 페이지</a>
-<a href="/petcommunity/test_graph.do">그래프 테스트 페이지</a>
+<a href="/petcommunity/findboardlist.do">findboardlist 페이지</a><br>
+<a href="/petcommunity/lostboardlist.do">lostboardlist 페이지</a><br>
+<a href="/petcommunity/sample_graph.do">그래프 샘플 페이지</a><br>
+<a href="/petcommunity/test_graph.do">그래프 테스트 페이지</a><br>
 </body>
 </html>

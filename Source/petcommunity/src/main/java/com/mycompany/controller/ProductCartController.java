@@ -18,8 +18,8 @@ import com.mycompany.service.ProductCartService;
 @Controller
 public class ProductCartController {
 	
-	@Autowired
-	public ProductCartService productCartService;
+		@Autowired
+		public ProductCartService productCartService;
 	
 	//장바구니 페이지 입장~~!!
 	@ResponseBody

@@ -38,7 +38,7 @@ create table lostboard(
     lostboard_y varchar2(50),
     lostboard_status varchar2(50), --0 못찾음, 1 찾음
     lostboard_uploadtime date,
-    lostboard_time date,
+    lostboard_findtime date,
     lostboard_readcount number(10),
     member_id varchar2(50),
     animal_id number(20),
@@ -140,10 +140,12 @@ create table productreview(
     productreview_score number(30),
     member_id varchar2(50),
     product_id number(30),
+    productreview_uploadtime date,
     constraint productreview_pk primary key(productreview_id),
     constraint productreview_fk_1 foreign key(member_id) references member(member_id),
     constraint productreview_fk_2 foreign key(product_id) references product(product_id)
 );
+
 -- 구매리스트
 CREATE TABLE BUYLIST(
     BUYLIST_ID NUMBER(30),

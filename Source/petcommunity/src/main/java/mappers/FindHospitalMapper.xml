@@ -8,16 +8,18 @@
 <select id="getFindHospitalList" parameterType="hashmap" resultType="findHospital">
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
 from FINDHOSPITAL
+	<!-- <if test = "searchType == ''"></if> -->
 </select>
 
-<!-- 지역별 검색 -->
+
+<!-- 지역별 검색 
 <select id="getFindHospitalListByLocation" parameterType="hashmap" resultType="findHospital">
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
 from FINDHOSPITAL
 where SUBSTR(findhospital_address,1,2)=#{cityName} and SUBSTR(findhospital_address,4,2) = #{province}
-</select> 
+</select> -->
 
-<!--병원명, 검색어 typing해서 검색-->
+<!--병원명, 검색어 typing해서 검색
 <select id="getFindHospitalListBySearch" parameterType="hashmap" resultType="findHospital">
 <![CDATA[
 select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
@@ -25,6 +27,7 @@ from findhospital
 where ${searchType} like '%'||#{keyWord}||'%'
 ]]>
 </select>  
+-->
 
 <!-- 동물 병원 페이징 처리 -->
 <select id="getFindHospitalListWithPaging" parameterType="hashmap" resultType="findHospital">

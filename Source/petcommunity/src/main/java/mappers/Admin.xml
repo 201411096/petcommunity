@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adminDAO">
+
+<!-- 	<resultMap id="saleshistory" type="saleshistory"> -->
+<!-- 		<result column="SALESHISTORY_DATE" property="saleshistoryDate" /> -->
+<!-- 		<result column="SALESHISTORY_NAME" property="saleshistoryName" /> -->
+<!-- 		<result column=SALESHISTORY_CNT property="saleshistoryCnt" /> -->
+<!-- 		<result column=SALESHISTORY_TOTALPRICE property="saleshistoryTotalprice" />	 -->
+<!-- 	</resultMap> -->
+	
+	
+
+	<select id="getSaleshistoryList" parameterType="hashmap" resultType="map">
+	SELECT BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE
+	FROM buylistview
+	</select>
+
+</mapper>

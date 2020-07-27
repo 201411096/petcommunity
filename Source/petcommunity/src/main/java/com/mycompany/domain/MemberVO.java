@@ -5,7 +5,7 @@ public class MemberVO {
 	private String memberId;
 	private String memberPassword;
 	private String memberName;
-	private String memberAddrss;
+	private String memberAddress;
 	private String memberTel;
 	private String memberEmail;
 	private String memberBirthday;
@@ -36,11 +36,12 @@ public class MemberVO {
 	public void setMemberName(String memberName) {
 		this.memberName = memberName;
 	}
-	public String getMemberAddrss() {
-		return memberAddrss;
+
+	public String getMemberAddress() {
+		return memberAddress;
 	}
-	public void setMemberAddrss(String memberAddrss) {
-		this.memberAddrss = memberAddrss;
+	public void setMemberAddress(String memberAddress) {
+		this.memberAddress = memberAddress;
 	}
 	public String getMemberTel() {
 		return memberTel;

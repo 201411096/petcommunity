@@ -18,6 +18,8 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <link rel="stylesheet" href="resources/css/qnaBoardList.css">
 <!-- <link rel="stylesheet" href="resources/bootstrap_template/template_01/css3/main.css"> -->
 
@@ -42,41 +44,44 @@
 				</thead>
 				<tbody id="QnaBoardTbody">
 				</tbody>
-<%-- 				<c:forEach items="${qnavoList}" var="item"> --%>
-<!-- 					<tr> -->
-<%-- 						<td>${item.questionboardId}</td> --%>
-<!-- 						<td> -->
-<%-- 						<a href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}"> --%>
-<%-- 								${item.questionboardTitle}</a></td> --%>
-<%-- 						<td>${item.questionboardUploadtime}</td> --%>
-<%-- 						<td>${item.questionboardReadcount}</td> --%>
-<%-- 						<td>${item.memberId}</td> --%>
-<!-- 					</tr> -->
+				<%-- 				<c:forEach items="${qnavoList}" var="item"> --%>
+				<!-- 					<tr> -->
+				<%-- 						<td>${item.questionboardId}</td> --%>
+				<!-- 						<td> -->
+				<%-- 						<a href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}"> --%>
+				<%-- 								${item.questionboardTitle}</a></td> --%>
+				<%-- 						<td>${item.questionboardUploadtime}</td> --%>
+				<%-- 						<td>${item.questionboardReadcount}</td> --%>
+				<%-- 						<td>${item.memberId}</td> --%>
+				<!-- 					</tr> -->
 
-<%-- 				</c:forEach> --%>
+				<%-- 				</c:forEach> --%>
 			</table>
-			<form id="searchK" name="searchK" action="/petcommunity/qnaBoardListPaging.do">
-				<div class="search row">
-					<div class="col-xs-2 col-sm-2">
-						<select name="searchType" id="searchType" class="form-control">
-							<option value="0">-----</option>
-							<option value="1">제목</option>
-							<option value="2">내용</option>
-							<option value="3">아이디</option>
-						</select>
-					</div>
-					<div class="col-xs-10 col-sm-10">
-						<div class="input-group">
-							<input type="text" name="keyword" id="keywordInput" 
-								class="form-control" /> <span class="input-group-btn"> 								
-								<button id="qnaSearchBtn" type="submit" class="btn btn-default">검색</button>
-							</span> <span class="input-group-btn"> 
+			<!-- 			<form id="searchK" name="searchK" action="/petcommunity/qnaBoardListPaging.do"> -->
+			<div class="search row">
+				<div class="col-xs-2 col-sm-2">
+					<select name="searchType" id="searchType" class="form-control">
+						<option value="0">-----</option>
+						<option value="1">제목</option>
+						<option value="2">내용</option>
+						<option value="3">아이디</option>
+					</select>
+				</div>
+				<div class="col-xs-10 col-sm-10">
+					<div class="input-group">
+						<input type="text" name="keyword" id="keywordInput"
+							class="form-control" /> <span class="input-group-btn">
+							<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
+						</span> <span class="input-group-btn"> <!-- 							<button id="writeBtn" type="submit" class="btn btn-default">글쓰기</button> -->
+
 							<a href="/petcommunity/write.do" class="btn btn-default">글쓰기</a>
-							</span>
-						</div>
+						</span>
 					</div>
 				</div>
-			</form>
+
+			</div>
+			<ul id="pagination-demo" class="pagination-lg"></ul>
+			<!-- 			</form> -->
 		</section>
 	</div>
 

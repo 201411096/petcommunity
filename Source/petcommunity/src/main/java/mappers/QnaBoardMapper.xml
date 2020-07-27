@@ -6,30 +6,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="qnaDAO">
 
 	<insert id="insertQnaBoard" parameterType="qna">
-		INSERT INTO QUESTIONBOARD
-		(QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID, QUESTIONBOARD_TITLE,
+		INSERT INTO
+		QUESTIONBOARD
+		(QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID,
+		QUESTIONBOARD_TITLE,
 		QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME,
 		QUESTIONBOARD_READCOUNT, MEMBER_ID)
-		VALUES (QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTIONBOARD_GROUP_ID_SEQ.NEXTVAL,
+		VALUES
+		(QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTIONBOARD_GROUP_ID_SEQ.NEXTVAL,
 		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
 		#{questionboardReadcount}+0, #{memberId})
 	</insert>
 
 	<select id="getQnaBoardList" resultType="qna">
 		SELECT *
-		FROM QUESTIONBOARD
-		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID 
+		FROM
+		QUESTIONBOARD
+		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
 	</select>
 
-	<select id="getQnaBoardContent" parameterType="qna" resultType="qna">
+	<select id="getQnaBoardContent" parameterType="qna"
+		resultType="qna">
 		SELECT *
 		FROM QUESTIONBOARD
-		WHERE QUESTIONBOARD_ID = #{questionboardId}
+		WHERE QUESTIONBOARD_ID =
+		#{questionboardId}
 	</select>
 
 	<update id="updateQna" parameterType="qna">
 		UPDATE QUESTIONBOARD
-		SET QUESTIONBOARD_TITLE = #{questionboardTitle}, QUESTIONBOARD_CONTENT =
+		SET
+		QUESTIONBOARD_TITLE = #{questionboardTitle}, QUESTIONBOARD_CONTENT =
 		#{questionboardContent}
 		WHERE QUESTIONBOARD_ID = #{questionboardId}
 	</update>
@@ -37,42 +44,71 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateReadcount" parameterType="qna">
 		UPDATE QUESTIONBOARD
 		SET QUESTIONBOARD_READCOUNT = QUESTIONBOARD_READCOUNT+1
-		WHERE QUESTIONBOARD_ID = #{questionboardId}
+		WHERE
+		QUESTIONBOARD_ID = #{questionboardId}
 	</update>
 
 	<delete id="deleteQnaBoard">
 		DELETE
 		FROM QUESTIONBOARD
-		WHERE QUESTIONBOARD_ID = #{questionboardId}
+		WHERE QUESTIONBOARD_ID =
+		#{questionboardId}
 	</delete>
 
-	<select id="selectFindBoardWithPaging" parameterType="hashmap" resultType="qna">
+	<select id="selectFindBoardWithPaging" parameterType="hashmap"
+		resultType="qna">
 		SELECT *
 		FROM (
-			SELECT QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID, QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME, QUESTIONBOARD_READCOUNT,MEMBER_ID,ROWNUM AS RNUM
-			FROM (SELECT QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID, QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME, QUESTIONBOARD_READCOUNT,MEMBER_ID
-				FROM QUESTIONBOARD
-				<if test='searchType=="1"'>
-					WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
-				</if>
-				<if test='searchType=="2"'>
-					WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
-				</if>
-				<if test='searchType=="3"'>
-					WHERE REGEXP_LIKE(QUESTIONBOARD_ID,'(*)'|| #{searchWord} ||'(*)')
-				</if>
-				))
+		SELECT QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID, QUESTIONBOARD_TITLE,
+		QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME,
+		QUESTIONBOARD_READCOUNT,MEMBER_ID,ROWNUM AS RNUM
+		FROM (SELECT QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID,
+		QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME,
+		QUESTIONBOARD_READCOUNT,MEMBER_ID
+		FROM QUESTIONBOARD
+		
+		<if test='searchType=="1"'>
+			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
+		</if>
+		<if test='searchType=="2"'>
+			WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
+		</if>
+		<if test='searchType=="3"'>
+			WHERE REGEXP_LIKE(MEMBER_ID,'(*)'|| #{searchWord} ||'(*)')
+		</if>
+		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
+		))
 	<![CDATA[ 
 	where RNUM>=#{startRow} and RNUM<=#{endRow}
 	]]>
 	
 	</select>
 
+	<select id="selectKeyword" parameterType="hashmap"
+		resultType="qna">
+		SELECT *
+		FROM QUESTIONBOARD
+		<if test='searchType=="1"'>
+			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
+			
+		</if>
+		<if test='searchType=="2"'>
+			WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
+		</if>
+		<if test='searchType=="3"'>
+			WHERE REGEXP_LIKE(MEMBER_ID,'(*)'|| #{searchWord} ||'(*)')
+		</if>
+		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
+	</select>
+
 	<insert id="insertReply" parameterType="qna">
-		INSERT INTO QUESTIONBOARD (QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID,
-		QUESTIONBOARD_TITLE, QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME,
+		INSERT INTO QUESTIONBOARD
+		(QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID,
+		QUESTIONBOARD_TITLE,
+		QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME,
 		QUESTIONBOARD_READCOUNT, MEMBER_ID)
-		VALUES (QUESTIONBOARD_ID_SEQ.NEXTVAL, #{questionboardGroupId},
+		VALUES
+		(QUESTIONBOARD_ID_SEQ.NEXTVAL, #{questionboardGroupId},
 		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
 		#{questionboardReadcount}+0, #{memberId})
 	</insert>
@@ -83,33 +119,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE QUESTIONBOARD_GROUP_ID =
 		#{questionboardGroupId}
 	</select>
-	
+
 	<select id="selectListRe" resultType="qna">
 		SELECT *
 		FROM QUESTIONBOARD
 		WHERE QUESTIONBOARD_GROUP_ID = #{questionboardGroupId}
-		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID 
+		ORDER BY
+		QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
 	</select>
-	
-	<select id="selectKeyword" resultType="qna" parameterType="map">
-	select distinct
-	<if test = 'searchType=="1"'>
-		QUESTIONBOARD_TITLE 
-		FROM QUESTIONBOARD
-		WHERE REGEXP_LIKE (QUESTIONBOARD_TITLE, '(*)'||#{searchWord}||'(*)')	
-	</if>
-	<if test = 'searchType=="2"'>
-		QUESTIONBOARD_CONTENT 
-		FROM QUESTIONBOARD
-		WHERE REGEXP_LIKE (QUESTIONBOARD_CONTENT, '(*)'||#{searchWord}||'(*)')	
-	</if>
-	<if test = 'searchType=="3"'>
-		QUESTIONBOARD_ID 
-		FROM QUESTIONBOARD
-		WHERE REGEXP_LIKE (QUESTIONBOARD_ID, '(*)'||#{searchWord}||'(*)')
-	</if>
-	
-	</select>
-	
+
+
+
 
 </mapper>

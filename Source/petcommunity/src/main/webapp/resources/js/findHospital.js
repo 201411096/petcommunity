@@ -86,7 +86,95 @@ $(function(){
         }
     });
 });    
-    
+ 
+var listBysearchWithPaging = {
+	    visiblePages : 5,
+	    onPageClick: function (event, page) {
+	    	$('#page-content').text('Page ' + page);
+	    	    curPage=page;
+	    	    listBysearch2();         
+	    	}
+	    };
+
+//검색버튼 클릭
+$('#searchBtn').on('click',
+		listBysearch
+	);
+
+
+function listBysearch(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/getFindHospitalListBySearch.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data:{"searchWord" : $('#keywordInput').val(),
+			"curPage" : curPage
+			},
+		dataType : 'json',
+		success : function(resultData){		
+				searchTable(resultData);
+				$('#NormalPaging').empty();
+				 var totalPages = resultData.pagination.pageCnt;
+		         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
+		            $('#pagination-demo').twbsPagination('destroy');
+		            $('#pagination-demo').twbsPagination($.extend({}, listBysearchWithPaging, {
+		                startPage: currentPage,
+		                totalPages: totalPages
+		            }));
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}
+		
+	});
+}
+
+
+
+function listByLocation(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/getBoardListByLocation.do?&cityName='+$('#cityName').val()+'&province='+$('#province').val(),
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data:{"searchWord" : $('#keywordInput').val(),
+			"searchType" : $('#type').val(),
+			"curPage" : curPage
+		},
+		dataType : 'json',
+		success : function(resultData){		
+			searchTable(resultData);
+			
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}
+		
+	});
+}
+
+function listBysearch2(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/getFindHospitalListByLocation.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data:{"searchWord" : $('#keywordInput').val(),
+			"curPage" : curPage
+		},
+		dataType : 'json',
+		success : function(resultData){		
+			searchTable(resultData);
+			
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}
+		
+	});
+}
+
 
 
 var curPage;
@@ -107,7 +195,6 @@ $(function(){
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();
-	writeBtnEventHandler();
 	searchForMapEventHandler();
 });
 	
@@ -134,6 +221,7 @@ function searchWordEventHandler(){
 
 function searchBtnEventHandler(){
 	$('#searchBtn').on('click', getData);
+
 }
 
 function autoCompleteFunc(){
@@ -145,6 +233,7 @@ function autoCompleteFunc(){
                    dataType: "json",
                    data:{
                 	   	"searchWord" : $('#keywordInput').val()
+                	   	
                    },
                    success: function(data) {
                 	   console.log('autocomplete success');
@@ -244,6 +333,7 @@ function getData(){
 				},
 		dataType : 'json',
 		success : function(resultData){
+			
 			drawTable(resultData);
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');

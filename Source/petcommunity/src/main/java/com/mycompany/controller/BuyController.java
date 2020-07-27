@@ -51,11 +51,11 @@ public class BuyController {
 		
 		ModelAndView mv = new ModelAndView();
 		List<ProductCartVO> cartList = productCartService.getCartListById(cvo);
-		/*
-		 * for(int i=0;i<cartList.size();i++) {
-		 * totalPrice+=Integer.parseInt(cartList.get(i).getBuycartlistCnt())*Integer.
-		 * parseInt(cartList.get(i).getProductPrice()); }
-		 */
+		
+		 for(int i=0;i<cartList.size();i++) {
+		 totalPrice+=Integer.parseInt(cartList.get(i).getBuycartlistCnt())*Integer.
+		 parseInt(cartList.get(i).getProductPrice()); }
+	
 		
 		buyService.buyInsert(totalPrice,cvo,cartList);  
 		

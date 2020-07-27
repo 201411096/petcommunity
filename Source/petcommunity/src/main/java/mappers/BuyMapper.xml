@@ -13,9 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <select id="mybuyList" parameterType="member" resultMap="mypageBuyList">
-select BUYLIST_ID,BUYLIST_DATE,BUYLIST_TOTALPRICE
+select BUYLIST_ID,TO_CHAR(BUYLIST_DATE,'YYYY-MM-DD'),BUYLIST_TOTALPRICE
 from BUYLIST
-where member_id=#{memberId}
+where member_id=#{memberId} order by buylist_id desc
 </select>
 
 <resultMap type="hashmap" id="selectList">
@@ -32,9 +32,9 @@ where member_id=#{memberId}
 
 <select id="buyReceipt" parameterType="String" resultMap="selectList">
 select a.BUYLIST_ID BUYLIST_ID,m.member_name member_name,m.member_tel member_tel,m.member_address member_address,TO_CHAR(a.BUYLIST_DATE,'YYYY-MM-DD') BUYLIST_DATE,
-b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT, b.product_price product_price,a.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE
+b.PRODUCT_NAME PRODUCT_NAME, c.BUY_CNT BUY_CNT, b.product_price product_price,(b.product_price*c.BUY_CNT) BUYLIST_TOTALPRICE
 from BUYLIST a, PRODUCT b,BUY c,member m
-where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.member_id and a.buylist_id=#{id}
+where c.product_id=b.product_id and c.buylist_id=a.buylist_id and a.member_id=m.member_id and a.buylist_id=#{id} 
 </select>
 
 

@@ -112,7 +112,7 @@
 
 	
 	<script src="./resources/js/shopList.js"></script>
-<!-- 	<script src="./resources/js/autoCompleteSearch.js"></script> -->
+
 
 
 	</body>

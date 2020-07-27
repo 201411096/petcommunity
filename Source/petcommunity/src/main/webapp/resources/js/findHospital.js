@@ -100,7 +100,6 @@ var defaultOpts = {
 };
 
 $(function(){
-	alert('입장');
 	getData();
 	getDataWithoutPaging();
 	autoCompleteFunc();
@@ -245,7 +244,6 @@ function getData(){
 				},
 		dataType : 'json',
 		success : function(resultData){
-			alert('list가져오기');
 			drawTable(resultData);
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');

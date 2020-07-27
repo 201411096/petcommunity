@@ -19,13 +19,12 @@ public class BuyDAOImpl implements BuyDAO {
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<MyBuyVO> buyList(MemberVO vo) {
+	public List<Map<String,String>> buyList(MemberVO vo) {
 		return mybatis.selectList("buy.mybuyList",vo);
 	}
 
 	@Override
 	public List<Map<String, String>> buyReceipt(String id) {
-		System.out.println(id);
 		return mybatis.selectList("buy.buyReceipt",id);
 	}
 	

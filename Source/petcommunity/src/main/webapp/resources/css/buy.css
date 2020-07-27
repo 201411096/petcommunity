@@ -39,6 +39,7 @@ Table of Content:
 /*=================== fonts ====================*/
 
 
+
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700|Roboto:300,400,500,700");
 .col {
   -ms-flex: 0 0 20%;
@@ -62,13 +63,20 @@ Table of Content:
 	border-bottom: 1px solid #aaaaaa;
 }
 .buy-table tr:last-child{
-	text-align: right;
+	/* text-align: right; */
 	border-bottom: 1px solid #aaaaaa;
+}
+
+[id^='cartListImg']{
+	width : 78px;
+	height : 78px;
 }
 
 .buy-table{
 	width: 90%;
+	text-align: center;
 }
+
 body {
   line-height: 24px;
   font-size: 14px;

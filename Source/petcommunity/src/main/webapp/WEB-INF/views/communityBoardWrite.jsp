@@ -66,7 +66,6 @@
 				<textarea class="form-control" rows="5" name="communityboardContent" id="communityboardContent" placeholder="contents"></textarea>
 			</div>
 			<div class="form-group" id="file-group">
-
 				<ul class="list-group" id="file-list">
 					<li class="list-group-item"> <input type="file" multiple="multiple" name="file" class="file" accept="image/gif, image/jpeg, image/png, image/jpg"/> </li>
 				</ul>

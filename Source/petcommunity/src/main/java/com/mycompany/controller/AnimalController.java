@@ -2,6 +2,7 @@ package com.mycompany.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,11 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.AnimalVO;
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.MemberVO;
+import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.AnimalService;
 import com.mycompany.service.BuyService;
 import com.mycompany.util.FileUpload;
@@ -69,17 +74,44 @@ public class AnimalController {
 	    * 주요 기능 : 마이페이지 클릭시 정보 불러옴
 	    * 함수 내용 : 로그인 후 마이페이지 클릭시 해당 세션에 저장된 값으로 
 	    * 		  animal의 정보와 buy정보를 가져와서 해당 animalId 경로의 이미지를  AnimalVO에  set해줌.
-	    */
-	@RequestMapping(value = "mypageselect.do")
-	public ModelAndView animalSelect(HttpServletRequest req) {
+*/
+	
+	@ResponseBody
+	@RequestMapping(value = "mypageselect.do", produces = "application/json; charset=utf-8")
+	public Map animalSelect(HttpServletRequest req,@RequestParam(defaultValue="1") int curPage) {
+		HttpSession session = req.getSession();
+		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
+
+	//================================================================
+		Map result = new HashMap();
+		Map map = new HashMap();
+		String memberId = mvo.getMemberId();
+		int buyListCount=buyService.buyPaging(memberId);
+		PaginationVO paginationVO = new PaginationVO(buyListCount, curPage);
+		map.put("startRow", paginationVO.getStartIndex()+1);
+		map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
+		map.put("memberId", memberId);
+		
+		List<BuyListVO> list2 =buyService.buyList(map);
+		
+		result.put("pagination", paginationVO);
+		result.put("buyList", list2);
+		result.put("buyListSize",list2.size());
+		result.put("membervo", mvo);
+		
+		System.out.println("컨트롤 연결"+result.get("buyList"));
+		return result;
+
+	}
+	
+	
+	@RequestMapping(value = "mypageAnimal.do")
+	public ModelAndView mypageAnimal(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
 		
 		List<AnimalVO> list = animalService.animalSelect(mvo);
-		
-		List<Map<String,String>> list2=buyService.buyList(mvo);
-		 	 
-		for (AnimalVO i : list) {
+			for (AnimalVO i : list) {
 
 			String directoryPath = req.getSession().getServletContext().getRealPath("resources/imgs") + "/animal/"
 					+ i.getAnimalId();
@@ -93,13 +125,13 @@ public class AnimalController {
 				}
 			}
 		}
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("animalList", list);
-		mv.addObject("buyList", list2); 
-		mv.setViewName("mypage");
-		return mv;
-
+			ModelAndView mv = new ModelAndView(); 
+			mv.addObject("animalList", list);
+			mv.setViewName("mypage");
+			
+			return mv;
 	}
+	
 
 	
 	/* 

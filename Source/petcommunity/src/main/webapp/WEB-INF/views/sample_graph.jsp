@@ -91,11 +91,10 @@
 				</select>
 			</span>
 			<span>
-				<select id="graph_04_chartTime_option">
-					<option selected value="0">시간</option>
-					<option value="1">요일</option>
-					<option value="2">월</option>
-				</select>
+				<input type="date" id="graph_04_startDate">
+			</span>
+			<span>
+				<input type="date" id="graph_04_endDate">
 			</span>
 		</div>
 		<div id="graph_04_container"></div>

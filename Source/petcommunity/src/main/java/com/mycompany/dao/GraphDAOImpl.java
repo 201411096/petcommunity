@@ -27,4 +27,8 @@ public class GraphDAOImpl implements GraphDAO{
 		return mybatis.selectList("graphDAO.makeSalesHistoryChartWithGrouping", map);
 	}
 	
+	@Override
+	public List<Map> makeSalesHistoryChart(Map map) {
+		return mybatis.selectList("graphDAO.makeSalesHistoryChart", map);
+	}
 }

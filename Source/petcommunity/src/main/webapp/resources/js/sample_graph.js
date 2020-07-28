@@ -38,14 +38,21 @@ $('#graph_03_chartTime_option').on('change', function(){
 });
 
 //매출 통계 (특정기간만)
-//var graph_04 = new GraphClass("/petcommunity/makeSalesHistoryChart.do", "graph_04_container", "graph_04", "graph_04");
-//GraphClass.makeChartWithAjax(graph_04);
-//
-//$('#graph_04_chartShape_option').on('change', function(){
-//	graph_04.inputData.chartType=$('#graph_04_chartShape_option').val();
-//	GraphClass.makeChartWithAjax(graph_04)
-//});
-//$('#graph_04_chartTime_option').on('change', function(){
-//	graph_04.inputData.timeOption=$('#graph_04_chartTime_option').val();	
-//	GraphClass.makeChartWithAjax(graph_04)
-//});
+$('#graph_04_startDate').attr('value', (new Date().toISOString().substring(0, 10)));
+$('#graph_04_endDate').attr('value', (new Date().toISOString().substring(0, 10)));
+var graph_04 = new GraphClass("/petcommunity/makeSalesHistoryChart.do", "graph_04_container", "graph_04", "graph_04");
+graph_04.inputData.startDate=$('#graph_04_startDate').val();
+graph_04.inputData.endDate=$('#graph_04_endDate').val();
+GraphClass.makeChartWithAjax(graph_04);
+$('#graph_04_chartShape_option').on('change', function(){
+	graph_04.inputData.chartType=$('#graph_04_chartShape_option').val();
+	GraphClass.makeChartWithAjax(graph_04)
+});
+$('#graph_04_startDate').on('change', function(){
+	graph_04.inputData.startDate=$('#graph_04_startDate').val();	
+	GraphClass.makeChartWithAjax(graph_04)
+});
+$('#graph_04_endDate').on('change', function(){
+	graph_04.inputData.endDate=$('#graph_04_endDate').val();	
+	GraphClass.makeChartWithAjax(graph_04)
+});

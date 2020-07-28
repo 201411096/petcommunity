@@ -13,7 +13,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		String requesturl = request.getRequestURI();
-		System.out.println("preHandle " + requesturl);
+//		System.out.println("preHandle " + requesturl);
 		return super.preHandle(request, response, handler);
 	}
 
@@ -22,7 +22,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 			ModelAndView modelAndView) throws Exception {
 		super.postHandle(request, response, handler, modelAndView);
 		String requesturl = request.getRequestURI();
-		System.out.println("postHandle " + requesturl);
+//		System.out.println("postHandle " + requesturl);
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		super.afterCompletion(request, response, handler, ex);
 		String requesturl = request.getRequestURI();
-		System.out.println("afterCompletion " + requesturl);
+//		System.out.println("afterCompletion " + requesturl);
 	}
 	
 }

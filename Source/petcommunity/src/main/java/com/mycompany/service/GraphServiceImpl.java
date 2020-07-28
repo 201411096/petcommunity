@@ -31,6 +31,10 @@ public class GraphServiceImpl implements GraphService{
 	public List<Map> makeSalesHistoryChart(Map map) {
 		return graphDAO.makeSalesHistoryChart(map);
 	}
-	
+
+	@Override
+	public List<Map> makeSalesHistoryChartGroupByCategory(Map map) {
+		return graphDAO.makeSalesHistoryChartGroupByCategory(map);
+	}
 	
 }

@@ -8,4 +8,5 @@ public interface GraphService {
 	List<Map> getFindGraphFromLostBoard(Map map);
 	List<Map> makeSalesHistoryChartWithGrouping(Map map);
 	List<Map> makeSalesHistoryChart(Map map);
+	List<Map> makeSalesHistoryChartGroupByCategory(Map map);
 }

@@ -56,3 +56,19 @@ $('#graph_04_endDate').on('change', function(){
 	graph_04.inputData.endDate=$('#graph_04_endDate').val();	
 	GraphClass.makeChartWithAjax(graph_04)
 });
+//매출 통계 (품목별)
+var graph_05 = new GraphClass("/petcommunity/makeSalesHistoryChartGroupByCategory.do", "graph_05_container", "graph_05", "graph_05");
+GraphClass.makeChartWithAjax(graph_05);
+
+$('#graph_05_chartShape_option').on('change', function(){
+	graph_05.inputData.chartType=$('#graph_05_chartShape_option').val();
+	GraphClass.makeChartWithAjax(graph_05)
+});
+$('#graph_05_startDate').on('change', function(){
+	graph_05.inputData.startDate=$('#graph_05_startDate').val();	
+	GraphClass.makeChartWithAjax(graph_05)
+});
+$('#graph_05_endDate').on('change', function(){
+	graph_05.inputData.endDate=$('#graph_05_endDate').val();	
+	GraphClass.makeChartWithAjax(graph_05)
+});

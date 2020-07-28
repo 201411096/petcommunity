@@ -456,6 +456,17 @@ public class CommunityController {
 		communityService.writeComment(cvo);//커멘트 달기 완료 후
 		
 		//기존의 글로 다시 돌아감 
+		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/communityboard/"+vo.getCommunityboardId();
+		
+		File dir = new File(directoryPath);
+		File fileList [] = dir.listFiles();
+		ArrayList<File> fileArrayList = new ArrayList<File>();
+		if(fileList!=null) {
+			for(File file : fileList) {
+				fileArrayList.add(file);			
+			}
+		}
+		mv.addObject("boardContentImg", fileArrayList);
 		vo.setCommunityboardId(communityboardId);		
 		mv.addObject("boardContent", communityService.getBoardContent(vo));
 		mv.addObject("boardComment", communityService.getCommentContent(cvo));

@@ -1,4 +1,5 @@
 $(function(){
+	var cities=["서울","인천","대전","광주","대구","울산","부산","세종","경기","강원","충북","충남","전북","전남","경북","경남","제주"];
     var seoul = ["종로구","중구","용산구","성동구","광진구","동대문구","중랑구","성북구","강북구","도봉구","노원구","은평구","서대문구","마포구"
     	,"양천구","강서구","구로구","금천구","영등포구","동작구","관악구","서초구","강남구","송파구","강동구"];
     var incheon = ["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"];
@@ -88,28 +89,65 @@ $(function(){
     
     
     //검색버튼 클릭
-    $('#searchRegion').click(function(){	
-    	listBysearch();
+    $('#searchLocation').click(function(){	
+    	listByLocation();
     });
     //검색버튼 클릭
     $('#searchName').click(function(){
-    	listBysearch();
+    	listBySearch();
     });
 });    
  
-var listBysearchWithPaging = {
+var listByLocationWithPaging = {
 	    visiblePages : 5,
 	    onPageClick: function (event, page) {
 	    	$('#page-content').text('Page ' + page);
 	    	    curPage=page;
-	    	    listBysearch2();         
+	    	    listByLocation();         
 	}
 };
 
 
+var listBySearchWithPaging = {
+	    visiblePages : 5,
+	    onPageClick: function (event, page) {
+	    	$('#page-content').text('Page ' + page);
+	    	    curPage=page;
+	    	    listBySearch();         
+	}
+};
 
+function listByLocation(){
 
-function listBysearch(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/getFindHospitalListByLocation.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		dataType : 'json',
+		data:{
+			cityName : $('#cityName').val(),
+			province : $('#province').val()
+		},
+		success : function(resultData){		
+			drawTable(resultData);
+			$('#NormalPaging').empty();
+			 var totalPages = resultData.pagination.pageCnt;
+	         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
+	            $('#pagination-demo').twbsPagination('destroy');
+	            $('#pagination-demo').twbsPagination($.extend({}, listByLocationWithPaging, {
+	                startPage: currentPage,
+	                totalPages: totalPages
+	            }));
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}
+		
+	});
+}
+
+function listBySearch(){
 	$.ajax({
 		type : 'post',
 		async:true,
@@ -120,12 +158,12 @@ function listBysearch(){
 			},
 		dataType : 'json',
 		success : function(resultData){		
-				searchTable(resultData);
+				drawTable(resultData);
 				$('#NormalPaging').empty();
 				 var totalPages = resultData.pagination.pageCnt;
 		         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
 		            $('#pagination-demo').twbsPagination('destroy');
-		            $('#pagination-demo').twbsPagination($.extend({}, listBysearchWithPaging, {
+		            $('#pagination-demo').twbsPagination($.extend({}, listBySearchWithPaging, {
 		                startPage: currentPage,
 		                totalPages: totalPages
 		            }));
@@ -136,29 +174,6 @@ function listBysearch(){
 		
 	});
 }
-
-
-function listBysearch2(){
-	$.ajax({
-		type : 'post',
-		async:true,
-		url : '/petcommunity/getFindHospitalListByLocation.do',
-		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data:{"searchWord" : $('#keywordInput').val(),
-			"curPage" : curPage
-		},
-		dataType : 'json',
-		success : function(resultData){		
-			searchTable(resultData);
-			
-		},
-		error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-		
-	});
-}
-
 
 
 var curPage;
@@ -173,17 +188,11 @@ var defaultOpts = {
 
 $(function(){
 	getData();
-	getDataWithoutPaging();
 	autoCompleteFunc();
 	autoCompleteFuncForMap();
 	documentPreventKeyDown();
-	searchWordEventHandler();
 	searchForMapEventHandler();
 });
-	
-function searchForMapEventHandler(){
-	$('#locationForSearch').on('keydown', getDataWithoutPaging);
-}
 
 function documentPreventKeyDown(){
 	document.addEventListener('keydown', function(event) {
@@ -192,16 +201,6 @@ function documentPreventKeyDown(){
 		  };
 		}, true);
 }
-
-
-function searchWordEventHandler(){
-	$('#keywordInput').on('keydown', function(e){
-		if(e.keyCode === 13){
-			$('#searchBtn').click();
-		}
-	});
-}
-
 
 function autoCompleteFunc(){
 	$('#keywordInput').autocomplete({
@@ -348,8 +347,19 @@ function drawTable(data){
 }
 
 
+
+
+var latitude = $('#findHospitalX').val();
+var longitude = $('#findHospitalY').val();
+var findHospitalLocation = $('#findHospitalLocation').val();
+
+
+
 $(function() {
 	kakaoMapAPI();
+	$('#listButton').on('click', function(){
+		location.href='/petcommunity/findHospitallist.do';
+	});
 });
 
 function kakaoMapAPI() {
@@ -366,11 +376,23 @@ function kakaoMapAPI() {
 	// 지도를 클릭한 위치에 표출할 마커입니다
 	var marker = new kakao.maps.Marker({ 
 	    // 지도 중심좌표에 마커를 생성합니다 
-	    //position: map.getCenter() 
+	    position: map.getCenter() 
 	});
 	
 	// 지도에 마커를 표시합니다
 	marker.setMap(map);
+	
+	var iwContent = '<div class="alert alert-light">'+ findHospitalLocation +'</div>'
+    iwPosition = new kakao.maps.LatLng(latitude, longitude); //인포윈도우 표시 위치입니다
+	
+	// 인포윈도우를 생성합니다
+	var infowindow = new kakao.maps.InfoWindow({
+	    position : iwPosition, 
+	    content : iwContent 
+	});
+	
+	// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+	infowindow.open(map, marker);
 	
 	// 주소-좌표 변환 객체를 생성합니다
 	var geocoder = new kakao.maps.services.Geocoder();
@@ -385,6 +407,8 @@ function kakaoMapAPI() {
 	// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 	var zoomControl = new kakao.maps.ZoomControl();
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);	
+	
+	
 	
 	// 지도 클릭 이벤트
 	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        

@@ -4,8 +4,8 @@ $(function(){
 	//댓글 삭제 이벤트
 	$("#delete").on("click", function(){
 		confirm("삭제하시겠습니까?");
-		writerId = $(this).prev().prev().attr("value");
-		productId = $(this).prev().prev().prev().attr("value");
+		writerId = $(this).prev().attr("value");
+		productId = $(this).prev().prev().attr("value");
 		/*modifyReview();*/
 		/*$("#btn_modify").css("display", "block");
 		$("#btn_reviewSubmit").css("display", "none");*/
@@ -32,7 +32,6 @@ $(function(){
 	// 별점 입력 이벤트
 	$('#starScoreDiv span').click(function(){
 		starScore = $(this).attr("value");
-		alert("평점 "+starScore+" 선택");
         $(this).parent().children("span").removeClass("fa-star-o");  /* 별점의 fa-star-o 클래스 전부 제거 */ 
         $(this).nextAll("span").addClass("fa-star-o"); /* 클릭한 별과, 그 앞 까지 별점에 fa-star-o 클래스 추가 */
         return false;

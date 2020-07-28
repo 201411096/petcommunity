@@ -34,6 +34,25 @@ from FINDHOSPITAL
 where SUBSTR(findhospital_address,1,2)=#{cityName} and SUBSTR(findhospital_address,4,2) = #{province}
 </select>
 
+<select id="getFindHospitalListByLocationWithPaging" parameterType="hashmap" resultType="findHospital">
+select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
+from (
+	select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour, ROWNUM AS RNUM
+	from
+		(select findhospital_name, findhospital_tel, findhospital_address, findhospital_openhour
+			from findhospital
+			where SUBSTR(findhospital_address,1,2)=#{cityName} and SUBSTR(findhospital_address,4,2) = #{province}
+		)
+	)
+<![CDATA[
+where RNUM>=#{startRow} and RNUM<=#{endRow}
+]]>
+
+</select>
+
+
+
+
 <!--병원명, 검색어 typing해서 검색-->
 <select id="getFindHospitalListBySearch" parameterType="hashmap" resultType="findHospital">
 

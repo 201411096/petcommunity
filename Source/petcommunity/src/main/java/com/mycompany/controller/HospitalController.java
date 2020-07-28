@@ -55,7 +55,7 @@ public class HospitalController {
 	// 지역별로 선택된 동물 병원 리스트 가져오기	
 	@ResponseBody
 	@RequestMapping("/getFindHospitalListByLocation.do")
-	public Map getFindHospitalListByLocation(int curPage, FindHospitalVO vo, HttpServletRequest request, ModelAndView mv ){
+	public Map getFindHospitalListByLocation(@RequestParam(defaultValue="1") int curPage, FindHospitalVO vo, HttpServletRequest request, ModelAndView mv ){
 		System.out.println("지역별로 검색하기");
 		String cityName = request.getParameter("cityName");
 		String province = request.getParameter("province");
@@ -67,17 +67,23 @@ public class HospitalController {
 		Map locationMap = new HashMap();
 		PaginationVO paginationVO = new PaginationVO(findHospitalService.getFindHospitalListByLocation(vo).size(), curPage,10);
 		
+		System.out.println(findHospitalService.getFindHospitalListByLocation(vo).size());
+		
 		paginationVO.setRangeSize(10);
 		locationMap.put("startRow", paginationVO.getStartIndex()+1);
 		locationMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		locationMap.put("cityName", cityName);
 		locationMap.put("province", province.substring(0,2));
 		
+		Map searchMap = null;
 		List<FindHospitalVO> getFindHospitalListByLocationWithPaging = findHospitalService.getFindHospitalListByLocationWithPaging(locationMap);
+		System.out.println(getFindHospitalListByLocationWithPaging);
 		Map result = new HashMap();
 		
 		result.put("pagination", paginationVO);
-		result.put("getFindHospitalListByLocationWithPaging", getFindHospitalListByLocationWithPaging);
+		result.put("findHospitalVOList", getFindHospitalListByLocationWithPaging);
+		result.put("findHospitalVOListSize", getFindHospitalListByLocationWithPaging.size());
+//		result.put("findHospitalListByLocation", getFindHospitalListByLocationWithPaging);
 		
 		return result;
 	}
@@ -106,7 +112,8 @@ public class HospitalController {
 		System.out.println(getFindHospitalListBySearch);
 		Map result = new HashMap();
 		result.put("pagination", paginationVO);
-		result.put("getFindHospitalListBySearch", getFindHospitalListBySearch);
+		result.put("findHospitalVOList", getFindHospitalListBySearch);
+		result.put("findHospitalVOListSize", getFindHospitalListBySearch.size());
 
 		return result;
 	
@@ -137,15 +144,11 @@ public class HospitalController {
 		Map searchMap = new HashMap();
 		searchMap.put("searchWord", searchWord);
 		List<String> stringList = findHospitalService.selectString(searchMap);
-		List<String> stringList2 = findHospitalService.selectString(searchMap);
-		if(stringList!=null || stringList2!=null) {
-			String[] array = new String[stringList.size() + stringList2.size()];
+	
+		if(stringList!=null) {
+			String[] array = new String[stringList.size()];
 			for(int i=0; i< stringList.size(); i++) {
 				array[i] = stringList.get(i);
-
-			}
-			for(int i=0; i<stringList2.size(); i++) {
-				array[stringList.size()+i] = stringList2.get(i);
 			}
 			Gson gson = new Gson();
 			return gson.toJson(array);

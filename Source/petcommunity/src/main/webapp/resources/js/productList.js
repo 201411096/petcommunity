@@ -11,7 +11,7 @@ var defaultOpts = {
 
 $(function(){
 	searchAutoComplete();
-	tagCategory="test";
+	tagCategory="all";
 	getData(tagCategory);
 	$('.tagCategory').on('click', function(){
 		tagCategory = $(this).attr( 'value' );
@@ -121,7 +121,7 @@ function drawProductTable(data){
 	var a1 = '<a href="/petcommunity/productView.do?productId=';
 	var a2 = '">';
 	var divPrefix2 = '<div class="artists-item">';
-	var img1 = '<img src="./resources/imgs/product_image/pawInHand/';
+	var img1 = '<img src="./resources/imgs/product_image/internal/product_image/';
 	var img2 = '.jpg" alt="">';
 	var h41 = '<h4>';
 	var h42 = '</h4>';

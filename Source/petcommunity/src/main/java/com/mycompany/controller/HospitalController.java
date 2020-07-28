@@ -144,15 +144,11 @@ public class HospitalController {
 		Map searchMap = new HashMap();
 		searchMap.put("searchWord", searchWord);
 		List<String> stringList = findHospitalService.selectString(searchMap);
-		List<String> stringList2 = findHospitalService.selectString(searchMap);
-		if(stringList!=null || stringList2!=null) {
-			String[] array = new String[stringList.size() + stringList2.size()];
+	
+		if(stringList!=null) {
+			String[] array = new String[stringList.size()];
 			for(int i=0; i< stringList.size(); i++) {
 				array[i] = stringList.get(i);
-
-			}
-			for(int i=0; i<stringList2.size(); i++) {
-				array[stringList.size()+i] = stringList2.get(i);
 			}
 			Gson gson = new Gson();
 			return gson.toJson(array);

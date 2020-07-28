@@ -17,8 +17,7 @@
 <!-- Main css -->
 <link rel="stylesheet"
    href="./resources/bootstrap_template/template_01/css2/style.css">
-<link rel="stylesheet"
-   href="./resources/css/mypage.css">
+
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 </head>

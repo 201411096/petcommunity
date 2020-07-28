@@ -28,4 +28,21 @@
 		    )
 		) group by day order by day
 	</select>
+	<select id="makeSalesHistoryChartGroupByCategory" resultType="map" parameterType="map">
+	select * from
+	    (
+	        select price, feature, rownum from
+	            (
+	                select price, feature from(
+	                    select sum(buylist_totalprice) as price, product_feature as feature 
+	                    from buylistview
+	                    <![CDATA[
+	                    where buylist_date >= to_date(#{startDate}, 'yymmddhh24miss') and buylist_date <= to_date(#{endDate}, 'yymmddhh24miss')
+	                    ]]>
+	                    group by product_feature
+	                ) order by price desc
+	             
+	            )<!-- 	            <![CDATA[ where rownum<=2 ]]> --> 
+	    ) order by feature asc
+	</select>
 </mapper>

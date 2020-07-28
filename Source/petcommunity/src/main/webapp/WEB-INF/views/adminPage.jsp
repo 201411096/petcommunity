@@ -29,23 +29,20 @@
 
 			<div id="tab-1" class="tab-content current">
 				<div class="search row">
-					<div class="col-xs-2 col-sm-2">
-						<select name="type" class="form-control" id='type'>
-
-							<option>제목</option>
-							<option>내용</option>
-							<option>작성자</option>
-
-						</select>
-					</div>
 
 					<div class="col-xs-10 col-sm-10">
-						<div class="input-group">
-							<input type="text" name="keyWord" class='form-control'
-								id="keywordadmin" /> <span class="input-admin-btn"> <input
-								id="searchBtn" type="submit" class="btn btn-default" value="검색">
-							</span>
-						</div>
+						<form action="/petcommunity/datesearch.do" id="datesearchForm"
+							method="post">
+							<div class="input-group">
+								<input type="date" name="startDate" class='form-control' id="startdate" /> 
+								<input type="date" name="endDate" class='form-control' id="endDate" /> 
+									</div>
+								<span class="input-admin-btn"> 
+									<input id="searchBtn"
+									type="submit" class="btn btn-default" value="검색">
+								</span>
+						
+						</form>
 					</div>
 					<br>
 					<table class="mypage-table">
@@ -56,21 +53,21 @@
 							<col style="width: 20%" />
 						</colgroup>
 						<thead>
-							<tr>
-								<td>주문날짜</td>
-								<td>상품명</td>
-								<td>수량</td>
-								<td>가격</td>
+							<tr id="title">
+								<th>주문날짜</th>
+								<th>상품명</th>
+								<th>수량</th>
+								<th>가격</th>
 
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${productvoList}" var="sale">
+							<c:forEach items="${salesList}" var="item">
 								<tr>
-									<td>날짜</td>
-									<td><a href="sdf.do">${sale.productName}</a></td>
-									<td>${sale.productPrice}</td>
-									<td>${sale.productCnt}원</td>
+									<td>${item.buylistDate}</td>
+									<td><a href="sdf.do">${item.productName}</a></td>
+									<td>${item.buyCnt}</td>
+									<td>${item.buyTotalprice}</td>
 								</tr>
 							</c:forEach>
 						</tbody>

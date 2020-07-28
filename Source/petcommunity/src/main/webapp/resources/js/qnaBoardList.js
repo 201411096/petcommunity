@@ -10,13 +10,9 @@ var defaultOpts={
 
 getData();
 $('#searchBtn').on('click', function(){
-	console.log('ii');
 	getData();
 	
 });
-	
-
-
 
 function getDataInpaging(){
 	$.ajax({

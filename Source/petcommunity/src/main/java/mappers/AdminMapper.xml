@@ -4,9 +4,19 @@
 
 <mapper namespace="admin">
 
-	<select id="adminselectList" resultType="product">
-	select PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_CNT
-		from product
+	<select id="adminselectList" resultType="buylistview">
+		SELECT BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE
+		FROM BUYLISTVIEW
 	</select>
 	
+	<select id="getSearchDate" parameterType="map" resultType="buylistview">
+		select BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE
+		from BUYLISTVIEW
+	<![CDATA[
+         WHERE BUYLIST_DATE >= to_date(#{startDate},'YYYY-MM-DD')
+          AND BUYLIST_DATE <= to_date(#{endDate},'YYYY-MM-DD')
+          ]]> 
+	</select>
+	
+
 </mapper>

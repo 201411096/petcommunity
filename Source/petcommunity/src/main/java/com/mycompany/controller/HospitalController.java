@@ -106,7 +106,8 @@ public class HospitalController {
 		System.out.println(getFindHospitalListBySearch);
 		Map result = new HashMap();
 		result.put("pagination", paginationVO);
-		result.put("getFindHospitalListBySearch", getFindHospitalListBySearch);
+		result.put("findHospitalVOList", getFindHospitalListBySearch);
+		result.put("findHospitalVOListSize", getFindHospitalListBySearch.size());
 
 		return result;
 	

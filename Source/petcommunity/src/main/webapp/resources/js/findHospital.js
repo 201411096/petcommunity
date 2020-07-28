@@ -112,7 +112,7 @@ var listBySearchWithPaging = {
 	    onPageClick: function (event, page) {
 	    	$('#page-content').text('Page ' + page);
 	    	    curPage=page;
-	    	    listBySearch();         
+	    	    listBySearch1();         
 	}
 };
 
@@ -130,9 +130,6 @@ function listByLocation(){
 	    }
 	getListByLocation();
 	
-	
-	
-	
 	$.ajax({
 		type : 'post',
 		async:true,
@@ -143,8 +140,7 @@ function listByLocation(){
 		},
 		dataType : 'json',
 		success : function(resultData){		
-			searchTable(resultData);
-			
+			drawTable(resultData);			
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -164,7 +160,7 @@ function listBySearch(){
 			},
 		dataType : 'json',
 		success : function(resultData){		
-				searchTable(resultData);
+				drawTable(resultData);
 				$('#NormalPaging').empty();
 				 var totalPages = resultData.pagination.pageCnt;
 		         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
@@ -173,6 +169,26 @@ function listBySearch(){
 		                startPage: currentPage,
 		                totalPages: totalPages
 		            }));
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}
+		
+	});
+}
+function listBySearch(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/getFindHospitalListBySearch.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data:{"searchWord" : $('#keywordInput').val(),
+			"curPage" : curPage
+		},
+		dataType : 'json',
+		success : function(resultData){		
+			drawTable(resultData);
+			
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -194,7 +210,6 @@ var defaultOpts = {
 
 $(function(){
 	getData();
-	getDataWithoutPaging();
 	autoCompleteFunc();
 	autoCompleteFuncForMap();
 	documentPreventKeyDown();

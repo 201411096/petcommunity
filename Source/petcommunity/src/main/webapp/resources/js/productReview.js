@@ -4,8 +4,8 @@ $(function(){
 	//댓글 삭제 이벤트
 	$("#delete").on("click", function(){
 		confirm("삭제하시겠습니까?");
-		writerId = $(this).prev().prev().attr("value");
-		productId = $(this).prev().prev().prev().attr("value");
+		writerId = $(this).prev().attr("value");
+		productId = $(this).prev().prev().attr("value");
 		/*modifyReview();*/
 		/*$("#btn_modify").css("display", "block");
 		$("#btn_reviewSubmit").css("display", "none");*/

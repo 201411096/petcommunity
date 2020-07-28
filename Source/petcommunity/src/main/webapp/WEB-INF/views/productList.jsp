@@ -51,14 +51,24 @@
 			<br/>
 		<div id="ul-div">
 			<ul class="product-filter-menu">
-				<li><a href="#" name="tagCategory" class="tagCategory" value="test2">test2</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="test">test</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="폰케이스">폰케이스</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="패션">패션</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="악세서리">악세서리</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="반려용품">반려용품</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="매거진">매거진</a></li>
-				<li><a href="#" name="tagCategory" class="tagCategory" value="기타 잡화">기타 잡화</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="all">전체</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="퍼피용">퍼피용</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="성견용">성견용</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="전연령">전연령</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="노견용">노견용</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="소형견용">소형견용</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="대형견용">대형견용</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="비만견용">비만견용</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="임신/수유견">임신/수유견</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="그레인프리 사료">그레인프리 사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="뼈관절 사료">뼈관절 사료 잡화</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="피부모질 사료">피부모질 사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="기타 기능성 사료">기타 기능성 사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="위장개선 사료">위장개선 사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="대포장사료">대포장사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="저알러지 사료">저알러지 사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="소프트 사료">소프트 사료</a></li>
+				<li><a href="#" name="tagCategory" class="tagCategory" value="오븐에구운사료">오븐에구운사료</a></li>
 			</ul>
 		</div>
 			<!-- Product filter section -->

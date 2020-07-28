@@ -87,7 +87,8 @@ public class AnimalController {
 		Map map = new HashMap();
 		String memberId = mvo.getMemberId();
 		int buyListCount=buyService.buyPaging(memberId);
-		PaginationVO paginationVO = new PaginationVO(buyListCount, curPage);
+		PaginationVO paginationVO = new PaginationVO(buyListCount, curPage,5);
+		paginationVO.setRangeSize(5);
 		map.put("startRow", paginationVO.getStartIndex()+1);
 		map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		map.put("memberId", memberId);

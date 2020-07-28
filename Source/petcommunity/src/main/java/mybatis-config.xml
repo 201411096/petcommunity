@@ -40,6 +40,8 @@
 
 		<typeAlias alias="productReview" type="com.mycompany.domain.ProductreviewVO"></typeAlias>
 		
+		<typeAlias alias="buylistview" type="com.mycompany.domain.BuylistviewVO"></typeAlias>
+		
    </typeAliases>
    
    

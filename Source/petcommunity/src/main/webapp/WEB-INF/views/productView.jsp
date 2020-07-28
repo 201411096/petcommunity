@@ -321,7 +321,7 @@
 <!-- 									</li> -->
 <!-- 								</ul> -->
 								
-								<p>리뷰 내용</p>
+								<p>리뷰 내용</p><p style="font-size:11px; color:gray"> (1000자 이내)</p>
 								<!-- <form class="row contact_form" action="/petcommunity/insertProductReview.do" method="post" id="contactForm" novalidate="novalidate"> -->
 <!-- 									<div class="col-md-12"> -->
 <!-- 										<div class="form-group"> -->

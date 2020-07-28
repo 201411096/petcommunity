@@ -122,7 +122,7 @@ function drawShopTable(data){
 	var a1 = '<a href="';
 	var a2 = '" target="_blank">';
 	var divPrefix2 = '<div class="artists-item">';
-	var img1 = '<img src="./resources/imgs/product_image/pawInHand/';
+	var img1 = '<img src="./resources/imgs/product_image/external/pawInHand/';
 	var img2 = '.jpg" alt="">';
 	var h41 = '<h4>';
 	var h42 = '</h4>';

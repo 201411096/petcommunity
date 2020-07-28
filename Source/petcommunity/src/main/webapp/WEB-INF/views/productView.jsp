@@ -83,7 +83,7 @@
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_product_img">
-						<img src="./resources/imgs/product_image/pawInHand/${productInfo.productName}.jpg">
+						<img src="./resources/imgs/product_image/internal/product_image/${productInfo.productName}.jpg" style='height:100%; width:100%; object-fit:contain;'>
 					</div>
 				</div>
 				<!-- 제품 상세내역 -->
@@ -229,7 +229,7 @@
 											<img src="resources/imgs/review_thumbnail/thumbnail_reivew.jpg" style="width: 60px; height:60px;" alt="썸네일">
 										</div>
 										<div class="media-body">
-											
+											<p>${reviewList.productreviewUploadtime}</p>
 											<h4>${reviewList.memberId}&nbsp&nbsp&nbsp&nbsp
 											<input type="hidden" id="product_id" value="${reviewList.productId}"/>
 											<input type="hidden" id="writerId" value="${reviewList.memberId}"/>

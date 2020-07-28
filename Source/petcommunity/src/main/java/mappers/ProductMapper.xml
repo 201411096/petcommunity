@@ -18,7 +18,7 @@
 				PRODUCT_PRICE, PRODUCT_CNT, PRODUCT_FEATURE, 
 				PRODUCT_CONTENT
 				FROM PRODUCT 
-				<if test="!tagCategory.equals('test')">
+				<if test="!tagCategory.equals('all')">
 					where product_name like '%'||#{tagCategory}||'%' or product_feature like '%'||#{tagCategory}||'%'
 				</if>
 				order by product_name desc

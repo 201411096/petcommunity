@@ -8,8 +8,8 @@
 		WHERE PRODUCT_ID=#{productId} AND MEMBER_ID=#{memberId}
 	</select>
 	<insert id="insertReview" parameterType="hashmap">
-		insert into PRODUCTREVIEW(PRODUCTREVIEW_ID, PRODUCTREVIEW_CONTENT, PRODUCTREVIEW_SCORE, MEMBER_ID, PRODUCT_ID) 
-		values(PRODUCTREVIEW_ID_SEQ.nextval, #{productreviewContent}, #{productreviewScore}, #{memberId}, #{productId})
+		insert into PRODUCTREVIEW(PRODUCTREVIEW_ID, PRODUCTREVIEW_CONTENT, PRODUCTREVIEW_SCORE, MEMBER_ID, PRODUCT_ID, PRODUCTREVIEW_UPLOADTIME) 
+		values(PRODUCTREVIEW_ID_SEQ.nextval, #{productreviewContent}, #{productreviewScore}, #{memberId}, #{productId}, sysdate)
 	</insert>
 	<select id="selectListReview" parameterType="hashmap" resultType="productReview">
 		select *
@@ -32,7 +32,7 @@
 	<select id="selectReviewByTagWithPaging" parameterType="hashmap" resultType="productReview">
 		select *
     	from(
-        	select ROWNUM AS RNUM, PRODUCTREVIEW_ID, PRODUCTREVIEW_CONTENT, PRODUCTREVIEW_SCORE, MEMBER_ID, PRODUCT_ID
+        	select ROWNUM AS RNUM, PRODUCTREVIEW_ID, PRODUCTREVIEW_CONTENT, PRODUCTREVIEW_SCORE, MEMBER_ID, PRODUCT_ID, PRODUCTREVIEW_UPLOADTIME
 			from(
 				select *
 				from productreview

@@ -1,6 +1,8 @@
 package com.mycompany.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -139,15 +141,25 @@ public class GraphController {
 		if(inputData.get("chartType")==null) {
 			inputData.put("chartType", "line");
 		}
-		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", ""));
-		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", ""));
-		//graphOption.put("endDate", inputData.get("endDate"));
+		if(inputData.get("timeOption")==null) {
+			inputData.put("timeOption", "2");
+		}
+		if(inputData.get("startDate")=="" || inputData.get("startDate")==null || inputData.get("endDate")=="" || inputData.get("endDate")==null) {
+			SimpleDateFormat format1 = new SimpleDateFormat ( "yyyyMMddHHmmss");				
+			Date time = new Date();
+			String strTime = format1.format(time);
+			inputData.put("startDate", strTime.substring(0, 8)+"000000");
+			inputData.put("endDate", Integer.toString(Integer.parseInt(strTime.substring(0, 8))+1)+"000000");
+		}
+		String timeOptionArray [] = {"YYYYMMDDHH24MISS", "YYYYMMDDHH24MI", "YYYYMMDDHH24", "YYYYMMDD", "YYYYMM", "YYYY"};
+		graphOption.put("timeOption", timeOptionArray[Integer.parseInt((String)inputData.get("timeOption"))]);
+		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));
+		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));		
 		List<Map> selectList = graphService.makeSalesHistoryChart(graphOption);
 		List<Map> dataList = new ArrayList();
 		for(int i=0; i<selectList.size(); i++) {
 			HashMap data = new HashMap();
 			data.put("name", selectList.get(i).get("DAY"));
-			System.out.println(selectList.get(i).get("DAY"));
 			data.put("value", selectList.get(i).get("PRICE"));
 			dataList.add(data);
 		}

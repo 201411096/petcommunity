@@ -55,7 +55,7 @@
 						</select>
 										
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" id='searchRegion'>지역별 검색
+							<button type="button" class="btn btn-default" id='searchLocation'>지역별 검색
 							</button>
 						</span>
 			</div>

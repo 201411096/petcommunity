@@ -6,7 +6,14 @@ public class ProductreviewVO {
 	private int productreviewScore;
 	private String memberId;
 	private int productId;
+	private String productreviewUploadtime;
 	
+	public String getProductreviewUploadtime() {
+		return productreviewUploadtime;
+	}
+	public void setProductreviewUploadtime(String productreviewUploadtime) {
+		this.productreviewUploadtime = productreviewUploadtime;
+	}
 	public int getProductreviewId() {
 		return productreviewId;
 	}

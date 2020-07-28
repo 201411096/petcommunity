@@ -83,7 +83,7 @@
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_product_img">
-						<img src="./resources/imgs/product_image/pawInHand/${productInfo.productName}.jpg">
+						<img src="./resources/imgs/product_image/internal/product_image/${productInfo.productName}.jpg" style='height:100%; width:100%; object-fit:contain;'>
 					</div>
 				</div>
 				<!-- 제품 상세내역 -->
@@ -229,7 +229,7 @@
 											<img src="resources/imgs/review_thumbnail/thumbnail_reivew.jpg" style="width: 60px; height:60px;" alt="썸네일">
 										</div>
 										<div class="media-body">
-											
+											<p>${reviewList.productreviewUploadtime}</p>
 											<h4>${reviewList.memberId}&nbsp&nbsp&nbsp&nbsp
 											<input type="hidden" id="product_id" value="${reviewList.productId}"/>
 											<input type="hidden" id="writerId" value="${reviewList.memberId}"/>
@@ -321,7 +321,7 @@
 <!-- 									</li> -->
 <!-- 								</ul> -->
 								
-								<p>리뷰 내용</p>
+								<p>리뷰 내용</p><p style="font-size:11px; color:gray"> (1000자 이내)</p>
 								<!-- <form class="row contact_form" action="/petcommunity/insertProductReview.do" method="post" id="contactForm" novalidate="novalidate"> -->
 <!-- 									<div class="col-md-12"> -->
 <!-- 										<div class="form-group"> -->

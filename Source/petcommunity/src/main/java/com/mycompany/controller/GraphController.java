@@ -1,6 +1,8 @@
 package com.mycompany.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,7 @@ public class GraphController {
 		result.put("dataSize", dataList.size());
 		return result;
 	}
+	//실종동물 요일, 시간별 통계 (group by)
 	@RequestMapping(value = "/lostGraph.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map makeLostGraph(@RequestBody HashMap inputData) {
@@ -66,7 +69,7 @@ public class GraphController {
 		result.put("dataSize", dataList.size());
 		return result;
 	}
-	
+	//찾은동물 요일, 시간별 통계 (group by)
 	@RequestMapping(value = "/findGraphFromLostBoard.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map makeFindGraphFromLostBOard(@RequestBody HashMap inputData) {
@@ -98,7 +101,7 @@ public class GraphController {
 		result.put("dataSize", dataList.size());
 		return result;
 	}
-	
+	//매출 통계 (group by)
 	@RequestMapping(value = "/makeSalesHistoryChartWithGrouping.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map makeSalesHistoryChartWithGrouping(@RequestBody HashMap inputData) {
@@ -130,7 +133,7 @@ public class GraphController {
 		result.put("dataSize", dataList.size());
 		return result;
 	}
-	
+	//매출 통계 (grouping x)
 	@RequestMapping(value = "/makeSalesHistoryChart.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map makeSalesHistoryChart(@RequestBody HashMap inputData) {
@@ -139,15 +142,31 @@ public class GraphController {
 		if(inputData.get("chartType")==null) {
 			inputData.put("chartType", "line");
 		}
-		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", ""));
-		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", ""));
-		//graphOption.put("endDate", inputData.get("endDate"));
+		if(inputData.get("timeOption")==null) {
+			inputData.put("timeOption", "2");
+		}
+		if(inputData.get("startDate")=="" || inputData.get("startDate")==null) {
+			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
+			Date time = new Date();
+			String strTime = format.format(time);
+			inputData.put("startDate", strTime.substring(0, 8)+"000000");
+		}
+		if(inputData.get("endDate")=="" || inputData.get("endDate")==null) {
+			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
+			Date time = new Date();
+			String strTime = format.format(time);
+			//inputData.put("endDate", Integer.toString(Integer.parseInt(strTime.substring(0, 8))+1)+"000000");
+			inputData.put("endDate", strTime.substring(0, 8)+"235959");
+		}
+		String timeOptionArray [] = {"YYYYMMDDHH24MISS", "YYYYMMDDHH24MI", "YYYYMMDDHH24", "YYYYMMDD", "YYYYMM", "YYYY"};
+		graphOption.put("timeOption", timeOptionArray[Integer.parseInt((String)inputData.get("timeOption"))]);
+		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));
+		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));		
 		List<Map> selectList = graphService.makeSalesHistoryChart(graphOption);
 		List<Map> dataList = new ArrayList();
 		for(int i=0; i<selectList.size(); i++) {
 			HashMap data = new HashMap();
 			data.put("name", selectList.get(i).get("DAY"));
-			System.out.println(selectList.get(i).get("DAY"));
 			data.put("value", selectList.get(i).get("PRICE"));
 			dataList.add(data);
 		}
@@ -155,5 +174,6 @@ public class GraphController {
 		result.put("data", dataList);
 		result.put("dataSize", dataList.size());
 		return result;
-	}
+	}	
+	
 }

@@ -80,6 +80,10 @@
 				<div id="map">
 				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  -->
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services"></script>	
+					<input type="hidden" id="findHospitalX" name="findHospitalX" value="${findHospitalList.findHospitalX}">
+					<input type="hidden" id="findHospitalY" name="findHospitalY" value="${findHospitalList.findHospitalY}">
+					<input type="hidden" id="findHospitalLocation" name="findHospitalLocation" value="${findHospitalList.findHospitalLocation}">
+				
 				</div>
 			</div>
 	
@@ -96,15 +100,7 @@
 						</tr>
 					</thead>
 					<tbody id="findHospitalTbody">
-					<!--
-					<c:forEach items="${findHospitalList}" var = "findHospitalList">
-						<tr>
-							<td>${findHospitalList.findhospitalName}</td>
-							<td>${findHospitalList.findhospitalTel}</td>
-							<td>${findHospitalList.findhospitalAddress}</td>
-							<td>${findHospitalList.findhospitalOpenhour}</td>
-						</tr>				
-					</c:forEach> -->
+	
 					</tbody>
 				</table>
 			</form>

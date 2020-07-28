@@ -135,13 +135,17 @@ function listByLocation(){
 		url : '/petcommunity/getFindHospitalListByLocation.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
 		dataType : 'json',
+		data:{
+			cityName : $('#cityName').val(),
+			province : $('#province').val()
+		},
 		success : function(resultData){		
 			drawTable(resultData);
 			$('#NormalPaging').empty();
 			 var totalPages = resultData.pagination.pageCnt;
 	         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
 	            $('#pagination-demo').twbsPagination('destroy');
-	            $('#pagination-demo').twbsPagination($.extend({}, listBysearchWithPaging, {
+	            $('#pagination-demo').twbsPagination($.extend({}, listByLocationWithPaging, {
 	                startPage: currentPage,
 	                totalPages: totalPages
 	            }));
@@ -169,7 +173,7 @@ function listBySearch(){
 				 var totalPages = resultData.pagination.pageCnt;
 		         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
 		            $('#pagination-demo').twbsPagination('destroy');
-		            $('#pagination-demo').twbsPagination($.extend({}, listBysearchWithPaging, {
+		            $('#pagination-demo').twbsPagination($.extend({}, listBySearchWithPaging, {
 		                startPage: currentPage,
 		                totalPages: totalPages
 		            }));

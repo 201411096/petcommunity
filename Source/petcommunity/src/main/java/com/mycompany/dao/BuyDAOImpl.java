@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.ProductCartVO;
 
@@ -20,8 +21,8 @@ public class BuyDAOImpl implements BuyDAO {
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<Map<String,String>> buyList(MemberVO vo) {
-		return mybatis.selectList("buy.mybuyList",vo);
+	public List<BuyListVO> buyList(Map map) {
+		return mybatis.selectList("buy.mybuyList",map);
 	}
 
 	@Override
@@ -40,7 +41,7 @@ public class BuyDAOImpl implements BuyDAO {
 		HashMap map2 = new HashMap();
 		for(ProductCartVO i :cartList) {
 			map2.put("cnt", i.getBuycartlistCnt());
-			map2.put("price", i.getProductPrice());
+			map2.put("price", Integer.parseInt(i.getProductPrice())*Integer.parseInt(i.getBuycartlistCnt()));
 			map2.put("productId", i.getProductId());
 			map2.put("buyListId",map.get("buyListId"));
 
@@ -48,6 +49,12 @@ public class BuyDAOImpl implements BuyDAO {
 		
 		mybatis.delete("buy.deleteCart",map);
 		}
+	}
+
+	@Override
+	public int buyPaging(String memberId) {
+		
+		return mybatis.selectOne("buy.buyPaging", memberId);
 	}
 	
 }

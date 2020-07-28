@@ -101,11 +101,9 @@
 				</select>
 			</span>
 			<span>
-<!-- 				<input type="date" id="graph_04_startDate"> -->
 				<input type="datetime-local" id="graph_04_startDate">
 			</span>
 			<span>
-<!-- 				<input type="date" id="graph_04_endDate"> -->
 				<input type="datetime-local" id="graph_04_endDate">
 			</span>
 		</div>

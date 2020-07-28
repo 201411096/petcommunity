@@ -1,15 +1,15 @@
 package com.mycompany.service;
 
 import java.util.List;
+import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.mycompany.domain.ProductVO;
+import com.mycompany.domain.BuylistviewVO;
 
 public interface AdminService  {
 
-	public List<ProductVO> getSalesList();
+	public List<BuylistviewVO> getSalesList(BuylistviewVO buylistviewvo);
+
+	public List<BuylistviewVO> getSearchDate(Map map);
 	
 
 

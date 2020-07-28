@@ -26,7 +26,7 @@
 			<hr />
 
 			<div class="card-body">
-							<form id="productUpdate" action="/adminPage/crudList/productUpdatePage.do">
+							<form id="productUpdate" action="/crudList/productUpdatePage.do">
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="${productVO.productId}" readonly>
 								</div>

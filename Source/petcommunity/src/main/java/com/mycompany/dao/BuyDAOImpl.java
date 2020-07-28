@@ -41,7 +41,7 @@ public class BuyDAOImpl implements BuyDAO {
 		HashMap map2 = new HashMap();
 		for(ProductCartVO i :cartList) {
 			map2.put("cnt", i.getBuycartlistCnt());
-			map2.put("price", i.getProductPrice());
+			map2.put("price", Integer.parseInt(i.getProductPrice())*Integer.parseInt(i.getBuycartlistCnt()));
 			map2.put("productId", i.getProductId());
 			map2.put("buyListId",map.get("buyListId"));
 

@@ -66,6 +66,6 @@ public class BuyController {
 		
 		buyService.buyInsert(totalPrice,cvo,cartList);  
 		
-		return "redirect:/mypageselect.do";
+		return "redirect:/mypageAnimal.do";
 	}
 }

@@ -36,7 +36,6 @@ function getDataInpaging(){
 	});
 }
 
-
 function getData(){
 	$.ajax({
 		type : 'post',
@@ -53,6 +52,12 @@ function getData(){
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+            		//추가하는 부분
+            	   prev: "이전",
+            	   next: "다음",
+            	   first: '«',
+            	   last: '»',
+            	   //여기까지 4줄~
                 startPage: currentPage,
                 totalPages: totalPages
             }));
@@ -73,7 +78,7 @@ function drawbuyTable(data){
 	for(var i=0; i<data.buyListSize; i++){
 		var listContent =
 			trPrefix +				
-				tdPrefix+
+			'<td class=buyListTd>'+
 				'<a href="buyReceipt.do?buy='+data.buyList[i].buyListId +'">'+
 				data.buyList[i].buyListId+'</a>'
 				+tdSuffix+
@@ -125,7 +130,7 @@ function drawbuyTable(data){
 	});
 
 	$("#animal").click(function() {
-		window.open("mypageAnimal.do", "반려동물 등록", "width=520,height=750")
+		window.open("animalInsert.do", "반려동물 등록", "width=520,height=750")
 	});
 
 	if ($("#result").val() == 0) {

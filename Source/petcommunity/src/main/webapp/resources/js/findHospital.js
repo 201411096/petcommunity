@@ -1,4 +1,5 @@
 $(function(){
+	var cities=["서울","인천","대전","광주","대구","울산","부산","세종","경기","강원","충북","충남","전북","전남","경북","경남","제주"];
     var seoul = ["종로구","중구","용산구","성동구","광진구","동대문구","중랑구","성북구","강북구","도봉구","노원구","은평구","서대문구","마포구"
     	,"양천구","강서구","구로구","금천구","영등포구","동작구","관악구","서초구","강남구","송파구","강동구"];
     var incheon = ["중구","동구","미추홀구","연수구","남동구","부평구","계양구","서구","강화군","옹진군"];
@@ -88,7 +89,7 @@ $(function(){
     
     
     //검색버튼 클릭
-    $('#searchRegion').click(function(){	
+    $('#searchLocation').click(function(){	
     	listByLocation();
     });
     //검색버튼 클릭
@@ -102,7 +103,7 @@ var listByLocationWithPaging = {
 	    onPageClick: function (event, page) {
 	    	$('#page-content').text('Page ' + page);
 	    	    curPage=page;
-	    	    listBysearch1();         
+	    	    listByLocation();         
 	}
 };
 
@@ -112,35 +113,42 @@ var listBySearchWithPaging = {
 	    onPageClick: function (event, page) {
 	    	$('#page-content').text('Page ' + page);
 	    	    curPage=page;
-	    	    listBySearch1();         
+	    	    listBySearch();         
 	}
 };
 
-
 function listByLocation(){
-	$('#cityName').empty();
-	 for(var count in cities){
-		 var option = $("<option>"+cities[count]+"</option>");
-		 $('#cityName').append(option);
-    }
-	 $('#province').empty();
-	 for(var count in seoul){
-	       var option = $("<option>"+seoul[count]+"</option>");
-	       $('#province').append(option);
-	    }
-	getListByLocation();
-	
+//	$('#cityName').empty();
+//	 for(var count in cities){
+//		 var option = $("<option>"+cities[count]+"</option>");
+//		 $('#cityName').append(option);
+//    }
+//	 $('#province').empty();
+//	 for(var count in seoul){
+//	       var option = $("<option>"+seoul[count]+"</option>");
+//	       $('#province').append(option);
+//	    }
+
 	$.ajax({
 		type : 'post',
 		async:true,
 		url : '/petcommunity/getFindHospitalListByLocation.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data:{"searchWord" : $('#keywordInput').val(),
-			"curPage" : curPage
-		},
 		dataType : 'json',
+		data:{
+			cityName : $('#cityName').val(),
+			province : $('#province').val()
+		},
 		success : function(resultData){		
-			drawTable(resultData);			
+			drawTable(resultData);
+			$('#NormalPaging').empty();
+			 var totalPages = resultData.pagination.pageCnt;
+	         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
+	            $('#pagination-demo').twbsPagination('destroy');
+	            $('#pagination-demo').twbsPagination($.extend({}, listByLocationWithPaging, {
+	                startPage: currentPage,
+	                totalPages: totalPages
+	            }));
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -165,30 +173,10 @@ function listBySearch(){
 				 var totalPages = resultData.pagination.pageCnt;
 		         var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
 		            $('#pagination-demo').twbsPagination('destroy');
-		            $('#pagination-demo').twbsPagination($.extend({}, listBysearchWithPaging, {
+		            $('#pagination-demo').twbsPagination($.extend({}, listBySearchWithPaging, {
 		                startPage: currentPage,
 		                totalPages: totalPages
 		            }));
-		},
-		error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}
-		
-	});
-}
-function listBySearch(){
-	$.ajax({
-		type : 'post',
-		async:true,
-		url : '/petcommunity/getFindHospitalListBySearch.do',
-		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data:{"searchWord" : $('#keywordInput').val(),
-			"curPage" : curPage
-		},
-		dataType : 'json',
-		success : function(resultData){		
-			drawTable(resultData);
-			
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

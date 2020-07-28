@@ -78,24 +78,35 @@
 		</div>
 		<div id="graph_03_container"></div>
 	</div>
-	매출 통계 (특정기간만)
+	매출 통계 (grouping x)
 	<div id="graph_04_outer_container">
 				<div id="graph_04_option_container">
 			<span>
 				<select id="graph_04_chartShape_option">
-					<option selected value="bar">막대</option>
+					<option value="bar">막대</option>
 					<option value="pie">원형</option>
-					<option value="line">선형</option>
+					<option selected value="line">선형</option>
 					<option value="doughnut">도넛</option>
 					<option value="polarArea">폴라</option>
 				</select>
 			</span>
 			<span>
 				<select id="graph_04_chartTime_option">
-					<option selected value="0">시간</option>
-					<option value="1">요일</option>
-					<option value="2">월</option>
+					<option value="0">초</option>
+					<option value="1">분</option>
+					<option value="2">시</option>
+					<option selected value="3">일</option>
+					<option value="4">월</option>
+					<option value="5">년</option>
 				</select>
+			</span>
+			<span>
+<!-- 				<input type="date" id="graph_04_startDate"> -->
+				<input type="datetime-local" id="graph_04_startDate">
+			</span>
+			<span>
+<!-- 				<input type="date" id="graph_04_endDate"> -->
+				<input type="datetime-local" id="graph_04_endDate">
 			</span>
 		</div>
 		<div id="graph_04_container"></div>

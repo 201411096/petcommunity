@@ -19,4 +19,13 @@
 	    	select buylist_totalprice, to_char(buylist_date, #{timeOption}) as time from buylist
 		)group by time order by time
 	</select>
+	<select id="makeSalesHistoryChart" resultType="map" parameterType="map">
+		select day, sum(price) as price from(
+		    select to_char(day, #{timeOption}) as day, price from (
+		    <![CDATA[
+		        select buylist_date as day, buylist_totalprice as price from buylist where buylist_date >= to_date(#{startDate}, 'yymmddhh24miss') and buylist_date <= to_date(#{endDate}, 'yymmddhh24miss')
+		       ]]> 
+		    )
+		) group by day order by day
+	</select>
 </mapper>

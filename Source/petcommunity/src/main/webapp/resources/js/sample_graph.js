@@ -36,3 +36,16 @@ $('#graph_03_chartTime_option').on('change', function(){
 	graph_03.inputData.timeOption=$('#graph_03_chartTime_option').val();	
 	GraphClass.makeChartWithAjax(graph_03)
 });
+
+//매출 통계 (특정기간만)
+//var graph_04 = new GraphClass("/petcommunity/makeSalesHistoryChart.do", "graph_04_container", "graph_04", "graph_04");
+//GraphClass.makeChartWithAjax(graph_04);
+//
+//$('#graph_04_chartShape_option').on('change', function(){
+//	graph_04.inputData.chartType=$('#graph_04_chartShape_option').val();
+//	GraphClass.makeChartWithAjax(graph_04)
+//});
+//$('#graph_04_chartTime_option').on('change', function(){
+//	graph_04.inputData.timeOption=$('#graph_04_chartTime_option').val();	
+//	GraphClass.makeChartWithAjax(graph_04)
+//});

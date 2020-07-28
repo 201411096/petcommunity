@@ -73,7 +73,7 @@ function drawbuyTable(data){
 	for(var i=0; i<data.buyListSize; i++){
 		var listContent =
 			trPrefix +				
-				tdPrefix+
+			'<td class=buyListTd>'+
 				'<a href="buyReceipt.do?buy='+data.buyList[i].buyListId +'">'+
 				data.buyList[i].buyListId+'</a>'
 				+tdSuffix+
@@ -125,7 +125,7 @@ function drawbuyTable(data){
 	});
 
 	$("#animal").click(function() {
-		window.open("mypageAnimal.do", "반려동물 등록", "width=520,height=750")
+		window.open("animalInsert.do", "반려동물 등록", "width=520,height=750")
 	});
 
 	if ($("#result").val() == 0) {

@@ -145,7 +145,7 @@ public class AnimalController {
 		animalService.animalDelete(vo);
 		FileUpload.deleteDirectory(
 				req.getSession().getServletContext().getRealPath("resources/imgs") + "/animal/" + vo.getAnimalId());
-		return "redirect:/mypageselect.do";
+		return "redirect:/mypageAnimal.do";
 	}
 
 	
@@ -158,7 +158,7 @@ public class AnimalController {
 	public String animalUpdate(AnimalVO vo) {
 
 		animalService.animalUpdate(vo);
-		return "redirect:/mypageselect.do";
+		return "redirect:/mypageAnimal.do";
 
 	}
 

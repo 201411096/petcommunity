@@ -61,9 +61,12 @@
 
 
 											<div class="tedoory">
+												<c:if test="${! empty animal.imgAnimal}">
 												<img class="imgAnimal"
 													src="resources/imgs/animal/${animal.animalId}/${animal.imgAnimal}"
 													style="width: 200px">
+												</c:if>
+												
 												<div class="mypage-animal">
 													<h3>${animal.animalName}태어난지${animal.dateBirthday}일</h3>
 												</div>

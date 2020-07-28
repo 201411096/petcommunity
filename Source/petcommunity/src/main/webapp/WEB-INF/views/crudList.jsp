@@ -26,7 +26,7 @@
 			</ul>
 			<hr />
 
-			<div id="tab-1" class="tab-content current">
+			<div id="tab-3" class="tab-content current">
 				<div class="search row">
 					<div class="col-xs-2 col-sm-2">
 						<select name="type" class="form-control" id='type'>
@@ -36,16 +36,21 @@
 					</div>
 
 					<div class="col-xs-10 col-sm-10">
-						<div class="input-group">
-							<input type="text" name="keyWord" class='form-control'
-								id="keywordadmin" /> <span class="input-admin-btn"> <input
-								id="searchBtn" type="submit" class="btn btn-default" value="검색">
+						<div class="input-group">	
+							<span id="search-container">
+							<input type="text" name="keyWord" class='form-control' id="keywordadmin"/>
+							</span> 
+							<span class="input-group-btn"> 
+								<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+							</span>	
+							<span class="input-group-btn">
+								<button id="writeBtn" type="button" class="btn btn-default">상품 등록</button>
 							</span>
 						</div>
 					</div>
 					<br>
 					
-					<table class="mypage-table">
+					<table class="table table-hover">
 						<colgroup>
 							<col style="width: 20%" />
 							<col style="width: 50%" />
@@ -54,22 +59,15 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<td>주문날짜</td>
+								<td>상품번호</td>
 								<td>상품명</td>
 								<td>수량</td>
-								<td>가격</td>
-
+								<td>특징</td>
+								<td>내용</td>
 							</tr>
 						</thead>
-						<tbody>
-							<c:forEach items="${productvoList}" var="sale">
-								<tr>
-									<td>날짜</td>
-									<td><a href="sdf.do">${sale.productName}</a></td>
-									<td>${sale.productPrice}</td>
-									<td>${sale.productCnt}원</td>
-								</tr>
-							</c:forEach>
+						<tbody id="productTable">
+							
 						</tbody>
 					</table>
 
@@ -78,6 +76,10 @@
 			</div>
 			<div id="tab-1" class="tab-content"></div>
 			<div id="tab-2" class="tab-content"></div>
+			
+			<div class="col-md-offset-3" id="pagination_container">
+					<ul id="pagination-demo" class="pagination-lg"></ul>
+			</div>
 		</section>
 	</div>
 

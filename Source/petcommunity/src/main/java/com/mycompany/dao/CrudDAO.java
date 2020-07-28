@@ -1,11 +1,11 @@
-package com.mycompany.service;
+package com.mycompany.dao;
 
 import java.util.List;
 import java.util.Map;
 
 import com.mycompany.domain.ProductVO;
 
-public interface CrudService {
+public interface CrudDAO {
 	public int insertProduct(ProductVO productvo);
 	public List<ProductVO> selectProduct(ProductVO productvo);
 	public int updateProduct(ProductVO productvo);

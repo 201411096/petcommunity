@@ -34,5 +34,11 @@ public class ProductDAOImpl implements ProductDAO{
 		ProductVO result = mybatis.selectOne("ProductDAO.selectProductInfo", productId);
 		return result;
 	}
+	
+	@Override
+	public List<ProductVO> searchListProduct(Map<String, String> search) {
+		List<ProductVO> result = mybatis.selectList("ProductDAO.searchListProduct", search);
+		return result;
+	}
 
 }

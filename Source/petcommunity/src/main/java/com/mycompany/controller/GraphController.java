@@ -150,14 +150,11 @@ public class GraphController {
 			String strTime = format1.format(time);
 			inputData.put("startDate", strTime.substring(0, 8)+"000000");
 			inputData.put("endDate", Integer.toString(Integer.parseInt(strTime.substring(0, 8))+1)+"000000");
-			System.out.println(strTime);
 		}
 		String timeOptionArray [] = {"YYYYMMDDHH24MISS", "YYYYMMDDHH24MI", "YYYYMMDDHH24", "YYYYMMDD", "YYYYMM", "YYYY"};
 		graphOption.put("timeOption", timeOptionArray[Integer.parseInt((String)inputData.get("timeOption"))]);
 		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));
 		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));		
-		System.out.println(graphOption.get("startDate"));
-		System.out.println(graphOption.get("endDate"));
 		List<Map> selectList = graphService.makeSalesHistoryChart(graphOption);
 		List<Map> dataList = new ArrayList();
 		for(int i=0; i<selectList.size(); i++) {

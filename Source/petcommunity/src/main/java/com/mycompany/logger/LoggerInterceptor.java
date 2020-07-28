@@ -6,13 +6,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-// servlet-context.xml¿¡¼­ interceptor ÅÂ±×°¡ ÇÊ¿äÇÔ
+// servlet-context.xmlï¿½ï¿½ï¿½ï¿½ interceptor ï¿½Â±×°ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
 public class LoggerInterceptor extends HandlerInterceptorAdapter{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-//		System.out.println("LoggerInterceptor.. in prehandler");
+		String requesturl = request.getRequestURI();
+		System.out.println("preHandle " + requesturl);
 		return super.preHandle(request, response, handler);
 	}
 
@@ -20,7 +21,16 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		super.postHandle(request, response, handler, modelAndView);
-//		System.out.println("LoggerInterceptor.. in posthandler");
+		String requesturl = request.getRequestURI();
+		System.out.println("postHandle " + requesturl);
+	}
+
+	@Override
+	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+			throws Exception {
+		super.afterCompletion(request, response, handler, ex);
+		String requesturl = request.getRequestURI();
+		System.out.println("afterCompletion " + requesturl);
 	}
 	
 }

@@ -78,7 +78,28 @@
 		</div>
 		<div id="graph_03_container"></div>
 	</div>
-
+	매출 통계 (특정기간만)
+	<div id="graph_04_outer_container">
+				<div id="graph_04_option_container">
+			<span>
+				<select id="graph_04_chartShape_option">
+					<option selected value="bar">막대</option>
+					<option value="pie">원형</option>
+					<option value="line">선형</option>
+					<option value="doughnut">도넛</option>
+					<option value="polarArea">폴라</option>
+				</select>
+			</span>
+			<span>
+				<select id="graph_04_chartTime_option">
+					<option selected value="0">시간</option>
+					<option value="1">요일</option>
+					<option value="2">월</option>
+				</select>
+			</span>
+		</div>
+		<div id="graph_04_container"></div>
+	</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

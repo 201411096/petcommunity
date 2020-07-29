@@ -91,7 +91,6 @@ $(function(){
             $('#province').append(option);
         }
     });
-    
     //셀렉트박스, 인풋박스 공백시 submit막기
    $('#commitWrite').click(function(){
     	if($('#cityName').val()=='시/도' || $('#province').val()=='구/군'){

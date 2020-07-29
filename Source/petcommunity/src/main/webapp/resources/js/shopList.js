@@ -104,8 +104,13 @@ function getData(tagCategory){
 			drawShopTable(resultData);
 			var totalPages = resultData.pagination.pageCnt;
             var currentPage = 1;
+            
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+            	 prev: "이전",
+                 next: "다음",
+                 first: '«',
+                 last: '»',
                 startPage: currentPage,
                 totalPages: totalPages
             }));

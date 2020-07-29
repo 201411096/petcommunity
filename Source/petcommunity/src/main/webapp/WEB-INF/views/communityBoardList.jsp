@@ -4,6 +4,7 @@
 <%@include file ="../views/header.jsp" %>
 <html>
 	<head>
+	 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- 합쳐지고 최소화된 최신 CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<!-- 부가적인 테마 -->
@@ -12,7 +13,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	 	<script src="resources/js/communityBoardList.js"  type="text/javascript"></script>
-	 	<title>게시판</title>
+	 	<title>oki doghere커뮤니티</title>
 	</head>
 	<body>
 		<div class="container">
@@ -24,7 +25,7 @@
 	
 			
 			<section id="container">
-				<div class="col-xs-3 col-sm-2">
+				<div class="col-xs-0 col-sm-2">
 					<select class="form-control" id='showBy'>
 						<option>전체보기</option>					
 						<option>지역별</option>					
@@ -54,9 +55,9 @@
 						<c:forEach items="${communityBoardList}" var = "communityBoardList">
 							
 							
-							<tr>
+							<tr class='tbodyTr'>
 								<td>${communityBoardList.communityboardId}</td>
-								<td>
+								<td class='secondChild'>
 									<a href='getBoardContent.do?communityboardId=${communityBoardList.communityboardId}' class="text-dark">
 									[<span id='locationTag'>${communityBoardList.communityboardLocation}</span>]
 									${communityBoardList.communityboardTitle}		

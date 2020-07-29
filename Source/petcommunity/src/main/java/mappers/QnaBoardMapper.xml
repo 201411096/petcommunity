@@ -18,12 +18,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{questionboardReadcount}+0, #{memberId})
 	</insert>
 
-	<select id="getQnaBoardList" resultType="qna">
-		SELECT *
-		FROM
-		QUESTIONBOARD
-		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
-	</select>
+<!-- 	<select id="getQnaBoardList" resultType="qna"> -->
+<!-- 		SELECT * -->
+<!-- 		FROM -->
+<!-- 		QUESTIONBOARD -->
+<!-- 		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID -->
+<!-- 	</select> -->
 
 	<select id="getQnaBoardContent" parameterType="qna"
 		resultType="qna">

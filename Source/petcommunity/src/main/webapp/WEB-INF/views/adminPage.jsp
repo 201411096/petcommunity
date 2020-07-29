@@ -11,6 +11,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <link rel="stylesheet" href="./resources/css/communityBoardList.css" />
@@ -27,17 +28,16 @@
 			</ul>
 			<hr />
 			<div id="tab-1" class="tab-content current">
-				<div class="search row">
-					<div class="col-xs-10 col-sm-10">
+				<div class="search">
+					<form action="/petcommunity/datesearch.do" id="datesearch" name="datesearch">
+
 						<div class="input-group">
 							<input type="date" name="startDate" class='form-control'
-								id="startDate" /> <input type="date" name="endDate"
-								class='form-control' id="endDate" />
+								id="startDate" /> 
+							<input type="date" name="endDate" class='form-control' id="endDate" /> 
+							<input id="searchBtn" type="submit" class="btn btn-default" value="검색">
 						</div>
-						<span class="input-admin-btn"> <input id="searchBtn"
-							type="submit" class="btn btn-default" value="검색">
-						</span>
-					</div>
+					</form>
 					<br>
 					<table class="mypage-table">
 						<colgroup>
@@ -54,30 +54,26 @@
 								<th>가격</th>
 							</tr>
 						</thead>
-						<tbody id="SalesHistoryTbody">
+						<tbody>
+							<c:forEach items="${salesList}" var="item">
+								<tr>
+									<td>${item.buylistDate}</td>
+									<td><input type="hidden" name="productId" id="productId" />
+										<a href="productView.do?productId=${item.productId}">
+											${item.productName}</a></td>
+									<td>${item.buyCnt}</td>
+									<td>${item.buyTotalprice}</td>
+								</tr>
+							</c:forEach>
 						</tbody>
-						<!-- 						<tbody> -->
-						<%-- 							<c:forEach items="${salesList}" var="item"> --%>
-						<!-- 								<tr> -->
-						<%-- 									<td>${item.buylistDate}</td> --%>
-						<!-- 									<td> -->
-						<!-- 									<input type="hidden" name="productId" id="productId"/> -->
-						<%-- 									<a href="productView.do?productId=${item.productId}"> --%>
-						<%-- 									${item.productName}</a></td> --%>
-						<%-- 									<td>${item.buyCnt}</td> --%>
-						<%-- 									<td>${item.buyTotalprice}</td> --%>
-						<!-- 								</tr> -->
-						<%-- 							</c:forEach> --%>
-						<!-- 						</tbody> -->
 					</table>
 				</div>
-				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>
 			<div id="tab-2" class="tab-content"></div>
 			<div id="tab-3" class="tab-content"></div>
 		</section>
 	</div>
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+	
 	<script src="resources/js/adminPage.js" type="text/javascript"></script>
 </body>
 </html>

@@ -6,12 +6,14 @@
 <html>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="./resources/css/crud.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="./resources/css/adminProduct.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="resources/js/adminProduct.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+
 <title>관리자 페이지</title>
 </head>
 <body>
@@ -25,8 +27,8 @@
 			</ul>
 			<hr />
 
-			<div class="card-body">
-							<form id="productUpdate" action="/crudList/productUpdatePage.do">
+			<div class="col-xs-10 col-sm-10">
+							<form id="productUpdate" action="/adminProductList/productUpdatePage.do">
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="${productVO.productId}" readonly>
 								</div>
@@ -36,10 +38,11 @@
 								<div class="form-group">
 									<label>상품 가격</label> <input type="text" class="form-control" name="productPrice" value="${productVO.productPrice}">
 								</div>
+								
 								<div class="form-group">
-									<label>수량</label> <input type="text" class="form-control" name="productCnt" value="${productVO.productCnt}">
+									<label>수량</label> <input type="text" class="form-control" name="productPrice" value="${productVO.productCnt}">
 								</div>
-											
+								
 								<div class="form-group">
 									<label>상품 특징</label>  
 									<select class="product-filter-menu" id="productFeature" name="productFeature">
@@ -68,27 +71,13 @@
 								<div class="form-group">
 									<label>상품 내용</label> <input type="text" class="form-control" name="productContent" value="${productVO.productContent}">
 								</div>
-								<div class="col-md-4 col-md-offset-10">			
-			<span class="input-group-btn">
-				<button type="button" class="btn btn-default" name='commitWrite' id='commitWrite'>수정완료</button>
-				<button type="button" class="btn btn-default" id='cancelWrite'>수정하기 취소</button>
-			</span>
-			</div>			
+								<button class="btn btn-default">수정</button>		
 							</form>
 						</div>
-					</div>
-
-			<div id="tab-1" class="tab-content"></div>
-			<div id="tab-2" class="tab-content"></div>
-			
 			<div class="col-md-offset-3" id="pagination_container">
-					<ul id="pagination-demo" class="pagination-lg"></ul>
+				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>
 	</section>
-	</div>
-
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="resources/js/crudList.js" type="text/javascript"></script>
+</div>
 </body>
 </html>

@@ -16,15 +16,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.domain.ProductVO;
 import com.mycompany.service.AdminService;
 import com.mycompany.service.AdminServiceImpl;
-import com.mycompany.service.CrudService;
-import com.mycompany.service.CrudServiceImpl;
+import com.mycompany.service.AdminProductService;
+import com.mycompany.service.AdminProductServiceImpl;
 import com.mycompany.service.ProductServiceImpl;
 
 @Controller
 public class CrudController {
 	
 	@Autowired
-	CrudServiceImpl crudService;
+	AdminProductServiceImpl crudService;
 	@Autowired
 	ProductServiceImpl productService;
 	@Autowired

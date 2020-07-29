@@ -42,6 +42,8 @@
 		
 		<typeAlias alias="buylistview" type="com.mycompany.domain.BuylistviewVO"></typeAlias>
 		
+		<typeAlias alias="adminProduct" type="com.mycompany.domain.ProductVO"></typeAlias>
+		
    </typeAliases>
    
    

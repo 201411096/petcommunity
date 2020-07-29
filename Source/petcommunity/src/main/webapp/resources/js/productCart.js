@@ -137,7 +137,9 @@ $(function(){
 		window.location.href='/petcommunity/buy.do';
 	});
 	
-	
+	$(document).on('click', "#backToShopping", function(){
+		window.location.href='productList.do'
+	});
 	
 
 });

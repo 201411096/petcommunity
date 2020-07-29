@@ -16,20 +16,14 @@ public class AdminServiceImpl implements AdminService{
 	private AdminDAOImpl adminDAO;
 
 	@Override
-	public List<BuylistviewVO> getSalesList(BuylistviewVO buylistviewvo) {
-		return adminDAO.getSalesList(buylistviewvo); 
+	public List<BuylistviewVO> adminselectList(BuylistviewVO buylistviewvo) {
+		return adminDAO.adminselectList(buylistviewvo);
 	}
-
+	
 	@Override
 	public List<BuylistviewVO> getSearchDate(Map map) {
 		return adminDAO.getSearchDate(map);
 	}
 
-	@Override
-	public List<BuylistviewVO> selectFindBoardWithPaging(Map map) {
-		return adminDAO.selectFindBoardWithPaging(map);
-	}
-	
-	
 	
 }

@@ -17,6 +17,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 
 <!-- Stylesheets -->
 <link rel="stylesheet"
@@ -91,7 +92,7 @@
 				</c:if>
 
 			</ul>
-			<hr>
+<!-- 			<hr> -->
 		</div>
 	</header>
 

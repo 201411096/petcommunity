@@ -13,18 +13,13 @@ import com.mycompany.domain.BuylistviewVO;
 public class AdminDAOImpl implements AdminDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
-	
-	@Override
-	public List<BuylistviewVO> getSalesList(BuylistviewVO buylistviewvo) {
+
+	public List<BuylistviewVO> adminselectList(BuylistviewVO buylistviewvo) {
 		return mybatis.selectList("admin.adminselectList", buylistviewvo);
 	}
-
+	
 	public List<BuylistviewVO> getSearchDate(Map map) {
 		return mybatis.selectList("admin.getSearchDate", map);
-	}
-
-	public List<BuylistviewVO> selectFindBoardWithPaging(Map map) {
-		return mybatis.selectList("admin.selectFindBoardWithPaging", map);
 	}
 
 }

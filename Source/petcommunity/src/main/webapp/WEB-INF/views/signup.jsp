@@ -21,7 +21,7 @@
 </head>
 <body>
 
-	<div class="main2">
+	<div class="main">
 
 		<!-- Sign up form -->
 		<section class="signup">

@@ -7,12 +7,9 @@ import com.mycompany.domain.BuylistviewVO;
 
 public interface AdminService  {
 
-	public List<BuylistviewVO> getSalesList(BuylistviewVO buylistviewvo);
-
-	public List<BuylistviewVO> getSearchDate(Map map);
-
-	public List<BuylistviewVO> selectFindBoardWithPaging(Map map);
+	public List<BuylistviewVO> adminselectList(BuylistviewVO buylistviewvo);
 	
+	public List<BuylistviewVO> getSearchDate(Map map);
 
 
 }

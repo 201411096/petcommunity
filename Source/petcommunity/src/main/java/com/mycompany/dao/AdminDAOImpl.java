@@ -23,4 +23,8 @@ public class AdminDAOImpl implements AdminDAO{
 		return mybatis.selectList("admin.getSearchDate", map);
 	}
 
+	public List<BuylistviewVO> selectFindBoardWithPaging(Map map) {
+		return mybatis.selectList("admin.selectFindBoardWithPaging", map);
+	}
+
 }

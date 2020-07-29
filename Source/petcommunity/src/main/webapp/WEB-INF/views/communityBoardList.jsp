@@ -12,7 +12,7 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	 	<script src="resources/js/communityBoardList.js"  type="text/javascript"></script>
-	 	<title>게시판</title>
+	 	<title>oki doghere커뮤니티</title>
 	</head>
 	<body>
 		<div class="container">

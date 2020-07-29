@@ -32,17 +32,32 @@ ul.tabs li.current{
 	
 	width:11%;
 }
-#keywordadmin{
-	width:78%;
+
+#startDate{
+	width:20%;
 }
+
+#endDate{
+	width:20%;
+}
+
 
 .mypage-table {
 	width:100%;
 	table-layout: fixed;
+	
+}
+
+.mypage-table th{
+	width:100%;
+	table-layout: fixed;
+	text-align: center;
 }
 
 .mypage-table td{
 	border-bottom: 1px solid;
+	padding-bottom: 2%;
+	padding-top: 2%;
 }
 
 .target { 
@@ -61,4 +76,15 @@ ul.tabs li.current{
 	margin-top: 8%;
 }
 
+#pagination-demo>li>a, #pagination-demo>li>span {
+   
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #636363;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #fff;
 }

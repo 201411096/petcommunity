@@ -72,15 +72,15 @@
 						<input type="text" name="keyword" id="keywordInput"
 							class="form-control" /> <span class="input-group-btn">
 							<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
-						</span> <span class="input-group-btn"> <!-- 							<button id="writeBtn" type="submit" class="btn btn-default">글쓰기</button> -->
+						</span> <span class="input-group-btn"> 
 
 							<a href="/petcommunity/write.do" class="btn btn-default">글쓰기</a>
 						</span>
 					</div>
 				</div>
-
+				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>
-			<ul id="pagination-demo" class="pagination-lg"></ul>
+
 			<!-- 			</form> -->
 		</section>
 	</div>

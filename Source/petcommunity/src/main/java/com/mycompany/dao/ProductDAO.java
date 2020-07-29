@@ -10,4 +10,5 @@ public interface ProductDAO {
 	public List<ProductVO> selectProductListForPagination(Map searchMap);
 	public List<String> selectAutoSearchProduct(String searchSomething);
 	public ProductVO selectProductInfo(int productId);
+	public List<ProductVO> searchListProduct(Map<String, String> search);
 }

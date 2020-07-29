@@ -4,9 +4,49 @@
 
 <mapper namespace="admin">
 
-	<select id="adminselectList" resultType="product">
-	select PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_CNT
-		from product
+	<select id="adminselectList" resultType="buylistview">
+		SELECT BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE, PRODUCT_ID
+		FROM BUYLISTVIEW
 	</select>
 	
+	<select id="getSearchDate" parameterType="map" resultType="buylistview">
+		select BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE, PRODUCT_ID
+		from BUYLISTVIEW
+	<![CDATA[
+         WHERE BUYLIST_DATE >= to_date(#{startDate},'YYYY-MM-DD')
+          AND BUYLIST_DATE <= to_date(#{endDate},'YYYY-MM-DD')
+          ]]> 
+	</select>
+	
+	<select id="selectFindBoardWithPaging" parameterType="hashmap" resultType="buylistview">
+		SELECT BUYLIST_DATE, PRODUCT_NAME, PRODUCT_PRICE, BUY_CNT, BUYLIST_TOTALPRICE, PRODUCT_ID
+		FROM (SELECT BUYLIST_DATE, PRODUCT_NAME, PRODUCT_PRICE, BUY_CNT, BUYLIST_TOTALPRICE, PRODUCT_ID, ROWNUM AS RNUM
+			FROM (SELECT BUYLIST_DATE, PRODUCT_NAME, PRODUCT_PRICE, BUY_CNT, BUYLIST_TOTALPRICE, PRODUCT_ID
+				FROM BUYLISTVIEW
+				<![CDATA[
+         	 	WHERE BUYLIST_DATE >= to_date(#{startDate},'YYYY-MM-DD')
+           		AND BUYLIST_DATE <= to_date(#{endDate},'YYYY-MM-DD')
+          		 ]]>
+         		 ))
+          <![CDATA[ 
+		WHERE RNUM>=#{startRow} and RNUM<=#{endRow}
+		]]>
+	</select>
+	
+	
+<!-- 	<select id="adminselectList" resultType="buylistview"> -->
+<!-- 		SELECT BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE, PRODUCT_ID -->
+<!-- 		FROM BUYLISTVIEW -->
+<!-- 	</select> -->
+	
+<!-- 	<select id="getSearchDate" parameterType="map" resultType="buylistview"> -->
+<!-- 		select BUYLIST_DATE, PRODUCT_NAME, BUY_CNT, BUY_TOTALPRICE, PRODUCT_ID -->
+<!-- 		from BUYLISTVIEW -->
+<!-- 	<![CDATA[ -->
+<!--          WHERE BUYLIST_DATE >= to_date(#{startDate},'YYYY-MM-DD') -->
+<!--           AND BUYLIST_DATE <= to_date(#{endDate},'YYYY-MM-DD') -->
+<!--           ]]>  -->
+<!-- 	</select> -->
+	
+
 </mapper>

@@ -6,6 +6,7 @@ public class BuylistviewVO {
 	private String productName;
 	private int buyCnt;
 	private int buyTotalprice;
+	private int productId;
 	
 	public String getBuylistDate() {
 		return buylistDate;
@@ -30,6 +31,12 @@ public class BuylistviewVO {
 	}
 	public void setBuyTotalprice(int buyTotalprice) {
 		this.buyTotalprice = buyTotalprice;
+	}
+	public int getProductId() {
+		return productId;
+	}
+	public void setProductId(int productId) {
+		this.productId = productId;
 	}
 	
 }

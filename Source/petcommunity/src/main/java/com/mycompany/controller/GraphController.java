@@ -23,7 +23,6 @@ public class GraphController {
 	@RequestMapping(value = "/testForGraph_01", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map testMakeGraph(@RequestBody HashMap inputData) {
-//		System.out.println("graphcontroller에서 inputdata확인" + inputData);
 		Map result = new HashMap();
 		List<Map> dataList = new ArrayList();
 		for(int i=0; i<10; i++) {
@@ -174,6 +173,41 @@ public class GraphController {
 		result.put("data", dataList);
 		result.put("dataSize", dataList.size());
 		return result;
-	}	
-	
+	}
+	//매출 통계 (품목별)
+	@RequestMapping(value = "/makeSalesHistoryChartGroupByCategory.do", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public Map makeSalesHistoryChartGroupByCategory(@RequestBody HashMap inputData) {
+		Map result = new HashMap();
+		Map graphOption = new HashMap();
+		if(inputData.get("chartType")==null) {
+			inputData.put("chartType", "bar");
+		}
+		if(inputData.get("startDate")=="" || inputData.get("startDate")==null) {
+			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
+			Date time = new Date();
+			String strTime = format.format(time);
+			inputData.put("startDate", strTime.substring(0, 8)+"000000");
+		}
+		if(inputData.get("endDate")=="" || inputData.get("endDate")==null) {
+			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
+			Date time = new Date();
+			String strTime = format.format(time);
+			inputData.put("endDate", strTime.substring(0, 8)+"235959");
+		}
+		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));
+		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));
+		List<Map> selectList = graphService.makeSalesHistoryChartGroupByCategory(graphOption);
+		List<Map> dataList = new ArrayList();
+		for(int i=0; i<selectList.size(); i++) {
+			HashMap data = new HashMap();
+			data.put("name", selectList.get(i).get("FEATURE"));
+			data.put("value", selectList.get(i).get("PRICE"));
+			dataList.add(data);
+		}
+		result.put("chartType", inputData.get("chartType"));
+		result.put("data", dataList);
+		result.put("dataSize", dataList.size());
+		return result;
+	}
 }

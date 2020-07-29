@@ -10,13 +10,9 @@ var defaultOpts={
 
 getData();
 $('#searchBtn').on('click', function(){
-	console.log('ii');
 	getData();
 	
 });
-	
-
-
 
 function getDataInpaging(){
 	$.ajax({
@@ -56,6 +52,11 @@ function getData(){
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+            	 prev: "이전",
+                 next: "다음",
+                 first: '«',
+                 last: '»',
+
                 startPage: currentPage,
                 totalPages: totalPages
             }));

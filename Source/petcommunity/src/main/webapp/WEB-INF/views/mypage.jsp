@@ -13,7 +13,8 @@
 <!-- Font Icon -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
-
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <!-- Main css -->
 
 <link rel="stylesheet" href="./resources/css/mypage.css">
@@ -60,11 +61,14 @@
 
 
 											<div class="tedoory">
+												<c:if test="${! empty animal.imgAnimal}">
 												<img class="imgAnimal"
 													src="resources/imgs/animal/${animal.animalId}/${animal.imgAnimal}"
 													style="width: 200px">
+												</c:if>
+												
 												<div class="mypage-animal">
-													<h3>${animal.animalName}태어난지${animal.dateBirthday}일</h3>
+													<h3>${animal.animalName}태어난지&nbsp;&nbsp;${animal.dateBirthday}일</h3>
 												</div>
 												<div class="mypage-animal">
 													<label for='animalBirthday'>생일</label> <input type="text"
@@ -98,13 +102,7 @@
 								value="반려동물 등록" />
 						</div>
 
-						<div id="tab-2" class="tab-content">
-							<c:choose>
-								<c:when test="${empty buyList}">
-									<h3>현재 주문 내역이 없습니다</h3>
-								</c:when>
-
-								<c:otherwise>
+						<div id="tab-2" class="tab-content">	
 								<div class="tedoory2">
 									<table class="mypage-table">
 										<colgroup>
@@ -119,20 +117,11 @@
 												<td>총가격</td>
 											</tr>
 										</thead>
-										<tbody>
-											<c:forEach items="${buyList}" var="buy">
-												<tr height="50">
-													<td><a href="buyReceipt.do?buy=${buy.buyListId}">${buy.buyListId}</a></td>
-													<td>2020-7-21${buy.buyListDate}</td>
-													<td>${buy.buyListTotalprice}원</td>
-												</tr>
-											</c:forEach>
-											
+										<tbody id="buyListTbody">
 										</tbody>
 									</table>
 									</div>
-								</c:otherwise>
-							</c:choose>
+							<ul id="pagination-demo" class="pagination-lg"></ul>
 						</div>
 				</div>
 	</div>

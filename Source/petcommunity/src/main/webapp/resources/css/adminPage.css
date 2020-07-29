@@ -76,4 +76,15 @@ ul.tabs li.current{
 	margin-top: 8%;
 }
 
+#pagination-demo>li>a, #pagination-demo>li>span {
+   
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #636363;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #fff;
 }

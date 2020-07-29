@@ -9,4 +9,5 @@ public interface AdminDAO {
 
 	public List<BuylistviewVO> getSalesList(BuylistviewVO buylistviewvo);
 	public List<BuylistviewVO> getSearchDate(Map map);
+	public List<BuylistviewVO> selectFindBoardWithPaging(Map map);
 }

@@ -3,7 +3,7 @@ var longitude = -1;
 var clickMapEventFlag=-1;
 $(function() {
 	getLocation();
-	kakaoMapAPI();
+	//kakaoMapAPI();
 	$('#lostBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
 		e.stopPropagation();
@@ -123,7 +123,6 @@ function getLocation() {
         console.log('geolocation error--------------------------');
     	console.log(latitude);
     	console.log(longitude);
-    	kakaoMapAPI();
       }, {
         enableHighAccuracy: false,
         maximumAge: 0,

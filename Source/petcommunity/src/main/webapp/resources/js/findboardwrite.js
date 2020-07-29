@@ -5,7 +5,7 @@ var latitude = 37.519972628243366;
 var longitude = 126.85287648507145;
 $(function() {
 	getLocation();
-	kakaoMapAPI();
+	//kakaoMapAPI();
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
 		e.stopPropagation();
@@ -130,7 +130,6 @@ function getLocation() {
         console.log('geolocation error--------------------------');
     	console.log(latitude);
     	console.log(longitude);
-    	kakaoMapAPI();
       }, {
         enableHighAccuracy: false,
         maximumAge: 0,

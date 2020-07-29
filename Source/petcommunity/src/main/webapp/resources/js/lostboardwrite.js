@@ -1,6 +1,8 @@
 var latitude = -1;
 var longitude = -1;
+var clickMapEventFlag=-1;
 $(function() {
+	getLocation();
 	kakaoMapAPI();
 	$('#lostBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
@@ -54,7 +56,7 @@ function kakaoMapAPI() {
 	
 	// 지도 클릭 이벤트
 	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-	    
+		clickMapEventFlag=1; // 지도에 표시했는지 저장
 	    // 클릭한 위도, 경도 정보를 가져옵니다 
 	    var latlng = mouseEvent.latLng;
 	    latitude = latlng.getLat();
@@ -105,3 +107,30 @@ function checkSubmit(){
 	}
 	return true;
 }
+
+function getLocation() {
+    if (navigator.geolocation) {	// GPS를 지원하면
+      navigator.geolocation.getCurrentPosition(function(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        console.log('geolocation success--------------------------');
+    	console.log(latitude);
+    	console.log(longitude);
+    	kakaoMapAPI();
+      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
+        latitude = 37.519972628243366;
+        longitude = 126.85287648507145;
+        console.log('geolocation error--------------------------');
+    	console.log(latitude);
+    	console.log(longitude);
+    	kakaoMapAPI();
+      }, {
+        enableHighAccuracy: false,
+        maximumAge: 0,
+        timeout: Infinity
+      });
+    } else {
+      //alert('GPS를 지원하지 않습니다');
+    	console.log('GPS를 지원하지 않습니다');
+    }
+  }

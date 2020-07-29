@@ -15,8 +15,9 @@
 	<!-- search -->
 	<link rel="stylesheet" href="resources/css/shop.css">
 	<!-- Paging -->
-	<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
+
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<!-- autocomplete 3 cdn link -->
@@ -93,7 +94,7 @@
 				
 		</div>
 		<div id="pagination-div">
-		<div id="pagination_container"><!--  class="col-md-offset-4"  -->
+		<div id="pagination_container">
 			<ul id="pagination-demo" class="pagination-lg"></ul>
 		</div>
 		</div>

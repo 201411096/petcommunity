@@ -6,6 +6,7 @@
 <html>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
@@ -16,7 +17,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/js/communityBoardWrite.js"></script>
 
-<title>게시판</title>
+<title>oki doghere커뮤니티</title>
 </head>
 <body>
 

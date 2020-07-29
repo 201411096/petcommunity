@@ -9,6 +9,8 @@ var defaultOpts = {
     }
 };
 
+
+
 $(function(){
 	searchAutoComplete();
 	tagCategory="all";
@@ -57,7 +59,6 @@ function searchAutoComplete(){
               });
            },
            select : function(event, ui){
-        	   
            },
            appendTo :'#searchInput-container',
            minLength: 1,		 // 최소 글자수
@@ -105,6 +106,10 @@ function getData(tagCategory){
             var currentPage = 1;
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+            	prev: "이전",
+                next: "다음",
+                first: '«',
+                last: '»',
                 startPage: currentPage,
                 totalPages: totalPages
             }));

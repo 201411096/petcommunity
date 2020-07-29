@@ -16,7 +16,7 @@
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/js/communityBoardWrite.js"></script>
 
-<title>게시판</title>
+<title>oki doghere커뮤니티</title>
 </head>
 <body>
 

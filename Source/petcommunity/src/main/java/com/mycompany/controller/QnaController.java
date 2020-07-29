@@ -86,7 +86,6 @@ public class QnaController {
 	@ResponseBody
 	@RequestMapping(value="/qnaList.do", produces = "application/json; charset=utf-8")
 	public Map selectQnaBoardList(@RequestParam(defaultValue="1") int curPage,QnaVO qnavo, String searchType, HttpSession session, String searchWord) {
-			ModelAndView mv = new ModelAndView();
 			Map map = new HashMap();
 			Map result = new HashMap();
 			MemberVO membervo= (MemberVO)session.getAttribute("memberVO");

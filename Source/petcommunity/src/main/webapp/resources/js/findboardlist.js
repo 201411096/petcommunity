@@ -4,6 +4,7 @@ var defaultOpts = {
     onPageClick: function (event, page) {
         $('#page-content').text('Page ' + page);
         curPage=page;
+        console.log('clickevent확인'); // 생성하는 순간 첫 페이지를 클릭함
         getDataInPaging();
     }
 };
@@ -68,6 +69,7 @@ function getDataInPaging(){
 				},
 		dataType : 'json',
 		success : function(resultData){
+			console.log("getDataInPaging");
 			drawTable(resultData);
 			console.log(resultData);
 		},
@@ -90,11 +92,15 @@ function getData(){
 				},
 		dataType : 'json',
 		success : function(resultData){
-			drawTable(resultData);
+//			drawTable(resultData); // 첫페이지 클릭이벤트가 바로 발생해서 사실 필요없는 부분이었음
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+                prev: "이전",
+                next: "다음",
+                first: '«',
+                last: '»',
                 startPage: currentPage,
                 totalPages: totalPages
             }));

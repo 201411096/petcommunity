@@ -42,7 +42,6 @@ public class CommunityController {
 	    */
 	@RequestMapping("/communityBoardList.do")
 	public ModelAndView getCommunityBoardList(CommunityVO vo, ModelAndView mv, HttpServletRequest request) {
-		System.out.println("리스트 controller입장");
 		//db의 모든 데이터를 가져옴
 		List<CommunityVO> communityBoardList = communityService.getBoardList();//게시판 리스트 가져오기
 		
@@ -163,8 +162,7 @@ public class CommunityController {
 		// parameter로 넘어온 글번호를 vo에 셋해준후 Mapper로 넘겨줌
 		String searchType = request.getParameter("searchType");
 		String keyword = request.getParameter("searchWord");
-		System.out.println(searchType);
-		System.out.println(keyword);
+
 		String type = "";
 		Map searchMap = new HashMap();
 		// 검색타입에 따라 vo에 셋팅을 다르게 해줌
@@ -186,7 +184,7 @@ public class CommunityController {
 		
 		
 		PaginationVO paginationVO = new PaginationVO(communityService.getBoardListBySearch(vo).size(), curPage, 20);
-		System.out.println(communityService.getBoardListBySearch(vo).size());
+
 		paginationVO.setRangeSize(20);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
@@ -230,7 +228,7 @@ public class CommunityController {
 			
 			String cityName = request.getParameter("cityName");
 			String province = request.getParameter("province");
-			System.out.println(cityName);
+
 			vo.setCityName(cityName);
 			vo.setProvince(province.substring(0,2));//문자열 짤라서 '종로'처럼 두글자로 만들어줌
 			
@@ -270,7 +268,7 @@ public class CommunityController {
 			
 			return result;
 		} else if (category.equals("조회순")) {
-			System.out.println("조회순 입장");
+
 			List<CommunityVO> getBoardListByReadCount = communityService.getBoardListByReadCount();
 			Map categoryMap = new HashMap();
 			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByReadCount().size(), curPage, 20);
@@ -281,7 +279,7 @@ public class CommunityController {
 			Map result = new HashMap();	
 			result.put("pagination", paginationVO);
 			result.put("communityBoardListBySearch", getBoardListByReadCountWithPaging);
-			System.out.println("검색된 양" + getBoardListByReadCountWithPaging.size());
+
 			//사진 유무 확인
 			ArrayList<String> checkImg = new ArrayList<String>();
 			for(int i = 0; i<getBoardListByReadCountWithPaging.size(); i++) {
@@ -299,7 +297,8 @@ public class CommunityController {
 			result.put("checkImg", checkImg);
 			return result;
 		} else if (category.equals("추천순")) {
-			System.out.println("추천순 입장");
+
+			
 			List<CommunityVO> getBoardListByRecommend = communityService.getBoardListByRecommend();
 			Map categoryMap = new HashMap();
 			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByRecommend().size(), curPage, 20);
@@ -310,7 +309,7 @@ public class CommunityController {
 			Map result = new HashMap();	
 			result.put("pagination", paginationVO);
 			result.put("communityBoardListBySearch", getBoardListByRecommendWithPaging);
-			System.out.println("검색된 양" + getBoardListByRecommendWithPaging.size());
+			
 			//사진 유무 확인
 			ArrayList<String> checkImg = new ArrayList<String>();
 			for(int i = 0; i<getBoardListByRecommendWithPaging.size(); i++) {
@@ -386,7 +385,7 @@ public class CommunityController {
 	@RequestMapping("/dislikeContent.do")
 	public String dislikeContent(HttpServletRequest request, CommunityVO vo) {
 		String communityboardId=request.getParameter("communityboardId");
-		System.out.println(communityboardId);
+	
 		vo.setCommunityboardId(communityboardId);
 		communityService.dislikeContent(vo);
 		return "";
@@ -402,7 +401,7 @@ public class CommunityController {
 	@RequestMapping("/likeContent.do")
 	public String likeContent(HttpServletRequest request, CommunityVO vo) {
 		String communityboardId=request.getParameter("communityboardId");
-		System.out.println(communityboardId);
+
 		vo.setCommunityboardId(communityboardId);
 		communityService.likeContent(vo);
 		return "";
@@ -449,7 +448,7 @@ public class CommunityController {
 	@RequestMapping("/writeComment.do")
 	public ModelAndView writeComment(CommunityVO vo, CommentVO cvo, HttpServletRequest request, HttpSession session, ModelAndView mv) {
 		String communityboardId=request.getParameter("communityboardId");
-		System.out.println(communityboardId);
+
 		MemberVO mvo = (MemberVO) session.getAttribute("memberVO");
 		cvo.setCommunityboardId(communityboardId);
 		cvo.setMemberId(mvo.getMemberId());

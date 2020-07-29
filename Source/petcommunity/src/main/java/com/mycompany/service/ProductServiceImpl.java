@@ -34,5 +34,13 @@ public class ProductServiceImpl implements ProductService{
 		ProductVO result = productDAO.selectProductInfo(productId);
 		return result;
 	}
+	
+	@Override
+	public List<ProductVO> searchListProduct(Map<String, String> search) {
+		List<ProductVO> result = productDAO.searchListProduct(search);
+		return result;
+	}
+
+
 
 }

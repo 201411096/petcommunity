@@ -44,7 +44,7 @@
 </head>
 <body>
 	<!-- Footer section  -->
-	<footer class="footer-section spad">
+	<footer class="footer-section spad" id="footer">
 		<div class="sp-container">
 			<div class="row m-0">
 				<div class="col-lg-4 footer-text">

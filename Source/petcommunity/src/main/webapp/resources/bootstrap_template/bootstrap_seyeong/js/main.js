@@ -87,15 +87,15 @@ $(window).on('load', function() {
 			NextIndex = "0" + NextIndex;
 		}
 
-
+/*
 		$(".hero-slider .owl-nav button.owl-prev").html('<img src="img/icons/arrow-left-white.png" alt=""> <span> '+ PreIndex +'</span> ');
-		$(".hero-slider .owl-nav button.owl-next").html('<span> '+ NextIndex +' </span> <img src="img/icons/arrow-right-black.png" alt="">');
+		$(".hero-slider .owl-nav button.owl-next").html('<span> '+ NextIndex +' </span> <img src="img/icons/arrow-right-black.png" alt="">');*/
 	});
 
-	$(".hero-slider .owl-nav button.owl-prev").html('<img src="img/icons/arrow-left-white.png" alt=""> <span> '+ sliderCount +'</span> ');
+	/*$(".hero-slider .owl-nav button.owl-prev").html('<img src="img/icons/arrow-left-white.png" alt=""> <span> '+ sliderCount +'</span> ');
 
 	$(".hero-slider .owl-nav button.owl-next").html('<span>02</span> <img src="img/icons/arrow-right-black.png" alt="">');
-
+*/
 
 	/*------------------
 		Gallery Slider

@@ -10,5 +10,6 @@ public interface AdminProductDAO {
 	public List<ProductVO> selectProduct(ProductVO productvo);
 	public int updateProduct(ProductVO productvo);
 	public int deleteProduct(ProductVO productvo);
-
+	public List<ProductVO> selectProductSearchByNameWithPaging(Map map);
+	public int selectProductCntByNameWithPaging(String searchWord);
 }

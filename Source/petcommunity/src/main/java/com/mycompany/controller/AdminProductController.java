@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.ProductVO;
 import com.mycompany.service.AdminService;
 import com.mycompany.service.AdminServiceImpl;
@@ -36,6 +37,7 @@ public class AdminProductController {
 	 */
 	@RequestMapping("/adminProductList.do")
 	public ModelAndView loadAdminProduct() {
+		System.out.println("상품 리스트 컨트롤러 입장");
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/adminProductList");
 		return mv;
@@ -49,13 +51,14 @@ public class AdminProductController {
 	 * 		ㄴ jsp에서 검색어를 받아옴 (검색어가 없을 경우 -> 전체 검색)
 	 * 		ㄴ 검색어로 검색한 상품 리스트와 리스트 크기를 json형태로 반환
 	 */
-	@RequestMapping(value = "/adminProductList/getProductData.do", produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/getProductData.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map getProductData(HttpSession session, @RequestParam(value = "searchWord") String searchWord) {
 		Map result = new HashMap();
 		Map<String, String> search = new HashMap<String, String>();
 		search.put("searchWord", searchWord);
 		List<ProductVO> productList = productService.searchListProduct(search);
+		System.out.println(productList);
 		result.put("productList", productList);
 		result.put("productListSize", productList.size());
 		return result;
@@ -65,10 +68,10 @@ public class AdminProductController {
 	 * 함수 이름 : prodcutInsertPage
 	 * 주요 기능 : 상품 등록 페이지를 불러옴
 	 */
-	@RequestMapping(value = "/adminProductList/loadInsertProduct.do")
+	@RequestMapping(value = "/loadInsertProduct.do")
 	public ModelAndView productInsertPage(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("adminProductList/adminProductInsert");
+		mv.setViewName("/adminProductInsert");
 		return mv;
 	}
 	
@@ -76,13 +79,13 @@ public class AdminProductController {
 	 * 함수 이름 : productInsert
 	 * 주요 기능 : 상품을 등록하고 상품 리스트 페이지로 이동함
 	 */
-	@RequestMapping(value = "/adminProductList/insertProduct.do")
+	@RequestMapping(value = "/insertProduct.do")
 	public ModelAndView productInsert(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 
 		// 상품 등록해야되는 부분
 		adminProductService.insertProduct(productVO);
-		mv.setViewName("/adminProductList/adminProductList");
+		mv.setViewName("/adminProductList");
 		return mv;
 	}
 	
@@ -91,11 +94,11 @@ public class AdminProductController {
 	 * 함수 이름 : productDelete
 	 * 주요 기능 : 상품을 삭제하고 상품 리스트 페이지로 이동함
 	 */
-	@RequestMapping(value = "/adminProductList/productDelete.do")
+	@RequestMapping(value = "productDelete.do")
 	public ModelAndView productDelete(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.deleteProduct(productVO);
-		mv.setViewName("/adminProductList/adminProductList");
+		mv.setViewName("adminProductList");
 		return mv;
 	}
 	
@@ -107,7 +110,7 @@ public class AdminProductController {
 	 * 		ㄴ 상품 수정 페이지를 로딩함
 	 * 		ㄴ 상품 id를 같이 화면에 넘겨줌
 	 */
-	@RequestMapping(value = "/adminProductList/loadProductUpdatePage.do")
+	@RequestMapping(value = "/loadProductUpdatePage.do")
 	public ModelAndView loadProductUpdatePage(HttpSession session, int productId) {
 		ModelAndView mv = new ModelAndView();
 		ProductVO productVO = new ProductVO();
@@ -132,6 +135,35 @@ public class AdminProductController {
 		mv.setViewName("/adminProductList/adminProductList");
 		return mv;
 	}
+	
+	
+	/* 
+	 * 함수 이름 : getProductDataWithPaging
+	 * 주요 기능 : 검색어와 현재 페이지를 입력받아 현재 페이지에 해당하는 목록을 넘겨줌
+	 * 함수 내용
+	 * 		ㄴ 검색어와 현재 페이지를 입력받아 현재 페이지에 해당하는 도서 목록을 넘겨줌
+	 * 		ㄴ 페이징을 돕는 PaginationVO 사용
+	 * 반환되는 위치 : getProductDataWithPaging.js 
+	 */
+	@RequestMapping(value = "/adminProductList/getProductDataWithPaging.do", produces = "application/json; charset=utf-8")
+	@ResponseBody
+	public Map getProductDataWithPaging(HttpSession session, @RequestParam(defaultValue = "1") int curPage,
+			@RequestParam(value = "searchWord") String searchWord) {
+
+		Map result = new HashMap();
+		int listCnt = adminProductService.selectProductCntByNameWithPaging(searchWord);
+		PaginationVO paginationVO = new PaginationVO(listCnt, curPage);
+		Map searchMap = new HashMap();
+		searchMap.put("searchWord", searchWord);
+		searchMap.put("startRow", paginationVO.getStartIndex() + 1);
+		searchMap.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
+		List<ProductVO> productList = adminProductService.selectProductSearchByNameWithPaging(searchMap);
+		result.put("pagination", paginationVO);
+		result.put("productList", productList);
+		result.put("productListSize", productList.size());
+		return result;
+	}
+
 
 }
 

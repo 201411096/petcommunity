@@ -31,8 +31,8 @@
 				<div class="search row">
 					<div class="col-xs-2 col-sm-2">
 						<select name="type" class="form-control" id='type'>
-							<option>제목</option>
-							<option>내용</option>
+							<option>상품명</option>
+							<option>카테고리</option>
 						</select>
 					</div>
 
@@ -49,37 +49,38 @@
 
 					<div id="productInfoButtonContainer">
 						<div class="input-group">				
-							<form action="/petcommunity/adminProductList/loadInsertProduct.do">
+							<form action="/petcommunity/loadInsertProduct.do">
 								<span class="input-group-btn">
 									<button id="writeBtn" type="submit" class="btn btn-default">상품 등록</button>
 								</span>
 							</form>
 					</div></div><br>	
 					
-							<div class="table-responsive">
-								<table id="productDataTable" class="table table-hover">
-									<thead>
-										<tr>
-											<th scope="col">상품 번호</th>
-											<th scope="col">상품명</th>
-											<th scope="col">가격</th>
-											<th scope="col">수량</th>
-											<th scope="col">카테고리</th>
-											<th scope="col">수정</th>
-											<th scope="col">삭제</th>
-										</tr>
-									</thead>
-									<tbody id="productTable">
-									
-									</tbody>
-								</table>
-								
+						<form role="form" method="get">
+							<table id="productDataTable" class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">상품 번호</th>
+										<th scope="col">상품명</th>
+										<th scope="col">가격</th>
+										<th scope="col">수량</th>
+										<th scope="col">카테고리</th>
+										<th scope="col">수정</th>
+										<th scope="col">삭제</th>
+									</tr>
+								</thead>
+								<tbody id="productTable">
+							
+								</tbody>
+							</table>
+						</form>
+							
 								<div class="col-md-offset-3" id="pagination_container">
 									<ul id="pagination-demo" class="pagination-lg"></ul>
 								</div>
-			<div id="tab-1" class="tab-content"></div>
-			<div id="tab-2" class="tab-content"></div>
-							</div>
+							<div id="tab-1" class="tab-content"></div>
+							<div id="tab-2" class="tab-content"></div>
+							
 						</div>
 		</section>
 	</div>

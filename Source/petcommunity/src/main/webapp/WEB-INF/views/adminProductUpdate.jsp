@@ -28,7 +28,7 @@
 			<hr />
 
 			<div class="col-xs-10 col-sm-10">
-							<form id="productUpdate" action="/adminProductList/productUpdatePage.do">
+							<form id="productUpdate" action="/petcommunity/productUpdatePage.do">
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="${productVO.productId}" readonly>
 								</div>

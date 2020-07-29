@@ -38,4 +38,16 @@ public class AdminProductServiceImpl implements AdminProductService {
 		return adminProductDAO.deleteProduct(productvo);
 	}
 
+	public int selectProductCntByNameWithPaging(String searchWord) {
+		return adminProductDAO.selectProductCntByNameWithPaging(searchWord);
+	}
+
+	public List<ProductVO> selectProductSearchByNameWithPaging(Map map) {
+		return adminProductDAO.selectProductSearchByNameWithPaging(map);
+	}
+
+
+
+	
+
 }

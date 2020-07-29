@@ -20,6 +20,7 @@
 	ㄴ 수정 버튼 이벤트 핸들러 연결
 	ㄴ 삭제 버튼 이벤트 핸들러 연결
 */
+
 //페이징처리
 var curPage;
 var defaultOpts = {										//페이징 처리 함수에서 불리는 옵션
@@ -37,15 +38,17 @@ $(function(){
 	$(document).on("click",".btn-primary", updateBtnEvent);
 	$(document).on("click",".btn-warning", deleteBtnEvent);
 });
+
+
 //검색 결과 수가 바뀌지 않는 경우에 불리는 함수
 // ㄴ 페이징 총 수가 변하지는 않음
 function getProductDataInPaging(){
 	$.ajax({
 		type : 'post',
 		async:true,
-		url : '/BookStore/admin/getProductDataWithPaging.do',
+		url : '/petcommunity/getProductDataWithPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data : {"searchWord" : $('#listSearch').val(),
+		data : {"searchWord" : $('#searchWord').val(),
 				"curPage" : curPage,
 				},
 		dataType : 'json',
@@ -72,15 +75,17 @@ function deleteBtnEvent(){
 	console.log( $(this).parent().prev().prev().text() );
 	$(this).next().submit();
 }
+
+
 //검색 결과 수가 바뀌는 경우에 불리는 함수
 //ㄴ 페이징 총 수가 변함
 function getProductData(){
 	$.ajax({
 		type : 'post',
 		async:true,
-		url : '/crudList/getProductDataWithPaging.do',
+		url : '/petcommunity/getProductDataWithPaging.do',
 		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data : {"searchWord" : $('#searchBtn').val()},
+		data : {"searchWord" : $('#searchWord').val()},
 		dataType : 'json',
 		success : function(resultData){
 			drawProductTable(resultData);
@@ -101,8 +106,8 @@ function getProductData(){
 
 function drawProductTable(data){
 	$('#productTable').empty();
-	var formPrefix1 = '<form action="/crudList/loadProductUpdatePage.do">';
-	var formPrefix2 = '<form action="/crudList/productDelete.do">';
+	var formPrefix1 = '<form action="/petcommunity/loadProductUpdatePage.do">';
+	var formPrefix2 = '<form action="/petcommunity/productDelete.do">';
 	var formSuffix = '</form>';
 	var trPrefix = '<tr>';
 	var trSuffix = '</tr>';
@@ -115,12 +120,12 @@ function drawProductTable(data){
 	for(var i=0; i<data.productListSize; i++){
 		var listContent =  
 						  trPrefix +
-						  tdPrefix + data.productList[i].bookId + tdSuffix +
-						  tdPrefix + data.productList[i].writerId + tdSuffix +
-						  tdPrefix + data.productList[i].bookName + tdSuffix +
-						  tdPrefix + data.productList[i].bookPdate + tdSuffix +
-						  tdPrefix + data.productList[i].bookGenre + tdSuffix +
-						  tdPrefix + data.productList[i].bookPrice + tdSuffix +
+						  tdPrefix + data.productList[i].productId + tdSuffix +
+						  tdPrefix + data.productList[i].productName + tdSuffix +
+						  tdPrefix + data.productList[i].productPrice + tdSuffix +
+						  tdPrefix + data.productList[i].productCnt + tdSuffix +
+						  tdPrefix + data.productList[i].productFeature + tdSuffix +
+						  tdPrefix + data.productList[i].productContent + tdSuffix +
 						  tdPrefix + buttonUpdate + 
 						  formPrefix1 + inputtypehiddenPrefix + data.productList[i].productId + inputtypehiddenSuffix + formSuffix +
 						  tdSuffix +

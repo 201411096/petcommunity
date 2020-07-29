@@ -73,10 +73,7 @@
 								<button class="btn btn-default" name='writeBtn' id='writeBtn'>등록</button>
 							</form>
 						</div>
-			
-			<div id="tab-1" class="tab-content"></div>
-			<div id="tab-2" class="tab-content"></div>
-			
+	
 			<div class="col-md-offset-3" id="pagination_container">
 				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>

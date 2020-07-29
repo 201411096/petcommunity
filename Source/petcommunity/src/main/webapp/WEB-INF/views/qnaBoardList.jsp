@@ -88,4 +88,6 @@
 	<script src="resources/js/qnaBoardList.js"></script>
 	<script src="resources/bootstrap_template/template_01/scripts3/main.js"></script>
 </body>
+
 </html>
+<%@include file="../views/footer.jsp"%>

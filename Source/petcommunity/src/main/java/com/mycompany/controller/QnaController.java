@@ -89,11 +89,11 @@ public class QnaController {
 			Map map = new HashMap();
 			Map result = new HashMap();
 			MemberVO membervo= (MemberVO)session.getAttribute("memberVO");
-			List<QnaVO> qnavoList = qnaService.getQnaBoardList(qnavo);
+//			List<QnaVO> qnavoList = qnaService.getQnaBoardList(qnavo);
 			
 			map.put("searchType", searchType);
 			map.put("searchWord", searchWord);
-			qnavoList = qnaService.selectKeyword(map);
+			List<QnaVO> qnavoList = qnaService.selectKeyword(map);
 		
 			PaginationVO paginationVO = new PaginationVO(qnavoList.size(), curPage);
 			map.put("startRow", paginationVO.getStartIndex()+1);

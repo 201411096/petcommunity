@@ -49,7 +49,7 @@
 
 					<div id="productInfoButtonContainer">
 						<div class="input-group">				
-							<form action="/adminProductList/loadInsertProduct.do">
+							<form action="/petcommunity/adminProductList/loadInsertProduct.do">
 								<span class="input-group-btn">
 									<button id="writeBtn" type="submit" class="btn btn-default">상품 등록</button>
 								</span>
@@ -77,6 +77,8 @@
 								<div class="col-md-offset-3" id="pagination_container">
 									<ul id="pagination-demo" class="pagination-lg"></ul>
 								</div>
+			<div id="tab-1" class="tab-content"></div>
+			<div id="tab-2" class="tab-content"></div>
 							</div>
 						</div>
 		</section>

@@ -23,6 +23,8 @@ io.on('connection', (socket) => {
   console.log('user connected');
   socket.on('disconnect', () => {
     console.log('user disconnected');
+    deleteMemberInfoFromArray(socket, userList);
+    printUserListInConsole(userList);
   });
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
@@ -39,7 +41,7 @@ io.on('connection', (socket) => {
     console.log('memberBirthday : ' + memberInfo.memberBirthday);
     console.log('memberFlag : ' + memberInfo.memberFlag);
     io.emit('chat message', memberInfo.memberId + "님이 입장하셨습니다.");
-    printUserListInConsole();
+    printUserListInConsole(userList);
   });
 });
 
@@ -57,8 +59,20 @@ function addMemberInfoToArray(socket, outerMemberInfo, userList){
   userList.push(tempObject);
 }
 
-function printUserListInConsole(){
-  console.log("printUserListInConsole start ...");
+function deleteMemberInfoFromArray(socket, userList){
+  console.log('check in deleteMemberInfoFromArray ...');
+  for(var i=0; i<userList.length; i++){
+    console.log('check in deleteMemberInfoFromArray ...' + i);
+    console.log('check in deleteMemberInfoFromArray ...' + userList[i].socketId);
+    console.log('check in deleteMemberInfoFromArray ...' + socket.id);
+    if(userList[i].socketId==socket.id){
+      userList.splice(i, 1);
+    }
+  }
+}
+
+function printUserListInConsole(userList){
+  console.log("---------- printUserListInConsole start ... ----------");
   for(var i=0; i<userList.length; i++){
     console.log("----- "+ i +  "_memberInfo -----");
     console.log(userList[i].memberInfo.memberId);
@@ -71,5 +85,5 @@ function printUserListInConsole(){
     console.log(userList[i].memberInfo.memberFlag);
     console.log("----- "+ i +  "_memberInfo -----");
   }
-  console.log("printUserListInConsole end ...");
+  console.log("---------- printUserListInConsole end ... ----------");
 }

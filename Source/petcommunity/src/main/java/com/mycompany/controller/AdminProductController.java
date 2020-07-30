@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -95,11 +96,11 @@ public class AdminProductController {
 	 * 함수 이름 : productDelete
 	 * 주요 기능 : 상품을 삭제하고 상품 리스트 페이지로 이동함
 	 */
-	@RequestMapping(value = "productDelete.do")
+	@RequestMapping(value = "/productDelete.do")
 	public ModelAndView productDelete(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.deleteProduct(productVO);
-		mv.setViewName("adminProductList");
+		mv.setViewName("/adminProductList");
 		return mv;
 	}
 	
@@ -111,8 +112,9 @@ public class AdminProductController {
 	 * 		ㄴ 상품 수정 페이지를 로딩함
 	 * 		ㄴ 상품 id를 같이 화면에 넘겨줌
 	 */
-	@RequestMapping(value = "/loadProductUpdatePage.do")
+	@RequestMapping(value = "/loadProductUpdatePage.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public ModelAndView loadProductUpdatePage(HttpSession session, int productId) {
+		System.out.println("상품 수정 페이지 로딩");
 		ModelAndView mv = new ModelAndView();
 		ProductVO productVO = new ProductVO();
 		productVO.setProductId(productId);
@@ -129,7 +131,7 @@ public class AdminProductController {
 	 * 함수 내용
 	 * 		ㄴ 받아온 상품 id에 해당하는 상품을 받아온 상품 정보로 수정함 
 	 */
-	@RequestMapping(value = "/productUpdatePage.do")
+	@RequestMapping(value = "/productUpdatePage.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public ModelAndView productUpdate(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.updateProduct(productVO);

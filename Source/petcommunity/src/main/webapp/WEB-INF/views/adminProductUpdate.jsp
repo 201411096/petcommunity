@@ -27,8 +27,7 @@
 			</ul>
 			<hr />
 
-			<div class="col-xs-10 col-sm-10">
-							<form id="productUpdate" action="/petcommunity/productUpdatePage.do">
+							<form action="/petcommunity/productUpdatePage.do" method='get' enctype='multipart/form-data' name='productUpdate'>
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="${productVO.productId}" readonly>
 								</div>
@@ -71,9 +70,9 @@
 								<div class="form-group">
 									<label>상품 내용</label> <textarea class="form-control" name="productContent" rows="5">${productVO.productContent}" ></textarea>
 								</div>
-								<button class="btn btn-default">수정</button>		
+								<button class="btn btn-primary" type="submit" id="productUpdate">수정</button>		
 							</form>
-						</div>
+						
 			<div class="col-md-offset-3" id="pagination_container">
 				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>

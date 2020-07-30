@@ -1,3 +1,11 @@
 #writeBtn{
 	width:100%
 }
+
+
+#productDataTable{
+	text-align: center;
+}
+#productInfoButtonContainer{
+	float:right;
+}

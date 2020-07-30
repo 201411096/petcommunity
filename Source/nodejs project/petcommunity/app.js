@@ -75,7 +75,7 @@ function printUserListInConsole(userList){
     // console.log(userList[i].memberInfo.memberEmail);
     // console.log(userList[i].memberInfo.memberBirthday);
     // console.log(userList[i].memberInfo.memberFlag);
-    console.log("----- "+ i +  "_memberInfo -----");
+    // console.log("----- "+ i +  "_memberInfo -----");
   }
   console.log("---------- printUserListInConsole end ... ----------");
 }

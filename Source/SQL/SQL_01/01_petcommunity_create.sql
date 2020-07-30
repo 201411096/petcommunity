@@ -8,6 +8,7 @@ create table member(
     member_email varchar2(50),
     member_birthday varchar2(50),
     member_flag varchar2(50),
+    member_token varchar2(2000),
     constraint member_pk primary key(member_id)
 );
 create table animal(

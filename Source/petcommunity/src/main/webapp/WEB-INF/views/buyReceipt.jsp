@@ -71,7 +71,7 @@
 						<th>결제 금액</th>
 					</tr>
 					<tr>
-						<td class="item"><img src="./resources/imgs/product_image/pawInHand/${buy.productName}.jpg"/></td>
+						<td class="item"><img src="./resources/imgs/product_image/internal/product_image/${buy.productName}.jpg"/></td>
 						<td class="item">${buy.productName}</td>
 						<td class="article">${buy.buyCnt}</td>
 						<td class="price">${buy.productPrice}</td>

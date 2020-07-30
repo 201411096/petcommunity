@@ -62,13 +62,13 @@
 				<c:choose>
 					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃하기]</a>
+						<a href="logout.do">[로그아웃]</a>
 
 					</c:when>
 					
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃하기]</a>
+						<a href="logout.do">[로그아웃]</a>
 						<a href="mypageAnimal.do">[마이 페이지]</a>
 						<a href="productCart.do">[장바구니]</a>
 

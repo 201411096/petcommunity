@@ -8,7 +8,11 @@ $('form').submit(function(e) {
 socket.on('chat message', function(msg){
   $('#messages').append($('<li>').text(msg));
 });
-getMemberInfo();
+//var memberId = $('#memberId').val();
+//socket.emit('memberInfo', memberId);
+
+
+getMemberInfo(); // 로그인 정보를 서버로 넘김
 function getMemberInfo(){
 	$.ajax({
 		 type: 'get',
@@ -21,8 +25,12 @@ function getMemberInfo(){
         	 console.log('getMemberInfo ajax 확인');
         	 var memberInfo = data.memberInfo
         	 console.log(memberInfo);
-        	 if(memberInfo!=null && memberInfo!=undefined && memberInfo!="")
+        	 if(memberInfo!=null && memberInfo!=undefined && memberInfo!=""){
         		 socket.emit('memberInfo', memberInfo);
+        	 }else{
+        		 socket.emit('memberInfo', 'tempMember');
+        	 }
+        		 
          },
          error: function(data){
       	   console.log('getMemberInfo error');

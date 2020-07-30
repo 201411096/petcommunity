@@ -21,6 +21,7 @@
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+    <input type="hidden" id="memberId" value="${sessionScope.memberVO.memberId}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="./resources/js/test_chat.js"></script>

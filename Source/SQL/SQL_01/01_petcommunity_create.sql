@@ -168,7 +168,7 @@ create table buy(
     CONSTRAINT BUY_FK_1 FOREIGN KEY(BUYLIST_ID) REFERENCES BUYLIST(BUYLIST_ID),
     CONSTRAINT BUY_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id)
 );
-
+alter table buy modify 
 -- 장바구니
 CREATE TABLE BUYCARTLIST(
     BUYCARTLIST_ID NUMBER(30),

@@ -29,13 +29,6 @@
 
 			<div id="tab-3" class="tab-content current">
 				<div class="search row">
-					<div class="col-xs-2 col-sm-2">
-						<select name="type" class="form-control" id='type'>
-							<option>상품명</option>
-							<option>카테고리</option>
-						</select>
-					</div>
-
 					<div class="col-xs-10 col-sm-10">
 						<div class="input-group">	
 							<span id="search-container">
@@ -75,14 +68,14 @@
 								</tbody>
 							</table>
 						</form>
-							
+						</div>	
 								<div class="col-md-offset-3" id="pagination_container">
 									<ul id="pagination-demo" class="pagination-lg"></ul>
 								</div>
 							<div id="tab-1" class="tab-content"></div>
 							<div id="tab-2" class="tab-content"></div>
 							
-						</div>
+						
 		</section>
 	</div>
 </body>

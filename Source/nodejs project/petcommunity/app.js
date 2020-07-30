@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
     console.log('message: ' + msg);
   });
   socket.on('memberInfo', function(memberInfo){
-//    addMemberInfoToArray(socket, memberInfo, userList);
+    addMemberInfoToArray(socket, memberInfo, userList);
     console.log('memberId : ' + memberInfo.memberId);
     console.log('memberPassword : ' + memberInfo.memberPassword);
     console.log('memberName : ' + memberInfo.memberName);
@@ -39,27 +39,37 @@ io.on('connection', (socket) => {
     console.log('memberBirthday : ' + memberInfo.memberBirthday);
     console.log('memberFlag : ' + memberInfo.memberFlag);
     io.emit('chat message', memberInfo.memberId + "님이 입장하셨습니다.");
-//    printUserListInConsole();
+    printUserListInConsole();
   });
 });
-/*
+
 function addMemberInfoToArray(socket, outerMemberInfo, userList){
   var tempObject = new Object();
   var tempMemberInfo = new Object();
   tempObject.socketId = socket.id;
   if(outerMemberInfo!=undefined){
-
-    tempObject.memberId = outerMemberId;
+    tempMemberInfo=outerMemberInfo;
   }else{
-    tempObject.memberId = "user_"+socket.id;
+    tempMemberInfo.memberId = "user_"+socket.id;
+    tempMemberInfo.memberFlag = -1; // -1이면 비회원
   }
+  tempObject.memberInfo=tempMemberInfo;
   userList.push(tempObject);
 }
+
 function printUserListInConsole(){
   console.log("printUserListInConsole start ...");
   for(var i=0; i<userList.length; i++){
-    console.log(userList[i].memberId);
+    console.log("----- "+ i +  "_memberInfo -----");
+    console.log(userList[i].memberInfo.memberId);
+    console.log(userList[i].memberInfo.memberPassword);
+    console.log(userList[i].memberInfo.memberName);
+    console.log(userList[i].memberInfo.memberAddress);
+    console.log(userList[i].memberInfo.memberTel);
+    console.log(userList[i].memberInfo.memberEmail);
+    console.log(userList[i].memberInfo.memberBirthday);
+    console.log(userList[i].memberInfo.memberFlag);
+    console.log("----- "+ i +  "_memberInfo -----");
   }
   console.log("printUserListInConsole end ...");
 }
-*/

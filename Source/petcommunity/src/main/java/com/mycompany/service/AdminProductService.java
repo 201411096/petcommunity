@@ -7,7 +7,7 @@ import com.mycompany.domain.ProductVO;
 
 public interface AdminProductService {
 	public int insertProduct(ProductVO productvo);
-	public List<ProductVO> selectProduct(ProductVO productvo);
+	public ProductVO selectProduct(ProductVO productvo);
 	public int updateProduct(ProductVO productvo);
 	public int deleteProduct(ProductVO productvo);
 	public int selectProductCntByNameWithPaging(String searchWord);

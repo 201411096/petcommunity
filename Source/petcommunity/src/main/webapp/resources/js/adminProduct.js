@@ -15,8 +15,6 @@
 	
 실행부분
 	ㄴ 화면 로딩 후 바로 데이터를 가져와서 테이블를 그림
-	ㄴ 검색창에 입력할때마다 테이블을 다시 그려주는 keyup이벤트 핸들러 연결
-		ㄴ 동적 페이징 처리
 	ㄴ 수정 버튼 이벤트 핸들러 연결
 	ㄴ 삭제 버튼 이벤트 핸들러 연결
 */
@@ -24,7 +22,7 @@
 //페이징처리
 var curPage;
 var defaultOpts = {										//페이징 처리 함수에서 불리는 옵션
-        totalPages: 20,
+        totalPages: 10,
         onPageClick: function (event, page) {
             $('#page-content').text('Page ' + page);
             curPage=page;
@@ -34,10 +32,66 @@ var defaultOpts = {										//페이징 처리 함수에서 불리는 옵션
     };
 $(function(){
 	getProductData();
-	$('#searchBtn').on('keyup', getProductData);
-	$(document).on("click",".btn-primary", updateBtnEvent);
-	$(document).on("click",".btn-warning", deleteBtnEvent);
+	$('#searchBtn').on('click', getProductData);
+	$(document).on("click","button[id^='updateProduct']", updateBtnEvent);
+	$(document).on("click","button[id^='deleteProduct']", deleteBtnEvent);
 });
+
+function updateBtnEvent(){
+//	alert('update:' + $(this).next().attr('action'))
+//	$(this).next().action = "loadProductUpdatePage.do";
+//	$(this).next().submit();
+//	productId = $(this).next().find('input').val()
+//	alert(productId)
+//	window.location.href = "loadProductUpdatePage.do?productId="+productId;
+	//window.open("loadProductUpdatePage.do?productId="+productId,"","width=500,height=600");
+	$(this).submit();
+}
+
+function deleteBtnEvent(){
+	$(this).submit();
+}
+
+
+function drawProductTable(data){
+	$('#productTable').empty();
+	var formPrefix1 = '<form action="/petcommunity/loadProductUpdatePage.do">';
+	var formPrefix2 = '<form action="/petcommunity/productDelete.do">';
+	var formSuffix = '</form>';
+	var trPrefix = '<tr>';
+	var trSuffix = '</tr>';
+	var tdPrefix = '<td>';
+	var tdSuffix = '</td>';
+	var buttonUpdate = '<button class="btn btn-primary">수정</button>';
+	var buttonDelete = '<button class="btn btn-warning">삭제</button>';
+	var inputtypehiddenPrefix = '<input type="hidden" name="productId" value="';
+	var inputtypehiddenSuffix = '">';
+	for(var i=0; i<data.productListSize; i++){
+		var listContent =  
+						  trPrefix +
+						  tdPrefix + data.productList[i].productId + tdSuffix +
+						  tdPrefix + data.productList[i].productName + tdSuffix +
+						  tdPrefix + data.productList[i].productPrice + tdSuffix +
+						  tdPrefix + data.productList[i].productCnt + tdSuffix +
+						  tdPrefix + data.productList[i].productFeature + tdSuffix +
+						  tdPrefix + data.productList[i].productContent + tdSuffix +
+						  tdPrefix + 
+						  formPrefix1 + inputtypehiddenPrefix + data.productList[i].productId + inputtypehiddenSuffix + 
+						  '<button class="btn btn-primary" id=updateProduct'+[i]+'>수정</button>' +
+						  formSuffix +
+						  tdSuffix +
+						  tdPrefix +
+						  formPrefix2 + inputtypehiddenPrefix + data.productList[i].productId + inputtypehiddenSuffix + 
+						  '<button class="btn btn-warning" id=deleteProduct'+[i]+'>삭제</button>' + 
+						  formSuffix +
+						  tdSuffix +
+						  trSuffix		  
+						  ;
+		$('#productTable').append(listContent);
+	}
+}
+
+
 
 
 //검색 결과 수가 바뀌지 않는 경우에 불리는 함수
@@ -64,17 +118,6 @@ function getProductDataInPaging(){
 	});
 }
 
-function updateBtnEvent(){
-	console.log( $(this).parent().prev().prev().text() );
-	console.log( $(this).parent().prev().text() );
-	$(this).next().submit();
-}
-
-function deleteBtnEvent(){
-	console.log( $(this).parent().prev().prev().prev().text() );
-	console.log( $(this).parent().prev().prev().text() );
-	$(this).next().submit();
-}
 
 
 //검색 결과 수가 바뀌는 경우에 불리는 함수
@@ -104,38 +147,5 @@ function getProductData(){
 	});
 }
 
-function drawProductTable(data){
-	$('#productTable').empty();
-	var formPrefix1 = '<form action="/petcommunity/loadProductUpdatePage.do">';
-	var formPrefix2 = '<form action="/petcommunity/productDelete.do">';
-	var formSuffix = '</form>';
-	var trPrefix = '<tr>';
-	var trSuffix = '</tr>';
-	var tdPrefix = '<td>';
-	var tdSuffix = '</td>';
-	var buttonUpdate = '<button class="btn btn-default">수정</button>';
-	var buttonDelete = '<button class="btn btn-default">삭제</button>';
-	var inputtypehiddenPrefix = '<input type="hidden" name="productId" value="';
-	var inputtypehiddenSuffix = '">';
-	for(var i=0; i<data.productListSize; i++){
-		var listContent =  
-						  trPrefix +
-						  tdPrefix + data.productList[i].productId + tdSuffix +
-						  tdPrefix + data.productList[i].productName + tdSuffix +
-						  tdPrefix + data.productList[i].productPrice + tdSuffix +
-						  tdPrefix + data.productList[i].productCnt + tdSuffix +
-						  tdPrefix + data.productList[i].productFeature + tdSuffix +
-						  tdPrefix + data.productList[i].productContent + tdSuffix +
-						  tdPrefix + buttonUpdate + 
-						  formPrefix1 + inputtypehiddenPrefix + data.productList[i].productId + inputtypehiddenSuffix + formSuffix +
-						  tdSuffix +
-						  tdPrefix + buttonDelete + 
-						  formPrefix2 + inputtypehiddenPrefix + data.productList[i].productId + inputtypehiddenSuffix + formSuffix +
-						  tdSuffix +
-						  trSuffix		  
-						  ;
-		$('#productTable').append(listContent);
-	}
-}
 
 

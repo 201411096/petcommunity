@@ -20,6 +20,13 @@ from product
 order by PRODUCT_ID asc 
 </select>
 
+<!-- 상품리스트 -->
+<select parameterType="product" id="selectProductDetail" resultType="product">
+SELECT PRODUCT_ID, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_CNT, PRODUCT_FEATURE, PRODUCT_CONTENT
+from product
+where product_id=#{productId}
+</select>
+
 <!-- 상품 수 출력 : 상품명으로 검색 + 페이징 -->
 	<select id="selectProductCntByNameWithPaging"
 		parameterType="string" resultType="int">

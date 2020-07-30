@@ -17,26 +17,13 @@
     </style>
 </head>
 <body>
-
-
     <ul id="messages"></ul>
     <form action="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+    <input type="hidden" id="memberId" value="${sessionScope.memberVO.memberId}">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-var socket = io("https://192.168.0.18:3000");
-$('form').submit(function(e) {
-      e.preventDefault(); // prevents page reloading
-      console.log('submit event');
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
-socket.on('chat message', function(msg){
-  $('#messages').append($('<li>').text(msg));
-});
-</script>
+<script src="./resources/js/test_chat.js"></script>
 </body>
 </html>

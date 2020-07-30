@@ -134,7 +134,12 @@ $(function(){
 	});
 	
 	$(document).on('click', "#goToPay", function(){
-		window.location.href='/petcommunity/buy.do';
+		if($('.totalTable').text()=='장바구니에 담겨진 상품이 없습니다!'){
+			alert('결제를 진행할 상품이 담겨있지 않습니다!')
+		}else{
+			window.location.href='/petcommunity/buy.do';
+		}
+		
 	});
 	
 	$(document).on('click', "#backToShopping", function(){

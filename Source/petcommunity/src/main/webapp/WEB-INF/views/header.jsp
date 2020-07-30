@@ -62,26 +62,26 @@
 				<c:choose>
 					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃하기]</a>
+						<a href="logout.do">[로그아웃]</a>
 
 					</c:when>
 					
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃하기]</a>
+						<a href="logout.do">[로그아웃]</a>
 						<a href="mypageAnimal.do">[마이 페이지]</a>
 						<a href="productCart.do">[장바구니]</a>
 
 					</c:when>
 
 				</c:choose>
-				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="lostboardlist.do">분실 동물 찾기</a></li>
+				<li><a href="findboardlist.do">분실 동물 신고</a></li>
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="/petcommunity/productList.do">오키도키 굿즈</a></li>
 				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
 				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
-				<li><a href="contact.html">Contact</a></li>
 
 				<c:if test="${empty sessionScope.memberVO}">
 					<li><a href="login.do">로그인/회원가입</a></li>

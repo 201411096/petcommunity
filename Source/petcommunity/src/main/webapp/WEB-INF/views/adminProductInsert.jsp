@@ -28,7 +28,7 @@
 			<hr />
 
 			<div class="card-body">
-							<form id="productUpdate" action="/petcommunity/insertProduct.do">
+							<form id="productInsert" action="/petcommunity/insertProduct.do">
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="" placeholder="-----" disabled>
 								</div>
@@ -67,7 +67,7 @@
 								</div>
 				
 								<div class="form-group">
-									<label>상품 내용</label><input type="text" class="form-control" name="productContent" value="">
+									<label>상품 내용</label><textarea class="form-control" name="productContent" rows="5"></textarea>
 								</div>
 								<button class="btn btn-default" name='writeBtn' id='writeBtn'>등록</button>
 							</form>

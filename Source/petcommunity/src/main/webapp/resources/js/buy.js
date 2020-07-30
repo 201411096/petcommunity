@@ -39,7 +39,7 @@ function buyTable(data){
 			var listContent = 
 							'<tr class=buyListHeight>' +
 							tdPrefix + 
-							"<img src='resources/imgs/product_image/pawInHand/".concat(data[i].productName) +".jpg' id=cartListImg+"+[i]+" />"+ tdSuffix +
+							"<img src='resources/imgs/product_image/internal/product_image/".concat(data[i].productName) +".jpg' id=cartListImg+"+[i]+" />"+ tdSuffix +
 							'<input type=hidden name=productId value='+data[i].productId +' >'+
 							tdPrefix + "<span id=productName"+[i]+'>' + data[i].productName.substr(0,30) +'</span>' +tdSuffix +
 							tdPrefix + '<span id=productPrice'+[i]+'>'+ data[i].productPrice + '</span>원' + tdSuffix +

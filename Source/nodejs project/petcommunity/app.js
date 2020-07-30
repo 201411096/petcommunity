@@ -18,7 +18,7 @@ var app = https.createServer(options, (req, res) => {
 var io = require('socket.io')(app);
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
+  console.log('user connected');
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
@@ -26,4 +26,9 @@ io.on('connection', (socket) => {
     io.emit('chat message', msg);
     console.log('message: ' + msg);
   });
+  socket.on('memberInfo', function(memberInfo){
+    console.log('memberInfo : ' + memberInfo);
+    console.log('memberInfo : ' + memberInfo.memberId);
+    io.emit('chat message', memberInfo.memberId + "님이 입장하셨습니다.");
+  })
 });

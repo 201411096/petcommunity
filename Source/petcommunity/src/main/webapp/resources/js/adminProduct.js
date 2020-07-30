@@ -24,7 +24,7 @@
 //페이징처리
 var curPage;
 var defaultOpts = {										//페이징 처리 함수에서 불리는 옵션
-        totalPages: 20,
+        totalPages: 10,
         onPageClick: function (event, page) {
             $('#page-content').text('Page ' + page);
             curPage=page;

@@ -51,8 +51,9 @@ public class AdminProductController {
 	 * 		ㄴ jsp에서 검색어를 받아옴 (검색어가 없을 경우 -> 전체 검색)
 	 * 		ㄴ 검색어로 검색한 상품 리스트와 리스트 크기를 json형태로 반환
 	 */
-	@RequestMapping(value = "/getProductData.do", produces = "application/json; charset=utf-8")
+	
 	@ResponseBody
+	@RequestMapping(value = "/getProductData.do", produces = "application/json; charset=utf-8")
 	public Map getProductData(HttpSession session, @RequestParam(value = "searchWord") String searchWord) {
 		Map result = new HashMap();
 		Map<String, String> search = new HashMap<String, String>();
@@ -117,7 +118,7 @@ public class AdminProductController {
 		productVO.setProductId(productId);
 		productVO = (ProductVO) adminProductService.selectProduct(productVO);
 		mv.addObject("ProductVO", productVO);
-		mv.setViewName("/adminProductList/adminProductUpdate");
+		mv.setViewName("/adminProductUpdate");
 		return mv;
 	}
 	
@@ -128,11 +129,11 @@ public class AdminProductController {
 	 * 함수 내용
 	 * 		ㄴ 받아온 상품 id에 해당하는 상품을 받아온 상품 정보로 수정함 
 	 */
-	@RequestMapping(value = "/adminProductList/productUpdatePage.do")
+	@RequestMapping(value = "/productUpdatePage.do")
 	public ModelAndView productUpdate(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.updateProduct(productVO);
-		mv.setViewName("/adminProductList/adminProductList");
+		mv.setViewName("/adminProductList");
 		return mv;
 	}
 	
@@ -145,7 +146,7 @@ public class AdminProductController {
 	 * 		ㄴ 페이징을 돕는 PaginationVO 사용
 	 * 반환되는 위치 : getProductDataWithPaging.js 
 	 */
-	@RequestMapping(value = "/adminProductList/getProductDataWithPaging.do", produces = "application/json; charset=utf-8")
+	@RequestMapping(value = "/getProductDataWithPaging.do", produces = "application/json; charset=utf-8")
 	@ResponseBody
 	public Map getProductDataWithPaging(HttpSession session, @RequestParam(defaultValue = "1") int curPage,
 			@RequestParam(value = "searchWord") String searchWord) {

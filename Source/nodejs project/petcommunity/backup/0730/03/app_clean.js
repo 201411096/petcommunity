@@ -62,6 +62,7 @@ function addMemberInfoToArray(socket, outerMemberInfo, userList, io){
   userObject.socketList = socketList;
   userList.push(userObject);
   io.emit('chat message', userObject.userId + "님이 입장하셨습니다.");
+
 }
 
 function deleteMemberInfoFromArray(socket, userList, io){
@@ -83,10 +84,7 @@ function printUserListInConsole(userList){
   console.log("---------- printUserListInConsole start ... ----------");
   for(var i=0; i<userList.length; i++){
     console.log("----- "+ i +  "_memberInfo -----");
-    console.log(userList[i].userId);
-    for(var j=0; j<userList[i].socketList.length; j++){
-      console.log(userList[i].socketList[j].id);
-    }
+    console.log(userList[i].memberInfo.memberId);
   }
   console.log("---------- printUserListInConsole end ... ----------");
 }

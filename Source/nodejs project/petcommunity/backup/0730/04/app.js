@@ -8,6 +8,7 @@ const options = {
 var app = https.createServer(options, (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    //res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin,Accept,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
 
@@ -62,9 +63,26 @@ function addMemberInfoToArray(socket, outerMemberInfo, userList, io){
   userObject.socketList = socketList;
   userList.push(userObject);
   io.emit('chat message', userObject.userId + "님이 입장하셨습니다.");
+  // tempObject.socketId = socket.id;
+  // if(outerMemberInfo!='tempMember'){
+  //   console.log(outerMemberInfo);
+  //   tempMemberInfo=outerMemberInfo;
+  // }else{
+  //   tempMemberInfo.memberId = "user_"+socket.id;
+  //   tempMemberInfo.memberFlag = -1; // -1이면 비회원
+  // }
+  // tempObject.memberInfo=tempMemberInfo;
+  // io.emit('chat message', tempObject.memberInfo.memberId + "님이 입장하셨습니다.");
+  // userList.push(tempObject);
 }
 
 function deleteMemberInfoFromArray(socket, userList, io){
+  // for(var i=0; i<userList.length; i++){
+  //   if(userList[i].socketId==socket.id){
+  //     io.emit('chat message', userList[i].memberInfo.memberId + "님이 퇴장하셨습니다.");
+  //     userList.splice(i, 1);
+  //   }
+  // }
   for(var i=0; i<userList.length; i++){
     for(var j=0; j<userList[i].socketList.length; j++){
       if(userList[i].socketList[j].id==socket.id){
@@ -87,6 +105,15 @@ function printUserListInConsole(userList){
     for(var j=0; j<userList[i].socketList.length; j++){
       console.log(userList[i].socketList[j].id);
     }
+    // console.log(userList[i].memberInfo.memberId);
+    // console.log(userList[i].memberInfo.memberPassword);
+    // console.log(userList[i].memberInfo.memberName);
+    // console.log(userList[i].memberInfo.memberAddress);
+    // console.log(userList[i].memberInfo.memberTel);
+    // console.log(userList[i].memberInfo.memberEmail);
+    // console.log(userList[i].memberInfo.memberBirthday);
+    // console.log(userList[i].memberInfo.memberFlag);
+    // console.log("----- "+ i +  "_memberInfo -----");
   }
   console.log("---------- printUserListInConsole end ... ----------");
 }

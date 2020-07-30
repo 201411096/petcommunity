@@ -22,7 +22,7 @@ public class AdminProductServiceImpl implements AdminProductService {
 	}
 
 	@Override
-	public List<ProductVO> selectProduct(ProductVO productvo) {
+	public ProductVO selectProduct(ProductVO productvo) {
 		
 		return adminProductDAO.selectProduct(productvo);
 	}

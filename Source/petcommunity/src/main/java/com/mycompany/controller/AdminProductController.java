@@ -117,6 +117,7 @@ public class AdminProductController {
 		ModelAndView mv = new ModelAndView();
 		ProductVO productVO = new ProductVO();
 		productVO.setProductId(productId);
+		
 		productVO = (ProductVO) adminProductService.selectProduct(productVO);
 		mv.addObject("ProductVO", productVO);
 		mv.setViewName("adminProductUpdate");

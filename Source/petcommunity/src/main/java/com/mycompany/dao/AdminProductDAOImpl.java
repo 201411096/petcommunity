@@ -21,9 +21,9 @@ public class AdminProductDAOImpl implements AdminProductDAO{
 	}
 
 	@Override
-	public List<ProductVO> selectProduct(ProductVO productvo) {
-		List<ProductVO> product = mybatis.selectList("AdminProductDAO.selectProduct", productvo);
-		return product;
+	public ProductVO selectProduct(ProductVO productvo) {
+		ProductVO productVO = mybatis.selectOne("AdminProductDAO.selectProductDetail", productvo);
+		return productVO;
 	}
 
 	public int updateProduct(ProductVO productvo) {

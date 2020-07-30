@@ -95,6 +95,8 @@ public class FindBoardController {
 				mv.addObject("file", fileList[0]);
 			else
 				mv.addObject("fileflag", -1);
+		}else {
+			mv.addObject("fileflag", -1);
 		}
 		
 		if( ((MemberVO)session.getAttribute("memberVO"))!=null ) { //로그인이 되어있는 상태라면

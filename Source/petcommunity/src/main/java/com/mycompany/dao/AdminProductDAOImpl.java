@@ -14,26 +14,36 @@ public class AdminProductDAOImpl implements AdminProductDAO{
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	
-	public int insertProduct(ProductVO vo) {
-		int result = mybatis.insert("AdminProduct.insertProduct", vo);
+	@Override
+	public int insertProduct(ProductVO productvo) {
+		int result = mybatis.insert("AdminProductDAO.insertProduct", productvo);
 		return result;
 	}
 
-	
+	@Override
 	public List<ProductVO> selectProduct(ProductVO productvo) {
-		List<ProductVO> product = mybatis.selectList("AdminProduct.selectProduct", productvo);
+		List<ProductVO> product = mybatis.selectList("AdminProductDAO.selectProduct", productvo);
 		return product;
 	}
 
 	public int updateProduct(ProductVO productvo) {
-		int result = mybatis.update("AdminProduct.updateProduct", productvo);
+		int result = mybatis.update("AdminProductDAO.updateProduct", productvo);
 		return result;
 	}
 
 	public int deleteProduct(ProductVO productvo) {
-		int result = mybatis.delete("AdminProduct.deleteProduct", productvo);
+		int result = mybatis.delete("AdminProductDAO.deleteProduct", productvo);
 		return result;
 	}
+
+	public int selectProductCntByNameWithPaging(String searchWord) {
+		return mybatis.selectOne("AdminProductDAO.selectProductCntByNameWithPaging", searchWord);
+	}
+
+	public List<ProductVO> selectProductSearchByNameWithPaging(Map map) {
+		return mybatis.selectList("AdminProductDAO.selectProductSearchByNameWithPaging", map);
+	}
+
+
 
 }

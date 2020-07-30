@@ -10,5 +10,9 @@ public interface AdminProductService {
 	public List<ProductVO> selectProduct(ProductVO productvo);
 	public int updateProduct(ProductVO productvo);
 	public int deleteProduct(ProductVO productvo);
+	public int selectProductCntByNameWithPaging(String searchWord);
+	public List<ProductVO> selectProductSearchByNameWithPaging(Map map);
+	
+	
 
 }

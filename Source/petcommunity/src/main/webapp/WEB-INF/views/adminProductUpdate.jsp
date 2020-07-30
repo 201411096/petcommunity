@@ -28,7 +28,7 @@
 			<hr />
 
 			<div class="col-xs-10 col-sm-10">
-							<form id="productUpdate" action="/adminProductList/productUpdatePage.do">
+							<form id="productUpdate" action="/petcommunity/productUpdatePage.do">
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="${productVO.productId}" readonly>
 								</div>
@@ -69,7 +69,7 @@
 								</div>
 								
 								<div class="form-group">
-									<label>상품 내용</label> <input type="text" class="form-control" name="productContent" value="${productVO.productContent}">
+									<label>상품 내용</label> <textarea class="form-control" name="productContent" rows="5">${productVO.productContent}" ></textarea>
 								</div>
 								<button class="btn btn-default">수정</button>		
 							</form>

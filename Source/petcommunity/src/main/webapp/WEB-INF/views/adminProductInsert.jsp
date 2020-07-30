@@ -28,7 +28,7 @@
 			<hr />
 
 			<div class="card-body">
-							<form id="productUpdate" action="/adminProductList/insertProduct.do">
+							<form id="productInsert" action="/petcommunity/insertProduct.do">
 								<div class="form-group">
 									<label>상품 번호</label> <input type="text" class="form-control" name="productId" value="" placeholder="-----" disabled>
 								</div>
@@ -44,9 +44,8 @@
 													
 								<div class="form-group">
 									<label>상품 특징</label>  
-									<select class="product-filter-menu" id="productFeature" name="productFeature">
+									<select class="form-control" id="productFeature" name="productFeature">
                                         <option >tagCategory</option>
-                                        <option value="all">all</option>
                                         <option value="퍼피용">퍼피용</option>
                                         <option value="성견용">성견용</option>
                                         <option value="전연령">전연령</option>
@@ -68,15 +67,12 @@
 								</div>
 				
 								<div class="form-group">
-									<label>상품 내용</label><input type="text" class="form-control" name="productContent" value="">
+									<label>상품 내용</label><textarea class="form-control" name="productContent" rows="5"></textarea>
 								</div>
 								<button class="btn btn-default" name='writeBtn' id='writeBtn'>등록</button>
 							</form>
 						</div>
-	
-			<div class="col-md-offset-3" id="pagination_container">
-				<ul id="pagination-demo" class="pagination-lg"></ul>
-			</div>
+
 	</section>
 </div>
 </body>

@@ -72,6 +72,7 @@ function drawQnaTable(data){
 	var trPrefix = '<tr>';
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
+	var tdPrefix_title = '<td id="title">';
 	var tdSuffix = '</td>';
 	for(var i=0; i<data.QnaBoardVOListSize; i++){
 		var listContent =
@@ -80,10 +81,14 @@ function drawQnaTable(data){
 				+data.QnaBoardVOList[i].questionboardId
 				+tdSuffix+
 				
-				tdPrefix+
+				tdPrefix_title+
 				'<a href="/petcommunity/qnaContent.do?questionboardId='+data.QnaBoardVOList[i].questionboardId +'">'
 				+data.QnaBoardVOList[i].questionboardTitle
 				+tdSuffix+
+				
+				tdPrefix+
+				data.QnaBoardVOList[i].memberId+
+				tdSuffix+
 				
 				tdPrefix+
 				data.QnaBoardVOList[i].questionboardUploadtime
@@ -93,11 +98,26 @@ function drawQnaTable(data){
 				data.QnaBoardVOList[i].questionboardReadcount
 				+tdSuffix+
 				
-				tdPrefix+
-				data.QnaBoardVOList[i].memberId+
-				tdSuffix+
 			trSuffix;
 		
 		$('#QnaBoardTbody').append(listContent);
 	}
 }
+
+// 글쓰기버튼
+$('#writeBtn').click(function(){
+	$.ajax({
+		url: "/petcommunity/checkLogin.do?",
+		type: "POST",
+		success : function(data){
+			if(data=="loginRequired"){
+				alert("로그인이 필요합니다.");
+				window.location.href="/petcommunity/login.do";
+			}else if(data=="write"){
+				window.location.href="/petcommunity/write.do";
+				}else{
+					alert("에러");
+				}
+		}
+	});
+});

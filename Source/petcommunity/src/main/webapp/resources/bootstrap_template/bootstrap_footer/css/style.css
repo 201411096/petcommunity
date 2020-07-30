@@ -1,0 +1,70 @@
+ 
+ /* ----------------
+ Footer section
+  ---------------------*/
+ /*
+ @font-face { 
+ font-family: 'MapoFlowerIsland'; 
+ src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoFlowerIslandA.woff') format('woff'); 
+ font-weight: normal; font-style: normal; 
+ }
+ 
+.col-lg-4{
+	font-family: 'MapoFlowerIsland'; 
+ }
+ */
+ 
+body{
+	font-family: 'NanumSquare', sans-serif !important; 
+}
+
+/*
+.col-lg-4{
+	font-family: 'NanumSquare', sans-serif !important; 
+	font-size: 10px;
+}
+*/
+
+/*
+#lineStyle{
+	margin-top:10%;
+	border:0;
+	height: 1px;
+	background: #000000;
+}
+*/
+ 
+#qna{
+	font-size: 20px;
+	color: black;
+	
+}
+
+.footer-section {
+  background: #fff;
+  height: 20%;
+  margin-bottom: 2%;
+}
+
+.footer-text {
+  padding-right: 50px;
+}
+
+.footer-text h2 {
+  color: #404040;
+  margin-bottom: 17px;
+}
+
+.footer-text p {
+  font-size: 16px;
+}
+
+.copyright {
+  font-size: 13px;
+  font-weight: 700;
+  font-style: italic;
+  color: #515151;
+  margin-top: -20px;
+  padding-left: 15px;
+}
+ 

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file="../views/header.jsp"%>
 <html>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -11,14 +10,47 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-<link rel="stylesheet" href="./resources/css/communityBoardList.css" />
 <link rel="stylesheet" href="./resources/css/adminPage.css" />
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/template_01/css/style.css" />
+
 <title>관리자 페이지</title>
 </head>
 <body>
+	<!-- header section -->
+	<header class="header-section">
+		<div class="header-warp">
+			<a href="header.do" class="site-logo"> <img
+				src="./resources/bootstrap_template/template_01/img/logo2.png"
+				alt="">
+			</a>
+			<ul class="main-menu">
+				<c:if test="${! empty sessionScope.memberVO}">
+            ${sessionScope.memberVO.memberName}님, 안녕하세요
+            <a href="logout.do">[로그아웃하기]</a>
+					<a href="mypageselect.do">[마이 페이지]</a>
+				</c:if>
+				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
+				<li><a href="shop.do">유기견 후원 스토어</a></li>
+				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
+				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
+				<li><a href="contact.html">Contact</a></li>
+				<c:if test="${empty sessionScope.memberVO}">
+					<li><a href="login.do">로그인/회원가입</a></li>
+				</c:if>
+				<c:if test="${sessionScope.memberVO.memberId eq 'admin1234'}">
+					<li><a href="login.do">관리자페이지</a></li>
+				</c:if>
+			</ul>
+			<hr>
+		</div>
+	</header>
+	<!-- header section -->
 	<div class="container">
 		<section id="container">
 			<ul class="tabs">
@@ -34,8 +66,13 @@
 						<div class="input-group">
 							<input type="date" name="startDate" class='form-control'
 								id="startDate" /> 
-							<input type="date" name="endDate" class='form-control' id="endDate" /> 
-							<input id="searchBtn" type="submit" class="btn btn-default" value="검색">
+								<input type="date" name="endDate"
+								class='form-control' id="endDate" /> 
+								<input id="searchBtn"
+								type="submit" class="btn btn-default" value="검색">
+<!-- 								<input id="listBtn" -->
+<!-- 								type="submit" class="btn btn-default" value="목록보기"> -->
+								<a href="/petcommunity/adminPage.do" id="listBtn" class="btn btn-default">목록보기</a>
 						</div>
 					</form>
 					<br>
@@ -73,7 +110,7 @@
 			<div id="tab-3" class="tab-content"></div>
 		</section>
 	</div>
-	
+
 	<script src="resources/js/adminPage.js" type="text/javascript"></script>
 </body>
 </html>

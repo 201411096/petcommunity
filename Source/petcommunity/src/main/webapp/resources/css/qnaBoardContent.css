@@ -1,10 +1,30 @@
 @charset "UTF-8";
 
+body{
+	font-family: 'NanumSquare', sans-serif !important; 	
+}
+
+#qnatitle{
+	margin-bottom: 3%;	
+	margin-left: 20%;
+}
+
 table {
 	width : 65%;
 	height : 60%;
 	margin-left: 20%;
 	margin-right: 60%;
+}
+
+table td#title{
+	font-size: 15px;	
+}
+table td#content{
+	font-size: 15px;	
+}
+
+table td#content-content{
+	font-size: 15px;	
 }
 
 #title{
@@ -16,7 +36,7 @@ table {
 }
 
 #content-content {
-	height : 30%;
+	height : 20%;
 	text-align: center;
 }
 

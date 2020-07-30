@@ -18,6 +18,34 @@
    -webkit-font-smoothing: antialiased;
    font-smoothing: antialiased;
  }
+ /* 어비 마이센체*/
+ @font-face { 
+ font-family: 'UhBeemysen'; 
+ src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeemysen.woff') format('woff'); 
+ font-weight: normal; 
+ font-style: normal; }
+ 
+ 
+ /* 신비는 일곱살 
+@font-face { 
+	font-family: 'SangSangShinb7'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.1/SangSangShinb7.woff') format('woff'); 
+	font-weight: normal; 
+	font-style: normal; }*/
+ 
+ .gallery-item{
+ 	font-family: 'UhBeemysen';
+ 	font-size: 30px;
+ }
+ 
+ .gallery-left-col{
+ 	margin-left: 15%;
+ 	margin-top: 10%;
+ }
+ 
+.gallery-right-col{
+	margin-left: 15%;
+}
  
  h1,
  h2,
@@ -467,7 +495,7 @@
  
  .hero-section {
    clear: both;
-   background: #fffff4;
+   background: #f6f7f9;
  
  }
 .blog-content a{
@@ -612,7 +640,7 @@
  
  .gallery-section {
    padding: 127px 15px 0px;
-   background: #fffff4;
+   background: #fff;
  }
  
  .gallery-left-col {
@@ -691,7 +719,7 @@
 
  .blog-section {
 /*    background: #f6f7f9; */
-	background: #fff;
+	background: #f6f7f9;
    overflow: hidden;
    padding: 126px 15px;
  }
@@ -755,60 +783,7 @@
    padding-top: 10px;
  }
  
- /* ----------------
- Footer section
-  ---------------------*/
 
- .footer-section {
-   background: #222222;
- }
- 
- .footer-text {
-   padding-right: 70px;
- }
- 
- .footer-text h2 {
-   color: #fff;
-   font-style: italic;
-   margin-bottom: 17px;
- }
- 
- .footer-text p {
-   font-size: 16px;
- }
- 
- .contact-form {
-   padding-top: 57px;
-   padding-left: 70px;
- }
- 
- .contact-form input,
- .contact-form textarea {
-   width: 100%;
-   border: none;
-   padding-bottom: 19px;
-   padding-left: 7px;
-   font-size: 16px;
-   border-bottom: 2px solid #656565;
-   background: transparent;
-   margin-bottom: 80px;
-   color: #fff;
- }
- 
- .contact-form textarea {
-   height: 40px;
-   padding: 0;
-   margin-bottom: 50px;
- }
- 
- .copyright {
-   font-size: 13px;
-   font-weight: 700;
-   color: #515151;
-   margin-top: -20px;
-   padding-left: 15px;
- }
- 
  /* ----------------
  Other Page
   -------------------

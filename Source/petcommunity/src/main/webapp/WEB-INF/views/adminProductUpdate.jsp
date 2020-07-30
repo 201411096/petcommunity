@@ -69,7 +69,7 @@
 								</div>
 								
 								<div class="form-group">
-									<label>상품 내용</label> <textarea class="form-control" name="productContent" rows="5">${productVO.productContent}" ></textarea>
+									<label>상품 내용</label><textarea class="form-control" name="productContent" rows="5">${ProductVO.productContent}</textarea>
 								</div>
 								<button class="btn btn-default">수정</button>		
 							</form>

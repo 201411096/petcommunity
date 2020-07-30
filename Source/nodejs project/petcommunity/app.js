@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
   console.log('user connected');
   socket.on('disconnect', () => {
     console.log('user disconnected');
-    deleteMemberInfoFromArray(socket, userList);
+    deleteMemberInfoFromArray(socket, userList, io);
     printUserListInConsole(userList);
   });
   socket.on('chat message', (msg) => {
@@ -31,41 +31,33 @@ io.on('connection', (socket) => {
     console.log('message: ' + msg);
   });
   socket.on('memberInfo', function(memberInfo){
-    addMemberInfoToArray(socket, memberInfo, userList);
-    console.log('memberId : ' + memberInfo.memberId);
-    console.log('memberPassword : ' + memberInfo.memberPassword);
-    console.log('memberName : ' + memberInfo.memberName);
-    console.log('memberAddress : ' + memberInfo.memberAddress);
-    console.log('memberTel : ' + memberInfo.memberTel);
-    console.log('memberEmail : ' + memberInfo.memberEmail);
-    console.log('memberBirthday : ' + memberInfo.memberBirthday);
-    console.log('memberFlag : ' + memberInfo.memberFlag);
-    io.emit('chat message', memberInfo.memberId + "님이 입장하셨습니다.");
+    addMemberInfoToArray(socket, memberInfo, userList, io);
     printUserListInConsole(userList);
   });
 });
 
-function addMemberInfoToArray(socket, outerMemberInfo, userList){
+function addMemberInfoToArray(socket, outerMemberInfo, userList, io){
   var tempObject = new Object();
   var tempMemberInfo = new Object();
   tempObject.socketId = socket.id;
-  if(outerMemberInfo!=undefined){
+  if(outerMemberInfo!='tempMember'){
+    console.log(outerMemberInfo);
     tempMemberInfo=outerMemberInfo;
+    console.log('undefined 아님');
   }else{
+    console.log('tempMember');
     tempMemberInfo.memberId = "user_"+socket.id;
     tempMemberInfo.memberFlag = -1; // -1이면 비회원
   }
   tempObject.memberInfo=tempMemberInfo;
+  io.emit('chat message', tempObject.memberInfo.memberId + "님이 입장하셨습니다.");
   userList.push(tempObject);
 }
 
-function deleteMemberInfoFromArray(socket, userList){
-  console.log('check in deleteMemberInfoFromArray ...');
+function deleteMemberInfoFromArray(socket, userList, io){
   for(var i=0; i<userList.length; i++){
-    console.log('check in deleteMemberInfoFromArray ...' + i);
-    console.log('check in deleteMemberInfoFromArray ...' + userList[i].socketId);
-    console.log('check in deleteMemberInfoFromArray ...' + socket.id);
     if(userList[i].socketId==socket.id){
+      io.emit('chat message', userList[i].memberInfo.memberId + "님이 퇴장하셨습니다.");
       userList.splice(i, 1);
     }
   }
@@ -76,13 +68,13 @@ function printUserListInConsole(userList){
   for(var i=0; i<userList.length; i++){
     console.log("----- "+ i +  "_memberInfo -----");
     console.log(userList[i].memberInfo.memberId);
-    console.log(userList[i].memberInfo.memberPassword);
-    console.log(userList[i].memberInfo.memberName);
-    console.log(userList[i].memberInfo.memberAddress);
-    console.log(userList[i].memberInfo.memberTel);
-    console.log(userList[i].memberInfo.memberEmail);
-    console.log(userList[i].memberInfo.memberBirthday);
-    console.log(userList[i].memberInfo.memberFlag);
+    // console.log(userList[i].memberInfo.memberPassword);
+    // console.log(userList[i].memberInfo.memberName);
+    // console.log(userList[i].memberInfo.memberAddress);
+    // console.log(userList[i].memberInfo.memberTel);
+    // console.log(userList[i].memberInfo.memberEmail);
+    // console.log(userList[i].memberInfo.memberBirthday);
+    // console.log(userList[i].memberInfo.memberFlag);
     console.log("----- "+ i +  "_memberInfo -----");
   }
   console.log("---------- printUserListInConsole end ... ----------");

@@ -27,7 +27,8 @@
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/owl.carousel.min.css" />
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/slicknav.min.css" />
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/animate.css" />
-<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_footer/css/style.css" />
+
+
 <!-- Main Stylesheets -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_seyeong/css/style.css" />
@@ -48,6 +49,8 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
+					
+	
 					</div>
 				</div>
 			</div>
@@ -56,6 +59,7 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
+						
 					</div>
 				</div>
 			</div>
@@ -64,10 +68,12 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
+						
 					</div>
 				</div>
 			</div>
 		</div>
+			
 	</section>
 
 	<!-- Hero section end -->
@@ -78,49 +84,43 @@
 			<div class="row m-0">
 				<div class="col-md-6 p-0">
 					<div class="gallery-left-col">
-						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.jpg"
-								alt="#"><br>
-								어렸을때 행복했개 산책도 많이 갔개 
+						<div class="gallery-text">
+							<h2>유기동물 현황 통계 그래프</h2>
+							<p>Pellentesque dictum nisl in nibh dictum volutpat nec a
+								quam.</p>
 						</div>
 						<div class="gallery-item">
 							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main3.JPG"
-								alt="#"><br>
-								산책가는줄 알았는데 버려졌개..
-						</div>						
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/2.jpg"
+								alt="#">
+							<h4>소희 눈나 성공했어요.. 배고파요..</h4>
+							<p> 20190101 - 20200101</p>
+						</div>
 						<div class="gallery-item">
-<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg"
+								alt="#">
+							<h4>지역별 유기동물 현황</h4>
+							<p>20190101 - 20200101</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 p-0">
 					<div class="gallery-right-col">
+
 						<div class="gallery-item">
 							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main2.jpg"
-								alt="#"><br>
-								뚠뚠해지고 못생겨져서 미움받았개...
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/5.jpg"
+								alt="#">
+							<h4>지역별 유기동물 현황</h4>
+							<p>20190101 - 20200101</p>
 						</div>
 						<div class="gallery-item">
-<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
-								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-						</div>
-						<div class="gallery-item">
-<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/6.jpg"
+								alt="#">
+							<h4> 지역별 유기동물 현황</h4>
+							<p>20190101 - 20200101</p>
 						</div>
 						<div class="more-gallery text-left text-md-right">
 							<a href="#" class="site-btn sb-big"> 더 보기 <img
@@ -138,13 +138,13 @@
 	<section class="blog-section">
 		<div class="sp-container">
 			<div class="blog-title-col">
-				<h2>CATEGORY</h2>
+				<h2>category</h2>
 			</div>
 			<div class="blog-content-col">
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-3.png"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img4.PNG"
 							alt="">
 					</div>
 					<div class="blog-content">
@@ -159,7 +159,7 @@
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-1.png"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img3.PNG"
 							alt="">
 					</div>
 					<div class="blog-content">
@@ -175,7 +175,7 @@
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-2.png"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img2.PNG"
 							alt="">
 					</div>
 					<div class="blog-content">
@@ -187,47 +187,11 @@
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
 					</div>
-				
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Blog section end -->
-	<!-- Footer section  -->
-	<hr id="lineStyle">
-	<footer class="footer-section spad" id="footer">
-		<div class="sp-container">
-			<div class="row m-0">
-				<div class="col-lg-4 footer-text">
-					<h2>
-						<strong>OKI DOG HERE</strong>
-					</h2>
-				</div>
-				<div class="col-lg-8">
-					<div class="col-lg-4 footer-text">
-						<p>
-							오키독히얼 <br> (153-759) 서울시 금천구 가산동 426-5 <br> 월드메르디앙 2차
-							413호<br> <a href="/petcommunity/cs.do" id="qna">고객센터</a>
-							1588-8282<br> 사업자번호 : 000-0000-00000<br>
-						</p>
-
-					</div>
-					<div class="copyright">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>
-							document.write(new Date().getFullYear());
-						</script>
-						All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer section end -->
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery-3.2.1.min.js"></script>

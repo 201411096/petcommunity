@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file="../views/header.jsp"%>
 <html>
 <head>
 <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -15,14 +14,56 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/js/qnaBoardWrite.js"></script>
+<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <title>게시판</title>
 </head>
 <body>
+<!-- header section -->
+	<header class="header-section">
+		<div class="header-warp">
+			<a href="header.do" class="site-logo"> <img
+				src="./resources/bootstrap_template/template_01/img/logo2.png"
+				alt="">
+			</a>
+
+
+
+			<ul class="main-menu">
+
+				<c:if test="${! empty sessionScope.memberVO}">
+            
+            ${sessionScope.memberVO.memberName}님, 안녕하세요
+            <a href="logout.do">[로그아웃하기]</a>
+					<a href="mypageselect.do">[마이 페이지]</a>
+
+				</c:if>
+
+				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
+				<li><a href="shop.do">유기견 후원 스토어</a></li>
+				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
+				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
+				<li><a href="contact.html">Contact</a></li>
+
+				<c:if test="${empty sessionScope.memberVO}">
+					<li><a href="login.do">로그인/회원가입</a></li>
+				</c:if>
+
+				<c:if test="${sessionScope.memberVO.memberId eq 'admin1234'}">
+					<li><a href="login.do">관리자페이지</a></li>
+				</c:if>
+
+			</ul>
+			<hr>
+		</div>
+	</header>
+	<!-- header section -->
 
 	<div class="container">
 		<header>
-			<h1>게시글 작성하기</h1>
+			<h4>게시글 작성하기</h4>
 		</header>
 		<br />
 		<br />
@@ -34,22 +75,22 @@
 			<div class="form-group">
 				<label>글 제목</label> <input type="text" class="form-control"
 					name="questionboardTitle" id="questionboardTitle"
-					placeholder="title">${qnaContent.questionboardTitle }
+					placeholder="제목">${qnaContent.questionboardTitle }
 			</div>
 			<div class="form-group">
 				<label>글 내용</label>
 				<textarea class="form-control" rows="5" name="questionboardContent"
-					id="questionboardContent" placeholder="contents">${qnaContent.questionboardContent}</textarea>
+					id="questionboardContent" placeholder="내용을 입력해주세요.">${qnaContent.questionboardContent}</textarea>
 			</div>
 
 			<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
-			<div class="col-md-4 col-md-offset-10">
-				<span class="input-group-btn"> <input>
+<!-- 			<div class="col-md-4 col-md-offset-10"> -->
+				<span class="input-group-btn">
 					<button type="submit" class="btn btn-default" id='commitWrite'>작성완료</button>
-					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/qnaList.do">돌아가기</a>
+					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/cs.do">돌아가기</a>
 				</span>
-			</div>
+<!-- 			</div> -->
 		</form>
 	</div>
 </body>

@@ -1,4 +1,7 @@
 @charset "UTF-8";
+body{
+	font-family: 'NanumSquare', sans-serif !important; 	
+}
 #map{
 	width:100%;
 	height:500px;

@@ -95,11 +95,11 @@ public class AdminProductController {
 	 * 함수 이름 : productDelete
 	 * 주요 기능 : 상품을 삭제하고 상품 리스트 페이지로 이동함
 	 */
-	@RequestMapping(value = "productDelete.do")
+	@RequestMapping(value = "/productDelete.do")
 	public ModelAndView productDelete(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.deleteProduct(productVO);
-		mv.setViewName("adminProductList");
+		mv.setViewName("/adminProductList");
 		return mv;
 	}
 	
@@ -113,12 +113,13 @@ public class AdminProductController {
 	 */
 	@RequestMapping(value = "/loadProductUpdatePage.do")
 	public ModelAndView loadProductUpdatePage(HttpSession session, int productId) {
+		System.out.println("loadProductUpdatePage.do 요청 받음 : " + productId);
 		ModelAndView mv = new ModelAndView();
 		ProductVO productVO = new ProductVO();
 		productVO.setProductId(productId);
 		productVO = (ProductVO) adminProductService.selectProduct(productVO);
 		mv.addObject("ProductVO", productVO);
-		mv.setViewName("/adminProductUpdate");
+		mv.setViewName("adminProductUpdate");
 		return mv;
 	}
 	
@@ -130,7 +131,7 @@ public class AdminProductController {
 	 * 		ㄴ 받아온 상품 id에 해당하는 상품을 받아온 상품 정보로 수정함 
 	 */
 	@RequestMapping(value = "/productUpdatePage.do")
-	public ModelAndView productUpdate(HttpSession session, ProductVO productVO) {
+	public ModelAndView productUpdate(HttpSession session, ProductVO productVO, int productId) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.updateProduct(productVO);
 		mv.setViewName("/adminProductList");

@@ -65,6 +65,7 @@
 										<th scope="col">가격</th>
 										<th scope="col">수량</th>
 										<th scope="col">카테고리</th>
+										<th scope="col">상품 내용</th>
 										<th scope="col">수정</th>
 										<th scope="col">삭제</th>
 									</tr>

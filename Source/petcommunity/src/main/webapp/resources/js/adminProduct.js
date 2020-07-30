@@ -10,11 +10,13 @@
 		ㄴ 내부적으로 동적인 페이징을 구성함
 	ㄴ drawProductTable : ajax로 받아온 데이터로 테이블을 그려주는 함수
 	ㄴ updateBtnEvent : 수정 버튼들 눌렀을 경우 이벤트 핸들러
-		ㄴ 해당 productId에 맞는 데이터들을 수정 화면으로 끌어가서 로딩함
+		ㄴ 해당 bookId에 맞는 데이터들을 수정 화면으로 끌어가서 로딩함
 	ㄴ deleteBtnEvent : 삭제 버튼들 눌렀을 경우 이벤트 핸들러
 	
 실행부분
 	ㄴ 화면 로딩 후 바로 데이터를 가져와서 테이블를 그림
+	ㄴ 검색창에 입력할때마다 테이블을 다시 그려주는 keyup이벤트 핸들러 연결
+		ㄴ 동적 페이징 처리
 	ㄴ 수정 버튼 이벤트 핸들러 연결
 	ㄴ 삭제 버튼 이벤트 핸들러 연결
 */
@@ -32,7 +34,7 @@ var defaultOpts = {										//페이징 처리 함수에서 불리는 옵션
     };
 $(function(){
 	getProductData();
-	$('#searchBtn').on('click', getProductData);
+	$('#searchBtn').on('keyup', getProductData);
 	$(document).on("click",".btn-primary", updateBtnEvent);
 	$(document).on("click",".btn-warning", deleteBtnEvent);
 });
@@ -63,10 +65,14 @@ function getProductDataInPaging(){
 }
 
 function updateBtnEvent(){
+	console.log( $(this).parent().prev().prev().text() );
+	console.log( $(this).parent().prev().text() );
 	$(this).next().submit();
 }
 
 function deleteBtnEvent(){
+	console.log( $(this).parent().prev().prev().prev().text() );
+	console.log( $(this).parent().prev().prev().text() );
 	$(this).next().submit();
 }
 
@@ -100,15 +106,15 @@ function getProductData(){
 
 function drawProductTable(data){
 	$('#productTable').empty();
-	var formPrefix1 = '<form action="/loadProductUpdatePage.do">';
-	var formPrefix2 = '<form action="/productDelete.do">';
+	var formPrefix1 = '<form action="/petcommunity/loadProductUpdatePage.do">';
+	var formPrefix2 = '<form action="/petcommunity/productDelete.do">';
 	var formSuffix = '</form>';
 	var trPrefix = '<tr>';
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
-	var buttonUpdate = '<button class="btn btn-primary">수정</button>';
-	var buttonDelete = '<button class="btn btn-warning">삭제</button>';
+	var buttonUpdate = '<button class="btn btn-default">수정</button>';
+	var buttonDelete = '<button class="btn btn-default">삭제</button>';
 	var inputtypehiddenPrefix = '<input type="hidden" name="productId" value="';
 	var inputtypehiddenSuffix = '">';
 	for(var i=0; i<data.productListSize; i++){

@@ -22,14 +22,14 @@
 
 
 <!-- Stylesheets -->
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_footer/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_footer/css/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_footer/css/owl.carousel.min.css" />
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_footer/css/slicknav.min.css" />
+<!-- <link rel="stylesheet" -->
+<!-- 	href="./resources/bootstrap_template/bootstrap_footer/css/bootstrap.min.css" /> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="./resources/bootstrap_template/bootstrap_footer/css/font-awesome.min.css" /> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="./resources/bootstrap_template/bootstrap_footer/css/owl.carousel.min.css" /> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="./resources/bootstrap_template/bootstrap_footer/css/slicknav.min.css" /> -->
 
 <!-- Main Stylesheets -->
 <link rel="stylesheet"
@@ -89,18 +89,18 @@
 	<!-- Footer section end -->
 
 	<!--====== Javascripts & Jquery ======-->
-	<script
-		src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery-3.2.1.min.js"></script>
-	<script
-		src="./resources/bootstrap_template/bootstrap_seyeong/js/bootstrap.min.js"></script>
-	<script
-		src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery.slicknav.min.js"></script>
-	<script
-		src="./resources/bootstrap_template/bootstrap_seyeong/js/owl.carousel.min.js"></script>
-	<script
-		src="./resources/bootstrap_template/bootstrap_seyeong/js/circle-progress.min.js"></script>
-	<script
-		src="./resources/bootstrap_template/bootstrap_seyeong/js/main.js"></script>
+<!-- 	<script -->
+<!-- 		src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery-3.2.1.min.js"></script> -->
+<!-- 	<script -->
+<!-- 		src="./resources/bootstrap_template/bootstrap_seyeong/js/bootstrap.min.js"></script> -->
+<!-- 	<script -->
+<!-- 		src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery.slicknav.min.js"></script> -->
+<!-- 	<script -->
+<!-- 		src="./resources/bootstrap_template/bootstrap_seyeong/js/owl.carousel.min.js"></script> -->
+<!-- 	<script -->
+<!-- 		src="./resources/bootstrap_template/bootstrap_seyeong/js/circle-progress.min.js"></script> -->
+<!-- 	<script -->
+<!-- 		src="./resources/bootstrap_template/bootstrap_seyeong/js/main.js"></script> -->
 
 </body>
 </html>

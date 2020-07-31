@@ -34,7 +34,7 @@ function searchForMapEventHandler(){
 			}
 			setTimeout(function(){
 				getDataWithoutPaging();
-			}, 1000);
+			}, 500);
 			
 		  };
 	});

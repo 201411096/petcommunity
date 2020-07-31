@@ -33,7 +33,7 @@
 	<section class="product-filter-section">
 		<div class="container">
 			<div class="section-title">
-				<h2>반려동물들을 위한 상품 리스트</h2>
+				<h2>반려견 사료 리스트</h2>
 			</div>
 			<br/>
 				<form>

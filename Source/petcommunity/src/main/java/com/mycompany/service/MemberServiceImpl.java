@@ -1,9 +1,12 @@
 package com.mycompany.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.MemberDAOImpl;
+import com.mycompany.domain.LostBoardVO;
 import com.mycompany.domain.MemberVO;
 
 @Service("MemberService")
@@ -28,6 +31,20 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO signin(MemberVO vo) {
 		
 		return memberDAO.signin(vo);
+	}
+
+	
+	
+	
+	@Override
+	public void tokenInsert(MemberVO vo) {
+		memberDAO.tokenInsert(vo);
+		
+	}
+
+	@Override
+	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo) {
+		return memberDAO.selectPeopleAroundLocation(vo);
 	}
 
 }

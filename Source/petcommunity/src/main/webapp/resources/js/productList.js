@@ -101,6 +101,7 @@ function getData(tagCategory){
 			},
 		dataType : 'json',
 		success : function(resultData){
+			console.log(resultData);
 			drawProductTable(resultData);
 			var totalPages = resultData.pagination.pageCnt;
             var currentPage = 1;

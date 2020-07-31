@@ -10,8 +10,15 @@ public class MemberVO {
 	private String memberEmail;
 	private String memberBirthday;
 	private String memberFlag;
+	private String memberToken;
 	
 	
+	public String getMemberToken() {
+		return memberToken;
+	}
+	public void setMemberToken(String memberToken) {
+		this.memberToken = memberToken;
+	}
 	public String getMemberFlag() {
 		return memberFlag;
 	}

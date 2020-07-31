@@ -74,7 +74,7 @@
 					</c:when>
 
 				</c:choose>
-				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="/petcommunity/lostboardlist.do">분실 동물 찾기</a></li>
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="/petcommunity/productList.do">오키도키 굿즈</a></li>

@@ -86,7 +86,7 @@ public class MemberController {
 			//----------------------------------------------------------------
 		session.setAttribute("memberVO",result);
 		result.getMemberId();
-		mv.setViewName("header");
+		mv.setViewName("main");
 		return mv;
 		}
 		

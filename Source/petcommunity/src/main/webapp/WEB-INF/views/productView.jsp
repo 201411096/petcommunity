@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <!doctype html>
 <head>
 	<!-- header 시작-->
@@ -42,9 +41,9 @@
 
 <body>
 <!-- header section -->
-	<header class="header-section">
+<header class="header-section">
 		<div class="header-warp">
-			<a href="header.do" class="site-logo"> <img
+			<a href="main.do" class="site-logo"> <img
 				src="./resources/bootstrap_template/template_01/img/logo2.png"
 				alt="">
 			</a>
@@ -61,13 +60,14 @@
 			
 				</c:if>
 
-				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="lostboardlist.do">분실 동물 찾기</a></li>
+				<li><a href="findboardlist.do">분실 동물 신고</a></li>
+
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="/petcommunity/productList.do">오키도키 굿즈</a></li>
 				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
 				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
-				<li><a href="contact.html">Contact</a></li>
 
 				<c:if test="${empty sessionScope.memberVO}">
 					<li><a href="login.do">로그인/회원가입</a></li>

@@ -28,8 +28,6 @@ io.on('connection', function(socket){
     }
     else{
       roomInfo.memberId=socket.id;
-      //console.log('socketid 확인' + socket.id);
-      //console.log('memberInfo check ... ' + roomInfo.memberId);
     }
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);
@@ -37,7 +35,6 @@ io.on('connection', function(socket){
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);
     }
-    // console.log(io.sockets.adapter.rooms);
   });
   socket.on('chat message', (msg) => {
     var memberId;
@@ -51,8 +48,6 @@ io.on('connection', function(socket){
       console.log('userId : '+ memberId);
     }
     io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
-    // io.emit('chat message', msg);
-    // console.log('message: ' + msg);
   });
 });
 

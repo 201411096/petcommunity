@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -70,9 +72,7 @@
 								class='form-control' id="endDate" /> 
 								<input id="searchBtn"
 								type="submit" class="btn btn-default" value="검색">
-<!-- 								<input id="listBtn" -->
-<!-- 								type="submit" class="btn btn-default" value="목록보기"> -->
-								<a href="/petcommunity/adminPage.do" id="listBtn" class="btn btn-default">목록보기</a>
+								<a href="/petcommunity/adminPage.do" id="listBtn" class="btn btn-default">목록</a>
 						</div>
 					</form>
 					<br>

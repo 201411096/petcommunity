@@ -2,6 +2,9 @@ package com.mycompany.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +14,7 @@ import java.util.StringTokenizer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +31,7 @@ import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.FindBoardServiceImpl;
 import com.mycompany.service.LostBoardServiceImpl;
+import com.mycompany.service.MemberServiceImpl;
 import com.mycompany.util.FileUpload;
 
 @Controller
@@ -35,6 +40,8 @@ public class LostBoardController {
 	LostBoardServiceImpl lostBoardService;
 	@Autowired
 	FindBoardServiceImpl findBoardService;
+	@Autowired
+	MemberServiceImpl memberService;
 	@ResponseBody
 	@RequestMapping(value = "/lostboardListWithPaging.do", produces = "application/json; charset=utf-8")
 	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType) {
@@ -68,6 +75,50 @@ public class LostBoardController {
 			FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/");
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/" + lostBoardVO.getLostboardId() + "/");
 		}
+		//----------------------------------------------------------------------
+		// 푸쉬 알람 보내기
+		//----------------------------------------------------------------------
+		lostBoardVO.setLostboardLocation("서울 강남구 신사동 537-5");
+		// 게시물 위치 기반 주변 회원 select
+		List<MemberVO> memberVO = memberService.selectPeopleAroundLocation(lostBoardVO);
+		// push알림 title, contents
+		String title = lostBoardVO.getLostboardTitle();
+		String content = lostBoardVO.getLostboardContent();
+		// 푸시 알림 보내기
+		for (MemberVO i : memberVO) {
+			String userDeviceIdKey = i.getMemberToken();
+			String AUTH_KEY_FCM = "AAAA5I6xC80:APA91bFtb40SjHrzCQJ3fV_2IrvovLIPTN-X6LpEB-LgxFlOWSR4pejrgR6UmTNukASbymKTZspKRuNlitwRBkB5pxWsp9RDMQEEJxMD6jTH-17eR6pnMHOVnJvR6QCSEwpXhv63lc_R";
+			String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
+			String authKey = AUTH_KEY_FCM;
+			String FMCurl = API_URL_FCM;
+			
+			URL url = new URL(FMCurl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			conn.setUseCaches(false); 
+			conn.setDoInput(true);
+			conn.setDoOutput(true);
+			
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Authorization","key="+authKey);
+			conn.setRequestProperty("Content-Type","application/json");
+			
+			JSONObject json = new JSONObject();
+			json.put("to",userDeviceIdKey.trim());
+			JSONObject info = new JSONObject();
+			info.put("title", title);   // Notification title
+			info.put("body", content); // Notification body
+			json.put("notification", info);
+			
+			OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+			System.out.println(">" + json.toString());
+			wr.write(json.toString());
+			wr.flush();
+			conn.getInputStream();  
+		}
+		
+		
+		//----------------------------------------------------------------------		
 		
 		mv.setViewName("/lostboardlist");
 		return mv;

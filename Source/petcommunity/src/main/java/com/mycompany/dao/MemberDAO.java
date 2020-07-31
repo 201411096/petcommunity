@@ -1,5 +1,8 @@
 package com.mycompany.dao;
 
+import java.util.List;
+
+import com.mycompany.domain.LostBoardVO;
 import com.mycompany.domain.MemberVO;
 
 public interface MemberDAO {
@@ -8,4 +11,8 @@ public interface MemberDAO {
 	public int idcheck(MemberVO vo);
 	
 	public MemberVO signin(MemberVO vo);
+	
+	public void tokenInsert(MemberVO vo);
+	
+	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo);
 }

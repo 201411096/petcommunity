@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,6 +158,35 @@ public class ProductController {
 		}else {
 			mv.setViewName("login");
 			return mv;
+		}	
+	}
+	// 카트 리스트로 넘어감
+	@ResponseBody
+	@RequestMapping(value="/buyCartList2.do")
+	public String test1(ProductCartVO vo, HttpSession session, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+		Map searchMap = new HashMap();
+		// 로그인 체크
+		MemberVO memberVo = (MemberVO) session.getAttribute("memberVO");
+		String productId = request.getParameter("productId");
+		String productCnt=request.getParameter("productCnt");
+		vo.setProductCnt(productCnt);
+		vo.setProductId(productId);
+		if( memberVo != null) {
+			String memberId = memberVo.getMemberId();
+			vo.setMemberId(memberId);
+			// 장바구니DB에 입력(기존 장바구니 상품은 개수 추가 / 없다면 새로 입력)
+			ProductCartVO selectCartList = productCartService.getProductInfoFromCart(vo);
+			if(selectCartList != null) {
+				productCartService.addProductCnt(vo);
+			}else {
+				productCartService.insertProductToCart(vo);
+			}	
+			
+			return "success";
+		}else {
+			mv.setViewName("login");
+			return "login";
 		}	
 	}
 }

@@ -166,7 +166,7 @@
 								
 							</table><br/>
 							<ul class="list list_2">
-								<li><a href="#">최종 결제 금액 <span id='finalPriceBeforePaying'></span>원
+								<li><a href="#">최종 결제 금액 <span id='finalPriceBeforePaying'></span>
 								</a></li>
 							</ul>
 							<div class="payment_item">

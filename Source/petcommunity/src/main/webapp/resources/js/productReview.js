@@ -1,6 +1,40 @@
 var starScore = 5;
 
+//======================================
+function crayBtn1()
+{
+	$('#dialog-message').dialog({
+		modal: true, 
+		buttons: {
+			"예": function() {$('#addCartSubmit').submit() },
+			"아니오": function() { 
+				$.ajax({
+					type : 'post',
+					async:true,
+					url : '/petcommunity/buyCartList2.do',
+					contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+					data : {"productId" : $("#productId").val(), 
+							"productCnt" : $('#sst').val() 		
+							},
+					dataType : 'json',
+					success : function(resultData){
+					},
+					error:function(request,status,error){
+						console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					}
+				}),
+				$(this).dialog('close');
+			},
+		}
+	});
+}
+//===========================================
 $(function(){
+	//장바구니 담기 버튼에 confirm알림받아서 페이지 넘기기
+	$('#addCart_btn').click(function(){
+		crayBtn1();	
+	});
+	
 	//댓글 삭제 이벤트
 	$("#delete").on("click", function(){
 		confirm("삭제하시겠습니까?");

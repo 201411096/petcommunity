@@ -132,6 +132,7 @@
 	<!-- JS -->
 	<script src="./resources/js/mypage.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
+	
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

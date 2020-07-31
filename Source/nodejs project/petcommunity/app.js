@@ -48,25 +48,11 @@ io.on('connection', function(socket){
     }
 //    io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
     // io.to(msg.roomName).emit('chat message', stringHandling(memberId, msg));
-    messageHandling(memberId, msg);
+    messageHandling(memberId, msg, socket);
   });
 });
 
-// function stringHandling(memberId, msg){
-//   var firstArgument="";
-//   if(msg.messageContent!=""){ // 비어있는 경우가 아니라면 ..
-//     var tempMsg = msg.messageContent.split(" ");
-//     firstArgument = tempMsg[0];
-//     console.log("firstArgument ... " + firstArgument);
-//   }
-//   if(firstArgument!=""){
-//     if(firstArgument[0]=="/"){
-//       console.log("start with '/' ... ");
-//     }
-//   }
-//   return memberId+' : '+msg.messageContent;
-// }
-function messageHandling(memberId, msg){
+function messageHandling(memberId, msg, socket){
   var firstArgument="";
   if(msg.messageContent!=""){   // 메시지가 비어있는 경우가 아니라면 ..
     var tempMsg = msg.messageContent.split(" ");
@@ -78,7 +64,10 @@ function messageHandling(memberId, msg){
       console.log("start with '/' ... ");
     }
     if(firstArgument[0]=="/help" || "/도움말" || "/h"){   // 도움말 처리
-      console.log("help ...")
+      console.log("help ...");
+    }
+    if(firstArgument[0]=="/w"){   // 귓속말 처리
+      console.log("whispering ...");
     }
   }
   io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);

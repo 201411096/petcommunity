@@ -28,6 +28,8 @@
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/slicknav.min.css" />
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/animate.css" />
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_footer/css/style.css" />
+
+
 <!-- Main Stylesheets -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_seyeong/css/style.css" />
@@ -48,6 +50,8 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
+					
+	
 					</div>
 				</div>
 			</div>
@@ -56,6 +60,7 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
+						
 					</div>
 				</div>
 			</div>
@@ -64,10 +69,12 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
+						
 					</div>
 				</div>
 			</div>
 		</div>
+			
 	</section>
 
 	<!-- Hero section end -->
@@ -78,49 +85,43 @@
 			<div class="row m-0">
 				<div class="col-md-6 p-0">
 					<div class="gallery-left-col">
-						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.jpg"
-								alt="#"><br>
-								어렸을때 행복했개 산책도 많이 갔개 
+						<div class="gallery-text">
+							<h2>유기동물 현황 통계 그래프</h2>
+							<p>Pellentesque dictum nisl in nibh dictum volutpat nec a
+								quam.</p>
 						</div>
 						<div class="gallery-item">
 							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main3.JPG"
-								alt="#"><br>
-								산책가는줄 알았는데 버려졌개..
-						</div>						
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/2.jpg"
+								alt="#">
+							<h4>지역별 유기동물 현황</h4>
+							<p> 20190101 - 20200101</p>
+						</div>
 						<div class="gallery-item">
-<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg"
+								alt="#">
+							<h4>지역별 유기동물 현황</h4>
+							<p>20190101 - 20200101</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 p-0">
 					<div class="gallery-right-col">
+
 						<div class="gallery-item">
 							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main2.jpg"
-								alt="#"><br>
-								뚠뚠해지고 못생겨져서 미움받았개...
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/5.jpg"
+								alt="#">
+							<h4>지역별 유기동물 현황</h4>
+							<p>20190101 - 20200101</p>
 						</div>
 						<div class="gallery-item">
-<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
-								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-								해마다 버려진 강아지들을 확인해보세요.<br>
-						</div>
-						<div class="gallery-item">
-<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
-								통계그래프 보여주는 곳<br>
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/6.jpg"
+								alt="#">
+							<h4> 지역별 유기동물 현황</h4>
+							<p>20190101 - 20200101</p>
 						</div>
 						<div class="more-gallery text-left text-md-right">
 							<a href="#" class="site-btn sb-big"> 더 보기 <img
@@ -138,7 +139,7 @@
 	<section class="blog-section">
 		<div class="sp-container">
 			<div class="blog-title-col">
-				<h2>CATEGORY</h2>
+				<h2>category</h2>
 			</div>
 			<div class="blog-content-col">
 				<div class="blog-item">
@@ -187,7 +188,6 @@
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
 					</div>
-				
 				</div>
 			</div>
 		</div>

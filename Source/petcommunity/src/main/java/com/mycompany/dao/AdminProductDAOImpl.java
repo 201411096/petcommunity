@@ -32,7 +32,7 @@ public class AdminProductDAOImpl implements AdminProductDAO{
 	}
 
 	public int deleteProduct(ProductVO productvo) {
-		int result = mybatis.delete("AdminProductDAO.deleteProduct", productvo);
+		int result = mybatis.update("AdminProductDAO.deleteProduct", productvo);
 		return result;
 	}
 

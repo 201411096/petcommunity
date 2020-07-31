@@ -67,4 +67,49 @@ body{
   margin-top: -20px;
   padding-left: 15px;
 }
- 
+
+@media screen and (max-width: 768px){
+
+body{
+	font-family: 'NanumSquare', sans-serif !important; 
+}
+
+.col-lg-4{
+	font-size: 15px;
+}
+
+
+#qna{
+	font-size: 20px;
+	color: black;
+	
+}
+
+.footer-section {
+  background: #fff;
+  height: 20%;
+  margin-bottom: 2%;
+}
+
+.footer-text {
+  padding-right: 50px;
+}
+
+.footer-text h2 {
+  color: #404040;
+  margin-bottom: 17px;
+}
+
+.footer-text p {
+  font-size: 12px;
+}
+
+.copyright {
+  font-size: 10px;
+  font-weight: 700;
+  font-style: italic;
+  color: #515151;
+  margin-top: -20px;
+  padding-left: 15px;
+}
+}

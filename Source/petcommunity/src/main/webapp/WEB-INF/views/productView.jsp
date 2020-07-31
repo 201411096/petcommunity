@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <!doctype html>
 <head>
 	<!-- header 시작-->
@@ -33,14 +32,18 @@
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/css/style.css">
 	<!-- 아래거는 리뷰 별 -->
 	<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/productDetail/css/responsive.css">
-		
+	
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
 </head>
 
 <body>
 <!-- header section -->
-	<header class="header-section">
+<header class="header-section">
 		<div class="header-warp">
-			<a href="header.do" class="site-logo"> <img
+			<a href="main.do" class="site-logo"> <img
 				src="./resources/bootstrap_template/template_01/img/logo2.png"
 				alt="">
 			</a>
@@ -57,13 +60,14 @@
 			
 				</c:if>
 
-				<li><a href="index.html">분실 동물 찾기</a></li>
+				<li><a href="lostboardlist.do">분실 동물 찾기</a></li>
+				<li><a href="findboardlist.do">분실 동물 신고</a></li>
+
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="/petcommunity/productList.do">오키도키 굿즈</a></li>
 				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
 				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
-				<li><a href="contact.html">Contact</a></li>
 
 				<c:if test="${empty sessionScope.memberVO}">
 					<li><a href="login.do">로그인/회원가입</a></li>
@@ -102,8 +106,8 @@
 							</li>
 						</ul>
 						<p>${productInfo.productContent }</p>
+						<form id='addCartSubmit' action="/petcommunity/buyCartList.do">
 						<div class="product_count">
-							<form action="/petcommunity/buyCartList.do">
 							<label for="qty">개수:</label>
 							<input type="text" name="productCnt" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
@@ -117,10 +121,13 @@
 						</div>
 						
 							<div class="card_area">
-								<button id="addCart_btn" type="submit" class="main_btn">장바구니 담기</button>
+								<button id="addCart_btn" type="button" class="main_btn">장바구니 담기</button>
 								<input type="hidden" id="productId" name="productId" value="${productInfo.productId }">
 							</div>
 						</form>
+						<div id="dialog-message" title="장바구니 이동" style='display:none'>
+							장바구니에 상품을 담았습니다.<br/>장바구니 페이지로 이동하시겠습니까? 
+						</div>
 					</div>
 				</div>
 			</div>

@@ -151,11 +151,12 @@
 					<div class="col-lg-4">
 						<div class="order_box">
 							<h2>주문</h2>
-							<ul class="list">
-								<li><a href="#">상품 <span>금액</span>
-								</a></li>
-							</ul>
-							<ul class="list" id='forEmptyList'>							
+							<table class="list" id='forEmptyList' style=width:100% >
+							<!-- <ul class="list"> -->
+								<thead><tr><th>상품 </th><th>수량</th><th>금액</th></tr></thead>
+								
+							<!-- </ul> -->
+														
 								<!-- <li><a href="#">Fresh Blackberry <span class="middle">x
 											01</span> <span class="last">2,500</span>
 								</a></li>
@@ -163,7 +164,7 @@
 											01</span> <span class="last">2,500</span>
 								</a></li> -->
 								
-							</ul>
+							</table><br/>
 							<ul class="list list_2">
 								<li><a href="#">최종 결제 금액 <span id='finalPriceBeforePaying'></span>
 								</a></li>

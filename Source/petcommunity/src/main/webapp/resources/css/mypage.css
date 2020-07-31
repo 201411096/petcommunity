@@ -70,31 +70,42 @@ input[type=button] {
   }
   
   #uBtn{
-width: 50%;
+  width: 20%;
   margin-left:25%;
   display: block;
-  border: ridge;
-  border-bottom: 1px solid #2f2f2f;
-  padding: 6px 30px;
+  border: groove;
+  padding: 6px 10px;
   font-family: Poppins;
-  box-sizing: border-box; 
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: #fff;
+  }
+  #uBtn:hover{
+   color: #718947;
   }
   
    #dBtn{
-width: 50%;
-  margin-left:25%;
+width: 20%;
+margin-top: -14%;
+  margin-left:50%;
   display: block;
-  border: ridge;
-  border-bottom: 1px solid #2f2f2f;
+  border: groove;
   padding: 6px 10px;
   font-family: Poppins;
-  box-sizing: border-box; 
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: #fff;
+  }
+  #dBtn a{
+  color: #000;
+   text-decoration:none;
+  }
+   #dBtn a:hover{
+   
+   color: #718947;
+   text-decoration:none;
   }
   
   .mypage-animal h3{
@@ -130,6 +141,9 @@ width: 50%;
   border-radius: 35px;
   }
   
+figure img {
+  margin-left: -9%;
+ }
  @media screen and (max-width: 768px){
  
 #tab-2{
@@ -141,7 +155,7 @@ width: 50%;
 }
 	
 ul.tabs{
-	margin-left:17%;
+	margin-left:15%;
 	padding: 0px;
 	list-style: none;
 }
@@ -151,6 +165,7 @@ ul.tabs{
   }
   
   .tedoory{
+   margin-left:1%;
  width:80%;
   border: 2px solid #898792;
   padding: 25px 30px;
@@ -248,7 +263,7 @@ ul.tabs{
  }
  
  ul.tabs{
-	margin-left:18%;
+	margin-left:25%;
 	padding: 0px;
 	list-style: none;
 }

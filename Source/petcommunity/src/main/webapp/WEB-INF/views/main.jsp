@@ -193,41 +193,8 @@
 		</div>
 	</section>
 	<!-- Blog section end -->
-	<!-- Footer section  -->
-	<hr id="lineStyle">
-	<footer class="footer-section spad" id="footer">
-		<div class="sp-container">
-			<div class="row m-0">
-				<div class="col-lg-4 footer-text">
-					<h2>
-						<strong>OKI DOG HERE</strong>
-					</h2>
-				</div>
-				<div class="col-lg-8">
-					<div class="col-lg-4 footer-text">
-						<p>
-							오키독히얼 <br> (153-759) 서울시 금천구 가산동 426-5 <br> 월드메르디앙 2차
-							413호<br> <a href="/petcommunity/cs.do" id="qna">고객센터</a>
-							1588-8282<br> 사업자번호 : 000-0000-00000<br>
-						</p>
-
-					</div>
-					<div class="copyright">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						Copyright &copy;
-						<script>
-							document.write(new Date().getFullYear());
-						</script>
-						All rights reserved | This template is made with <i
-							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer section end -->
+<!-- 	<!-- Footer section  --> 
+<%@include file="../views/footer.jsp"%>
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery-3.2.1.min.js"></script>

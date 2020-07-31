@@ -17,33 +17,38 @@
 body{
 	font-family: 'NanumSquare', sans-serif !important; 
 }
-
-/*
 .col-lg-4{
-	font-family: 'NanumSquare', sans-serif !important; 
-	font-size: 10px;
+	font-size: 12px;
 }
-*/
 
-/*
-#lineStyle{
-	margin-top:10%;
-	border:0;
-	height: 1px;
-	background: #000000;
+.col-lg-4 p{
+	font-size: 8px;
 }
-*/
- 
-#qna{
-	font-size: 20px;
+
+.col-lg-8{
+	margin-top: 1%;
+	font-size: 13px;
 	color: black;
-	
+}
+
+#community,#member,#shop,#qna{
+	color: black;
+}
+
+#community:hover,#member:hover,#shop:hover,#qna:hover{
+	color: gray;
+}
+
+#qnaContent{
+	font-size: 12px;
+	margin-bottom: 5%;
 }
 
 .footer-section {
-  background: #fff;
-  height: 20%;
-  margin-bottom: 2%;
+	margin-top: -5%;
+	background: #fff;
+	height: 20%;
+	margin-bottom: 5%;
 }
 
 .footer-text {
@@ -67,4 +72,34 @@ body{
   margin-top: -20px;
   padding-left: 15px;
 }
- 
+
+@media screen and (max-width: 768px){
+
+body{
+	font-family: 'NanumSquare', sans-serif !important; 
+}
+
+
+
+.footer-section {
+  background: #fff;
+  height: 20%;
+  margin-bottom: 2%;
+}
+
+.footer-text {
+  padding-right: 50px;
+}
+
+.footer-text p {
+  font-size: 12px;
+}
+
+.copyright {
+  font-size: 10px;
+  font-weight: 700;
+  color: #515151;
+/*   margin-top: -20px; */
+  padding-left: 15px;
+}
+}

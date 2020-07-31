@@ -62,9 +62,9 @@ WHERE(PRODUCT_ID=#{productId})
 </update>
 
 <!-- 상품삭제 -->
-<delete parameterType="product" id="deleteProduct">
-DELETE FROM PRODUCT WHERE PRODUCT_ID=#{productId} 
-</delete>
+<update parameterType="product" id="deleteProduct">
+update product set PRODUCT_CNT = -1 WHERE PRODUCT_ID=#{productId} 
+</update>
 
 
 

@@ -69,14 +69,26 @@ function getData(){
 
 function drawQnaTable(data){
 	$('#QnaBoardTbody').empty();
+	
 	var trPrefix = '<tr>';
+	var trPrefix_admin = '<tr id="adminList">';
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdPrefix_title = '<td id="title">';
 	var tdSuffix = '</td>';
 	for(var i=0; i<data.QnaBoardVOListSize; i++){
-		var listContent =
-			trPrefix +
+		
+		var listContent = "";
+			if(data.QnaBoardVOList[i].questionboardAnswerflag == 1){
+				listContent =
+				trPrefix_admin;
+			}else {
+				listContent=
+					trPrefix;
+			};
+			
+			listContent+=
+				
 				tdPrefix
 				+data.QnaBoardVOList[i].questionboardId
 				+tdSuffix+

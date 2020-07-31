@@ -9,7 +9,14 @@ public class QnaVO {
 	private String questionboardUploadtime;
 	private String questionboardReadcount;
 	private String memberId;
+	private int questionboardAnswerflag;
 	
+	public int getQuestionboardAnswerflag() {
+		return questionboardAnswerflag;
+	}
+	public void setQuestionboardAnswerflag(int questionboardAnswerflag) {
+		this.questionboardAnswerflag = questionboardAnswerflag;
+	}
 	public int getQuestionboardId() {
 		return questionboardId;
 	}

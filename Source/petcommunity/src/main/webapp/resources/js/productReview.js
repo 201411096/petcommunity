@@ -37,13 +37,16 @@ $(function(){
 	
 	//댓글 삭제 이벤트
 	$("#delete").on("click", function(){
-		confirm("삭제하시겠습니까?");
-		writerId = $(this).prev().attr("value");
-		productId = $(this).prev().prev().attr("value");
-		/*modifyReview();*/
-		/*$("#btn_modify").css("display", "block");
-		$("#btn_reviewSubmit").css("display", "none");*/
-		reviewModifyOrDelete(writerId, productId, "delete");
+		if(confirm("삭제하시겠습니까?")) {	
+			writerId = $(this).prev().attr("value");
+			productId = $(this).prev().prev().attr("value");
+			/*modifyReview();*/
+			/*$("#btn_modify").css("display", "block");
+			$("#btn_reviewSubmit").css("display", "none");*/
+			reviewModifyOrDelete(writerId, productId, "delete");
+		}	
+		
+		
 	});
 	//댓글 수정 이벤트
 //	$("#modify").on("click", function(){

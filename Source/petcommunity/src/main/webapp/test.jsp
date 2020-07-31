@@ -8,7 +8,7 @@
 
 <title>Insert title here</title>
 
-</head>
+</head>	
 <body>
 
 <a href="/petcommunity/controllertest.do">컨트롤러 테스트</a><br>

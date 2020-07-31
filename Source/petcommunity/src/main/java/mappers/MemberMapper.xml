@@ -22,4 +22,17 @@ WHERE MEMBER_ID=#{memberId}
 select * from MEMBER where MEMBER_PASSWORD=#{memberPassword} and MEMBER_ID=#{memberId}
 </select>
 
+
+
+
+<update id="tokenInsert" parameterType="member">
+UPDATE MEMBER SET MEMBER_TOKEN = #{memberToken} WHERE MEMBER_ID = #{memberId}
+</update>
+
+<select id="selectPeopleAroundLocation" parameterType="lostBoard" resultType="member">
+SELECT *
+FROM MEMBER
+WHERE MEMBER_ADDRESS = #{lostboardLocation}
+</select>
+
 </mapper>

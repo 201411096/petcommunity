@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -75,8 +75,10 @@
 					</c:when>
 
 				</c:choose>
+
 				<li><a href="lostboardlist.do">분실 동물 찾기</a></li>
 				<li><a href="findboardlist.do">분실 동물 신고</a></li>
+
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>
 				<li><a href="/petcommunity/productList.do">오키도키 굿즈</a></li>

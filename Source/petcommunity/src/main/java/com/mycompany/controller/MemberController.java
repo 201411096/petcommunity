@@ -72,7 +72,20 @@ public class MemberController {
 		
 		MemberVO result=memberService.signin(vo);
 		if(result != null) {
+			//----------------------------------------------------------------
+			// 모바일로 웹 접속 시 따른 token값 세션에 추가
+			//----------------------------------------------------------------
+			// 세션"deviceToken"에 저장해놓은 토큰 값을 "memberVO"세션 및 DB에 memberToken 값 넣기
+			String tokenCheck = (String)session.getAttribute("deviceToken");
+			if(tokenCheck != null) {
+				result.setMemberToken(tokenCheck);
+				session.setAttribute("memberVO", result);
+				memberService.tokenInsert(result);
+			}
+			//----------------------------------------------------------------
+			//----------------------------------------------------------------
 		session.setAttribute("memberVO",result);
+		result.getMemberId();
 		mv.setViewName("header");
 		return mv;
 		}
@@ -101,5 +114,23 @@ public class MemberController {
 		return mv;
 		
 	}
+	/* 
+	    * 함수 이름 : DeviceTokenInsert
+	    * 주요 기능 : 디바이스 토큰 저장
+	    * 함수 내용 : 앱으로 들어왔을 경우 DB에 Token을 저장 후 index페이지로 이동.
+	    */
+	@RequestMapping(value="/test_token.do")
+	   public String pushAlarm(String tokenId, HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		// 세션에 토큰 값 저장
+		session.setAttribute("deviceToken", tokenId);
+	      System.out.println("토큰테스트" + tokenId);
+	      
+//	      ModelAndView mv = new ModelAndView();
+//	      mv.addObject("tokenId",tokenId);
+//	      mv.setViewName("test_token");
+//	      return mv;
+	      return "redirect:/test_kys.jsp";
+	   }
 	
 }

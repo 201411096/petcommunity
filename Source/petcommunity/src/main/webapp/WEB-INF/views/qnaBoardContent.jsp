@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -13,12 +15,14 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/qnaBoardContent.css">
-<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/template_01/css/style.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <title>고객문의</title>
 </head>
 <body>
-<!-- header section -->
+	<!-- header section -->
 	<header class="header-section">
 		<div class="header-warp">
 			<a href="header.do" class="site-logo"> <img
@@ -54,58 +58,47 @@
 	</header>
 	<!-- header section -->
 	<section id="container">
-	<h4 id="qnatitle">고객문의</h4>
-	<table>
-<!-- 		<tr> -->
-<!-- 			<td colspan="2"><h4>고객문의</h4> -->
-<!-- 			<td></td> -->
-<!-- 		</tr> -->
-		<tr>
-			<td id="title"><strong>제목</strong>
-				<hr>
-			</td>
-			<td id="content">${qnaContent.questionboardTitle}<hr></td>
-
-		</tr>
-		<tr>
-			<td id="title"><strong>작성자</strong>
-				<hr>
-			</td>
-			<td id="content">${qnaContent.memberId}<hr></td>
-
-		</tr>
-		<tr>
-			<td id="title"><strong>작성일</strong>
-				<hr>
-			</td>
-			<td id="content">${qnaContent.questionboardUploadtime}<hr></td>
-		</tr>
-		<tr>
-			<td id="title"><strong>조회수</strong>
-				<hr>
-			</td>
-			<td id="content">${qnaContent.questionboardReadcount}<hr></td>
-		</tr>
-		<tr>
-			<td colspan="2" id="content-content">${qnaContent.questionboardContent}<hr
-					id="lineStyle">
-			<input type="hidden" name="questionboardGroupId" id="questionboardGroupId" value="${qnaContent.questionboardGroupId}"/>
-			</td>
-		</tr>
+		<h4 id="qnatitle">고객문의</h4>
+		<table>
+			<tr>
+				<td id="title">제목</td>
+				<td id="content">${qnaContent.questionboardTitle}</td>
+			</tr>
+			<tr>
+				<td id="title">작성자</td>
+				<td id="content">${qnaContent.memberId}</td>
+			</tr>
+			<tr>
+				<td id="title">작성일</td>
+				<td id="content">${qnaContent.questionboardUploadtime}</td>
+			</tr>
+			<tr>
+				<td id="title">조회수</td>
+				<td id="content">${qnaContent.questionboardReadcount}</td>
+			</tr>
+			<tr>
+				<td colspan="2" id="content-content">${qnaContent.questionboardContent}
+					<input type="hidden" name="questionboardGroupId"
+					id="questionboardGroupId"
+					value="${qnaContent.questionboardGroupId}" />
+				</td>
+			</tr>
 		</table>
-		
-			<div id="mulBtn">
-				<c:if test="${admin eq '1' && groupListSize eq 1}">
-					<a href="/petcommunity/reply.do?questionboardGroupId=${qnaContent.questionboardGroupId}" class="btn btn-default" id="replyBtn">답변</a>
-				</c:if>
-				
-				<button type="submit" id="deleteBtn" class="btn btn-default" value="${qnaContent.questionboardId}">삭제</button>
+		<div id="mulBtn">
+			<c:if test="${admin eq '1' && groupListSize eq 1}">
+				<a
+					href="/petcommunity/reply.do?questionboardGroupId=${qnaContent.questionboardGroupId}"
+					class="btn btn-default" id="replyBtn">답변</a>
+			</c:if>
+			<button type="submit" id="deleteBtn" class="btn btn-default"
+				value="${qnaContent.questionboardId}">삭제</button>
 
-				<button type="submit" id="modifyBtn" class="btn btn-default" value="${qnaContent.questionboardId}">수정</button>
-				<a class="btn btn-default" id="qnaListBtn" href="/petcommunity/qnaBoardList.do">목록</a>
-			</div>
-			</section>
-
+			<button type="submit" id="modifyBtn" class="btn btn-default"
+				value="${qnaContent.questionboardId}">수정</button>
+			<a class="btn btn-default" id="qnaListBtn"
+				href="/petcommunity/qnaBoardList.do">목록</a>
+		</div>
+	</section>
 	<script src="resources/js/qnaBoardContent.js"></script>
 </body>
 </html>

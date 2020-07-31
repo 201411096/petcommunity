@@ -24,7 +24,7 @@ io.on('connection', function(socket){
   });
   socket.on('joinRoom', function(roomInfo){
     if(roomInfo.memberId!="tempMember"){ // 회원일 경우
-      // console.log('memberInfo check ... ' + roomInfo.memberId);
+      console.log('memberInfo check ... ' + roomInfo.memberId);
     }
     else{ // 비회원일 경우
       roomInfo.memberId='guest__'+socket.id;
@@ -41,47 +41,19 @@ io.on('connection', function(socket){
   });
   socket.on('chat message', (msg) => {
     var memberId;
+    console.log('roomName : ' + msg.roomName);
+    console.log('messageContent : ' + msg.messageContent);
     if(msg.memberId!='tempMember'){
+      console.log(msg.memberId);
       memberId = msg.memberId;
     }else{
       memberId = 'guest__'+socket.id;
+      console.log('userId : '+ memberId);
     }
-//    io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
-    // io.to(msg.roomName).emit('chat message', stringHandling(memberId, msg));
-    messageHandling(memberId, msg);
+    io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
   });
 });
 
-// function stringHandling(memberId, msg){
-//   var firstArgument="";
-//   if(msg.messageContent!=""){ // 비어있는 경우가 아니라면 ..
-//     var tempMsg = msg.messageContent.split(" ");
-//     firstArgument = tempMsg[0];
-//     console.log("firstArgument ... " + firstArgument);
-//   }
-//   if(firstArgument!=""){
-//     if(firstArgument[0]=="/"){
-//       console.log("start with '/' ... ");
-//     }
-//   }
-//   return memberId+' : '+msg.messageContent;
-// }
-function messageHandling(memberId, msg){
-  var firstArgument="";
-  if(msg.messageContent!=""){   // 메시지가 비어있는 경우가 아니라면 ..
-    var tempMsg = msg.messageContent.split(" ");
-    firstArgument = tempMsg[0];
-    console.log("firstArgument ... " + firstArgument);
-  }
-  if(firstArgument!=""){        // 첫번쨰 인자 처리
-    if(firstArgument[0]=="/"){
-      console.log("start with '/' ... ");
-    }
-    if(firstArgument[0]=="/help" || "/도움말" || "/h"){   // 도움말 처리
-      console.log("help ...")
-    }
-  }
-  io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
-}
+
 
 

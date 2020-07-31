@@ -72,7 +72,7 @@
 						<c:if test="${boardComment.memberId eq sessionScope.memberVO.memberId
 										or sessionScope.memberVO.memberFlag eq '1'}">
 							<tr><td id="commentDelete">	
-								<a href="#" class="commentDelete">수정하기</a>
+							
 								<a href="#" class="commentDelete" id='commentDelete'>삭제하기</a>
 								<input type="hidden" id="boardcommentId" value="${boardComment.boardcommentId}">
 								<input type="hidden" id="communityboardId" value="${boardContent.communityboardId}">

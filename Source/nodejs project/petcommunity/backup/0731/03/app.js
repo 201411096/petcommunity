@@ -47,41 +47,22 @@ io.on('connection', function(socket){
       memberId = 'guest__'+socket.id;
     }
 //    io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
-    // io.to(msg.roomName).emit('chat message', stringHandling(memberId, msg));
-    messageHandling(memberId, msg);
+     io.to(msg.roomName).emit('chat message', stringHandling(memberId, msg));
   });
 });
 
-// function stringHandling(memberId, msg){
-//   var firstArgument="";
-//   if(msg.messageContent!=""){ // 비어있는 경우가 아니라면 ..
-//     var tempMsg = msg.messageContent.split(" ");
-//     firstArgument = tempMsg[0];
-//     console.log("firstArgument ... " + firstArgument);
-//   }
-//   if(firstArgument!=""){
-//     if(firstArgument[0]=="/"){
-//       console.log("start with '/' ... ");
-//     }
-//   }
-//   return memberId+' : '+msg.messageContent;
-// }
-function messageHandling(memberId, msg){
+function stringHandling(memberId, msg){
   var firstArgument="";
-  if(msg.messageContent!=""){   // 메시지가 비어있는 경우가 아니라면 ..
+  if(msg.messageContent!=""){ // 비어있는 경우가 아니라면 ..
     var tempMsg = msg.messageContent.split(" ");
     firstArgument = tempMsg[0];
     console.log("firstArgument ... " + firstArgument);
   }
-  if(firstArgument!=""){        // 첫번쨰 인자 처리
+  if(firstArgument!=""){
     if(firstArgument[0]=="/"){
       console.log("start with '/' ... ");
     }
-    if(firstArgument[0]=="/help" || "/도움말" || "/h"){   // 도움말 처리
-      console.log("help ...")
-    }
   }
-  io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
+  return memberId+' : '+msg.messageContent;
 }
-
 

@@ -9,8 +9,12 @@ create table member(
     member_birthday varchar2(50),
     member_flag varchar2(50),
     member_token varchar2(2000),
+    member_x varchar2(100),
+    member_y varchar2(100),
     constraint member_pk primary key(member_id)
 );
+alter table member add(member_y varchar2(100));
+
 create table animal(
     animal_id number(20),
     animal_name varchar2(50),

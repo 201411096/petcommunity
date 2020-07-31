@@ -2,6 +2,13 @@
 
 body{
 	font-family: 'NanumSquare', sans-serif !important; 	
+
+}
+
+.container {
+   min-height:100%;
+   position:relative;
+   padding-bottom:100px;/* footer height */
 }
 
 #qnatitle{

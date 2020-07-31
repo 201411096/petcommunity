@@ -68,7 +68,7 @@
 					<button id="qnaDeleteBtn" type="button" class="btn btn-default">삭제</button></td>
 			</tr>
 		</table>
-	<%@include file="../views/footer.jsp"%>
 	<script src="resources/js/qnaBoardContent.js"></script>
 </body>
 </html>
+<%@include file="../views/footer.jsp"%>

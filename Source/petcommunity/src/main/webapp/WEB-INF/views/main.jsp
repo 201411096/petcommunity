@@ -50,8 +50,6 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
-					
-	
 					</div>
 				</div>
 			</div>
@@ -60,7 +58,6 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
-						
 					</div>
 				</div>
 			</div>
@@ -69,14 +66,11 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
-						
 					</div>
 				</div>
 			</div>
 		</div>
-			
 	</section>
-
 	<!-- Hero section end -->
 
 	<!-- Gallery section -->
@@ -87,20 +81,15 @@
 					<div class="gallery-left-col">
 						<div class="gallery-text">
 							<h2>유기동물 현황 통계 그래프</h2>
-							<p>Pellentesque dictum nisl in nibh dictum volutpat nec a
-								quam.</p>
+							<p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam.</p>
 						</div>
 						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/2.jpg"
-								alt="#">
+							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/2.jpg" alt="#">
 							<h4>지역별 유기동물 현황</h4>
 							<p> 20190101 - 20200101</p>
 						</div>
 						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg"
-								alt="#">
+							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg" alt="#">
 							<h4>지역별 유기동물 현황</h4>
 							<p>20190101 - 20200101</p>
 						</div>
@@ -108,18 +97,13 @@
 				</div>
 				<div class="col-md-6 p-0">
 					<div class="gallery-right-col">
-
 						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/5.jpg"
-								alt="#">
+							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/5.jpg" alt="#">
 							<h4>지역별 유기동물 현황</h4>
 							<p>20190101 - 20200101</p>
 						</div>
 						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/6.jpg"
-								alt="#">
+							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/6.jpg" alt="#">
 							<h4> 지역별 유기동물 현황</h4>
 							<p>20190101 - 20200101</p>
 						</div>
@@ -203,7 +187,5 @@
 	<script src="./resources/bootstrap_template/bootstrap_seyeong/js/owl.carousel.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_seyeong/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_seyeong/js/main.js"></script>
-
-
 </body>
 </html>

@@ -72,4 +72,7 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.selectFindBoardWithPaging(map);
 	}
 
+
+	
+
 }

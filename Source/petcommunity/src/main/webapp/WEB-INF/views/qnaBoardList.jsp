@@ -79,9 +79,6 @@
          </div>
       </section>
    </div>
-   <!-- Footer section  -->
- <%@include file="../views/footer.jsp"%>
-   <!-- Footer section end -->
    <script
       src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
    <script
@@ -98,3 +95,4 @@
 </body>
 
 </html>
+<%@include file="../views/footer.jsp"%>

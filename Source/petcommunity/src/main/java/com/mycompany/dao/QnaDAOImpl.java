@@ -73,4 +73,5 @@ public class QnaDAOImpl implements QnaDAO {
 		return mybatis.selectList("qnaDAO.selectFindBoardWithPaging", map);
 	}
 
+
 }

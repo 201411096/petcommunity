@@ -31,14 +31,11 @@ io.on('connection', function(socket){
     }
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);
-      console.log('check in joinRoom ... roomInfo.prev : ' + roomInfo.prev);
       io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }else{
       io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
-      console.log('check in joinRoom2 ... roomInfo.prev : ' + roomInfo.prev);
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);
-      console.log('check in joinRoom ... roomInfo.cur : ' + roomInfo.cur);
       io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }
   });

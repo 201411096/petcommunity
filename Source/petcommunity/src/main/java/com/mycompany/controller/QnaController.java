@@ -96,14 +96,14 @@ public class QnaController {
 		
 			PaginationVO paginationVO = new PaginationVO(qnavoList.size(), curPage);
 			map.put("startRow", paginationVO.getStartIndex()+1);
-
 			map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 			qnavoList = qnaService.selectFindBoardWithPaging(map);
-			System.out.println(qnavoList.size()+"qnavoList.size()");
+			
 			result.put("pagination", paginationVO);
 			result.put("QnaBoardVOList", qnavoList);
 			result.put("QnaBoardVOListSize",qnavoList.size());
 			result.put("membervo", membervo);
+			
 		return result;
 	}
 	

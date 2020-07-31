@@ -23,33 +23,46 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
   socket.on('joinRoom', function(roomInfo){
-    if(roomInfo.memberId!="tempMember"){
-      console.log('memberInfo check ... ' + roomInfo.memberId);
+    if(roomInfo.memberId!="tempMember"){ // 회원일 경우
+      // console.log('memberInfo check ... ' + roomInfo.memberId);
     }
-    else{
-      roomInfo.memberId=socket.id;
+    else{ // 비회원일 경우
+      roomInfo.memberId='guest__'+socket.id;
     }
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);
+      io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }else{
+      io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);
+      io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }
   });
   socket.on('chat message', (msg) => {
     var memberId;
-    console.log('roomName : ' + msg.roomName);
-    console.log('messageContent : ' + msg.messageContent);
     if(msg.memberId!='tempMember'){
-      console.log(msg.memberId);
       memberId = msg.memberId;
     }else{
-      memberId = 'user__'+socket.id;
-      console.log('userId : '+ memberId);
+      memberId = 'guest__'+socket.id;
     }
-    io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
+//    io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
+     io.to(msg.roomName).emit('chat message', stringHandling(memberId, msg));
   });
 });
 
-
+function stringHandling(memberId, msg){
+  var firstArgument="";
+  if(msg.messageContent!=""){ // 비어있는 경우가 아니라면 ..
+    var tempMsg = msg.messageContent.split(" ");
+    firstArgument = tempMsg[0];
+    console.log("firstArgument ... " + firstArgument);
+  }
+  if(firstArgument!=""){
+    if(firstArgument[0]=="/"){
+      console.log("start with '/' ... ");
+    }
+  }
+  return memberId+' : '+msg.messageContent;
+}
 

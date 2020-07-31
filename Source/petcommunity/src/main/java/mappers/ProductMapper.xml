@@ -4,7 +4,11 @@
 <mapper namespace="ProductDAO">
 	<select id="selectProductListBytagCategory" parameterType="hashmap" resultType="product">
 		select *
-		from product
+		from (
+				SELECT * 
+				FROM PRODUCT
+				WHERE PRODUCT_CNT > 0
+				)
 		<if test="!tagCategory.equals('all')">
 			where product_name like '%'||#{tagCategory}||'%' or product_feature like '%'||#{tagCategory}||'%'
 		</if>
@@ -17,7 +21,11 @@
 				SELECT ROWNUM AS RNUM, PRODUCT_ID, PRODUCT_NAME, 
 				PRODUCT_PRICE, PRODUCT_CNT, PRODUCT_FEATURE, 
 				PRODUCT_CONTENT
-				FROM PRODUCT 
+				FROM (
+						SELECT * 
+						FROM PRODUCT
+						WHERE PRODUCT_CNT > 0
+					) 
 				<if test="!tagCategory.equals('all')">
 					where product_name like '%'||#{tagCategory}||'%' or product_feature like '%'||#{tagCategory}||'%'
 				</if>
@@ -30,13 +38,21 @@
 	
 	<select id="selectAutoSearchProduct" parameterType="string" resultType="string">
 		select product_name
-		from product
+		from (
+				SELECT * 
+				FROM PRODUCT
+				WHERE PRODUCT_CNT > 0
+				)
 		where product_name like '%'||#{searchSomething}||'%'
 	</select>
 	
 	<select id="selectProductInfo" parameterType="int" resultType="product">
 		select *
-		from product
+		from (
+				SELECT * 
+				FROM PRODUCT
+				WHERE PRODUCT_CNT > 0
+				)
 		where product_id = #{selectProductInfo}
 	</select>
 </mapper> 

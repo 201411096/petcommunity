@@ -87,7 +87,7 @@ public class LostBoardController {
 		// 푸시 알림 보내기
 		for (MemberVO i : memberVO) {
 			String userDeviceIdKey = i.getMemberToken();
-			String AUTH_KEY_FCM = "AAAA5I6xC80:APA91bFtb40SjHrzCQJ3fV_2IrvovLIPTN-X6LpEB-LgxFlOWSR4pejrgR6UmTNukASbymKTZspKRuNlitwRBkB5pxWsp9RDMQEEJxMD6jTH-17eR6pnMHOVnJvR6QCSEwpXhv63lc_R";
+			String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
 			String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
 			String authKey = AUTH_KEY_FCM;
 			String FMCurl = API_URL_FCM;

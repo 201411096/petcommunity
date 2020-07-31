@@ -45,6 +45,9 @@
 	width:200px;
 	float:right;
 }
+.artists-item img{
+	width: 100%
+}
 
 /* #searchBtn{
 	position: relative;

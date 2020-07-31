@@ -241,7 +241,7 @@
 											<input type="hidden" id="product_id" value="${reviewList.productId}"/>
 											<input type="hidden" id="writerId" value="${reviewList.memberId}"/>
 											<!-- <i class="fa fa-pencil-square-o" id="modify">&nbsp</i> -->
-											<i class="fa fa-trash" id="delete"></i></h4>
+											<i class="fa fa-trash delete" id="delete"></i></h4>
 											<c:forEach begin="1" end="${reviewList.productreviewScore }" step="1">
 												<i class="fa fa-star"></i>
 											</c:forEach>

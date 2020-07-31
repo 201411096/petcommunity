@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,12 @@
 <a href="/petcommunity/findboardlist.do">findboardlist 페이지</a><br>
 <a href="/petcommunity/lostboardlist.do">lostboardlist 페이지</a><br>
 <a href="/petcommunity/sample_graph.do">그래프 샘플 페이지</a><br>
+
 <a href="/petcommunity/test_graph.do">그래프 테스트 페이지</a><br>
-<script src="./resources/js/pushAlarm.js"></script>
+
+
+<a href="/petcommunity/test_chat.do">테스트 페이지</a><br>
+<a href="/petcommunity/test_chatWithOptions.do">테스트 채팅 페이지</a><br>
+
 </body>
 </html>

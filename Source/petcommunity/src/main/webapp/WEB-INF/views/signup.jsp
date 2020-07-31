@@ -21,7 +21,7 @@
 </head>
 <body>
 
-	<div class="main2">
+	<div class="main">
 
 		<!-- Sign up form -->
 		<section class="signup">
@@ -78,7 +78,7 @@
 								<span class='zmdi zmdi-home'>주소</span>
 								<input type="text" id="sample2_postcode" placeholder="우편번호"> 
 								<input type="button" onclick="sample2_execDaumPostcode()" value="우편번호 찾기"><br>
-								<input type="text" id="sample2_address" name="memberAddrss" placeholder="주소"><br> 
+								<input type="text" id="sample2_address" name="memberAddress" placeholder="주소"><br> 
 								<input type="text" id="sample2_detailAddress" placeholder="상세주소">
 								<input type="text" id="sample2_extraAddress">
 							</div>

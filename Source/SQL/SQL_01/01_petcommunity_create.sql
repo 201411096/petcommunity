@@ -8,6 +8,7 @@ create table member(
     member_email varchar2(50),
     member_birthday varchar2(50),
     member_flag varchar2(50),
+    member_token varchar2(2000),
     constraint member_pk primary key(member_id)
 );
 create table animal(
@@ -167,7 +168,7 @@ create table buy(
     CONSTRAINT BUY_FK_1 FOREIGN KEY(BUYLIST_ID) REFERENCES BUYLIST(BUYLIST_ID),
     CONSTRAINT BUY_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id)
 );
-
+alter table buy modify 
 -- 장바구니
 CREATE TABLE BUYCARTLIST(
     BUYCARTLIST_ID NUMBER(30),

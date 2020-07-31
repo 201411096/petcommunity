@@ -79,10 +79,11 @@ public class FindBoardController {
 		mv.setViewName("/findBoardContent");
 		mv.addObject("findBoardContent", findBoardVO);
 		
-		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());
+		FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+findBoardVO.getFindboardId());
+		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+Integer.toString(findBoardVO.getFindboardId());		
 		File dir = new File(directoryPath);
 		File fileList [] = dir.listFiles();
-		ArrayList<File> fileArrayList = new ArrayList<File>();
+		ArrayList<File> fileArrayList = new ArrayList<File>();		
 		for(File file : fileList) {
 			fileArrayList.add(file);
 		}
@@ -91,7 +92,7 @@ public class FindBoardController {
 		if(fileList.length>=1)
 			mv.addObject("file", fileList[0]);
 		else
-			mv.addObject("fileflag", -1);
+			mv.addObject("fileflag", -1);		
 		
 		if( ((MemberVO)session.getAttribute("memberVO"))!=null ) { //로그인이 되어있는 상태라면
 			if( ((MemberVO)session.getAttribute("memberVO")).getMemberId().equals(findBoardVO.getMemberId()) ) { //로그인이 되어있으면서 글 작성자와 같은 아이디면

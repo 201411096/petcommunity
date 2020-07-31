@@ -87,7 +87,7 @@
 			<br/><br/>
 			
 				<div class='buttons'>
-					<button id="backToShopping" type="button" class="main_btn">쇼핑돌아가기</button> 																
+					<button id="backToShopping" type="button" class="main_btn">쇼핑계속하기</button> 																
 					<button id="goToPay" type="button" class="main_btn">결제하러가기</button>								
 				</div>
 	

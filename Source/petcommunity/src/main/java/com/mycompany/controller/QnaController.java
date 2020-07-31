@@ -75,7 +75,7 @@ public class QnaController {
 		}
 		mv.setViewName("qnaBoardWrite");
 		qnaService.insertQnaBoard(qnavo);
-		return "redirect:/qnaList.do";
+		return "redirect:/cs.do";
 	}
 
 	/* 
@@ -89,11 +89,10 @@ public class QnaController {
 			Map map = new HashMap();
 			Map result = new HashMap();
 			MemberVO membervo= (MemberVO)session.getAttribute("memberVO");
-			List<QnaVO> qnavoList = qnaService.getQnaBoardList(qnavo);
 			
 			map.put("searchType", searchType);
 			map.put("searchWord", searchWord);
-			qnavoList = qnaService.selectKeyword(map);
+			List<QnaVO> qnavoList = qnaService.selectKeyword(map);
 		
 			PaginationVO paginationVO = new PaginationVO(qnavoList.size(), curPage);
 			map.put("startRow", paginationVO.getStartIndex()+1);
@@ -150,20 +149,11 @@ public class QnaController {
     */
 	@RequestMapping(value = "qnaModify.do", produces = "application/text; charset=utf-8")
 	public ModelAndView QnaBoardModify(QnaVO qnavo, HttpSession session) {
-		ModelAndView mv = new ModelAndView();
-		qnavo=qnaService.getQnaBoardContent(qnavo);
-		MemberVO membervo=(MemberVO)session.getAttribute("memberVO");
 		
-		if (membervo == null) {
-			mv.setViewName("login");
-
-		} else if (membervo.getMemberId().equals(qnavo.getMemberId())) {
-			mv.setViewName("qnaBoardModify");
-			mv.addObject("qnaContent", qnaService.getQnaBoardContent(qnavo));
-
-		} else { 
-			mv.setViewName("main");
-		}
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("qnaBoardModify");
+		mv.addObject("qnaContent", qnaService.getQnaBoardContent(qnavo));
+		
 		return mv;
 	}
 
@@ -177,16 +167,16 @@ public class QnaController {
 
 		int result = qnaService.updateQna(qnavo);
 		if (result != 0) {
-			return "redirect:/qnaList.do";
+			return "redirect:/cs.do";
 		}
 		return "main.do";
 	}
 
-		/* 
-	    * 함수 이름 : deleteQnaBoard
-	    * 주요 기능 : 게시글 삭제 후 목록페이지 이동
-	    * 함수 내용 : 연결된 계정과 작성글의 아이디가 일치하는 경우만 삭제
-	    */
+	/* 
+    * 함수 이름 : deleteQnaBoard
+    * 주요 기능 : 게시글 삭제 후 목록페이지 이동
+    * 함수 내용 : 연결된 계정과 작성글의 아이디가 일치하는 경우만 삭제
+    */
 	@RequestMapping(value ="delete.do", produces = "application/text; charset=utf-8")
 	public ModelAndView deleteQnaBoard(QnaVO qnavo, HttpSession session) {
 		
@@ -194,50 +184,88 @@ public class QnaController {
 		MemberVO membervo = (MemberVO) session.getAttribute("memberVO");
 		qnavo=qnaService.getQnaBoardContent(qnavo);
 		String id = qnavo.getMemberId();
-		
-		if (membervo == null) {
-			mv.setViewName("redirect:/login.do"); 
-		} else if ((membervo.getMemberId().equals(id) || (membervo).getMemberFlag().equals("1"))) {
-			qnaService.deleteQnaBoard(qnavo);
-			mv.setViewName("redirect:/qnaList.do");
-		} else {
-			mv.setViewName("redirect:/main.do");
-		}return mv;
+		qnaService.deleteQnaBoard(qnavo);
+		mv.setViewName("redirect:/cs.do");
+
+		return mv;
 	}
 		
+	/* 
+    * 함수 이름 : getReplyQnaBoard
+    * 주요 기능 : 답변하기 버튼 눌렀을 때 답변페이지 이동
+    * 함수 내용 : 작성글 그룹아이디 출력 
+    */
+	@RequestMapping("reply.do")
+	public ModelAndView getReplyQnaBoard(QnaVO qnavo) {
+		ModelAndView mv = new ModelAndView();
+		qnavo=qnaService.selectGroupId(qnavo);
+		qnavo.getQuestionboardTitle();
+		mv.addObject("qnaReplyContent", qnavo);
+		mv.setViewName("qnaReplyBoardWrite");
 		
 		
-		/* 
-	    * 함수 이름 : getReplyQnaBoard
-	    * 주요 기능 : 답변하기 버튼 눌렀을 때 답변페이지 이동
-	    * 함수 내용 : 작성글 그룹아이디 출력 
-	    */
-		@RequestMapping("reply.do")
-		public ModelAndView getReplyQnaBoard(QnaVO qnavo) {
-			ModelAndView mv = new ModelAndView();
-			qnavo=qnaService.selectGroupId(qnavo);
-			mv.addObject("qnaReplyContent", qnavo);
-			mv.setViewName("qnaReplyBoardWrite");
+		return mv;
+	}
+		
+	/* 
+    * 함수 이름 : qnaBoardReplyWrite
+    * 주요 기능 : 답변 버튼 눌렀을 때 목록페이지 이동
+    * 함수 내용 : 연결된 아이디 세팅
+    */
+	@RequestMapping("replyWrite.do")
+	public ModelAndView insertReply(QnaVO qnavo, HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		qnavo.getQuestionboardContent();
+		String re = "RE : ";
+		qnavo.setQuestionboardTitle(re+qnavo.getQuestionboardTitle());
+		qnavo.setMemberId(((MemberVO)session.getAttribute("memberVO")).getMemberId());
+		qnaService.insertReply(qnavo);
+		mv.setViewName("redirect:/cs.do");
+		
+		return mv;
+	}
+	
+	/* 
+    * 함수 이름 : checkId
+    * 주요 기능 : 
+    * 함수 내용 : 
+    */
+	@ResponseBody
+	@RequestMapping("checkId")
+	public String checkId(QnaVO qnavo, HttpSession session) {
+		MemberVO membervo = (MemberVO)session.getAttribute("memberVO");
+		qnavo=qnaService.getQnaBoardContent(qnavo);
+		qnavo.getMemberId();
 			
-			return mv;
+		String msg = "";
+		if(session.getAttribute("memberVO")==null) {
+			 return "loginRequired";
+		}else if(!membervo.getMemberId().equals(qnavo.getMemberId())) {
+			return "misMatch";
+		}else if(membervo.getMemberId().equals(qnavo.getMemberId())) {
+			return "match";
 		}
+		return msg;
 		
-		/* 
-	    * 함수 이름 : qnaBoardReplyWrite
-	    * 주요 기능 : 답변 버튼 눌렀을 때 목록페이지 이동
-	    * 함수 내용 : 연결된 아이디 세팅
-	    */
-		@RequestMapping("replyWrite.do")
-		public ModelAndView insertReply(QnaVO qnavo, HttpSession session) {
-			ModelAndView mv = new ModelAndView();
-			qnavo.getQuestionboardContent();
-			String re = "RE : ";
-			qnavo.setQuestionboardTitle(re+qnavo.getQuestionboardTitle());
-			qnavo.setMemberId(((MemberVO)session.getAttribute("memberVO")).getMemberId());
-			qnaService.insertReply(qnavo);
-			mv.setViewName("redirect:/qnaList.do");
+	}
+	
+	/* 
+    * 함수 이름 : checkLogin
+    * 주요 기능 : 
+    * 함수 내용 : 
+    */
+	@ResponseBody
+	@RequestMapping("checkLogin")
+	public String checkLogin(QnaVO qnavo, HttpSession session) {
+		MemberVO membervo = (MemberVO)session.getAttribute("memberVO");
 			
-			return mv;
+		String msg = "";
+		if(session.getAttribute("memberVO")==null) {
+			 return "loginRequired";
+		}else if(session.getAttribute("memberVO")!=null) {
+			return "write";
 		}
+		return msg;
+	}
 		
 }

@@ -17,15 +17,17 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"
 	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Noto+Serif+KR:wght@600&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 
 <!-- Stylesheets -->
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/bootstrap.min.css" />
 <link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/font-awesome.min.css" />
-<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/js/owl.carousel.min.css" />
-<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/js/slicknav.min.css" />
-
+<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/owl.carousel.min.css" />
+<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/slicknav.min.css" />
+<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_seyeong/css/animate.css" />
+<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_footer/css/style.css" />
 <!-- Main Stylesheets -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_seyeong/css/style.css" />
@@ -38,52 +40,14 @@
 
 </head>
 <body>
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
-
-
-	<!-- header section -->
-	<header class="header-section">
-		<div class="header-warp">
-			<a href="index.html" class="site-logo"> <img
-				src="./resources/bootstrap_template/bootstrap_seyeong/img/logo.png"
-				alt="">
-			</a>
-			<ul class="main-menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="gallery.html">Gallery</a></li>
-				<li><a href="artists.html">artists</a></li>
-				<li><a href="elements.html">Shop</a></li>
-				<li><a href="blog.html">News</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="login2.html">로그인</a></li>
-				<li><a href="components-accordions.html">아코디언</a></li>
-				<li><a href="components-tabs.html">탭</a></li>
-				<li><a href="elements-badges-labels.html">뱃지</a></li>
-				<li><a href="elements-buttons-standard.html">버튼</a></li>
-				<li><a href="elements-icons.html">아이콘</a></li>
-				<li><a href="elements-utilities.html">color</a></li>
-				<li><a href="forms-controls.html">컨트롤</a></li>
-				<li><a href="forms-layouts.html">레이아웃</a></li>
-				<li><a href="tables-regular.html">그래프</a></li>
-
-			</ul>
-		</div>
-	</header>
-	<!-- header section end -->
-
 	<!-- Hero section -->
 	<section class="hero-section">
 		<div class="hero-slider owl-carousel">
 			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay" data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover6.png"></div>
+				<div class="hs-bg set-bg sm-overlay" id="imgMain" data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover6.png"></div>
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
-						<p>John Doe  Showcase<br>23 January - 14 February</p>
-						<a href="#" class="site-btn sb-big">Read More <img src="resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -92,8 +56,6 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
-						<p>John Doe  Showcase<br>23 January - 14 February</p>
-						<a href="#" class="site-btn sb-big">Read More <img src="resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -102,13 +64,12 @@
 				<div class="sp-container">
 					<div class="hs-text">
 						<h2>The Look<br>Gallery</h2>
-						<p>John Doe  Showcase<br>23 January - 14 February</p>
-						<a href="#" class="site-btn sb-big">Read More <img src="resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png" alt=""></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
 	<!-- Hero section end -->
 
 	<!-- Gallery section -->
@@ -117,46 +78,52 @@
 			<div class="row m-0">
 				<div class="col-md-6 p-0">
 					<div class="gallery-left-col">
-						<div class="gallery-text">
-							<h2>(임시) 유기동물 현황 통계 그래프</h2>
-							<p>Pellentesque dictum nisl in nibh dictum volutpat nec a
-								quam.</p>
+						<div class="gallery-item">
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.jpg"
+								alt="#"><br>
+								어렸을때 행복했개 산책도 많이 갔개 
 						</div>
 						<div class="gallery-item">
 							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/2.jpg"
-								alt="#">
-							<h4>(임시) 지역별 유기동물 현황</h4>
-							<p>(임시) 20190101 - 20200101</p>
-						</div>
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main3.JPG"
+								alt="#"><br>
+								산책가는줄 알았는데 버려졌개..
+						</div>						
 						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg"
-								alt="#">
-							<h4>(임시) 지역별 유기동물 현황</h4>
-							<p>20190101 - 20200101</p>
+<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
+								통계그래프 보여주는 곳<br>
+								통계그래프 보여주는 곳<br>
+								통계그래프 보여주는 곳<br>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 p-0">
 					<div class="gallery-right-col">
-
 						<div class="gallery-item">
 							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/5.jpg"
-								alt="#">
-							<h4>(임시) 지역별 유기동물 현황</h4>
-							<p>20190101 - 20200101</p>
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main2.jpg"
+								alt="#"><br>
+								뚠뚠해지고 못생겨져서 미움받았개...
 						</div>
 						<div class="gallery-item">
-							<img
-								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/6.jpg"
-								alt="#">
-							<h4>(임시) 지역별 유기동물 현황</h4>
-							<p>20190101 - 20200101</p>
+<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
+								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
+								해마다 버려진 강아지들을 확인해보세요.<br>
+								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
+								해마다 버려진 강아지들을 확인해보세요.<br>
+								연간 10만 마리의 유기견이 발생하고 있습니다.<br>
+								해마다 버려진 강아지들을 확인해보세요.<br>
+								해마다 버려진 강아지들을 확인해보세요.<br>
+						</div>
+						<div class="gallery-item">
+<!-- 							<img src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/main1.JPG" alt="#"><br> -->
+								통계그래프 보여주는 곳<br>
+								통계그래프 보여주는 곳<br>
+								통계그래프 보여주는 곳<br>
 						</div>
 						<div class="more-gallery text-left text-md-right">
-							<a href="#" class="site-btn sb-big">임시 더 보기 <img
+							<a href="#" class="site-btn sb-big"> 더 보기 <img
 								src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 								alt=""></a>
 						</div>
@@ -171,19 +138,19 @@
 	<section class="blog-section">
 		<div class="sp-container">
 			<div class="blog-title-col">
-				<h2>카테고리</h2>
+				<h2>CATEGORY</h2>
 			</div>
 			<div class="blog-content-col">
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/blog/1_thumb.jpg"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-3.png"
 							alt="">
 					</div>
 					<div class="blog-content">
-						<span class="blog-cata-title"> <span class="blog-cata">Category</span>
-							<h4>(임시) 반려동물 실종 신고</h4> <span>Find Board List</span></span>
-						<p>반려동물 실종 신고 반려동물 실종 신고 반려동물 실종 신고 반려동물 실종 신고 반려동물 실종 신고</p>
+						<span class="blog-cata-title">
+							<h4>반려동물 실종 신고</h4> <span>Find Board List</span></span>
+						<p>위치기반의 알림서비스 : 지정된 위치 목격글 업로드시 알림 </p>
 						<a href="/petcommunity/find.do" class="site-btn">이동하기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
@@ -192,14 +159,14 @@
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/blog/2_thumb.jpg"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-1.png"
 							alt="">
 					</div>
 					<div class="blog-content">
-						<span class="blog-cata-title"> <span class="blog-cata">category</span>
-							<h4>(임시) 동물병원 찾기</h4> <span>Find hospital</span>
+						<span class="blog-cata-title"> 
+							<h4>동물병원 찾기</h4> <span>Find hospital</span>
 						</span>
-						<p>동물병원 찾기동물병원 찾기동물병원 찾기동물병원 찾기동물병원 찾기</p>
+						<p>전국 동물병원 정보 다모여~!</p>
 						<a href="/petcommunity/hospital.do" class="site-btn">이동하기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
@@ -208,23 +175,59 @@
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/blog/1_thumb.jpg"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-2.png"
 							alt="">
 					</div>
 					<div class="blog-content">
-						<span class="blog-cata-title"> <span class="blog-cata">category</span>
-							<h4>(임시) 커뮤니티</h4> <span>COMMUNITY BOARD</span>
+						<span class="blog-cata-title">
+							<h4> 커뮤니티</h4> <span>COMMUNITY BOARD</span>
 						</span>
-						<p>커뮤니티커뮤니티커뮤니티커뮤니티커뮤니티</p>
+						<p>우리동네 갱얼쥐들 다모여라~</p>
 						<a href="/petcommunity/community.do" class="site-btn">이동하기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
 					</div>
+				
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Blog section end -->
+	<!-- Footer section  -->
+	<hr id="lineStyle">
+	<footer class="footer-section spad" id="footer">
+		<div class="sp-container">
+			<div class="row m-0">
+				<div class="col-lg-4 footer-text">
+					<h2>
+						<strong>OKI DOG HERE</strong>
+					</h2>
+				</div>
+				<div class="col-lg-8">
+					<div class="col-lg-4 footer-text">
+						<p>
+							오키독히얼 <br> (153-759) 서울시 금천구 가산동 426-5 <br> 월드메르디앙 2차
+							413호<br> <a href="/petcommunity/cs.do" id="qna">고객센터</a>
+							1588-8282<br> 사업자번호 : 000-0000-00000<br>
+						</p>
+
+					</div>
+					<div class="copyright">
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | This template is made with <i
+							class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							href="https://colorlib.com" target="_blank">Colorlib</a>
+						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer section end -->
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="./resources/bootstrap_template/bootstrap_seyeong/js/jquery-3.2.1.min.js"></script>
@@ -237,4 +240,3 @@
 
 </body>
 </html>
-<%@include file="../views/footer.jsp"%>

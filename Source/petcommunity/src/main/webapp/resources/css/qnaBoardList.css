@@ -1,41 +1,56 @@
-input#keywordInput{
-	width: 90%;
+body{
+	font-family: 'NanumSquare', sans-serif !important; 	
 }
 
-table#findboardTable{
-	text-align:center;
-}
-table#findboardTable th{
-	text-align:center;
+input#keywordInput{
+	width: 90%;
+	margin-right: 10%;
 }
 
 ul#pagination-demo{
-	text-align: center;
+	margin-left: 40%;
 }
 
 .wrapper {
 	display: grid;
-
 }
 
-
-#lineStyle {
-	border: 0;
-    height: 1px;
-    background: #ccc;
+#searchBtn{
+	margin-right: 20%;
 }
 
+#qnatitle{
+	margin-bottom: 3%;	
+}
 
 td a{
 	color : black;
 }
+
+table th{
+	text-align: center;
+}
+
+table td{
+	text-align: center;
+	font-size: 15px;
+}
+
+td #id{
+	width: 10%;
+}
+
+td#title{
+	padding-left:5%;
+	text-align: left;
+}
+
 .search ul{
 	margin: auto;
 	margin-top: 5%;
 }
 
 #pagination-demo>li>a, #pagination-demo>li>span {
-   
     position: relative;
     float: left;
     padding: 6px 12px;
@@ -45,5 +60,13 @@ td a{
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #fff;
-    
+}
+
+@media screen and (max-width: 1200px) {
+   #container table th:nth-child(1), th:nth-child(5), th:nth-child(6)  { 
+      display: none; 
+   }
+   #container table td:nth-child(1), td:nth-child(5), td:nth-child(6)  { 
+      display: none; 
+   }  
 }

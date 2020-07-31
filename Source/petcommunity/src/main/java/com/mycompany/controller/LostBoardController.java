@@ -131,6 +131,7 @@ public class LostBoardController {
 		mv.setViewName("/lostBoardContent");
 		mv.addObject("lostBoardContent", lostBoardVO);
 		
+		FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+lostBoardVO.getLostboardId());
 		String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+Integer.toString(lostBoardVO.getLostboardId());
 		File dir = new File(directoryPath);
 		File fileList [] = dir.listFiles();

@@ -1,3 +1,6 @@
+
+
+
 var listBysearchWithPaging = {
     visiblePages : 5,
     onPageClick: function (event, page) {
@@ -56,6 +59,7 @@ var curPage;
     
 
 $(function(){
+
 	
 	//cityName에 따라 province 동적생성되는 함수 		
     selectProvince=function(){

@@ -1,12 +1,11 @@
 //var latitude = -1;
 //var longitude = -1;
-//var geoLocationFlag=1;
 var clickMapEventFlag=-1;
 var latitude = 37.519972628243366;
 var longitude = 126.85287648507145;
 $(function() {
 	getLocation();
-	kakaoMapAPI();
+	//kakaoMapAPI();
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
 		e.stopPropagation();
@@ -60,7 +59,7 @@ function kakaoMapAPI() {
 	
 	// 지도 클릭 이벤트
 	kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
-		clickMapEventFlag=1;
+		clickMapEventFlag=1; // 지도에 표시했는지 저장
 	    // 클릭한 위도, 경도 정보를 가져옵니다 
 	    var latlng = mouseEvent.latLng;
 	    latitude = latlng.getLat();
@@ -131,7 +130,6 @@ function getLocation() {
         console.log('geolocation error--------------------------');
     	console.log(latitude);
     	console.log(longitude);
-    	kakaoMapAPI();
       }, {
         enableHighAccuracy: false,
         maximumAge: 0,

@@ -34,6 +34,7 @@ public class ProductCartController {
 		return cartListById;
 		
 	}
+	
 	//장바구니의 물건 수량 바꿔주기
 	@ResponseBody
 	@RequestMapping(value="/changeProductCntOnCart.do")
@@ -50,9 +51,7 @@ public class ProductCartController {
 		
 		productCartService.changeProductCntOnCart(cvo);
 		List<ProductCartVO> cartListById = productCartService.getCartListById(cvo);
-		System.out.println(cartListById.get(0).getProductName());
-		return cartListById;
-		
+		return cartListById;		
 	}
 	
 	//장바구니에서 목록 제거

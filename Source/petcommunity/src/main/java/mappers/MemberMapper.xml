@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <insert id="signup" parameterType="member">
 
 insert into MEMBER(MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_ADDRESS,MEMBER_TEL,MEMBER_EMAIL,MEMBER_BIRTHDAY,MEMBER_FLAG) 
-values(#{memberId},#{memberPassword},#{memberName},#{memberAddrss},#{memberTel},#{memberEmail},#{memberBirthday},0)
+values(#{memberId},#{memberPassword},#{memberName},#{memberAddress},#{memberTel},#{memberEmail},#{memberBirthday},0)
 
 </insert>
 

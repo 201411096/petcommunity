@@ -6,25 +6,29 @@ body{
 
 #qnatitle{
 	margin-bottom: 3%;	
-	margin-left: 20%;
+	text-align: center;
+	color: #4a4a4a;
 }
 
 table {
 	width : 65%;
-	height : 60%;
+/* 	height : 60%; */
 	margin-left: 20%;
 	margin-right: 60%;
+	
+}
+table td,th{
+	border-bottom: 1px solid #e3e3e3;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 table td#title{
 	font-size: 15px;	
 }
 table td#content{
-	font-size: 15px;	
-}
-
-table td#content-content{
-	font-size: 15px;	
+	font-size: 15px;
+	height: 10%;
 }
 
 #title{
@@ -36,13 +40,74 @@ table td#content-content{
 }
 
 #content-content {
-	height : 20%;
+	height:400px;
 	text-align: center;
 }
 
 #mulBtn{
-	margin-left: 75%;
+	margin-top:1%;
+	margin-left: 76%;
 }
+
+
+/*반응형*/
+@media screen and (max-width: 768px){
+
+body{
+	font-family: 'NanumSquare', sans-serif !important; 	
+}
+
+#qnatitle{
+	font-size:15px;
+	margin-bottom: 5%;	
+	text-align: center;
+	color: #4a4a4a;
+}
+
+table {
+	width : 80%;
+	margin-left: 10%;
+	
+}
+table td,th{
+	border-bottom: 1px solid #e3e3e3;
+	padding-top: 5%;
+	padding-bottom: 5%;
+}
+
+table td#title{
+	font-size: 12px;	
+}
+
+table td#content{
+	font-size: 12px;
+	height: 10%;
+	padding-left: 10%;
+}
+
+#title{
+	width : 20%;
+}
+
+#content{
+	width : 80%;
+}
+
+#content-content {
+	font-size: 12px;
+	height:100px;
+	text-align: center;
+}
+
+#mulBtn{
+	margin-top:1%;
+	margin-left: 40%;
+}
+
+	
+}
+
+
 
 
 

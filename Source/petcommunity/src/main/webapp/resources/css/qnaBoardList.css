@@ -20,7 +20,12 @@ ul#pagination-demo{
 }
 
 #qnatitle{
-	margin-bottom: 3%;	
+	text-align: center;
+	color: #4a4a4a;
+}
+
+table.table{
+	margin-top: 5%;
 }
 
 td a{
@@ -60,6 +65,7 @@ td#title{
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #fff;
+    font-size: 13px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -70,3 +76,88 @@ td#title{
       display: none; 
    }  
 }
+
+@media screen and (max-width: 768px){
+
+	body{
+	font-family: 'NanumSquare', sans-serif !important; 	
+}
+
+input#keywordInput{
+	width: 90%;
+	margin-right: 10%;
+}
+
+ul#pagination-demo{
+	margin-left: 40%;
+}
+
+.wrapper {
+	display: grid;
+}
+
+#searchBtn{
+	margin-right: 20%;
+}
+
+#qnatitle{
+	font-size:12px;
+	text-align: center;
+	color: #4a4a4a;
+}
+
+table.table{
+	margin-top: 5%;
+}
+
+td a{
+	color : black;
+}
+
+table th{
+	text-align: center;
+}
+
+table td{
+	text-align: center;
+	font-size: 12px;
+}
+
+td #id{
+	width: 10%;
+}
+
+td#title{
+	padding-left:5%;
+	text-align: left;
+}
+
+.search ul{
+	margin: auto;
+	margin-top: 5%;
+}
+
+#pagination-demo>li>a, #pagination-demo>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -5%;
+    line-height: 1.42857143;
+    color: #636363;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #fff;
+    font-size: 9px;
+}
+
+@media screen and (max-width: 1200px) {
+   #container table th:nth-child(1), th:nth-child(5), th:nth-child(6)  { 
+      display: none; 
+   }
+   #container table td:nth-child(1), td:nth-child(5), td:nth-child(6)  { 
+      display: none; 
+   }  
+}
+
+
+	}

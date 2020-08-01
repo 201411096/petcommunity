@@ -24,7 +24,6 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
   socket.on('joinRoom', function(roomInfo){
-    var socketList = io.sockets.sockets; // 소켓 리스트_ 소켓 아이디로 소켓의 정보를 가져올 수 있음
     if(roomInfo.memberId!="tempMember"){ // 회원일 경우 socket의 nickname 지정
       socket.nickname = roomInfo.memberId;
     }
@@ -34,39 +33,12 @@ io.on('connection', function(socket){
     }
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);
-      io.of('/').in(roomInfo.prev).clients((error, clients) => {
-        if (error) throw error;
-        console.log(clients); // => [Anw2LatarvGVVXEIAAAD]
-        for(var i=0; i<clients.length; i++){
-          if(socketList[clients[i]].nickname!=roomInfo.memberId && socketList[clients[i]].id){
-            io.to(socketList[clients[i]].id).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
-          }
-        }
-      });
-      //io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+      io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }else{
-      io.of('/').in(roomInfo.prev).clients((error, clients) => {
-        if (error) throw error;
-        console.log(clients); // => [Anw2LatarvGVVXEIAAAD]
-        for(var i=0; i<clients.length; i++){
-          if(socketList[clients[i]].nickname!=roomInfo.memberId){
-            io.to(socketList[clients[i]].id).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
-          }
-        }
-      });
-      //io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
+      io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);
-      io.of('/').in(roomInfo.prev).clients((error, clients) => {
-        if (error) throw error;
-        console.log(clients); // => [Anw2LatarvGVVXEIAAAD]
-        for(var i=0; i<clients.length; i++){
-          if(socketList[clients[i]].nickname!=roomInfo.memberId){
-            io.to(socketList[clients[i]].id).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
-          }
-        }
-      });
-      //io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+      io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }
   });
   socket.on('chat message', (msg) => {

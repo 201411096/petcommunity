@@ -67,29 +67,30 @@ function messageHandling(memberId, msg, socket){
   if(firstArgument!=""){        // 첫번쨰 인자 확인
     if(firstArgument[0]=="/"){  // "/"로 시작하는 경우...
       console.log("start with '/' ... ");
-
-      if(firstArgument=="/help" || firstArgument=="/도움말" || firstArgument=="/h"){   // 도움말 처리
-        console.log("help ...");
-        var tempId = socket.id;
-        io.to(tempId).emit('chat message', 'help messageContent ...');
-        var socketList = io.sockets.sockets;
-        io.clients(function(error, clients) { // 현재 접속중인 socket의 목록을 다 가져옴
-          if (error) throw error;
-          console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB] // string 배열 형태로 socket의 id를 가져옴
-          for (var i=0; i<clients.length; i++){
-            console.log(clients[i]); // string 형태로 socket의 id를 가져옴          
-            console.log(socketList[clients[i]]);
-          }
-        });
-        return;
-      }
-      if(firstArgument=="/w"){   // 귓속말 처리
-        console.log("whispering ...");
-      }
-      io.to(socket.id).emit('chat message', '적절하지 않은 명령어입니다.');    
+    }
+    if(firstArgument=="/help" || firstArgument=="/도움말" || firstArgument=="/h"){   // 도움말 처리
+      console.log("help ...");
+      var tempId = socket.id;
+      io.to(tempId).emit('chat message', 'help messageContent ...');
+      //var clients = io.sockets.clients();
+      //console.log(clients.connected);
+      var socketList = io.sockets.sockets;
+      console.log('io.sockets.sockets_info start -----');
+      console.log(io.sockets.sockets);      
+      console.log('io.sockets.sockets_info end -----');
+      io.clients(function(error, clients) { // 현재 접속중인 socket의 목록을 다 가져옴
+        if (error) throw error;
+        console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB] // string 배열 형태로 socket의 id를 가져옴
+        for (var i=0; i<clients.length; i++){
+          console.log(clients[i]); // string 형태로 socket의 id를 가져옴          
+          console.log(socketList[clients[i]]);
+        }
+      });
       return;
     }
-
+    if(firstArgument=="/w"){   // 귓속말 처리
+      console.log("whispering ...");
+    }
   }
   io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent);
 }

@@ -73,11 +73,6 @@ function messageHandling(memberId, msg, socket){
         console.log("help ...");
         io.to(socket.id).emit('chat message', 'help messageContent ...');
         
-        return;
-      }                                                                             // 도움말 처리 끝 ---
-      if(firstArgument=="/w"){   // 귓속말 처리 시작 ---
-        console.log("whispering ...");
-        
         io.clients(function(error, clients) { // 현재 접속중인 socket의 목록을 다 가져옴
           if (error) throw error;
           console.log(clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB] // string 배열 형태로 socket의 id를 가져옴
@@ -87,6 +82,10 @@ function messageHandling(memberId, msg, socket){
             console.log(socketList[clients[i]].nickname);
           }
         });
+        return;
+      }                                                                             // 도움말 처리 끝 ---
+      if(firstArgument=="/w"){   // 귓속말 처리 시작 ---
+        console.log("whispering ...");
       }                          // 귓속말 처리 끝 ---
       io.to(socket.id).emit('chat message', '적절하지 않은 명령어입니다.');    
       return;

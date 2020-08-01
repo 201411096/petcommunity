@@ -6,3 +6,12 @@
 div#button-container{
 	text-align:right;
 }
+
+div.carousel-item > img{
+	max-width:400px;
+	max-height:300px;
+}
+div.carousel-item > img{
+	display : block;
+	margin : auto;
+}

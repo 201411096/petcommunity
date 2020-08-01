@@ -27,12 +27,10 @@ io.on('connection', function(socket){
     if(roomInfo.memberId!="tempMember"){ // 회원일 경우 socket의 nickname 지정
       // console.log('memberInfo check ... ' + roomInfo.memberId);
       socket.nickname = roomInfo.memberId;
-      console.log('check socket_nickname in joinRoomEvent_01 ...' + socket.nickname);
     }
     else{ // 비회원일 경우 socket의 nickname 지정
       roomInfo.memberId='guest__'+socket.id;
       socket.nickname = roomInfo.memberId;
-      console.log('check socket_nickname in joinRoomEvent_02 ...' + socket.nickname);
     }
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);

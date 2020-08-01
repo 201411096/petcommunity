@@ -201,9 +201,22 @@ function drawTable(data){
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
-
+	var br='<br/>';
+	var listContent="";
+	var img="";
 	for(var i=0; i<data.lostBoardVOListSize; i++){
-		var listContent = 
+		
+		if(data.img[i]=='__no__image__'){
+			img='<img src="resources/imgs/lostboard/default/1.png';
+		}else{
+			img='<img src="resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+"/" +data.img[i];
+		}		
+//		if(typeof data.img[i]=='undefined'){
+//			img='<img src="resources/imgs/lostboard/default/1.png';
+//		}else{
+//			img='<img src="resources/imgs/lostboard/'+data.img[i];
+//		}
+		/*var listContent = 
 						trPrefix +
 						tdPrefix + data.lostBoardVOList[i].lostboardId + tdSuffix +
 						tdPrefix + data.lostBoardVOList[i].lostboardStatus + tdSuffix +
@@ -211,8 +224,39 @@ function drawTable(data){
 						tdPrefix + data.lostBoardVOList[i].memberId + tdSuffix +
 						tdPrefix + data.lostBoardVOList[i].lostboardReadcount + tdSuffix +
 						tdPrefix + data.lostBoardVOList[i].lostboardUploadtime + tdSuffix +
-						trSuffix;	
-		$('#lostboardTbody').append(listContent);
+						trSuffix;*/
+		
+		
+		
+		if(i%4<3){
+			listContent +=	
+				
+				'<td width=110px height=110px>' + 
+				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
+				img+'" alt=" " width=80% height=200%/>'+br+
+				data.lostBoardVOList[i].lostboardStatus+br+
+				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
+				data.lostBoardVOList[i].lostboardUploadtime +br +
+				'작성자: ' + data.lostBoardVOList[i].memberId +
+				'</td>';
+			img="";
+		}else{
+			listContent +=		
+				'<td width=110px height=110px>' + 
+				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
+				img+'" alt=" " width=80% height=200%/>'+br+
+				data.lostBoardVOList[i].lostboardStatus+br+
+				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
+				data.lostBoardVOList[i].lostboardUploadtime +br +
+				'작성자: ' + data.lostBoardVOList[i].memberId +
+				'</td>';
+			$('#lostboardTbody').append('<tr>'+listContent+'</tr>');
+			listContent="";
+			img="";
+		}
+	
+		
+	
 	}
 }
 

@@ -53,8 +53,8 @@
 				<div id="map"></div>
 			</div>
 			<form role="form" method="get">
-				<table class="table table-hover" id="lostboardTable">
-					<thead>
+				<table class="table" id="lostboardTable">
+					<!-- <thead>
 						<tr>
 							<th>번호</th>
 							<th>상태</th>
@@ -63,7 +63,7 @@
 							<th>조회수</th>
 							<th>등록일</th>
 						</tr>
-					</thead>
+					</thead> -->
 					<tbody id="lostboardTbody">
 						
 					</tbody>

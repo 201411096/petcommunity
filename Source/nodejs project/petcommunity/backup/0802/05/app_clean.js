@@ -34,12 +34,43 @@ io.on('connection', function(socket){
     }
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);
-      io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+      io.of('/').in(roomInfo.prev).clients((error, clients) => {
+        if (error) throw error;
+        var nickNameCounter = 0;
+        for(var i=0; i<clients.length; i++){
+          if(socketList[clients[i]].nickname!=roomInfo.memberId && socketList[clients[i]].id){
+            io.to(socketList[clients[i]].id).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+            nickNameCounter++;
+          }
+        }
+        if(nickNameCounter==clients.length-1){
+          io.to(socket.id).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+        }
+      });
     }else{
-      io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
+      io.of('/').in(roomInfo.prev).clients((error, clients) => {
+        if (error) throw error;
+        for(var i=0; i<clients.length; i++){
+          if(socketList[clients[i]].nickname!=roomInfo.memberId){
+            io.to(socketList[clients[i]].id).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
+          }
+        }
+      });
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);
-      io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+      io.of('/').in(roomInfo.cur).clients((error, clients) => {
+        if (error) throw error;
+        var nickNameCounter = 0;
+        for(var i=0; i<clients.length; i++){
+          if(socketList[clients[i]].nickname!=roomInfo.memberId){
+            io.to(socketList[clients[i]].id).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+            nickNameCounter++;
+          }
+        }
+        if(nickNameCounter==clients.length-1){
+          io.to(socket.id).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
+        }
+      });
     }
   });
   socket.on('chat message', (msg) => {

@@ -1,8 +1,8 @@
-//var latitude = -1;
-//var longitude = -1;
+var latitude = -1;
+var longitude = -1;
 var clickMapEventFlag=-1;
-var latitude = 37.519972628243366;
-var longitude = 126.85287648507145;
+//var latitude = 37.519972628243366;
+//var longitude = 126.85287648507145;
 $(function() {
 	getLocation();
 	//kakaoMapAPI();

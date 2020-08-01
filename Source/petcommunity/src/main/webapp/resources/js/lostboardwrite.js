@@ -1,5 +1,7 @@
 var latitude = -1;
 var longitude = -1;
+//var latitude = 37.519972628243366;
+//var longitude = 126.85287648507145;
 var clickMapEventFlag=-1;
 $(function() {
 	getLocation();
@@ -25,7 +27,8 @@ $(function() {
 function kakaoMapAPI() {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = {
-		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+//		center : new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+		center : new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
 		level : 7 // 지도의 확대 레벨
 	};
 

@@ -85,7 +85,7 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
               return;
             }
             if(socketList[clients[i]].nickname == secondArgument){ // socket의 nickname이 귓속말의 대상과 같다면 메시지를 전달함
-              io.to(socketList[clients[i]].id).emit('chat message', memberId + "님으로부터의 귓속말 : " + whisperContent);
+              io.to(socketList[clients[i]].id).emit('chat message', memberId + "님의 귓속말 : " + whisperContent);
             }
             if(socketList[clients[i]].nickname == memberId){ // 자신이 보내는 귓속말은 방과 상관없이 자신에게도 기록이 됨
               io.to(socketList[clients[i]].id).emit('chat message', secondArgument + "님에게 귓속말 : " + whisperContent);

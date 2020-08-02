@@ -72,7 +72,7 @@
 						<c:if test="${boardComment.memberId eq sessionScope.memberVO.memberId
 										or sessionScope.memberVO.memberFlag eq '1'}">
 							<tr><td id="commentDelete">	
-								<a href="#" class="commentDelete">수정하기</a>
+							
 								<a href="#" class="commentDelete" id='commentDelete'>삭제하기</a>
 								<input type="hidden" id="boardcommentId" value="${boardComment.boardcommentId}">
 								<input type="hidden" id="communityboardId" value="${boardContent.communityboardId}">
@@ -114,4 +114,55 @@
 				</form>		
 		</div>	
 </body>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/J7Eg9zxu4/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // append elements to the DOM
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+	
+  
+    // run the image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(document.getElementById("communityBoardContentImg"), false);
+       
+      
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+
+
+<!-- 견종분류 -->	
+<div>Teachable Machine Image Model</div>
+<div id="label-container">here</div>	
+<button type="button" onclick="init()">Start</button>
+<button type="button" onclick="predict()">예측</button>	
 </html>

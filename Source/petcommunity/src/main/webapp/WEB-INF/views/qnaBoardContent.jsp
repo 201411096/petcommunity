@@ -68,3 +68,4 @@
 	<script src="resources/js/qnaBoardContent.js"></script>
 </body>
 </html>
+<%@include file="../views/footer.jsp"%>

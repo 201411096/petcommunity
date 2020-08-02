@@ -88,6 +88,7 @@ create table questionboard(
     questionboard_content varchar2(2048),
     questionboard_uploadtime date,
     questionboard_readcount number(10),
+    questionboard_answerFlag number(20),
     member_id varchar2(50),
     constraint questionboard_pk primary key(questionboard_id),
     constraint questionboard_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE

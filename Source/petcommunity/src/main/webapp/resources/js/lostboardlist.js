@@ -1,6 +1,8 @@
 var curPage;
-var latitude = 37.519972628243366;
-var longitude = 126.85287648507145;
+var latitude = -1;
+var longitude = -1;
+//var latitude = 37.519972628243366;
+//var longitude = 126.85287648507145;
 var contextPath = getContextPath();
 var defaultOpts = {
 	visiblePages : 10,
@@ -26,7 +28,18 @@ $(function(){
 
 function searchForMapEventHandler(){
 	$('#timeForSearch').on('change', getDataWithoutPaging);
-	$('#locationForSearch').on('keydown', getDataWithoutPaging);
+//	$('#locationForSearch').on('keydown', getDataWithoutPaging);
+	$('#locationForSearch').on('keydown', function(event){
+		if (event.keyCode === 13) {
+			if($('#locationForSearch').val()!=""){
+				setCenterLocation($('#locationForSearch').val());
+			}
+			setTimeout(function(){
+				getDataWithoutPaging();
+			}, 500);
+			
+		  };
+	});
 }
 
 function documentPreventKeyDown(){
@@ -190,6 +203,7 @@ function drawTable(data){
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
+
 	for(var i=0; i<data.lostBoardVOListSize; i++){
 		var listContent = 
 						trPrefix +
@@ -199,7 +213,7 @@ function drawTable(data){
 						tdPrefix + data.lostBoardVOList[i].memberId + tdSuffix +
 						tdPrefix + data.lostBoardVOList[i].lostboardReadcount + tdSuffix +
 						tdPrefix + data.lostBoardVOList[i].lostboardUploadtime + tdSuffix +
-						trSuffix;
+						trSuffix;	
 		$('#lostboardTbody').append(listContent);
 	}
 }
@@ -225,10 +239,11 @@ function getDataWithoutPaging(){
 }
 function kakaoMapAPI(data){
 	$('#map').empty();
+	console.log($('#locationForSearch').val());
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     mapOption = { 
         center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
+        level: 7 // 지도의 확대 레벨
     };
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -343,3 +358,21 @@ function getLocation() {
     	console.log('GPS를 지원하지 않습니다');
     }
   }
+
+
+function setCenterLocation(){
+    console.log(latitude);
+    console.log(longitude);
+	var geocoder = new kakao.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch($('#locationForSearch').val(), function(result, status) {
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	        latitude = result[0].y;
+	        longitude = result[0].x;
+	        console.log('search ... result ...');
+	        console.log(latitude);
+	        console.log(longitude);
+	    }
+	});
+}

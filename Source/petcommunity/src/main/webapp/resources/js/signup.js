@@ -55,6 +55,9 @@ $(document).ready(function () {
         else if($('#memberId').val()===""){
             alert("ID를 입력하세요.");return false;
         }
+        else if($('#idresult').text()==="이미 사용중인 아이디입니다"){
+            alert("중복된 ID입니다");return false;
+        }
         else if($('#memberPassword').val()==="")
         {
             alert("비밀번호를 입력하세요.");return false;    

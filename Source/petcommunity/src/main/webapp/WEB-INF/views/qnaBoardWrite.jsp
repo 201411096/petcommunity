@@ -51,3 +51,4 @@
 
 </body>
 </html>
+<%@include file="../views/footer.jsp"%>

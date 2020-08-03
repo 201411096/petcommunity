@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.LostBoardVO;
 
 @Repository("lostBoardDAO")
@@ -56,6 +57,13 @@ public class LostBoardDAOImpl implements LostBoardDAO{
 	@Override
 	public List<LostBoardVO> selectLostBoardForMap(Map map) {
 		return mybatis.selectList("lostBoardDAO.getLostBoardForMap", map);
+	}
+
+	//알림 보낼 list추리는 함수
+	@Override
+	public List<LostBoardVO> findPeopleByLocationOfLostPost(FindBoardVO findBoardVO) {
+		List<LostBoardVO> result = mybatis.selectList("lostBoardDAO.findPeopleByLocationOfLostPost", findBoardVO);
+		return result;
 	}
 	
 	

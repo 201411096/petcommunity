@@ -121,4 +121,12 @@
 		and lostboard_uploadtime > sysdate - #{timeForSearch}
 		</if> 
 	</select>
+	
+	<!-- 알림 보낼 list 찾아내는 함수 -->
+	<select id="findPeopleByLocationOfLostPost" parameterType="findBoard" resultType="lostBoard">
+		SELECT *
+  		FROM LOSTBOARD
+		WHERE (LOSTBOARD_X BETWEEN #{findboardX}-0.019 AND #{findboardX}+0.019)
+    		AND (LOSTBOARD_Y BETWEEN #{findboardY}-0.022 AND #{findboardY}+0.022)
+	</select>
 </mapper>

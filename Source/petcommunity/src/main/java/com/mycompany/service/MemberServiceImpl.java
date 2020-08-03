@@ -46,5 +46,10 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo) {
 		return memberDAO.selectPeopleAroundLocation(vo);
 	}
+	
+	@Override
+	public String selectListPushTarget(String lostBoardWriter) {
+		return memberDAO.selectListPushTarget(lostBoardWriter);
+	}
 
 }

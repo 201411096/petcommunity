@@ -25,6 +25,8 @@ select * from MEMBER where MEMBER_PASSWORD=#{memberPassword} and MEMBER_ID=#{mem
 
 
 
+
+
 <update id="tokenInsert" parameterType="member">
 UPDATE MEMBER SET MEMBER_TOKEN = #{memberToken} WHERE MEMBER_ID = #{memberId}
 </update>
@@ -35,4 +37,10 @@ FROM MEMBER
 WHERE MEMBER_ADDRESS = #{lostboardLocation}
 </select>
 
+
+<select id="selectListPushTarget" parameterType="string" resultType="string">
+	SELECT MEMBER_TOKEN
+	FROM MEMBER
+	WHERE MEMBER_ID = #{lostBoardWriter}
+</select>
 </mapper>

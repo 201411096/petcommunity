@@ -17,4 +17,8 @@ public interface MemberService {
 	
 	//실종 게시물 주변 사람들 select(lostBoardController)
 	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo);
+	
+	// 찾기 게시판 주변 실종 게시판 글 작성자들 select(FindBoardController-findboardListWithPaging.do)
+	public String selectListPushTarget(String lostBoardWriter);
+	
 }

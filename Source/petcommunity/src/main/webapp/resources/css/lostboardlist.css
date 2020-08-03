@@ -75,15 +75,6 @@ ul#pagination-demo{
 	width : 25%;
 }   
 
-/* @media screen and (max-width: 1200px) { */
-/*    #container table th:nth-child(1), th:nth-child(5), th:nth-child(6)  {  */
-/*       display: none;  */
-/*    } */
-/*    #container table td:nth-child(1), td:nth-child(5), td:nth-child(6)  {  */
-/*       display: none;  */
-/*    }   */
-/* } */
-
 img.infoWindowImage{
 	width:100%;
 	height:100px;

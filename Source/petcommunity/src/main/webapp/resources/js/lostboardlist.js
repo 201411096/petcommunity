@@ -207,26 +207,33 @@ function drawTable(data){
 	for(var i=0; i<data.lostBoardVOListSize; i++){
 		
 		if(typeof data.img[i]=='undefined'){
+			
 			img='<img src="resources/imgs/lostboard/default/1.png';
 		}else{
+			
 			img='<img src="resources/imgs/lostboard/'+data.img[i];
 		}
-		/*var listContent = 
-						trPrefix +
-						tdPrefix + data.lostBoardVOList[i].lostboardId + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].lostboardStatus + tdSuffix +
-						tdPrefix + '<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' + data.lostBoardVOList[i].lostboardTitle +'</a>' + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].memberId + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].lostboardReadcount + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].lostboardUploadtime + tdSuffix +
-						trSuffix;*/
 		
 		
-		
-		if(i%4<3){
-			listContent +=	
-				
+		if(i==data.lostBoardVOListSize-1){
+			listContent +=		
 				'<td width=110px height=110px>' + 
+				data.lostBoardVOList[i].lostboardId +br+
+				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
+				img+'" alt=" " width=80% height=200%/>'+br+
+				data.lostBoardVOList[i].lostboardStatus+br+
+				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
+				data.lostBoardVOList[i].lostboardUploadtime +br +
+				'작성자: ' + data.lostBoardVOList[i].memberId +
+				'</td>';
+			$('#lostboardTbody').append('<tr>'+listContent+'</tr>');
+			listContent="";
+			img="";
+		
+		}else if(i%4<3){
+			listContent +=				
+				'<td width=110px height=110px>' + 
+				data.lostBoardVOList[i].lostboardId +br+
 				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
 				img+'" alt=" " width=80% height=200%/>'+br+
 				data.lostBoardVOList[i].lostboardStatus+br+
@@ -238,6 +245,7 @@ function drawTable(data){
 		}else{
 			listContent +=		
 				'<td width=110px height=110px>' + 
+				data.lostBoardVOList[i].lostboardId +br+
 				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
 				img+'" alt=" " width=80% height=200%/>'+br+
 				data.lostBoardVOList[i].lostboardStatus+br+

@@ -1,5 +1,6 @@
 package com.mycompany.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -156,4 +157,22 @@ public class HospitalController {
 		return "";
 	}
 
+	@RequestMapping(value="/getGeoLocation", method= {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
+    public List<Map<String, String>> getGeoLocation() {
+        
+        List<Map<String, String>> container = new ArrayList<>();
+        container = findHospitalService.getGeoLocation();
+        
+        return container;
+    }
+
+	
+	
+	
+	
+	
+	
+	
+	
 }

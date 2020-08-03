@@ -43,6 +43,7 @@
 				<label>글 내용</label>
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력하세요."></textarea>
+					<input type="hidden" id="questionboardAnswerflag" name="questionboardAnswerflag" value="1" />
 			</div>
 
 			<input type="hidden" name="questionboardReadcount"

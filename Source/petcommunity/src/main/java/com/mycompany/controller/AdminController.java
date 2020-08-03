@@ -1,27 +1,33 @@
 package com.mycompany.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.BuylistviewVO;
-import com.mycompany.domain.PaginationVO;
+import com.mycompany.domain.MemberVO;
 import com.mycompany.service.AdminService;
+import com.nexacro17.xapi.data.DataSet;
+import com.nexacro17.xapi.data.DataTypes;
+
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
 	
 	@RequestMapping("/adminPage.do")
 	public ModelAndView selectList(BuylistviewVO buylistviewvo, String startDate, String endDate) {
@@ -63,5 +69,90 @@ public class AdminController {
 		mv.setViewName("adminPage");
 		
 		return mv;
+	}
+	
+	// 넥사크로  회원정보관리 페이지-> 
+	// 보기 버튼 -> 모두출력
+	
+	@RequestMapping("/selectInfo.do")
+	public ModelAndView defaultMain(MemberVO memberevo) {
+		ModelAndView mv = new ModelAndView();
+		List<MemberVO> list = adminService.getMemberList(memberevo);
+		//----------------------------------------
+		//DB에서 받아온 값을 넥사크로로 바인딩할 수 있도록 처리
+		DataSet ds = new DataSet("ar");
+		ds.addColumn("memberId", DataTypes.STRING,100);
+		ds.addColumn("memberName", DataTypes.STRING,100);
+		ds.addColumn("memberAddress", DataTypes.STRING,100);
+		ds.addColumn("memberTel", DataTypes.STRING,100);
+		ds.addColumn("memberEmail", DataTypes.STRING,100);
+		
+		for(MemberVO vo: list) {
+			int row = ds.newRow();
+			ds.set(row, "memberId", vo.getMemberId());
+			ds.set(row, "memberName", vo.getMemberName());
+			ds.set(row, "memberAddress", vo.getMemberAddress());
+			ds.set(row, "memberTel", vo.getMemberTel());
+			ds.set(row, "memberEmail", vo.getMemberEmail());
+		}
+		mv.setViewName("all");
+		mv.addObject("ds", ds);
+		return mv; //all.jsp
+	}
+	
+	
+	// 넥사크로 -> 검색 버튼눌렀을 때 정보 출력
+	@RequestMapping("/searchInfo.do")
+	public ModelAndView getMemberSelect(String combobox, String searchword) throws UnsupportedEncodingException {
+		System.out.println("getMemberSelect 컨트롤러 확인1"+combobox);
+		System.out.println("getMemberSelect 컨트롤러 확인2"+searchword);
+		ModelAndView mv = new ModelAndView();
+		Map map = new HashMap();
+		combobox =  URLDecoder.decode(combobox, "utf-8");
+		searchword =  URLDecoder.decode(searchword, "utf-8");
+		map.put("combobox", combobox);
+		map.put("searchword", searchword);
+		
+		MemberVO membervo = new MemberVO();
+	
+		if (combobox.equals("0")) {
+			membervo.setMemberId(searchword);
+		}else if (combobox.equals("1")) {
+			membervo.setMemberName(searchword);
+		}else if (combobox.equals("2")) {
+			membervo.setMemberAddress(searchword);
+		}
+
+		List<MemberVO> list = adminService.getMemberSelect(map);
+		
+		DataSet ds = new DataSet("ar");
+		ds.addColumn("memberId", DataTypes.STRING,100);
+		ds.addColumn("memberName", DataTypes.STRING,100);
+		ds.addColumn("memberAddress", DataTypes.STRING,100);
+		ds.addColumn("memberEmail", DataTypes.STRING,100);
+		ds.addColumn("memberTel", DataTypes.STRING,100);
+		
+		for(MemberVO vo : list) {
+			int row = ds.newRow();
+			ds.set(row,"memberId",vo.getMemberId());
+			ds.set(row,"memberName",vo.getMemberName());
+			ds.set(row,"memberAddress",vo.getMemberAddress());
+			ds.set(row,"memberEmail",vo.getMemberEmail());
+			ds.set(row,"memberTel",vo.getMemberTel());
+		}
+		mv.setViewName("all");
+		mv.addObject("ds", ds);	
+		return mv;
+	}
+	
+	@RequestMapping("/deleteInfo.do")
+	public void deleteInfo(String memberId,HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+	
+			System.out.println(memberId);
+			adminService.deleteInfo(memberId);
+		
+
+		
 	}
 }

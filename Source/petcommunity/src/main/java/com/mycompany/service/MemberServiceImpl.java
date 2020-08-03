@@ -52,4 +52,16 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.selectListPushTarget(lostBoardWriter);
 	}
 
+	@Override
+	public MemberVO memberList(String id) {
+		
+		return memberDAO.memberList(id);
+	}
+
+	@Override
+	public int updateMember(MemberVO vo) {
+		
+		return memberDAO.updateMember(vo);
+	}
+
 }

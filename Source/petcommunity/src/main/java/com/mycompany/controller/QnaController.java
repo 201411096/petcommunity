@@ -197,6 +197,7 @@ public class QnaController {
     */
 	@RequestMapping("reply.do")
 	public ModelAndView getReplyQnaBoard(QnaVO qnavo) {
+		System.out.println("getReplyQnaBoard"+qnavo.getQuestionboardAnswerflag());
 		ModelAndView mv = new ModelAndView();
 		qnavo=qnaService.selectGroupId(qnavo);
 		qnavo.getQuestionboardTitle();
@@ -214,6 +215,7 @@ public class QnaController {
     */
 	@RequestMapping("replyWrite.do")
 	public ModelAndView insertReply(QnaVO qnavo, HttpSession session) {
+		System.out.println("insertReply"+qnavo.getQuestionboardAnswerflag());
 		ModelAndView mv = new ModelAndView();
 		qnavo.getQuestionboardContent();
 		String re = "RE : ";

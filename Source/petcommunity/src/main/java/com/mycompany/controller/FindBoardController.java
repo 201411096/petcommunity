@@ -101,38 +101,41 @@ public class FindBoardController {
 		String content = findBoardVO.getFindboardContent();
 		// find 게시물 포스팅 시 위치 기준 반경 2km내 lost게시물 작성자에게 푸시 알람 보내는 소스코드
 		List<LostBoardVO> lostBoardVO = lostBoardService.findPeopleByLocationOfLostPost(findBoardVO);
-		for(LostBoardVO i : lostBoardVO) {
-			String lostBoardWriter = i.getMemberId();
-			String userDeviceIdKey=memberService.selectListPushTarget(lostBoardWriter);
-			String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
-			String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
-			String authKey = AUTH_KEY_FCM;
-			String FMCurl = API_URL_FCM;
-			
-			URL url = new URL(FMCurl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			
-			conn.setUseCaches(false); 
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization","key="+authKey);
-			conn.setRequestProperty("Content-Type","application/json");
-			
-			JSONObject json = new JSONObject();
-			json.put("to",userDeviceIdKey.trim());
-			JSONObject info = new JSONObject();
-			info.put("title", title);   // Notification title
-			info.put("body", content); // Notification body
-			json.put("notification", info);
-			
-			OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-			System.out.println(">" + json.toString());
-			wr.write(json.toString());
-			wr.flush();
-			conn.getInputStream();   
-			
+		if(lostBoardVO!=null) {
+			for(LostBoardVO i : lostBoardVO) {
+				String lostBoardWriter = i.getMemberId();
+				String userDeviceIdKey=memberService.selectListPushTarget(lostBoardWriter);
+				//String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
+				String AUTH_KEY_FCM = "AAAArrPhL3k:APA91bG-1ukftodsLHL_kHV-gRZLZImCeZAvgG8PZiLs0YLVA_6n1LJPNSAgs9ca86G9TfQLTC0IHlc7kM6Uu8CnPcBqyUnx1QH7v7IwfVhL7aeoXAYjdXjhG4FnXCI0ijeAg7B8uKR5";
+				String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
+				String authKey = AUTH_KEY_FCM;
+				String FMCurl = API_URL_FCM;
+				
+				URL url = new URL(FMCurl);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				
+				conn.setUseCaches(false); 
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Authorization","key="+authKey);
+				conn.setRequestProperty("Content-Type","application/json");
+				
+				JSONObject json = new JSONObject();
+				json.put("to",userDeviceIdKey.trim());
+				JSONObject info = new JSONObject();
+				info.put("title", title);   // Notification title
+				info.put("body", content); // Notification body
+				json.put("notification", info);
+				
+				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+				System.out.println(">" + json.toString());
+				wr.write(json.toString());
+				wr.flush();
+				conn.getInputStream();   
+				
+			}
 		}
 		//-------------------------------------------------------------
 		mv.setViewName("/findboardlist");

@@ -109,7 +109,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES
 		(QUESTIONBOARD_ID_SEQ.NEXTVAL, #{questionboardGroupId},
 		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
-		#{questionboardReadcount}+0, #{memberId},QUESTIONBOARD_ANSWERFLAG)
+		#{questionboardReadcount}+0, #{memberId},#{questionboardAnswerflag})
 	</insert>
 
 	<select id="selectGroupId" parameterType="qna" resultType="qna">

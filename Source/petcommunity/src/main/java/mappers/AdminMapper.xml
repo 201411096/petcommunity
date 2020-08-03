@@ -19,6 +19,31 @@
 		]]>
 		ORDER BY BUYLIST_DATE desc
 	</select>
+	
+	
+	<select id="getMemberList" parameterType="member" resultType="member">
+		SELECT MEMBER_ID, MEMBER_NAME, MEMBER_ADDRESS, MEMBER_TEL, MEMBER_EMAIL
+		FROM MEMBER
+	</select>
+	
+	<select id="getMemberSelect" parameterType="map" resultType="member">
+		SELECT MEMBER_ID, MEMBER_NAME, MEMBER_ADDRESS, MEMBER_TEL, MEMBER_EMAIL
+		FROM MEMBER
+			<if test="combobox==0">
+				WHERE member_id like '%'||#{searchword}||'%'
+			</if>
+			<if test="combobox==1">
+				WHERE member_name like '%'||#{searchword}||'%'
+			</if>
+			<if test="combobox==2">
+				WHERE member_address like '%'||#{searchword}||'%'
+			</if>
+	</select>
 
+	<delete id="deleteInfo" parameterType="String">
+		DELETE
+		FROM member
+		WHERE member_id=#{memberId}
+	</delete>
 
 </mapper>

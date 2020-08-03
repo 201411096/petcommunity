@@ -47,6 +47,9 @@
 					<input type="hidden" name="questionboardGroupId"
 					id="questionboardGroupId"
 					value="${qnaContent.questionboardGroupId}" />
+					<input type="hidden" name="questionboardAnswerflag"
+					id="questionboardAnswerflag"
+					value="${qnaContent.questionboardAnswerflag}"/>
 				</td>
 			</tr>
 		</table>

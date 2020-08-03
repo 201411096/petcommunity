@@ -3,6 +3,7 @@ package com.mycompany.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.QnaVO;
 
 public interface QnaDAO {
@@ -16,5 +17,6 @@ public interface QnaDAO {
 	public void insertReply(QnaVO qnavo);
 	public QnaVO selectGroupId(QnaVO qnavo);
 	public List<QnaVO> selectListRe(QnaVO qnavo);
+	
 
 }

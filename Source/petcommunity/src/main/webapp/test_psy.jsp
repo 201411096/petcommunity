@@ -14,6 +14,8 @@
 <a href="/petcommunity/adminPage.do">관리자 페이지</a><br>
 <a href="/petcommunity/footer.do">footer</a><br>
 
+<a href="/petcommunity/adminMember.do">넥사크로</a><br>
+
 </body>
 
 </html>

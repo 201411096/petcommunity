@@ -13,7 +13,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="resources/css/lostboardlist.css">
+<link rel="stylesheet" href="resources/css/findboardlist.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <!-- autocomplete 3 cdn link -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
@@ -22,54 +22,26 @@
 <title>게시판</title>
 </head>
 <body>
+<%-- 	<jsp:include page="/header.do"></jsp:include> --%>
 	<div class="container">
 		<header>
 			<h1>게시판</h1>
 		</header>
 		<hr />
-		
 		<section id="container">
-			<div class="form-group">
-				<label>마커 표시 시간</label>
-				<select id="timeForSearch" class="form-control">
-				<option value="0">전체</option>
-				<option value="1">30분</option>
-				<option value="2">1시간</option>
-				<option value="3">3시간</option>
-				<option value="4">12시간</option>
-				<option value="5">하루</option>
-				<option value="6">일주일</option>
-				<option value="7">한달</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label>마커 표시 지역 검색</label>
-				<span id="searchForMap-container">
-					<input id="locationForSearch" type="text" class="form-control">
-				</span>
-			</div>
-
-			<div class="card">
-				<div id="map"></div>
-			</div>
 			<form role="form" method="get">
-				<table class="table" id="lostboardTable">
-					 <caption>잃어버린 강아지를 찾아주세요!</caption>
-					<colgroup>
-						<col id='col1'/>
-						<col id='col2'/>
-						<col id='col3'/>
-						<col id='col4'/>
-					</colgroup>
+				<table class="table table-hover" id="findboardTable">
 					<thead>
 						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<th>번호</th>
+							<th>상태</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>조회수</th>
+							<th>등록일</th>
 						</tr>
 					</thead>
-					<tbody id="lostboardTbody">
+					<tbody id="findboardTbody">
 						
 					</tbody>
 				</table>
@@ -90,12 +62,10 @@
 							</span>	
 							<span class="input-group-btn">
 								<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-							</span>
-							<c:if test="${not empty sessionScope.memberVO}"> 
+							</span> 
 							<span class="input-group-btn">
 								<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button>
 							</span>
-							</c:if>
 						</div>
 					</div>
 				</div>
@@ -105,9 +75,7 @@
 			</form>
 		</section>
 	</div>
-		<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
-	<script src="resources/js/lostboardlist.js"></script>
+	<script src="resources/js/findboardlist.js"></script>
 </body>
 
 </html>

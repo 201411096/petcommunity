@@ -53,20 +53,15 @@
 				<div id="map"></div>
 			</div>
 			<form role="form" method="get">
-				<table class="table" id="lostboardTable">
-					 <caption>잃어버린 강아지를 찾아주세요!</caption>
-					<colgroup>
-						<col id='col1'/>
-						<col id='col2'/>
-						<col id='col3'/>
-						<col id='col4'/>
-					</colgroup>
+				<table class="table table-hover" id="lostboardTable">
 					<thead>
 						<tr>
-							<th></th>
-							<th></th>
-							<th></th>
-							<th></th>
+							<th>번호</th>
+							<th>상태</th>
+							<th>제목</th>
+							<th>작성자</th>
+							<th>조회수</th>
+							<th>등록일</th>
 						</tr>
 					</thead>
 					<tbody id="lostboardTbody">

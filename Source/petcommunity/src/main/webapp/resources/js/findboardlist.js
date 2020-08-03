@@ -18,11 +18,6 @@ $(function(){
 	getDataWithoutPaging();
 	autoCompleteFunc();
 	autoCompleteFuncForMap();
-//	$('#keywordInput').on('keyup', getData);
-//	$('#searchBtn').on('click', getData);
-//	$('#writeBtn').on('click', function(){
-//		location.href='findBoardWrite.do';
-//	});
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();
@@ -108,7 +103,7 @@ function autoCompleteFunc(){
            delay : 500,
 	});
 }
-
+//사용하지 않음
 function autoCompleteFuncForMap(){
 	$('#locationForSearch').autocomplete({
 		source : function( request, response ) {
@@ -140,6 +135,7 @@ function autoCompleteFuncForMap(){
            select : function(event, ui){
         	   
            },
+           appendTo : '#searchForMap-container',
 //           appendTo :'#search-container',
            minLength: 1,		 // 최소 글자수
            autoFocus: false,		 //첫번째 항목 자동 포커스 기본값 false
@@ -211,49 +207,63 @@ function drawTable(data){
 	var listContent="";
 	var img="";
 	for(var i=0; i<data.findBoardVOListSize; i++){
-		img='<img src="resources/imgs/findboard/'+data.img[i];	
-		if(i==data.findBoardVOListSize-1){
-			listContent +=		
-				'<td width=110px height=110px>' + 
-				data.findBoardVOList[i].findboardId +br+
-				'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
-				img+'" alt=" " width=80% height=200%/>'+br+
-				data.findBoardVOList[i].findboardStatus+br+
-				'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
-				data.findBoardVOList[i].findboardUploadtime +br +
-				'작성자: ' + data.findBoardVOList[i].memberId +
-				'</td>';
+		img='<img src="resources/imgs/findboard/'+data.img[i];
+		listContent +=		
+			'<td width=110px height=110px>' + 
+			data.findBoardVOList[i].findboardId +br+
+			'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
+			img+'" alt=" " width=80% height=200%/>'+br+
+			data.findBoardVOList[i].findboardStatus+br+
+			'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
+			data.findBoardVOList[i].findboardUploadtime +br +
+			'작성자: ' + data.findBoardVOList[i].memberId +
+			'</td>';
+		if(i==data.findBoardVOListSize-1 || i%4==3){
 			$('#findboardTbody').append('<tr>'+listContent+'</tr>');
 			listContent="";
-			img="";
-		
-		}else if(i%4<3){
-			listContent +=		
-				'<td width=110px height=110px>' + 
-				data.findBoardVOList[i].findboardId +br+
-				'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
-				img+'" alt=" " width=80% height=200%/>'+br+
-				data.findBoardVOList[i].findboardStatus+br+
-				'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
-				data.findBoardVOList[i].findboardUploadtime +br +
-				'작성자: ' + data.findBoardVOList[i].memberId +
-				'</td>';
-			img="";
-		}else{
-			listContent +=		
-				'<td width=110px height=110px>' + 
-				data.findBoardVOList[i].findboardId +br+
-				'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
-				img+'" alt=" " width=80% height=200%/>'+br+
-				data.findBoardVOList[i].findboardStatus+br+
-				'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
-				data.findBoardVOList[i].findboardUploadtime +br +
-				'작성자: ' + data.findBoardVOList[i].memberId +
-				'</td>';
-			$('#findboardTbody').append('<tr>'+listContent+'</tr>');
-			listContent="";
-			img="";
 		}
+//		if(i==data.findBoardVOListSize-1){
+//			listContent +=		
+//				'<td width=110px height=110px>' + 
+//				data.findBoardVOList[i].findboardId +br+
+//				'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
+//				img+'" alt=" " width=80% height=200%/>'+br+
+//				data.findBoardVOList[i].findboardStatus+br+
+//				'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
+//				data.findBoardVOList[i].findboardUploadtime +br +
+//				'작성자: ' + data.findBoardVOList[i].memberId +
+//				'</td>';
+//			$('#findboardTbody').append('<tr>'+listContent+'</tr>');
+//			listContent="";
+//			img="";
+//		
+//		}else if(i%4<3){
+//			listContent +=		
+//				'<td width=110px height=110px>' + 
+//				data.findBoardVOList[i].findboardId +br+
+//				'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
+//				img+'" alt=" " width=80% height=200%/>'+br+
+//				data.findBoardVOList[i].findboardStatus+br+
+//				'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
+//				data.findBoardVOList[i].findboardUploadtime +br +
+//				'작성자: ' + data.findBoardVOList[i].memberId +
+//				'</td>';
+//			img="";
+//		}else{
+//			listContent +=		
+//				'<td width=110px height=110px>' + 
+//				data.findBoardVOList[i].findboardId +br+
+//				'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
+//				img+'" alt=" " width=80% height=200%/>'+br+
+//				data.findBoardVOList[i].findboardStatus+br+
+//				'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
+//				data.findBoardVOList[i].findboardUploadtime +br +
+//				'작성자: ' + data.findBoardVOList[i].memberId +
+//				'</td>';
+//			$('#findboardTbody').append('<tr>'+listContent+'</tr>');
+//			listContent="";
+//			img="";
+//		}
 	}
 	
 }

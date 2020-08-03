@@ -87,7 +87,9 @@
 						<p>${shop.shopName}</p>
 					</div>
 					</a>
-				</div>
+				</div> 
+				
+				
 			</c:forEach>
 			 -->
 			<!--forEach 사용 끝 -->

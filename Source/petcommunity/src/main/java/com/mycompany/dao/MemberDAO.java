@@ -15,4 +15,6 @@ public interface MemberDAO {
 	public void tokenInsert(MemberVO vo);
 	
 	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo);
+	
+	public String selectListPushTarget(String lostBoardWriter);
 }

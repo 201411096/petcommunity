@@ -63,23 +63,12 @@ public class LostBoardController {
 		
 		//그림파일이 있으면 가져옴
 		ArrayList<String> fileName = new ArrayList<String>();
-		ArrayList<String> img = new ArrayList<String>();
 		for(int i=0; i<lostBoardVOList.size(); i++) {
-			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+lostBoardVOList.get(i).getLostboardId();
-					
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+lostBoardVOList.get(i).getLostboardId();					
 			File dir = new File(directoryPath);
-			File fileList [] = dir.listFiles();
-		
+			File fileList [] = dir.listFiles();		
 			if(fileList!=null && fileList.length != 0) {//fileList가 not null이면
-				/*
-				 * System.out.println("사진파일의 개수:" + fileList.length);
-				 *  for(File file : fileList)
-				 * {//file의 개수만큼 System.out.println("이미지 파일 이름:"+file.getName());
-				 * fileName.add(lostBoardVOList.get(i).getLostboardId()+"/"+file.getName());
-				 * //리스트에 저장 }
-				 */
-				File file = fileList[0];
-				fileName.add(lostBoardVOList.get(i).getLostboardId()+"/"+file.getName());
+				fileName.add(lostBoardVOList.get(i).getLostboardId()+"/"+fileList[0].getName());
 			}else {
 				fileName.add("default/1.png");
 			}

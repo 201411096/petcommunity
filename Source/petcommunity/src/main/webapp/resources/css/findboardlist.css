@@ -50,3 +50,12 @@ ul#pagination-demo{
 		display: none; 
 	}  
 }
+
+img.infoWindowImage{
+	width:100%;
+	height:100px;
+}
+div.infoWindowImageContainer{
+	max-width:50%;
+	margin:auto;
+}

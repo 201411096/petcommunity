@@ -139,13 +139,7 @@ function drawTable(data){
 	var listContent="";
 	var img="";
 	for(var i=0; i<data.findBoardVOListSize; i++){
-		if(typeof data.img[i]=='undefined'){
-			
-			img='<img src="resources/imgs/findboard/default/1.PNG';
-		}else{
-			
-			img='<img src="resources/imgs/findboard/'+data.img[i];
-		}	
+		img='<img src="resources/imgs/findboard/'+data.img[i];	
 		if(i==data.findBoardVOListSize-1){
 			listContent +=		
 				'<td width=110px height=110px>' + 

@@ -21,4 +21,8 @@ public interface MemberService {
 	// 찾기 게시판 주변 실종 게시판 글 작성자들 select(FindBoardController-findboardListWithPaging.do)
 	public String selectListPushTarget(String lostBoardWriter);
 	
+	public MemberVO memberList(String id);
+	
+	public int updateMember(MemberVO vo);
+	
 }

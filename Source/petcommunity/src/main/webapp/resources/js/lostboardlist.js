@@ -1,8 +1,6 @@
 var curPage;
-var latitude = -1;
-var longitude = -1;
-//var latitude = 37.519972628243366;
-//var longitude = 126.85287648507145;
+var latitude = 37.519972628243366;
+var longitude = 126.85287648507145;
 var contextPath = getContextPath();
 var defaultOpts = {
 	visiblePages : 10,
@@ -203,18 +201,65 @@ function drawTable(data){
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
-
+	var br='<br/>';
+	var listContent="";
+	var img="";
 	for(var i=0; i<data.lostBoardVOListSize; i++){
-		var listContent = 
-						trPrefix +
-						tdPrefix + data.lostBoardVOList[i].lostboardId + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].lostboardStatus + tdSuffix +
-						tdPrefix + '<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' + data.lostBoardVOList[i].lostboardTitle +'</a>' + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].memberId + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].lostboardReadcount + tdSuffix +
-						tdPrefix + data.lostBoardVOList[i].lostboardUploadtime + tdSuffix +
-						trSuffix;	
-		$('#lostboardTbody').append(listContent);
+		
+		if(typeof data.img[i]=='undefined'){
+			
+			img='<img src="resources/imgs/lostboard/default/1.png';
+		}else{
+			
+			img='<img src="resources/imgs/lostboard/'+data.img[i];
+		}
+		
+		
+		if(i==data.lostBoardVOListSize-1){
+			listContent +=		
+				'<td width=110px height=110px>' + 
+				data.lostBoardVOList[i].lostboardId +br+
+				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
+				img+'" alt=" " width=80% height=200%/>'+br+
+				data.lostBoardVOList[i].lostboardStatus+br+
+				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
+				data.lostBoardVOList[i].lostboardUploadtime +br +
+				'작성자: ' + data.lostBoardVOList[i].memberId +
+				'</td>';
+			$('#lostboardTbody').append('<tr>'+listContent+'</tr>');
+			listContent="";
+			img="";
+		
+		}else if(i%4<3){
+			listContent +=				
+				'<td width=110px height=110px>' + 
+				data.lostBoardVOList[i].lostboardId +br+
+				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
+				img+'" alt=" " width=80% height=200%/>'+br+
+				data.lostBoardVOList[i].lostboardStatus+br+
+				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
+				data.lostBoardVOList[i].lostboardUploadtime +br +
+				'작성자: ' + data.lostBoardVOList[i].memberId +
+				'</td>';
+			img="";
+		}else{
+			listContent +=		
+				'<td width=110px height=110px>' + 
+				data.lostBoardVOList[i].lostboardId +br+
+				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
+				img+'" alt=" " width=80% height=200%/>'+br+
+				data.lostBoardVOList[i].lostboardStatus+br+
+				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
+				data.lostBoardVOList[i].lostboardUploadtime +br +
+				'작성자: ' + data.lostBoardVOList[i].memberId +
+				'</td>';
+			$('#lostboardTbody').append('<tr>'+listContent+'</tr>');
+			listContent="";
+			img="";
+		}
+	
+		
+	
 	}
 }
 
@@ -266,14 +311,14 @@ function kakaoMapAPI(data){
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
 						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
-						'<div class="infoWindowImageContainer">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="infoWindowImage" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
 		if(data.lostBoardFileList[i].filename=='??'){
 			iwContent  = '<div class="card marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
 						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
-						'<div class="infoWindowImageContainer">'+'<img src="'+contextPath+'/resources/imgs/lostboard/default/1.png" class="infoWindowImage" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/lostboard/default/1.png" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
 		}
 		var infowindow = new kakao.maps.InfoWindow({
@@ -299,15 +344,15 @@ function kakaoMapAPI(data){
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
 						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
-						'<div class="infoWindowImageContainer">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="infoWindowImage" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
 		if(data.findBoardFileList[i].filename=='??'){
 			iwContent = '<div class="card marker-infowindow">'+
-						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
-						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
-						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
-						'<div class="infoWindowImageContainer">'+'<img src="'+contextPath+'/resources/imgs/findboard/default/1.png" class="infoWindowImage" alt="이미지가 존재하지 않습니다.">'+'</div>'+
-						'</div>';
+			'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
+			'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
+			'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
+			'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/default/1.png" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+			'</div>';
 		}
 		var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
@@ -315,7 +360,6 @@ function kakaoMapAPI(data){
 		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
 	}
 }
-
 
 //marker click event
 //closure를 이용한 infowindow on/off

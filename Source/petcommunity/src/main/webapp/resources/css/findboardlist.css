@@ -8,6 +8,28 @@ table#findboardTable{
 table#findboardTable th{
 	text-align:center;
 }
+table#findboardTable td{
+	width:110px;
+	height:110px;
+}
+@media screen and (min-width: 800px) {
+	table#findboardTable img{
+		width:80%;
+		height:200%;
+	}
+}
+@media screen and (max-width: 799px) {
+	table#findboardTable img{
+		width:80%;
+		height:80%;
+	}
+	table#findboardTable span{
+		display:none;
+	}
+}
+table#findboardTable a{
+	color : #000000
+}
 
 ul#pagination-demo{
 	text-align: center;

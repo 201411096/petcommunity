@@ -12,9 +12,23 @@ table#lostboardTable td{
 	width:110px;
 	height:110px;
 }
-table#lostboardTable img{
-	width:80%;
-	height:200%;
+@media screen and (min-width: 800px) {
+	table#lostboardTable img{
+		width:80%;
+		height:200%;
+	}
+}
+@media screen and (max-width: 799px) {
+	table#lostboardTable img{
+		width:80%;
+		height:80%;
+	}
+	table#lostboardTable span{
+		display:none;
+	}
+}
+table#lostboardTable a{
+	color : #000000
 }
 
 ul#pagination-demo{

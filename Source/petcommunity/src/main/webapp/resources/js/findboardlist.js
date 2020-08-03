@@ -203,6 +203,8 @@ function drawTable(data){
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
+	var spanPrefix = '<span>';
+	var spanSuffix = '</span>';
 	var br='<br/>';
 	var listContent="";
 	var img="";
@@ -213,14 +215,10 @@ function drawTable(data){
 			data.findBoardVOList[i].findboardId +br+
 			'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
 			img+'" alt=" "/>'+br+
-//			'<td width=110px height=110px>' + 
-//			data.findBoardVOList[i].findboardId +br+
-//			'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
-//			img+'" alt=" " width=80% height=200%/>'+br+
-			data.findBoardVOList[i].findboardStatus+br+
-			'글제목: ' + data.findBoardVOList[i].findboardTitle +'</a>' + br +
-			data.findBoardVOList[i].findboardUploadtime +br +
-			'작성자: ' + data.findBoardVOList[i].memberId +
+			spanPrefix + '글제목 : '+ spanSuffix + data.findBoardVOList[i].findboardTitle +'</a>' + br +
+			spanPrefix + '작성자 : ' + data.findBoardVOList[i].memberId + br + spanSuffix +
+			spanPrefix + data.findBoardVOList[i].findboardUploadtime +br + spanSuffix +
+			
 			'</td>';
 		if(i==data.findBoardVOListSize-1 || i%4==3){
 			$('#findboardTbody').append('<tr>'+listContent+'</tr>');

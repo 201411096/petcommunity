@@ -51,7 +51,7 @@ public class LostBoardController {
 		searchMap.put("searchWord", searchWord);
 		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
 		
-		PaginationVO paginationVO = new PaginationVO(lostBoardVOList.size(), curPage, 24);
+		PaginationVO paginationVO = new PaginationVO(lostBoardVOList.size(), curPage, 12);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 				

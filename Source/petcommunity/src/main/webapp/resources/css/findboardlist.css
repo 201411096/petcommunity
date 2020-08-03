@@ -4,6 +4,7 @@ input#keywordInput{
 
 table#findboardTable{
 	text-align:center;
+	background-color: #f9ffff;
 }
 table#findboardTable th{
 	text-align:center;

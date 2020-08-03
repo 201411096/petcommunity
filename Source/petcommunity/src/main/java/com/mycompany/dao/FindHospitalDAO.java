@@ -17,6 +17,6 @@ public interface FindHospitalDAO {
 	public List<String> selectString(Map map);
 	public List<FindHospitalVO> selectFindHospitalForMap(Map map);
 	
-	
+	public List<Map<String, String>> getGeoLocation();
 }
  

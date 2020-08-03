@@ -47,13 +47,13 @@ public class FindBoardController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/findboardListWithPaging.do", produces = "application/json; charset=utf-8")
-	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType, HttpServletRequest request) {
+	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType) {
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		searchMap.put("searchType", searchType);
 		searchMap.put("searchWord", searchWord);
 		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);		
-		PaginationVO paginationVO = new PaginationVO(findBoardVOList.size(), curPage, 24);
+		PaginationVO paginationVO = new PaginationVO(findBoardVOList.size(), curPage);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 				
@@ -61,21 +61,6 @@ public class FindBoardController {
 		result.put("pagination", paginationVO);
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
-		
-		//그림파일이 있으면 가져옴
-		ArrayList<String> fileName = new ArrayList<String>();
-		ArrayList<String> img = new ArrayList<String>();
-		for(int i=0; i<findBoardVOList.size(); i++) {
-			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/findboard/"+findBoardVOList.get(i).getFindboardId();
-			File dir = new File(directoryPath);
-			File fileList [] = dir.listFiles();
-			if(fileList!=null && fileList.length != 0) {//fileList가 not null이면
-				fileName.add(findBoardVOList.get(i).getFindboardId()+"/"+fileList[0].getName());
-			}else {
-				fileName.add("default/1.png");
-			}
-		}		
-		result.put("img", fileName);
 		return result;
 	}
 	@RequestMapping(value = "/insertFindBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")

@@ -203,56 +203,18 @@ function drawTable(data){
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
-	var br='<br/>';
-	var listContent="";
-	var img="";
+
 	for(var i=0; i<data.lostBoardVOListSize; i++){
-		img='<img src="resources/imgs/lostboard/'+data.img[i];		
-		if(i==data.lostBoardVOListSize-1){
-			listContent +=		
-				'<td width=110px height=110px>' + 
-				data.lostBoardVOList[i].lostboardId +br+
-				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
-				img+'" alt=" " width=80% height=200%/>'+br+
-				data.lostBoardVOList[i].lostboardStatus+br+
-				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
-				data.lostBoardVOList[i].lostboardUploadtime +br +
-				'작성자: ' + data.lostBoardVOList[i].memberId +
-				'</td>';
-			$('#lostboardTbody').append('<tr>'+listContent+'</tr>');
-			listContent="";
-			img="";
-		
-		}else if(i%4<3){
-			listContent +=				
-				'<td width=110px height=110px>' + 
-				data.lostBoardVOList[i].lostboardId +br+
-				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
-				img+'" alt=" " width=80% height=200%/>'+br+
-				data.lostBoardVOList[i].lostboardStatus+br+
-				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
-				data.lostBoardVOList[i].lostboardUploadtime +br +
-				'작성자: ' + data.lostBoardVOList[i].memberId +
-				'</td>';
-			img="";
-		}else{
-			listContent +=		
-				'<td width=110px height=110px>' + 
-				data.lostBoardVOList[i].lostboardId +br+
-				'<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' +
-				img+'" alt=" " width=80% height=200%/>'+br+
-				data.lostBoardVOList[i].lostboardStatus+br+
-				'글제목: ' + data.lostBoardVOList[i].lostboardTitle +'</a>' + br +
-				data.lostBoardVOList[i].lostboardUploadtime +br +
-				'작성자: ' + data.lostBoardVOList[i].memberId +
-				'</td>';
-			$('#lostboardTbody').append('<tr>'+listContent+'</tr>');
-			listContent="";
-			img="";
-		}
-	
-		
-	
+		var listContent = 
+						trPrefix +
+						tdPrefix + data.lostBoardVOList[i].lostboardId + tdSuffix +
+						tdPrefix + data.lostBoardVOList[i].lostboardStatus + tdSuffix +
+						tdPrefix + '<a href=/petcommunity/getLostBoard.do?lostboardId=' +data.lostBoardVOList[i].lostboardId + '>' + data.lostBoardVOList[i].lostboardTitle +'</a>' + tdSuffix +
+						tdPrefix + data.lostBoardVOList[i].memberId + tdSuffix +
+						tdPrefix + data.lostBoardVOList[i].lostboardReadcount + tdSuffix +
+						tdPrefix + data.lostBoardVOList[i].lostboardUploadtime + tdSuffix +
+						trSuffix;	
+		$('#lostboardTbody').append(listContent);
 	}
 }
 
@@ -353,6 +315,7 @@ function kakaoMapAPI(data){
 		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
 	}
 }
+
 
 //marker click event
 //closure를 이용한 infowindow on/off

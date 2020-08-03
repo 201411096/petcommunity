@@ -63,6 +63,11 @@ public class FindHospitalDAOImpl implements FindHospitalDAO{
 		return mybatis.selectList("findHospitalDAO.selectFindHospitalForMap", map);
 	}
 
+	public List<Map<String, String>> getGeoLocation() {
+		System.out.println("===>  HospitalMapper getGeoLocation() 호출"); 
+		return mybatis.selectList("findHospitalDAO.getGeoLocation");
+	}
+
 
 }
 

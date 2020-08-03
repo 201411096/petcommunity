@@ -47,7 +47,19 @@ ul#pagination-demo{
    #container table td:nth-child(1), td:nth-child(5), td:nth-child(6)  { 
       display: none; 
    }  
-} 
+}
+/* img.infoWindowImage{ */
+/* 	max-width:200px; */
+/* 	max-height:200px; */
+/* } */
+img.infoWindowImage{
+	width:100%;
+	height:100px;
+}
+div.infoWindowImageContainer{
+	max-width:50%;
+	margin:auto;
+}
 
 /* .alert-light{ */
 /*    width:300px; */

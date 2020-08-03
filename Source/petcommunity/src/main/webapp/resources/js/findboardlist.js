@@ -118,7 +118,7 @@ function drawTable(data){
 	var tdPrefix = '<td>';
 	var tdSuffix = '</td>';
 	var br='<br/>';
-		var listContent="";
+	var listContent="";
 	var img="";
 	for(var i=0; i<data.findBoardVOListSize; i++){
 		if(typeof data.img[i]=='undefined'){

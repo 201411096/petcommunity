@@ -263,7 +263,6 @@ function kakaoMapAPI(data){
 		marker.setMap(map);
 		marker.setRange(1000);
 		var iwContent = '<div class="card marker-infowindow">'+
-						'<div class="info-closer-container"><span class="info-closer">닫기</span></div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
 						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
@@ -271,7 +270,6 @@ function kakaoMapAPI(data){
 						'</div>';
 		if(data.lostBoardFileList[i].filename=='??'){
 			iwContent  = '<div class="card marker-infowindow">'+
-						'<div class="info-closer-container"><span class="info-closer">닫기</span></div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
 						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
@@ -298,7 +296,6 @@ function kakaoMapAPI(data){
 		marker.setMap(map);
 		marker.setRange(1000);
 		var iwContent = '<div class="card marker-infowindow">'+
-						'<div class="info-closer-container"><span class="info-closer">닫기</span></div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
 						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
@@ -306,22 +303,17 @@ function kakaoMapAPI(data){
 						'</div>';
 		if(data.findBoardFileList[i].filename=='??'){
 			iwContent = '<div class="card marker-infowindow">'+
-						'<div class="info-closer-container"><span class="info-closer">닫기</span></div>'+
-						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
-						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
-						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
-						'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/default/1.png" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
-						'</div>';
+			'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
+			'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
+			'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
+			'<div class="form-group">'+'<img src="'+contextPath+'/resources/imgs/findboard/default/1.png" class="d-block w-100" alt="이미지가 존재하지 않습니다.">'+'</div>'+
+			'</div>';
 		}
 		var infowindow = new kakao.maps.InfoWindow({
 		    content : iwContent
 		});
 		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
 	}
-}
-
-function closerButtonEventListener(){
-	
 }
 
 //marker click event

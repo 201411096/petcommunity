@@ -44,14 +44,14 @@ public class LostBoardController {
 	MemberServiceImpl memberService;
 	@ResponseBody
 	@RequestMapping(value = "/lostboardListWithPaging.do", produces = "application/json; charset=utf-8")
-	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType) {
+	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType, HttpServletRequest request) {
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		searchMap.put("searchType", searchType);
 		searchMap.put("searchWord", searchWord);
 		List<LostBoardVO> lostBoardVOList = lostBoardService.selectLostBoard(searchMap);
 		
-		PaginationVO paginationVO = new PaginationVO(lostBoardVOList.size(), curPage);
+		PaginationVO paginationVO = new PaginationVO(lostBoardVOList.size(), curPage, 12);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 				
@@ -60,6 +60,20 @@ public class LostBoardController {
 		result.put("pagination", paginationVO);
 		result.put("lostBoardVOList", lostBoardVOList);
 		result.put("lostBoardVOListSize", lostBoardVOList.size());
+		
+		//그림파일이 있으면 가져옴
+		ArrayList<String> fileName = new ArrayList<String>();
+		for(int i=0; i<lostBoardVOList.size(); i++) {
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/lostboard/"+lostBoardVOList.get(i).getLostboardId();					
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();		
+			if(fileList!=null && fileList.length != 0) {//fileList가 not null이면
+				fileName.add(lostBoardVOList.get(i).getLostboardId()+"/"+fileList[0].getName());
+			}else {
+				fileName.add("default/1.png");
+			}
+		}		
+		result.put("img", fileName);
 		return result;
 	}
 	@RequestMapping(value = "/insertLostBoard.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
@@ -78,43 +92,46 @@ public class LostBoardController {
 		//----------------------------------------------------------------------
 		// 푸쉬 알람 보내기
 		//----------------------------------------------------------------------
-		lostBoardVO.setLostboardLocation("서울 강남구 신사동 537-5");
+//		lostBoardVO.setLostboardLocation("서울 강남구 신사동 537-5");
 		// 게시물 위치 기반 주변 회원 select
 		List<MemberVO> memberVO = memberService.selectPeopleAroundLocation(lostBoardVO);
-		// push알림 title, contents
-		String title = lostBoardVO.getLostboardTitle();
-		String content = lostBoardVO.getLostboardContent();
-		// 푸시 알림 보내기
-		for (MemberVO i : memberVO) {
-			String userDeviceIdKey = i.getMemberToken();
-			String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
-			String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
-			String authKey = AUTH_KEY_FCM;
-			String FMCurl = API_URL_FCM;
-			
-			URL url = new URL(FMCurl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			
-			conn.setUseCaches(false); 
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization","key="+authKey);
-			conn.setRequestProperty("Content-Type","application/json");
-			
-			JSONObject json = new JSONObject();
-			json.put("to",userDeviceIdKey.trim());
-			JSONObject info = new JSONObject();
-			info.put("title", title);   // Notification title
-			info.put("body", content); // Notification body
-			json.put("notification", info);
-			
-			OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-			System.out.println(">" + json.toString());
-			wr.write(json.toString());
-			wr.flush();
-			conn.getInputStream();  
+		if(memberVO!=null) {
+			// push알림 title, contents
+			String title = lostBoardVO.getLostboardTitle();
+			String content = lostBoardVO.getLostboardContent();
+			// 푸시 알림 보내기
+			for (MemberVO i : memberVO) {
+				String userDeviceIdKey = i.getMemberToken();
+				//String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
+				String AUTH_KEY_FCM = "AAAArrPhL3k:APA91bG-1ukftodsLHL_kHV-gRZLZImCeZAvgG8PZiLs0YLVA_6n1LJPNSAgs9ca86G9TfQLTC0IHlc7kM6Uu8CnPcBqyUnx1QH7v7IwfVhL7aeoXAYjdXjhG4FnXCI0ijeAg7B8uKR5";
+				String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
+				String authKey = AUTH_KEY_FCM;
+				String FMCurl = API_URL_FCM;
+				
+				URL url = new URL(FMCurl);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				
+				conn.setUseCaches(false); 
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Authorization","key="+authKey);
+				conn.setRequestProperty("Content-Type","application/json");
+				
+				JSONObject json = new JSONObject();
+				json.put("to",userDeviceIdKey.trim());
+				JSONObject info = new JSONObject();
+				info.put("title", title);   // Notification title
+				info.put("body", content); // Notification body
+				json.put("notification", info);
+				
+				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+				System.out.println(">" + json.toString());
+				wr.write(json.toString());
+				wr.flush();
+				conn.getInputStream();  
+			}
 		}
 		
 		

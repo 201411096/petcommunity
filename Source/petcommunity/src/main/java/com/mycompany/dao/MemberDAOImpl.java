@@ -38,5 +38,19 @@ public class MemberDAOImpl implements MemberDAO{
 	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo) {
 		return mybatis.selectList("member.selectPeopleAroundLocation", vo);
 	}
+	@Override
+	public String selectListPushTarget(String lostBoardWriter) {
+		return mybatis.selectOne("member.selectListPushTarget", lostBoardWriter);
+	}
+	@Override
+	public MemberVO memberList(String id) {
+		
+		return mybatis.selectOne("member.memberList", id);
+	}
+	@Override
+	public int updateMember(MemberVO vo) {
+		
+		return mybatis.update("member.updateMember",vo);
+	}
 
 }

@@ -3,6 +3,7 @@ package com.mycompany.service;
 import java.util.List;
 import java.util.Map;
 
+import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.LostBoardVO;
 
 public interface LostBoardService {
@@ -15,4 +16,6 @@ public interface LostBoardService {
 	public int updateLostBoard(LostBoardVO lostBoardVO);
 	public List<String> selectString(Map map);
 	public List<LostBoardVO> selectLostBoardForMap(Map map);
+	//알림 보낼 list추리는 함수
+	public List<LostBoardVO> findPeopleByLocationOfLostPost(FindBoardVO findBoardVO);
 }

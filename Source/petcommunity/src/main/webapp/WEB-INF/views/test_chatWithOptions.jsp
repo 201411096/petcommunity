@@ -5,22 +5,13 @@
 <head>
 <meta charset="UTF-8">
     <title>Socket.IO chat</title>
-      <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: 0.5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./resources/css/test_chatWithOptions.css">
 </head>
 <body>
 	<div id="chatContainer">
 		<input type="hidden" id="memberId" value="${memberInfo.memberId}">
-	    <ul id="messages"></ul>
-	    <form action="">
+	    <ul class="messages"></ul>
+	    <form class="messageForm" action="">
 	        <div>
 	        	<select name="option1" id="option1">
 	        		<option selected value="roomA">A</option>

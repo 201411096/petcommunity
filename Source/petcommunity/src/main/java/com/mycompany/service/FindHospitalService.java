@@ -13,6 +13,6 @@ public interface FindHospitalService {
 	public List<FindHospitalVO> getFindHospitalListBySearchWithPaging(Map map);
 	public List<String> selectString(Map searchMap);
 	public List<FindHospitalVO> selectFindHospitalForMap(Map map);
-	
+	public List<Map<String, String>> getGeoLocation();
 }
 

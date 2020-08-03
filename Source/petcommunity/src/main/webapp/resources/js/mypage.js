@@ -11,7 +11,7 @@ $(document)
 						}
 					};
 
-					$('.tab-link').on('click', function() {
+					$('.tab-link2').on('click', function() {
 						getData();
 
 					});
@@ -22,7 +22,7 @@ $(document)
 									type : 'post',
 									async : true,
 									url : '/petcommunity/mypageselect.do',
-									contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+									contentType :'application/x-www-form-urlencoded;charset=UTF-8',
 									data : {
 										"curPage" : curPage
 									},
@@ -112,6 +112,77 @@ $(document)
 						}
 					}
 
+					$('.tab-link3').on('click', function() {
+						$
+							.ajax({
+			                type:'post',
+			                async:true, 
+			                url : '/petcommunity/memberUpdate1.do',
+			                contentType :'application/x-www-form-urlencoded;charset=UTF-8',
+			                dataType : 'json',
+			                success : function(data){
+			                	
+			                	 document.getElementById("memberName").value=data.list.memberName;
+			                	 document.getElementById("memberTel").value=data.list.memberTel;
+			                	 document.getElementById("memberId").value=data.list.memberId;
+			                	 document.getElementById("memberEmail").value=data.list.memberEmail;
+			                	 document.getElementById("memberid").value=data.list.memberId;
+			       
+			                 
+			                }
+			        });
+			        
+
+					});
+					
+					$('#memberUpdate-form input[type=submit]').click(function(){
+						var re = /^[a-zA-Z0-9]{4,12}$/;
+						var email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+				        var submit1 = false;
+				        if($('#memberName').val()==="")
+				        {
+				            alert("이름을 입력하세요");return false;        
+				        }
+				        else if($('#memberTel').val()===""){
+				            alert("전화번호를 입력하세요.");return false;
+				        }
+				        
+				        else if($('#memberPassword').val()==="")
+				        {
+				            alert("비밀번호를 입력하세요.");return false;    
+				        }
+				        else if($('#re_pass').val()==="")
+				        {
+				            alert("비밀번호 확인을 입력하세요."); return false;       
+				        }
+				        else if($('#memberPassword').val()!==$('#re_pass').val())
+				        {
+				            alert("비밀번호 확인이 다릅니다.");return false;        
+				        }
+				        else if(!re.test($('#memberPassword').val()) || !re.test($('#re_pass').val()) ){
+				        	alert("비밀번호는 4~12의 영문자와 숫자로 입력해주세요"); return false;
+				        }
+				        else if($('#memberEmail').val()==="")
+				        {
+				            alert("이메일을 입력하세요.");return false;
+				        }else if(!email.test($('#memberEmail').val())){
+				            	alert("이메일 형식이 아닙니다"); return false;
+				        }
+				        else if($('#sample2_address').val()===""){
+				            alert("주소를 입력하세요");return false;
+				        }				        
+				        else
+				        	submit1 = true;
+				        
+				        
+				        if(submit1 === true){
+				        	alert("수정되었습니다! 마이페이지로 이동합니다.")
+				            $('#memberUpdate-form').submit();
+				        }
+				    });
+					
+					
 					$('#register-form input[type=submit]').click(
 							function() {
 

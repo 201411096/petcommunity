@@ -52,9 +52,11 @@
                                 <label for="memberPassword"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="memberPassword" id="memberPassword" placeholder="Password"/>
                             </div>
-      
+      						
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
+                                <input type="hidden" name="memberX" id="memberX" value=""/>
+                                <input type="hidden" name="memberY" id="memberY" value=""/>
                             </div>
                         </form>
                     </div>
@@ -76,6 +78,7 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
     <script src="./resources/js/signup.js"></script>
+    <script src="./resources/js/getLocation.js"></script>
     <script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

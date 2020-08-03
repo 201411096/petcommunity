@@ -5,6 +5,9 @@ var clickMapEventFlag=-1;
 //var longitude = 126.85287648507145;
 $(function() {
 	getLocation();
+	setTimeout(function(){
+		kakaoMapAPI();
+		   }, 500);
 	//kakaoMapAPI();
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
@@ -33,7 +36,7 @@ function kakaoMapAPI() {
 	};
 
 	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
+	
 	// 지도를 클릭한 위치에 표출할 마커입니다
 	var marker = new kakao.maps.Marker({ 
 	    // 지도 중심좌표에 마커를 생성합니다
@@ -119,7 +122,7 @@ function getLocation() {
         console.log('geolocation success--------------------------');
     	console.log(latitude);
     	console.log(longitude);
-    	kakaoMapAPI();
+//    	kakaoMapAPI();
       }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
         latitude = 37.519972628243366;
         longitude = 126.85287648507145;

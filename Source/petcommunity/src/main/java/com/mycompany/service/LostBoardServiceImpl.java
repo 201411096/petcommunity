@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.dao.LostBoardDAOImpl;
+import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.LostBoardVO;
 
 @Service("lostBoardService")
@@ -57,6 +58,13 @@ public class LostBoardServiceImpl implements LostBoardService{
 	@Override
 	public List<LostBoardVO> selectLostBoardForMap(Map map) {
 		return lostBoardDAO.selectLostBoardForMap(map);
+	}
+	
+	//알림 보낼 list추리는 함수
+	@Override
+	public List<LostBoardVO> findPeopleByLocationOfLostPost(FindBoardVO findBoardVO) {
+		List<LostBoardVO> result = lostBoardDAO.findPeopleByLocationOfLostPost(findBoardVO);
+		return result;
 	}
 	
 }

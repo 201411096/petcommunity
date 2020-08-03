@@ -1,4 +1,5 @@
-var socket = io("https://192.168.0.18:3000");
+//var socket = io("https://192.168.0.18:3000");
+var socket = io("https://121.171.119.57:3000");
 
 socket.on('chat message', function(msg){
 	console.log('check in socketonevent ...');

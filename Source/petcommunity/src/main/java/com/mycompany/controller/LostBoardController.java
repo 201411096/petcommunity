@@ -78,43 +78,46 @@ public class LostBoardController {
 		//----------------------------------------------------------------------
 		// 푸쉬 알람 보내기
 		//----------------------------------------------------------------------
-		lostBoardVO.setLostboardLocation("서울 강남구 신사동 537-5");
+//		lostBoardVO.setLostboardLocation("서울 강남구 신사동 537-5");
 		// 게시물 위치 기반 주변 회원 select
 		List<MemberVO> memberVO = memberService.selectPeopleAroundLocation(lostBoardVO);
-		// push알림 title, contents
-		String title = lostBoardVO.getLostboardTitle();
-		String content = lostBoardVO.getLostboardContent();
-		// 푸시 알림 보내기
-		for (MemberVO i : memberVO) {
-			String userDeviceIdKey = i.getMemberToken();
-			String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
-			String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
-			String authKey = AUTH_KEY_FCM;
-			String FMCurl = API_URL_FCM;
-			
-			URL url = new URL(FMCurl);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			
-			conn.setUseCaches(false); 
-			conn.setDoInput(true);
-			conn.setDoOutput(true);
-			
-			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Authorization","key="+authKey);
-			conn.setRequestProperty("Content-Type","application/json");
-			
-			JSONObject json = new JSONObject();
-			json.put("to",userDeviceIdKey.trim());
-			JSONObject info = new JSONObject();
-			info.put("title", title);   // Notification title
-			info.put("body", content); // Notification body
-			json.put("notification", info);
-			
-			OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-			System.out.println(">" + json.toString());
-			wr.write(json.toString());
-			wr.flush();
-			conn.getInputStream();  
+		if(memberVO!=null) {
+			// push알림 title, contents
+			String title = lostBoardVO.getLostboardTitle();
+			String content = lostBoardVO.getLostboardContent();
+			// 푸시 알림 보내기
+			for (MemberVO i : memberVO) {
+				String userDeviceIdKey = i.getMemberToken();
+				//String AUTH_KEY_FCM = "AAAAI2DgPEc:APA91bFUsctMK1XKNhZH6WUe4SW7FmJNKP_qQfUVzYVvRMrMp5Ig2Tx5D6CldfuVdtgkaeN2O-IEYfZH3nXRdgZes0kzazXvtuuz8rYlvxOH8Dtzfh74VekTsGVZf3GrSzZMt7sgHbX4";
+				String AUTH_KEY_FCM = "AAAArrPhL3k:APA91bG-1ukftodsLHL_kHV-gRZLZImCeZAvgG8PZiLs0YLVA_6n1LJPNSAgs9ca86G9TfQLTC0IHlc7kM6Uu8CnPcBqyUnx1QH7v7IwfVhL7aeoXAYjdXjhG4FnXCI0ijeAg7B8uKR5";
+				String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
+				String authKey = AUTH_KEY_FCM;
+				String FMCurl = API_URL_FCM;
+				
+				URL url = new URL(FMCurl);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				
+				conn.setUseCaches(false); 
+				conn.setDoInput(true);
+				conn.setDoOutput(true);
+				
+				conn.setRequestMethod("POST");
+				conn.setRequestProperty("Authorization","key="+authKey);
+				conn.setRequestProperty("Content-Type","application/json");
+				
+				JSONObject json = new JSONObject();
+				json.put("to",userDeviceIdKey.trim());
+				JSONObject info = new JSONObject();
+				info.put("title", title);   // Notification title
+				info.put("body", content); // Notification body
+				json.put("notification", info);
+				
+				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+				System.out.println(">" + json.toString());
+				wr.write(json.toString());
+				wr.flush();
+				conn.getInputStream();  
+			}
 		}
 		
 		

@@ -1,3 +1,93 @@
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden; }
+  .form-group:last-child {
+    margin-bottom: 0px; }
+
+.form-group input[type=button]{
+	width: 66%;
+  margin-left:31%;
+  display: block;
+  border: ridge;
+  border-bottom: 1px solid #e2e2e4;
+  padding: 5px 20px;
+  font-family: Poppins;
+  box-sizing: border-box; 
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+	
+}
+
+.form-group input[type=submit]{
+width: 50%;
+  margin-left:25%;
+  display: block;
+  border: ridge;
+  border-bottom: 1px solid #e2e2e4;
+  padding: 5px 20px;
+  font-family: Poppins;
+  box-sizing: border-box; 
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+	
+}
+.form-group input[type=submit]{
+  
+  display: inline-block;
+  background: #6dabe4;
+  color: #fff;
+  border-bottom: none;
+  width: auto;
+  padding: 15px 39px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  margin-left:-7%;
+  cursor: pointer; }
+ .form-group input[type=submit]:hover{
+    background: #4292dc; }
+    
+.form-group label, .form-group span {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  color: #222; }
+  
+.form-group input {
+  width: 65%;
+  margin-left:28%;
+  padding: 6px 30px;
+  font-family: Poppins;
+  box-sizing: border-box; }
+  input::-webkit-input-placeholder {
+    color: #999; }
+  input::-moz-placeholder {
+    color: #999; }
+  input:-ms-input-placeholder {
+    color: #999; }
+  input:-moz-placeholder {
+    color: #999; }
+  input:focus {
+    border-bottom: 1px solid #222; }
+    input:focus::-webkit-input-placeholder {
+      color: #222; }
+    input:focus::-moz-placeholder {
+      color: #222; }
+    input:focus:-ms-input-placeholder {
+      color: #222; }
+    input:focus:-moz-placeholder {
+      color: #222; }
+
 .mypage-animal {
   position: relative;
   margin-bottom: 25px;
@@ -155,7 +245,7 @@ figure img {
 }
 	
 ul.tabs{
-	margin-left:15%;
+	margin-left:-10%;
 	padding: 0px;
 	list-style: none;
 }
@@ -263,7 +353,7 @@ ul.tabs{
  }
  
  ul.tabs{
-	margin-left:25%;
+	margin-left:15%;
 	padding: 0px;
 	list-style: none;
 }

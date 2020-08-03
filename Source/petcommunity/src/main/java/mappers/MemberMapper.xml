@@ -22,9 +22,14 @@ WHERE MEMBER_ID=#{memberId}
 select * from MEMBER where MEMBER_PASSWORD=#{memberPassword} and MEMBER_ID=#{memberId}
 </select>
 
+<select id="memberList" parameterType="String" resultType="member">
+	select * from member where member_id = #{id}
+</select>
 
-
-
+<update id="updateMember" parameterType="member" >
+update member set member_id=#{memberId}, member_tel=#{memberTel}, member_password=#{memberPassword}, member_email=#{memberEmail},member_name=#{memberName},
+member_address=#{memberAddress} where member_id = #{memberId}
+</update>
 
 
 <update id="tokenInsert" parameterType="member">

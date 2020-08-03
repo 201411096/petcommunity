@@ -2,6 +2,9 @@ package com.mycompany.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -132,5 +135,30 @@ public class MemberController {
 //	      return mv;
 	      return "redirect:/test_kys.jsp";
 	   }
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/memberUpdate1.do",produces = "application/json; charset=utf-8")
+	public Map memberUpdate1(HttpServletRequest req) {
+		Map result = new HashMap();
+		HttpSession session = req.getSession();
+		MemberVO mvo=(MemberVO)session.getAttribute("memberVO");
+		String id= mvo.getMemberId();
+		
+		MemberVO list=memberService.memberList(id);
+		result.put("list", list);
+		return result;
+	}
+	
+	
+	@RequestMapping(value ="/memberUpdate.do")
+	public String memberUpdate(MemberVO vo) {
+		System.out.println(vo.getMemberId());
+		memberService.updateMember(vo);
+		
+		
+		return "redirect:/mypageAnimal.do";
+	}
+
 	
 }

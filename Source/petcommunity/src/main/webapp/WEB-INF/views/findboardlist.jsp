@@ -29,6 +29,29 @@
 		</header>
 		<hr />
 		<section id="container">
+			<div class="form-group">
+				<label>마커 표시 시간</label>
+				<select id="timeForSearch" class="form-control">
+				<option value="0">전체</option>
+				<option value="1">30분</option>
+				<option value="2">1시간</option>
+				<option value="3">3시간</option>
+				<option value="4">12시간</option>
+				<option value="5">하루</option>
+				<option value="6">일주일</option>
+				<option value="7">한달</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label>마커 표시 지역 검색</label>
+				<span id="searchForMap-container">
+					<input id="locationForSearch" type="text" class="form-control">
+				</span>
+			</div>
+
+			<div class="card">
+				<div id="map"></div>
+			</div>
 			<form role="form" method="get">
 				<table class="table" id="findboardTable">
 					<colgroup>
@@ -79,6 +102,8 @@
 			</form>
 		</section>
 	</div>
+	<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/findboardlist.js"></script>
 </body>
 

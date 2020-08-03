@@ -54,6 +54,11 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
 		return findHospitalDAO.selectFindHospitalForMap(map);
 	}
+
+	public List<Map<String, String>> getGeoLocation() {
+
+		return findHospitalDAO.getGeoLocation();
+	}
 	
 
 }

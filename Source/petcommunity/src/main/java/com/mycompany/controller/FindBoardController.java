@@ -53,7 +53,7 @@ public class FindBoardController {
 		searchMap.put("searchType", searchType);
 		searchMap.put("searchWord", searchWord);
 		List<FindBoardVO> findBoardVOList = findBoardService.selectFindBoard(searchMap);		
-		PaginationVO paginationVO = new PaginationVO(findBoardVOList.size(), curPage, 24);
+		PaginationVO paginationVO = new PaginationVO(findBoardVOList.size(), curPage, 12);
 		searchMap.put("startRow", paginationVO.getStartIndex()+1);
 		searchMap.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 				

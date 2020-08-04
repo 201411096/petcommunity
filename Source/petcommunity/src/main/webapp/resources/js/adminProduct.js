@@ -48,6 +48,8 @@ function updateBtnEvent(){
 	$(this).submit();
 }
 
+
+
 function deleteBtnEvent(){
 	$(this).submit();
 }

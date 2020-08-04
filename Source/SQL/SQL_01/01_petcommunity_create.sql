@@ -184,6 +184,13 @@ CREATE TABLE BUYCARTLIST(
     CONSTRAINT BUYCARTLIST_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id) on delete cascade
 );
 
+create table manager(
+    manager_hiredate date,
+    manager_dept varchar2(300),
+    member_id VARCHAR2(30),
+    constraint manager_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID) on delete cascade
+);
+
 create sequence findhospital_id_seq
 start with 10000
 maxvalue 100000

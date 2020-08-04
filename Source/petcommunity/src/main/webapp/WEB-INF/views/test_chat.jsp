@@ -10,16 +10,23 @@
 </head>
 <body>
 	<div class="chatWrapper">
-		<div class="chatContainer border border-primary">
+		<div class="chatContainer">
+			<div class="input-group">
+				<input type="text" class="form-control" id="locationSearch">
+				<span class="input-group-btn">
+						<button id="joinRoomBtn" class="btn btn-primary">생성</button>
+				</span>
+			</div>
 			<div class="messages"></div>
 			<input type="hidden" id="memberId" value="${memberInfo.memberId}">
 			<form class="messageForm">
-				<div class="form-group">
+				<div class="input-group">
 					<input type="text" class="form-control" id="m">
-					<button type="submit" class="btn btn-primary">Send</button>
+					<span class="input-group-btn">
+						<button type="submit" class="btn btn-primary">Send</button>
+					</span>
 				</div>
 			</form>
-
 		</div>
 	</div>
 	<!-- 	<div id="chatContainer"> -->

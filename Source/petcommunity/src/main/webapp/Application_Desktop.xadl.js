@@ -63,7 +63,7 @@
         this.checkLicense("");
         
         this.loadPreloadList();
-
+        this.loadCss("xcssrc::adminPage.xcss");
         this.loadIncludeScript("Application_Desktop.xadl");
     };
 }

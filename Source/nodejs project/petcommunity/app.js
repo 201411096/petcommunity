@@ -5,9 +5,7 @@ const options = {
   passphrase: '123456'
 };
 
-var moment = require('moment');
-require('moment-timezone');
-moment.tz.setDefault("Asia/Seoul");
+
 
 var app = https.createServer(options, (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -40,6 +38,9 @@ io.on('connection', function(socket){
       socket.join(roomInfo.prev);
       io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }else{
+      console.log('-----------')
+      console.log(roomInfo.prev);
+      console.log(roomInfo.cur);
       io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);

@@ -21,4 +21,10 @@ public interface MemberDAO {
 	public MemberVO memberList(String id);
 	
 	public int updateMember(MemberVO vo);
+	
+	public MemberVO findMemberId(MemberVO vo);
+	
+	public MemberVO findMemberpass(MemberVO vo);
+	
+	public int makeTemporaryPassword(MemberVO vo);
 }

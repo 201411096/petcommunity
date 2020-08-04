@@ -48,4 +48,16 @@ WHERE MEMBER_ADDRESS = #{lostboardLocation}
 	FROM MEMBER
 	WHERE MEMBER_ID = #{lostBoardWriter}
 </select>
+
+<select id="findMemberId" parameterType="member" resultType="member">
+select * from member where member_email=#{memberEmail} and member_Name=#{memberName}
+</select>
+
+<select id="findMemberPass" parameterType="member" resultType="member">
+select * from member where member_id=#{memberid} and member_email=#{memberEmail}
+</select>
+
+<update id="makeTemporaryPassword" parameterType="member">
+	update member set member_password=#{memberPassword} where member_id=#{memberId} and member_email=#{memberEmail}
+</update>
 </mapper>

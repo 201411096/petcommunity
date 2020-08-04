@@ -39,6 +39,7 @@
                         <figure><img src="./resources/bootstrap_template/template_01/img/gallery/%EB%A1%9C%EA%B7%B8%EC%9D%B82.PNG" alt="sing up image"></figure>
                         <br><br>
                         <a href="signup.do" class="signup-image-link">회원이 아니신가요?</a>
+                        
                     </div>
 					
                     <div class="signin-form">
@@ -58,6 +59,7 @@
                                 <input type="hidden" name="memberX" id="memberX" value=""/>
                                 <input type="hidden" name="memberY" id="memberY" value=""/>
                             </div>
+                            <a href="#" class="findId">아이디/비밀번호 찾기</a>
                         </form>
                     </div>
                 </div>

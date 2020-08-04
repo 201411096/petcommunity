@@ -12,11 +12,11 @@ if($('#memberId').val()!=""){
 }else{
 	memberId = "tempMember";
 }
-selectRoom(curRoomName, memberId);
+selectRoom(memberId);
 $('#option1').on('change', function(){
-	selectRoom(curRoomName, memberId);
+	selectRoom(memberId);
 });
-function selectRoom(curRoomName, memberId){
+function selectRoom(memberId){
 //	console.log('check in selectRoom ... ' + memberId);
 	var roomInfo = new Object();
 	roomInfo.prev = curRoomName; // 이전 방 정보

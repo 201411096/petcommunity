@@ -183,72 +183,72 @@
         //보기 버튼 눌렸을 때
         this.selectBtn_onclick = function(obj,e)
         {
-            this.transaction(
-                  "urlTest03",
-                 "strURL::selectInfo.do",
-                  "",
-                  "Dataset00=ar",
-                  "",
-                  "fn_callback"
-               );
+         	this.transaction(
+         			"urlTest03",
+        			"strURL::selectInfo.do",
+         			"",
+         			"Dataset00=ar",
+         			"",
+         			"fn_callback"
+         		);
 
-           this.fn_callback = function(svcID, errCD, errMSG){
-              let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
-              if(ret=="error")
-                 this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-           }
+        	this.fn_callback = function(svcID, errCD, errMSG){
+        		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+        		if(ret=="error")
+        			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+        	}
         };
 
 
         //검색 버튼 눌렸을 때
         this.searchBtn_onclick = function(obj,e)
         {
-           var combobox = encodeURI(this.Combo00.value,"UTF-8");
-           var memberInfo = encodeURI(this.memberInfo.value,"UTF-8");
-           console.log(combobox);
-           console.log(memberInfo);
+        	var combobox = encodeURI(this.Combo00.value,"UTF-8");
+        	var memberInfo = encodeURI(this.memberInfo.value,"UTF-8");
+        	console.log(combobox);
+        	console.log(memberInfo);
 
-            this.transaction(
-                  "urlTest03",
-                 "strURL::searchInfo.do?searchword="+memberInfo+"&combobox="+combobox,
-                  "",
-                  "Dataset00=ar",
-                  "",
-                  "fn_callback"
-               );
+         	this.transaction(
+         			"urlTest03",
+        			"strURL::searchInfo.do?searchword="+memberInfo+"&combobox="+combobox,
+         			"",
+         			"Dataset00=ar",
+         			"",
+         			"fn_callback"
+         		);
 
-            this.fn_callback = function(svcID, errCD, errMSG){
-               let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
-               if(ret=="error")
-                  this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-           }
+         	this.fn_callback = function(svcID, errCD, errMSG){
+         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+         		if(ret=="error")
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+        	}
         };
 
         //삭제 버튼 눌렸을 때
         this.deleteBtn_onclick = function(obj,e)
         {
-           var result = this.confirm("회원을 삭제하시겠습니까?");
-           if(result){
+        	var result = this.confirm("회원을 삭제하시겠습니까?");
+        	if(result){
 
-              var memberId = encodeURI(this.memberId.value,"UTF-8");
-           this.transaction(
-                  "urlTest04",
-                 "strURL::deleteInfo.do?memberId="+this.memberId.value,
-                  "",
-                  "Dataset00=ar",
-                  "",
-                  "fn_callback"
-               );
+        		var memberId = encodeURI(this.memberId.value,"UTF-8");
+        	this.transaction(
+         			"urlTest04",
+        			"strURL::deleteInfo.do?memberId="+this.memberId.value,
+         			"",
+         			"Dataset00=ar",
+         			"",
+         			"fn_callback"
+         		);
 
-           this.Dataset00.deleteRow(this.Dataset00.rowposition);
-           this.Dataset00.addRow(this.Dataset00.rowposition);
-           this.fn_callback = function(svcID, errCD, errMSG){
-              let ret = (errMSG=="FAILED" || svcID != "urlTest04") ? "error" : "success";
-              alert("삭제되었습니다.");
-        //       if(ret=="error")
-        //          this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-           }
-           }
+        	this.Dataset00.deleteRow(this.Dataset00.rowposition);
+        	this.Dataset00.addRow(this.Dataset00.rowposition);
+        	this.fn_callback = function(svcID, errCD, errMSG){
+        		let ret = (errMSG=="FAILED" || svcID != "urlTest04") ? "error" : "success";
+        		alert("삭제되었습니다.");
+        // 		if(ret=="error")
+        // 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+        	}
+        	}
 
 
         };

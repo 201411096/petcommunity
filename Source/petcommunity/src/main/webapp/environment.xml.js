@@ -24,7 +24,7 @@ if (nexacro.Environment)
         nexacro._addService("font", "file", "./_resource_/_font_/", "session", null, "", "0", "");
         nexacro._addService("Base", "form", "./Base/", "session", null, "", "0", "0");
         nexacro._addService("FrameBase", "form", "./FrameBase/", "session", null, "", "0", "0");
-        nexacro._addService("strURL", "none", "https://localhost:8443/petcommunity/", "session", null, "", "0", "0");
+        nexacro._addService("strURL", "none", "https://192.168.0.16:8443/petcommunity/", "session", null, "", "0", "0");
 
     	nexacro._component_uri = (nexacro._arg_compurl ? nexacro._arg_compurl : "./nexacro17lib/component/");
     	nexacro._theme_uri = "./_resource_/_theme_/";

@@ -23,6 +23,7 @@
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">번호 : ${lostBoardContent.lostboardId}</li>
 				<li class="list-group-item">제목 : ${lostBoardContent.lostboardTitle}</li>
+				<li class="list-group-item">작성자 : ${lostBoardContent.memberId}</li>
 				<li class="list-group-item">상태 : ${lostBoardContent.lostboardStatus}</li>
 				<li class="list-group-item">업로드시간 : ${lostBoardContent.lostboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>

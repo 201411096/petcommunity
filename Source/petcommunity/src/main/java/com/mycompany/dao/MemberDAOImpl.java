@@ -52,5 +52,19 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return mybatis.update("member.updateMember",vo);
 	}
+	@Override
+	public MemberVO findMemberId(MemberVO vo) {
+		return mybatis.selectOne("member.findMemberId",vo);
+	}
+	@Override
+	public MemberVO findMemberpass(MemberVO vo) {
+		
+		return mybatis.selectOne("member.findMemberPass",vo);
+	}
+	@Override
+	public int makeTemporaryPassword(MemberVO vo) {
+		
+		return mybatis.update("member.makeTemporaryPassword",vo);
+	}
 
 }

@@ -64,4 +64,22 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.updateMember(vo);
 	}
 
+	@Override
+	public MemberVO findMemberId(MemberVO vo) {
+		
+		return memberDAO.findMemberId(vo);
+	}
+
+	@Override
+	public MemberVO findMemberPass(MemberVO vo) {
+		
+		return memberDAO.findMemberpass(vo);
+	}
+
+	@Override
+	public int makeTemporaryPassword(MemberVO vo) {
+		
+		return memberDAO.makeTemporaryPassword(vo);
+	}
+
 }

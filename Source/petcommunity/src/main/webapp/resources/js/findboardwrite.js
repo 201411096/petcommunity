@@ -7,7 +7,7 @@ $(function() {
 	getLocation();
 	setTimeout(function(){
 		kakaoMapAPI();
-		   }, 500);
+		   }, 2000);
 	//kakaoMapAPI();
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();

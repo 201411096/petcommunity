@@ -29,5 +29,8 @@
 <a href="/petcommunity/mypage.do">마이페이지</a><br>
 <a href="/petcommunity/adminPage.do">관리자 페이지</a>
 <a href="/petcommunity/adminProductList.do">crud 페이지</a>
+
+
+<a href="/petcommunity/managerPage.do">회원관리 페이지</a>
 </body>
 </html>

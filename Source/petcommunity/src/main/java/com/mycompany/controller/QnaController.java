@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -21,6 +23,7 @@ import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.QnaVO;
 import com.mycompany.service.MemberService;
 import com.mycompany.service.QnaService;
+import com.mycompany.util.FileUpload;
 
 @Controller
 public class QnaController {
@@ -66,13 +69,13 @@ public class QnaController {
     */
 
 	@RequestMapping(value = "/writeIntoQna.do", produces = "application/text; charset=utf-8")
-	public String insertQnaBoard(QnaVO qnavo, HttpSession session) {
+	public String insertQnaBoard(QnaVO qnavo, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest) {
 		ModelAndView mv = new ModelAndView();
-		if (session.getAttribute("memberVO") != null) {
-			qnavo.setMemberId(((MemberVO) session.getAttribute("memberVO")).getMemberId());
-		} else if (session.getAttribute("memberVO") == null) {
-			mv.setViewName("main");
-		}
+		
+		FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs") + "/qnaboard/");
+		FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")
+				+ "/qnaboard/" + qnavo.getMemberId() + "/");
+		
 		mv.setViewName("qnaBoardWrite");
 		qnaService.insertQnaBoard(qnavo);
 		return "redirect:/cs.do";

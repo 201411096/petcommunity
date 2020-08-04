@@ -5,9 +5,8 @@
       <Layout width="1280" height="720" screenid="Desktop_screen">
         <!--   <Static id="Static02_00" taborder="13" text="게시글 수" left="777" top="488" width="59" height="52"/>-->
         <!-- <Edit id="dnamev00_00" taborder="16" left="870" top="487" width="310" height="47" onchanged="Edit00_onchanged"/>-->
-        <Grid id="Grid03" taborder="18" left="731" top="150" width="505" height="492" border="1px solid black"/>
-        <Grid id="Grid02" taborder="17" left="730" top="40" width="506" height="100" border="1px solid black"/>
-        <Grid id="Grid01" taborder="16" left="10" top="40" width="710" height="600" border="1px solid black"/>
+        <Grid id="Grid03" taborder="13" left="731" top="150" width="505" height="492" border="1px solid black"/>
+        <Grid id="Grid01" taborder="12" left="10" top="40" width="710" height="600" border="1px solid black"/>
         <Grid id="Grid00" taborder="0" left="30" top="60" width="668" height="560" binddataset="Dataset00" color="transparent" border="1px solid black" cursor="pointer">
           <Formats>
             <Format id="default">
@@ -39,23 +38,19 @@
             </Format>
           </Formats>
         </Grid>
-        <Combo id="Combo00" taborder="1" text="" left="740" top="70" width="70" height="40" innerdataset="Dataset01" codecolumn="code" datacolumn="data" border="1px solid black"/>
-        <Edit id="memberInfo" taborder="2" left="820" top="70" width="240" height="40" onchanged="Edit00_onchanged" border="1px solid black"/>
-        <Button id="searchInfo" taborder="3" text="검색" left="1075" top="70" width="70" height="40" onclick="searchBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Static id="Static00" taborder="4" text="성명" left="777" top="200" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static02" taborder="5" text="아이디" left="780" top="270" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static03" taborder="6" text="주소" left="780" top="340" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Button id="deleteInfo" taborder="10" text="삭제" left="1130" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Static id="Static03_00" taborder="11" text="연락처" left="781" top="410" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static00_00" taborder="12" text="이메일" left="780" top="483" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Edit id="memberAddress" taborder="7" left="870" top="337" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberName" taborder="8" left="870" top="196" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberId" taborder="9" left="870" top="270" width="310" height="47" onchanged="Edit00_onchanged" visible="true" border="1px solid darkgray" color="black"/>
-        <Edit id="memberTel" taborder="13" left="870" top="407" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberEmail" taborder="15" left="870" top="476" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Button id="selectInfo" taborder="14" text="보기" left="1155" top="70" width="70" height="40" onclick="selectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Button id="Button00" taborder="19" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="20" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
+        <Static id="Static00" taborder="1" text="성명" left="777" top="200" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Static id="Static02" taborder="2" text="아이디" left="780" top="270" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Static id="Static03" taborder="3" text="주소" left="780" top="340" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Button id="deleteInfo" taborder="7" text="삭제" left="1130" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Static id="Static03_00" taborder="8" text="연락처" left="781" top="410" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Static id="Static00_00" taborder="9" text="이메일" left="780" top="483" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Edit id="memberAddress" taborder="4" left="870" top="337" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
+        <Edit id="memberName" taborder="5" left="870" top="196" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
+        <Edit id="memberId" taborder="6" left="870" top="270" width="310" height="47" onchanged="Edit00_onchanged" visible="true" border="1px solid darkgray" color="black"/>
+        <Edit id="memberTel" taborder="10" left="870" top="407" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
+        <Edit id="memberEmail" taborder="11" left="870" top="476" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
+        <Button id="Button00" taborder="14" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
+        <Button id="Button00_00" taborder="15" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
       </Layout>
       <Layout name="Layout0" width="1280" height="720" mobileorientation="landscape"/>
     </Layouts>
@@ -131,6 +126,7 @@ this.deleteBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	
 	
 };
+
 
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {

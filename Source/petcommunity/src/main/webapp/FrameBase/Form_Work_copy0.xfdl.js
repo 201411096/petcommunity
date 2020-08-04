@@ -28,19 +28,13 @@
             
             // UI Components Initialize
             obj = new Grid("Grid03","731","150","505","492",null,null,null,null,null,null,this);
-            obj.set_taborder("18");
-            obj.set_border("1px solid black");
-            obj._setContents("");
-            this.addChild(obj.name, obj);
-
-            obj = new Grid("Grid02","730","40","506","100",null,null,null,null,null,null,this);
-            obj.set_taborder("17");
+            obj.set_taborder("13");
             obj.set_border("1px solid black");
             obj._setContents("");
             this.addChild(obj.name, obj);
 
             obj = new Grid("Grid01","10","40","710","600",null,null,null,null,null,null,this);
-            obj.set_taborder("16");
+            obj.set_taborder("12");
             obj.set_border("1px solid black");
             obj._setContents("");
             this.addChild(obj.name, obj);
@@ -54,105 +48,77 @@
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"83\"/><Column size=\"177\"/><Column size=\"172\"/><Column size=\"154\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"아이디\"/><Cell col=\"1\" text=\"회원명\"/><Cell col=\"2\" text=\"주소\"/><Cell col=\"3\" text=\"연락처\"/><Cell col=\"4\" text=\"이메일\"/></Band><Band id=\"body\"><Cell text=\"bind:memberId\"/><Cell col=\"1\" text=\"bind:memberName\"/><Cell col=\"2\" text=\"bind:memberAddress\"/><Cell col=\"3\" text=\"bind:memberTel\"/><Cell col=\"4\" text=\"bind:memberEmail\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("Combo00","740","70","70","40",null,null,null,null,null,null,this);
-            obj.set_taborder("1");
-            obj.set_innerdataset("Dataset01");
-            obj.set_codecolumn("code");
-            obj.set_datacolumn("data");
-            obj.set_border("1px solid black");
-            obj.set_text("");
-            this.addChild(obj.name, obj);
-
-            obj = new Edit("memberInfo","820","70","240","40",null,null,null,null,null,null,this);
-            obj.set_taborder("2");
-            obj.set_border("1px solid black");
-            this.addChild(obj.name, obj);
-
-            obj = new Button("searchInfo","1075","70","70","40",null,null,null,null,null,null,this);
-            obj.set_taborder("3");
-            obj.set_text("검색");
-            obj.set_font("bold 14px/normal \"HY신명조\"");
-            obj.set_border("1px solid black");
-            this.addChild(obj.name, obj);
-
             obj = new Static("Static00","777","200","59","40",null,null,null,null,null,null,this);
-            obj.set_taborder("4");
+            obj.set_taborder("1");
             obj.set_text("성명");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static02","780","270","59","50",null,null,null,null,null,null,this);
-            obj.set_taborder("5");
+            obj.set_taborder("2");
             obj.set_text("아이디");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static03","780","340","59","44",null,null,null,null,null,null,this);
-            obj.set_taborder("6");
+            obj.set_taborder("3");
             obj.set_text("주소");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
             obj = new Button("deleteInfo","1130","580","70","40",null,null,null,null,null,null,this);
-            obj.set_taborder("10");
+            obj.set_taborder("7");
             obj.set_text("삭제");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static03_00","781","410","59","50",null,null,null,null,null,null,this);
-            obj.set_taborder("11");
+            obj.set_taborder("8");
             obj.set_text("연락처");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00_00","780","483","59","40",null,null,null,null,null,null,this);
-            obj.set_taborder("12");
+            obj.set_taborder("9");
             obj.set_text("이메일");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
             obj = new Edit("memberAddress","870","337","310","47",null,null,null,null,null,null,this);
-            obj.set_taborder("7");
+            obj.set_taborder("4");
             obj.set_border("1px solid darkgray");
             this.addChild(obj.name, obj);
 
             obj = new Edit("memberName","870","196","310","47",null,null,null,null,null,null,this);
-            obj.set_taborder("8");
+            obj.set_taborder("5");
             obj.set_border("1px solid darkgray");
             this.addChild(obj.name, obj);
 
             obj = new Edit("memberId","870","270","310","47",null,null,null,null,null,null,this);
-            obj.set_taborder("9");
+            obj.set_taborder("6");
             obj.set_visible("true");
             obj.set_border("1px solid darkgray");
             obj.set_color("black");
             this.addChild(obj.name, obj);
 
             obj = new Edit("memberTel","870","407","310","47",null,null,null,null,null,null,this);
-            obj.set_taborder("13");
+            obj.set_taborder("10");
             obj.set_border("1px solid darkgray");
             this.addChild(obj.name, obj);
 
             obj = new Edit("memberEmail","870","476","310","47",null,null,null,null,null,null,this);
-            obj.set_taborder("15");
+            obj.set_taborder("11");
             obj.set_border("1px solid darkgray");
             this.addChild(obj.name, obj);
 
-            obj = new Button("selectInfo","1155","70","70","40",null,null,null,null,null,null,this);
-            obj.set_taborder("14");
-            obj.set_text("보기");
-            obj.set_font("bold 14px/normal \"HY신명조\"");
-            obj.set_border("1px solid black");
-            this.addChild(obj.name, obj);
-
             obj = new Button("Button00","10","10","117","30",null,null,null,null,null,null,this);
-            obj.set_taborder("19");
+            obj.set_taborder("14");
             obj.set_text("회원관리");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button00_00","130","10","117","30",null,null,null,null,null,null,this);
-            obj.set_taborder("20");
+            obj.set_taborder("15");
             obj.set_text("직원관리");
             this.addChild(obj.name, obj);
 
@@ -166,15 +132,11 @@
                 p = rootobj;
                 p.set_titletext("Form_Work");
 
-                p.Grid03.set_taborder("18");
+                p.Grid03.set_taborder("13");
                 p.Grid03.set_border("1px solid black");
                 p.Grid03.move("731","150","505","492",null,null);
 
-                p.Grid02.set_taborder("17");
-                p.Grid02.set_border("1px solid black");
-                p.Grid02.move("730","40","506","100",null,null);
-
-                p.Grid01.set_taborder("16");
+                p.Grid01.set_taborder("12");
                 p.Grid01.set_border("1px solid black");
                 p.Grid01.move("10","40","710","600",null,null);
 
@@ -185,88 +147,64 @@
                 p.Grid00.set_cursor("pointer");
                 p.Grid00.move("30","60","668","560",null,null);
 
-                p.Combo00.set_taborder("1");
-                p.Combo00.set_innerdataset("Dataset01");
-                p.Combo00.set_codecolumn("code");
-                p.Combo00.set_datacolumn("data");
-                p.Combo00.set_border("1px solid black");
-                p.Combo00.set_text("");
-                p.Combo00.move("740","70","70","40",null,null);
-
-                p.memberInfo.set_taborder("2");
-                p.memberInfo.set_border("1px solid black");
-                p.memberInfo.move("820","70","240","40",null,null);
-
-                p.searchInfo.set_taborder("3");
-                p.searchInfo.set_text("검색");
-                p.searchInfo.set_font("bold 14px/normal \"HY신명조\"");
-                p.searchInfo.set_border("1px solid black");
-                p.searchInfo.move("1075","70","70","40",null,null);
-
-                p.Static00.set_taborder("4");
+                p.Static00.set_taborder("1");
                 p.Static00.set_text("성명");
                 p.Static00.set_font("bold 14px/normal \"HY신명조\"");
                 p.Static00.move("777","200","59","40",null,null);
 
-                p.Static02.set_taborder("5");
+                p.Static02.set_taborder("2");
                 p.Static02.set_text("아이디");
                 p.Static02.set_font("bold 14px/normal \"HY신명조\"");
                 p.Static02.move("780","270","59","50",null,null);
 
-                p.Static03.set_taborder("6");
+                p.Static03.set_taborder("3");
                 p.Static03.set_text("주소");
                 p.Static03.set_font("bold 14px/normal \"HY신명조\"");
                 p.Static03.move("780","340","59","44",null,null);
 
-                p.deleteInfo.set_taborder("10");
+                p.deleteInfo.set_taborder("7");
                 p.deleteInfo.set_text("삭제");
                 p.deleteInfo.set_font("bold 14px/normal \"HY신명조\"");
                 p.deleteInfo.set_border("1px solid black");
                 p.deleteInfo.move("1130","580","70","40",null,null);
 
-                p.Static03_00.set_taborder("11");
+                p.Static03_00.set_taborder("8");
                 p.Static03_00.set_text("연락처");
                 p.Static03_00.set_font("bold 14px/normal \"HY신명조\"");
                 p.Static03_00.move("781","410","59","50",null,null);
 
-                p.Static00_00.set_taborder("12");
+                p.Static00_00.set_taborder("9");
                 p.Static00_00.set_text("이메일");
                 p.Static00_00.set_font("bold 14px/normal \"HY신명조\"");
                 p.Static00_00.move("780","483","59","40",null,null);
 
-                p.memberAddress.set_taborder("7");
+                p.memberAddress.set_taborder("4");
                 p.memberAddress.set_border("1px solid darkgray");
                 p.memberAddress.move("870","337","310","47",null,null);
 
-                p.memberName.set_taborder("8");
+                p.memberName.set_taborder("5");
                 p.memberName.set_border("1px solid darkgray");
                 p.memberName.move("870","196","310","47",null,null);
 
-                p.memberId.set_taborder("9");
+                p.memberId.set_taborder("6");
                 p.memberId.set_visible("true");
                 p.memberId.set_border("1px solid darkgray");
                 p.memberId.set_color("black");
                 p.memberId.move("870","270","310","47",null,null);
 
-                p.memberTel.set_taborder("13");
+                p.memberTel.set_taborder("10");
                 p.memberTel.set_border("1px solid darkgray");
                 p.memberTel.move("870","407","310","47",null,null);
 
-                p.memberEmail.set_taborder("15");
+                p.memberEmail.set_taborder("11");
                 p.memberEmail.set_border("1px solid darkgray");
                 p.memberEmail.move("870","476","310","47",null,null);
 
-                p.selectInfo.set_taborder("14");
-                p.selectInfo.set_text("보기");
-                p.selectInfo.set_font("bold 14px/normal \"HY신명조\"");
-                p.selectInfo.set_border("1px solid black");
-                p.selectInfo.move("1155","70","70","40",null,null);
-
-                p.Button00.set_taborder("19");
+                p.Button00.set_taborder("14");
                 p.Button00.set_text("회원관리");
                 p.Button00.move("10","10","117","30",null,null);
 
-                p.Button00_00.set_taborder("20");
+                p.Button00_00.set_taborder("15");
                 p.Button00_00.set_text("직원관리");
                 p.Button00_00.move("130","10","117","30",null,null);
             	}
@@ -314,7 +252,7 @@
         };
         
         // User Script
-        this.registerScript("Form_Work.xfdl", function() {
+        this.registerScript("Form_Work_copy0.xfdl", function() {
         //보기 버튼 눌렸을 때
         this.selectBtn_onclick = function(obj,e)
         {
@@ -388,6 +326,7 @@
 
         };
 
+
         this.Button00_onclick = function(obj,e)
         {
         	this.go("FrameBase::Form_Work.xfdl")
@@ -403,20 +342,17 @@
         // Regist UI Components Event
         this.on_initEvent = function()
         {
-            this.memberInfo.addEventHandler("onchanged",this.Edit00_onchanged,this);
-            this.searchInfo.addEventHandler("onclick",this.searchBtn_onclick,this);
             this.deleteInfo.addEventHandler("onclick",this.deleteBtn_onclick,this);
             this.memberAddress.addEventHandler("onchanged",this.Edit00_onchanged,this);
             this.memberName.addEventHandler("onchanged",this.Edit00_onchanged,this);
             this.memberId.addEventHandler("onchanged",this.Edit00_onchanged,this);
             this.memberTel.addEventHandler("onchanged",this.Edit00_onchanged,this);
             this.memberEmail.addEventHandler("onchanged",this.Edit00_onchanged,this);
-            this.selectInfo.addEventHandler("onclick",this.selectBtn_onclick,this);
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Button00_00.addEventHandler("onclick",this.Button00_00_onclick,this);
         };
 
-        this.loadIncludeScript("Form_Work.xfdl");
+        this.loadIncludeScript("Form_Work_copy0.xfdl");
         this.loadPreloadList();
         
         // Remove Reference

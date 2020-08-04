@@ -72,6 +72,17 @@ public class QnaServiceImpl implements QnaService{
 		return qnaDAO.selectFindBoardWithPaging(map);
 	}
 
+	@Override
+	public List<QnaVO> selectQuestionGroupId(QnaVO qnavo) {
+		return qnaDAO.selectQuestionGroupId(qnavo);
+	}
+
+	@Override
+	public void deleteQnaBoardbyGroupId(QnaVO qnavo) {
+		qnaDAO.deleteQnaBoardbyGroupId(qnavo);
+		
+	}
+
 
 	
 

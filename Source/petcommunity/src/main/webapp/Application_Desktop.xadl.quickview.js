@@ -66,7 +66,7 @@
 
         
         this.loadPreloadList();
-
+        this.loadCss("xcssrc::adminPage.xcss");
     };
 }
 )();

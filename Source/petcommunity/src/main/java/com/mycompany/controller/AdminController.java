@@ -17,7 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.BuylistviewVO;
 import com.mycompany.domain.MemberVO;
+import com.mycompany.domain.QnaVO;
 import com.mycompany.service.AdminService;
+import com.mycompany.service.QnaService;
 import com.nexacro17.xapi.data.DataSet;
 import com.nexacro17.xapi.data.DataTypes;
 
@@ -27,8 +29,14 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private QnaService qnaService;
 	
-	
+	/* 
+    * 함수 이름 : 
+    * 주요 기능 : 
+    * 함수 내용 : 
+    */
 	@RequestMapping("/adminPage.do")
 	public ModelAndView selectList(BuylistviewVO buylistviewvo, String startDate, String endDate) {
 		ModelAndView mv = new ModelAndView();
@@ -39,6 +47,11 @@ public class AdminController {
 		return mv;	
 	}
 	
+	/* 
+    * 함수 이름 : 
+    * 주요 기능 :
+    * 함수 내용 : 
+    */
 	@RequestMapping("/datesearch.do")
 	public ModelAndView selectDate(String startDate, String endDate) {
 		ModelAndView mv = new ModelAndView();
@@ -71,9 +84,12 @@ public class AdminController {
 		return mv;
 	}
 	
-	// 넥사크로  회원정보관리 페이지-> 
-	// 보기 버튼 -> 모두출력
 	
+	/* 
+    * 함수 이름 : 
+    * 주요 기능 : 넥사크로
+    * 함수 내용 : 
+    */
 	@RequestMapping("/selectInfo.do")
 	public ModelAndView defaultMain(MemberVO memberevo) {
 		ModelAndView mv = new ModelAndView();
@@ -101,7 +117,11 @@ public class AdminController {
 	}
 	
 	
-	// 넥사크로 -> 검색 버튼눌렀을 때 정보 출력
+	/* 
+    * 함수 이름 : 
+    * 주요 기능 : 
+    * 함수 내용 : 
+    */
 	@RequestMapping("/searchInfo.do")
 	public ModelAndView getMemberSelect(String combobox, String searchword) throws UnsupportedEncodingException {
 		System.out.println("getMemberSelect 컨트롤러 확인1"+combobox);
@@ -145,13 +165,22 @@ public class AdminController {
 		return mv;
 	}
 	
+	/* 
+    * 함수 이름 : 
+    * 주요 기능 : 
+    * 함수 내용 : 
+    */
 	@RequestMapping("/deleteInfo.do")
-	public void deleteInfo(String memberId,HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
-	
-			System.out.println(memberId);
+	public void deleteInfo(String memberId, HttpServletRequest request) {
+		QnaVO qnavo = new QnaVO();
+		qnavo.setMemberId(memberId);
+		List<QnaVO> qnavoList = qnaService.selectQuestionGroupId(qnavo);
+			for(int i=0; qnavoList.size()>i; i++) {
+				qnaService.deleteQnaBoardbyGroupId(qnavoList.get(i));
+			}
 			adminService.deleteInfo(memberId);
-		
+			
+			
 
 		
 	}

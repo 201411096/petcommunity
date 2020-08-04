@@ -17,6 +17,7 @@ public interface QnaDAO {
 	public void insertReply(QnaVO qnavo);
 	public QnaVO selectGroupId(QnaVO qnavo);
 	public List<QnaVO> selectListRe(QnaVO qnavo);
+	public List<QnaVO> selectQuestionGroupId(QnaVO qnavo);
 	
 
 }

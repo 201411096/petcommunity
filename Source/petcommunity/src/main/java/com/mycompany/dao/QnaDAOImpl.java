@@ -73,5 +73,14 @@ public class QnaDAOImpl implements QnaDAO {
 		return mybatis.selectList("qnaDAO.selectFindBoardWithPaging", map);
 	}
 
+	public List<QnaVO> selectQuestionGroupId(QnaVO qnavo) {
+		return mybatis.selectList("qnaDAO.selectQuestionGroupId", qnavo);
+	}
+
+	public void deleteQnaBoardbyGroupId(QnaVO qnavo) {
+		mybatis.delete("qnaDAO.deleteQnaBoardbyGroupId", qnavo);
+		
+	}
+
 
 }

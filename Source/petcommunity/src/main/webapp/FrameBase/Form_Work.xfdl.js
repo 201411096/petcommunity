@@ -27,83 +27,123 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Grid("Grid00","32","50","668","550",null,null,null,null,null,null,this);
-            obj.set_taborder("0");
-            obj.set_binddataset("Dataset00");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row band=\"head\" size=\"24\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"memberId\"/><Cell col=\"1\" text=\"memberName\"/><Cell col=\"2\" text=\"memberAddress\"/><Cell col=\"3\" text=\"memberTel\"/><Cell col=\"4\" text=\"memberEmail\"/></Band><Band id=\"body\"><Cell text=\"bind:memberId\"/><Cell col=\"1\" text=\"bind:memberName\"/><Cell col=\"2\" text=\"bind:memberAddress\"/><Cell col=\"3\" text=\"bind:memberTel\"/><Cell col=\"4\" text=\"bind:memberEmail\"/></Band></Format></Formats>");
+            obj = new Grid("Grid03","731","150","505","492",null,null,null,null,null,null,this);
+            obj.set_taborder("18");
+            obj.set_border("1px solid black");
+            obj._setContents("");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("Combo00","740","60","70","40",null,null,null,null,null,null,this);
+            obj = new Grid("Grid02","730","40","506","100",null,null,null,null,null,null,this);
+            obj.set_taborder("17");
+            obj.set_border("1px solid black");
+            obj._setContents("");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid01","10","40","710","600",null,null,null,null,null,null,this);
+            obj.set_taborder("16");
+            obj.set_border("1px solid black");
+            obj._setContents("");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("Grid00","30","60","668","560",null,null,null,null,null,null,this);
+            obj.set_taborder("0");
+            obj.set_binddataset("Dataset00");
+            obj.set_color("transparent");
+            obj.set_border("1px solid black");
+            obj.set_cursor("pointer");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"83\"/><Column size=\"177\"/><Column size=\"172\"/><Column size=\"154\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"아이디\"/><Cell col=\"1\" text=\"회원명\"/><Cell col=\"2\" text=\"주소\"/><Cell col=\"3\" text=\"연락처\"/><Cell col=\"4\" text=\"이메일\"/></Band><Band id=\"body\"><Cell text=\"bind:memberId\"/><Cell col=\"1\" text=\"bind:memberName\"/><Cell col=\"2\" text=\"bind:memberAddress\"/><Cell col=\"3\" text=\"bind:memberTel\"/><Cell col=\"4\" text=\"bind:memberEmail\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("Combo00","740","70","70","40",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_innerdataset("Dataset01");
             obj.set_codecolumn("code");
             obj.set_datacolumn("data");
+            obj.set_border("1px solid black");
             obj.set_text("");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("memberInfo","820","60","240","40",null,null,null,null,null,null,this);
+            obj = new Edit("memberInfo","820","70","240","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
+            obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Button("searchInfo","1075","60","70","40",null,null,null,null,null,null,this);
+            obj = new Button("searchInfo","1075","70","70","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_text("검색");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
+            obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00","777","140","59","40",null,null,null,null,null,null,this);
+            obj = new Static("Static00","777","200","59","40",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("성명");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static02","780","210","59","50",null,null,null,null,null,null,this);
+            obj = new Static("Static02","780","270","59","50",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("아이디");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static03","780","280","59","44",null,null,null,null,null,null,this);
+            obj = new Static("Static03","780","340","59","44",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("주소");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
             obj = new Button("deleteInfo","1130","580","70","40",null,null,null,null,null,null,this);
             obj.set_taborder("10");
             obj.set_text("삭제");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
+            obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static03_00","781","350","59","50",null,null,null,null,null,null,this);
+            obj = new Static("Static03_00","781","410","59","50",null,null,null,null,null,null,this);
             obj.set_taborder("11");
             obj.set_text("연락처");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00_00","780","423","59","40",null,null,null,null,null,null,this);
+            obj = new Static("Static00_00","780","483","59","40",null,null,null,null,null,null,this);
             obj.set_taborder("12");
             obj.set_text("이메일");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("memberAddress","870","277","310","47",null,null,null,null,null,null,this);
+            obj = new Edit("memberAddress","870","337","310","47",null,null,null,null,null,null,this);
             obj.set_taborder("7");
+            obj.set_border("1px solid darkgray");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("memberName","870","136","310","47",null,null,null,null,null,null,this);
+            obj = new Edit("memberName","870","196","310","47",null,null,null,null,null,null,this);
             obj.set_taborder("8");
+            obj.set_border("1px solid darkgray");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("memberId","870","210","310","47",null,null,null,null,null,null,this);
+            obj = new Edit("memberId","870","270","310","47",null,null,null,null,null,null,this);
             obj.set_taborder("9");
             obj.set_visible("true");
+            obj.set_border("1px solid darkgray");
+            obj.set_color("black");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("memberTel","870","347","310","47",null,null,null,null,null,null,this);
+            obj = new Edit("memberTel","870","407","310","47",null,null,null,null,null,null,this);
+            obj.set_taborder("13");
+            obj.set_border("1px solid darkgray");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("memberEmail","870","476","310","47",null,null,null,null,null,null,this);
+            obj.set_taborder("15");
+            obj.set_border("1px solid darkgray");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("selectInfo","1155","70","70","40",null,null,null,null,null,null,this);
             obj.set_taborder("14");
-            this.addChild(obj.name, obj);
-
-            obj = new Edit("memberEmail","870","416","310","47",null,null,null,null,null,null,this);
-            obj.set_taborder("15");
-            this.addChild(obj.name, obj);
-
-            obj = new Button("selectInfo","1165","60","70","40",null,null,null,null,null,null,this);
-            obj.set_taborder("15");
             obj.set_text("보기");
+            obj.set_font("bold 14px/normal \"HY신명조\"");
+            obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
             // Layout Functions
@@ -143,8 +183,6 @@
         //보기 버튼 눌렸을 때
         this.selectBtn_onclick = function(obj,e)
         {
-        	this.alert("목록보기 확인")
-
          	this.transaction(
          			"urlTest03",
         			"strURL::selectInfo.do",
@@ -158,8 +196,6 @@
         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
         		if(ret=="error")
         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-        		else
-        			this.alert(ret);
         	}
         };
 
@@ -167,7 +203,6 @@
         //검색 버튼 눌렸을 때
         this.searchBtn_onclick = function(obj,e)
         {
-        	this.alert("출력확인")
         	var combobox = encodeURI(this.Combo00.value,"UTF-8");
         	var memberInfo = encodeURI(this.memberInfo.value,"UTF-8");
         	console.log(combobox);
@@ -182,35 +217,39 @@
          			"fn_callback"
          		);
 
-        	this.fn_callback = function(svcID, errCD, errMSG){
-        		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
-        		if(ret=="error")
-        			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-        		else
-        			this.alert(ret);
+         	this.fn_callback = function(svcID, errCD, errMSG){
+         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+         		if(ret=="error")
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	}
         };
 
         //삭제 버튼 눌렸을 때
         this.deleteBtn_onclick = function(obj,e)
         {
-        	this.alert("삭제확인")
-        	var memberId = encodeURI(this.memberId.value,"UTF-8");
+        	var result = this.confirm("회원을 삭제하시겠습니까?");
+        	if(result){
+
+        		var memberId = encodeURI(this.memberId.value,"UTF-8");
         	this.transaction(
-         			"urlTest03",
+         			"urlTest04",
         			"strURL::deleteInfo.do?memberId="+this.memberId.value,
          			"",
          			"Dataset00=ar",
          			"",
          			"fn_callback"
          		);
+
+        	this.Dataset00.deleteRow(this.Dataset00.rowposition);
+        	this.Dataset00.addRow(this.Dataset00.rowposition);
         	this.fn_callback = function(svcID, errCD, errMSG){
-        		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
-        		if(ret=="error")
-        			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-        		else
-        			this.alert(ret);
+        		let ret = (errMSG=="FAILED" || svcID != "urlTest04") ? "error" : "success";
+        		alert("삭제되었습니다.");
+        // 		if(ret=="error")
+        // 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	}
+        	}
+
 
         };
 

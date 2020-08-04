@@ -13,7 +13,6 @@ create table member(
     member_y varchar2(100),
     constraint member_pk primary key(member_id)
 );
-alter table member add(member_y varchar2(100));
 
 create table animal(
     animal_id number(20),
@@ -148,8 +147,8 @@ create table productreview(
     product_id number(30),
     productreview_uploadtime date,
     constraint productreview_pk primary key(productreview_id),
-    constraint productreview_fk_1 foreign key(member_id) references member(member_id),
-    constraint productreview_fk_2 foreign key(product_id) references product(product_id)
+    constraint productreview_fk_1 foreign key(member_id) references member(member_id) on delete cascade,
+    constraint productreview_fk_2 foreign key(product_id) references product(product_id) on delete cascade
 );
 
 -- 구매리스트
@@ -159,7 +158,7 @@ CREATE TABLE BUYLIST(
     buylist_totalprice number(30),
     MEMBER_ID VARCHAR2(30),
     CONSTRAINT BUYLIST_PK PRIMARY KEY(BUYLIST_ID),
-    CONSTRAINT BUYLIST_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID)
+    CONSTRAINT BUYLIST_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID) on delete cascade
 );
 
 -- 구매
@@ -170,10 +169,10 @@ create table buy(
     buy_cnt number(30),
     buy_totalprice number(30),
     CONSTRAINT BUY_PK PRIMARY KEY(BUY_ID),
-    CONSTRAINT BUY_FK_1 FOREIGN KEY(BUYLIST_ID) REFERENCES BUYLIST(BUYLIST_ID),
-    CONSTRAINT BUY_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id)
+    CONSTRAINT BUY_FK_1 FOREIGN KEY(BUYLIST_ID) REFERENCES BUYLIST(BUYLIST_ID) on delete cascade,
+    CONSTRAINT BUY_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id) on delete cascade
 );
-alter table buy modify 
+
 -- 장바구니
 CREATE TABLE BUYCARTLIST(
     BUYCARTLIST_ID NUMBER(30),
@@ -181,30 +180,9 @@ CREATE TABLE BUYCARTLIST(
     MEMBER_ID VARCHAR2(30),
     product_id NUMBER(30),
     CONSTRAINT BUYCARTLIST_PK PRIMARY KEY(BUYCARTLIST_ID),
-    CONSTRAINT BUYCARTLIST_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID),
-    CONSTRAINT BUYCARTLIST_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id)
+    CONSTRAINT BUYCARTLIST_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID) on delete cascade,
+    CONSTRAINT BUYCARTLIST_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id) on delete cascade
 );
-
-CREATE OR REPLACE VIEW buylistview AS
-select 
-b.buy_id as buy_id, 
-b.buylist_id as buylist_id, 
-b.product_id as product_id, 
-b.buy_cnt as buy_cnt, 
-b.buy_totalprice as buy_totalprice, 
-bl.buylist_date as buylist_date, 
-bl.member_id as member_id, 
-bl.buylist_totalprice as buylist_totalprice,
-p.product_name as product_name,
-p.product_price as product_price,
-p.product_cnt as product_cnt,
-p.product_feature as product_feature,
-p.product_content as product_content
-from buy b 
-inner join buylist bl 
-on b.buylist_id = bl.buylist_id
-inner join product p
-on b.product_id = p.product_id;
 
 create sequence findhospital_id_seq
 start with 10000

@@ -16,7 +16,7 @@ public class SendMail {
 	public SendMail() {
 	}
 
-	public String [] getPassword() {
+	public static String [] getPassword() {
 		FileReader fr = null;
 		BufferedReader br = null;
 
@@ -32,7 +32,7 @@ public class SendMail {
 		return mail;
 	}
 
-	public void sendMail(String to, String subject, String mainContent) { // 받는 사람 메일 주소, 메일 내용을 받아와서 메일 전송
+	public static void sendMail(String to, String subject, String mainContent) { // 받는 사람 메일 주소, 메일 내용을 받아와서 메일 전송
 		String user = getPassword()[0];
 		String password = getPassword()[1];
 		String host = "smtp.naver.com";

@@ -109,7 +109,7 @@ $(document).ready(function () {
 	$(".findId").click(
 			function() {
 				window.open("findMemberId.do", "아이디/비밀번호 찾기",
-						"width=450,height=500,left=650,top=300")
+						"width=450,height=550,left=650,top=300")
 			});
 		
 	
@@ -117,13 +117,28 @@ $(document).ready(function () {
         $.ajax({
                 type:'post',
                 async:true,
-                url : 'findMember.do',
+                url : '/petcommunity/findMember.do',
                 contentType :'application/x-www-form-urlencoded;charset=UTF-8',
-                data : "memberEmail="+ $("#memberEmail").val(),
+                data : "memberEmail="+ $("#memberEmail").val()+"&memberName="+ $("#memberName").val(),    		
                 success : function(resultData){
                     
                 	alert(resultData);
-                }
+                } 
+        
+        });
+	});
+	
+	$("#passBtn").click(function(){
+        $.ajax({
+                type:'post',
+                async:true,
+                url : '/petcommunity/findMemberPass.do',
+                contentType :'application/x-www-form-urlencoded;charset=UTF-8',
+                data : "memberId="+ $("#memberId").val()+"&memberEmail="+ $("#memberEmail2").val(),    		
+                success : function(resultData){
+                    
+                	alert(resultData);
+                } 
         
         });
 	});

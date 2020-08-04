@@ -25,4 +25,10 @@ public interface MemberService {
 	
 	public int updateMember(MemberVO vo);
 	
+	public MemberVO findMemberId(MemberVO vo);
+	
+	public MemberVO findMemberPass(MemberVO vo);
+	
+	public int makeTemporaryPassword(MemberVO vo);
+	
 }

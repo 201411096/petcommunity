@@ -22,7 +22,7 @@ public class SendMail {
 
 		String mail [] = new String [2];
 		try {
-			fr = new FileReader("d:/abc.txt");
+			fr = new FileReader("D:/mail.txt");
 			br = new BufferedReader(fr);
 			mail[0] = br.readLine();
 			mail[1] = br.readLine();

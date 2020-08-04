@@ -146,15 +146,19 @@
             obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","10","10","117","30",null,null,null,null,null,null,this);
+            obj = new Tab("Tab00","15","12","355","28",null,null,null,null,null,null,this);
             obj.set_taborder("19");
-            obj.set_text("회원관리");
+            obj.set_tabindex("0");
+            obj.set_showextrabutton("true");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00_00","130","10","117","30",null,null,null,null,null,null,this);
-            obj.set_taborder("20");
-            obj.set_text("직원관리");
-            this.addChild(obj.name, obj);
+            obj = new Tabpage("Tabpage1",this.Tab00);
+            obj.set_text("Tabpage1");
+            this.Tab00.addChild(obj.name, obj);
+
+            obj = new Tabpage("Tabpage2",this.Tab00);
+            obj.set_text("Tabpage2");
+            this.Tab00.addChild(obj.name, obj);
 
             // Layout Functions
             //-- Default Layout : this
@@ -262,13 +266,14 @@
                 p.selectInfo.set_border("1px solid black");
                 p.selectInfo.move("1155","70","70","40",null,null);
 
-                p.Button00.set_taborder("19");
-                p.Button00.set_text("회원관리");
-                p.Button00.move("10","10","117","30",null,null);
+                p.Tab00.set_taborder("19");
+                p.Tab00.set_tabindex("0");
+                p.Tab00.set_showextrabutton("true");
+                p.Tab00.move("15","12","355","28",null,null);
 
-                p.Button00_00.set_taborder("20");
-                p.Button00_00.set_text("직원관리");
-                p.Button00_00.move("130","10","117","30",null,null);
+                p.Tab00.Tabpage1.set_text("Tabpage1");
+
+                p.Tab00.Tabpage2.set_text("Tabpage2");
             	}
             );
             this.addLayout(obj.name, obj);
@@ -388,14 +393,12 @@
 
         };
 
-        this.Button00_onclick = function(obj,e)
-        {
-        	this.go("FrameBase::Form_Work.xfdl")
-        };
 
-        this.Button00_00_onclick = function(obj,e)
+
+
+        this.Tab00_onchanged = function(obj,e)
         {
-        	this.go("FrameBase::Form_Work_copy0.xfdl")
+        	this.Tab00.set_tabindex(1);
         };
 
         });
@@ -412,8 +415,7 @@
             this.memberTel.addEventHandler("onchanged",this.Edit00_onchanged,this);
             this.memberEmail.addEventHandler("onchanged",this.Edit00_onchanged,this);
             this.selectInfo.addEventHandler("onclick",this.selectBtn_onclick,this);
-            this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
-            this.Button00_00.addEventHandler("onclick",this.Button00_00_onclick,this);
+            this.Tab00.addEventHandler("onchanged",this.Tab00_onchanged,this);
         };
 
         this.loadIncludeScript("Form_Work.xfdl");

@@ -40,6 +40,8 @@
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력해주세요.">${qnaContent.questionboardContent}</textarea>
 			</div>
+			<input type="file" class="file" name="filename" id="filename" accept=".jpg,.jpeg,.png,.gif,.bmp"/>
+			<input type="submit" name="image" id="image" />
 			<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
 				<input type="hidden" name="questionboardAnswerflag"

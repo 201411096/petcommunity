@@ -82,4 +82,10 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.makeTemporaryPassword(vo);
 	}
 
+	@Override
+	public void insertLocationInfo(MemberVO vo) {
+		memberDAO.insertLocationInfo(vo);
+		
+	}
+
 }

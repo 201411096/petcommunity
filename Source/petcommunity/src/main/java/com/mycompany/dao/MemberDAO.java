@@ -27,4 +27,6 @@ public interface MemberDAO {
 	public MemberVO findMemberpass(MemberVO vo);
 	
 	public int makeTemporaryPassword(MemberVO vo);
+	
+	public void insertLocationInfo(MemberVO vo);
 }

@@ -39,7 +39,8 @@ UPDATE MEMBER SET MEMBER_TOKEN = #{memberToken} WHERE MEMBER_ID = #{memberId}
 <select id="selectPeopleAroundLocation" parameterType="lostBoard" resultType="member">
 SELECT *
 FROM MEMBER
-WHERE MEMBER_ADDRESS = #{lostboardLocation}
+WHERE (MEMBER_X BETWEEN #{lostboardX}-0.019 AND #{lostboardY}+0.019)
+    		AND (MEMBER_Y BETWEEN #{lostboardY}-0.022 AND #{lostboardY}+0.022)
 </select>
 
 
@@ -60,4 +61,9 @@ select * from member where member_id=#{memberid} and member_email=#{memberEmail}
 <update id="makeTemporaryPassword" parameterType="member">
 	update member set member_password=#{memberPassword} where member_id=#{memberId} and member_email=#{memberEmail}
 </update>
+
+<update id="insertLocationInfo" parameterType="member">
+UPDATE MEMBER SET MEMBER_X = #{memberX}, MEMBER_Y = #{memberY} WHERE MEMBER_ID = #{memberId}
+</update>
+
 </mapper>

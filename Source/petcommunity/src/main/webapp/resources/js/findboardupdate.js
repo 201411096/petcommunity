@@ -3,10 +3,10 @@ var longitude = -1;
 $(function() {
 	latitude = $('#findboardX').val(); 
 	longitude = $('#findboardY').val(); 
-//	kakaoMapAPI();
-	setTimeout(function(){
-		kakaoMapAPI(resultData);
-	}, 2000);
+	kakaoMapAPI();
+//	setTimeout(function(){
+//		kakaoMapAPI(resultData);
+//	}, 2000);
 	$('#findBoardWriteForm').on('submit',function(e){
 		e.preventDefault();
 		e.stopPropagation();

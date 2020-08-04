@@ -123,17 +123,19 @@ public class FindBoardController {
 				conn.setRequestProperty("Content-Type","application/json");
 				
 				JSONObject json = new JSONObject();
-				json.put("to",userDeviceIdKey.trim());
-				JSONObject info = new JSONObject();
-				info.put("title", title);   // Notification title
-				info.put("body", content); // Notification body
-				json.put("notification", info);
-				
-				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-				System.out.println(">" + json.toString());
-				wr.write(json.toString());
-				wr.flush();
-				conn.getInputStream();   
+				if(userDeviceIdKey != null) {
+					json.put("to",userDeviceIdKey.trim());
+					JSONObject info = new JSONObject();
+					info.put("title", title);   // Notification title
+					info.put("body", content); // Notification body
+					json.put("notification", info);
+					
+					OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+					System.out.println(">" + json.toString());
+					wr.write(json.toString());
+					wr.flush();
+					conn.getInputStream();   
+				}   
 				
 			}
 		}

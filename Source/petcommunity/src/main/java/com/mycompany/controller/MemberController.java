@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.python.bouncycastle.asn1.x509.qualified.TypeOfBiometricData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,21 +66,32 @@ public class MemberController {
 	public ModelAndView signin(MemberVO vo, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		ModelAndView mv = new ModelAndView();
-
+		System.out.println("모바일 환영" + vo.getMemberX());
+		System.out.println(vo.getMemberY());
+		System.out.println("id"+vo.getMemberId());
+		
+		memberService.insertLocationInfo(vo);
 		MemberVO result = memberService.signin(vo);
-		if (result != null) {
-			// ----------------------------------------------------------------
+		if(result != null) {
+			//----------------------------------------------------------------
 			// 모바일로 웹 접속 시 따른 token값 세션에 추가
-			// ----------------------------------------------------------------
+			//----------------------------------------------------------------
 			// 세션"deviceToken"에 저장해놓은 토큰 값을 "memberVO"세션 및 DB에 memberToken 값 넣기
-			String tokenCheck = (String) session.getAttribute("deviceToken");
-			if (tokenCheck != null) {
+				String tokenCheck = (String)session.getAttribute("deviceToken");
+				// 세션"memberX"와 "memberY"에 저장해 놓은 좌표 값을 "memberVO" 세션 및 DB에 입력
+				String memberX = (String)session.getAttribute("deviceLocationX");
+				String memberY = (String)session.getAttribute("deviceLocationY");
+			if(tokenCheck != null) {
 				result.setMemberToken(tokenCheck);
+				result.setMemberX(memberX);
+				result.setMemberY(memberY);
 				session.setAttribute("memberVO", result);
 				memberService.tokenInsert(result);
+//				// 모바일 로그인 시 위치좌표 DB에 입력 
+				memberService.insertLocationInfo(vo);
 			}
-			// ----------------------------------------------------------------
-			// ----------------------------------------------------------------
+			//----------------------------------------------------------------
+			//----------------------------------------------------------------
 			session.setAttribute("memberVO", result);
 			result.getMemberId();
 			mv.setViewName("main");
@@ -91,6 +103,11 @@ public class MemberController {
 			mv.setViewName("login");
 			return mv;
 		}
+	}
+
+	private char[] typeof(String memberY) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/*
@@ -114,11 +131,15 @@ public class MemberController {
 	 * 저장 후 index페이지로 이동.
 	 */
 	@RequestMapping(value = "/test_token.do")
-	public String pushAlarm(String tokenId, HttpServletRequest req) {
+	public String pushAlarm(String tokenId, String memberX, String memberY, HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		// 세션에 토큰 값 저장
 		session.setAttribute("deviceToken", tokenId);
+		session.setAttribute("deviceLocationX", memberX);
+		session.setAttribute("deviceLocationY", memberY);
 		System.out.println("토큰테스트" + tokenId);
+	    System.out.println("좌표테스트" + memberX);
+	    System.out.println("좌표테스트" + memberY);
 
 //	      ModelAndView mv = new ModelAndView();
 //	      mv.addObject("tokenId",tokenId);

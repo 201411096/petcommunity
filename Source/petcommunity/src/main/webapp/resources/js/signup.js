@@ -106,7 +106,28 @@ $(document).ready(function () {
 		alert("아이디와 비밀번호가 맞지 않습니다!")
 	}
 	
+	$(".findId").click(
+			function() {
+				window.open("findMemberId.do", "아이디/비밀번호 찾기",
+						"width=450,height=500,left=650,top=300")
+			});
 		
+	
+	$("#idBtn").click(function(){
+        $.ajax({
+                type:'post',
+                async:true,
+                url : 'findMember.do',
+                contentType :'application/x-www-form-urlencoded;charset=UTF-8',
+                data : "memberEmail="+ $("#memberEmail").val(),
+                success : function(resultData){
+                    
+                	alert(resultData);
+                }
+        
+        });
+	});
+	
 
 });
 

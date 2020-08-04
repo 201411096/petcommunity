@@ -159,6 +159,16 @@ public class MemberController {
 		
 		return "redirect:/mypageAnimal.do";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/findMember.do", produces = "application/text; charset=utf-8")
+	public String findMemberId(MemberVO vo) {
+		
+		System.out.println(vo.getMemberEmail());
+		
+		
+		return "성공";
+	}
 
 	
 }

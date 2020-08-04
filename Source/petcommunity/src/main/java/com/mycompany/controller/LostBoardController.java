@@ -99,6 +99,7 @@ public class LostBoardController {
 			// push알림 title, contents
 			String title = lostBoardVO.getLostboardTitle();
 			String content = lostBoardVO.getLostboardContent();
+			String link = "https://192.168.0.19:8443/petcommunity/getLostBoard.do?lostboardId="+lostBoardVO.getLostboardId();
 			// 푸시 알림 보내기
 			for (MemberVO i : memberVO) {
 				String userDeviceIdKey = i.getMemberToken();
@@ -126,6 +127,7 @@ public class LostBoardController {
 				JSONObject info = new JSONObject();
 				info.put("title", title);   // Notification title
 				info.put("body", content); // Notification body
+				info.put("link", link); // Notification link
 				json.put("notification", info);
 				
 				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());

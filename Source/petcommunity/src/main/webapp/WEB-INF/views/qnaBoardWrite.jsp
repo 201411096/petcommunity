@@ -42,6 +42,8 @@
 			</div>
 			<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
+				<input type="hidden" name="questionboardAnswerflag"
+				id="questionboardAnswerflag" value="0">
 				<span class="input-group-btn">
 					<button type="submit" class="btn btn-default" id='commitWrite'>작성완료</button>
 					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/cs.do">돌아가기</a>

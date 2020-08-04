@@ -1,5 +1,10 @@
-var str1 = 'abc';
-var str2 = str1.split(" ");
+var moment = require('moment');
+require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
 
-console.log(str2[0]);
-console.log(str2[1]);
+
+
+console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
+for(var i=0; i<1000000; i++){
+    console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
+}

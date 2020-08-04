@@ -12,6 +12,9 @@ public interface MemberService {
 	
 	public MemberVO signin(MemberVO vo);
 	
+	//좌표값 추가
+	public void insertLocationInfo(MemberVO vo);
+	
 	//token값 추가(MemberController)
 	public void tokenInsert(MemberVO vo);
 	

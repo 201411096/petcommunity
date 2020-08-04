@@ -66,5 +66,10 @@ public class MemberDAOImpl implements MemberDAO{
 		
 		return mybatis.update("member.makeTemporaryPassword",vo);
 	}
+	@Override
+	public void insertLocationInfo(MemberVO vo) {
+		mybatis.update("member.insertLocationInfo", vo);
+		
+	}
 
 }

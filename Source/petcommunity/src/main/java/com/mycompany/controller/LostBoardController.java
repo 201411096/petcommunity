@@ -119,6 +119,8 @@ public class LostBoardController {
 				conn.setRequestProperty("Authorization","key="+authKey);
 				conn.setRequestProperty("Content-Type","application/json");
 				
+				if(userDeviceIdKey != null) {
+					
 				JSONObject json = new JSONObject();
 				json.put("to",userDeviceIdKey.trim());
 				JSONObject info = new JSONObject();
@@ -131,6 +133,7 @@ public class LostBoardController {
 				wr.write(json.toString());
 				wr.flush();
 				conn.getInputStream();  
+				}
 			}
 		}
 		

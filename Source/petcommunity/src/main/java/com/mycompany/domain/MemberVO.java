@@ -11,8 +11,21 @@ public class MemberVO {
 	private String memberBirthday;
 	private String memberFlag;
 	private String memberToken;
+	private String memberX;
+	private String memberY;
 	
-	
+	public String getMemberX() {
+		return memberX;
+	}
+	public void setMemberX(String memberX) {
+		this.memberX = memberX;
+	}
+	public String getMemberY() {
+		return memberY;
+	}
+	public void setMemberY(String memberY) {
+		this.memberY = memberY;
+	}
 	public String getMemberToken() {
 		return memberToken;
 	}

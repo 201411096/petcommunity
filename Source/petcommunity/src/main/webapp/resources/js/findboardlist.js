@@ -239,7 +239,10 @@ function getDataWithoutPaging(){
 		},
 		dataType : 'json',
 		success : function(resultData){
-			kakaoMapAPI(resultData);
+			setTimeout(function(){
+				kakaoMapAPI(resultData);
+			}, 2000);
+			//kakaoMapAPI(resultData);
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

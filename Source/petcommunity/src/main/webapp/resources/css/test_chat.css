@@ -12,15 +12,12 @@ div.chatContainer{
 	margin : auto;
 }
 div.messages{
-	background-color: #ffffff;
+	background-color: #eeffff;
 	width : auto;
 	height: 600px;
 	overflow : auto;
 }
-form.messageForm > form-group > input, form.messageForm > form-group > button{
-	display : inline-block;
-	background-color: #ff0000;
-}
+
 
 
 

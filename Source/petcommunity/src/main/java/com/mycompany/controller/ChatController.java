@@ -20,6 +20,13 @@ public class ChatController {
 		result.put("memberInfo", session.getAttribute("memberVO"));
 		return result;
 	}
+	@RequestMapping(value = "/test_chat.do")
+	public ModelAndView getMemberInform(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("memberInfo", session.getAttribute("memberVO"));
+		mv.setViewName("test_chat");
+		return mv;
+	}
 	
 	@RequestMapping(value = "/test_chatWithOptions.do")
 	public ModelAndView getMemberInformation(HttpSession session) {

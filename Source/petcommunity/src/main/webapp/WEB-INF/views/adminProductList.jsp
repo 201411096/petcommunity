@@ -21,13 +21,13 @@
 		<section id="container">
 
 			<ul class="tabs">
-				<li class="tab-link" data-tab="tab-1">판매 내역</li>
+				<li class="tab-link current" data-tab="tab-1">판매 내역</li>
 				<li class="tab-link" data-tab="tab-2">판매 통계</li>
-				<li class="tab-link current" data-tab="tab-3">관리자 페이지</li>
+				<li class="tab-link3" data-tab="tab-3">관리자 페이지</li>
 			</ul>
 			<hr />
 
-			<div id="tab-3" class="tab-content current">
+			<div id="tab-3" class="tab-content">
 				<div class="search row">
 					<div class="col-xs-10 col-sm-10">
 						<div class="input-group">	
@@ -67,16 +67,19 @@
 							
 								</tbody>
 							</table>
+						
+
+						<div class="col-md-offset-3" id="pagination_container">
+							<ul id="pagination-demo" class="pagination-lg"></ul>
+						</div>
 						</form>
 						</div>	
-								<div class="col-md-offset-3" id="pagination_container">
-									<ul id="pagination-demo" class="pagination-lg"></ul>
-								</div>
-							<div id="tab-1" class="tab-content"></div>
-							<div id="tab-2" class="tab-content"></div>
+						</section>
+					</div>
+					
 							
 						
-		</section>
-	</div>
+	
+
 </body>
 </html>

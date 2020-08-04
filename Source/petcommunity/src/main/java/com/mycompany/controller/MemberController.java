@@ -159,7 +159,7 @@ public class MemberController {
 			result = "가입 정보가 없습니다";
 
 		} else {
-			SendMail.sendMail(vo.getMemberEmail(), "okidoghere 아이디찾기 결과입니다.",vo.getMemberName() + "님의 ID는" + vo.getMemberId() + "입니다");
+			SendMail.sendMail(rs.getMemberEmail(), "okidoghere 아이디찾기 결과입니다.",rs.getMemberName() + "님의 ID는" + rs.getMemberId() + "입니다");
 		}
 
 		return result;

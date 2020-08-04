@@ -11,11 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(QUESTIONBOARD_ID, QUESTIONBOARD_GROUP_ID,
 		QUESTIONBOARD_TITLE,
 		QUESTIONBOARD_CONTENT, QUESTIONBOARD_UPLOADTIME,
-		QUESTIONBOARD_READCOUNT, MEMBER_ID,QUESTIONBOARD_ANSWERFLAG)
+		QUESTIONBOARD_READCOUNT, MEMBER_ID, QUESTIONBOARD_ANSWERFLAG)
 		VALUES
 		(QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTIONBOARD_GROUP_ID_SEQ.NEXTVAL,
 		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
-		#{questionboardReadcount}+0, #{memberId},questionboardAnswerflag)
+		#{questionboardReadcount}+0, #{memberId}, #{questionboardAnswerflag})
 	</insert>
 
 	<select id="getQnaBoardContent" parameterType="qna"
@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE
 		FROM QUESTIONBOARD
 		WHERE QUESTIONBOARD_ID =
-		#{questionboardId}
+		#{questionboardId} OR QUESTIONBOARD_GROUP_ID =#{questionboardGroupId}
 	</delete>
 
 	<select id="selectFindBoardWithPaging" parameterType="hashmap"
@@ -129,10 +129,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="getMemberflag" parameterType="map" resultType="map">
 	SELECT m.member_flag
-	FROM QUESTOIONBOARD q, MEMBER m
+	FROM QUESTIONBOARD q, MEMBER m
 	WHERE q.member_id=m.member_id
 	
 	</select>
+	
+	<select id="selectQuestionGroupId" parameterType="qna" resultType="qna">
+		SELECT QUESTIONBOARD_GROUP_ID 
+		FROM QUESTIONBOARD
+		WHERE member_id=#{memberId}
+	</select>
+	
+	<delete id="deleteQnaBoardbyGroupId">
+		DELETE
+		FROM QUESTIONBOARD
+		WHERE QUESTIONBOARD_GROUP_ID = #{questionboardGroupId}
+	</delete>
 
 
 

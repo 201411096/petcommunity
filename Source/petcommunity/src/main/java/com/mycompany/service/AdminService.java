@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.mycompany.domain.BuylistviewVO;
 import com.mycompany.domain.MemberVO;
+import com.mycompany.domain.QnaVO;
 
 public interface AdminService  {
 

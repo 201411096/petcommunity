@@ -54,7 +54,6 @@
 
 
 	<!-- Hero section -->
-	<div id="bodyBackgroundColor">
 	<section class="hero-section">
 		<!--       <figure><img id="dialogFlow" src="./resources/bootstrap_template/template_01/img/gallery/noun_364.png" alt="" style="width: 10%"></figure> -->
 		<div class="hero-slider owl-carousel">
@@ -140,103 +139,62 @@
 
 	<!-- Blog section -->
 	<section class="blog-section">
-	<div class="blog-text-title"><h2>오늘 많이 본 게시글</h2></div>
-	
-		<div class="sp-container-form">
-		
+		<div class="sp-container">
 			<div class="blog-title-col">
-			
+				<h2>오늘 많이본 글</h2>
+			</div>
+			<div class="blog-content-col">
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/01.png"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-3.png"
 							alt="">
 					</div>
 					<div class="blog-content">
 						<span class="blog-cata-title">
 							<h4>반려동물 실종 신고</h4> <span>Find Board List</span>
 						</span>
-						<c:forEach items="${lostBoardvo}" var="item">
-						<a id="link" href="/petcommunity/getLostBoard.do?lostboardId=${item.lostboardId}">${item.lostboardTitle}</a> <br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/lostboardlist.do" class="site-btn">더보기 <img
+						<p>위치기반의 알림서비스 : 지정된 위치 목격글 업로드시 알림</p>
+						<a href="/petcommunity/find.do" class="site-btn">이동하기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
-							</div>
 					</div>
 				</div>
-				
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/03.png"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-1.png"
 							alt="">
 					</div>
 					<div class="blog-content">
 						<span class="blog-cata-title">
-							<h4>반려동물 발견</h4> <span>Find Board List</span>
+							<h4>동물병원 찾기</h4> <span>Find hospital</span>
 						</span>
-						<c:forEach items="${FindBoardvo}" var="item">
-						<a id="link" href="/petcommunity/getFindBoard.do?findboardId=${item.findboardId}">${item.findboardTitle} </a><br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/findboardlist.do" class="site-btn">더보기 <img
+						<p>전국 동물병원 정보 다모여~!</p>
+						<a href="/petcommunity/hospital.do" class="site-btn">이동하기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
-							</div>
 					</div>
 				</div>
-				
-			</div>
-			
-			<div class="blog-content-col">
 				<div class="blog-item">
 					<div class="blog-thumb">
 						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/02.png"
-							alt="">
-					</div>
-					<div class="blog-content">
-						<span class="blog-cata-title">
-							<h4>고객문의</h4> <span>Qna Board List</span>
-						</span>
-						<c:forEach items="${Qnavo}" var="item">
-						<a id="link" href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">${item.questionboardTitle}</a><br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/cs.do" class="site-btn">더보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-							</div>
-					</div>
-				</div>
-				
-				<div class="blog-item">
-					<div class="blog-thumb">
-						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/04.png"
+							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/img1-2.png"
 							alt="">
 					</div>
 					<div class="blog-content">
 						<span class="blog-cata-title">
 							<h4>커뮤니티</h4> <span>COMMUNITY BOARD</span>
 						</span>
-						<c:forEach items="${CommunityBoardvo}" var="item">
-						<a id="link" href="/petcommunity/getBoardContent.do?communityboardId=${item.communityboardId}">${item.communityboardTitle}</a><br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/communityBoardList.do" class="site-btn">더보기 <img
+						<p>우리동네 갱얼쥐들 다모여라~</p>
+						<a href="/petcommunity/community.do" class="site-btn">이동하기 <img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 							alt=""></a>
-							</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	</div>
-	
 	<!-- Blog section end -->
 	<!--    <!-- Footer section  -->
 	<%@include file="../views/footer.jsp"%>

@@ -16,6 +16,14 @@ $('.tab-link3').on('click', function() {
 
 });
 
+
+$("#adminpop").click(function(){
+	window.open("adminMember.do", "계정 관리",
+	"width=1250,height=680,left=300,top=150");
+});
+
+
+
 });
 
 //var curPage;

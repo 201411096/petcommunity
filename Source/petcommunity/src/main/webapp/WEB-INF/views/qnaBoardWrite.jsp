@@ -25,7 +25,7 @@
 		</div>
 		<br />
 		<br />
-		<form action="writeIntoQna.do" method='get' name="commitWrite">
+		<form action="writeIntoQna.do" class="write-form" method='post' name="commitWrite" enctype="multipart/form-data">
 
 			<!-- 글쓰기 -->
 			<br />
@@ -40,8 +40,9 @@
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력해주세요.">${qnaContent.questionboardContent}</textarea>
 			</div>
-			<input type="file" class="file" name="filename" id="filename" accept=".jpg,.jpeg,.png,.gif,.bmp"/>
-			<input type="submit" name="image" id="image" />
+			<ul class="list-group" id="file-list">
+					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>
+				</ul>
 			<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
 				<input type="hidden" name="questionboardAnswerflag"

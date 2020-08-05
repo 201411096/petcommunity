@@ -17,12 +17,11 @@
 <a href="/petcommunity/findboardlist.do">findboardlist 페이지</a><br>
 <a href="/petcommunity/lostboardlist.do">lostboardlist 페이지</a><br>
 <a href="/petcommunity/sample_graph.do">그래프 샘플 페이지</a><br>
-
 <a href="/petcommunity/test_graph.do">그래프 테스트 페이지</a><br>
-
-
-<a href="/petcommunity/test_chat.do">테스트 페이지</a><br>
+<a href="/petcommunity/chat.do">테스트 페이지</a><br>
 <a href="/petcommunity/test_chatWithOptions.do">테스트 채팅 페이지</a><br>
 
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 </html>

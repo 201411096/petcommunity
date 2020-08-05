@@ -68,8 +68,8 @@ public class QnaServiceImpl implements QnaService{
 	}
 
 	@Override
-	public List<QnaVO> selectFindBoardWithPaging(Map map) {
-		return qnaDAO.selectFindBoardWithPaging(map);
+	public List<QnaVO> selectQnaBoardWithPaging(Map map) {
+		return qnaDAO.selectQnaBoardWithPaging(map);
 	}
 
 	@Override

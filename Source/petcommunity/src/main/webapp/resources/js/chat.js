@@ -5,14 +5,14 @@ var curRoomName;
 var memberId;
 
 setMemberValue();			// 멤버 아이디값 지정
-setCurRoomName(curRoomName);		// 현재 입장할 방 세팅
+setCurRoomName();		// 현재 입장할 방 세팅
 selectRoom(memberId); // 방에 참가
-listenAndAppendChatMessage('.messages', '<li>')
+listenAndAppendChatMessage('.messages', '<li class= "list-group-item">')
 formSetting();
 documentPreventKeyDown();
 console.log(memberId);
 
-$('#option1').on('change', function(){
+$('#chatLocation').on('change', function(){
 	selectRoom(memberId);
 });
 function formSetting(){
@@ -56,8 +56,9 @@ function listenAndAppendChatMessage(targetElement, componentElement){
 	});	
 }
 
-function setCurRoomName(curRoomName){ // 현재 방 설정
-	curRoomName = $('#option1').val();
+function setCurRoomName(){ // 현재 방 설정
+	curRoomName = $('#chatLocation').val();
+	console.log('curRoomName ... ' + curRoomName);
 }
 
 function setMemberValue(){

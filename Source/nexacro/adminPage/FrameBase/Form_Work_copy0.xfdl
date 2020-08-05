@@ -11,11 +11,11 @@
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="98"/>
-                <Column size="133"/>
-                <Column size="138"/>
-                <Column size="139"/>
-                <Column size="160"/>
+                <Column size="125"/>
+                <Column size="134"/>
+                <Column size="131"/>
+                <Column size="126"/>
+                <Column size="151"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -29,11 +29,11 @@
                 <Cell col="4" text="연락처"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:memberId"/>
-                <Cell col="1" text="bind:memberName"/>
-                <Cell col="2" text="bind:memberAddress"/>
-                <Cell col="3" text="bind:memberTel"/>
-                <Cell col="4"/>
+                <Cell text="bind:managerId"/>
+                <Cell col="1" text="bind:managerDept"/>
+                <Cell col="2" text="bind:managerHireDate"/>
+                <Cell col="3" text="bind:managerName"/>
+                <Cell col="4" text="bind:managerTel"/>
               </Band>
             </Format>
           </Formats>
@@ -41,15 +41,14 @@
         <Static id="Static00" taborder="1" text="아이디" left="777" top="240" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
         <Static id="Static02" taborder="2" text="부서명" left="780" top="340" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
         <Static id="Static03" taborder="3" text="입사일" left="780" top="450" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Button id="managerDelete" taborder="5" text="삭제" left="1130" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Button id="managerDelete" taborder="5" text="삭제" left="1010" top="560" width="120" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
         <Edit id="managerId" taborder="4" left="870" top="236" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
         <Button id="Button00" taborder="8" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
         <Button id="Button00_00" taborder="9" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
-        <Button id="managerSelect" taborder="10" text="조회" left="745" top="60" width="115" height="60" onclick="managerSelectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Button id="managerUpdate" taborder="11" text="수정" left="1045" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Button id="managerInsert" taborder="12" text="등록" left="960" top="580" width="70" height="40" onclick="managerInsertBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Combo id="managerDept" taborder="13" text="Combo00" left="869" top="343" width="311" height="53" innerdataset="dept" codecolumn="code" datacolumn="data"/>
-        <Calendar id="managerHireDate" taborder="14" left="870" top="446" width="312" height="52"/>
+        <Button id="managerSelect" taborder="10" text="조회" left="745" top="60" width="115" height="60" onclick="managerSelectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black" visible="true" enableevent="true"/>
+        <Button id="managerInsert" taborder="11" text="등록" left="840" top="560" width="120" height="40" onclick="managerInsertBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Combo id="managerDept" taborder="12" text="Combo00" left="869" top="343" width="311" height="53" innerdataset="dept" codecolumn="code" datacolumn="data"/>
+        <Calendar id="managerHireDate" taborder="13" left="870" top="446" width="312" height="52"/>
       </Layout>
       <Layout name="Layout0" width="1280" height="720" mobileorientation="landscape"/>
     </Layouts>
@@ -65,9 +64,59 @@ this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.go("FrameBase::Form_Work_copy0.xfdl")
 };
 
+
+//매니저 부서 등록하기
+this.managerInsertBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+	alert("수정/등록 되었습니다");
+	var Id = encodeURI(this.managerId.value,"UTF-8");
+	var Dept = this.managerDept.text;
+	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
+	
+ 	this.transaction(
+ 			"urlTest03",	
+			"strURL::managerInsert.do?id="+Id+"&dept="+Dept+"&hireDate="+managerHire,
+ 			"",	    
+ 			"manager=ar",  
+ 			"",		
+ 			"fn_callback"
+ 		);
+		
+ 	this.fn_callback = function(svcID, errCD, errMSG){
+ 		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+ 		if(ret=="error") 
+ 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+	};
+	
+};
+
+
+
+// manager 삭제
+this.deleteBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("삭제 되었습니다");
+	var Id = encodeURI(this.managerId.value,"UTF-8");
+	
+ 	this.transaction(
+ 			"urlTest03",	
+			"strURL::managerdelete.do?id="+Id,
+ 			"",	    
+ 			"manager=ar",  
+ 			"",		
+ 			"fn_callback"
+ 		);
+		
+ 	this.fn_callback = function(svcID, errCD, errMSG){
+ 		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+ 		if(ret=="error") 
+ 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+	};
+};
+
 // 매니저 조회버튼
 this.managerSelectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+
 	this.transaction(
  			"urlTest03",	
 			"strURL::managerselect.do",
@@ -82,29 +131,7 @@ this.managerSelectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 		if(ret=="error") 
 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
 	}
-};
-
-//매니저 부서 등록하기
-this.managerInsertBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
-	alert("등록");
-	var Id = encodeURI(this.managerId.value,"UTF-8");
-	var Dept = this.managerDept.text;
-	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
-	
- 	this.transaction(
- 			"urlTest05",	
-			"strURL::managerInsert.do?id="+Id+"&dept="+Dept+"&hireDate="+managerHire,
- 			"",	    
- 			"manager=ar",  
- 			"",		
- 			"fn_callback"
- 		);
-		
- 	this.fn_callback = function(svcID, errCD, errMSG){
- 		let ret = (errMSG=="FAILED" || svcID != "urlTest05") ? "error" : "success";
- 		if(ret=="error") 
- 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-	};
+	this.managerSelect.set_enable(false);
 	
 };
 ]]></Script>
@@ -175,6 +202,20 @@ this.managerInsertBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="manager00">
+        <ColumnInfo>
+          <Column id="managerId" type="STRING" size="256"/>
+          <Column id="managerDept" type="STRING" size="256"/>
+          <Column id="managerHireDate" type="STRING" size="256"/>
+          <Column id="managerName" type="STRING" size="256"/>
+          <Column id="managerTel" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="managerId" propid="value" datasetid="manager" columnid="managerId"/>
+      <BindItem id="item2" compid="managerHireDate" propid="value" datasetid="manager" columnid="managerHireDate"/>
+      <BindItem id="item3" compid="managerDept" propid="text" datasetid="manager" columnid="managerDept"/>
+    </Bind>
   </Form>
 </FDL>

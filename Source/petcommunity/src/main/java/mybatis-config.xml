@@ -46,6 +46,9 @@
 		
 		<typeAlias alias="message" type="com.mycompany.domain.MessageVO"></typeAlias>
 
+		<typeAlias alias="manager" type="com.mycompany.domain.ManagerVO"></typeAlias>
+		
+
    </typeAliases>
    
    

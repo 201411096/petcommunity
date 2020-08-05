@@ -90,6 +90,17 @@
 				</form>
 			</div>
 		</div>
+<!-- 		<br> -->
+<!-- 		<div> -->
+<!-- 			<div class="comment-container"> -->
+<!-- 			</div> -->
+<!-- 			<div class="input-group"> -->
+<!-- 				<textarea class="form-control"></textarea>   -->
+<!-- 				<span class="input-group-btn" id="commentBtn"> -->
+<!-- 					<button class="btn btn-primary btn-lg">작성</button> -->
+<!-- 				</span> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 	</div>
 
 	<script type="text/javascript"

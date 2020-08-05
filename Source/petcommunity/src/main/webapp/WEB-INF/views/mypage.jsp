@@ -36,6 +36,7 @@
 			<hr>
 
 			<div id="tab-1" class="tab-content current">
+			<div class="memberCountCon"></div>
 				<c:choose>
 					<c:when test="${empty animalList}">
 						<h4>현재 등록 되어있는 반려동물이 없습니다</h4>

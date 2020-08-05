@@ -135,6 +135,24 @@ $(document)
 
 					});
 					
+					 var memberCountConTxt= 296842;
+					  
+					  $({ val : 0 }).animate({ val : memberCountConTxt }, {
+					   duration: 2000,
+					  step: function() {
+					    var num = numberWithCommas(Math.floor(this.val));
+					    $(".memberCountCon").text(num);
+					  },
+					  complete: function() {
+					    var num = numberWithCommas(Math.floor(this.val));
+					    $(".memberCountCon").text(num);
+					  }
+					});
+
+					function numberWithCommas(x) {
+					    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+					}
+					
 					$('#memberUpdate-form input[type=submit]').click(function(){
 						var re = /^[a-zA-Z0-9]{4,12}$/;
 						var email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -180,10 +198,28 @@ $(document)
 				        	alert("수정되었습니다! 마이페이지로 이동합니다.")
 				            $('#memberUpdate-form').submit();
 				        }
-				    });
+				    }); 
 					
-					
-					$('#register-form input[type=submit]').click(
+					//============================================================================
+					var memberCountConTxt= 60000;
+				    
+				    $({ val : 0 }).animate({ val : memberCountConTxt }, {duration: 2000, step: function() {
+				      var num = numberWithCommas(Math.floor(this.val));
+				      $(".memberCountCon").text(num);
+				    },
+				    complete: function() {
+				      var num = numberWithCommas(Math.floor(this.val));
+				      $(".memberCountCon").text(num);
+				    }
+				  });
+
+				  function numberWithCommas(x) {
+				      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				  }
+				  
+				  //=======================================================================================
+				  
+				  $('#register-form input[type=submit]').click(
 							function() {
 
 								var submit = false;

@@ -129,7 +129,7 @@ create table findboardcomment(
     constraint findboardcomment_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE,
     constraint findboardcomment_fk_2 foreign key(findboard_id) references findboard(findboard_id) ON DELETE CASCADE
 );
-drop table findboardcomment;
+--drop table findboardcomment;
 create table lostboardcomment(
     lostboardcomment_id number(20),
     lostboardcomment_content varchar2(512),
@@ -140,7 +140,7 @@ create table lostboardcomment(
     constraint lostboardcomment_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE,
     constraint lostboardcomment_fk_2 foreign key(lostboard_id) references lostboard(lostboard_id) ON DELETE CASCADE
 );
-drop table lostboardcomment;
+--drop table lostboardcomment;
 
 CREATE TABLE MESSAGE(
     MESSAGE_CONTENTS VARCHAR2(2000),
@@ -149,7 +149,7 @@ CREATE TABLE MESSAGE(
     MESSAGE_sender VARCHAR2(30),
     MESSAGE_SENDTIME DATE
 );
-drop table messege;
+--drop table message;
 create table findhospital(
    findhospital_id number(20),
    findhospital_name varchar2(200),

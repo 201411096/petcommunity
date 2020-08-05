@@ -141,6 +141,15 @@ create table lostboardcomment(
     constraint lostboardcomment_fk_2 foreign key(lostboard_id) references lostboard(lostboard_id) ON DELETE CASCADE
 );
 drop table lostboardcomment;
+
+CREATE TABLE MESSAGE(
+    MESSAGE_CONTENTS VARCHAR2(2000),
+    MESSAGE_target1 VARCHAR2(30),
+    MESSAGE_target2 VARCHAR2(30),
+    MESSAGE_sender VARCHAR2(30),
+    MESSAGE_SENDTIME DATE
+);
+drop table messege;
 create table findhospital(
    findhospital_id number(20),
    findhospital_name varchar2(200),

@@ -531,6 +531,6 @@ function openChatWindow(){
 	var TopPosition=(screen.height-h)/2;
 	console.log();
 	$('#chatLink').on('click', function(){
-		window.open("/petcommunity/test_chat.do", "_blank", "width="+w+", height="+h+", top="+TopPosition+", left="+LeftPosition+", scrollbars=no");
+		window.open("/petcommunity/chat.do", "_blank", "width="+w+", height="+h+", top="+TopPosition+", left="+LeftPosition+", scrollbars=no");
 	});
 }

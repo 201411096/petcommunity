@@ -1,1 +1,6 @@
-var arr1 = ['cde', 'bcd', 'abc'];
+var ip = require("ip");
+
+console.dir ( ip.address() ); 
+
+
+

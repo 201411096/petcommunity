@@ -43,7 +43,9 @@
 				<td id="content">${qnaContent.questionboardReadcount}</td>
 			</tr>
 			<tr>
-				<td colspan="2" id="content-content">${qnaContent.questionboardContent}
+				<td colspan="2" id="content-content">
+				<img alt="없음" src="${pageContext.request.contextPath}/resources/imgs/qnaboard/${qnaContent.questionboardId}/${file.name}" />
+				${qnaContent.questionboardContent}
 					<input type="hidden" name="questionboardGroupId"
 					id="questionboardGroupId"
 					value="${qnaContent.questionboardGroupId}" />

@@ -1,5 +1,6 @@
 package com.mycompany.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,12 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
-import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.domain.QnaVO;
-import com.mycompany.service.MemberService;
 import com.mycompany.service.QnaService;
 import com.mycompany.util.FileUpload;
 
@@ -68,16 +66,21 @@ public class QnaController {
     * 함수 내용 : 로그인의 경우 아이디 세팅, 로그인이 안 되어 있는 경우 메인페이지로 이동
     */
 
-	@RequestMapping(value = "/writeIntoQna.do", produces = "application/text; charset=utf-8")
-	public String insertQnaBoard(QnaVO qnavo, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest) {
+	@RequestMapping(value = "/writeIntoQna.do", method=RequestMethod.POST, produces = "application/text; charset=utf-8")
+	public String insertQnaBoard(QnaVO qnavo, HttpSession session, HttpServletRequest request, MultipartHttpServletRequest mtfRequest) throws IOException{
 		ModelAndView mv = new ModelAndView();
+		
+		qnavo.setMemberId(((MemberVO)session.getAttribute("memberVO")).getMemberId());
+		qnaService.insertQnaBoard(qnavo);
+		System.out.println("write확인 :"+qnavo.getQuestionboardId());
 		
 		FileUpload.makeDirectory(request.getSession().getServletContext().getRealPath("resources/imgs") + "/qnaboard/");
 		FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")
-				+ "/qnaboard/" + qnavo.getMemberId() + "/");
+				+ "/qnaboard/" + qnavo.getQuestionboardId() + "/");
 		
 		mv.setViewName("qnaBoardWrite");
-		qnaService.insertQnaBoard(qnavo);
+		
+		System.out.println("write확인 :"+qnavo.getQuestionboardId());
 		return "redirect:/cs.do";
 	}
 

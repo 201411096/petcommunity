@@ -44,6 +44,8 @@
 		
 		<typeAlias alias="adminProduct" type="com.mycompany.domain.ProductVO"></typeAlias>
 		
+		<typeAlias alias="manager" type="com.mycompany.domain.ManagerVO"></typeAlias>
+		
    </typeAliases>
    
    

@@ -129,7 +129,7 @@ create table findboardcomment(
     constraint findboardcomment_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE,
     constraint findboardcomment_fk_2 foreign key(findboard_id) references findboard(findboard_id) ON DELETE CASCADE
 );
-
+drop table findboardcomment;
 create table lostboardcomment(
     lostboardcomment_id number(20),
     lostboardcomment_content varchar2(512),
@@ -140,7 +140,7 @@ create table lostboardcomment(
     constraint lostboardcomment_fk_1 foreign key(member_id) references member(member_id) ON DELETE CASCADE,
     constraint lostboardcomment_fk_2 foreign key(lostboard_id) references lostboard(lostboard_id) ON DELETE CASCADE
 );
-
+drop table lostboardcomment;
 create table findhospital(
    findhospital_id number(20),
    findhospital_name varchar2(200),
@@ -232,12 +232,12 @@ create sequence findboardcomment_id_seq
 start with 10000
 maxvalue 100000
 cycle;
-
+drop sequence findboardcomment_id_seq;
 create sequence lostboardcomment_id_seq
 start with 10000
 maxvalue 100000
 cycle;
-
+drop sequence lostboardcomment_id_seq;
 create sequence communityboard_id_seq
 start with 10000
 maxvalue 100000

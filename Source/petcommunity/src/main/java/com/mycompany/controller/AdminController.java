@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.BuylistviewVO;
+import com.mycompany.domain.ManagerVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.QnaVO;
 import com.mycompany.service.AdminService;
@@ -169,29 +170,115 @@ public class AdminController {
 
 	}
 
-	/*
-	 * @RequestMapping(value="/managerselect.do") public ModelAndView
-	 * managerSelect() { List<MemberVO> list = adminService.managerSelect();
-	 * //---------------------------------------- //DB에서 받아온 값을 넥사크로로 바인딩할 수 있도록 처리
-	 * DataSet ds = new DataSet("ar"); ds.addColumn("memberId",
-	 * DataTypes.STRING,100); ds.addColumn("memberName", DataTypes.STRING,100);
-	 * ds.addColumn("memberAddress", DataTypes.STRING,100);
-	 * ds.addColumn("memberTel", DataTypes.STRING,100); ds.addColumn("memberEmail",
-	 * DataTypes.STRING,100);
-	 * 
-	 * for(MemberVO vo: list) { int row = ds.newRow(); ds.set(row, "memberId",
-	 * vo.getMemberId()); ds.set(row, "memberName", vo.getMemberName()); ds.set(row,
-	 * "memberAddress", vo.getMemberAddress()); ds.set(row, "memberTel",
-	 * vo.getMemberTel()); ds.set(row, "memberEmail", vo.getMemberEmail()); }
-	 * 
-	 * ModelAndView mv = new ModelAndView(); mv.addObject("ds",ds);
-	 * mv.setViewName("all"); return mv; }
-	 */
+	
+	@RequestMapping(value = "/managerselect.do")
+	public ModelAndView managerSelect() {
+		List<ManagerVO> list = adminService.managerSelect();
 
-	@RequestMapping(value = "/managerInsert.do")
-	public void managerInsert(String id,String dept,String hireDate,HttpServletRequest request) {
-		
-		System.out.println(id+dept+hireDate);
+		DataSet ds = new DataSet("ar");
+		ds.addColumn("managerId", DataTypes.STRING, 100);
+		ds.addColumn("managerDept", DataTypes.STRING, 100);
+		ds.addColumn("managerHireDate", DataTypes.STRING, 100);
+		ds.addColumn("managerName", DataTypes.STRING, 100);
+		ds.addColumn("managerTel", DataTypes.STRING, 100);
+
+		for (ManagerVO vo : list) {
+			int row = ds.newRow();
+			ds.set(row, "managerId", vo.getMemberId());
+			ds.set(row, "managerDept", vo.getManagerDept());
+			ds.set(row, "managerHireDate", vo.getManagerHiredate());
+			ds.set(row, "managerName", vo.getMemberName());
+			ds.set(row, "managerTel", vo.getMemberTel());
+		}
+
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("ds", ds);
+		mv.setViewName("all");
+		return mv;
 	}
 
+	
+	@RequestMapping(value = "/managerInsert.do")
+	public ModelAndView managerInsert(String id, String dept, String hireDate, HttpServletRequest request) {
+		
+		
+			System.out.println("member"+id);
+			HashMap map = new HashMap();
+			map.put("memberId", id);
+			map.put("dept", dept);
+			map.put("hiredate", hireDate);
+
+			List<ManagerVO> result = adminService.checkId(id);		
+			System.out.println("결과"+result);
+			if (result.size() == 0 ) {
+				adminService.managerInsert(map);
+
+			} else{
+				adminService.managerupdate(map);
+			}
+		
+
+			List<ManagerVO> list = adminService.managerSelect();
+			// ---------------------------------------- //DB에서 받아온 값을 넥사크로로 바인딩할 수 있도록 처리
+			DataSet ds = new DataSet("ar");
+			ds.addColumn("managerId", DataTypes.STRING, 100);
+			ds.addColumn("managerDept", DataTypes.STRING, 100);
+			ds.addColumn("managerHireDate", DataTypes.STRING, 100);
+			ds.addColumn("managerName", DataTypes.STRING, 100);
+			ds.addColumn("managerTel", DataTypes.STRING, 100);
+
+			for (ManagerVO vo : list) {
+
+				int row = ds.newRow();
+				ds.set(row, "managerId", vo.getMemberId());
+				ds.set(row, "managerDept", vo.getManagerDept());
+				ds.set(row, "managerHireDate", vo.getManagerHiredate());
+				ds.set(row, "managerName", vo.getMemberName());
+				ds.set(row, "managerTel", vo.getMemberTel());
+			}
+
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("ds", ds);
+			mv.setViewName("all");
+			return mv;
+
+		
+	}
+
+	
+	@RequestMapping(value = "/managerdelete.do")
+	public ModelAndView managerdelete(String id) {
+
+		try {
+			 adminService.managerDelete(id);
+
+		} finally {
+
+			List<ManagerVO> list = adminService.managerSelect();
+			// ---------------------------------------- //DB에서 받아온 값을 넥사크로로 바인딩할 수 있도록 처리
+			DataSet ds = new DataSet("ar");
+			ds.addColumn("managerId", DataTypes.STRING, 100);
+			ds.addColumn("managerDept", DataTypes.STRING, 100);
+			ds.addColumn("managerHireDate", DataTypes.STRING, 100);
+			ds.addColumn("managerName", DataTypes.STRING, 100);
+			ds.addColumn("managerTel", DataTypes.STRING, 100);
+
+			for (ManagerVO vo : list) {
+
+				int row = ds.newRow();
+				ds.set(row, "managerId", vo.getMemberId());
+				ds.set(row, "managerDept", vo.getManagerDept());
+				ds.set(row, "managerHireDate", vo.getManagerHiredate());
+				ds.set(row, "managerName", vo.getMemberName());
+				ds.set(row, "managerTel", vo.getMemberTel());
+			}
+
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("ds", ds);
+			mv.setViewName("all");
+			return mv;
+
+		}
+
+	}
 }

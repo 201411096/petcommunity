@@ -1,9 +1,11 @@
 package com.mycompany.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.mycompany.domain.BuylistviewVO;
+import com.mycompany.domain.ManagerVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.QnaVO;
 
@@ -18,7 +20,11 @@ public interface AdminService  {
 	public List<MemberVO> getMemberSelect(Map map);
 
 	public int deleteInfo(String memberId);
-
+	public int managerInsert(HashMap map);
+	public List<ManagerVO> managerSelect();
+	public int managerupdate(HashMap map);
+	public List<ManagerVO> checkId(String id);
+	public void managerDelete(String id);
 	
 
 

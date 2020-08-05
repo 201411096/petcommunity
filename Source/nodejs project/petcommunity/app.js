@@ -19,7 +19,6 @@ var app = https.createServer(options, (req, res) => {
 });
 
 var io = require('socket.io')(app);
-
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('disconnect', function(){
@@ -38,14 +37,12 @@ io.on('connection', function(socket){
       socket.join(roomInfo.prev);
       io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }else{
-      console.log('-----------')
-      console.log(roomInfo.prev);
-      console.log(roomInfo.cur);
       io.to(roomInfo.prev).emit('chat message', roomInfo.memberId+"님이 퇴장하셨습니다.");
       socket.leave(roomInfo.prev);
       socket.join(roomInfo.cur);
       io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }
+
   });
   socket.on('chat message', (msg) => {
     var memberId;

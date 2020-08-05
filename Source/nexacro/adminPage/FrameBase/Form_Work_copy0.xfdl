@@ -45,7 +45,7 @@
         <Edit id="managerId" taborder="4" left="870" top="236" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
         <Button id="Button00" taborder="8" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
         <Button id="Button00_00" taborder="9" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
-        <Button id="managerSelect" taborder="10" text="조회" left="745" top="60" width="115" height="60" onclick="managerSelectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Button id="managerSelect" taborder="10" text="조회" left="745" top="60" width="115" height="60" onclick="managerSelectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black" visible="true" enableevent="true"/>
         <Button id="managerInsert" taborder="11" text="등록" left="840" top="560" width="120" height="40" onclick="managerInsertBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
         <Combo id="managerDept" taborder="12" text="Combo00" left="869" top="343" width="311" height="53" innerdataset="dept" codecolumn="code" datacolumn="data"/>
         <Calendar id="managerHireDate" taborder="13" left="870" top="446" width="312" height="52"/>
@@ -67,7 +67,7 @@ this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 //매니저 부서 등록하기
 this.managerInsertBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
-	alert("등록");
+	alert("수정/등록 되었습니다");
 	var Id = encodeURI(this.managerId.value,"UTF-8");
 	var Dept = this.managerDept.text;
 	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
@@ -94,7 +94,7 @@ this.managerInsertBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 // manager 삭제
 this.deleteBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	alert("삭제");
+	alert("삭제 되었습니다");
 	var Id = encodeURI(this.managerId.value,"UTF-8");
 	
  	this.transaction(
@@ -116,6 +116,7 @@ this.deleteBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 매니저 조회버튼
 this.managerSelectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+
 	this.transaction(
  			"urlTest03",	
 			"strURL::managerselect.do",
@@ -130,6 +131,8 @@ this.managerSelectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 		if(ret=="error") 
 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
 	}
+	this.managerSelect.set_enable(false);
+	
 };
 ]]></Script>
     <Objects>
@@ -198,6 +201,15 @@ this.managerSelectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
             <Col id="data">스토어</Col>
           </Row>
         </Rows>
+      </Dataset>
+      <Dataset id="manager00">
+        <ColumnInfo>
+          <Column id="managerId" type="STRING" size="256"/>
+          <Column id="managerDept" type="STRING" size="256"/>
+          <Column id="managerHireDate" type="STRING" size="256"/>
+          <Column id="managerName" type="STRING" size="256"/>
+          <Column id="managerTel" type="STRING" size="256"/>
+        </ColumnInfo>
       </Dataset>
     </Objects>
     <Bind>

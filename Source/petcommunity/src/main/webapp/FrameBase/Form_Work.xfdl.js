@@ -332,6 +332,7 @@
         		if(ret=="error")
         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	}
+        	this.selectInfo.set_enable(false);
         };
 
 

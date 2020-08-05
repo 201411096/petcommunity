@@ -33,12 +33,14 @@ public class AdminController {
 	private QnaService qnaService;
 
 	/*
-	 * 함수 이름 : 주요 기능 : 함수 내용 :
+	 * 함수 이름 : selectList 
+	 * 주요 기능 : 
+	 * 함수 내용 :
 	 */
 	@RequestMapping("/adminPage.do")
 	public ModelAndView selectList(BuylistviewVO buylistviewvo, String startDate, String endDate) {
+		
 		ModelAndView mv = new ModelAndView();
-
 		List<BuylistviewVO> salesList = adminService.adminselectList(buylistviewvo);
 		mv.addObject("salesList", salesList);
 
@@ -46,10 +48,13 @@ public class AdminController {
 	}
 
 	/*
-	 * 함수 이름 : 주요 기능 : 함수 내용 :
+	 * 함수 이름 : selectDate
+	 * 주요 기능 : 
+	 * 함수 내용 :
 	 */
 	@RequestMapping("/datesearch.do")
 	public ModelAndView selectDate(String startDate, String endDate) {
+		
 		ModelAndView mv = new ModelAndView();
 		Map map = new HashMap();
 		map.put("startDate", startDate);
@@ -81,7 +86,9 @@ public class AdminController {
 	}
 
 	/*
-	 * 함수 이름 : 주요 기능 : 넥사크로 함수 내용 :
+	 * 함수 이름 : defaultMain
+	 * 주요 기능 : 넥사크로 
+	 * 함수 내용 :
 	 */
 	@RequestMapping("/selectInfo.do")
 	public ModelAndView defaultMain(MemberVO memberevo) {
@@ -110,7 +117,9 @@ public class AdminController {
 	}
 
 	/*
-	 * 함수 이름 : 주요 기능 : 함수 내용 :
+	 * 함수 이름 : getMemberSelect
+	 * 주요 기능 : 
+	 * 함수 내용 :
 	 */
 	@RequestMapping("/searchInfo.do")
 	public ModelAndView getMemberSelect(String combobox, String searchword) throws UnsupportedEncodingException {
@@ -156,7 +165,9 @@ public class AdminController {
 	}
 
 	/*
-	 * 함수 이름 : 주요 기능 : 함수 내용 :
+	 * 함수 이름 : deleteInfo
+	 * 주요 기능 : 
+	 * 함수 내용 :
 	 */
 	@RequestMapping("/deleteInfo.do")
 	public void deleteInfo(String memberId, HttpServletRequest request) {
@@ -173,6 +184,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/managerselect.do")
 	public ModelAndView managerSelect() {
+		System.out.println("조회버튼");
 		List<ManagerVO> list = adminService.managerSelect();
 
 		DataSet ds = new DataSet("ar");
@@ -201,8 +213,6 @@ public class AdminController {
 	@RequestMapping(value = "/managerInsert.do")
 	public ModelAndView managerInsert(String id, String dept, String hireDate, HttpServletRequest request) {
 		
-		
-			System.out.println("member"+id);
 			HashMap map = new HashMap();
 			map.put("memberId", id);
 			map.put("dept", dept);

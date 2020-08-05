@@ -62,6 +62,7 @@
 				<li class="tab-link current" data-tab="tab-1">판매 내역</li>
 				<li class="tab-link" data-tab="tab-2">판매 통계</li>
 				<li class="tab-link" data-tab="tab-3">관리자 페이지</li>
+				<li id="adminpop">계정관리</li>
 			</ul>
 			<hr />
 			<div id="tab-1" class="tab-content current">

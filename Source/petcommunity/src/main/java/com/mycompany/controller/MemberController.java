@@ -88,7 +88,7 @@ public class MemberController {
 				session.setAttribute("memberVO", result);
 				memberService.tokenInsert(result);
 //				// 모바일 로그인 시 위치좌표 DB에 입력 
-				memberService.insertLocationInfo(vo);
+				memberService.insertLocationInfo(result);
 			}
 			//----------------------------------------------------------------
 			//----------------------------------------------------------------

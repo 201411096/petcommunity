@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="member" width="1280" height="720" titletext="Form_Work">
+  <Form id="manager" width="1280" height="720" titletext="manager">
     <Layouts>
       <Layout width="1280" height="720" screenid="Desktop_screen">
         <!--   <Static id="Static02_00" taborder="13" text="게시글 수" left="777" top="488" width="59" height="52"/>-->
         <!-- <Edit id="dnamev00_00" taborder="16" left="870" top="487" width="310" height="47" onchanged="Edit00_onchanged"/>-->
-        <Grid id="Grid03" taborder="13" left="731" top="150" width="505" height="492" border="1px solid black"/>
-        <Grid id="Grid01" taborder="12" left="10" top="40" width="710" height="600" border="1px solid black"/>
-        <Grid id="Grid00" taborder="0" left="30" top="60" width="668" height="560" binddataset="Dataset00" color="transparent" border="1px solid black" cursor="pointer">
+        <Grid id="Grid03" taborder="7" left="731" top="150" width="505" height="492" border="1px solid black"/>
+        <Grid id="Grid01" taborder="6" left="10" top="40" width="710" height="600" border="1px solid black"/>
+        <Grid id="Grid00" taborder="0" left="30" top="60" width="668" height="560" binddataset="manager" color="transparent" border="1px solid black" cursor="pointer">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="80"/>
-                <Column size="83"/>
-                <Column size="177"/>
-                <Column size="172"/>
-                <Column size="154"/>
+                <Column size="98"/>
+                <Column size="133"/>
+                <Column size="138"/>
+                <Column size="139"/>
+                <Column size="160"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -23,45 +23,56 @@
               </Rows>
               <Band id="head">
                 <Cell text="아이디"/>
-                <Cell col="1" text="회원명"/>
-                <Cell col="2" text="주소"/>
-                <Cell col="3" text="연락처"/>
-                <Cell col="4" text="이메일"/>
+                <Cell col="1" text="부서명"/>
+                <Cell col="2" text="입사일"/>
+                <Cell col="3" text="이름"/>
+                <Cell col="4" text="연락처"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:memberId"/>
                 <Cell col="1" text="bind:memberName"/>
                 <Cell col="2" text="bind:memberAddress"/>
                 <Cell col="3" text="bind:memberTel"/>
-                <Cell col="4" text="bind:memberEmail"/>
+                <Cell col="4"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="성명" left="777" top="200" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static02" taborder="2" text="아이디" left="780" top="270" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static03" taborder="3" text="주소" left="780" top="340" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Button id="deleteInfo" taborder="7" text="삭제" left="1130" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Static id="Static03_00" taborder="8" text="연락처" left="781" top="410" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static00_00" taborder="9" text="이메일" left="780" top="483" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Edit id="memberAddress" taborder="4" left="870" top="337" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberName" taborder="5" left="870" top="196" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberId" taborder="6" left="870" top="270" width="310" height="47" onchanged="Edit00_onchanged" visible="true" border="1px solid darkgray" color="black"/>
-        <Edit id="memberTel" taborder="10" left="870" top="407" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberEmail" taborder="11" left="870" top="476" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Button id="Button00" taborder="14" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="15" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
+        <Static id="Static00" taborder="1" text="아이디" left="777" top="240" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Static id="Static02" taborder="2" text="부서명" left="780" top="340" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Static id="Static03" taborder="3" text="입사일" left="780" top="450" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
+        <Button id="managerDelete" taborder="5" text="삭제" left="1130" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Edit id="managerId" taborder="4" left="870" top="236" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
+        <Button id="Button00" taborder="8" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
+        <Button id="Button00_00" taborder="9" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
+        <Button id="managerSelect" taborder="10" text="조회" left="745" top="60" width="115" height="60" onclick="managerSelectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Button id="managerUpdate" taborder="11" text="수정" left="1045" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Button id="managerInsert" taborder="12" text="등록" left="960" top="580" width="70" height="40" onclick="managerInsertBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
+        <Combo id="managerDept" taborder="13" text="Combo00" left="869" top="343" width="311" height="53" innerdataset="dept" codecolumn="code" datacolumn="data"/>
+        <Calendar id="managerHireDate" taborder="14" left="870" top="446" width="312" height="52"/>
       </Layout>
       <Layout name="Layout0" width="1280" height="720" mobileorientation="landscape"/>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[//보기 버튼 눌렸을 때
-this.selectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
- 	this.transaction(
+	this.go("FrameBase::Form_Work.xfdl")
+};
+
+this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("FrameBase::Form_Work_copy0.xfdl")
+};
+
+// 매니저 조회버튼
+this.managerSelectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction(
  			"urlTest03",	
-			"strURL::selectInfo.do",
+			"strURL::managerselect.do",
  			"",	    
- 			"Dataset00=ar",  
+ 			"manager=ar",  
  			"",		
  			"fn_callback"
  		);
@@ -73,69 +84,28 @@ this.selectBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	}
 };
 
-
-//검색 버튼 눌렸을 때
-this.searchBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var combobox = encodeURI(this.Combo00.value,"UTF-8");
-	var memberInfo = encodeURI(this.memberInfo.value,"UTF-8");
-	console.log(combobox);
-	console.log(memberInfo);
+//매니저 부서 등록하기
+this.managerInsertBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo){
+	alert("등록");
+	var Id = encodeURI(this.managerId.value,"UTF-8");
+	var Dept = this.managerDept.text;
+	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
 	
  	this.transaction(
- 			"urlTest03",	
-			"strURL::searchInfo.do?searchword="+memberInfo+"&combobox="+combobox,
+ 			"urlTest05",	
+			"strURL::managerInsert.do?id="+Id+"&dept="+Dept+"&hireDate="+managerHire,
  			"",	    
- 			"Dataset00=ar",  
+ 			"manager=ar",  
  			"",		
  			"fn_callback"
  		);
 		
  	this.fn_callback = function(svcID, errCD, errMSG){
- 		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+ 		let ret = (errMSG=="FAILED" || svcID != "urlTest05") ? "error" : "success";
  		if(ret=="error") 
  			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-	}
-};
-
-//삭제 버튼 눌렸을 때
-this.deleteBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var result = this.confirm("회원을 삭제하시겠습니까?");
-	if(result){
-		
-		var memberId = encodeURI(this.memberId.value,"UTF-8");
-	this.transaction(
- 			"urlTest04",	
-			"strURL::deleteInfo.do?memberId="+this.memberId.value,
- 			"",	    
- 			"Dataset00=ar",  
- 			"",		
- 			"fn_callback"
- 		);
-		
-	this.Dataset00.deleteRow(this.Dataset00.rowposition);
-	this.Dataset00.addRow(this.Dataset00.rowposition);
-	this.fn_callback = function(svcID, errCD, errMSG){
-		let ret = (errMSG=="FAILED" || svcID != "urlTest04") ? "error" : "success";
-		alert("삭제되었습니다.");
-// 		if(ret=="error") 
-// 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-	}
-	}
+	};
 	
-	
-};
-
-
-this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.go("FrameBase::Form_Work.xfdl")
-};
-
-this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	this.go("FrameBase::Form_Work_copy0.xfdl")
 };
 ]]></Script>
     <Objects>
@@ -168,13 +138,43 @@ this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="manager">
+        <ColumnInfo>
+          <Column id="managerId" type="STRING" size="256"/>
+          <Column id="managerDept" type="STRING" size="256"/>
+          <Column id="managerHireDate" type="STRING" size="256"/>
+          <Column id="managerName" type="STRING" size="256"/>
+          <Column id="managerTel" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dept">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">0</Col>
+            <Col id="data">회원관리</Col>
+          </Row>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">커뮤니티</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">고객문의</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">반려동물</Col>
+          </Row>
+          <Row>
+            <Col id="code">4</Col>
+            <Col id="data">스토어</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
-    <Bind>
-      <BindItem id="item0" compid="memberName" propid="value" datasetid="Dataset00" columnid="memberName"/>
-      <BindItem id="item1" compid="memberId" propid="value" datasetid="Dataset00" columnid="memberId"/>
-      <BindItem id="item2" compid="memberAddress" propid="value" datasetid="Dataset00" columnid="memberAddress"/>
-      <BindItem id="item3" compid="memberTel" propid="value" datasetid="Dataset00" columnid="memberTel"/>
-      <BindItem id="item4" compid="memberEmail" propid="value" datasetid="Dataset00" columnid="memberEmail"/>
-    </Bind>
   </Form>
 </FDL>

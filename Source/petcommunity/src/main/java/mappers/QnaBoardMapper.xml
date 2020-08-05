@@ -16,6 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(QUESTIONBOARD_ID_SEQ.NEXTVAL, QUESTIONBOARD_GROUP_ID_SEQ.NEXTVAL,
 		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
 		#{questionboardReadcount}+0, #{memberId}, #{questionboardAnswerflag})
+		<selectKey keyProperty="questionboardId" resultType="Integer" order="AFTER">
+			SELECT QUESTIONBOARD_ID_SEQ.currval FROM dual
+		</selectKey>
+		
+		
 	</insert>
 
 	<select id="getQnaBoardContent" parameterType="qna"
@@ -48,7 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{questionboardId} OR QUESTIONBOARD_GROUP_ID =#{questionboardGroupId}
 	</delete>
 
-	<select id="selectFindBoardWithPaging" parameterType="hashmap"
+	<select id="selectQnaBoardWithPaging" parameterType="hashmap"
 		resultType="qna">
 		SELECT *
 		FROM (

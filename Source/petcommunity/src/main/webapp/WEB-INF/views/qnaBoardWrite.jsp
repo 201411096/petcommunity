@@ -40,7 +40,9 @@
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력해주세요.">${qnaContent.questionboardContent}</textarea>
 			</div>
-			<input type="file" name="file" id="file" accept="image/gif, image/jpeg, image/png"/>
+			<ul class="list-group" id="file-list">
+					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>
+				</ul>
 			<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
 				<input type="hidden" name="questionboardAnswerflag"

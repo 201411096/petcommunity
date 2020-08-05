@@ -59,7 +59,7 @@ var curPage;
     
 
 $(function(){
-
+	openChatWindow();
 	
 	//cityName에 따라 province 동적생성되는 함수 		
     selectProvince=function(){
@@ -522,4 +522,15 @@ function drawTable(data){
 		
 		$('#communityList').append(listContent);
 	}
+}
+
+function openChatWindow(){
+	var w = 600;
+	var h = 700;
+	var LeftPosition=(screen.width-w)/2;
+	var TopPosition=(screen.height-h)/2;
+	console.log();
+	$('#chatLink').on('click', function(){
+		window.open("/petcommunity/test_chat.do", "_blank", "width="+w+", height="+h+", top="+TopPosition+", left="+LeftPosition+", scrollbars=no");
+	});
 }

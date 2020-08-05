@@ -18,6 +18,7 @@
 <!-- Main css -->
 
 <link rel="stylesheet" href="./resources/css/mypage.css">
+<link rel="stylesheet" href="./resources/css/mypage-message.css">
 
 </head>
 <body>
@@ -32,6 +33,7 @@
 				<li class="tab-link current" data-tab="tab-1">나의 반려동물</li>
 				<li class="tab-link2" data-tab="tab-2">나의 주문내역</li>
 				<li class="tab-link3" data-tab="tab-3">회원 정보 수정</li>
+				<li class="tab-link4" data-tab="tab-4">쪽지 확인</li>
 			</ul>
 			<hr>
 
@@ -187,11 +189,38 @@
 					</form>
 				</div>
 			</div>
+			
+			<div id="tab-4" class="tab-content">
+				<div class="tedoory" id="message-table">
+				<h3>쪽지 확인</h3>
+				<%-- <div class="mypage-message">
+					<colgroup>
+							<col style="width: 30%" />
+							<col style="width: 40%" />
+							<col style="width: 30%" />
+					</colgroup>
+					<tr>
+						<td><img class="mypage-messageThumbnail" src="resources/imgs/review_thumbnail/thumbnail_reivew.jpg" alt="썸네일"></td>
+						<td><span class="mypage-messageId" >아이디</span></td>
+						<td><span class="mypage-messageTime">시간</span></td>
+					</tr>
+					
+				</div> --%>
+				</div>
+			</div>
+			
+			
 		</div>
+		
+		
+		
+		
+		
 	</div>
 
 	<!-- JS -->
 	<script src="./resources/js/mypage.js"></script>
+	<script src="./resources/js/mypage-message.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

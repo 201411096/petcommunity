@@ -44,8 +44,11 @@
 		
 		<typeAlias alias="adminProduct" type="com.mycompany.domain.ProductVO"></typeAlias>
 		
+		<typeAlias alias="message" type="com.mycompany.domain.MessageVO"></typeAlias>
+
 		<typeAlias alias="manager" type="com.mycompany.domain.ManagerVO"></typeAlias>
 		
+
    </typeAliases>
    
    

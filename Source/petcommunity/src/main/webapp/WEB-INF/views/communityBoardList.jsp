@@ -18,7 +18,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1> 커뮤니티</h1>
+				<h1> 커뮤니티  |  <span id="chatLink">채팅</span> </h1>
 			</header>
 			<hr />
 			 

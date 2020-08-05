@@ -18,6 +18,6 @@ public interface QnaDAO {
 	public QnaVO selectGroupId(QnaVO qnavo);
 	public List<QnaVO> selectListRe(QnaVO qnavo);
 	public List<QnaVO> selectQuestionGroupId(QnaVO qnavo);
-	
-
+	public List<QnaVO> selectQnaBoardWithPaging(Map map);
+	public void deleteQnaBoardbyGroupId(QnaVO qnavo);
 }

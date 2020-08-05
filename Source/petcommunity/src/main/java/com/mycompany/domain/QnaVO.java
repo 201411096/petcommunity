@@ -11,6 +11,7 @@ public class QnaVO {
 	private String memberId;
 	private int questionboardAnswerflag;
 	
+	
 	public int getQuestionboardAnswerflag() {
 		return questionboardAnswerflag;
 	}

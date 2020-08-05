@@ -26,22 +26,18 @@ public class QnaDAOImpl implements QnaDAO {
 		return mybatis.selectList("qnaDAO.getQnaBoardList", qnavo);
 	}
 
-
 	public QnaVO getQnaBoardContent(QnaVO qnavo) {
 		return mybatis.selectOne("qnaDAO.getQnaBoardContent", qnavo);
 	}
-
 
 	@Override
 	public int updateQna(QnaVO qnavo) {
 		return mybatis.update("qnaDAO.updateQna", qnavo);
 	}
 
-
 	public void updateReadcount(QnaVO qnavo) {
 		mybatis.update("qnaDAO.updateReadcount", qnavo);
 	}
-
 
 	public void deleteQnaBoard(QnaVO qnavo) {
 		mybatis.delete("qnaDAO.deleteQnaBoard", qnavo);
@@ -57,20 +53,17 @@ public class QnaDAOImpl implements QnaDAO {
 		mybatis.insert("qnaDAO.insertReply", qnavo);
 	}
 
-
 	public QnaVO selectGroupId(QnaVO qnavo) {
 		return mybatis.selectOne("qnaDAO.selectGroupId", qnavo);
 		
 	}
 
-
 	public List<QnaVO> selectListRe(QnaVO qnavo) {
 		return mybatis.selectList("qnaDAO.selectListRe", qnavo);
 	}
 
-
-	public List<QnaVO> selectFindBoardWithPaging(Map map) {
-		return mybatis.selectList("qnaDAO.selectFindBoardWithPaging", map);
+	public List<QnaVO> selectQnaBoardWithPaging(Map map) {
+		return mybatis.selectList("qnaDAO.selectQnaBoardWithPaging", map);
 	}
 
 	public List<QnaVO> selectQuestionGroupId(QnaVO qnavo) {

@@ -29,6 +29,7 @@
 		SELECT MEMBER_ID, MEMBER_NAME, MEMBER_ADDRESS, MEMBER_TEL,
 		MEMBER_EMAIL
 		FROM MEMBER
+		WHERE MEMBER_FLAG=0
 	</select>
 
 	<select id="getMemberSelect" parameterType="map"

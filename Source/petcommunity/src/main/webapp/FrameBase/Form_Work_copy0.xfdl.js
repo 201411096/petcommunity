@@ -35,6 +35,11 @@
             obj = new Dataset("dept", this);
             obj._setContents("<ColumnInfo><Column id=\"code\" type=\"STRING\" size=\"256\"/><Column id=\"data\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"code\">0</Col><Col id=\"data\">회원관리</Col></Row><Row><Col id=\"code\">1</Col><Col id=\"data\">커뮤니티</Col></Row><Row><Col id=\"code\">2</Col><Col id=\"data\">고객문의</Col></Row><Row><Col id=\"code\">3</Col><Col id=\"data\">반려동물</Col></Row><Row><Col id=\"code\">4</Col><Col id=\"data\">스토어</Col></Row></Rows>");
             this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("manager00", this);
+            obj._setContents("<ColumnInfo><Column id=\"managerId\" type=\"STRING\" size=\"256\"/><Column id=\"managerDept\" type=\"STRING\" size=\"256\"/><Column id=\"managerHireDate\" type=\"STRING\" size=\"256\"/><Column id=\"managerName\" type=\"STRING\" size=\"256\"/><Column id=\"managerTel\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
             
             // UI Components Initialize
             obj = new Grid("Grid03","731","150","505","492",null,null,null,null,null,null,this);
@@ -103,6 +108,8 @@
             obj.set_text("조회");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             obj.set_border("1px solid black");
+            obj.set_visible("true");
+            obj.set_enableevent("true");
             this.addChild(obj.name, obj);
 
             obj = new Button("managerInsert","840","560","120","40",null,null,null,null,null,null,this);
@@ -186,6 +193,8 @@
                 p.managerSelect.set_text("조회");
                 p.managerSelect.set_font("bold 14px/normal \"HY신명조\"");
                 p.managerSelect.set_border("1px solid black");
+                p.managerSelect.set_visible("true");
+                p.managerSelect.set_enableevent("true");
                 p.managerSelect.move("745","60","115","60",null,null);
 
                 p.managerInsert.set_taborder("11");
@@ -256,7 +265,7 @@
 
         //매니저 부서 등록하기
         this.managerInsertBtn_onclick = function(obj,e){
-        	alert("등록");
+        	alert("수정/등록 되었습니다");
         	var Id = encodeURI(this.managerId.value,"UTF-8");
         	var Dept = this.managerDept.text;
         	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
@@ -283,7 +292,7 @@
         // manager 삭제
         this.deleteBtn_onclick = function(obj,e)
         {
-        	alert("삭제");
+        	alert("삭제 되었습니다");
         	var Id = encodeURI(this.managerId.value,"UTF-8");
 
          	this.transaction(
@@ -305,6 +314,7 @@
         // 매니저 조회버튼
         this.managerSelectBtn_onclick = function(obj,e)
         {
+
         	this.transaction(
          			"urlTest03",
         			"strURL::managerselect.do",
@@ -319,6 +329,8 @@
         		if(ret=="error")
         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	}
+        	this.managerSelect.set_enable(false);
+
         };
 
         });

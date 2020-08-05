@@ -102,9 +102,12 @@ $(document).ready(function () {
             $('#register-form').submit();
     });
 	
-	if ($("#message").val() != null){
-		alert("아이디와 비밀번호가 맞지 않습니다!")
-	}
+		if ($("#message").val() != null){
+			document.getElementById("event1").className = "wow bounce";
+		}
+
+	
+	
 	
 	$(".findId").click(
 			function() {

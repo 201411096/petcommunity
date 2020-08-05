@@ -55,7 +55,7 @@
             obj.set_color("transparent");
             obj.set_border("1px solid black");
             obj.set_cursor("pointer");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"98\"/><Column size=\"133\"/><Column size=\"138\"/><Column size=\"139\"/><Column size=\"160\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"아이디\"/><Cell col=\"1\" text=\"부서명\"/><Cell col=\"2\" text=\"입사일\"/><Cell col=\"3\" text=\"이름\"/><Cell col=\"4\" text=\"연락처\"/></Band><Band id=\"body\"><Cell text=\"bind:memberId\"/><Cell col=\"1\" text=\"bind:memberName\"/><Cell col=\"2\" text=\"bind:memberAddress\"/><Cell col=\"3\" text=\"bind:memberTel\"/><Cell col=\"4\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"125\"/><Column size=\"134\"/><Column size=\"131\"/><Column size=\"126\"/><Column size=\"151\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"아이디\"/><Cell col=\"1\" text=\"부서명\"/><Cell col=\"2\" text=\"입사일\"/><Cell col=\"3\" text=\"이름\"/><Cell col=\"4\" text=\"연락처\"/></Band><Band id=\"body\"><Cell text=\"bind:managerId\"/><Cell col=\"1\" text=\"bind:managerDept\"/><Cell col=\"2\" text=\"bind:managerHireDate\"/><Cell col=\"3\" text=\"bind:managerName\"/><Cell col=\"4\" text=\"bind:managerTel\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00","777","240","59","40",null,null,null,null,null,null,this);
@@ -76,7 +76,7 @@
             obj.set_font("bold 14px/normal \"HY신명조\"");
             this.addChild(obj.name, obj);
 
-            obj = new Button("managerDelete","1130","580","70","40",null,null,null,null,null,null,this);
+            obj = new Button("managerDelete","1010","560","120","40",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("삭제");
             obj.set_font("bold 14px/normal \"HY신명조\"");
@@ -105,22 +105,15 @@
             obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Button("managerUpdate","1045","580","70","40",null,null,null,null,null,null,this);
+            obj = new Button("managerInsert","840","560","120","40",null,null,null,null,null,null,this);
             obj.set_taborder("11");
-            obj.set_text("수정");
-            obj.set_font("bold 14px/normal \"HY신명조\"");
-            obj.set_border("1px solid black");
-            this.addChild(obj.name, obj);
-
-            obj = new Button("managerInsert","960","580","70","40",null,null,null,null,null,null,this);
-            obj.set_taborder("12");
             obj.set_text("등록");
             obj.set_font("bold 14px/normal \"HY신명조\"");
             obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
             obj = new Combo("managerDept","869","343","311","53",null,null,null,null,null,null,this);
-            obj.set_taborder("13");
+            obj.set_taborder("12");
             obj.set_innerdataset("dept");
             obj.set_codecolumn("code");
             obj.set_datacolumn("data");
@@ -128,7 +121,7 @@
             this.addChild(obj.name, obj);
 
             obj = new Calendar("managerHireDate","870","446","312","52",null,null,null,null,null,null,this);
-            obj.set_taborder("14");
+            obj.set_taborder("13");
             this.addChild(obj.name, obj);
 
             // Layout Functions
@@ -175,7 +168,7 @@
                 p.managerDelete.set_text("삭제");
                 p.managerDelete.set_font("bold 14px/normal \"HY신명조\"");
                 p.managerDelete.set_border("1px solid black");
-                p.managerDelete.move("1130","580","70","40",null,null);
+                p.managerDelete.move("1010","560","120","40",null,null);
 
                 p.managerId.set_taborder("4");
                 p.managerId.set_border("1px solid darkgray");
@@ -195,26 +188,20 @@
                 p.managerSelect.set_border("1px solid black");
                 p.managerSelect.move("745","60","115","60",null,null);
 
-                p.managerUpdate.set_taborder("11");
-                p.managerUpdate.set_text("수정");
-                p.managerUpdate.set_font("bold 14px/normal \"HY신명조\"");
-                p.managerUpdate.set_border("1px solid black");
-                p.managerUpdate.move("1045","580","70","40",null,null);
-
-                p.managerInsert.set_taborder("12");
+                p.managerInsert.set_taborder("11");
                 p.managerInsert.set_text("등록");
                 p.managerInsert.set_font("bold 14px/normal \"HY신명조\"");
                 p.managerInsert.set_border("1px solid black");
-                p.managerInsert.move("960","580","70","40",null,null);
+                p.managerInsert.move("840","560","120","40",null,null);
 
-                p.managerDept.set_taborder("13");
+                p.managerDept.set_taborder("12");
                 p.managerDept.set_innerdataset("dept");
                 p.managerDept.set_codecolumn("code");
                 p.managerDept.set_datacolumn("data");
                 p.managerDept.set_text("Combo00");
                 p.managerDept.move("869","343","311","53",null,null);
 
-                p.managerHireDate.set_taborder("14");
+                p.managerHireDate.set_taborder("13");
                 p.managerHireDate.move("870","446","312","52",null,null);
             	}
             );
@@ -234,7 +221,17 @@
             this.addLayout(obj.name, obj);
             
             // BindItem Information
+            obj = new BindItem("item0","managerId","value","manager","managerId");
+            this.addChild(obj.name, obj);
+            obj.bind();
 
+            obj = new BindItem("item2","managerHireDate","value","manager","managerHireDate");
+            this.addChild(obj.name, obj);
+            obj.bind();
+
+            obj = new BindItem("item3","managerDept","text","manager","managerDept");
+            this.addChild(obj.name, obj);
+            obj.bind();
         };
         
         this.loadPreloadList = function()
@@ -256,6 +253,55 @@
         	this.go("FrameBase::Form_Work_copy0.xfdl")
         };
 
+
+        //매니저 부서 등록하기
+        this.managerInsertBtn_onclick = function(obj,e){
+        	alert("등록");
+        	var Id = encodeURI(this.managerId.value,"UTF-8");
+        	var Dept = this.managerDept.text;
+        	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
+
+         	this.transaction(
+         			"urlTest03",
+        			"strURL::managerInsert.do?id="+Id+"&dept="+Dept+"&hireDate="+managerHire,
+         			"",
+         			"manager=ar",
+         			"",
+         			"fn_callback"
+         		);
+
+         	this.fn_callback = function(svcID, errCD, errMSG){
+         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+         		if(ret=="error")
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+        	};
+
+        };
+
+
+
+        // manager 삭제
+        this.deleteBtn_onclick = function(obj,e)
+        {
+        	alert("삭제");
+        	var Id = encodeURI(this.managerId.value,"UTF-8");
+
+         	this.transaction(
+         			"urlTest03",
+        			"strURL::managerdelete.do?id="+Id,
+         			"",
+         			"manager=ar",
+         			"",
+         			"fn_callback"
+         		);
+
+         	this.fn_callback = function(svcID, errCD, errMSG){
+         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
+         		if(ret=="error")
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+        	};
+        };
+
         // 매니저 조회버튼
         this.managerSelectBtn_onclick = function(obj,e)
         {
@@ -275,30 +321,6 @@
         	}
         };
 
-        //매니저 부서 등록하기
-        this.managerInsertBtn_onclick = function(obj,e){
-        	alert("등록");
-        	var Id = encodeURI(this.managerId.value,"UTF-8");
-        	var Dept = this.managerDept.text;
-        	var managerHire = encodeURI(this.managerHireDate.value,"UTF-8");
-
-         	this.transaction(
-         			"urlTest05",
-        			"strURL::managerInsert.do?id="+Id+"&dept="+Dept+"&hireDate="+managerHire,
-         			"",
-         			"manager=ar",
-         			"",
-         			"fn_callback"
-         		);
-
-         	this.fn_callback = function(svcID, errCD, errMSG){
-         		let ret = (errMSG=="FAILED" || svcID != "urlTest05") ? "error" : "success";
-         		if(ret=="error")
-         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
-        	};
-
-        };
-
         });
         
         // Regist UI Components Event
@@ -309,7 +331,6 @@
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Button00_00.addEventHandler("onclick",this.Button00_00_onclick,this);
             this.managerSelect.addEventHandler("onclick",this.managerSelectBtn_onclick,this);
-            this.managerUpdate.addEventHandler("onclick",this.deleteBtn_onclick,this);
             this.managerInsert.addEventHandler("onclick",this.managerInsertBtn_onclick,this);
         };
 

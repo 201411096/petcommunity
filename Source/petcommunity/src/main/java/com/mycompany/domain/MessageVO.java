@@ -6,7 +6,27 @@ public class MessageVO {
 	private String messageTarget2;
 	private String messageSender;
 	private String messageSendtime;
+	private String messageId;
+	private String messageReadflag;
 	
+	public String getMessageTarget2() {
+		return messageTarget2;
+	}
+	public void setMessageTarget2(String messageTarget2) {
+		this.messageTarget2 = messageTarget2;
+	}
+	public String getMessageId() {
+		return messageId;
+	}
+	public void setMessageId(String messageId) {
+		this.messageId = messageId;
+	}
+	public String getMessageReadflag() {
+		return messageReadflag;
+	}
+	public void setMessageReadflag(String messageReadflag) {
+		this.messageReadflag = messageReadflag;
+	}
 	public String getMessageContents() {
 		return messageContents;
 	}

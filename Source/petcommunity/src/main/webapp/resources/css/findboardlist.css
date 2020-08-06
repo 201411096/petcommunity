@@ -46,7 +46,7 @@ ul#pagination-demo{
 }
 .marker-infowindow{
    width:300px;
-   height:200px;
+   height:250px;
    text-align:center;
 }
 #pagination-demo>li>a, #pagination-demo>li>span {

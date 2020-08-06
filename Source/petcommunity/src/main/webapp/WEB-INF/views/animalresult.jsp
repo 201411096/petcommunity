@@ -21,10 +21,10 @@
 </head>
 <body>
 
-	<div class="main2">
+	
 
 		<!-- Sign up form -->
-		<section class="signup">
+		
 			<div class="container">
 				<div class="signup-content">
 					<h3>나의 반려동물이 등록되었습니다.</h3>
@@ -32,9 +32,7 @@
 
 				</div>
 			</div>
-		</section>
-
-	</div>
+	
 
 	<!-- JS -->
 	<script

@@ -63,13 +63,13 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
     var tempMsg = msg.messageContent.split(" ");
     firstArgument = tempMsg[0];
   }
-  if(firstArgument!=""){        // 첫번째 인자가 있는지 확인
+  if(firstArgument!=""){        // 첫번쨰 인자가 있는지 확인
     if(firstArgument[0]=="/"){                                                                                                                      // 명령어 처리 부분 시작 ---
       if(firstArgument=="/help" || firstArgument=="/도움말" || firstArgument=="/h"){   // 도움말 처리 시작 ---
         io.to(socket.id).emit('chat message', 'help messageContent ...');
         return;
       }                                                                               // 도움말 처리 끝 ---
-      if(firstArgument=="/w" || firstArgument=="/ㅈ" || firstArgument=="/귓속말" || firstArgument=="/whisper"){                                                                                                // 귓속말 처리 시작 ---
+      if(firstArgument=="/w"){                                                                                                // 귓속말 처리 시작 ---
         secondArgument = tempMsg[1]; // 귓속말의 대상이 있는지 확인하는데 사용
         thridArgument = tempMsg[2];  // 귓속말의 내용이 있는지 확인하는데 새용
         var whisperContent="";

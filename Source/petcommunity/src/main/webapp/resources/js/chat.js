@@ -10,11 +10,19 @@ selectRoom(memberId); // 방에 참가
 listenAndAppendChatMessage('.messages', '<li class= "list-group-item">')
 formSetting();
 documentPreventKeyDown();
-console.log(memberId);
+chatLocationEventHandler();
+chatMessageBoxEnterListener();
 
-$('#chatLocation').on('change', function(){
-	selectRoom(memberId);
-});
+//$('#chatLocation').on('change', function(){
+//	selectRoom(memberId);
+//});
+
+function chatLocationEventHandler(){
+	$('#chatLocation').on('change', function(){
+		selectRoom(memberId);
+	});	
+}
+
 function formSetting(){
 	$('form').submit(function(e) {
 	    e.preventDefault(); 
@@ -29,6 +37,13 @@ function formSetting(){
 	    $('#m').val('');
 	    return false;
 	});	
+}
+function chatMessageBoxEnterListener(){
+	$('#m').on('keydown', function(e){
+		if(e.keyCode===13){
+			$('#messageSendBtn').click();
+		}
+	});
 }
 
 function documentPreventKeyDown(){

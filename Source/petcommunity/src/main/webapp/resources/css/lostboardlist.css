@@ -48,6 +48,8 @@ ul#pagination-demo{
    width:300px;
    height:250px;
    text-align:center;
+   border-radius:10px;
+   border-collapse: separate;
 }
 #pagination-demo>li>a, #pagination-demo>li>span {
    

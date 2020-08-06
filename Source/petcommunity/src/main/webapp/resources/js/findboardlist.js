@@ -275,7 +275,7 @@ function kakaoMapAPI(data){
 			});
 		marker.setMap(map);
 		marker.setRange(1000);
-		var iwContent = '<div class="card marker-infowindow">'+
+		var iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
 //						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
@@ -286,7 +286,7 @@ function kakaoMapAPI(data){
 						'<div class="infoWindowImageContainer">'+'<img src="'+contextPath+'/resources/imgs/lostboard/'+data.lostBoardVOList[i].lostboardId+'/'+data.lostBoardFileList[i].filename +'" class="infoWindowImage" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
 		if(data.lostBoardFileList[i].filename=='??'){
-			iwContent  = '<div class="card marker-infowindow">'+
+			iwContent  = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
 //						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
@@ -316,7 +316,7 @@ function kakaoMapAPI(data){
 			});
 		marker.setMap(map);
 		marker.setRange(1000);
-		var iwContent = '<div class="card marker-infowindow">'+
+		var iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
 //						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
@@ -327,7 +327,7 @@ function kakaoMapAPI(data){
 						'<div class="infoWindowImageContainer">'+'<img src="'+contextPath+'/resources/imgs/findboard/'+data.findBoardVOList[i].findboardId+'/'+data.findBoardFileList[i].filename +'" class="infoWindowImage" alt="이미지가 존재하지 않습니다.">'+'</div>'+
 						'</div>';
 		if(data.findBoardFileList[i].filename=='??'){
-			iwContent = '<div class="card marker-infowindow">'+
+			iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
 //						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+

@@ -148,7 +148,7 @@
 				<ul id="pagination-demo" class="pagination-lg"></ul>
 			</div>
 			<div id="tab-3" class="tab-content">
-				<div class="tedoory">
+				<div class="tedoory3">
 					<form action="memberUpdate.do" method="POST"
 						class="memberUpdate-form" id="memberUpdate-form">
 						<div class="form-group">
@@ -197,7 +197,7 @@
 								style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1"
 								onclick="closeDaumPostcode()" alt="닫기 버튼">
 						</div>
-						<div class="form-group form-button">
+						<div class="form-group">
 							<input type="submit" name="memberUpdate" class="form-submit"
 								value="정보 수정" />
 						</div>

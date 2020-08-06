@@ -20,11 +20,12 @@
 	<div class="container">
 		<section id="container">
 
+<!--  
 			<ul class="tabs">
 				<li class="tab-link" data-tab="tab-1">판매 내역</li>
 				<li class="tab-link" data-tab="tab-2">판매 통계</li>
 				<li class="tab-link current" data-tab="tab-3">관리자 페이지</li>
-			</ul>
+			</ul>-->
 			<hr />
 
 			<div class="col-xs-10 col-sm-10">
@@ -40,7 +41,7 @@
 								</div>
 								
 								<div class="form-group">
-									<label>수량</label> <input type="text" class="form-control" name="productPrice" value="${ProductVO.productCnt}">
+									<label>수량</label> <input type="text" class="form-control" name="productCnt" value="${ProductVO.productCnt}">
 								</div>
 								
 								<div class="form-group">

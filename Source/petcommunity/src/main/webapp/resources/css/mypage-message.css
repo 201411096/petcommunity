@@ -1,11 +1,11 @@
 .mypage-message{
-	margin-left: 10%;
-	width: 80%;
+	margin-left: 5%;
+	width: 90%;
 	border: 1px solid #2f2f2f;
 	padding: 6px 30px 6px 30px;
 	border-radius: 35px;
 	/* height: 70px; */
-	overflow:auto;
+	/* overflow:auto; */
 	height:auto;
 	text-align : center;
 	background-color: #fafafa;
@@ -22,13 +22,31 @@
 }
 .mypage-messageId{
 	/* display: inline-block; */
+	color: #0000ca;
 	text-align: center; 
+	cursor:pointer;
+	
 }
 .mypage-messageTime{
 	font-size:5px;
 }
 .mypage-messageContent{
 	text-align: left; 
+}
+.btn-message{
+	width:60px;
+	height:30px;
+}
+.tr-sendBox{
+	/* display:none; */
+}
+.searchMessage{
+	margin-left:-10%;
+	width:90%;
+	height:30px;
+}
+.fa-paper-plane{
+	cursor:pointer;
 }
 /* .mypage-messageTime{
 	margin-right: -10%;

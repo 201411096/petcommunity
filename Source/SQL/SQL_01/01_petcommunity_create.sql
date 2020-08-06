@@ -143,12 +143,15 @@ create table lostboardcomment(
 --drop table lostboardcomment;
 
 CREATE TABLE MESSAGE(
+    MESSAGE_ID varchar2(30),
     MESSAGE_CONTENTS VARCHAR2(2000),
     MESSAGE_target1 VARCHAR2(30),
     MESSAGE_target2 VARCHAR2(30),
     MESSAGE_sender VARCHAR2(30),
-    MESSAGE_SENDTIME DATE
+    MESSAGE_SENDTIME DATE,
+    MESSAGE_READFLAG varchar2(30)
 );
+
 --drop table message;
 create table findhospital(
    findhospital_id number(20),
@@ -307,4 +310,7 @@ start with 10000
 maxvalue 100000
 cycle;
 
-
+create sequence MESSAGE_ID
+start with 10000
+maxvalue 100000
+cycle;

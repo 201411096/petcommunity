@@ -28,8 +28,8 @@
 
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
 		<section id="container">			
-			<div class="col-xs-0 col-sm-3">
-				<input name="sGubun" type="radio" checked value="0" >
+			<div class="col-xs-0 col-sm-3" style="margin-right: 30%;">
+				<!-- <input name="sGubun" type="radio" checked value="0" > -->
 					<label class="radio">지역별 검색</label>
 						<select class="form-control" id='cityName' name ='cityName'>
 							<option >시/도</option>
@@ -55,19 +55,19 @@
 							<option >구/군</option>					
 						</select>
 										
-						<span class="input-group-btn">
+						<span class="input-group-btn" style="padding-top: 10px;">
 							<button type="button" class="btn btn-default" id='searchLocation'>지역별 검색
 							</button>
-						</span>
-			</div>
+						</span><br/><br/>
+			 </div>
 								
 
 			<div class="col-xs-0 col-sm-3">		
-				<input name="sGubun" type="radio" value="1">
-					<label class="radio">병원명 검색</label>
+				<!-- <input name="sGubun" type="radio" value="1"> -->	
+				  <label class="radio">병원명 검색</label>
 						<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
 							
-						<span class="input-group-btn">
+						<span class="input-group-btn" style="padding-top: 10px;">
 							<button type="button" class="btn btn-default" id='searchName'>병원명 검색
 							</button>
 						</span>					

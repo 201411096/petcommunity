@@ -9,7 +9,9 @@
 
 /* Template default CSS
  /*----------------------------------------*/
-
+#bodyBackgroundColor{
+	background: #efeae4;
+}
  html,
  body {
 	font-family: 'NanumSquare', sans-serif !important; 
@@ -17,6 +19,7 @@
  /*   font-family: "Lato", sans-serif; */
    -webkit-font-smoothing: antialiased;
    font-smoothing: antialiased;
+/*    background: #efeae4; */
  }
  /* 어비 마이센체*/
  @font-face { 
@@ -488,7 +491,6 @@
  
  .icon-box h5 {
    font-weight: 300;
-   font-style: italic;
    margin-bottom: 15px;
  }
  
@@ -497,10 +499,16 @@
  /* ----------------
  Hero section
   ---------------------*/
+ @font-face { 
+ font-family: 'MapoGoldenPier'; 
+ src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoGoldenPierA.woff') format('woff'); 
+ font-weight: normal; 
+ font-style: normal; 
+ }
  
  .hero-section {
    clear: both;
-   background: #f6f7f9;
+   background: #efeae4;
  
  }
 .blog-content a{
@@ -537,17 +545,20 @@
  }
  
  .hs-item .hs-text {
+	font-family: 'MapoGoldenPier'; 
    position: relative;
    z-index: 2;
  }
  
  .hs-item .hs-text h2 {
-   font-size: 160px;
+	font-family: 'MapoGoldenPier'; 
+   font-size: 150px;
    line-height: 0.9;
    margin-bottom: 30px;
    position: relative;
    top: 50px;
    opacity: 0;
+   color: #636363;
  }
  
  .hs-item .hs-text p {
@@ -645,7 +656,7 @@
  
  .gallery-section {
    padding: 127px 15px 0px;
-   background: #fff;
+   background: #eeeae4;
  }
  
  .gallery-left-col {
@@ -657,22 +668,28 @@
  }
  
  .gallery-text {
-   margin-bottom: 110px;
+   margin-bottom: 100px;
+   text-align:center;
+   font-size:200px;
+   font-family: 'MapoGoldenPier'; 
  }
  
- .gallery-text h2 {
-   margin-bottom: 20px;
+ .gallery-text h1 {
+   margin-bottom: 70px;
+   font-family: 'MapoGoldenPier';
  }
  
-
-
-//생성
- .gallery-item {
-    
+ .gallery-item p{
+    font-family: 'MapoGoldenPier';
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 5%;
  }
  
  .gallery-item img {
-   margin-bottom: 20px;
+   margin-bottom: 10%;
+   margin-left: 30%;
+   margin-top: 5%;
  }
  
  .gallery-item h4 {
@@ -711,38 +728,60 @@
  /* ----------------
  Blog section
   ---------------------*/
-
-
-
+  .blog-content{
+  margin-top: 5%;
+  }
+ .blog-content a#link{
+  font-size: 15px;
+  margin-bottom: 5%;
+ }
+ 
+#moreView{
+  font-size: 10px;
+  margin-top:5%;
+  margin-bottom: 2%;
+ }
+ 
+.sp-container-form{
+	margin-left: 15%;
+	margin-bottom: 30%;
+}
  
 .gallery-item {
    margin-bottom: 123px; 
    
 }
-
-
+.blog-text-title h2{
+	font-family: 'MapoGoldenPier'; 
+	margin-bottom: 5%;
+	text-align: center;
+	color : #595656;
+}
 
  .blog-section {
 /*    background: #f6f7f9; */
-	background: #f6f7f9;
+	background: #efeae4;
    overflow: hidden;
-   padding: 126px 15px;
+/*    padding: 126px 15px; */
+ }
+ 
+ .blog-content-col{
+ 	font-family: 'MapoGoldenPier'; 
  }
  
  .blog-title-col {
-   width: 39%;
-   float: left;
+   width: 45%;
    max-width: 610px;
+   font-family: 'MapoGoldenPier'; 
  }
  
  .blog-title-col h2 {
    margin-bottom: 40px;
-    letter-spacing: 7px;
+
  }
  
  .blog-content-col {
-   width: 57%;
-   float: left;
+   width: 45%;
  }
  
  .blog-item {
@@ -817,10 +856,14 @@
  /* ----------------
  Gallery page
   ---------------------*/
- 
+ /*
  .gallery-slider-section .sp-container {
    padding-left: 15px;
    padding-right: 15px;
+ }
+ */
+ .sp-container{
+ margin: auto;
  }
  
  .gallery-page {

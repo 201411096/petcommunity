@@ -16,6 +16,7 @@
 <!-- Main css -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/style.css">
+	
 
 
 </head>
@@ -133,6 +134,7 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/js/signup.js"></script>
+
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

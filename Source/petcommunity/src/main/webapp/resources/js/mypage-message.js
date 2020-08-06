@@ -21,7 +21,8 @@ $(function(){
 	});
 	// 종이비행기 누르면 입력 창띄움
 	$(document).on("click", ".sendMsg", function(){
-		tr = $(this).parent().parent().children('.tr-sendBox');
+		tr=$(this).parent().parent().parent().parent().find('tr.tr-sendBox');/*.children('tr.tr-sendBox');*/
+//		tr = $(this).parent().parent().parent().val();/**/
 		if(tr.css('display')=='none'){
 			tr.css('display','block');
 		}else{
@@ -96,11 +97,15 @@ function drawTable(data){
 		var sendTime = data.messageList[i].messageSendtime;
 		var content = data.messageList[i].messageContents;
 		var msgId = data.messageList[i].messageId;
+		var iTag = '<td class="sendMsg"><i class="fa fa-paper-plane"></td>';
+		// 메시지 송신자 확인
 		if(userId==data.loginId){
 			userId="나(보냄)";
+			iTag = '<td class="sendMsg"><i class="fa fa-paper-plane" style="display:none";></td>';
 		}else{
 			userId=userId+"(받음)";
 		}
+		// 읽은 메시지인지 확인
 		var listContent =
 			'<div class="mypage-message" value="div">'+
 				'<table>'+
@@ -115,16 +120,22 @@ function drawTable(data){
 					'<td class="mypage-messageId" >'+userId+'</td>'+
 					'<input type="hidden" value="'+userId.slice(0,-4)+'">'+
 					'<td class="mypage-messageTime">'+sendTime+'</td>'+
-					'<td class="sendMsg"><i class="fa fa-paper-plane"></td>'+
+					iTag+
 				'</tr>'+
 				'<tr>'+
 					'<td colspan="4" class="mypage-messageContent">'+content+'</td>'+
 				'</tr>'+
-				'<tr class="tr-sendBox">'+
-					'<td colspan="3"><hr><input type="text" class="searchMessage"  placeholder="메시지를 입력하세요"/></td>'+
-					'<td><button class="btn-message">보내기</button></td>'+
-					'<input type="hidden" class="messageId" value="'+msgId+'"/>'+
-				'</tr>'+
+				'</table>'+
+				'<table>'+
+				'<colgroup>'+
+					'<col style="width: 70%" />'+
+					'<col style="width: 30%" />'+
+					'</colgroup>'+
+					'<tr class="tr-sendBox">'+
+						'<td><hr><input type="text" class="searchMessage" placeholder="메시지를 입력하세요"/>'+
+						'<button class="btn-message">전송</button></td>'+
+						'<input type="hidden" class="messageId" value="'+msgId+'"/>'+
+					'</tr>'+
 				'</table>'+
 			'</div>'+
 			'<hr>';

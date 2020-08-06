@@ -194,19 +194,6 @@
 			<div id="tab-4" class="tab-content">
 				<div class="tedoory" id="message-table">
 				<h3>쪽지 확인</h3>
-				<%-- <div class="mypage-message">
-					<colgroup>
-							<col style="width: 30%" />
-							<col style="width: 40%" />
-							<col style="width: 30%" />
-					</colgroup>
-					<tr>
-						<td><img class="mypage-messageThumbnail" src="resources/imgs/review_thumbnail/thumbnail_reivew.jpg" alt="썸네일"></td>
-						<td><span class="mypage-messageId" >아이디</span></td>
-						<td><span class="mypage-messageTime">시간</span></td>
-					</tr>
-					
-				</div> --%>
 				</div>
 			</div>
 			

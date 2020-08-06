@@ -51,192 +51,210 @@
 
 </head>
 <body>
-
-
 	<!-- Hero section -->
 	<div id="bodyBackgroundColor">
-	<section class="hero-section">
-		<!--       <figure><img id="dialogFlow" src="./resources/bootstrap_template/template_01/img/gallery/noun_364.png" alt="" style="width: 10%"></figure> -->
-		<div class="hero-slider owl-carousel">
-			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay" id="imgMain"
-					data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1-1.jpg"></div>
-				<div class="sp-container">
-					<div class="hs-text">
-						<h2>
-							Give Love,<br>Give Hope,
-						</h2>
-						<p>
-							반려동물과<br>함께
-						</p>
+		<section class="hero-section">
+			<!--       <figure><img id="dialogFlow" src="./resources/bootstrap_template/template_01/img/gallery/noun_364.png" alt="" style="width: 10%"></figure> -->
+			<div class="hero-slider owl-carousel">
+				<div class="hs-item">
+					<div class="hs-bg set-bg sm-overlay" id="imgMain"
+						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1-1.jpg"></div>
+					<div class="sp-container">
+						<div class="hs-text">
+							<h2>
+								Give Love,<br>Give Hope,
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="hs-item">
+					<div class="hs-bg set-bg sm-overlay"
+						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover2.jpg"></div>
+					<div class="sp-container">
+						<div class="hs-text">
+							<h2>
+								Together,<br>get better
+							</h2>
+						</div>
+					</div>
+				</div>
+				<div class="hs-item">
+					<div class="hs-bg set-bg sm-overlay"
+						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1-3.jpg"></div>
+					<div class="sp-container">
+						<div class="hs-text">
+							<h2>
+								Together,<br>get better
+							</h2>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay"
-					data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1-2.jpg"></div>
-				<div class="sp-container">
-					<div class="hs-text">
-						<h2>
-							Together,<br>get better
-						</h2>
 
+		</section>
+
+		<!-- Hero section end -->
+
+		<!-- Gallery section -->
+		<section class="gallery-section">
+			<div class="sp-container">
+				<div class="gallery-text">
+					<div class="vl1"></div>
+					<h1>오키독히얼</h1>
+					<p id="sub1">about okidoghere</p>
+					<p id="sub2">어닌ㅇ,재ㅔ랴ㅏ르ㅏㅣㅈ라ㅡㅔㅐ래ㅓㅏㅣㅁ으</p>
+				</div>
+
+
+				<div class="memberCountTitle"></div>
+				<div class="count-row">
+
+					<div class="gallery-item">
+
+						<div class="mungmung">
+							<img alt=""
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/petcountimg.png">
+						</div>
+						<div class="memberCountCon"></div>
+						<div class="memberCountSubTitle">실종</div>
+					</div>
+				</div>
+				<div class="count-row">
+					<div class="gallery-item">
+						<div class="mungmung">
+							<img alt=""
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/petcountimg.png">
+						</div>
+						<div class="memberCountCon"></div>
+						<div class="memberCountSubTitle">목격</div>
 					</div>
 				</div>
 			</div>
-			<div class="hs-item">
-				<div class="hs-bg set-bg sm-overlay"
-					data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover1-3.jpg"></div>
-				<div class="sp-container">
-					<div class="hs-text">
-						<h2>
-							Together,<br>get better
-						</h2>
+			<img alt="" src="./resources/bootstrap_template/bootstrap_seyeong/img/mungsub4.png" id="mungsub1">
+<!-- 			<div class="gallery-row" align="left"> -->
+<!-- 				<img class="mungimg" -->
+<!-- 					src="./resources/bootstrap_template/bootstrap_seyeong/img/mungmung3.png" -->
+<!-- 					alt="#"> <a href="petcommunity/shop.do" id="readMore" -->
+<!-- 					class="readMore"><strong>READ MORE</strong></a> -->
+<!-- 			</div> -->
+		</section>
+		<!-- Gallery section end -->
+
+		<!-- Blog section -->
+		<section class="blog-section">
+			<div class="sp-container-form">
+				<div class="blog-title-col">
+					<div class="blog-item">
+						<div class="blog-thumb">
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/01.png"
+								alt="">
+						</div>
+						<div class="blog-content">
+							<span class="blog-cata-title">
+								<h4>반려동물 실종 신고</h4> <span>Find Board List</span>
+							</span>
+							<c:forEach items="${lostBoardvo}" var="item">
+								<a id="link"
+									href="/petcommunity/getLostBoard.do?lostboardId=${item.lostboardId}">${item.lostboardTitle}</a>
+								<br>
+							</c:forEach>
+							<div id="moreView">
+								<a href="/petcommunity/lostboardlist.do" class="site-btn">READ
+									MORE <img
+									src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
+									alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="blog-item">
+						<div class="blog-thumb">
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/03.png"
+								alt="">
+						</div>
+						<div class="blog-content">
+							<span class="blog-cata-title">
+								<h4>반려동물 발견</h4> <span>Find Board List</span>
+							</span>
+							<c:forEach items="${FindBoardvo}" var="item">
+								<a id="link"
+									href="/petcommunity/getFindBoard.do?findboardId=${item.findboardId}">${item.findboardTitle}
+								</a>
+								<br>
+							</c:forEach>
+							<div id="moreView">
+								<a href="/petcommunity/findboardlist.do" class="site-btn">READ
+									MORE <img
+									src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
+									alt="">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="blog-content-col">
+					<div class="blog-item">
+						<div class="blog-thumb">
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/02.png"
+								alt="">
+						</div>
+						<div class="blog-content">
+							<span class="blog-cata-title">
+								<h4>고객문의</h4> <span>Qna Board List</span>
+							</span>
+							<c:forEach items="${Qnavo}" var="item">
+								<a id="link"
+									href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">${item.questionboardTitle}</a>
+								<br>
+							</c:forEach>
+							<div id="moreView">
+								<a href="/petcommunity/cs.do" class="site-btn">READ MORE <img
+									src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
+									alt=""></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="blog-item">
+						<div class="blog-thumb">
+							<img
+								src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/04.png"
+								alt="">
+						</div>
+						<div class="blog-content">
+							<span class="blog-cata-title">
+								<h4>커뮤니티</h4> <span>COMMUNITY BOARD</span>
+							</span>
+							<c:forEach items="${CommunityBoardvo}" var="item">
+								<a id="link"
+									href="/petcommunity/getBoardContent.do?communityboardId=${item.communityboardId}">${item.communityboardTitle}</a>
+								<br>
+							</c:forEach>
+							<div id="moreView">
+								<a href="/petcommunity/communityBoardList.do" class="site-btn">READ
+									MORE <img
+									src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
+									alt="">
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-
-	</section>
-
-	<!-- Hero section end -->
-
-	<!-- Gallery section -->
-	<section class="gallery-section">
-		<div class="sp-container">
-			<div class="gallery-text">
-				<h1>about okidoghere</h1>
+			<div class="gallery-row" align="left">
+				<img class="mungimg"
+					src="./resources/bootstrap_template/bootstrap_seyeong/img/mungmung3.png"
+					alt="#"> <a href="petcommunity/shop.do" id="readMore"
+					class="readMore"><strong>READ MORE</strong></a>
 			</div>
-			<div class="gallery-item">
-				<p>
-					작은 생명을 돕고싶은 마음을 모아<br>깨끗하고 투명하게 후원되는 프로젝트
-				</p>
-				<img
-					src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/2.jpg"
-					alt="#">
-			</div>
-
-
-			<div class="gallery-item">
-				<p>
-					반려동물을 잃어버렸을 때<br>정보를 공유할 수 있는 커뮤니티   
-				</p>
-								<img
-					src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg"
-					alt="#">
-			</div>
-			<div class="gallery-item">
-				<p>
-					커뮤니티<br>동물병원 찾기
-				</p>
-				<img
-					src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/3.jpg"
-					alt="#">
-			</div>
-		</div>
-
-	</section>
-	<!-- Gallery section end -->
-
-	<!-- Blog section -->
-	<section class="blog-section">
-	<div class="blog-text-title"><h2>오늘 많이 본 게시글</h2></div>
-	
-		<div class="sp-container-form">
+		</section>
 		
-			<div class="blog-title-col">
-			
-				<div class="blog-item">
-					<div class="blog-thumb">
-						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/01.png"
-							alt="">
-					</div>
-					<div class="blog-content">
-						<span class="blog-cata-title">
-							<h4>반려동물 실종 신고</h4> <span>Find Board List</span>
-						</span>
-						<c:forEach items="${lostBoardvo}" var="item">
-						<a id="link" href="/petcommunity/getLostBoard.do?lostboardId=${item.lostboardId}">${item.lostboardTitle}</a> <br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/lostboardlist.do" class="site-btn">더보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-							</div>
-					</div>
-				</div>
-				
-				<div class="blog-item">
-					<div class="blog-thumb">
-						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/03.png"
-							alt="">
-					</div>
-					<div class="blog-content">
-						<span class="blog-cata-title">
-							<h4>반려동물 발견</h4> <span>Find Board List</span>
-						</span>
-						<c:forEach items="${FindBoardvo}" var="item">
-						<a id="link" href="/petcommunity/getFindBoard.do?findboardId=${item.findboardId}">${item.findboardTitle} </a><br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/findboardlist.do" class="site-btn">더보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-							</div>
-					</div>
-				</div>
-				
-			</div>
-			
-			<div class="blog-content-col">
-				<div class="blog-item">
-					<div class="blog-thumb">
-						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/02.png"
-							alt="">
-					</div>
-					<div class="blog-content">
-						<span class="blog-cata-title">
-							<h4>고객문의</h4> <span>Qna Board List</span>
-						</span>
-						<c:forEach items="${Qnavo}" var="item">
-						<a id="link" href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">${item.questionboardTitle}</a><br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/cs.do" class="site-btn">더보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-							</div>
-					</div>
-				</div>
-				
-				<div class="blog-item">
-					<div class="blog-thumb">
-						<img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/04.png"
-							alt="">
-					</div>
-					<div class="blog-content">
-						<span class="blog-cata-title">
-							<h4>커뮤니티</h4> <span>COMMUNITY BOARD</span>
-						</span>
-						<c:forEach items="${CommunityBoardvo}" var="item">
-						<a id="link" href="/petcommunity/getBoardContent.do?communityboardId=${item.communityboardId}">${item.communityboardTitle}</a><br>
-						</c:forEach>
-						<div id="moreView">
-						<a href="/petcommunity/communityBoardList.do" class="site-btn">더보기 <img
-							src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
-							alt=""></a>
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	</div>
-	
+
 	<!-- Blog section end -->
 	<!--    <!-- Footer section  -->
 	<%@include file="../views/footer.jsp"%>

@@ -2,11 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="messageDAO">
-<select id="getMessagePartner" parameterType="String" resultType="message">
+<select id="getMessagePartner" parameterType="hashmap" resultType="message">
 	SELECT *
-	FROM MESSAGE
-	WHERE MESSAGE_TARGET1 = #{id} OR MESSAGE_TARGET2 = #{id}
-	ORDER BY MESSAGE_SENDTIME DESC
+	FROM(
+    	SELECT ROWNUM AS RNUM, MESSAGE_ID, MESSAGE_CONTENTS, MESSAGE_TARGET1, MESSAGE_TARGET2, MESSAGE_SENDER, MESSAGE_SENDTIME, MESSAGE_READFLAG
+    	FROM(
+        	SELECT *
+        	FROM MESSAGE
+        	<choose>
+        	<when  test="otherId==id">
+        	WHERE MESSAGE_TARGET1 = #{id} OR MESSAGE_TARGET2 = #{id}
+        	</when >
+        	<otherwise>
+        	WHERE (MESSAGE_TARGET1 = #{id} AND MESSAGE_TARGET2 = #{otherId}) OR (MESSAGE_TARGET1 = #{otherId} AND MESSAGE_TARGET2 = #{id})
+        	</otherwise>
+        	</choose>
+        	ORDER BY MESSAGE_SENDTIME DESC
+        )
+    )
+	<![CDATA[
+	WHERE RNUM>#{startPage} AND RNUM <=#{endPage}
+	]]>
 </select>
 
 

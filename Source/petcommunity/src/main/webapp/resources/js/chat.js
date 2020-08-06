@@ -12,6 +12,7 @@ formSetting();
 documentPreventKeyDown();
 chatLocationEventHandler();
 chatMessageBoxEnterListener();
+socketEventHandling();
 
 //$('#chatLocation').on('change', function(){
 //	selectRoom(memberId);
@@ -69,6 +70,25 @@ function listenAndAppendChatMessage(targetElement, componentElement){
 		$(targetElement).append($(componentElement).text(msg));
 		$(targetElement).scrollTop($(targetElement)[0].scrollHeight); // 스크롤을 맨 아래로..
 	});	
+}
+
+function socketEventHandling(){
+	console.log('socketEventHandling function 호출 확인');
+	socket.on('eventHandling', function(socketEvent){
+		if(socketEvent=='clearMessageBox'){
+			console.log('clearMessage event 확인');
+			$('div.messages').empty();
+		}
+		if(socketEvent=='exitChat'){
+			console.log('exitChat event 확인');
+			var roomInfo = new Object();
+			roomInfo.prev = curRoomName; // 이전 방 정보
+			roomInfo.cur = 'tempRoom'; // 이후 방 정보
+			roomInfo.memberId = memberId;
+			socket.emit('joinRoom', roomInfo);
+			window.close();
+		}
+	});
 }
 
 function setCurRoomName(){ // 현재 방 설정

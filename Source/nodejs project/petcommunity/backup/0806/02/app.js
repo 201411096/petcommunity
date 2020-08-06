@@ -66,13 +66,7 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
   if(firstArgument!=""){        // 첫번째 인자가 있는지 확인
     if(firstArgument[0]=="/"){                                                                                                                      // 명령어 처리 부분 시작 ---
       if(firstArgument=="/help" || firstArgument=="/도움말" || firstArgument=="/h"){   // 도움말 처리 시작 ---
-        io.to(socket.id).emit('chat message', '========================================');
-        io.to(socket.id).emit('chat message', '명령어 목록');
-        io.to(socket.id).emit('chat message', '========================================');
-        io.to(socket.id).emit('chat message', '귓속말 사용방법 ==> [/귓속말][/whisper][/w][/ㅈ] 상대방닉네임 내용');
-        io.to(socket.id).emit('chat message', '채팅창 지우기 ==> /clear');
-        io.to(socket.id).emit('chat message', '채팅창 닫기 ==> /exit');
-        io.to(socket.id).emit('chat message', '========================================');
+        io.to(socket.id).emit('chat message', 'help messageContent ...');
         return;
       }
       if(firstArgument=="/clear" || firstArgument=="/c"){

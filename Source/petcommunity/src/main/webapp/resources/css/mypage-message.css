@@ -1,14 +1,19 @@
 .mypage-message{
-	margin-left: 10%;
-	width: 80%;
+	margin-left: 5%;
+	width: 90%;
 	border: 1px solid #2f2f2f;
 	padding: 6px 30px 6px 30px;
 	border-radius: 35px;
-	height: 70px;
+	/* height: 70px; */
+	/* overflow:auto; */
+	height:auto;
 	text-align : center;
 	background-color: #fafafa;
 }
-
+#message-table{
+	overflow:auto;
+	height:700px;
+}
 .mypage-messageThumbnail{
 	margin-left: -40%;
 	width: 50px; 
@@ -17,7 +22,48 @@
 }
 .mypage-messageId{
 	/* display: inline-block; */
+	color: #0000ca;
 	text-align: center; 
+	cursor:pointer;
+	
+}
+.mypage-messageTime{
+	font-size:5px;
+}
+.mypage-messageContent{
+	text-align: left; 
+}
+.tr-sendBox{
+	display:none;
+}
+.btn-message{
+	/* width:60px; */
+	width:20%;
+	height:35px;
+	border-radius: 35px;
+}
+.searchMessage{
+ 	margin-left:-5%;
+	/* width:220px; */
+	border-radius: 10px;
+	width:210px;
+	height:35px;
+}
+@media ( max-width: 425px ) {
+  .searchMessage{
+	margin-left:-5%;
+	width:70%;
+	height:35px;
+	}
+	.btn-message{
+	/* width:60px; */
+	width:30%;
+	height:35px;
+	border-radius: 35px;
+	}
+}
+.fa-paper-plane{
+	cursor:pointer;
 }
 /* .mypage-messageTime{
 	margin-right: -10%;

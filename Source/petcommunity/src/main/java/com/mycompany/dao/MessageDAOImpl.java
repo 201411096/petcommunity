@@ -1,6 +1,7 @@
 package com.mycompany.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class MessageDAOImpl implements MessageDAO{
 	private SqlSessionTemplate mybatis;
 	
 	@Override
-	public List<MessageVO> getMessagePartner(String id) {
-		List<MessageVO> result = mybatis.selectList("messageDAO.getMessagePartner", id);
+	public List<MessageVO> getMessagePartner(Map searchMap) {
+		List<MessageVO> result = mybatis.selectList("messageDAO.getMessagePartner", searchMap);
 		return result;
 	}
 

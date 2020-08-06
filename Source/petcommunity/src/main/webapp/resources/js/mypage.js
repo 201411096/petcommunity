@@ -249,10 +249,10 @@ $(document)
 						close();
 					});
 
-					$("#animal").click(
+					$(".animal").click(
 							function() {
 								window.open("animalInsert.do", "반려동물 등록",
-										"width=520,height=750")
+										"width=520,height=750,left=700,top=150")
 							});
 
 					if ($("#result").val() == 0) {

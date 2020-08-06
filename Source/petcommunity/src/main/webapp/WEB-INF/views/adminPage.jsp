@@ -124,8 +124,8 @@
 							<input type="text" name="searchWord" class='form-control' id="searchWord" placeholder="검색어를 입력하세요."/>
 							</span> 
 							<span class="input-group-btn"> 
-								<button id="searchBtn" type="button" class="btn btn-default" style=" width: 76px; margin-right: 30px;">검색</button>
-								<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default" style="margin-left: 100px;">상품 등록</a>
+								<button id="searchBtn" type="button" class="btn btn-default" style=" width: 76px; margin-right: 10%;">검색</button>
+								<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default" style="margin-left: 100%;">상품 등록</a>
 							</span>	
 					</div></div></div>
 					<br>
@@ -143,6 +143,19 @@
 					
 						<form role="form" method="get">
 							<table id="productDataTable" class="table table-hover">
+								<colgroup>
+									<col style="width: 10%" />
+									<col style="width: 30%" />
+									<col style="width: 10%" />
+									<col style="width: 10%" />
+									<col style="width: 10%" />
+									<col style="width: 20%" />
+									<col style="width: 5%" />
+									<col style="width: 5%" />
+									
+								</colgroup>
+							
+
 								<thead>
 									<tr>
 										<th scope="col">상품 번호</th>
@@ -171,7 +184,7 @@
 			
 			</section>
 		</div>
-	
+	<script src="resources/js/adminProduct.js" type="text/javascript"></script>
 	<script src="resources/js/adminPage.js" type="text/javascript"></script>
 </body>
 </html>

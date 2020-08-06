@@ -61,7 +61,11 @@ public class FindBoardController {
 		result.put("pagination", paginationVO);
 		result.put("findBoardVOList", findBoardVOList);
 		result.put("findBoardVOListSize", findBoardVOList.size());
-		
+		for(int i=0; i<findBoardVOList.size(); i++) {
+			if(findBoardVOList.get(i).getMemberId()==null) {
+				findBoardVOList.get(i).setMemberId(findBoardVOList.get(i).getFindboardName());
+			}
+		}
 		//그림파일이 있으면 가져옴
 		ArrayList<String> fileName = new ArrayList<String>();
 		ArrayList<String> img = new ArrayList<String>();

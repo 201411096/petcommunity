@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+body{
+	font-family: 'NanumSquare', sans-serif !important;
+	background-color: #efeae4;
+}
+#comment{
+	font-family: 'NanumSquare', sans-serif !important;
+	margin-top:5%;
+	font-size: 70px;
+	text-align: center;
+}
+#img{
+	margin-top:10%;
+	margin-left: 42%;
+}
+

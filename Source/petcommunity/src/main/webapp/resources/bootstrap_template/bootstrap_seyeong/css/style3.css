@@ -656,81 +656,42 @@
   ---------------------*/
 
 .memberCountCon{
-  font-size: 40px;
+  font-size: 50px;
   font-family: 'MapoGoldenPier'; 
   text-align: center;
   }
 .memberCountTitle{
-	font-family: 'MapoGoldenPier'; 
-/* 	font-family: 'NanumSquare', sans-serif !important;  */
+/* 	font-family: 'MapoGoldenPier';  */
+	font-family: 'NanumSquare', sans-serif !important; 
 	font-size: 30px;
 	text-align: center;
- 	margin-bottom: 10%;
+ 	margin-bottom: -5%;
  	color: #2f2f2f;
 }
 .memberCountSubTitle{
 	font-family: 'MapoGoldenPier'; 
 	font-size: 40px;
 	text-align: center;
-	margin-bottom: 20%;
+	margin-bottom: 0%;
 }
-
-
+	
 .mungmung{
 	margin-top:5%;
-	margin-left: 30%;
+	margin-left: 37%;
 }
  .gallery-section {
    padding: 127px 15px 0px;
    background: #eeeae4;
-   margin-bottom: 30%;
+   margin-bottom: 50%;
  }
  .gallery-row{
- position:relative;
- width:100%;
- height: 50%;
- 
- }
- .mungimg{
- width: 100%;
- }
-  .count-row{
  float: left;
- width:40%;
+ width:28%;
  margin-right: 5%;
- margin-left: 5%;
- }
-
- 
- #readMore{
- 	transform: translate(-50%, -50%);
-	top:50%;
-	left:50%;
-	position:absolute;
- 	margin-left: 25%;
- 	margin-top: 13%;
- 	font-size:20px;
- 	color: black;
- }
- 
- #readMore:hover{
- 	transform: translate(-50%, -50%);
-	top:50%;
-	left:50%;
-	position:absolute;
- 	margin-left: 25%;
- 	margin-top: 25%;
- 	font-size:20px;
- 	color: black;
- 	text-decoration:underline;
  }
  
 
-
-.gallery-item-text h3{
-	font-size: 30px;
-}
-
+ 
  
  .gallery-left-col {
    padding-right: 110px;
@@ -748,39 +709,46 @@
  }
  
 
-
+ 
  .gallery-text h1 {
    margin-bottom: 10px;
    font-family: 'MapoGoldenPier';
    color: #2f2f2f;
  }
-  .gallery-text #sub1 {
-   font-size:40px;
+  .gallery-text p {
+   font-size:30px;
    font-family: 'MapoGoldenPier';
    color: #5e5e5e;
  }
- .gallery-text #sub2 {
-   font-size:20px;
-   font-family: 'MapoGoldenPier';
-   color: #5e5e5e;
+ 
+ .gallery-item p{
+    font-family: 'MapoGoldenPier';
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 5%;
  }
-
+ 
  .gallery-item img {
    margin-bottom: 10%;
-   margin-left: -5%;
+   margin-left: 5%;
    margin-top: 5%;
  }
- 
-.gallery-item{
-	margin-bottom: 10%;
-}
- 
  .vl1{
  margin-left:50%;
  border-left: 3px solid #2f2f2f;
   height: 100px;
   margin-bottom: 5%;
   
+ }
+ 
+ .gallery-item h4 {
+   margin-bottom: 8px;
+ }
+ 
+ .gallery-item p {
+   font-weight: 300;
+   margin-bottom: 8px;
+   color: #2f2f2f;
  }
  
  .gallery-item .site-btn {
@@ -834,17 +802,25 @@
    margin-bottom: 123px; 
    
 }
-
+.blog-text-title h2{
+/* 	font-family: 'MapoGoldenPier';  */
+	font-family: 'NanumSquare', sans-serif !important; 
+	margin-bottom: 5%;
+	font-size:30px;
+	text-align: center;
+	color: #2f2f2f;
+}
 
  .blog-section {
+/*    background: #f6f7f9; */
 	background: #efeae4;
    overflow: hidden;
-	margin-top: -30%;
+/*    padding: 126px 15px; */
+margin-top: 50%;
  }
  
  .blog-content-col{
  	font-family: 'MapoGoldenPier'; 
- 	margin-bottom: 10%;
  }
  
  .blog-title-col {
@@ -904,14 +880,7 @@
  .blog-item p {
    padding-top: 10px;
  }
-
-
-
-
-#mungsub1{
-	width:100%;
-}
-
+ 
 
  /* ----------------
  Other Page
@@ -1280,7 +1249,6 @@
    .blog-title-col,
    .blog-content-col {
      width: 100%;
-     
    }
    .contact-form {
      padding-left: 0;

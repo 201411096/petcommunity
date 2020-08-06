@@ -76,8 +76,8 @@
 
 				</c:choose>
 
-				<li><a href="lostboardlist.do">분실 동물 찾기</a></li>
-				<li><a href="findboardlist.do">분실 동물 신고</a></li>
+				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li>
+				<li><a href="findboardlist.do"><strong>목격했어요</strong></a></li>
 
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
 				<li><a href="shop.do">유기견 후원 스토어</a></li>

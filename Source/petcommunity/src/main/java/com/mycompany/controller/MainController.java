@@ -65,6 +65,15 @@ public class MainController {
 		mv.setViewName("/communityBoardList");
 		return mv;
 	}
+
+	@RequestMapping("/errors.do")
+	public ModelAndView errorsPage() {
+		System.out.println("에러페이지 확인");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("errorsPage");
+		return mv;
+		
+	}
 	
 
 }

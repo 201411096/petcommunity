@@ -37,7 +37,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="m">
 					<span class="input-group-btn">
-						<button type="submit" class="btn btn-primary">Send</button>
+						<button type="submit" class="btn btn-primary" id="messageSendBtn">Send</button>
 					</span>
 				</div>
 			</form>

@@ -19,8 +19,6 @@
 
 <!-- Stylesheets -->
 <link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css/bootstrap.min.css" />
-<link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/font-awesome.min.css" />
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/owl.carousel.min.css" />

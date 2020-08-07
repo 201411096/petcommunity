@@ -813,6 +813,7 @@
   .blog-content{
   margin-top: 5%;
   }
+  
  .blog-content a#link{
  
   font-size: 15px;
@@ -826,15 +827,15 @@
  }
  
 .sp-container-form{
-	margin-left: 20%;
+	margin-left: 15%;
 	margin-bottom: 30%;
+	margin-right: -10%;
 }
  
 .gallery-item {
    margin-bottom: 123px; 
    
 }
-
 
  .blog-section {
 	background: #efeae4;
@@ -848,8 +849,8 @@
  }
  
  .blog-title-col {
-   width: 45%;
-   max-width: 610px;
+   width: 100%;
+   max-width: 50%;
    font-family: 'MapoGoldenPier'; 
  }
  

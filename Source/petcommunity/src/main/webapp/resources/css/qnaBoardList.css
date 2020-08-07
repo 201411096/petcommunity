@@ -10,6 +10,13 @@ body{
 	
 }
 
+table tr{
+	height: 70px;
+}
+
+table td{
+	margin-top: 20px;
+}
 tr#adminList{
 	background-color: #f3f3f3;
 }

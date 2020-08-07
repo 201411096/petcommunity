@@ -69,7 +69,7 @@
 				</div>
 				<div class="hs-item">
 					<div class="hs-bg set-bg sm-overlay"
-						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover2.jpg"></div>
+						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover6.png"></div>
 					<div class="sp-container">
 						<div class="hs-text">
 							<h2>
@@ -152,7 +152,7 @@
 						</div>
 						<div class="blog-content">
 							<span class="blog-cata-title">
-								<h4>반려동물 실종 신고</h4> <span>Find Board List</span>
+								<h4>[ 잃어버렸어요 ]</h4> <span>Find Board List</span>
 							</span>
 							<c:forEach items="${lostBoardvo}" var="item">
 								<a id="link"
@@ -168,7 +168,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="blog-item">
 						<div class="blog-thumb">
 							<img
@@ -177,7 +176,7 @@
 						</div>
 						<div class="blog-content">
 							<span class="blog-cata-title">
-								<h4>반려동물 발견</h4> <span>Find Board List</span>
+								<h4>[ 목격했어요 ]</h4> <span>Find Board List</span>
 							</span>
 							<c:forEach items="${FindBoardvo}" var="item">
 								<a id="link"
@@ -204,7 +203,7 @@
 						</div>
 						<div class="blog-content">
 							<span class="blog-cata-title">
-								<h4>고객문의</h4> <span>Qna Board List</span>
+								<h4>[ 고객문의 ]</h4> <span>Qna Board List</span>
 							</span>
 							<c:forEach items="${Qnavo}" var="item">
 								<a id="link"
@@ -227,7 +226,7 @@
 						</div>
 						<div class="blog-content">
 							<span class="blog-cata-title">
-								<h4>커뮤니티</h4> <span>COMMUNITY BOARD</span>
+								<h4>[ 커뮤니티 ]</h4> <span>COMMUNITY BOARD</span>
 							</span>
 							<c:forEach items="${CommunityBoardvo}" var="item">
 								<a id="link"

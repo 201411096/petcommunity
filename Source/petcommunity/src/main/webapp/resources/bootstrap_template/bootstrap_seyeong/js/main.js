@@ -23,11 +23,11 @@ $(window).on('load', function() {
 	/*------------------
 		Navigation
 	--------------------*/
-	$('.main-menu').slicknav({
+	/*$('.main-menu').slicknav({
 		appendTo:'.header-warp',
 		closedSymbol: '<i class="fa fa-angle-down"></i>',
 		openedSymbol: '<i class="fa fa-angle-up"></i>'
-	});
+	});*/
 
 	/*------------------
 		Background Set
@@ -184,3 +184,21 @@ $(window).on('load', function() {
 	
 
 })(jQuery);
+
+var memberCountConTxt= 296842;
+
+$({ val : 0 }).animate({ val : memberCountConTxt }, {
+ duration: 2000,
+step: function() {
+  var num = numberWithCommas(Math.floor(this.val));
+  $(".memberCountCon").text(num);
+},
+complete: function() {
+  var num = numberWithCommas(Math.floor(this.val));
+  $(".memberCountCon").text(num);
+}
+});
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

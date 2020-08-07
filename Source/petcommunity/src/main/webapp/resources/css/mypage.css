@@ -8,7 +8,7 @@
 	margin: auto;
 }
 .ultag{
-	margin-left: 20%;
+	margin-left: 14%;
 	
 }
 
@@ -46,7 +46,7 @@
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
-  margin-left:-7%;
+  margin-left:-1%;
   cursor: pointer; }
  .form-group input[type=submit]:hover{
     background: #b8b8b8; }
@@ -162,7 +162,7 @@ input[type=button] {
   background: #fff;
   }
   #uBtn:hover{
-   color: #718947;
+   color: #532913;
   }
   
    #dBtn{
@@ -179,7 +179,7 @@ input[type=button] {
   }
    #dBtn a:hover{
    
-   color: #718947;
+   color: #532913;
    text-decoration:none;
   }
   
@@ -213,7 +213,53 @@ input[type=button] {
   -moz-border-radius: 35px;
   border-radius: 35px;
   }
-
+  
+   .tedoory5{
+  border: 1px solid #898792;
+  padding: 25px 50px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+  
+  .tedoory5 input{
+  border:none;
+  border-bottom: 1px solid #898792;
+	
+  }
+  
+  .tedoory5 input[type=submit]{
+  margin-left:65%;
+  background:#fff;
+  border: 1px solid #898792;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 5px;
+  }
+  
+    .tedoory6{
+    margin-top:50%;
+  border: 1px solid #898792;
+  padding: 25px 50px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+   .tedoory6 #mypageButton{
+   width:40%;
+   margin:auto;
+   background:#fff;
+  border: 1px solid #898792;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 5px;
+   }
+   .tedoory6 h3{
+   text-align: center;
+   }
+  
  .tedoorymain hr{
  border-color:  #d1d1d1;
   }
@@ -226,7 +272,7 @@ input[type=button] {
   border-radius: 35px;
   margin: auto;
   }
-  
+
  .signup-content{
  width:600px;
   }
@@ -237,7 +283,7 @@ input[type=button] {
   
 .tedoory2{
 
- width:80%;
+ width:100%;
   background : #f7f7f7;
   padding: 25px 30px;
   -webkit-border-radius: 35px;
@@ -303,6 +349,16 @@ ul.tabs li{
 	cursor: pointer;
 }
 
+ul.tabs{
+	display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+   
+}
+
 ul.tabs li.current{
 	background: #ffffff;
 	color: #83bb44;
@@ -344,11 +400,27 @@ ul.tabs li.current{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #fff;
     
 }
 
+.tedoory3{
+  width:100%;
+  border : 1px solid #858585;
+  padding: 25px 60px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+ .tedoory3 input{
+  width: 80%;
+  padding: 6px 30px;
+  font-family: Poppins;
+ border: none;
+ border-bottom : 1px solid #898992;
+ }
+ 
 #pagination-demo>li>a:hover:not(.active) {border-bottom:1px solid #ddd;}
 
 
@@ -356,6 +428,11 @@ ul.tabs li.current{
 
 @media (max-width: 320px){
 	
+
+.ultag{
+margin: auto;	
+	
+}
 ul.tabs li{
 	background: none;
 	color: #222;
@@ -381,10 +458,6 @@ ul.tabs li{
  margin: auto;
 }
 
-.ultag{
-	margin-left: 1%;
-	
-}
 
  .tedoorymain{
  width:100%;
@@ -396,9 +469,7 @@ ul.tabs li{
   }	
 
  
-#tab-2{
- width: 100%;
- }
+
  
 .signup-content figure{
 	margin-left: 12%;
@@ -423,14 +494,20 @@ ul.tabs li{
   }
   
   .tedoory3{
-  width:100%; 
-  background : #f7f7f7;
+  width:100%;
+  border : 1px solid #858585;
   padding: 25px 5px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
   }
-  
+ .tedoory3 input{
+  width: 60%;
+  padding: 6px 30px;
+  font-family: Poppins;
+ border: none;
+ border-bottom : 1px solid #898992;
+ }
   .signup-content{
  width:80%;
  
@@ -482,7 +559,7 @@ ul.tabs li{
   background: #fff;
   }
   #uBtn:hover{
-   color: #718947;
+   color: #532913;
   }
   
    #dBtn{
@@ -499,7 +576,7 @@ ul.tabs li{
   }
    #dBtn a:hover{
    
-   color: #718947;
+   color: #532913;
    text-decoration:none;
   }
   
@@ -510,6 +587,16 @@ ul.tabs li{
   border-radius: 10px;
   }
   
+  ul.tabs{
+  	margin-left:-2px;
+  	display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+   padding-inline-start: 1px;
+}
  #memberUpdate-form{
  width: 100%;
  }

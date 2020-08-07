@@ -124,7 +124,7 @@
 			</div>
 
 			<div id="tab-2" class="tab-content">
-				<div class="tedoory2">
+				<div class="tedoory3">
 					<figure>
 						<img
 							src="./resources/bootstrap_template/template_01/img/gallery/mypage.png"

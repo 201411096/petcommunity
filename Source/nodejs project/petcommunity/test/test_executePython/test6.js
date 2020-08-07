@@ -1,4 +1,4 @@
-// 파일 읽어드리는 것으로 바꿈
+// json객체로 가져옴
 let {PythonShell} = require('python-shell')
 // let PythonShell = require('python-shell') // 이거 왜 안되는지 모름
 var fs = require('fs')
@@ -28,6 +28,10 @@ PythonShell.run(directoryPath+"PublicData.py", options, function (err, results) 
     if (err) throw err;
     fs.readFile(directoryPath+'publicData.json', 'utf8', function(err, data){
         console.log(data);
+        console.log(typeof(data));
+        data = JSON.parse(data);
+        console.log(typeof(data));
+        console.log(data.response.body.items.item)
     });
     
   });

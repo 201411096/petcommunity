@@ -33,7 +33,8 @@
 	href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css">
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/owl.carousel.min.css">
-
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/bootstrap_ain/css/slicknav.min.css">
 
 <!-- main css -->
 <link rel="stylesheet" href="./resources/css/buy.css">

@@ -1,6 +1,6 @@
-// 인코딩 디코딩이 해결이 안됨
 let {PythonShell} = require('python-shell')
 // let PythonShell = require('python-shell') // 이거 왜 안되는지 모름
+var fs = require('fs')
 var systemPythonPath = 'C:/ProgramData/Anaconda3/python.exe'
 var directoryPath = process.cwd();
 var directoryPathArray = directoryPath.split('\\');
@@ -12,7 +12,7 @@ for(var i=1; i<directoryPathArray.length; i++){
     directoryPath+="/";
     directoryPath+=directoryPathArray[i];
 }
-directoryPath+="/python project/pythonProject_kys/PublicData.py";
+directoryPath+="/python project/pythonProject_kys/";
 
 var options = {
     mode: 'text',
@@ -23,11 +23,10 @@ var options = {
     args: [0, '20200801', '20200831', '3']
 }
 
-PythonShell.run(directoryPath, options, function (err, results) {
+PythonShell.run(directoryPath+"PublicData.py", options, function (err, results) {
     if (err) throw err;
-    // console.log('results: %j', results[0]);
-    // console.log(typeof(results[0]));
-    // console.log(results)
-    console.log(decodeURIComponent(results))
+    fs.readFile(directoryPath+'publicData.json', 'utf8', function(err, data){
+        console.log(data);
+    });
     
   });

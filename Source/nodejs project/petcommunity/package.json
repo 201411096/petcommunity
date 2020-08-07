@@ -6,6 +6,7 @@
         "express": "^4.15.2",
         "fast-xml-parser": "^3.17.4",
         "greenlock-express": "^4.0.3",
+        "iconv-lite": "^0.6.2",
         "ip": "^1.1.5",
         "moment": "^2.27.0",
         "moment-timezone": "^0.5.31",

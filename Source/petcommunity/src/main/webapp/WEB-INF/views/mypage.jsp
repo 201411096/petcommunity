@@ -206,9 +206,11 @@
 			</div>
 
 			<div id="tab-4" class="tab-content">
+				<span id="showMessage">쪽지 확인</span><span id="slash"> / </span><span id="writeNewMessage">새로 전송</span>
 				<div class="tedoory" id="message-table">
-				<h3>쪽지 확인</h3>
-				</div>
+					</div>
+				<!-- <div class="tedoory" id="message-table2">
+				</div> -->
 			</div>
 
 

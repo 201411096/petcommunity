@@ -19,5 +19,10 @@ public class MessageServiceImpl implements MessageService{
 		return result;
 	
 	}
+	@Override
+	public void insertMessage(Map searchMap) {
+		messageDAO.insertMessage(searchMap);
+		
+	}
 
 }

@@ -1,6 +1,7 @@
 package com.mycompany.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mycompany.domain.LostBoardVO;
 import com.mycompany.domain.MemberVO;
@@ -17,6 +18,8 @@ public interface MemberDAO {
 	public List<MemberVO> selectPeopleAroundLocation(LostBoardVO vo);
 	
 	public String selectListPushTarget(String lostBoardWriter);
+	
+	public List<MemberVO> getMemberList(Map searchMap);
 	
 	public MemberVO memberList(String id);
 	

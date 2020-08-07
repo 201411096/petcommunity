@@ -1,6 +1,7 @@
 package com.mycompany.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +87,11 @@ public class MemberServiceImpl implements MemberService {
 	public void insertLocationInfo(MemberVO vo) {
 		memberDAO.insertLocationInfo(vo);
 		
+	}
+
+	@Override
+	public List<MemberVO> getMemberList(Map searchMap) {
+		return memberDAO.getMemberList(searchMap);
 	}
 
 }

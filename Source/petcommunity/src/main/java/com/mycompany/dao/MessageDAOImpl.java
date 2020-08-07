@@ -20,4 +20,10 @@ public class MessageDAOImpl implements MessageDAO{
 		return result;
 	}
 
+	@Override
+	public void insertMessage(Map searchMap) {
+		mybatis.insert("messageDAO.insertMessage", searchMap);
+		
+	}
+
 }

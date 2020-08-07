@@ -14,18 +14,20 @@
 	overflow:auto;
 	height:700px;
 }
+/* #message-table2{
+	height:700px;
+} */
 .mypage-messageThumbnail{
 	margin-left: -40%;
 	width: 50px; 
 	height:50px;
 	border-radius: 50%;
 }
-.mypage-messageId{
+.mypage-messageId, .mypage-memberId{
 	/* display: inline-block; */
 	color: #0000ca;
 	text-align: center; 
 	cursor:pointer;
-	
 }
 .mypage-messageTime{
 	font-size:5px;
@@ -33,31 +35,44 @@
 .mypage-messageContent{
 	text-align: left; 
 }
-.tr-sendBox{
+/* #message-table > div > table.table-sendBox > tbody > tr > td.td-sendBox{
+	min-width:100%;
+	width:100%;
+} */
+.td-sendWho{
+	color: #0000ca;
+	text-align: left;
+	cursor:pointer;
+}
+.div-message{
 	display:none;
 }
-.btn-message{
+.table-sendBox{
+	width:100%;
+}
+
+.btn-message, #btn-searchSomeone{
 	/* width:60px; */
-	width:20%;
+	width:15%;
 	height:35px;
 	border-radius: 35px;
 }
-.searchMessage{
- 	margin-left:-5%;
+.searchMessage, #searchSomeone{
+ 	/* margin-left:-5%; */
 	/* width:220px; */
 	border-radius: 10px;
-	width:210px;
+	width:85%;
 	height:35px;
 }
 @media ( max-width: 425px ) {
   .searchMessage{
 	margin-left:-5%;
-	width:70%;
+	width:75%;
 	height:35px;
 	}
 	.btn-message{
 	/* width:60px; */
-	width:30%;
+	width:25%;
 	height:35px;
 	border-radius: 35px;
 	}
@@ -65,6 +80,35 @@
 .fa-paper-plane{
 	cursor:pointer;
 }
+#showMessage, #slash, #writeNewMessage{
+	line-height:50px;
+	font-size: 25px;
+	cursor:pointer;
+}
+#showMessage{
+	color:#83bb44;
+}
+#div-searchSomeone{
+	
+}
+.mypage-newMessage{
+	width:100%;
+}
+#div-memberList{
+	display:inline-block;
+	width:40%;
+	height:90%
+}
+#div-chat{
+	overflow:auto;
+	margin-bottom: 10%;
+	margin-left:6%;
+	display:inline-block;
+	width:54%;
+	height:80%;
+	border: 1px solid #2f2f2f;
+}
+
 /* .mypage-messageTime{
 	margin-right: -10%;
 } */

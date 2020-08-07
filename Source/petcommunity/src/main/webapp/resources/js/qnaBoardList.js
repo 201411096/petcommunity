@@ -76,26 +76,32 @@ function drawQnaTable(data){
 	var tdPrefix = '<td>';
 	var tdPrefix_title = '<td id="title">';
 	var tdSuffix = '</td>';
+	
 	for(var i=0; i<data.QnaBoardVOListSize; i++){
+		
+		var imgCon = "";
+		if(data.imgList[i]==1){
+			imgCon = '<img alt="" src="resources/bootstrap_template/bootstrap_seyeong/img/images.png">';
+		}
 		
 		var listContent = "";
 			if(data.QnaBoardVOList[i].questionboardAnswerflag == 1){
 				listContent =
 				trPrefix_admin;
+				tdPrefix_title = '<td id="title"> <img alt="없음" src="resources/bootstrap_template/bootstrap_seyeong/img/replyImg (1).png">';
 			}else {
 				listContent=
 					trPrefix;
+				tdPrefix_title = '<td id="title">';
 			};
-			
 			listContent+=
 				
 				tdPrefix
 				+data.QnaBoardVOList[i].questionboardId
 				+tdSuffix+
-				
 				tdPrefix_title+
 				'<a href="/petcommunity/qnaContent.do?questionboardId='+data.QnaBoardVOList[i].questionboardId +'">'
-				+data.QnaBoardVOList[i].questionboardTitle
+				+data.QnaBoardVOList[i].questionboardTitle+imgCon
 				+tdSuffix+
 				
 				tdPrefix+
@@ -111,7 +117,7 @@ function drawQnaTable(data){
 				+tdSuffix+
 				
 			trSuffix;
-		
+				
 		$('#QnaBoardTbody').append(listContent);
 	}
 }

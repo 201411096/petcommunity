@@ -1,0 +1,60 @@
+ body {
+ font-family: 'NanumSquare', sans-serif !important; 
+   height: 100%;
+   -webkit-font-smoothing: antialiased;
+   font-smoothing: antialiased;
+ }
+ .header-warp {
+   padding: 37px 53px;
+ }
+ 
+ .hs-border {
+   border-bottom: 1px solid #e0e0e0;
+ }
+ 
+ .site-logo {
+   display: inline-block;
+ }
+ 
+ .slicknav_menu {
+   display: none;
+ }
+ 
+ .main-menu {
+   float: right;
+     margin-right: 20px;
+     margin-top: 30px;
+ }
+ 
+ .main-menu li {
+   display: inline-block;
+ }
+ 
+ .main-menu li a {
+   display: block;
+   font-size: 17px;
+   font-weight: 700;
+   padding: 10px 0;
+   color: #081624;
+   margin-left: 37px;
+   text-decoration: none;
+ }
+  .main-menu li a:hover {
+   display: block;
+   font-size: 17px;
+   font-weight: 700;
+   padding: 10px 0;
+   color: gray;
+   margin-left: 37px;
+ }
+ 
+ 
+ 
+ @media only screen and (max-width: 320px) {
+   .header-warp {
+     padding: 30px 15px;
+   }
+   .header-section .main-menu {
+     display: none;
+   }
+ }

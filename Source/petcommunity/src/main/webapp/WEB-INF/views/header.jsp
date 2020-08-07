@@ -10,14 +10,12 @@
 <meta name="keywords" content="instyle, fashion, html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script type="text/javascript">
-</script>
-
 <!-- Google font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <!-- Stylesheets -->
 <link rel="stylesheet"
@@ -30,17 +28,15 @@
 	href="./resources/bootstrap_template/template_01/css/slicknav.min.css" />
 
 <!-- Main Stylesheets -->
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css/style.css" />
-<link rel="stylesheet" href="./resources/css/login.css" />
+<link rel="stylesheet" href="./resources/css/head.css" />
+
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+
 <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -65,7 +61,7 @@
 						<a href="logout.do">[로그아웃]</a>
 
 					</c:when>
-					
+
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
 						<a href="logout.do">[로그아웃]</a>
@@ -94,12 +90,13 @@
 				</c:if>
 
 			</ul>
-<!-- 			<hr> -->
+			<!-- 			<hr> -->
 		</div>
 	</header>
 
 	<!--====== Javascripts & Jquery ======-->
-	<script src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
 	<script
@@ -109,7 +106,8 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
-
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 
 
 </body>

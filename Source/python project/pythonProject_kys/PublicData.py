@@ -24,9 +24,9 @@ def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1
         json.dump(dataFromXml, make_file, ensure_ascii=False, indent=4)
     return
 
-getPublicData()
-# if(sys.argv[1]=='1'):
-#     getPublicData()
-# else:
-#     getPublicData(sys.argv[2], sys.argv[3], sys.argv[4])
+# getPublicData()
+if(sys.argv[1]=='1'):
+    getPublicData()
+else:
+    getPublicData(sys.argv[2], sys.argv[3], sys.argv[4])
 

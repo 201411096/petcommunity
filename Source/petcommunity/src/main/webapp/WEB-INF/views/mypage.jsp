@@ -17,8 +17,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+
 <!-- Main css -->
 
 <link rel="stylesheet" href="./resources/css/mypage.css">
@@ -144,8 +143,9 @@
 						<tbody id="buyListTbody">
 						</tbody>
 					</table>
+					<ul id="pagination-demo" class="pagination-lg"></ul>
 				</div>
-				<ul id="pagination-demo" class="pagination-lg"></ul>
+				
 			</div>
 			<div id="tab-3" class="tab-content">
 				<div class="tedoory3">
@@ -221,6 +221,8 @@
 	</div>
 
 	<!-- JS -->
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	<script src="./resources/js/mypage.js"></script>
 	<script src="./resources/js/mypage-message.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>

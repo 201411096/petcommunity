@@ -282,7 +282,6 @@ figure {
 }
 .form-submit {
 margin-top:50%;
-margin-left:25%;
   display: inline-block;
   background: #6dabe4;
   color: #fff;
@@ -327,7 +326,7 @@ margin-left:25%;
   .form-group:last-child {
     margin-bottom: 0px; }
 
-input {
+.signin-content input {
   width: 90%;
   display: block;
   border: none;

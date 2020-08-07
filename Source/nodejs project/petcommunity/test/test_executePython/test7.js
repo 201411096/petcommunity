@@ -27,12 +27,7 @@ var options = {
 PythonShell.run(directoryPath+"PublicData.py", options, function (err, results) {
     if (err) throw err;
     fs.readFile(directoryPath+'publicData.json', 'utf8', function(err, data){
-        console.log(data);
-        console.log(typeof(data));
         data = JSON.parse(data);
-        console.log(typeof(data));
-        console.log(data.response.body.items.item);
-        console.log(data.response.body.items.item[0].age);
-    });
-    
-  });
+        console.log(data.response.body.items.item[0].age)
+    });    
+});

@@ -1,11 +1,25 @@
 const https = require('https');
 const fs = require('fs');
+let {PythonShell} = require('python-shell');
+const { time } = require('console');
 const options = {
   pfx: fs.readFileSync('petcommunity.pfx'),
   passphrase: '123456'
 };
-
-
+// 공공데이터(파이썬 부분)-----
+var systemPythonPath = 'C:/ProgramData/Anaconda3/python.exe';
+var directoryPath = process.cwd();
+var directoryPathArray = directoryPath.split('\\');
+for(var i=0; i<2; i++){
+  directoryPathArray.pop();
+}
+directoryPath = directoryPathArray[0];
+for(var i=1; i<directoryPathArray.length; i++){
+  directoryPath+="/";
+  directoryPath+=directoryPathArray[i];
+}
+directoryPath+="/python project/pythonProject_kys/";
+// 공공데이터(파이썬 부분)-----
 
 var app = https.createServer(options, (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -53,6 +67,13 @@ io.on('connection', function(socket){
     }
     messageHandling(memberId, msg, socket);
   });
+  // 공공데이터(파이썬 부분)-----
+  socket.on('getPublicData', function(dataOptions){
+    // socket.emit(executePythonFileAndReadJsonFile());
+    executePythonFileAndReadJsonFile(dataOptions, socket);
+    // console.log(data[0].age);
+  })
+  // 공공데이터(파이썬 부분)-----
 });
 
 function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
@@ -122,3 +143,27 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
   }
   io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent); // 특별한 명령어 처리가 없을 경우 그 방에 포함된 사람들에게만 메시지를 보냄
 }
+
+// 공공데이터(파이썬 부분)-----
+//executePythonFileAndReadJsonFile(); //테스트 하는 부분
+function executePythonFileAndReadJsonFile(dataOptions, socket){
+  var python_options = {
+    mode: 'text',
+    pythonPath: systemPythonPath, //python의 설치경로를 입력하는 부분
+    pythonOptions: ['-u'],
+    scriptPath: '',
+    // args:[1],
+    args: [0, '20200801', '20200831', '3']
+  }
+  PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
+    if (err) throw err;
+    fs.readFile('publicData.json', 'utf8', function(err, data){
+        data = JSON.parse(data);
+        // console.log(data.response.body.items.item);
+        data = data.response.body.items.item;
+        console.log(data);
+        socket.emit('getPublicData', data);
+    });    
+  });
+}
+// 공공데이터(파이썬 부분)-----

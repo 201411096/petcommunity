@@ -16,9 +16,9 @@
 <body>
 	<div class="tedoory">
 		<figure>
-			<img
+			<img id="buyImg"
 				src="./resources/bootstrap_template/template_01/img/gallery/buyReceipt.PNG"
-				alt="sing up image" style="width: 300px">
+				alt="sing up image">
 		</figure>
 		<div id="Layout">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0"
@@ -55,7 +55,7 @@
 
 			<div class="basicDiv"></div>
 
-			<table width="100%" cellspacing="0" cellpadding="0" class="tbl">
+			<table  class="tbl">
 				<c:forEach items="${buyReceipt}" var="buy">
 					<tr>
 						<th class="pimg">이미지</th>
@@ -64,11 +64,10 @@
 						<th>가격</th>
 						<th>결제 금액</th>
 					</tr>
-
 					<tr>
 						<td class="item pimg"><img
 							src="./resources/imgs/product_image/internal/product_image/${buy.productName}.jpg" /></td>
-						<td class="item">${buy.productName}</td>
+						<td class="item"><div>${buy.productName}</div></td>
 						<td class="article">${buy.buyCnt}</td>
 						<td class="price">${buy.productPrice}</td>
 						<td class="sum">${buy.buyListTotalprice}</td>

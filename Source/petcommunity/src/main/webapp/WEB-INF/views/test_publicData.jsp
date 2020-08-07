@@ -8,23 +8,26 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+var socket = io("https://192.168.0.18:3000");
+waitingPublicData();
 getPublicData();
-function getPublicData(){
-	var beginDate = '20200101';
-	var endDate = '20201231';
-	var numOfRows = '10000';
-	var pageNo = '1';
-	var requestUrl = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?bgnde=' + beginDate + '&endde=' + endDate + '&pageNo=' + pageNo + '&numOfRows=' + numOfRows + '&ServiceKey=';
-	console.log('getPublicData 함수 호출 확인');
-	$.ajax({
-		type:"GET",
-		url:requestUrl,
-		success:function(result){
-			console.log(result.content)
-		}
-			
+
+function waitingPublicData(){
+	console.log('waitingPublicData 함수 확인 ... ');
+	socket.on('getPublicData', function(data){
+		console.log('socket.on ... waitingPublicData 이벤트 확인 ... ' + data);
+		console.log('socket.on ... waitingPublicData 이벤트 확인 ... ' + data[0]);
+		console.log('socket.on ... waitingPublicData 이벤트 확인 ... ' + data[1].age);
 	});
+}
+
+function getPublicData(){
+	var dataOptions = new Object();
+	socket.emit('getPublicData', dataOptions);
+	console.log('socket.on ... getPublicData 이벤트 확인 ... ');
 }
 </script>
 </body>

@@ -1,6 +1,6 @@
+// 인코딩 디코딩이 해결이 안됨
 let {PythonShell} = require('python-shell')
-//var parser = require('fast-xml-parser');
-const convert = require('xml-js');
+// let PythonShell = require('python-shell') // 이거 왜 안되는지 모름
 var systemPythonPath = 'C:/ProgramData/Anaconda3/python.exe'
 var directoryPath = process.cwd();
 var directoryPathArray = directoryPath.split('\\');
@@ -25,8 +25,9 @@ var options = {
 
 PythonShell.run(directoryPath, options, function (err, results) {
     if (err) throw err;
-    // console.log('results: %j', results);
-    // var parsedResult = parser.parse(results);
-    var parsedResult = convert.xml2json(results, {compact: true, spaces: 4});
-    console.log(typeof(parsedResult));
+    // console.log('results: %j', results[0]);
+    // console.log(typeof(results[0]));
+    // console.log(results)
+    console.log(decodeURIComponent(results))
+    
   });

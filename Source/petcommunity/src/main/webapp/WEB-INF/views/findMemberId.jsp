@@ -9,9 +9,9 @@
 </head>
 <body>
 	<h4>아이디 찾기</h4>
-		<div class="tedoory">
+		<div class="tedoory5">
 			<div class="form-group">
-				<label for="memberName">성함</label> <input type="text"
+				<label for="memberName">이름</label> <input type="text"
 					name="memberName" id="memberName" />
 			</div>
 			<div class="form-group">
@@ -23,9 +23,9 @@
 	
 	<br>
 	<h4>비밀번호 찾기</h4>
-		<div class="tedoory">
+		<div class="tedoory5">
 			<div class="form-group">
-				<label for="memberId">ID</label> <input type="text" name="memberId"
+				<label for="memberId">아이디</label> <input type="text" name="memberId"
 					id="memberId" />
 			</div>
 			<div class="form-group">

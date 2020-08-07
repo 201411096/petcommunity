@@ -54,32 +54,28 @@
 			</table>
 
 			<div class="basicDiv"></div>
-			<c:forEach items="${buyReceipt}" var="buy">
-				<table width="100%" cellspacing="0" cellpadding="0" class="tbl">
-					<colgroup>
-						<col style="width: 15%" />
-						<col style="width: 50%" />
-						<col style="width: 15%" />
-						<col style="width: 10%" />
-						<col style="width: 10%" />
-					</colgroup>
+
+			<table width="100%" cellspacing="0" cellpadding="0" class="tbl">
+				<c:forEach items="${buyReceipt}" var="buy">
 					<tr>
-						<th>이미지</th>
+						<th class="pimg">이미지</th>
 						<th>상품명</th>
 						<th>수량</th>
 						<th>가격</th>
 						<th>결제 금액</th>
 					</tr>
+
 					<tr>
-						<td class="item"><img src="./resources/imgs/product_image/internal/product_image/${buy.productName}.jpg"/></td>
+						<td class="item pimg"><img
+							src="./resources/imgs/product_image/internal/product_image/${buy.productName}.jpg" /></td>
 						<td class="item">${buy.productName}</td>
 						<td class="article">${buy.buyCnt}</td>
 						<td class="price">${buy.productPrice}</td>
 						<td class="sum">${buy.buyListTotalprice}</td>
 					</tr>
+				</c:forEach>
+			</table>
 
-				</table>
-			</c:forEach>
 		</div>
 	</div>
 </body>

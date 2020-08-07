@@ -162,7 +162,7 @@ input[type=button] {
   background: #fff;
   }
   #uBtn:hover{
-   color: #718947;
+   color: #532913;
   }
   
    #dBtn{
@@ -179,7 +179,7 @@ input[type=button] {
   }
    #dBtn a:hover{
    
-   color: #718947;
+   color: #532913;
    text-decoration:none;
   }
   
@@ -213,7 +213,53 @@ input[type=button] {
   -moz-border-radius: 35px;
   border-radius: 35px;
   }
-
+  
+   .tedoory5{
+  border: 1px solid #898792;
+  padding: 25px 50px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+  
+  .tedoory5 input{
+  border:none;
+  border-bottom: 1px solid #898792;
+	
+  }
+  
+  .tedoory5 input[type=submit]{
+  margin-left:65%;
+  background:#fff;
+  border: 1px solid #898792;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 5px;
+  }
+  
+    .tedoory6{
+    margin-top:50%;
+  border: 1px solid #898792;
+  padding: 25px 50px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+   .tedoory6 #mypageButton{
+   width:40%;
+   margin:auto;
+   background:#fff;
+  border: 1px solid #898792;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  padding: 5px;
+   }
+   .tedoory6 h3{
+   text-align: center;
+   }
+  
  .tedoorymain hr{
  border-color:  #d1d1d1;
   }
@@ -504,7 +550,7 @@ ul.tabs li{
   background: #fff;
   }
   #uBtn:hover{
-   color: #718947;
+   color: #532913;
   }
   
    #dBtn{
@@ -521,7 +567,7 @@ ul.tabs li{
   }
    #dBtn a:hover{
    
-   color: #718947;
+   color: #532913;
    text-decoration:none;
   }
   

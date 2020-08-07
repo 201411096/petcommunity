@@ -226,7 +226,7 @@ input[type=button] {
   border-radius: 35px;
   margin: auto;
   }
-  
+
  .signup-content{
  width:600px;
   }
@@ -237,7 +237,7 @@ input[type=button] {
   
 .tedoory2{
 
- width:80%;
+ width:100%;
   background : #f7f7f7;
   padding: 25px 30px;
   -webkit-border-radius: 35px;
@@ -344,11 +344,27 @@ ul.tabs li.current{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: #f7f7f7;
+    border: 1px solid #f7f7f7;
     
 }
 
+.tedoory3{
+  width:100%;
+  border : 1px solid #858585;
+  padding: 25px 60px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+ .tedoory3 input{
+  width: 80%;
+  padding: 6px 30px;
+  font-family: Poppins;
+ border: none;
+ border-bottom : 1px solid #898992;
+ }
+ 
 #pagination-demo>li>a:hover:not(.active) {border-bottom:1px solid #ddd;}
 
 
@@ -423,14 +439,20 @@ ul.tabs li{
   }
   
   .tedoory3{
-  width:100%; 
-  background : #f7f7f7;
+  width:100%;
+  border : 1px solid #858585;
   padding: 25px 5px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
   }
-  
+ .tedoory3 input{
+  width: 60%;
+  padding: 6px 30px;
+  font-family: Poppins;
+ border: none;
+ border-bottom : 1px solid #898992;
+ }
   .signup-content{
  width:80%;
  

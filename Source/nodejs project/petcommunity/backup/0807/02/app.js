@@ -69,7 +69,9 @@ io.on('connection', function(socket){
   });
   // 공공데이터(파이썬 부분)-----
   socket.on('getPublicData', function(dataOptions){
+    // socket.emit(executePythonFileAndReadJsonFile());
     executePythonFileAndReadJsonFile(dataOptions, socket);
+    // console.log(data[0].age);
   })
   // 공공데이터(파이썬 부분)-----
 });
@@ -151,8 +153,7 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     pythonOptions: ['-u'],
     scriptPath: '',
     // args:[1],
-    // args: [0, '20200801', '20200831', '3']
-    args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
+    args: [0, '20200801', '20200831', '3']
   }
   PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
     if (err) throw err;
@@ -161,7 +162,6 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
         // console.log(data.response.body.items.item);
         data = data.response.body.items.item;
         console.log(data);
-        console.log('data 길이...' + data.length);
         socket.emit('getPublicData', data);
     });    
   });

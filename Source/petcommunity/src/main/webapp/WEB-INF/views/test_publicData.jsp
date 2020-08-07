@@ -20,14 +20,17 @@ function waitingPublicData(){
 	socket.on('getPublicData', function(data){
 		console.log('socket.on ... waitingPublicData 이벤트 확인 ... ' + data);
 		console.log('socket.on ... waitingPublicData 이벤트 확인 ... ' + data[0]);
-		console.log('socket.on ... waitingPublicData 이벤트 확인 ... ' + data[1].age);
+		console.log('socket.on ... waitingPublicData 이벤트 확인 ... 데이터 길이 : ' + data.length);
 	});
 }
 
 function getPublicData(){
 	var dataOptions = new Object();
+	dataOptions.startDate = '20200101';
+	dataOptions.endDate = '20201231';
+	dataOptions.dataCnt = '100';
 	socket.emit('getPublicData', dataOptions);
-	console.log('socket.on ... getPublicData 이벤트 확인 ... ');
+// 	console.log('socket.on ... getPublicData 이벤트 확인 ... ');
 }
 </script>
 </body>

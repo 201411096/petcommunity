@@ -18,5 +18,8 @@ def getPublicData(beginDate=str(now.tm_year)+'0101', endDate=str(now.tm_year)+'1
         print(item['happenPlace'])
     print('데이터 길이', len(itemList['item']))
     return itemList['item']
-#getPublicData()
-getPublicData(sys.argv[1], sys.argv[2], sys.argv[3])
+if(sys.argv[1]=='1'):
+    getPublicData()
+else:
+    getPublicData(sys.argv[2], sys.argv[3], sys.argv[4])
+

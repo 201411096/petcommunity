@@ -8,6 +8,7 @@
         "ip": "^1.1.5",
         "moment": "^2.27.0",
         "moment-timezone": "^0.5.31",
+        "python-shell": "^2.0.1",
         "socket.io": "^2.3.0"
     }
 }

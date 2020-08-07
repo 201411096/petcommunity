@@ -17,8 +17,7 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+
 <!-- Main css -->
 
 <link rel="stylesheet" href="./resources/css/mypage.css">
@@ -60,7 +59,7 @@
 
 						<c:forEach items="${animalList}" var="animal">
 
-							<form action="AnimalUdate.do" method="post">
+							<form class="frm" method="post">
 								<input type="hidden" name="animalName"
 									value="${animal.animalName}" /> <input type="hidden"
 									name="animalId" value="${animal.animalId}" /> <input
@@ -86,6 +85,10 @@
 											<td><c:if test="${! empty animal.imgAnimal}">
 													<img class="imgAnimal"
 														src="resources/imgs/animal/${animal.animalId}/${animal.imgAnimal}">
+												</c:if>
+												<c:if test="${empty animal.imgAnimal}">
+													<img class="imgAnimal"
+														src="resources/bootstrap_template/template_01/img/gallery/pngwing.com (8).png">
 												</c:if></td>
 											<td class="mypage-animal2">
 												<h3>${animal.animalName}</h3>
@@ -106,7 +109,7 @@
 										<textarea name="animalFeature" id="animalFeature" disabled>${animal.animalFeature}</textarea>
 									<br><br>
 									<div align="right">
-										<input type="submit" value="수정" id="uBtn" />
+										<input type="submit" value="수정" id="uBtn" class="uBtn" />
 										<button id='dBtn'>
 											<a href='animalDelete.do?animalId=${animal.animalId}'>삭제</a>
 										</button>
@@ -144,8 +147,9 @@
 						<tbody id="buyListTbody">
 						</tbody>
 					</table>
+					<ul id="pagination-demo" class="pagination-lg"></ul>
 				</div>
-				<ul id="pagination-demo" class="pagination-lg"></ul>
+				
 			</div>
 			<div id="tab-3" class="tab-content">
 				<div class="tedoory3">
@@ -221,6 +225,8 @@
 	</div>
 
 	<!-- JS -->
+	<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	<script src="./resources/js/mypage.js"></script>
 	<script src="./resources/js/mypage-message.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>

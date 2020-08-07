@@ -254,7 +254,23 @@ $(document)
 								window.open("animalInsert.do", "반려동물 등록",
 										"width=520,height=750,left=700,top=150")
 							});
+					
+					
+					$(".uBtn").on("click",function(){
 
+					   $('.frm').attr("action", "AnimalUdate.do");
+					   $('.frm').attr("target", "formInfo");
+					   window.open("", "formInfo", "height=750, width=520,left=700, top=150");
+					   $('.frm').submit();    
+					    	
+							});
+					
+					$("#animalUp").click(function() {
+						opener.parent.location.reload();
+						close();
+					});
+
+					
 					if ($("#result").val() == 0) {
 						alert("오류 , 다시 등록 해주세요")
 					}
@@ -279,5 +295,12 @@ $(document)
 						$(this).addClass('current');
 						$("#" + tab_id).addClass('current');
 					});
+					
+					if( $("#genderValue").val()=='암컷'){
+						$("#animalGender").prop('checked', true);
+					}else{
+						
+						$("#animalGender2").prop('checked', true);
+					}
 
 				});

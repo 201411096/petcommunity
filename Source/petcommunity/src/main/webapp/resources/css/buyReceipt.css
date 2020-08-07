@@ -1,6 +1,9 @@
 body {text-align:center; margin:20px auto;}
 
-
+.pimg{
+	
+	width: 20%;
+}
 #Layout {width:100%; border:1px solid #543f36; margin-top: 5%;}
 #Print {width:500px; text-align:right; padding:3px 5px;}
 .basicDiv {border:1px solid #543f36; padding:7px 0; color:#543f36;}
@@ -34,8 +37,10 @@ body {text-align:center; margin:20px auto;}
 
 .tedoory{
  margin-left:25%;
+ margin-top:2%;
+ margin-bottom:5%;
  width:50%;
-  border: 2px solid #898792;
+  border: 1px solid #523e32;
   padding: 25px 30px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
@@ -52,10 +57,30 @@ body {text-align:center; margin:20px auto;}
 	.tedoory{
  margin-left:6%;
  width:90%;
-  border: 2px solid #898792;
+  border: 1px solid #523e32;
   padding: 25px 30px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
   }
+	}
+	
+@media screen and (max-width: 320px){
+	
+.tedoory{
+ margin:auto;
+ width:90%;
+  border: 1px solid #523e32;
+  padding: 25px 30px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  border-radius: 35px;
+  }
+	.titTd{
+	display: none;
+	}
+	.pimg{
+	display: none;
+	}
+	.tbl .item{font:13px gulim; padding-left:3px;}
 	}

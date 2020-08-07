@@ -59,7 +59,7 @@
 
 						<c:forEach items="${animalList}" var="animal">
 
-							<form action="AnimalUdate.do" method="post">
+							<form class="frm" method="post">
 								<input type="hidden" name="animalName"
 									value="${animal.animalName}" /> <input type="hidden"
 									name="animalId" value="${animal.animalId}" /> <input
@@ -85,6 +85,10 @@
 											<td><c:if test="${! empty animal.imgAnimal}">
 													<img class="imgAnimal"
 														src="resources/imgs/animal/${animal.animalId}/${animal.imgAnimal}">
+												</c:if>
+												<c:if test="${empty animal.imgAnimal}">
+													<img class="imgAnimal"
+														src="resources/bootstrap_template/template_01/img/gallery/pngwing.com (8).png">
 												</c:if></td>
 											<td class="mypage-animal2">
 												<h3>${animal.animalName}</h3>
@@ -105,7 +109,7 @@
 										<textarea name="animalFeature" id="animalFeature" disabled>${animal.animalFeature}</textarea>
 									<br><br>
 									<div align="right">
-										<input type="submit" value="수정" id="uBtn" />
+										<input type="submit" value="수정" id="uBtn" class="uBtn" />
 										<button id='dBtn'>
 											<a href='animalDelete.do?animalId=${animal.animalId}'>삭제</a>
 										</button>

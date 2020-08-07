@@ -30,7 +30,6 @@
 
 	<div class="main2">
 		<!-- Sign up form -->
-		<section class="signup">
 			<div class="container">
 				<div class="signup-content">
 					<div class="signup-form"> 
@@ -52,7 +51,7 @@
 							</div>
 							
 								<div class="form-group">
-									
+									<input type="hidden" id="genderValue" value="<%= animalGender %>">
 									<label for="animalGender">암컷</label> <input type="radio"
 										name="animalGender" id="animalGender" value="암컷" />
 								</div>
@@ -65,7 +64,7 @@
 
 								<div class="form-group">
 									<span><i class="zmdi zmdi-face"></i>&nbsp;반려동물 생일</span> <input
-										type="date" name="animalBirthday" id="animalBirthday" />
+										type="date" name="animalBirthday" id="animalBirthday" value="<%= animalBirthday %>"/>
 								</div>
 
 								<div class="form-group">
@@ -73,7 +72,7 @@
 										rows="10" ><%= animalFeature %></textarea>
 								</div>
 								<div class="form-group form-button">
-									<input type="submit" name="animalIn" id="animalIn"
+									<input type="submit" name="animalIn" id="animalUp"
 										class="form-submit" value="등록" />
 								</div>
 						</form>
@@ -81,7 +80,6 @@
 
 				</div>
 			</div>
-		</section>
 
 	</div>
 

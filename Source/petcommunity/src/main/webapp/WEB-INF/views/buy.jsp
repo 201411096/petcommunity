@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="../views/header.jsp"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 
 <head>
-<!-- header 시작-->
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css/style.css" />
-<link rel="stylesheet" href="./resources/css/login.css" />
-<!-- main.js -->
-
-<!-- header 끝 -->
-
 
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -24,8 +17,6 @@
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/animate.css">
 <link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_ain/css/bootstrap.min.css">
-<link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/flaticon.css">
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css">
@@ -33,54 +24,14 @@
 	href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css">
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_ain/css/slicknav.min.css">
+
 
 <!-- main css -->
 <link rel="stylesheet" href="./resources/css/buy.css">
 </head>
 
 <body>
-	<!-- header section -->
-	<header class="header-section">
-		<div class="header-warp">
-			<a href="header.do" class="site-logo"> <img
-				src="./resources/bootstrap_template/template_01/img/logo2.png"
-				alt="">
-			</a>
 
-
-
-			<ul class="main-menu">
-
-				<c:if test="${! empty sessionScope.memberVO}">
-            
-            ${sessionScope.memberVO.memberName}님, 안녕하세요
-            <a href="logout.do">[로그아웃]</a>
-					<a href="mypageselect.do">[마이 페이지]</a>
-
-				</c:if>
-
-				<li><a href="index.html">분실 동물 찾기</a></li>
-				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
-				<li><a href="shop.do">유기견 후원 스토어</a></li>
-				<li><a href="/petcommunity/findHospitalList.do">동물 병원 정보</a></li>
-				<li><a href="/petcommunity/cs.do">고객 문의</a></li>
-				<li><a href="contact.html">Contact</a></li>
-
-				<c:if test="${empty sessionScope.memberVO}">
-					<li><a href="login.do">로그인/회원가입</a></li>
-				</c:if>
-
-				<c:if test="${sessionScope.memberVO.memberId eq 'admin1234'}">
-					<li><a href="login.do">관리자페이지</a></li>
-				</c:if>
-
-			</ul>
-			<hr>
-		</div>
-	</header>
-	<!-- header section -->
 	<section class="checkout_area section_gap">
 		<div class="container">
 			<div class="billing_details">
@@ -121,13 +72,7 @@
 								</div>
 							</div>
 							<table class="buy-table">
-							<colgroup>
-									<col style="width: 15%" />
-									<col style="width: 50%" />
-									<col style="width: 10%" />
-									<col style="width: 15%" />
-									<col style="width: 10%" />
-							</colgroup>
+					
 								<thead>
 									<tr>
 										<th>이미지</th>

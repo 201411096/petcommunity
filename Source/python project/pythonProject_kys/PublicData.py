@@ -13,10 +13,10 @@ def getPublicData(beginDate=str(now.tm_year)+'0101', endDate=str(now.tm_year)+'1
     dataFromXml = xmltodict.parse(result.content)
     itemList = dataFromXml['response']['body']['items']
     print(itemList)
-    for item in itemList['item']:
-        print(item['happenDt'])
-        print(item['happenPlace'])
-    print('데이터 길이', len(itemList['item']))
+    # for item in itemList['item']:
+    #     print(item['happenDt'])
+    #     print(item['happenPlace'])
+    # print('데이터 길이', len(itemList['item']))
     return itemList['item']
 if(sys.argv[1]=='1'):
     getPublicData()

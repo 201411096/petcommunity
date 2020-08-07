@@ -4,11 +4,14 @@
     "description": "my first socket.io app",
     "dependencies": {
         "express": "^4.15.2",
+        "fast-xml-parser": "^3.17.4",
         "greenlock-express": "^4.0.3",
         "ip": "^1.1.5",
         "moment": "^2.27.0",
         "moment-timezone": "^0.5.31",
         "python-shell": "^2.0.1",
-        "socket.io": "^2.3.0"
+        "request": "^2.88.2",
+        "socket.io": "^2.3.0",
+        "xml-js": "^1.6.11"
     }
 }

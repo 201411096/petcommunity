@@ -48,7 +48,6 @@ function waitingPublicData(){
 	    };
 	
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-		console.log(map);
 		drawMarker(map, data);
 	});
 }
@@ -61,25 +60,24 @@ function getPublicData(){
 	socket.emit('getPublicData', dataOptions);
 }
 function drawMarker(map, data){
-	console.log(map);
 	for(var i=0; i<data.length; i++){
-		var iwContent = '<div class="marker-infowindow">'+
-						 '<div class="form-group">품종 : '+data[i].kindCd+'</div>'+
-						 '<div class="form-group">발견 장소 : '+data[i].happenPlace+'</div>'+
-						 '</div>'; 
+// 		var iwContent = '<div class="marker-infowindow">'+
+// 						 '<div class="form-group">품종 : '+data[i].kindCd+'</div>'+
+// 						 '<div class="form-group">발견 장소 : '+data[i].happenPlace+'</div>'+
+// 						 '</div>'; 
         if(data[i].x == 0 ) continue;
         
-        var markerPosition = new kakao.maps.LatLng(data[i].x, data[i].y);
+        var markerPosition = new kakao.maps.LatLng(data[i].x.toString(), data[i].y.toString());
+        console.log(markerPosition);
         var marker = new kakao.maps.Marker({
-//             position: markerPosition
-			position : new kakao.maps.LatLng(37.519972628243366+i/10000, 126.85287648507145+i/10000)
+            map:map,
+            position: markerPosition
         });
-		marker.setMap(map);
 		marker.setRange(1000);
-        var infowindow = new kakao.maps.InfoWindow({
-	        content : iwContent
-        });
-        kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+//         var infowindow = new kakao.maps.InfoWindow({
+// 	        content : iwContent
+//         });
+//         kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
 	}
 }
 function makeClickListener(map, marker, infowindow) {

@@ -24,13 +24,13 @@ def getLatLng(addr):
     result = json.loads(str(requests.get(url, headers=headers).text))
     if(len(result['documents'])>=1):
         if(result['documents'][0]['address']==None): # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
-            return 0, 0
+            return '0', '0'
         match_first = result['documents'][0]['address']
-        print('result 확인 ...', result['documents'][0])
-        return float(match_first['y']), float(match_first['x'])
+        # return round(float(match_first['y']), 6), round(float(match_first['x']), 6)
+        return match_first['y'], match_first['x']
     else: # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
-        return 0, 0
-    
+        return '0', '0'
+
 # getPublicData()
 if(sys.argv[1]=='1'):
     getPublicData()

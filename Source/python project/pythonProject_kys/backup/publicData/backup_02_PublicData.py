@@ -20,7 +20,7 @@ def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1
     # jsonObject = jsonObject.encode('utf-8')
     # print(jsonObject)
     # return jsonObject
-    with open('publicData.json', 'w', encoding="utf-8") as make_file:
+    with open('../../publicData.json', 'w', encoding="utf-8") as make_file:
         json.dump(dataFromXml, make_file, ensure_ascii=False, indent=4)
     return
 

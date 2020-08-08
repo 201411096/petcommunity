@@ -17,7 +17,7 @@ def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1
     # print(itemList)
     for item in itemList:
         item['y'], item['x'] = getLatLng(item['happenPlace'])
-    with open('../../publicData.json', 'w', encoding="utf-8") as make_file:
+    with open('../../../publicData.json', 'w', encoding="utf-8") as make_file:
         json.dump(itemList, make_file, ensure_ascii=False, indent=4)
 
 def getLatLng(addr):

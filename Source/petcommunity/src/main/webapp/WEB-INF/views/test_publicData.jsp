@@ -69,10 +69,13 @@ function drawMarker(map, data){
 						 '</div>'; 
         if(data[i].x == 0 ) continue;
         
-        var markerPosition = new kakao.maps.LatLng(data[i].x, data[i].y);
+        var markerPosition = new kakao.maps.LatLng(data[i].y, data[i].x);
+//         console.log('-------------------------------')
+//         console.log(markerPosition);
+//         console.log(new kakao.maps.LatLng(37.519972628243366+i/10000, 126.85287648507145+i/10000));
         var marker = new kakao.maps.Marker({
-//             position: markerPosition
-			position : new kakao.maps.LatLng(37.519972628243366+i/10000, 126.85287648507145+i/10000)
+            position: markerPosition
+// 			position : new kakao.maps.LatLng(37.519972628243366+i/10000, 126.85287648507145+i/10000)
         });
 		marker.setMap(map);
 		marker.setRange(1000);

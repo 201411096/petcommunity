@@ -2,6 +2,7 @@ var curPage;
 var latitude = -1;
 var longitude = -1;
 var contextPath = getContextPath();
+var map;
 var defaultOpts = {
 	visiblePages : 10,
     onPageClick: function (event, page) {
@@ -259,7 +260,7 @@ function kakaoMapAPI(data){
         level: 7 // 지도의 확대 레벨
     };
 
-	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		
 	for(var i=0; i<data.lostBoardVOListSize; i++){
 		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);

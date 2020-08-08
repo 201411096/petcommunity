@@ -159,7 +159,7 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     fs.readFile('publicData.json', 'utf8', function(err, data){
         data = JSON.parse(data);
         // console.log(data.response.body.items.item);
-        // data = data.response.body.items.item; // 수정 위치
+        data = data.response.body.items.item;
         console.log(data);
         console.log('data 길이...' + data.length);
         socket.emit('getPublicData', data);

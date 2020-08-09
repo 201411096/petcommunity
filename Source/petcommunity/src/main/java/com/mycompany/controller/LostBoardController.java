@@ -1,9 +1,14 @@
 package com.mycompany.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,6 +47,10 @@ public class LostBoardController {
 	FindBoardServiceImpl findBoardService;
 	@Autowired
 	MemberServiceImpl memberService;
+	
+
+	
+	
 	@ResponseBody
 	@RequestMapping(value = "/lostboardListWithPaging.do", produces = "application/json; charset=utf-8")
 	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType, HttpServletRequest request) {

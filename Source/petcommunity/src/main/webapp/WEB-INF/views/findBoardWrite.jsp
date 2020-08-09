@@ -78,9 +78,15 @@
 <!-- 				<input multiple="multiple" type="file" name="file" accept="image/gif, image/jpeg, image/png"/> -->
 <!-- 				<input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> -->
 				<ul class="list-group" id="file-list">
-					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>
+					<li class="list-group-item"> 
+						<input type="file" name="file" id='uploadImg' class="file" accept="image/gif, image/jpeg, image/png"/> 
+						<span class="selectedImg"><img src="" /></span>
+						<span id='resultOfBreed'></span>
+					</li>
 				</ul>
+				
 			</div>
+			
 			<div class="col-md-4 col-md-offset-10">
 				<span class="input-group-btn">
 					<button type="submit" class="btn btn-default" id="writeButton">작성완료</button>

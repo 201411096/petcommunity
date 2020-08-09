@@ -91,7 +91,8 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> getMemberList(Map searchMap) {
-		return memberDAO.getMemberList(searchMap);
+		List<MemberVO> result = memberDAO.getMemberList(searchMap);		
+		return result;
 	}
 
 }

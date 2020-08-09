@@ -75,7 +75,8 @@ public class MessegeController {
 		Map searchMap = new HashMap();
 		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
 		String id = mvo.getMemberId();
-		if(otherId==null) {
+		System.out.println("otherId: "+otherId);
+		if(otherId.equals("1")) {
 			otherId=id;
 		}
 		searchMap.put("otherId", otherId);
@@ -110,6 +111,44 @@ public class MessegeController {
 		result.put("messagePartnerListSize", messagePartnerList.size());
 		return result;
 	}
+	// 검색한 id로 대화상대 찾아오기
+	@ResponseBody
+	@RequestMapping("/searchId.do")
+	public Map searchId(HttpSession session, int startPage, int endPage, String otherId, String searchNew) {
+		Map result = new HashMap();
+		Map searchMap = new HashMap();
+		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
+		String id = mvo.getMemberId();
+		searchMap.put("id", id);
+		searchMap.put("otherId", otherId);
+		searchMap.put("startPage", startPage);
+		searchMap.put("endPage", endPage);
+		// 검색어가 있을 경우
+		System.out.println("검색어: "+searchNew);
+		if(searchNew==null || searchNew.equals("")) {
+			result.put("noSearch", "noSearch");
+		}else {
+			searchMap.put("searchNew", searchNew);
+			List<MemberVO> memberList = memberService.getMemberList(searchMap);
+			if(memberList==null) {
+				result.put("noId", "noSearch");
+			}else {
+				result.put("memberList", memberList);
+				result.put("messagePartnerListSize", memberList.size());
+			}
+		}
+//		if(searchNew!=null || !searchNew.equals("")) {
+//			System.out.println("여기 왔냐");
+//			searchMap.put("searchNew", searchNew);
+//			List<MemberVO> memberList = memberService.getMemberList(searchMap);
+//			if(memberList!=null) {
+//				result.put("memberList", memberList);
+//				result.put("messagePartnerList", memberList.size());
+//			}
+//			result.put("memberList", "noSearch");
+//		}
+		return result;
+	}
 	// chat 가져오기
 	@ResponseBody
 	@RequestMapping("/getChat.do")
@@ -126,6 +165,27 @@ public class MessegeController {
 		result.put("loginId", id);
 		return result;
 	}
+	// chat 삭제
+	@ResponseBody
+	@RequestMapping("/delMessage.do")
+	public Map delMessage(HttpSession session, int startPage, int endPage, String otherId, String msgId) {
+		// 삭제
+		Map result = new HashMap();
+		messageService.delMessage(msgId);
+		// 갱신된 chat을 테이블 그리기 위해
+		Map searchMap = new HashMap();
+		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
+		String id = mvo.getMemberId();
+		searchMap.put("id", id);
+		searchMap.put("otherId", otherId);
+		List<MessageVO> messageVO = messageService.getMessagePartner2(searchMap);
+		result.put("messageVO", messageVO);
+		result.put("messageVOSize", messageVO.size());
+		result.put("loginId", id);
+		
+		return result;
+	}
+	
 //	// 대화상대 찾아오기
 //	@ResponseBody
 //	@RequestMapping("/getMessagePartner.do")

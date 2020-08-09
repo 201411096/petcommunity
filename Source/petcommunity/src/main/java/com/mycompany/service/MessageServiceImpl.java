@@ -31,5 +31,10 @@ public class MessageServiceImpl implements MessageService{
 		messageDAO.insertMessage(searchMap);
 		
 	}
+	@Override
+	public void delMessage(String msgId) {
+		messageDAO.delMessage(msgId);
+		
+	}
 
 }

@@ -31,4 +31,10 @@ public class MessageDAOImpl implements MessageDAO{
 		
 	}
 
+	@Override
+	public void delMessage(String msgId) {
+		mybatis.delete("messageDAO.delMessage", msgId);
+		
+	}
+
 }

@@ -1,16 +1,42 @@
 var startPage=0;//최초 탭 클릭 시 0~5개의 리스트, 챗만 가져옴
 var endPage=6;
-var otherId='';//상대방 id
+var otherId='1';//상대방 id
 
 $(function(){
 	$(".tab-link4").on("click", function(){
 		$('#message-table').css("display","block");
 		startPage=0;
 		endPage=6;
-		otherId='';
+		otherId='1';
 		$("#div-chat").empty();
 		getMypageMessage(startPage, endPage);
 	})
+	// 아이디 검색 이벤트
+	$('#btn-searchSomeone').on('click', function(){
+		var searchNew='';
+		searchNew = $('#searchSomeone').val();
+		otherId='1';
+		$("#div-chat").empty();
+		searchId(searchNew);
+		
+	});
+//	// 아이디 검색 이벤트(onfocus)
+//	$('#searchSomeone').on('onfocus', function(){
+//		var searchNew='';
+//		searchNew = $('#searchSomeone').val();
+//		otherId='1';
+//		$("#div-chat").empty();
+//		searchId(searchNew);
+//	})
+	// 아이디 검색 이벤트(keyup)
+	$('#searchSomeone').on('keyup', function(){
+		var searchNew='';
+		searchNew = $('#searchSomeone').val();
+		otherId='1';
+		$("#div-chat").empty();
+		searchId(searchNew);
+		
+	});
 	//클릭 이벤트
 	$(document).on("click", '.mypage-message', function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
@@ -27,9 +53,10 @@ $(function(){
 	});
 	// 삭제
 	$(document).on('click', '.messageDel', function(){
+		if(confirm("삭제하시겠습니까?")){
 		var msgId = $(this).attr('value');
 		delMessage(msgId);
-		getChat(startPage, endPage);
+		}
 	});
 	// 무한스크롤(리스트)
 	$("#div-memberList").scroll(function(){
@@ -45,15 +72,59 @@ $(function(){
 	});
 	// 전송
 	$('#btn-message').on('click', function(){
-		var content=$('#writeMessage').text();
+		var content=$('#writeMessage').val();
 		alert(content);
 	});
 
 
 });
-//function delMessage(msgId){
-//	
-//}
+function searchId(searchNew){
+	$.ajax({
+		async:true,
+		url : '/petcommunity/searchId.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		dataType : "json",
+		data :{
+			"startPage":startPage,
+			"endPage":endPage,
+			"otherId":otherId,
+			"searchNew":searchNew
+		},
+		success: function(data){
+			if(data.noSearch=="noSearch"||data.noId=="noSearch"){
+				startPage=0;
+				endPage=6;
+				getMypageMessage(startPage, endPage);
+			}
+			drwaWriteMessageTable(data);
+		},
+		error: function(data){
+			console.log('autocomplete error');
+		}
+	});
+}
+
+function delMessage(msgId){
+	$.ajax({
+		async:true,
+		url : '/petcommunity/delMessage.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		dataType : "json",
+		data :{
+			"startPage":startPage,
+			"endPage":endPage,
+			"otherId":otherId,
+			"msgId":msgId
+		},
+		success: function(data){
+			alert("삭제완료");
+			drawChatTable(data);
+		},
+		error: function(data){
+			console.log('autocomplete error');
+		}
+	});
+}
 function getChat(startPage, endPage){
 	$.ajax({
 		async:true,
@@ -81,7 +152,8 @@ function getMypageMessage(startPage, endPage){
 		dataType : "json",
 		data :{
 			"startPage":startPage,
-			"endPage":endPage
+			"endPage":endPage,
+			"otherId":otherId
 		},
 		success: function(data){
 			drwaWriteMessageTable(data);
@@ -138,9 +210,19 @@ function drwaWriteMessageTable(data){
 	if(startPage==0){
 		$('#div-memberList').empty();
 	}
-
+	
 	for (var i=0; i<data.messagePartnerListSize; i++){
-		var userId = data.messagePartnerList[i];
+		var userId='';
+		var tdInfo='';
+		if(data.memberList!=null){
+			userId=data.memberList[i].memberId;
+			userAdress=data.memberList[i].memberAddress;
+			tdInfo=userAdress.slice(0, 2);
+			
+		}else{
+		userId = data.messagePartnerList[i];
+		tdInfo='대화중';
+		}
 //		var userId = data.messagePartnerList[i].split("/")[0];
 /*		var content = data.messagePartnerList[i].split("/")[1];
 		var sendTime = data.messagePartnerList[i].split("/")[2];*/
@@ -148,6 +230,7 @@ function drwaWriteMessageTable(data){
 //		var sendTime = data.messageList[i].messageSendtime;
 //		var content = data.messageList[i].messageContents;
 //		var msgId = data.messageList[i].messageId;
+		var tdTag = '<td colspan="4" class="mypage-messageContent">'+tdInfo+'</td>';
 		var iTag = '<td class="sendMsg"><i class="fa fa-paper-plane"></td>';
 		var listContent =
 		'<div class="mypage-message" value="'+userId+'">'+
@@ -167,8 +250,8 @@ function drwaWriteMessageTable(data){
 			iTag+
 		'</tr>'+
 		'<tr>'+
-//			'<td colspan="4" class="mypage-messageContent" value="'+content+'">'+content.slice(0,10)+'</td>'+
-			'<td colspan="4" class="mypage-messageContent">'+'대화중'+'</td>'+
+			tdTag+
+//			'<td colspan="4" class="mypage-messageContent">'+'대화중'+'</td>'+
 		'</tr>'+
 		'</table>'+
 		'</div>'+

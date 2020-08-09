@@ -25,6 +25,29 @@ $(function() {
 			console.log('파일 비어있음');
 		}
 	});
+	$('#uploadImg').change(function(){
+		if(this.files&&this.files[0]){
+			var reader = new FileReader;
+			reader.onload = function(data){
+				$('.selectedImg img').attr("src", data.target.result).width(150);
+			}
+			reader.readAsDataURL(this.files[0]);
+			var formData = new FormData(); 
+		
+			formData.append("file", $("#uploadImg")[0].files[0]);
+			$.ajax({ 
+				type: 'POST', 
+				url: 'checkDogBreed.do', 
+				processData: false, // 필수 
+				contentType: false, // 필수
+				data: formData, 
+				success: function(data) { 
+					
+				} 
+			});
+			}
+	
+	});
 });
 
 function kakaoMapAPI() {

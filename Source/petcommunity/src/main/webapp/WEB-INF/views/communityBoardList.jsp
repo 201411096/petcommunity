@@ -103,7 +103,8 @@
 									</span>	
 									<span class="input-group-btn">
 										<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button> 									
-									</span>												
+									</span>		
+								
 								</div>														
 							</div>
 										 				

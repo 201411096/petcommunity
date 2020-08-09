@@ -26,6 +26,7 @@ def getLatLng(addr):
         if(result['documents'][0]['address']==None): # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
             return '0', '0'
         match_first = result['documents'][0]['address']
+        # return round(float(match_first['y']), 6), round(float(match_first['x']), 6)
         return match_first['y'], match_first['x']
     else: # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
         return '0', '0'

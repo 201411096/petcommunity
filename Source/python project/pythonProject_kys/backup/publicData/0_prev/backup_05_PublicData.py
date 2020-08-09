@@ -1,3 +1,6 @@
+# 좌표로 변환
+# 0808 좌표 변환 테스트
+# 좌표 변환 성공한 개수 : 1000 -> 559
 import requests
 import xmltodict
 import json
@@ -13,10 +16,16 @@ def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1
     result = requests.get(requestUrl+serviceKey)
     dataFromXml = xmltodict.parse(result.content)
     itemList = list(dataFromXml['response']['body']['items']['item'])
+    # print(itemList)
     for item in itemList:
         item['y'], item['x'] = getLatLng(item['happenPlace'])
-    with open('publicData.json', 'w', encoding="utf-8") as make_file:
+    with open('../../../publicData.json', 'w', encoding="utf-8") as make_file:
         json.dump(itemList, make_file, ensure_ascii=False, indent=4)
+    cnt = 0;
+    for item in itemList:
+        if(item['y']!=0):
+            cnt=cnt+1
+    print('주소 변환 개수 확인 ... ', cnt)
 
 def getLatLng(addr):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query='+addr
@@ -24,14 +33,19 @@ def getLatLng(addr):
     result = json.loads(str(requests.get(url, headers=headers).text))
     if(len(result['documents'])>=1):
         if(result['documents'][0]['address']==None): # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
-            return '0', '0'
+            return 0, 0
         match_first = result['documents'][0]['address']
-        return match_first['y'], match_first['x']
+        print('result 확인 ...', result['documents'][0])
+        return float(match_first['y']), float(match_first['x'])
     else: # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
-        return '0', '0'
+        return 0, 0
+getPublicData()
 
-# getPublicData()
-if(sys.argv[1]=='1'):
-    getPublicData()
-else:
-    getPublicData(sys.argv[2], sys.argv[3], sys.argv[4])
+
+
+
+# if(sys.argv[1]=='1'):
+#     getPublicData()
+# else:
+#     getPublicData(sys.argv[2], sys.argv[3], sys.argv[4])
+

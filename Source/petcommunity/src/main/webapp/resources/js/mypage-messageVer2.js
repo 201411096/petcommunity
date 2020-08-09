@@ -16,8 +16,8 @@ $(function(){
 		var searchNew='';
 		searchNew = $('#searchSomeone').val();
 		otherId='1';
-		$("#div-chat").empty();
 		searchId(searchNew);
+		$("#div-chat").empty();
 		
 	});
 //	// 아이디 검색 이벤트(onfocus)
@@ -33,8 +33,8 @@ $(function(){
 		var searchNew='';
 		searchNew = $('#searchSomeone').val();
 		otherId='1';
-		$("#div-chat").empty();
 		searchId(searchNew);
+		$("#div-chat").empty();
 		
 	});
 	//클릭 이벤트
@@ -73,11 +73,36 @@ $(function(){
 	// 전송
 	$('#btn-message').on('click', function(){
 		var content=$('#writeMessage').val();
-		alert(content);
+//		sendMessage(content);
 	});
 
-
 });
+
+function sendMessage(content){
+	$.ajax({
+		async:true,
+		url : '/petcommunity/sendMessage.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		dataType : "json",
+		data :{
+			"startPage":startPage,
+			"endPage":endPage,
+			"otherId":otherId,
+			"searchNew":searchNew
+		},
+		success: function(data){
+			if(data.noSearch=="noSearch"||data.noId=="noSearch"){
+				startPage=0;
+				endPage=6;
+				getMypageMessage(startPage, endPage);
+			}
+			drwaWriteMessageTable(data);
+		},
+		error: function(data){
+			console.log('autocomplete error');
+		}
+	});
+}
 function searchId(searchNew){
 	$.ajax({
 		async:true,
@@ -177,7 +202,7 @@ function drawChatTable(data){
 		var loginId = data.loginId;
 		var fromWho = '<td class="messageDel" value="'+messageId+'">X</td>';
 		if(loginId!=sender){
-			chatMessage= '<div class="chatMessageLeft">';
+			chatMessage= '<div class="chatMessageLeft" value="'+sender+'">';
 			fromWho = '<td class="messageDel" value="'+messageId+'"></td>';;
 		}else{
 			sender="나";
@@ -210,7 +235,14 @@ function drwaWriteMessageTable(data){
 	if(startPage==0){
 		$('#div-memberList').empty();
 	}
-	
+	var title='';
+	if(data.memberList!=null){
+		title='검색한 사용자';
+	}else{
+		title='대화중인 상대'
+	}
+	var listTitle ='<h4>'+title+'</h4><hr>';
+	$('#div-memberList').append(listTitle);
 	for (var i=0; i<data.messagePartnerListSize; i++){
 		var userId='';
 		var tdInfo='';

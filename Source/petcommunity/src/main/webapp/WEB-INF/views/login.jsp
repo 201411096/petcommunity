@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css2/style.css">
+    <link rel="stylesheet" href="./resources/css/login.css">
     <link rel="stylesheet" href="./resources/css/animate.css">
 	
 </head>
@@ -55,14 +55,15 @@
                                 <label for="memberPassword"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="memberPassword" id="memberPassword" placeholder="Password"/>
                             </div>
-      						 
+      						 <a href="#" class="findId">아이디/비밀번호 찾기</a>
                             <div class="form-group form-button">
+                            
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="로그인"/>
                                 <input type="hidden" name="memberX" id="memberX" value=""/>
                                 <input type="hidden" name="memberY" id="memberY" value=""/>
                             </div>
                            
-                            <a href="#" class="findId">아이디/비밀번호 찾기</a>
+                            
                         </form>
                     </div>
                 </div>

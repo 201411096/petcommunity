@@ -95,7 +95,7 @@ public class QnaController {
     */
 	@ResponseBody
 	@RequestMapping(value="/qnaList.do", produces = "application/json; charset=utf-8")
-	public Map selectQnaBoardList(@RequestParam(defaultValue="1") int curPage,QnaVO qnavo, String searchType, HttpSession session, String searchWord) {
+	public Map selectQnaBoardList(@RequestParam(defaultValue="1") int curPage,QnaVO qnavo, String searchType, HttpSession session, String searchWord, HttpServletRequest request) {
 			
 		Map map = new HashMap();
 		Map result = new HashMap();
@@ -114,7 +114,22 @@ public class QnaController {
 		result.put("QnaBoardVOList", qnavoList);
 		result.put("QnaBoardVOListSize",qnavoList.size());
 		result.put("membervo", membervo);
-			
+		
+		// 첨부한 이미지 존재하는지 확인
+		ArrayList<Integer> imgList = new ArrayList<Integer>(); 
+		for(int i=0;i<qnavoList.size();i++) {
+			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs")+"/qnaboard/"+Integer.toString(qnavoList.get(i).getQuestionboardId());
+			File dir = new File(directoryPath);
+			File fileList [] = dir.listFiles();
+			if(fileList==null || fileList.length==0) {
+				imgList.add(0);
+			}else if(fileList.length!=0) {
+				imgList.add(1);
+			}
+		}
+		System.out.println("imgList확인 : "+imgList);
+		result.put("imgList", imgList);
+
 		return result;
 	}
 	
@@ -240,9 +255,8 @@ public class QnaController {
 	public ModelAndView insertReply(QnaVO qnavo, HttpSession session) {
 		
 		ModelAndView mv = new ModelAndView();
-		String re = "RE : ";
-		qnavo.getQuestionboardContent(); //답변창에 질문글 복사
-		qnavo.setQuestionboardTitle(re+qnavo.getQuestionboardTitle());
+		String reply = "  답변드립니다.";
+		qnavo.setQuestionboardTitle(reply);
 		qnavo.setMemberId(((MemberVO)session.getAttribute("memberVO")).getMemberId());
 		qnaService.insertReply(qnavo);
 		mv.setViewName("redirect:/cs.do");

@@ -1,6 +1,8 @@
 body {text-align:center; margin:20px auto;}
 
-
+.pimg img{
+	width: 90%;
+}
 #Layout {width:100%; border:1px solid #543f36; margin-top: 5%;}
 #Print {width:500px; text-align:right; padding:3px 5px;}
 .basicDiv {border:1px solid #543f36; padding:7px 0; color:#543f36;}
@@ -20,7 +22,7 @@ body {text-align:center; margin:20px auto;}
 .tbl td.titTd {font:bold 14px gulim; color:#543f36;}
 .tbl th {font:bold 13px gulim; color:#543f36; border:1px solid #543f36; background:#f7feeb; padding:4px;text-align:center;}
 
-.tbl .item {font:13px gulim; padding-left:15px;}
+.tbl .item {font:13px gulim; padding-left:15px; width: 15%;}
 .tbl .article {font:13px gulim; text-align:center;}
 .tbl .price {font:normal 13px gulim; color:#4b4b4b; text-align:right; padding-right:7px;}
 .tbl .sum {font:bold 13px gulim; color:#4b4b4b; text-align:right; padding-right:7px;}
@@ -34,8 +36,10 @@ body {text-align:center; margin:20px auto;}
 
 .tedoory{
  margin-left:25%;
+ margin-top:2%;
+ margin-bottom:5%;
  width:50%;
-  border: 2px solid #898792;
+  border: 1px solid #523e32;
   padding: 25px 30px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
@@ -43,19 +47,44 @@ body {text-align:center; margin:20px auto;}
   }
 
 @media screen and (max-width: 768px){
-	
+
 #Layout {
 	width:97%; border:1px solid #543f36; margin-left: 1%; margin-top: 10%;
 	}
+
+	}
 	
+@media screen and (max-width: 320px){
 	
-	.tedoory{
- margin-left:6%;
+	.tedoory #buyImg{
+	width: 90%;
+	}
+	.pimg img{
+	width: 10%;
+}	
+
+.tedoory{
+ margin:auto;
  width:90%;
-  border: 2px solid #898792;
-  padding: 25px 30px;
+  border: 1px solid #523e32;
+  padding: 25px 4px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
   }
+	.titTd{
+	display: none;
 	}
+	.pimg{
+	display: none;
+	}
+	.tbl .item{font:13px gulim; padding-left:3px;}
+	
+	.tbl td div{
+	width:120px; height:25px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+
+}
+.tbl td:nth-child(2) {
+	width: 50%;
+}
+}

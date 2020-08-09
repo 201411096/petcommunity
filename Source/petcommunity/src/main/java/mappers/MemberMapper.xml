@@ -66,4 +66,15 @@ select * from member where member_id=#{memberid} and member_email=#{memberEmail}
 UPDATE MEMBER SET MEMBER_X = #{memberX}, MEMBER_Y = #{memberY} WHERE MEMBER_ID = #{memberId}
 </update>
 
+<select id="getMemberList" parameterType="hashmap" resultType="member">
+SELECT *
+FROM(
+	SELECT ROWNUM AS RNUM, MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_ADDRESS, MEMBER_TEL, MEMBER_EMAIL, MEMBER_BIRTHDAY, MEMBER_FLAG, MEMBER_TOKEN, MEMBER_X, MEMBER_Y
+	FROM MEMBER
+	WHERE MEMBER_ID LIKE '%'||#{searchNew}||'%' AND MEMBER_ID != #{id}
+	)
+<![CDATA[
+WHERE RNUM>#{startPage} AND RNUM <=#{endPage}
+]]> 
+</select>
 </mapper>

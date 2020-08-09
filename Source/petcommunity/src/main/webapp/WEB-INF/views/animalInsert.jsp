@@ -25,7 +25,6 @@
 
    <div class="main2">
       <!-- Sign up form -->
-      <section class="signup">
          <div class="container">
             <div class="signup-content">
                <div class="signup-form">
@@ -78,7 +77,6 @@
 
             </div>
          </div>
-      </section>
 
    </div>
 

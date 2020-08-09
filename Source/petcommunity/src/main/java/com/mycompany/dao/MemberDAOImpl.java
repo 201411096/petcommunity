@@ -1,6 +1,7 @@
 package com.mycompany.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public void insertLocationInfo(MemberVO vo) {
 		mybatis.update("member.insertLocationInfo", vo);
 		
+	}
+	@Override
+	public List<MemberVO> getMemberList(Map searchMap) {
+		List<MemberVO> result = mybatis.selectList("member.getMemberList", searchMap);
+		return result;
 	}
 
 }

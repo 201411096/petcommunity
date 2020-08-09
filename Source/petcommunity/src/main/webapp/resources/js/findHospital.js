@@ -346,11 +346,32 @@ function drawTable(data){
 	}
 }
 
+//function getDataWithoutPaging(){
+//	$.ajax({
+//		type : 'post',
+//		async:true,
+//		url : '/petcommunity/findhospitalListWithoutPaging.do',
+//		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+//		data : {
+//			"searchLocation" : $('#searchLocation').val(),
+//			"searchName" : $('#searchName').val()
+//		},
+//		dataType : 'json',
+//		success : function(resultData){
+//			setTimeout(function(){
+//				kakaoMapAPI(resultData);
+//			}, 2000);
+//			//kakaoMapAPI(resultData);
+//		},
+//		error:function(request,status,error){
+//			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//		}		
+//	});
+//}
 
 
-
-//var latitude = $('#findHospitalX').val();
-//var longitude = $('#findHospitalY').val();
+var latitude = $('#findHospitalX').val();
+var longitude = $('#findHospitalY').val();
 var findhospitalAddress = $('#findhospitalAddress').val();
 
 $(function() {
@@ -415,3 +436,103 @@ function kakaoMapAPI() {
 	    });
 	}
 }
+
+//function kakaoMapAPI(data){
+//	$('#map').empty();
+//	console.log($('#searchName').val());
+//	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+//    mapOption = { 
+//        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
+//        level: 7 // 지도의 확대 레벨
+//    };
+//
+//	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+//		
+//	for(var i=0; i<data.findHospitalVOListSize; i++){
+//		var position =  new kakao.maps.LatLng(data.findHospitalVOList[i].findhospitalX, data.findHospitalVOList[i].findhospitalY);
+//		
+//		var imageSrc = contextPath + '/resources/imgs/marker/red.png', // 마커이미지의 주소입니다    
+//	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+//	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+//		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+//		
+//		var marker = new kakao.maps.Marker({
+//			  position: position
+//			  ,image: markerImage // 마커이미지 설정
+//			});
+//		marker.setMap(map);
+//		marker.setRange(1000);
+//		var iwContent = '<div class="marker-infowindow">'+
+//						'<div class="form-group">'+data.findHospitalVOList[i].findhospitalName+'</div>'+
+//						'<div class="form-group">'+data.findHospitalVOList[i].findhospitalAddress+'</div>';
+//
+//						
+//		var infowindow = new kakao.maps.InfoWindow({
+//		    content : iwContent
+//		});
+//		kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+//	}
+//	
+//
+//}
+//
+//
+////marker click event
+////closure를 이용한 infowindow on/off
+//function makeClickListener(map, marker, infowindow) {
+//	var status = 0;
+//	return function() {
+//		if(status==0){
+//			infowindow.open(map, marker);
+//			status=1;
+//		}else{
+//			infowindow.close(map, marker);
+//			status=0;
+//		}
+//			
+//	};
+//}
+//
+////현재 작업경로를 가져오는 함수
+//function getContextPath() {
+//	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+//}
+//
+//function getLocation() {
+//    if (navigator.geolocation) {	// GPS를 지원하면
+//      navigator.geolocation.getCurrentPosition(function(position) {
+//        latitude = position.coords.latitude;
+//        longitude = position.coords.longitude;
+//        console.log('geolocation success--------------------------');
+//    	console.log(latitude);
+//    	console.log(longitude);
+//      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
+//        latitude = 37.519972628243366;
+//        longitude = 126.85287648507145;
+//      }, {
+//        enableHighAccuracy: false,
+//        maximumAge: 0,
+//        timeout: Infinity
+//      });
+//    } else {
+//      //alert('GPS를 지원하지 않습니다');
+//    	console.log('GPS를 지원하지 않습니다');
+//    }
+//}
+//
+//function setCenterLocation(){
+//    console.log(latitude);
+//    console.log(longitude);
+//	var geocoder = new kakao.maps.services.Geocoder();
+//	// 주소로 좌표를 검색합니다
+//	geocoder.addressSearch($('#searchName').val(), function(result, status) {
+//	    // 정상적으로 검색이 완료됐으면 
+//	     if (status === kakao.maps.services.Status.OK) {
+//	        latitude = result[0].y;
+//	        longitude = result[0].x;
+//	        console.log('search ... result ...');
+//	        console.log(latitude);
+//	        console.log(longitude);
+//	    }
+//	});
+//}

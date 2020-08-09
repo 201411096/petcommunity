@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../views/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,26 +14,17 @@
 
 <!-- Main css -->
 <link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css2/style.css">
+	href="./resources/css/mypage.css">
 
 
 </head>
 <body>
 
-	<div class="main2">
-
-		<!-- Sign up form -->
-		<section class="signup">
-			<div class="container">
-				<div class="signup-content">
+			<div class="tedoory6">			
 					<h3>나의 반려동물이 등록되었습니다.</h3>
 					<input type="button" id="mypageButton" value="닫기">
-
-				</div>
 			</div>
-		</section>
-
-	</div>
+	
 
 	<!-- JS -->
 	<script

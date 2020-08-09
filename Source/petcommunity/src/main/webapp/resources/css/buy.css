@@ -4888,7 +4888,24 @@ h6 {
 	
 }
 
-@media (max-width:480px){
+@media (max-width:320px){
+	
+	.section_gap {
+  padding: 1px 0px; 
+  }
+  
+	.buy-table{
+	
+	text-align: center;
+}
+	.buy-table th{
+	
+	text-align: center;
+}
+	.buy-table td:nth-child(n+4) , .buy-table th:nth-child(n+3){
+	display: none;
+}
+
 	/* Main Menu Area css
 	============================================================================================ */
 	.header_area .navbar-collapse{

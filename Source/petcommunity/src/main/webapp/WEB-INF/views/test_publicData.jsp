@@ -76,7 +76,7 @@ function waitingPublicData(){
 
 function getPublicData(){
 	var dataOptions = new Object();
-	dataOptions.dataCnt = '10000';
+	dataOptions.dataCnt = '100';
 	if($('#publicDataStartDateOption').val()==''){
 		dataOptions.startDate = '20200101';
 		console.log('startDate 안들어옴... ');

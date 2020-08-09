@@ -1,3 +1,4 @@
+# 파일에 현재날짜 적용전
 import requests
 import xmltodict
 import json
@@ -5,7 +6,7 @@ import time
 import sys
 
 now = time.localtime()
-# today = str(now.tm_year)+str(now.tm_mon)+str(now.tm_mday) # 사용안함
+today = str(now.tm_year)+str(now.tm_mon)+str(now.tm_mday)
 
 def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1231', numOfRows='100'):
     pageNo = '1'

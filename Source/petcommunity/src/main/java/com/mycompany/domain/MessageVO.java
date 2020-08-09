@@ -39,12 +39,6 @@ public class MessageVO {
 	public void setMessageTarget1(String messageTarget1) {
 		this.messageTarget1 = messageTarget1;
 	}
-	public String getMessageTartget2() {
-		return messageTarget2;
-	}
-	public void setMessageTartget2(String messageTartget2) {
-		this.messageTarget2 = messageTartget2;
-	}
 	public String getMessageSender() {
 		return messageSender;
 	}

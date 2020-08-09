@@ -74,7 +74,8 @@ public class MemberDAOImpl implements MemberDAO{
 	}
 	@Override
 	public List<MemberVO> getMemberList(Map searchMap) {
-		return mybatis.selectList("member.getMemberList", searchMap);
+		List<MemberVO> result = mybatis.selectList("member.getMemberList", searchMap);
+		return result;
 	}
 
 }

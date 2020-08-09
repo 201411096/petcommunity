@@ -21,7 +21,7 @@
 <!-- Main css -->
 
 <link rel="stylesheet" href="./resources/css/mypage.css">
-<link rel="stylesheet" href="./resources/css/mypage-message.css">
+<link rel="stylesheet" href="./resources/css/mypage-messageVer2.css">
 
 </head>
 <body>
@@ -210,9 +210,23 @@
 			</div>
 
 			<div id="tab-4" class="tab-content">
-				<span id="showMessage">쪽지 확인</span><span id="slash"> / </span><span id="writeNewMessage">새로 전송</span>
+				<!-- <span id="showMessage">쪽지 확인</span><span id="slash"> / </span><span id="writeNewMessage">새로 전송</span> -->
 				<div class="tedoory" id="message-table">
+					<div id="div-searchSomeone">
+						<input type="text" name="searchSomeone" id="searchSomeone"
+							placeholder="사용자를 검색하세요"></input>
+						<button id="btn-searchSomeone">검색</button>
 					</div>
+					<hr>
+					<div id="div-memberList"></div>
+					<div id="firstDiv-chat">
+						<div id="div-chat"></div>
+						<div id="div-send">
+							<input type="text" id="writeMessage" class="writeMessage" placeholder="메시지를 입력하세요"></input>
+							<button id="btn-message">전송</button>
+						</div>
+					</div>
+				</div>
 				<!-- <div class="tedoory" id="message-table2">
 				</div> -->
 			</div>
@@ -230,7 +244,7 @@
 	<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	<script src="./resources/js/mypage.js"></script>
-	<script src="./resources/js/mypage-message.js"></script>
+	<script src="./resources/js/mypage-messageVer2.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
 	<script
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

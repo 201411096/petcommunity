@@ -26,12 +26,12 @@ div.infoWindowImageContainer{
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="input-group">
+<button class="btn btn-secondary">버튼</button>
+<div class="publicDataOptionContainer">
 	<input type="date" class="form-control" id="publicDataStartDateOption">
 	<input type="date" class="form-control" id="publicDataEndDateOption">
-	<button id="drawPublicDataMarkerBtn">마커 생성</button>
+	<button id="drawPublicDataMarkerBtn" class="btn btn-secondary">마커 생성</button>
 </div>
-
 <div id="map" style="width:100%;height:600px;"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
@@ -76,6 +76,7 @@ function waitingPublicData(){
 
 function getPublicData(){
 	var dataOptions = new Object();
+	dataOptions.dataCnt = '10000';
 	if($('#publicDataStartDateOption').val()==''){
 		dataOptions.startDate = '20200101';
 		console.log('startDate 안들어옴... ');
@@ -93,9 +94,7 @@ function getPublicData(){
 		console.log('endDate 들어옴... ');
 		dataOptions.endDate = $('#publicDataEndDateOption').val();
 		console.log(dataOptions.endDate);		
-		
 	}
-	dataOptions.dataCnt = '100';
 	socket.emit('getPublicData', dataOptions);
 }
 function drawMarker(){

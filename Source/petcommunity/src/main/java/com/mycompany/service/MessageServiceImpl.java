@@ -20,6 +20,13 @@ public class MessageServiceImpl implements MessageService{
 	
 	}
 	@Override
+	public List<MessageVO> getMessagePartner2(Map searchMap) {
+		List<MessageVO> result = messageDAO.getMessagePartner2(searchMap);
+		return result;
+		
+	}
+	
+	@Override
 	public void insertMessage(Map searchMap) {
 		messageDAO.insertMessage(searchMap);
 		

@@ -48,7 +48,7 @@
 	<footer class="footer-section spad" id="footer">
 		<div class="sp-container">
 			<div class="row m-0">
-				<div class="col-lg-4 footer-text">
+				<div class="col-lg-5 footer-text">
 						<h5>OKI DOG HERE</h5>
 						<p id="companycon">
 							company : 오키독히얼 <br> 
@@ -59,8 +59,8 @@
 							월드메르디앙 2차 413호<br> 
 						</p>
 				</div>
-				<div class="col-lg-8">
-					<div class="col-lg-4 footer-text">
+				<div class="col-lg-7">
+					<div class="col-lg-7 footer-text">
 						<a href="/petcommunity/communityBoardList.do" id="community"><strong>COMMUNITY</strong></a><br>
 						<a href="/petcommunity/login.do" id="member"><strong>MEMBER</strong></a><br>
 						<a href="/petcommunity/shop.do" id="shop"><strong>SHOP</strong></a><br> 
@@ -79,7 +79,7 @@
 						</script>
 						All rights reserved | This template is made with <i
 							class="fa fa-heart-o" aria-hidden="true"></i> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
+							href="https://colorlib.com" target="_blank" style ="color:white;">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 				</div>

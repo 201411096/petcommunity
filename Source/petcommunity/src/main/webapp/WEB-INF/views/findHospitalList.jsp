@@ -90,9 +90,12 @@
 			<!-- 병원 리스트 맵 영역 -->
 	<div class="form-group">
 	 <div id="map">
-
+	 	<script type="text/javascript" language="javascript">
+		var htmlTag = "<src='hospital.html' />";
+	 	</script>
+		$("#map").html(htmlTag);
     
-</div></div>
+	</div></div>
 	 
 				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  -->
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services,clusterer,drawing"></script>	

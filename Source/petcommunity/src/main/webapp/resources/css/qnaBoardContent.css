@@ -17,6 +17,11 @@ body{
 	color: #4a4a4a;
 }
 
+#qnacontentImage{
+	width: 30%;
+	height: 80%;	
+}
+
 table {
 	width : 65%;
 /* 	height : 60%; */
@@ -28,13 +33,15 @@ table td,th{
 	border-bottom: 1px solid #e3e3e3;
 	padding-top: 1%;
 	padding-bottom: 1%;
+	font-size: 17px;
 }
 
 table td#title{
-	font-size: 15px;	
+	font-size: 18px;	
 }
+
 table td#content{
-	font-size: 15px;
+	font-size: 17px;
 	height: 10%;
 }
 

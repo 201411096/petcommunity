@@ -75,8 +75,8 @@ io.on('connection', function(socket){
   socket.on('sendMessageData', function(sendMessageObject){
     console.log(sendMessageObject);
     console.log(sendMessageObject.messageContent);
-    console.log(sendMessageObject.loginId);
-    console.log(sendMessageObject.otherId);
+    console.log(sendMessageObject.messageFrom);
+    console.log(sendMessageObject.messageTo);
     var socketList = io.sockets.sockets;
     // console.log(socketList);
     io.clients(function(error, clients){
@@ -85,7 +85,7 @@ io.on('connection', function(socket){
       console.log('clients 명수 확인', clients.length);
       for(var i=0; i<clients.length; i++){
         console.log(i+'번쨰 client nickname 확인' + socketList[clients[i]].nickname);
-        if(socketList[clients[i]].nickname == sendMessageObject.otherId){
+        if(socketList[clients[i]].nickname == sendMessageObject.messageTo){
           console.log(i+'번쨰 진입 확인 ...');
           io.to(socketList[clients[i]].id).emit('sendMessageData', sendMessageObject);      
         }

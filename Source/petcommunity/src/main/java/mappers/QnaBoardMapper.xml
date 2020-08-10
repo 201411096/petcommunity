@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE
 		FROM QUESTIONBOARD
 		WHERE QUESTIONBOARD_ID =
-		#{questionboardId} OR QUESTIONBOARD_GROUP_ID =#{questionboardGroupId}
+		#{questionboardId} 
 	</delete>
 
 	<select id="selectQnaBoardWithPaging" parameterType="hashmap"

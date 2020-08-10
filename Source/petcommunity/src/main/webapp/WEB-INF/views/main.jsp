@@ -25,8 +25,8 @@
 	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <!-- Stylesheets -->
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_seyeong/css/font-awesome.min.css" />
+<!-- <link rel="stylesheet" -->
+<!-- 	href="./resources/bootstrap_template/bootstrap_seyeong/css/font-awesome.min.css" /> -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_seyeong/css/owl.carousel.min.css" />
 <link rel="stylesheet"
@@ -44,36 +44,44 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
    <![endif] -->
-
 </head>
+
 <body>
-<div id="bodyBackgroundColor">
-	<!-- Hero section -->
-	
+	<div id="bodyBackgroundColor">
+		<!-- Hero section -->
 		<section class="hero-section">
-			<!-- 				 <figure><img id="dialogFlow" src="./resources/bootstrap_template/template_01/img/gallery/noun_364.png" alt="" style="width: 10%"></figure> -->
-			<div class="hero-slider owl-carousel">
-				<div class="hs-item">
-					<div class="hs-text">
-						<h2>
-							Give Love,<br>Give Hope,
-						</h2>
-					</div>
-					<div class="hs-bg set-bg sm-overlay" id="imgMain"
-						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover3-1.jpg"></div>
-				</div>
-				<div class="hs-item">
-					<div class="hs-text">
-						<h2>
-							Together,<br>get better
-						</h2>
-						<br>
-					</div>
-					<div class="hs-bg set-bg sm-overlay"
-						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover3-1.png"></div>
-				</div>
+			<div class="hero-slider owl-carousel" align="left">
+				<img class="mungimg"
+					src="./resources/bootstrap_template/bootstrap_seyeong/img/slider/maincover1.png"
+					alt="#"> <img class="mungimg"
+					src="./resources/bootstrap_template/bootstrap_seyeong/img/slider/maincover2.png"
+					alt="#">
 			</div>
 		</section>
+		<!-- 		</div> -->
+		<!-- 							 <figure><img id="dialogFlow" src="./resources/bootstrap_template/template_01/img/gallery/noun_364.png" alt="" style="width: 10%"></figure> -->
+		<!-- 			<div class="hero-slider owl-carousel"> -->
+		<!-- 				<div class="hs-item"> -->
+		<!-- 					<div class="hs-text"> -->
+		<!-- 						<h2> -->
+		<!-- 							Give Love,<br>Give Hope, -->
+		<!-- 						</h2> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="hs-bg set-bg sm-overlay" id="imgMain" -->
+		<!-- 						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/cover3-1.jpg"></div> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="hs-item"> -->
+		<!-- 					<div class="hs-text"> -->
+		<!-- 						<h2> -->
+		<!-- 							아이들을 생각하는 마음으로<br>꼼꼼하게 고른 원료 -->
+		<!-- 						</h2> -->
+		<!-- 						<br> -->
+		<!-- 					</div> -->
+		<!-- 					<div class="hs-bg set-bg sm-overlay" -->
+		<!-- 						data-setbg="resources/bootstrap_template/bootstrap_seyeong/img/slider/11111.png"></div> -->
+		<!-- 				</div> -->
+		<!-- 			</div> -->
+
 
 		<!-- 	Hero section end -->
 
@@ -84,7 +92,7 @@
 					<div class="vl1"></div>
 					<h1>오키독히얼</h1>
 					<p id="sub1">about okidoghere</p>
-					<p id="sub2">어닌ㅇ,재ㅔ랴ㅏ르ㅏㅣㅈ라ㅡㅔㅐ래ㅓㅏㅣㅁ으</p>
+					<p id="sub2">반려동물을 위한 모든 것</p>
 				</div>
 				<div class="memberCountTitle"></div>
 				<div class="count-row">
@@ -123,16 +131,17 @@
 		<section class="lastsection">
 			<div class="gallery-row" align="left">
 				<img class="mungimg"
-					src="./resources/bootstrap_template/bootstrap_seyeong/img/mungstar.png"
-					alt="#"> <a href="petcommunity/shop.do" id="readMore"
+					src="./resources/bootstrap_template/bootstrap_seyeong/img/main1.png"
+					alt="#"> <a href="/petcommunity/shop.do" id="readMore"
 					class="readMore"><strong>READ MORE</strong></a>
 			</div>
 		</section>
 
 		<!-- Blog section -->
 		<section class="blog-section">
-			<div class="blog-title-row1">
+		<div class="blog-title-row1">	
 				<div class="blog-item1">
+				
 					<div class="blog-thumb1">
 						<img
 							src="./resources/bootstrap_template/bootstrap_seyeong/img/gallery/01.png"
@@ -140,13 +149,14 @@
 					</div>
 					<div class="blog-content1">
 						<span class="blog-cata-title">
-							<h4>[ 잃어버렸어요 ]</h4> <span>Find Board List</span><br>
+							<h4>[ 잃어버렸어요 ]</h4> <span>Lost Board List</span><br>
 						</span>
 						<c:forEach items="${lostBoardvo}" var="item">
-							<a id="link"
-								href="/petcommunity/getLostBoard.do?lostboardId=${item.lostboardId}">${item.lostboardTitle}</a>
-							<br>
-
+							<div id="board-title">
+								<a id="link"
+									href="/petcommunity/getLostBoard.do?lostboardId=${item.lostboardId}">${item.lostboardTitle}</a>
+								<br>
+							</div>
 						</c:forEach>
 						<div id="moreView">
 							<a href="/petcommunity/lostboardlist.do" class="site-btn">READ
@@ -168,9 +178,11 @@
 							<h4>[ 목격했어요 ]</h4> <span>Find Board List</span><br>
 						</span>
 						<c:forEach items="${FindBoardvo}" var="item">
-							<a id="link"
-								href="/petcommunity/getFindBoard.do?findboardId=${item.findboardId}">${item.findboardTitle}</a>
-							<br>
+							<div id="board-title">
+								<a id="link"
+									href="/petcommunity/getFindBoard.do?findboardId=${item.findboardId}">${item.findboardTitle}</a>
+								<br>
+							</div>
 						</c:forEach>
 						<div id="moreView">
 							<a href="/petcommunity/findboardlist.do" class="site-btn">READ
@@ -180,8 +192,8 @@
 							</a>
 						</div>
 					</div>
-				</div>
 			</div>
+			</div>	
 			<div class="blog-title-row2">
 				<div class="blog-item3">
 					<div class="blog-thumb3">
@@ -194,9 +206,11 @@
 							<h4>[ 고객문의 ]</h4> <span>Qna Board List</span><br>
 						</span>
 						<c:forEach items="${Qnavo}" var="item">
-							<a id="link"
-								href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">${item.questionboardTitle}</a>
-							<br>
+							<div id="board-title">
+								<a id="link"
+									href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}">${item.questionboardTitle}</a>
+								<br>
+							</div>
 						</c:forEach>
 						<div id="moreView">
 							<a href="/petcommunity/cs.do" class="site-btn">READ MORE <img
@@ -216,9 +230,11 @@
 							<h4>[ 커뮤니티 ]</h4> <span>COMMUNITY BOARD</span><br>
 						</span>
 						<c:forEach items="${CommunityBoardvo}" var="item">
-							<a id="link"
-								href="/petcommunity/getBoardContent.do?communityboardId=${item.communityboardId}">${item.communityboardTitle}</a>
-							<br>
+							<div id="board-title">
+								<a id="link"
+									href="/petcommunity/getBoardContent.do?communityboardId=${item.communityboardId}">${item.communityboardTitle}</a>
+								<br>
+							</div>
 						</c:forEach>
 						<div id="moreView">
 							<a href="/petcommunity/communityBoardList.do" class="site-btn">READ
@@ -231,7 +247,6 @@
 				</div>
 			</div>
 		</section>
-
 	</div>
 
 	<!-- Blog section end -->

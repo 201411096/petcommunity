@@ -74,18 +74,16 @@ io.on('connection', function(socket){
 
   socket.on('sendMessageData', function(sendMessageObject){
     var socketList = io.sockets.sockets;
-    // console.log(socketList);
     io.clients(function(error, clients){
       if (error) throw error;
       for(var i=0; i<clients.length; i++){
-        if(socketList[clients[i]].nickname == sendMessageObject.otherId){
+        if(socketList[clients[i]].nickname == sendMessageObject.messageTo){
           io.to(socketList[clients[i]].id).emit('sendMessageData', sendMessageObject);      
         }
       }
     });
   })
   socket.on('setNickname', function(memberId){
-    console.log('memberId 확인 ...' + memberId)
     socket.nickname = memberId;
   });
 });

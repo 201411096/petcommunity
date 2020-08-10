@@ -153,6 +153,11 @@ public class CommunityDAOImpl implements CommunityDAO{
 		System.out.println("===>  CommunityMapper getBoardListByReadCountWithPaging() 호출");
 		return mybatis.selectList("communityDAO.getBoardListByReadCountWithPaging", map);
 	}
+
+	@Override
+	public List<CommunityVO> getBoardRank() {
+		return mybatis.selectList("communityDAO.getBoardRank");
+	}
 	
 	
 }

@@ -67,10 +67,9 @@
 						<a href="productCart.do">[장바구니]</a>
 
 					</c:when>
-
 				</c:choose>
 
-				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li> 
+				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li>
 				<li><a href="findboardlist.do"><strong>목격했어요</strong></a></li>
 
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
@@ -88,10 +87,16 @@
 				</c:if>
 
 			</ul>
-			<!-- 			<hr> -->
 		</div>
 	</header>
+
+	<script
+		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger intent="WELCOME" chat-title="petcommunity"
+		agent-id="2573aba7-c532-485a-a3e8-889b7d15fac1" language-code="ko"></df-messenger>
+
 <input id="hiddenId" type=hidden value="${sessionScope.memberVO.memberId}"}>
+
 	<!--====== Javascripts & Jquery ======-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 	<script

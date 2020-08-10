@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
 import com.mycompany.domain.MemberVO;
@@ -507,6 +508,24 @@ public class CommunityController {
 		mv.addObject("boardComment", communityService.getCommentContent(cvo));
 		mv.setViewName("communityBoardContent");
 		return mv;
+
+	}
+	
+
+	@ResponseBody
+	@RequestMapping(value="getBoardrank.do" , produces = "application/json; charset=utf-8")
+	public Map getBoardRank() {
+
+		Map result = new HashMap();
+		
+		List<CommunityVO> list2 =communityService.getBoardRank();
+		for(CommunityVO i : list2) {
+			System.out.println("커뮤니티 랭킹 10"+i.getCommunityboardTitle());
+			
+		}
+		result.put("buyList", list2);
+
+		return result;
 
 	}
 

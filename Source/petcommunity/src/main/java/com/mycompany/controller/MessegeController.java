@@ -47,6 +47,15 @@ public class MessegeController {
 		System.out.println(messageVO);
 		result.put("messageVO", messageVO);
 		result.put("messageVOSize", messageVO.size());
+//		MessageVO messageVO = messageService.addMessage(searchMap);
+//		String messageSender=messageVO.getMessageSender();
+//		String messageSendtime = messageVO.getMessageSendtime();
+//		String messageContents = messageVO.getMessageContents();
+//		String messageId = messageVO.getMessageId();
+//		result.put("messageSender", messageSender);
+//		result.put("messageSendtime", messageSendtime);
+//		result.put("messageContents", messageContents);
+//		result.put("messageId", messageId);
 		result.put("loginId", id);
 		return result;
 	}
@@ -191,6 +200,31 @@ public class MessegeController {
 		result.put("messageVOSize", messageVO.size());
 		result.put("loginId", id);
 		
+		return result;
+	}
+	
+	//소켓으로 메시지 받은 대상에게 chat창에 메시지 추가
+	@ResponseBody
+	@RequestMapping("/addMessage.do")
+	public Map addMessage(String content, String id, String otherId) {
+		System.out.println("addMessage컨트롤러"+id);
+		System.out.println("addMessage컨트롤러"+otherId);
+		System.out.println("addMessage컨트롤러"+content);
+		Map result = new HashMap();
+		Map searchMap = new HashMap();
+		searchMap.put("content", content);
+		searchMap.put("id", id);
+		searchMap.put("otherId", otherId);
+		MessageVO messageVO = messageService.addMessage(searchMap);
+		String messageSender=messageVO.getMessageSender();
+		String messageSendtime = messageVO.getMessageSendtime();
+		String messageContents = messageVO.getMessageContents();
+		String messageId = messageVO.getMessageId();
+		result.put("messageSender", messageSender);
+		result.put("messageSendtime", messageSendtime);
+		result.put("messageContents", messageContents);
+		result.put("messageId", messageId);
+		result.put("loginId", otherId);
 		return result;
 	}
 	

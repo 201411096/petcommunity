@@ -346,28 +346,28 @@ function drawTable(data){
 	}
 }
 
-//function getDataWithoutPaging(){
-//	$.ajax({
-//		type : 'post',
-//		async:true,
-//		url : '/petcommunity/findhospitalListWithoutPaging.do',
-//		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-//		data : {
-//			"searchLocation" : $('#searchLocation').val(),
-//			"searchName" : $('#searchName').val()
-//		},
-//		dataType : 'json',
-//		success : function(resultData){
-//			setTimeout(function(){
-//				kakaoMapAPI(resultData);
-//			}, 2000);
-//			//kakaoMapAPI(resultData);
-//		},
-//		error:function(request,status,error){
-//			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-//		}		
-//	});
-//}
+function getDataWithoutPaging(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/findhospitalListWithoutPaging.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data : {
+			"searchLocation" : $('#searchLocation').val(),
+			"searchName" : $('#searchName').val()
+		},
+		dataType : 'json',
+		success : function(resultData){
+			setTimeout(function(){
+				kakaoMapAPI(resultData);
+			}, 2000);
+			//kakaoMapAPI(resultData);
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}		
+	});
+}
 
 
 var latitude = $('#findHospitalX').val();
@@ -388,8 +388,8 @@ function kakaoMapAPI() {
 
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	    mapOption = {
-	        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
+	        center: new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+	        level: 8 // 지도의 확대 레벨
 	    };  
 
 	// 지도를 생성합니다    
@@ -445,7 +445,7 @@ function kakaoMapAPI() {
 //        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
 //        level: 7 // 지도의 확대 레벨
 //    };
-//
+
 //	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 //		
 //	for(var i=0; i<data.findHospitalVOListSize; i++){
@@ -475,64 +475,81 @@ function kakaoMapAPI() {
 //	
 //
 //}
-//
-//
-////marker click event
-////closure를 이용한 infowindow on/off
-//function makeClickListener(map, marker, infowindow) {
-//	var status = 0;
-//	return function() {
-//		if(status==0){
-//			infowindow.open(map, marker);
-//			status=1;
-//		}else{
-//			infowindow.close(map, marker);
-//			status=0;
-//		}
-//			
-//	};
-//}
-//
-////현재 작업경로를 가져오는 함수
-//function getContextPath() {
-//	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
-//}
-//
-//function getLocation() {
-//    if (navigator.geolocation) {	// GPS를 지원하면
-//      navigator.geolocation.getCurrentPosition(function(position) {
-//        latitude = position.coords.latitude;
-//        longitude = position.coords.longitude;
-//        console.log('geolocation success--------------------------');
-//    	console.log(latitude);
-//    	console.log(longitude);
-//      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
-//        latitude = 37.519972628243366;
-//        longitude = 126.85287648507145;
-//      }, {
-//        enableHighAccuracy: false,
-//        maximumAge: 0,
-//        timeout: Infinity
-//      });
-//    } else {
-//      //alert('GPS를 지원하지 않습니다');
-//    	console.log('GPS를 지원하지 않습니다');
-//    }
-//}
-//
-//function setCenterLocation(){
-//    console.log(latitude);
-//    console.log(longitude);
-//	var geocoder = new kakao.maps.services.Geocoder();
-//	// 주소로 좌표를 검색합니다
-//	geocoder.addressSearch($('#searchName').val(), function(result, status) {
-//	    // 정상적으로 검색이 완료됐으면 
-//	     if (status === kakao.maps.services.Status.OK) {
-//	        latitude = result[0].y;
-//	        longitude = result[0].x;
-//	        console.log('search ... result ...');
-//	        console.log(latitude);
-//	        console.log(longitude);
-//	    }
-//	});
-//}
+
+
+//marker click event
+//closure를 이용한 infowindow on/off
+function makeClickListener(map, marker, infowindow) {
+	var status = 0;
+	return function() {
+		if(status==0){
+			infowindow.open(map, marker);
+			status=1;
+		}else{
+			infowindow.close(map, marker);
+			status=0;
+		}
+			
+	};
+}
+
+//현재 작업경로를 가져오는 함수
+function getContextPath() {
+	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+}
+
+function getLocation() {
+    if (navigator.geolocation) {	// GPS를 지원하면
+      navigator.geolocation.getCurrentPosition(function(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        console.log('geolocation success--------------------------');
+    	console.log(latitude);
+    	console.log(longitude);
+      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
+        latitude = 37.519972628243366;
+        longitude = 126.85287648507145;
+      }, {
+        enableHighAccuracy: false,
+        maximumAge: 0,
+        timeout: Infinity
+      });
+    } else {
+      //alert('GPS를 지원하지 않습니다');
+    	console.log('GPS를 지원하지 않습니다');
+    }
+}
+
+function setCenterLocation(){
+    console.log(latitude);
+    console.log(longitude);
+	var geocoder = new kakao.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch($('#searchName').val(), function(result, status) {
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	        latitude = result[0].y;
+	        longitude = result[0].x;
+	        console.log('search ... result ...');
+	        console.log(latitude);
+	        console.log(longitude);
+	    }
+	});
+}
+
+
+$(document).ready(function(){
+	$('#wordCloud').click(function(){
+        // 500 * 500 사이즈 윈도우 창을 변수로 담아서 새로 열어준다. 
+		let newWindow = window.open("","width=1000 height=1000");   
+        //newWindow라는 창에 img태그 생성해주기
+		let img = newWindow.document.createElement("img"); 
+		img.setAttribute("src","https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png");  //이미지가 저장되어있는 경로를 src 안에 넣기
+		img.setAttribute("width","1000");   //width속성 변경
+		img.setAttribute("height","1000");  //height속서 변경
+		newWindow.document.body.appendChild(img);   //body안에 가장 마지막 요소로 img 추가
+	});
+});
+
+
+

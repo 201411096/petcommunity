@@ -91,8 +91,9 @@
 			<!-- 			<hr> -->
 		</div>
 	</header>
-
+<input id="hiddenId" type=hidden value="${sessionScope.memberVO.memberId}"}>
 	<!--====== Javascripts & Jquery ======-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script
@@ -106,8 +107,7 @@
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-
-
+	
 </body>
 
 </html>

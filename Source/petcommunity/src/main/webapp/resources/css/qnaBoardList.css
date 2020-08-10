@@ -10,24 +10,13 @@ body{
 	
 }
 
-table tr{
-	height: 70px;
-}
-
-table td{
-	margin-top: 20px;
-}
-tr#adminList{
-	background-color: #f3f3f3;
+ul#pagination-demo{
+	margin-left: 40%;
 }
 
 input#keywordInput{
 	width: 90%;
 	margin-right: 10%;
-}
-
-ul#pagination-demo{
-	margin-left: 40%;
 }
 
 .wrapper {
@@ -36,37 +25,6 @@ ul#pagination-demo{
 
 #searchBtn{
 	margin-right: 20%;
-}
-
-#qnatitle{
-	text-align: center;
-	color: #4a4a4a;
-}
-
-table.table{
-	margin-top: 5%;
-}
-
-td a{
-	color : black;
-}
-
-table th{
-	text-align: center;
-}
-
-table td{
-	text-align: center;
-	font-size: 15px;
-}
-
-td #id{
-	width: 10%;
-}
-
-td#title{
-	padding-left:5%;
-	text-align: left;
 }
 
 .search ul{
@@ -86,6 +44,46 @@ td#title{
     border: 1px solid #fff;
     font-size: 13px;
 }
+
+/* 테이블 */
+table tr{
+	height: 70px;
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+/*  table td{ */
+/* 	margin-top: 20px; */
+/* }  */
+
+tr#adminList{
+	background-color: #f3f3f3;
+}
+
+#qnatitle{
+	text-align: center;
+	color: #4a4a4a;
+	margin-bottom: 7%;
+}
+
+/* table.table{
+	margin-top: 5%;
+} */
+
+td a{
+	color : black;
+}
+
+table td{
+ 	text-align: left;
+	font-size: 17px;
+}
+
+td #titleImage{
+	width: 60px;
+	height: 60px;
+}
+
 
 @media screen and (max-width: 1200px) {
    #container table th:nth-child(1), th:nth-child(5), th:nth-child(6)  { 
@@ -133,21 +131,20 @@ td a{
 	color : black;
 }
 
-table th{
-	text-align: center;
+table #tr_title{
+	text-align: left;
 }
 
 table td{
-	text-align: center;
 	font-size: 12px;
+	padding-top: 5%;
 }
 
 td #id{
 	width: 10%;
 }
 
-td#title{
-	padding-left:5%;
+td #boardtitle{
 	text-align: left;
 }
 

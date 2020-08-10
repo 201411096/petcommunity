@@ -78,7 +78,7 @@
 				<label class="radio">동물병원 워드 클라우드↓↓</label>
 				<button type="button" class="btn btn-default" id='wordCloud'>word cloud here
 				</button>
-				<!-- <a href="#" onclick="window.open('https://localhost:8443/petcommunity/findHospitalList.do', 'width=1000, height=1000')"><img src="./resources/imgs/wordCloud/동물병원.png"></a>
+				<!-- <a href="#" onclick="window.open('https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png', 'width=1000, height=1000')"><img src="./resources/imgs/wordCloud/동물병원.png"></a>
 	 -->
 			</div>
 			

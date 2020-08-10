@@ -24,8 +24,12 @@ div.infoWindowImageContainer{
 </style>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Toastr -->
+<link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+<script src="js/plugins/toastr/toastr.min.js"></script>
 </head>
 <body>
+<div class="form-control"><button id="test1">toastr 버튼</button></div>
 <div class="publicDataOptionContainer">
 	<input type="date" class="form-control" id="publicDataStartDateOption">
 	<input type="date" class="form-control" id="publicDataEndDateOption">
@@ -57,8 +61,8 @@ div.infoWindowImageContainer{
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 <script type="text/javascript">
 var contextPath = getContextPath();
-// var socket = io("https://192.168.0.18:3000");
-var socket = io("https://121.171.119.57:3000");
+var socket = io("https://192.168.0.18:3000");
+// var socket = io("https://121.171.119.57:3000");
 var publicDataFromAPI;
 var mapDataFromDB;
 var map;
@@ -71,6 +75,12 @@ waitingPublicData();
 getPublicData();
 publicDataMarkerEventListener();
 
+// initPromiseFunc().then(function(){
+// 	return getLocation;
+	
+// }).then(function(){
+// 	return kakaoMapGenerate;
+// })
 
 initPromiseFunc().then(function(){
 	console.log('promise part_1 start ...');
@@ -82,6 +92,17 @@ initPromiseFunc().then(function(){
 	kakaoMapGenerate();
 	console.log('promise part_2 end ...');
 })
+
+$("#test1").click(function(){
+              toastr.options = {
+                  closeButton: true,
+                  progressBar: true,
+                  showMethod: 'slideDown',
+                  timeOut: 4000
+              };
+              toastr.success('www.leafcats.com', 'Toastr success!');
+});
+
 
 function initPromiseFunc(){
 	return new Promise(function(resolve, reject){

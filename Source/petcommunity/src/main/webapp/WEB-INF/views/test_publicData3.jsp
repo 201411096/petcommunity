@@ -73,11 +73,14 @@ publicDataMarkerEventListener();
 
 
 initPromiseFunc().then(function(){
+	console.log('promise part_1 start ...');
 	getLocation();
-	console.log('geo...');
+	console.log('promise part_1 end ...');
+	
 }).then(function(){
-	console.log('second .. .')
+	console.log('promise part_2 start ...');
 	kakaoMapGenerate();
+	console.log('promise part_2 end ...');
 })
 
 function initPromiseFunc(){
@@ -86,8 +89,6 @@ function initPromiseFunc(){
 	});
 }
 
-// function mapPromiseFunc(){	
-// }
 function initializeFUnc(){
 	
 }
@@ -118,7 +119,7 @@ function waitingPublicData(){
 }
 function getPublicData(){
 	var dataOptions = new Object();
-	dataOptions.dataCnt = '100';
+	dataOptions.dataCnt = '10';
 	if($('#publicDataStartDateOption').val()==''){
 		dataOptions.startDate = '20200101';
 	}else{

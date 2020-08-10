@@ -1,7 +1,7 @@
 var startPage=0;//최초 탭 클릭 시 0~5개의 리스트, 챗만 가져옴
 var endPage=6;
 var otherId='1';//상대방 id
-
+var scrollController=0;
 $(function(){
 	$(".tab-link4").on("click", function(){
 		$('#message-table').css("display","block");
@@ -42,6 +42,7 @@ $(function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
 		$(this).css({"background-color": "#83bb44"});
 		otherId=$(this).attr("value");
+		scrollController=1;
 		getChat(startPage, endPage);
 	});
 	$(document).on("click", '.sendMsg', function(){
@@ -49,6 +50,8 @@ $(function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
 		divColorChange.css({"background-color": "#83bb44"});
 		otherId=$(this).prev().attr("value");
+		scrollController=1;
+		$("#div-chat").animate({ scrollTop: $(document).height() }, "slow");
 		getChat(startPage, endPage);
 	});
 	// 삭제
@@ -72,8 +75,19 @@ $(function(){
 	});
 	// 전송
 	$('#btn-message').on('click', function(){
+		if(otherId!='1'){
 		var content=$('#writeMessage').val();
-//		sendMessage(content);
+		sendMessage(content);
+		$('#writeMessage').val('');
+		}
+	});
+	// 전송 enter key
+	$('#writeMessage').on('keypress', function(){
+		if(event.keyCode==13 && otherId!='1'){
+		var content=$('#writeMessage').val();
+		sendMessage(content);
+		$('#writeMessage').val('');
+		}
 	});
 
 });
@@ -88,15 +102,10 @@ function sendMessage(content){
 			"startPage":startPage,
 			"endPage":endPage,
 			"otherId":otherId,
-			"searchNew":searchNew
+			"content":content
 		},
 		success: function(data){
-			if(data.noSearch=="noSearch"||data.noId=="noSearch"){
-				startPage=0;
-				endPage=6;
-				getMypageMessage(startPage, endPage);
-			}
-			drwaWriteMessageTable(data);
+			drawChatTable(data);
 		},
 		error: function(data){
 			console.log('autocomplete error');
@@ -192,6 +201,13 @@ function getMypageMessage(startPage, endPage){
 function drawChatTable(data){
 	$('#div-chat').empty();
 	var chatMessage='';
+	if(scrollController==1){
+		$("#div-chat").animate({ scrollTop: $(document).height() });
+		scrollController=0;
+	}else{
+//		$("#div-chat").stop().animate({ scrollTop: '-=100' });
+	}	
+	
 	for(var i=0; i<data.messageVOSize; i++){
 		var target1 = data.messageVO[i].messageTarget1;
 		var target2 = data.messageVO[i].messageTarget2;
@@ -200,7 +216,7 @@ function drawChatTable(data){
 		var contents = data.messageVO[i].messageContents;
 		var messageId = data.messageVO[i].messageId;
 		var loginId = data.loginId;
-		var fromWho = '<td class="messageDel" value="'+messageId+'">X</td>';
+		var fromWho = '<td class="messageDel" value="'+messageId+'">x</td>';
 		if(loginId!=sender){
 			chatMessage= '<div class="chatMessageLeft" value="'+sender+'">';
 			fromWho = '<td class="messageDel" value="'+messageId+'"></td>';;
@@ -226,7 +242,6 @@ function drawChatTable(data){
 				'</table>'+
 			'</div>'+
 			'<div></div>';
-		
 		$('#div-chat').append(listContent);
 	}
 }

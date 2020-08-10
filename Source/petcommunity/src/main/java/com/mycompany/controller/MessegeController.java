@@ -28,20 +28,28 @@ public class MessegeController {
 	public MessageServiceImpl messageService; 
 	@Autowired
 	public MemberServiceImpl memberService;
-//	//메시지 insert
-//	@ResponseBody
-//	@RequestMapping("/sendMessage.do")
-//	public Map message(HttpSession session, String content, String toId) {
-//		Map result = new HashMap();
-//		Map searchMap = new HashMap();
-//		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
-//		String id = mvo.getMemberId();
-//		searchMap.put("id", id);
-//		searchMap.put("toId", toId);
-//		searchMap.put("content", content);
-//		messageService.insertMessage(searchMap);
-//		return result;
-//	}
+	//메시지 insert
+	@ResponseBody
+	@RequestMapping("/sendMessage.do")
+	public Map message(HttpSession session, int startPage, int endPage, String content, String otherId) {
+		Map result = new HashMap();
+		Map searchMap = new HashMap();
+		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
+		String id = mvo.getMemberId();
+		System.out.println("otherId"+otherId);
+		searchMap.put("id", id);
+		searchMap.put("startPage", startPage);
+		searchMap.put("endPage", endPage);
+		searchMap.put("otherId", otherId);
+		searchMap.put("content", content);
+		messageService.insertMessage(searchMap);
+		List<MessageVO> messageVO = messageService.getMessagePartner2(searchMap);
+		System.out.println(messageVO);
+		result.put("messageVO", messageVO);
+		result.put("messageVOSize", messageVO.size());
+		result.put("loginId", id);
+		return result;
+	}
 
 //	// 새로 쪽지 전송
 //	@ResponseBody

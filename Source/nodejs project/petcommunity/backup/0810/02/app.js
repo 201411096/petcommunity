@@ -73,17 +73,30 @@ io.on('connection', function(socket){
   // 공공데이터(파이썬 부분)-----
 
   socket.on('sendMessageData', function(sendMessageObject){
+    console.log(sendMessageObject);
+    console.log(sendMessageObject.messageContent);
+    console.log(sendMessageObject.loginId);
+    console.log(sendMessageObject.otherId);
     var socketList = io.sockets.sockets;
+    // console.log(socketList);
     io.clients(function(error, clients){
       if (error) throw error;
+      console.log('clients 확인', clients);
+      console.log('clients 명수 확인', clients.length);
       for(var i=0; i<clients.length; i++){
-        if(socketList[clients[i]].nickname == sendMessageObject.messageTo){
+        console.log(i+'번쨰 client nickname 확인' + socketList[clients[i]].nickname);
+        if(socketList[clients[i]].nickname == sendMessageObject.otherId){
+          console.log(i+'번쨰 진입 확인 ...');
           io.to(socketList[clients[i]].id).emit('sendMessageData', sendMessageObject);      
         }
+      }
+      for(var i=0; i<socketList.length; i++){
+        conosole.log('socketList에서 닉네임 확인 ... '+socketList[i].nickname);
       }
     });
   })
   socket.on('setNickname', function(memberId){
+    console.log('memberId 확인 ...' + memberId)
     socket.nickname = memberId;
   });
 });
@@ -172,6 +185,7 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     if (err) throw err;
     fs.readFile('publicData.json', 'utf8', function(err, data){
         data = JSON.parse(data);
+        // console.log(data.response.body.items.item);
         // data = data.response.body.items.item; // 수정 위치
         console.log(data);
         console.log('data 길이...' + data.length);

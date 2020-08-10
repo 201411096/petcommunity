@@ -1,8 +1,15 @@
+var socket = io("https://192.168.0.18:3000");
 var startPage=0;//최초 탭 클릭 시 0~5개의 리스트, 챗만 가져옴
 var endPage=6;
 var otherId='1';//상대방 id
 var scrollController=0;
+var loginId='';
 $(function(){
+	receiveMessage();
+	// 소켓에 닉네임으로 사용할 id 저장
+	memberId=$("#hiddenId").val();
+	setNickname(memberId);
+	// 쪽지 탭 진입 시
 	$(".tab-link4").on("click", function(){
 		$('#message-table').css("display","block");
 		startPage=0;
@@ -51,7 +58,6 @@ $(function(){
 		divColorChange.css({"background-color": "#83bb44"});
 		otherId=$(this).prev().attr("value");
 		scrollController=1;
-		$("#div-chat").animate({ scrollTop: $(document).height() }, "slow");
 		getChat(startPage, endPage);
 	});
 	// 삭제
@@ -78,6 +84,7 @@ $(function(){
 		if(otherId!='1'){
 		var content=$('#writeMessage').val();
 		sendMessage(content);
+		sendMessageData(content, loginId, otherId);
 		$('#writeMessage').val('');
 		}
 	});
@@ -86,11 +93,39 @@ $(function(){
 		if(event.keyCode==13 && otherId!='1'){
 		var content=$('#writeMessage').val();
 		sendMessage(content);
+		sendMessageData(content, loginId, otherId);
 		$('#writeMessage').val('');
 		}
 	});
 
 });
+// 소켓으로 message 보냄
+function sendMessageData(content, loginId, otherId){
+	   var dataOptions = new Object();
+	   dataOptions.messageContent=content;
+	   dataOptions.messageFrom=loginId;
+	   dataOptions.messageTo=otherId;
+	   socket.emit('sendMessageData', dataOptions);
+	}
+// 소켓으로 massage 받음
+function receiveMessage(){
+	console.log('receiveMessage 함수 호출 확인')
+	socket.on('sendMessageData', function(data){
+	 console.log('receiveMessage evt');
+	 console.log(data.messageContent);
+	 console.log(data.messageFrom);
+	 console.log(data.messageTo);
+	 addMessage(data);
+	 
+	 
+ });
+}
+// 소켓 닉네임 로그인 id로 설정
+function setNickname(memberId){
+	   socket.emit('setNickname', memberId);
+	   console.log(memberId);
+	}
+
 
 function sendMessage(content){
 	$.ajax({
@@ -198,6 +233,63 @@ function getMypageMessage(startPage, endPage){
 		
 	});
 }
+
+function addMessage(data){
+	$.ajax({type : 'post',
+		async:true,
+		url : '/petcommunity/addMessage.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		dataType : "json",
+		data :{
+			"content":data.messageContent,
+			"id":data.messageFrom,
+			"otherId":data.messageTo
+		},
+		success: function(data){
+			console.log("ajax: success")
+			drawAddMessageTable(data);
+		},
+		error: function(data){
+			console.log('autocomplete error');
+		}
+		
+	});
+}
+function drawAddMessageTable(data){
+	var sender = data.messageSender;
+	var sendtime = data.messageSendtime;
+	var contents = data.messageContents;
+	var messageId = data.messageId;
+	loginId = data.loginId;
+	var fromWho = '<td class="messageDel" value="'+messageId+'">x</td>';
+	if(loginId!=sender){
+		chatMessage= '<div class="chatMessageLeft" value="'+sender+'">';
+		fromWho = '<td class="messageDel" value="'+messageId+'"></td>';;
+	}else{
+		sender="나";
+		chatMessage= '<div class="chatMessageRight">';
+		fromWho = '<td class="messageDel" value="'+messageId+'">X</td>';
+	}
+	var listContent = 
+		chatMessage+
+			'<table>'+
+			'<colgroup>'+	
+			'<col style="width: 20%" />'+
+			'<col style="width: 2%" />'+
+			'</colgroup>'+
+			'<tr>'+
+				'<td class="messageTime" value="'+sendtime+'">'+sendtime.slice(5, -3)+'  '+'('+sender+')'+'</td>'+
+				fromWho+
+			'</tr>'+
+			'<tr>'+
+				'<td class="messageContent">'+contents+'</td>'+
+			'</tr>'+
+			'</table>'+
+		'</div>'+
+		'<div></div>';
+	$('#div-chat').append(listContent);
+}
+
 function drawChatTable(data){
 	$('#div-chat').empty();
 	var chatMessage='';
@@ -205,7 +297,9 @@ function drawChatTable(data){
 		$("#div-chat").animate({ scrollTop: $(document).height() });
 		scrollController=0;
 	}else{
-//		$("#div-chat").stop().animate({ scrollTop: '-=100' });
+//		$("#div-chat").stop().animate({ scrollTop: '+=100' });
+//		$("#div-chat").scroll({scrollTop: $(document).height()}).animate({ scrollTop: '+=800' }, "fast");
+		$("#div-chat").animate({ scrollTop: $(document).height() }).animate({ scrollTop: $(document).height() });
 	}	
 	
 	for(var i=0; i<data.messageVOSize; i++){
@@ -215,7 +309,7 @@ function drawChatTable(data){
 		var sendtime = data.messageVO[i].messageSendtime;
 		var contents = data.messageVO[i].messageContents;
 		var messageId = data.messageVO[i].messageId;
-		var loginId = data.loginId;
+		loginId = data.loginId;
 		var fromWho = '<td class="messageDel" value="'+messageId+'">x</td>';
 		if(loginId!=sender){
 			chatMessage= '<div class="chatMessageLeft" value="'+sender+'">';

@@ -126,6 +126,12 @@ public class CommunityServiceImpl implements CommunityService{
 		return communityDAO.getBoardListByReadCountWithPaging(map);
 	}
 
+	@Override
+	public List<CommunityVO> getBoardRank() {
+		
+		return communityDAO.getBoardRank();
+	}
+
 	
 	
 }

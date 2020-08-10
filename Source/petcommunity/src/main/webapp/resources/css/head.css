@@ -47,10 +47,26 @@
    color: gray;
    margin-left: 37px;
  }
- 
+
+  df-messenger {
+   --df-messenger-bot-message: #878fac;
+   --df-messenger-button-titlebar-color: #5b4b39;
+   --df-messenger-chat-background-color: #fafafa;
+   --df-messenger-font-color: white;
+   --df-messenger-send-icon: #878fac;
+   --df-messenger-user-message: #ff9f9f;
+  }
  
  
   @media only screen and (max-width: 767px) {
+    df-messenger {
+   --df-messenger-bot-message: #878fac;
+   --df-messenger-button-titlebar-color: #5b4b39;
+   --df-messenger-chat-background-color: #fafafa;
+   --df-messenger-font-color: white;
+   --df-messenger-send-icon: #878fac;
+   --df-messenger-user-message: #ff9f9f;
+  }
   .header-warp {
      padding: 30px 15px;
    }

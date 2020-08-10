@@ -69,7 +69,7 @@
 					</c:when>
 				</c:choose>
 
-				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li> 
+				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li>
 				<li><a href="findboardlist.do"><strong>목격했어요</strong></a></li>
 
 				<li><a href="/petcommunity/communityBoardList.do">커뮤니티</a></li>
@@ -90,7 +90,10 @@
 			<!-- 			<hr> -->
 		</div>
 	</header>
-
+	<script
+		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<df-messenger intent="WELCOME" chat-title="petcommunity"
+		agent-id="2573aba7-c532-485a-a3e8-889b7d15fac1" language-code="ko"></df-messenger>
 	<!--====== Javascripts & Jquery ======-->
 	<script
 		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>

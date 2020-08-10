@@ -135,13 +135,13 @@
 .mypage-messageContent{
 	text-align: left; 
 }
-#div-chat{
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-#div-chat::-webkit-scrollbar {
-    display: none;
-}
+#div-chat{ 
+     scrollbar-width: none; 
+     -ms-overflow-style: none;
+} 
+#div-chat::-webkit-scrollbar { 
+     display: none; 
+} 
 #div-memberList {
     scrollbar-width: none;
     -ms-overflow-style: none;

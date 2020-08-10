@@ -30,4 +30,5 @@ public interface CommunityDAO {
 	public void likeContent(CommunityVO vo);
 	public void dislikeContent(CommunityVO vo);
 	public List<CommunityVO> communityBoardListBySearchPaging(CommunityVO vo);
+	public List<CommunityVO> getBoardRank();
 }

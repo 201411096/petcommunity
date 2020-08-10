@@ -131,12 +131,12 @@ public class MessegeController {
 	// 검색한 id로 대화상대 찾아오기
 	@ResponseBody
 	@RequestMapping("/searchId.do")
-	public Map searchId(HttpSession session, int startPage, int endPage, String otherId, String searchNew) {
+	public Map searchId(HttpSession session, int startPage, int endPage, String otherId, String searchNew, @RequestParam (defaultValue = "1")String Id) {
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
-		String id = mvo.getMemberId();
-		searchMap.put("id", id);
+		Id = mvo.getMemberId();
+		searchMap.put("id", Id);
 		searchMap.put("otherId", otherId);
 		searchMap.put("startPage", startPage);
 		searchMap.put("endPage", endPage);

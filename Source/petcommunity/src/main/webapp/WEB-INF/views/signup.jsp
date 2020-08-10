@@ -98,16 +98,17 @@
 							<div class="form-group2">
 								<input type="checkbox" name="agree-term" id="agree-term"
 									class="agree-term" /> <label for="agree-term"
-									class="label-agree-term"><span><span></span></span>개인정보
-									처리방침에 동의 하십니까? </label>
+									class="label-agree-term"><span></span><a href="#" id="signCheck1">이용약관</a>
+									에 동의 하십니까? </label>
 							</div>
 							
 							<div class="form-group2">
 								<input type="checkbox" name="agree-term2" id="agree-term2"
 									class="agree-term2" /> <label for="agree-term2"
-									class="label-agree-term"><span><span></span></span>개인정보
+									class="label-agree-term"><span></span><a href="#" id="signCheck2">개인정보</a>
 									수집 및 이용에 동의 하십니까?</label>
 							</div>
+							
 							<div class="form-group form-button">
 								<input type="submit" name="signup" id="signup"
 									class="form-submit" value="회원가입" />
@@ -119,6 +120,16 @@
 				</div>
 			</div>
 		</section>
+		
+<input class="modal-state" id="open-pop" type="checkbox" />
+<div class="modal">
+  <label class="modal_bg" for="open-pop"></label>
+  <div class="modal_inner">
+    <label class="modal_close" for="open-pop"></label>
+    <h2>popup 제목</h2>
+    <p>내용</p>
+  </div>
+</div>
 
 	</div>
 

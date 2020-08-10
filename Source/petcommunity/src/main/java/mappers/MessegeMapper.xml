@@ -55,4 +55,10 @@
 <delete id="delMessage" parameterType="string">
 	delete from MESSAGE where MESSAGE_ID=#{msgId}
 </delete>
+
+<select id="addMessage" parameterType="hashmap" resultType="message">
+	SELECT *
+	FROM MESSAGE
+	WHERE MESSAGE_CONTENTS=#{content} AND MESSAGE_SENDER = #{id}
+</select>
 </mapper>

@@ -70,7 +70,7 @@
 						<span class="input-group-btn" style="padding-top: 10px;">
 							<button type="button" class="btn btn-default" id='searchName'>병원명 검색
 							</button>
-						</span>					
+						</span><br/><br/>			
 			</div>
 			
 			

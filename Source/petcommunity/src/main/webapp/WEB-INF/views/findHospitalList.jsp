@@ -28,7 +28,7 @@
 
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
 		<section id="container">			
-			<div class="col-xs-0 col-sm-3" style="margin-right: 30%;">
+			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
 				<!-- <input name="sGubun" type="radio" checked value="0" > -->
 					<label class="radio">지역별 검색</label>
 						<select class="form-control" id='cityName' name ='cityName'>
@@ -62,7 +62,7 @@
 			 </div>
 								
 
-			<div class="col-xs-0 col-sm-3">		
+			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
 				<!-- <input name="sGubun" type="radio" value="1"> -->	
 				  <label class="radio">병원명 검색</label>
 						<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
@@ -72,6 +72,17 @@
 							</button>
 						</span>					
 			</div>
+			
+			
+			<div class="col-xs-0 col-sm-3">
+				<label class="radio">동물병원 워드 클라우드↓↓</label>
+				<button type="button" class="btn btn-default" id='wordCloud'>word cloud here
+				</button>
+				<!-- <a href="#" onclick="window.open('https://localhost:8443/petcommunity/findHospitalList.do', 'width=1000, height=1000')"><img src="./resources/imgs/wordCloud/동물병원.png"></a>
+	 -->
+			</div>
+			
+			
 		
 	<br/><br/><br/>	
 

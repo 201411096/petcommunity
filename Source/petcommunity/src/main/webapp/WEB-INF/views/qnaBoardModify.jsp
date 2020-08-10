@@ -29,7 +29,7 @@
 			<h4>게시글 수정하기</h4>
 		</div>
 		<br /> <br />
-		<form action="/petcommunity/modify.do" method='get' name="commitWrite">
+		<form action="/petcommunity/modify.do" method='get' name="commitWrite" enctype="multipart/form-data">
 
 			<!-- 글쓰기 -->
 			<br /> <br /> <input type="hidden" class="form-control" name="questionboardId"
@@ -45,16 +45,9 @@
 				<p>글 내용</p>
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력하세요.">${qnaContent.questionboardContent }</textarea>
-
 			</div>
-<!-- 			<div class="col-md-4 col-md-offset-10"> -->
-<!-- 				<span class="input-group-btn"> -->
 					<button type="submit" class="btn btn-default" id='commitWrite'>완료</button>
 					<a href="/petcommunity/cs.do" class="btn btn-default" id='cancelWrite'> 취소</a>
-					
-<!-- 					<button type="button" class="btn btn-default" id='cancelWrite'>취소</button> -->
-<!-- 				</span> -->
-<!-- 			</div> -->
 		</form>
 	</div>
 </body>

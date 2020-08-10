@@ -229,13 +229,13 @@ input[type=button] {
   }
   
   .tedoory5 input[type=submit]{
-  margin-left:65%;
+  margin-left:67%;
   background:#fff;
   border: 1px solid #898792;
-  -webkit-border-radius: 35px;
-  -moz-border-radius: 35px;
-  border-radius: 35px;
-  padding: 5px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  padding: 8px;
   }
   
     .tedoory6{
@@ -426,7 +426,7 @@ ul.tabs li.current{
 
 
 
-@media (max-width: 320px){
+@media (max-width: 767px){
 	
 
 .ultag{
@@ -437,7 +437,7 @@ ul.tabs li{
 	background: none;
 	color: #222;
 	display: inline-block;
-	padding: 10px 1px;
+	padding: 10px 5px;
 	cursor: pointer;
 	
 }
@@ -588,12 +588,11 @@ ul.tabs li{
   }
   
   ul.tabs{
-  	margin-left:-2px;
   	display: block;
     list-style-type: disc;
     margin-block-start: 1em;
     margin-block-end: 1em;
-    margin-inline-start: 0px;
+    margin-inline-start: 3px;
     margin-inline-end: 0px;
    padding-inline-start: 1px;
 }

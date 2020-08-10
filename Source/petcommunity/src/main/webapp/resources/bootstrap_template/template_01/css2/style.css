@@ -126,6 +126,8 @@ a:focus, a:active {
   -o-transition: all 300ms ease 0s;
   -ms-transition: all 300ms ease 0s; }
 
+
+
 input, select, textarea {
   outline: none;
   appearance: unset !important;
@@ -251,10 +253,10 @@ body {
   -ms-transform: translate(-50%, -50%); }
 
 .signup {
-  margin-bottom: 150px; }
+	margin-top:100px;
+  margin-bottom: 100px; }
 
 .signup-content {
-margin-top: 10%;
   padding: 75px 0; }
 
 .signup-form, .signup-image, .signin-form, .signin-image {
@@ -275,7 +277,7 @@ figure {
   text-align: center; }
 
 .form-submit {
-  display: inline-block;
+	margin:auto;
   background: #6dabe4;
   color: #fff;
   border-bottom: none;
@@ -291,12 +293,13 @@ figure {
   .form-submit:hover {
     background: #4292dc; }
 
+
 #signin {
   margin-top: 16px; }
 
 .signup-image-link {
-  font-size: 14px;
-  color: #222;
+  font-size: 16px;
+  color: #2841a6;
   display: block;
   text-align: center; }
 
@@ -305,10 +308,16 @@ figure {
   color: #222; }
 
 .signup-form {
-margin:auto;
-  padding-left: 34px; }
+	width:65%;
+margin:auto; }
+
+.signup-form h2{
+	margin-left: 7%;
+}
 
 .register-form {
+	font-size:14px;
+	margin-left:5%;
   width: 100%; }
 
 .form-group {
@@ -316,6 +325,7 @@ margin:auto;
   margin-bottom: 25px;
   overflow: hidden; }
   .form-group:last-child {
+  margin-left:-11%;
     margin-bottom: 0px; }
 
 input {
@@ -585,7 +595,15 @@ label.valid {
 
   .form-title {
     text-align: center; } }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 767px) {
+	.signup {
+	margin-top:10px;
+  margin-bottom: 10px; }
+	
+	.signup-form h2{
+	margin-left: 1%;
+}
+	
   .social-login {
     flex-direction: column;
     -moz-flex-direction: column;

@@ -45,7 +45,7 @@
 			<tr>
 				<td colspan="2" id="content-content">
 				<c:if test="${not empty file}">
-				<img alt="없음" src="resources/imgs/qnaboard/${qnaContent.questionboardId}/${file.name}" /><br><br>
+				<img id="qnacontentImage" alt="없음" src="resources/imgs/qnaboard/${qnaContent.questionboardId}/${file.name}" /><br><br>
 				</c:if>
 				${qnaContent.questionboardContent}
 					<input type="hidden" name="questionboardGroupId"

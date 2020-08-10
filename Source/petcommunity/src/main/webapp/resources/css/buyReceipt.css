@@ -54,12 +54,12 @@ body {text-align:center; margin:20px auto;}
 
 	}
 	
-@media screen and (max-width: 320px){
+@media screen and (max-width: 767px){
 	
-	.tedoory #buyImg{
+.tedoory #buyImg{
 	width: 90%;
 	}
-	.pimg img{
+.pimg img{
 	width: 10%;
 }	
 
@@ -71,6 +71,7 @@ body {text-align:center; margin:20px auto;}
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
+   padding-bottom: 60px;
   }
 	.titTd{
 	display: none;
@@ -81,10 +82,10 @@ body {text-align:center; margin:20px auto;}
 	.tbl .item{font:13px gulim; padding-left:3px;}
 	
 	.tbl td div{
-	width:120px; height:25px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+	width:200px; height:25px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 
 }
 .tbl td:nth-child(2) {
-	width: 50%;
+	width: 70%;
 }
 }

@@ -57,8 +57,13 @@
 </delete>
 
 <select id="addMessage" parameterType="hashmap" resultType="message">
-	SELECT *
-	FROM MESSAGE
-	WHERE MESSAGE_CONTENTS=#{content} AND MESSAGE_SENDER = #{id}
+	SELECT ROWNUM, MESSAGE_CONTENTS, MESSAGE_TARGET1, MESSAGE_TARGET2, MESSAGE_SENDER, MESSAGE_SENDTIME, MESSAGE_ID, MESSAGE_READFLAG
+    FROM ( 
+            SELECT *
+            FROM MESSAGE
+            WHERE MESSAGE_CONTENTS=#{content} AND MESSAGE_SENDER = #{id}
+            ORDER BY MESSAGE_ID DESC
+        )
+    WHERE ROWNUM=1
 </select>
 </mapper>

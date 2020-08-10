@@ -16,7 +16,7 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
-
+<link href="./resources/css/toastr.css" rel="stylesheet" type="text/css" />
 <!-- Stylesheets -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/font-awesome.min.css" />
@@ -107,7 +107,7 @@
 	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	
+	<script src="./resources/js/toastr.js"></script>
 </body>
 
 </html>

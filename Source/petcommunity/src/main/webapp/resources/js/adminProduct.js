@@ -10,7 +10,7 @@
 		ㄴ 내부적으로 동적인 페이징을 구성함
 	ㄴ drawProductTable : ajax로 받아온 데이터로 테이블을 그려주는 함수
 	ㄴ updateBtnEvent : 수정 버튼들 눌렀을 경우 이벤트 핸들러
-		ㄴ 해당 bookId에 맞는 데이터들을 수정 화면으로 끌어가서 로딩함
+		ㄴ 해당 productId에 맞는 데이터들을 수정 화면으로 끌어가서 로딩함
 	ㄴ deleteBtnEvent : 삭제 버튼들 눌렀을 경우 이벤트 핸들러
 	
 실행부분

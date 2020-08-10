@@ -18,12 +18,6 @@
 	
 </head>
 <body>
-<!-- <iframe -->
-<!--     allow="microphone;" -->
-<!--     width="350" -->
-<!--     height="430" -->
-<!--     src="https://console.dialogflow.com/api-client/demo/embedded/552e9ca4-e552-4190-97ea-33e5aa512c3d"> -->
-<!-- </iframe> -->
     <div class="main">
         <!-- Sing in  Form -->
         <section class="sign-in">

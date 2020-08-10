@@ -50,11 +50,30 @@
  
  
  
- @media only screen and (max-width: 320px) {
-   .header-warp {
+  @media only screen and (max-width: 767px) {
+  .header-warp {
      padding: 30px 15px;
    }
    .header-section .main-menu {
      display: none;
    }
+   .slicknav_menu {
+     display: block;
+     margin-top: -44px;
+     background: transparent;
+   }
+   .slicknav_btn {
+     margin-right: 10px;
+     background: #d7d6ce;
+   }
+   .slicknav_nav {
+     background: #c0bfb1;
+   }
+   .slicknav_nav a:hover,
+   .slicknav_nav .slicknav_row:hover {
+     background: #25394c;
+     color: #fff;
+   }
  }
+ 
+ /* Small Mobile :320px. */

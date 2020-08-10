@@ -67,7 +67,6 @@
 						<a href="productCart.do">[장바구니]</a>
 
 					</c:when>
-
 				</c:choose>
 
 				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li> 

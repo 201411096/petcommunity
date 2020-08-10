@@ -32,5 +32,6 @@
 <a href="/petcommunity/adminProductList.do">crud 페이지</a>
 
 <a href="/petcommunity/managerPage.do">회원관리 페이지</a>
+<a href="/petcommunity/test_toastr.do">토스트 알림</a>
 </body>
 </html>

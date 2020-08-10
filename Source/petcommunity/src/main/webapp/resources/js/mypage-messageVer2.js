@@ -5,6 +5,7 @@ var otherId='1';//상대방 id
 var scrollController=0;
 var loginId='';
 $(function(){
+	// 메시지를 받았을 때
 	receiveMessage();
 	// 소켓에 닉네임으로 사용할 id 저장
 	memberId=$("#hiddenId").val();
@@ -116,9 +117,35 @@ function receiveMessage(){
 	 console.log(data.messageFrom);
 	 console.log(data.messageTo);
 	 addMessage(data);
+	 toastMessage(data.messageContent, data.messageFrom, data.messageTo);
 	 
 	 
  });
+}
+// message toast 알림
+function toastMessage(messageContent, messageFrom, messageTo){
+	toastr["info"](messageFrom+"<br /><br />"+messageContent);
+//	toastr["info"](messageFrom+"<br /><br />"+messageContent);
+//	toastr.info(messageFrom, messageContent, {timeOut: 5000});
+	toastr.options = {
+			  "closeButton": true,
+			  "debug": false,
+			  "newestOnTop": true,
+			  "progressBar": false,
+			  "rtl": false,
+			  "positionClass": "toast-top-right",
+			  "preventDuplicates": false,
+			  "onclick": null,
+			  "showDuration": 300,
+			  "hideDuration": 1000,
+			  "timeOut": 0,
+			  "extendedTimeOut": 0,
+			  "showEasing": "swing",
+			  "hideEasing": "linear",
+			  "showMethod": "fadeIn",
+			  "hideMethod": "fadeOut",
+			  "tapToDismiss": false
+			}
 }
 // 소켓 닉네임 로그인 id로 설정
 function setNickname(memberId){
@@ -233,7 +260,7 @@ function getMypageMessage(startPage, endPage){
 		
 	});
 }
-
+// 문자 전송한 상대의 chat에 메시지 추가
 function addMessage(data){
 	$.ajax({type : 'post',
 		async:true,

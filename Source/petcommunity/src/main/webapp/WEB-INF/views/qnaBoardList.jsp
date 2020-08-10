@@ -33,32 +33,21 @@
          <table class="table table-hover">
             <thead>
                <tr>
-                  <td>번호</td>
-                  <td>제목</td>
-                  <td>아이디</td>
-                  <td>등록일</td>
-                  <td>조회수</td>
+                  <td id="tr_title">번호</td>
+                  <td id="tr_title">이미지</td>
+                  <td id="tr_title">제목</td>
+                  <td id="tr_title">아이디</td>
+                  <td id="tr_title">등록일</td>
+                  <td id="tr_title">조회수</td>
                </tr>
             </thead>
             <tbody id="QnaBoardTbody">
             </tbody>
-            <%--             <c:forEach items="${qnavoList}" var="item"> --%>
-            <!--                <tr> -->
-            <%--                   <td>${item.questionboardId}</td> --%>
-            <!--                   <td> -->
-            <%--                   <a href="/petcommunity/qnaContent.do?questionboardId=${item.questionboardId}"> --%>
-            <%--                         ${item.questionboardTitle}</a></td> --%>
-            <%--                   <td>${item.questionboardUploadtime}</td> --%>
-            <%--                   <td>${item.questionboardReadcount}</td> --%>
-            <%--                   <td>${item.memberId}</td> --%>
-            <!--                </tr> -->
-
-            <%--             </c:forEach> --%>
          </table>
          <div class="search row">
             <div class="col-xs-2 col-sm-2">
                <select name="searchType" id="searchType" class="form-control">
-                  <option value="0">-----</option>
+                  <option value="0">전체</option>
                   <option value="1">제목</option>
                   <option value="2">내용</option>
                   <option value="3">아이디</option>

@@ -227,6 +227,7 @@
 						</div>
 					</div>
 				</div>
+
 				<!-- <div class="tedoory" id="message-table2">
 				</div> -->
 			</div>
@@ -239,7 +240,7 @@
 
 
 	</div>
-
+<button id="button111">버튼1</button>
 	<!-- JS -->
 	<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
@@ -250,6 +251,8 @@
 		src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 	<script>
+// 	 toastr["info"]("content!!!!<br /><br /><button type="button" class="btn clear">Yes</button>", "title!!!")
+	
 		// 우편번호 찾기 화면을 넣을 element
 		var element_layer = document.getElementById('layer');
 

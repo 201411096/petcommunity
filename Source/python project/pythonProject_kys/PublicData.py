@@ -5,8 +5,9 @@ import time
 import sys
 
 now = time.localtime()
+# today = str(now.tm_year)+str(now.tm_mon)+str(now.tm_mday) # 사용안함
 
-def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1231', numOfRows='1000'):
+def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1231', numOfRows='100'):
     pageNo = '1'
     requestUrl = 'http://openapi.animal.go.kr/openapi/service/rest/abandonmentPublicSrvc/abandonmentPublic?bgnde=' + beginDate + '&endde=' + endDate + '&pageNo=' + pageNo + '&numOfRows=' + numOfRows + '&ServiceKey='
     serviceKey = 'Cs8el%2FuhtlYCY%2BHBBp9jCapmuo%2FmEjVkn0P%2BU6BY78tnS%2BTrPlz7BUEk%2BDfKOvvioI9hcaSuAJT%2FpgGsqAQG9A%3D%3D'
@@ -20,8 +21,9 @@ def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1
 
 def getLatLng(addr):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query='+addr
-    headers = {"Authorization": "KakaoAK ec8f6fd46ab832e10395eecfabaa2c5a"}
+    headers = {"Authorization": "KakaoAK ef98dda66a49490082c28615fd112176"}
     result = json.loads(str(requests.get(url, headers=headers).text))
+    print(result)
     if(len(result['documents'])>=1):
         if(result['documents'][0]['address']==None): # 주소 좌표 변환이 잘 이루어지지 않은 경우에 ...
             return '0', '0'

@@ -27,8 +27,8 @@ var app = https.createServer(options, (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin,Accept,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-// }).listen(3000, '192.168.0.18', () => {
-}).listen(3000, '121.171.119.57', () => {
+}).listen(3000, '192.168.0.18', () => {
+// }).listen(3000, '121.171.119.57', () => {
     console.log('listening on *:3000');
 });
 
@@ -56,7 +56,6 @@ io.on('connection', function(socket){
       socket.join(roomInfo.cur);
       io.to(roomInfo.cur).emit('chat message', roomInfo.memberId+"님이 입장하셨습니다.");
     }
-
   });
   socket.on('chat message', (msg) => {
     var memberId;
@@ -72,6 +71,21 @@ io.on('connection', function(socket){
     executePythonFileAndReadJsonFile(dataOptions, socket);
   })
   // 공공데이터(파이썬 부분)-----
+
+  socket.on('sendMessageData', function(sendMessageObject){
+    var socketList = io.sockets.sockets;
+    io.clients(function(error, clients){
+      if (error) throw error;
+      for(var i=0; i<clients.length; i++){
+        if(socketList[clients[i]].nickname == sendMessageObject.messageTo){
+          io.to(socketList[clients[i]].id).emit('sendMessageData', sendMessageObject);      
+        }
+      }
+    });
+  })
+  socket.on('setNickname', function(memberId){
+    socket.nickname = memberId;
+  });
 });
 
 function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
@@ -158,7 +172,6 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     if (err) throw err;
     fs.readFile('publicData.json', 'utf8', function(err, data){
         data = JSON.parse(data);
-        // console.log(data.response.body.items.item);
         // data = data.response.body.items.item; // 수정 위치
         console.log(data);
         console.log('data 길이...' + data.length);

@@ -3,9 +3,9 @@
 	width: 90%;
 	border: 1px solid #2f2f2f;
 	padding: 6px 30px 6px 30px;
-	border-radius: 35px;
 	/* height: 70px; */
 	/* overflow:auto; */
+	border-radius: 35px;
 	height:auto;
 	text-align : center;
 	background-color: #fafafa;
@@ -100,14 +100,15 @@
 	height:90%
 }
 #div-chat{
+	width:54%;
 	overflow:auto;
 	margin-bottom: 10%;
 	margin-left:6%;
 	display:inline-block;
-	width:54%;
 	height:80%;
 	border: 1px solid #2f2f2f;
 }
+
 
 /* .mypage-messageTime{
 	margin-right: -10%;

@@ -108,7 +108,7 @@
 	</div>
 	매출 통계 (품목별)
 	<div id="graph_05_outer_container">
-				<div id="graph_05_option_container">
+		<div id="graph_05_option_container">
 			<span>
 				<select id="graph_05_chartShape_option" class="form-control">
 					<option selected value="bar">막대</option>

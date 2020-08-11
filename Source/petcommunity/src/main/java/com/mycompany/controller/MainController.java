@@ -88,7 +88,6 @@ public class MainController {
 public String lostCount() {
 
 	String rs =mainService.lostCount();
-	System.out.println("결과"+rs);
 
 	return rs;
 
@@ -105,7 +104,7 @@ public String lostCount() {
 public String findCount() {
 
 String rs =mainService.findCount();
-System.out.println("결과"+rs);
+
 
 return rs;
 
@@ -122,7 +121,7 @@ return rs;
 public String lostDoneCount() {
 
 String rs =mainService.lostDoneCount();
-System.out.println("결과"+rs);
+
 
 return rs;
 

@@ -45,4 +45,10 @@ public class ShopDAOImpl implements ShopDAO{
 		List<String> result = mybatis.selectList("ShopDAO.selectSearchAutoCategory", searchSomething);
 		return result;
 	}
+
+	@Override
+	public List<Map<String,String>> shoprank() {
+		
+		return mybatis.selectList("ShopDAO.shoprank");
+	}
 }

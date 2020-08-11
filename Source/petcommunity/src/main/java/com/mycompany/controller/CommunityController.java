@@ -524,8 +524,7 @@ public class CommunityController {
 		
 		List<CommunityVO> list2 =communityService.getBoardRank();
 		for(CommunityVO i : list2) {
-			System.out.println("커뮤니티 랭킹 10"+i.getCommunityboardTitle());
-			
+				
 		}
 		result.put("buyList", list2);
 

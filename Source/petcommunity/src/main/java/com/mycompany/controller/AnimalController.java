@@ -69,13 +69,13 @@ public class AnimalController {
 		}
 	}
 
+	
 	/* 
 	    * 함수 이름 : animalSelect
-	    * 주요 기능 : 마이페이지 클릭시 정보 불러옴
-	    * 함수 내용 : 로그인 후 마이페이지 클릭시 해당 세션에 저장된 값으로 
-	    * 		  animal의 정보와 buy정보를 가져와서 해당 animalId 경로의 이미지를  AnimalVO에  set해줌.
+	    * 주요 기능 : 마이페이지 - 주문내역 클릭시 주문 결제 정보 불러옴
+	    * 함수 내용 : ajax로 연결되어 json타입으로 hashMap으로 리턴된다. 페이징 처리,
+	    * 		     세션의 유저정보를 통해 결제 내역을 List배열로 받아서 ajax로 넘겨준다. 
 */
-	
 	@ResponseBody
 	@RequestMapping(value = "mypageselect.do", produces = "application/json; charset=utf-8")
 	public Map animalSelect(HttpServletRequest req,@RequestParam(defaultValue="1") int curPage) {
@@ -93,19 +93,23 @@ public class AnimalController {
 		map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		map.put("memberId", memberId);
 		
-		List<BuyListVO> list2 =buyService.buyList(map);
-		
+		List<Map<String,String>> list2 =buyService.buyList(map);
+
 		result.put("pagination", paginationVO);
 		result.put("buyList", list2);
 		result.put("buyListSize",list2.size());
 		result.put("membervo", mvo);
 		
-		System.out.println("컨트롤 연결"+result.get("buyList"));
 		return result;
 
 	}
 	
-	
+	/* 
+	    * 함수 이름 : mypageAnimal
+	    * 주요 기능 : 마이페이지 클릭시 정보 불러옴
+	    * 함수 내용 : 로그인 후 마이페이지 클릭시 해당 세션에 저장된 값으로 
+	    * 		  animalId 경로의 이미지를  AnimalVO에  set해주고  등록한 반려동물 정보를 받아서 넘겨준다.
+*/
 	@RequestMapping(value = "mypageAnimal.do")
 	public ModelAndView mypageAnimal(HttpServletRequest req) {
 		HttpSession session = req.getSession();
@@ -144,6 +148,7 @@ public class AnimalController {
 	@RequestMapping(value = "animalDelete.do")
 	public String animalDelete(AnimalVO vo, HttpServletRequest req) {
 		animalService.animalDelete(vo);
+		
 		FileUpload.deleteDirectory(
 				req.getSession().getServletContext().getRealPath("resources/imgs") + "/animal/" + vo.getAnimalId());
 		return "redirect:/mypageAnimal.do";

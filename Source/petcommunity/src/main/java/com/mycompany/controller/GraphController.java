@@ -154,7 +154,6 @@ public class GraphController {
 			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
 			Date time = new Date();
 			String strTime = format.format(time);
-			//inputData.put("endDate", Integer.toString(Integer.parseInt(strTime.substring(0, 8))+1)+"000000");
 			inputData.put("endDate", strTime.substring(0, 8)+"235959");
 		}
 		String timeOptionArray [] = {"YYYYMMDDHH24MISS", "YYYYMMDDHH24MI", "YYYYMMDDHH24", "YYYYMMDD", "YYYYMM", "YYYY"};

@@ -74,7 +74,7 @@
 									<div align="right">
 										<span class="glyphicon glyphicon-plus icon-my animal"></span>
 									</div>
-									<table>
+									<table class="aniamlTb">
 										<colgroup>
 											<col style="width: 20%" />
 											<col style="width: 25%" />
@@ -128,19 +128,21 @@
 					<figure>
 						<img
 							src="./resources/bootstrap_template/template_01/img/gallery/mypage.png"
-							alt="" style="width: 300px">
+							alt="">
 					</figure>
 					<br><br>
 					<table class="mypage-table">
 						<colgroup>
-							<col style="width: 30%" />
-							<col style="width: 30%" />
-							<col style="width: 30%" />
+							<col style="width: 15%" />
+							<col style="width: 15%" />
+							<col style="width: 50%" />
+							<col style="width: 20%" />
 						</colgroup>
 						<thead>
 							<tr>
 								<td>주문번호</td>
 								<td>주문날짜</td>
+								<td>상품명</td>		
 								<td>총가격</td>
 							</tr>
 						</thead>
@@ -157,7 +159,7 @@
 						class="memberUpdate-form" id="memberUpdate-form">
 						<div class="form-group">
 							<label for="name"><i
-								class="zmdi zmdi-account material-icons-name"></i>이름</label> <input
+								class="zmdi zmdi-account material-icons-name">이름</i></label> <input
 								type="text" name="memberName" id="memberName" />
 						</div>
 						<div class="form-group">
@@ -185,7 +187,7 @@
 						</div>
 
 						<div class="form-group">
-							<span class='zmdi zmdi-home'>주소</span> <input type="text"
+							<label class='zmdi zmdi-home'>주소</label> <input type="text"
 								id="sample2_postcode" placeholder="우편번호"> <input
 								type="button" id="addrBtn" onclick="sample2_execDaumPostcode()"
 								value="우편번호 찾기"><br> <input type="text"
@@ -240,7 +242,6 @@
 
 
 	</div>
-<button id="button111">버튼1</button>
 	<!-- JS -->
 	<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>

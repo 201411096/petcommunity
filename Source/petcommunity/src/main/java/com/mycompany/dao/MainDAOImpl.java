@@ -34,5 +34,23 @@ public class MainDAOImpl implements MainDAO {
 		return mybatis.selectList("mainDAO.getQnaBoardList");
 	}
 
+	@Override
+	public String lostCount() {
+		
+		return mybatis.selectOne("mainDAO.getLostCount");
+	}
+
+	@Override
+	public String findCount() {
+		
+		return mybatis.selectOne("mainDAO.getfindCount");
+	}
+
+	@Override
+	public String lostDoneCount() {
+		String data ="찾음";
+		return mybatis.selectOne("mainDAO.getLostDoneCount",data);
+	}
+
 
 }

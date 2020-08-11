@@ -79,13 +79,13 @@ body {text-align:center; margin:20px auto;}
 	.pimg{
 	display: none;
 	}
-	.tbl .item{font:13px gulim; padding-left:3px;}
+	.tbl .item{ padding-left:2px;}
 	
 	.tbl td div{
-	width:200px; height:25px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+	width:110px; height:20px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
 
 }
 .tbl td:nth-child(2) {
-	width: 70%;
+	
 }
 }

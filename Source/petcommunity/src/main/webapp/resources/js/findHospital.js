@@ -194,6 +194,22 @@ $(function(){
 	searchForMapEventHandler();
 });
 
+
+function searchForMapEventHandler(){
+	$('#searchLocation').on('click', getDataWithoutPaging);
+	$('#searchName').on('click', function(event){
+		if (event.keyCode === 13) {
+			if($('#searchName').val()!=""){
+				setCenterLocation($('#searchName').val());
+			}
+			setTimeout(function(){
+				getDataWithoutPaging();
+			}, 500);
+			
+		  };
+	});
+}
+
 function documentPreventKeyDown(){
 	document.addEventListener('keydown', function(event) {
 		  if (event.keyCode === 13) {
@@ -203,14 +219,14 @@ function documentPreventKeyDown(){
 }
 
 function autoCompleteFunc(){
-	$('#keywordInput').autocomplete({
+	$('#searchName').autocomplete({
 		source : function( request, response ) {
             $.ajax({
                    type: 'get',
                    url: "/petcommunity/autoCompleteForFindHospital.do",
                    dataType: "json",
                    data:{
-                	   	"searchWord" : $('#keywordInput').val()
+                	   	"searchWord" : $('#searchName').val()
                 	   	
                    },
                    success: function(data) {
@@ -233,7 +249,7 @@ function autoCompleteFunc(){
            select : function(event, ui){
         	   
            },
-           appendTo :'#search-container',
+           appendTo :' ',
            minLength: 1,		 // 최소 글자수
            autoFocus: true,		 //첫번째 항목 자동 포커스 기본값 false
            delay : 500,
@@ -561,6 +577,7 @@ $(document).ready(function(){
 		newWindow.document.body.appendChild(img);   //body안에 가장 마지막 요소로 img 추가
 	});
 });
+
 
 
 

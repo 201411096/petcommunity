@@ -31,7 +31,7 @@
 	<hr>
 	찾은동물 요일, 시간별 통계 (group by)
 	<div id="graph_02_outer_container">
-				<div id="graph_02_option_container">
+		<div id="graph_02_option_container">
 			<span>
 				<select id="graph_02_chartShape_option" class="form-control">
 					<option selected value="bar">막대</option>
@@ -55,7 +55,7 @@
 	<hr>
 	매출 통계 (group by)
 	<div id="graph_03_outer_container">
-				<div id="graph_03_option_container">
+		<div id="graph_03_option_container">
 			<span>
 				<select id="graph_03_chartShape_option" class="form-control">
 					<option selected value="bar">막대</option>
@@ -77,7 +77,7 @@
 	</div>
 	매출 통계 (grouping x)
 	<div id="graph_04_outer_container">
-				<div id="graph_04_option_container">
+		<div id="graph_04_option_container">
 			<span>
 				<select id="graph_04_chartShape_option" class="form-control">
 					<option value="bar">막대</option>

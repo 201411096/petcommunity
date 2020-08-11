@@ -786,7 +786,7 @@ font-family: 'NanumSquare', sans-serif !important;
 	position: absolute;
 	margin-left: 20%;
 	margin-top: 30%;
-	font-size: 20px;
+	font-size: 25px;
 	color: black;
 }
 
@@ -897,6 +897,7 @@ font-family: 'NanumSquare', sans-serif !important;
 	margin-bottom: 2%;
 }
 
+
 .gallery-item {
 	margin-bottom: 123px;
 }
@@ -970,13 +971,13 @@ font-family: 'NanumSquare', sans-serif !important;
 
 .blog-content1 a,.blog-content2 a,.blog-content3 a,.blog-content4 a {
 	margin-left:25%;
-	font-size: 15px;
+	font-size: 18px;
 	color: black;
 }
 
 .blog-content1 a:hover,.blog-content2 a:hover,.blog-content3 a:hover,.blog-content4 a:hover {
 	margin-left:25%;
-	font-size: 15px;
+	font-size: 18px;
 	color: gray;
 }
 .blog-item:last-child {

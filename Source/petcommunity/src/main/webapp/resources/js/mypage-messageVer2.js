@@ -2,7 +2,7 @@ var socket = io("https://192.168.0.18:3000");
 var startPage=0;//최초 탭 클릭 시 0~5개의 리스트, 챗만 가져옴
 var endPage=6;
 var otherId='1';//상대방 id
-var scrollController=0;
+//var scrollController=0;
 var loginId='';
 $(function(){
 	// 메시지를 받았을 때
@@ -50,7 +50,7 @@ $(function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
 		$(this).css({"background-color": "#83bb44"});
 		otherId=$(this).attr("value");
-		scrollController=1;
+//		scrollController=1;
 		getChat(startPage, endPage);
 	});
 	$(document).on("click", '.sendMsg', function(){
@@ -58,7 +58,7 @@ $(function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
 		divColorChange.css({"background-color": "#83bb44"});
 		otherId=$(this).prev().attr("value");
-		scrollController=1;
+//		scrollController=1;
 		getChat(startPage, endPage);
 	});
 	// 삭제
@@ -66,6 +66,7 @@ $(function(){
 		if(confirm("삭제하시겠습니까?")){
 		var msgId = $(this).attr('value');
 		delMessage(msgId);
+		sendDelData(msgId, loginId, otherId);
 		}
 	});
 	// 무한스크롤(리스트)
@@ -84,18 +85,22 @@ $(function(){
 	$('#btn-message').on('click', function(){
 		if(otherId!='1'){
 		var content=$('#writeMessage').val();
-		sendMessage(content);
-		sendMessageData(content, loginId, otherId);
-		$('#writeMessage').val('');
+			if(content){
+				sendMessage(content);
+				sendMessageData(content, loginId, otherId);
+				$('#writeMessage').val('');
+			}
 		}
 	});
 	// 전송 enter key
 	$('#writeMessage').on('keypress', function(){
 		if(event.keyCode==13 && otherId!='1'){
 		var content=$('#writeMessage').val();
-		sendMessage(content);
-		sendMessageData(content, loginId, otherId);
-		$('#writeMessage').val('');
+			if(content){
+				sendMessage(content);
+				sendMessageData(content, loginId, otherId);
+				$('#writeMessage').val('');
+			}
 		}
 	});
 
@@ -116,11 +121,17 @@ function receiveMessage(){
 	 console.log(data.messageContent);
 	 console.log(data.messageFrom);
 	 console.log(data.messageTo);
-	 addMessage(data);
+//	 addMessage(data);
+	 getChat(startPage, endPage);
 	 toastMessage(data.messageContent, data.messageFrom, data.messageTo);
-	 
-	 
  });
+	socket.on('sendDelData', function(data){
+		console.log('receiveMessageDelete evt');
+		 console.log(data.msgId);
+		 console.log(data.messageFrom);
+		 console.log(data.messageTo);
+		 getChat(startPage, endPage);
+	});
 }
 // message toast 알림
 function toastMessage(messageContent, messageFrom, messageTo){
@@ -153,7 +164,17 @@ function setNickname(memberId){
 	   console.log(memberId);
 	}
 
-
+// 소켓으로 삭제 메시지 Data 보냄
+function sendDelData(msgId, loginId, otherId){
+	var dataOptions = new Object();
+	dataOptions.msgId=msgId;
+	dataOptions.messageFrom=loginId;
+	dataOptions.messageTo=otherId;
+	console.log(dataOptions.msgId);
+	console.log(dataOptions.messageFrom);
+	console.log(dataOptions.messageTo);
+	socket.emit('sendDelData', dataOptions);
+}
 function sendMessage(content){
 	$.ajax({
 		async:true,
@@ -315,19 +336,21 @@ function drawAddMessageTable(data){
 		'</div>'+
 		'<div></div>';
 	$('#div-chat').append(listContent);
+	const $divChat = $('#div-chat'); 
+	$divChat.scrollTop($divChat[0].scrollHeight);
+	
 }
 
 function drawChatTable(data){
 	$('#div-chat').empty();
 	var chatMessage='';
-	if(scrollController==1){
-		$("#div-chat").animate({ scrollTop: $(document).height() });
-		scrollController=0;
-	}else{
-//		$("#div-chat").stop().animate({ scrollTop: '+=100' });
-//		$("#div-chat").scroll({scrollTop: $(document).height()}).animate({ scrollTop: '+=800' }, "fast");
-		$("#div-chat").animate({ scrollTop: $(document).height() }).animate({ scrollTop: $(document).height() });
-	}	
+	const $divChat = $('#div-chat'); 
+	$divChat.scrollTop($divChat[0].scrollHeight);
+//	if(scrollController==1){
+//	const $divChat = $('#div-chat'); 
+//		$divChat.scrollTop($divChat[0].scrollHeight);
+//		scrollController=0;
+//	}
 	
 	for(var i=0; i<data.messageVOSize; i++){
 		var target1 = data.messageVO[i].messageTarget1;
@@ -364,6 +387,8 @@ function drawChatTable(data){
 			'</div>'+
 			'<div></div>';
 		$('#div-chat').append(listContent);
+		const $divChat = $('#div-chat'); 
+		$divChat.scrollTop($divChat[0].scrollHeight);
 	}
 }
 

@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%-- <%@include file="../views/header.jsp"%> --%>
 <!doctype html>
 <head>
 	<!-- header 시작-->
 	<!-- Stylesheets -->
+	<link rel="stylesheet" type="text/css"
+   href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 	<link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/style.css" />
-	<link rel="stylesheet" href="./resources/css/login.css" />
-	<!-- main.js -->
-	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
+	<link rel="stylesheet" href="./resources/css/head.css" />
+	
 	<!-- header 끝 -->
 
 	<!-- Required meta tags -->
@@ -107,8 +108,10 @@
 						</ul>
 						<p>${productInfo.productContent }</p>
 						<form id='addCartSubmit' action="/petcommunity/buyCartList.do">
+						
 						<div class="product_count">
-							<label for="qty">개수:</label>
+<!-- 							<label for="qty">개수:</label> -->
+							<label>개수</label>
 							<input type="text" name="productCnt" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
 							 class="increase items-count" type="button">
@@ -119,7 +122,9 @@
 								<i class="lnr lnr-chevron-down"></i>
 							</button>
 						</div>
-						
+
+
+
 							<div class="card_area">
 								<button id="addCart_btn" type="button" class="main_btn">장바구니 담기</button>
 								<input type="hidden" id="productId" name="productId" value="${productInfo.productId }">
@@ -376,8 +381,11 @@
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/counter-up/jquery.waypoints.min.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/vendors/counter-up/jquery.counterup.js"></script>
 	<script src="./resources/bootstrap_template/bootstrap_ain/productDetail/js/theme.js"></script>
+
 	<!-- js 이벤트 -->
 	<script src="./resources/js/productReview.js"></script>
+	<!-- main.js -->
+	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
 </body>
 
 </html>

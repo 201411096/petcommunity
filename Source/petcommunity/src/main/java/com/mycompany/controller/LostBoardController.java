@@ -131,14 +131,24 @@ public class LostBoardController {
 				
 				if(userDeviceIdKey != null) {
 					
-				JSONObject json = new JSONObject();
-				json.put("to",userDeviceIdKey.trim());
-				JSONObject info = new JSONObject();
-				info.put("title", title);   // Notification title
-				info.put("body", content); // Notification body
-				info.put("link", link); // Notification link
-				json.put("notification", info);
-				
+//				JSONObject json = new JSONObject();
+//				json.put("to",userDeviceIdKey.trim());
+//				JSONObject info = new JSONObject();
+//				info.put("title", title);   // Notification title
+//				info.put("body", content); // Notification body
+//				json.put("notification", info);
+//				JSONObject data = new JSONObject();
+//				data.put("link", link); 
+//				json.put("data", data);
+
+					JSONObject json = new JSONObject();
+					json.put("to",userDeviceIdKey.trim());	
+					JSONObject info = new JSONObject();
+					info.put("title", title);   // Notification title
+					info.put("body", content); // Notification body
+//					info.put("link", link); 
+					json.put("notification", info);
+					
 				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
 				System.out.println(">" + json.toString());
 				wr.write(json.toString());

@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="./resources/css/adminGraph.css" />
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/style.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 <title>관리자 페이지</title>
 </head>
@@ -76,7 +77,9 @@
 								id="startDate" /> 
 								<input type="date" name="endDate"
 								class='form-control' id="endDate" /> 
-								<input id="searchBtn"
+								</div>
+								<div class="input-group2">
+								<input id="adminsearchBtn"
 								type="submit" class="btn btn-default" value="검색">
 								<a href="/petcommunity/adminPage.do" id="listBtn" class="btn btn-default">목록</a>
 						</div>
@@ -104,7 +107,7 @@
 									<td><input type="hidden" name="productId" id="productId" />
 										<a href="productView.do?productId=${item.productId}">
 											${item.productName}</a></td>
-									<td>${item.buyCnt}</td>
+									<td id="stock">${item.buyCnt}</td>
 									<td>${item.buyTotalprice}</td>
 								</tr>
 							</c:forEach>

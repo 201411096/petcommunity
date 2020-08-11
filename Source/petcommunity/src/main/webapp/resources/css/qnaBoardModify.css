@@ -12,7 +12,16 @@ body{
 
 #qnaTitle h4{
 	text-align: center;
-	color: #4a4a4a;
+	color: black;
+	font-size: 30px;
+	margin-bottom: 1%;
+}
+
+#qnasubtitle{
+	font-size:18px;
+	color: gray;
+	text-align: center;
+	margin-bottom: 5%;
 }
 
 .form-group label{

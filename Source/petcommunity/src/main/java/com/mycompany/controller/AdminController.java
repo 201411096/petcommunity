@@ -42,6 +42,11 @@ public class AdminController {
 		
 		ModelAndView mv = new ModelAndView();
 		List<BuylistviewVO> salesList = adminService.adminselectList(buylistviewvo);
+	
+		for (int i = 0; i < salesList.size(); i++) {
+			salesList.get(i).setBuylistDate(salesList.get(i).getBuylistDate().substring(0, 10));
+			System.out.println("salesList.get(i).getBuylistDate().substring(0, 10):"+salesList.get(i).getBuylistDate().substring(0, 10));
+		}
 		mv.addObject("salesList", salesList);
 
 		return mv;
@@ -77,6 +82,7 @@ public class AdminController {
 		List<BuylistviewVO> salesList = adminService.getSearchDate(map);
 		for (int i = 0; i < salesList.size(); i++) {
 			salesList.get(i).setBuylistDate(salesList.get(i).getBuylistDate().substring(0, 10));
+			System.out.println("salesList.get(i).getBuylistDate().substring(0, 10):"+salesList.get(i).getBuylistDate().substring(0, 10));
 		}
 
 		mv.addObject("salesList", salesList);

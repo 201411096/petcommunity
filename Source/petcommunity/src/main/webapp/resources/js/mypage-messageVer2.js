@@ -121,7 +121,8 @@ function receiveMessage(){
 	 console.log(data.messageContent);
 	 console.log(data.messageFrom);
 	 console.log(data.messageTo);
-	 addMessage(data);
+//	 addMessage(data);
+	 getChat(startPage, endPage);
 	 toastMessage(data.messageContent, data.messageFrom, data.messageTo);
  });
 	socket.on('sendDelData', function(data){

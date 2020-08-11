@@ -72,6 +72,7 @@ io.on('connection', function(socket){
   })
   // 공공데이터(파이썬 부분)-----
 
+  // 쪽지 알림 부분 -----
   socket.on('sendMessageData', function(sendMessageObject){
     var socketList = io.sockets.sockets;
     io.clients(function(error, clients){
@@ -82,7 +83,19 @@ io.on('connection', function(socket){
         }
       }
     });
-  })
+  });
+  socket.on('sendDelData', function(sendMessageObject){
+    var socketList = io.sockets.sockets;
+    io.clients(function(error, clients){
+      if (error) throw error;
+      for(var i=0; i<clients.length; i++){
+        if(socketList[clients[i]].nickname == sendMessageObject.messageTo){
+          io.to(socketList[clients[i]].id).emit('sendDelData', sendMessageObject);      
+        }
+      }
+    });
+  });
+  // 쪽지 알림 부분 -----
   socket.on('setNickname', function(memberId){
     socket.nickname = memberId;
   });

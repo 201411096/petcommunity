@@ -511,7 +511,11 @@ public class CommunityController {
 
 	}
 	
-
+	// 커뮤니티 플로팅 배너 (우측)
+		/*
+		 * 함수 이름 : getBoardRank 
+		 * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+		 */
 	@ResponseBody
 	@RequestMapping(value="getBoardrank.do" , produces = "application/json; charset=utf-8")
 	public Map getBoardRank() {

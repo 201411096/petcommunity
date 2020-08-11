@@ -167,12 +167,5 @@ public class HospitalController {
         return container;
     }
 
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

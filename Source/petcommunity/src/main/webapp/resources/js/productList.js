@@ -153,3 +153,64 @@ function drawProductTable(data){
 		$('#productTable').append(listContent);
 	}
 }
+
+
+
+/*우측 배너 js============================*/
+
+$(window).scroll(function() {
+	$('.bannerDiv').animate({
+		top : $(window).scrollTop() + "px"
+	}, {
+		queue : false,
+		duration : 500
+	});
+});
+
+$.ajax({
+	type : 'get',
+	async : true,
+	url : '/petcommunity/shoprank.do?',
+	contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+	dataType : 'json',
+	success : function(resultData) {
+		for ( var i in resultData) {
+			$("#a").text(resultData[i][0].pname)
+			$("#a").attr("href", "productView.do?productId="+resultData[i][0].pId)
+
+			$("#b").text(resultData[i][1].pname)
+			$("#b").attr("href", "productView.do?productId="+resultData[i][1].pId)
+
+			$("#c").text(resultData[i][2].pname)
+			$("#c").attr("href", "productView.do?productId="+resultData[i][2].pId)
+
+			$("#d").text(resultData[i][3].pname)
+			$("#d").attr("href", "productView.do?productId="+resultData[i][3].pId)
+
+			$("#e").text(resultData[i][4].pname)
+			$("#e").attr("href", "productView.do?productId="+resultData[i][4].pId)
+
+		}
+
+	},
+	error : function(request, status, error) {
+		console.log("code:" + request.status + "\n" + "message:"
+				+ request.responseText + "\n" + "error:" + error);
+	}
+
+});
+$(document).ready(
+		function() {
+
+			$("#bannerX").click(
+					function() {
+						$('#banner').slideToggle("fast");
+						$("#bannerX").toggleClass(
+								'glyphicon-chevron-down glyphicon-chevron-up');
+
+					});
+
+		});
+
+
+/*우측 배너 js============================*/

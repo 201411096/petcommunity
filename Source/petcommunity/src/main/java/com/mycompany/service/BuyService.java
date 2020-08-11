@@ -11,7 +11,7 @@ import com.mycompany.domain.ProductCartVO;
 
 public interface BuyService {
 
-	public List<BuyListVO> buyList(Map map);
+	public List<Map<String,String>> buyList(Map map);
 	
 	public List<Map<String,String>> buyReceipt(String id);
 	

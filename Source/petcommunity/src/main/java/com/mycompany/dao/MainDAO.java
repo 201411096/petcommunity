@@ -8,4 +8,7 @@ import com.mycompany.domain.QnaVO;
 
 public interface MainDAO {
 	
+	public String lostCount();
+	public String findCount();
+	public String lostDoneCount();
 }

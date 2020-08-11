@@ -1,10 +1,13 @@
 package com.mycompany.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.domain.CommunityVO;
@@ -75,5 +78,53 @@ public class MainController {
 		
 	}
 	
+	// 메인 실종신고 카운트
+	/*
+	 * 함수 이름 : getBoardRank 
+	 * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+	 */
+@ResponseBody
+@RequestMapping(value="mainCount1.do" , produces = "application/text; charset=utf-8")
+public String lostCount() {
+
+	String rs =mainService.lostCount();
+
+	return rs;
+
+}
+
+
+// 메인 목격 신고 카운트
+/*
+ * 함수 이름 : getBoardRank 
+ * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+ */
+@ResponseBody
+@RequestMapping(value="mainCount2.do" , produces = "application/text; charset=utf-8")
+public String findCount() {
+
+String rs =mainService.findCount();
+
+
+return rs;
+
+}
+
+
+// 찾음 카운트
+/*
+ * 함수 이름 : getBoardRank 
+ * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+ */
+@ResponseBody
+@RequestMapping(value="mainCount3.do" , produces = "application/text; charset=utf-8")
+public String lostDoneCount() {
+
+String rs =mainService.lostDoneCount();
+
+
+return rs;
+
+}
 
 }

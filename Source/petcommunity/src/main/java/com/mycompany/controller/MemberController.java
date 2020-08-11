@@ -150,6 +150,11 @@ public class MemberController {
 		return "redirect:/test_kys.jsp";
 	}
 
+	
+	/*
+	 * 함수 이름 : memberUpdate1
+	 *  주요 기능 : 회원 수정할 수 있는 페이지로 이동. 미리 input에 회원 정보를 입력해두기 위해 list를 받아서 리턴.
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/memberUpdate1.do", produces = "application/json; charset=utf-8")
 	public Map memberUpdate1(HttpServletRequest req) {
@@ -163,6 +168,11 @@ public class MemberController {
 		return result;
 	}
 
+	
+	/*
+	 * 함수 이름 : memberUpdate 
+	 * 주요 기능 : 회원수정 페이지에서 수정된 내용을 받아서 업데이트함
+	 */
 	@RequestMapping(value = "/memberUpdate.do")
 	public String memberUpdate(MemberVO vo) {
 		System.out.println(vo.getMemberId());
@@ -171,6 +181,11 @@ public class MemberController {
 		return "redirect:/mypageAnimal.do";
 	}
 
+	/*
+	 * 함수 이름 : findMemberId 
+	 * 주요 기능 : 아아디 찾기 기능 : 입력받은 이름과 이메일이 데이터 베이스에 없다면 가입정보가 없다는 메세지를 리턴,
+	 * 						동일한 정보가 있다면 해당 이메일로 아이디정보를 전송.
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/findMember.do", produces = "application/text; charset=utf-8")
 	public String findMemberId(MemberVO vo) {
@@ -188,6 +203,11 @@ public class MemberController {
 		return result;
 	}
 
+	/*
+	 * 함수 이름 : findMemberPassword 
+	 * 주요 기능 : 비밀번호 찾기 기능 : 입력받은 아이디와 이메일이 데이터 베이스에 없다면 가입정보가 없다는 메세지를 리턴,
+	 * 						동일한 정보가 있다면 해당 이메일로 임시 비밀번호를 전송하고 전송된 임시비밀번호로 업데이트 처리.
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/findMemberPass.do", produces = "application/text; charset=utf-8")
 	public String findMemberPassword(MemberVO vo) {

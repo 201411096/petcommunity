@@ -32,6 +32,7 @@ public class MessegeController {
 	@ResponseBody
 	@RequestMapping("/sendMessage.do")
 	public Map message(HttpSession session, int startPage, int endPage, String content, String otherId) {
+		
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");

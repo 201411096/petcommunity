@@ -69,6 +69,7 @@ $(function(){
 	getCartList(); //화면이 뜨면 카트리스트를 받아옴 
 });
 
+// 필수 정보, 약관 동의 체크 안했을시 submit x
 $('.main_btn').on('click', function() {
 	var submit1 = false;
 	if ($('#add1').val() === "") {

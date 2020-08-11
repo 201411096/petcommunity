@@ -1,5 +1,7 @@
 $(document)
 		.ready(
+				
+				//페이징 시작 ================================================================
 				function() {
 					var curPage;
 					var defaultOpts = {
@@ -111,7 +113,9 @@ $(document)
 							}
 						}
 					}
-
+					//페이징 끝  ================================================================
+					
+					// 회원 정보 수정페이지
 					$('.tab-link3').on('click', function() {
 						$
 							.ajax({
@@ -135,24 +139,8 @@ $(document)
 
 					});
 					
-					 var memberCountConTxt= 296842;
-					  
-					  $({ val : 0 }).animate({ val : memberCountConTxt }, {
-					   duration: 2000,
-					  step: function() {
-					    var num = numberWithCommas(Math.floor(this.val));
-					    $(".memberCountCon").text(num);
-					  },
-					  complete: function() {
-					    var num = numberWithCommas(Math.floor(this.val));
-					    $(".memberCountCon").text(num);
-					  }
-					});
-
-					function numberWithCommas(x) {
-					    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-					}
 					
+					// 회원 수정시 유효성 검사 
 					$('#memberUpdate-form input[type=submit]').click(function(){
 						var re = /^[a-zA-Z0-9]{4,12}$/;
 						var email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
@@ -200,25 +188,7 @@ $(document)
 				        }
 				    }); 
 					
-					//============================================================================
-					var memberCountConTxt= 60000;
-				    
-				    $({ val : 0 }).animate({ val : memberCountConTxt }, {duration: 2000, step: function() {
-				      var num = numberWithCommas(Math.floor(this.val));
-				      $(".memberCountCon").text(num);
-				    },
-				    complete: function() {
-				      var num = numberWithCommas(Math.floor(this.val));
-				      $(".memberCountCon").text(num);
-				    }
-				  });
-
-				  function numberWithCommas(x) {
-				      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				  }
-				  
-				  //=======================================================================================
-				  
+				  // 반려동물 등록시 널값 처리
 				  $('#register-form input[type=submit]').click(
 							function() {
 
@@ -243,19 +213,20 @@ $(document)
 								if (submit === true)
 									$('#register-form').submit();
 							});
-
+				  	// 반려 동물 등록 후 닫기 버튼 누르면 원래 부모페이지 새로고침.
 					$("#mypageButton").click(function() {
 						opener.parent.location.reload();
 						close();
 					});
-
+					
+					// 반려동물 등록시 새창 
 					$(".animal").click(
 							function() {
 								window.open("animalInsert.do", "반려동물 등록",
 										"width=520,height=750,left=700,top=150")
 							});
 					
-					
+					//반려동물 수정 클릭시 새창 뜨면서 form submit
 					$(".uBtn").on("click",function(){
 
 					   $('.frm').attr("action", "AnimalUdate.do");
@@ -264,7 +235,15 @@ $(document)
 					   $('.frm').submit();    
 					    	
 							});
+					// 암컷, 수컷 일경우 체크 눌려짐 효과.
+					if( $("#genderValue").val()=='암컷'){
+						$("#animalGender").prop('checked', true);
+					}else{
+						
+						$("#animalGender2").prop('checked', true);
+					}
 					
+					//반려동물 정보 수정후 부모페이지 새로고침
 					$("#animalUp").click(function() {
 						opener.parent.location.reload();
 						close();
@@ -275,7 +254,7 @@ $(document)
 						alert("오류 , 다시 등록 해주세요")
 					}
 					;
-
+					// 반려동물 삭제시 확인창 뜨기. 취소하면 이벤트 실행안됨.
 					$(document).on("click", "#dBtn", function() {
 						var result = confirm('삭제 하시겠습니까?');
 
@@ -285,7 +264,8 @@ $(document)
 							event.preventDefault();
 						}
 					});
-
+					
+					// 마이페이지 탭 연결.
 					$('ul.tabs li').click(function() {
 						var tab_id = $(this).attr('data-tab');
 
@@ -296,11 +276,6 @@ $(document)
 						$("#" + tab_id).addClass('current');
 					});
 					
-					if( $("#genderValue").val()=='암컷'){
-						$("#animalGender").prop('checked', true);
-					}else{
-						
-						$("#animalGender2").prop('checked', true);
-					}
+					
 
 				});

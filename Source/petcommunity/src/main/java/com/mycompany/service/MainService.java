@@ -18,8 +18,10 @@ public interface MainService {
 
 	List<QnaVO> getQnaBoardList();
 	
+	public String lostCount();
 	
+	public String findCount();
 	
-
+	public String lostDoneCount();
 	
 }

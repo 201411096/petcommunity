@@ -123,7 +123,7 @@ public class MemberController {
 		if (session != null) {
 			session.invalidate();
 		}
-		mv.setViewName("header");
+		mv.setViewName("main");
 		return mv;
 
 	}

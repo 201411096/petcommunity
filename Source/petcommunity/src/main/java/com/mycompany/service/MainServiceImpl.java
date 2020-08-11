@@ -43,6 +43,24 @@ public class MainServiceImpl implements MainService{
 		return mainDAO.getQnaBoardList();
 	}
 
+	@Override
+	public String lostCount() {
+		
+		return mainDAO.lostCount();
+	}
+
+	@Override
+	public String findCount() {
+		
+		return mainDAO.findCount();
+	}
+
+	@Override
+	public String lostDoneCount() {
+		
+		return mainDAO.lostDoneCount();
+	}
+
 		
 
 }

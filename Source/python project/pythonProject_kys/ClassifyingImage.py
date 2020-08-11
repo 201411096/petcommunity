@@ -72,7 +72,6 @@ def classifyingImage(path):
 
         pre_ans = i.argmax()  # 예측 레이블
         # print(i)
-        print()
         pre_ans_str = ''
         if pre_ans == 0:
             pre_ans_str = "말티즈"
@@ -89,8 +88,9 @@ def classifyingImage(path):
         cnt += 1
     print('_____ClassifyingImage_____'+'해당 사진의 견종은', round(result*100), '%의 확률로', pre_ans_str, '입니다' )
     resultValue = '_____ClassifyingImage_____'+'해당 사진의 견종은', round(result*100), '%의 확률로', pre_ans_str, '입니다'
-    with open("ClassifyingImage.txt", "wb") as f:
-        f.write(base64.b64decode(resultValue))
+    resultValue = str(resultValue)
+    with open("ClassifyingImage.txt", "w", encoding="utf-8") as f:
+        f.write(resultValue)
 
 # path = 'data1.jpg'
 # classifyingImage(path)

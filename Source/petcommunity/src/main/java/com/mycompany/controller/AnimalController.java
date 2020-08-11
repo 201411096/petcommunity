@@ -93,14 +93,13 @@ public class AnimalController {
 		map.put("endRow", paginationVO.getStartIndex()+paginationVO.getPageSize());
 		map.put("memberId", memberId);
 		
-		List<BuyListVO> list2 =buyService.buyList(map);
-		
+		List<Map<String,String>> list2 =buyService.buyList(map);
+
 		result.put("pagination", paginationVO);
 		result.put("buyList", list2);
 		result.put("buyListSize",list2.size());
 		result.put("membervo", mvo);
 		
-		System.out.println("컨트롤 연결"+result.get("buyList"));
 		return result;
 
 	}
@@ -149,6 +148,7 @@ public class AnimalController {
 	@RequestMapping(value = "animalDelete.do")
 	public String animalDelete(AnimalVO vo, HttpServletRequest req) {
 		animalService.animalDelete(vo);
+		
 		FileUpload.deleteDirectory(
 				req.getSession().getServletContext().getRealPath("resources/imgs") + "/animal/" + vo.getAnimalId());
 		return "redirect:/mypageAnimal.do";

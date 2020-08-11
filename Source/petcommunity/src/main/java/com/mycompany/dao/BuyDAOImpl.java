@@ -21,7 +21,7 @@ public class BuyDAOImpl implements BuyDAO {
 	private SqlSessionTemplate mybatis;
 
 	@Override
-	public List<BuyListVO> buyList(Map map) {
+	public List<Map<String, String>> buyList(Map map) {
 		return mybatis.selectList("buy.mybuyList",map);
 	}
 

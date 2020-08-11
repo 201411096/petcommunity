@@ -1,3 +1,4 @@
+<!-- 라벨 붙이기 전 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -129,9 +130,7 @@
 							</select>
 							</div>
 						</div>
-						<div class="form-group">
-							<label class="col-md-2">시간단위</label>
-							<div class="col-md-10">
+						<span>
 							<select id="graph_04_chartTime_option" class="form-control">
 								<option value="0">초</option>
 								<option value="1">분</option>
@@ -140,29 +139,20 @@
 								<option value="4">월</option>
 								<option value="5">년</option>
 							</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">시작일</label>
-							<div class="col-md-10">
+						</span>
+						<span>
 							<input type="datetime-local" id="graph_04_startDate" class="form-control">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">종료일</label>
-							<div class="col-md-10">
+						</span>
+						<span>
 							<input type="datetime-local" id="graph_04_endDate" class="form-control">
-							</div>
-						</div>
+						</span>
 					</div>
 					<div id="graph_04_container" class="graph-container"></div>
 				</div>
 				<div id="graph_05_outer_container" class="graph_outer_container">
 					<div class="alert alert-info">품목별 매출 통계</div>					
 					<div id="graph_05_option_container">
-						<div class="form-group">
-							<label class="col-md-2">모형</label>
-							<div class="col-md-10">
+						<span class="input-group">
 							<select id="graph_05_chartShape_option" class="form-control">
 								<option value="bar">막대</option>
 								<option selected value="pie">원형</option>
@@ -170,29 +160,20 @@
 								<option value="doughnut">도넛</option>
 								<option value="polarArea">폴라</option>
 							</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">시작일</label>
-							<div class="col-md-10">
+						</span>
+						<span>
 							<input type="datetime-local" id="graph_05_startDate" class="form-control">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">종료일</label>
-							<div class="col-md-10">
+						</span>
+						<span>
 							<input type="datetime-local" id="graph_05_endDate" class="form-control">
-							</div>
-						</div>
+						</span>
 					</div>
 					<div id="graph_05_container" class="graph-container"></div>
 				</div>
 				<div id="graph_03_outer_container" class="graph_outer_container">
 					<div class="alert alert-info">시간별 매출 통계</div>
 					<div id="graph_03_option_container">
-						<div class="form-group">
-							<label class="col-md-2">모형</label>
-							<div class="col-md-10">
+						<span>
 							<select id="graph_03_chartShape_option" class="form-control">
 								<option selected value="bar">막대</option>
 								<option value="pie">원형</option>
@@ -200,27 +181,21 @@
 								<option value="doughnut">도넛</option>
 								<option value="polarArea">폴라</option>
 							</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">시간단위</label>
-							<div class="col-md-10">						
+						</span>
+						<span>
 							<select id="graph_03_chartTime_option" class="form-control">
 								<option selected value="0">시간</option>
 								<option value="1">요일</option>
 								<option value="2">월</option>
 							</select>
-							</div>
-						</div>
+						</span>
 					</div>
 					<div id="graph_03_container" class="graph-container"></div>
 				</div>
 				<div id="graph_02_outer_container" class="graph_outer_container">
 					<div class="alert alert-info">시간별 목격횟수 통계</div>
 					<div id="graph_02_option_container">
-						<div class="form-group">
-							<label class="col-md-2">모형</label>
-							<div class="col-md-10">
+						<span>
 							<select id="graph_02_chartShape_option" class="form-control">
 								<option selected value="bar">막대</option>
 								<option value="pie">원형</option>
@@ -228,48 +203,34 @@
 								<option value="doughnut">도넛</option>
 								<option value="polarArea">폴라</option>
 							</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">시간단위</label>
-							<div class="col-md-10">
+						</span>
+						<span>
 							<select id="graph_02_chartTime_option" class="form-control">
 								<option selected value="0">시간</option>
 								<option value="1">요일</option>
 								<option value="2">월</option>
 								<option value="3">년도</option>
 							</select>
-							</div>
-						</div>
+						</span>
 					</div>
 					<div id="graph_02_container" class="graph-container"></div>
 				</div>
 				<div id="graph_01_outer_container" class="graph_outer_container">
 					<div class="alert alert-info">시간별 실종횟수 통계</div>
 					<div id="graph_01_option_container">
-						<div class="form-group">
-							<label class="col-md-2">모형</label>
-							<div class="col-md-10">
-							<select id="graph_01_chartShape_option" class="form-control">
-								<option selected value="bar">막대</option>
-								<option value="pie">원형</option>
-								<option value="line">선형</option>
-								<option value="doughnut">도넛</option>
-								<option value="polarArea">폴라</option>
-							</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-md-2">시간단위</label>
-							<div class="col-md-10">
-							<select id="graph_01_chartTime_option" class="form-control">
-								<option selected value="0">시간</option>
-								<option value="1">요일</option>
-								<option value="2">월</option>
-								<option value="3">년도</option>
-							</select>
-							</div>
-						</div>
+						<select id="graph_01_chartShape_option" class="form-control">
+							<option selected value="bar">막대</option>
+							<option value="pie">원형</option>
+							<option value="line">선형</option>
+							<option value="doughnut">도넛</option>
+							<option value="polarArea">폴라</option>
+						</select>
+						<select id="graph_01_chartTime_option" class="form-control">
+							<option selected value="0">시간</option>
+							<option value="1">요일</option>
+							<option value="2">월</option>
+							<option value="3">년도</option>
+						</select>
 					</div>
 					<div id="graph_01_container" class="graph-container"></div>
 				</div>

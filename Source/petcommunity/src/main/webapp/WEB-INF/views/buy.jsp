@@ -22,8 +22,7 @@
 	href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css">
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/bootstrap_ain/css/owl.carousel.min.css">
+
 
 
 <!-- main css -->
@@ -150,12 +149,9 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
 	<script
-		src="./resources/bootstrap_template/template_01/js/jquery.slicknav.min.js"></script>
-	<script
 		src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
 	<script src="./resources/js/buy.js"></script>
 
 </body>

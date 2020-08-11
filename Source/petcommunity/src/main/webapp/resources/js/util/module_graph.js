@@ -1,3 +1,5 @@
+	Chart.defaults.global.responsive = true;
+	Chart.defaults.global.maintainAspectRatio = false;
 class GraphClass{
 	constructor(url, chartContainerId, chartElementId, labelName){
 		this.url=url;

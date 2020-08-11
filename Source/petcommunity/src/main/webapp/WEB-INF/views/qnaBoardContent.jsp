@@ -16,8 +16,8 @@
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/qnaBoardContent.css">
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css/style.css" />
+<!-- <link rel="stylesheet" -->
+<!-- 	href="./resources/bootstrap_template/template_01/css/style.css" /> -->
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <title>고객문의</title>
@@ -25,6 +25,7 @@
 <body>
 	<section id="container">
 		<h4 id="qnatitle">고객문의</h4>
+		<p id="qnasubtitle">QNA 게시판입니다.</p>
 		<table>
 			<tr>
 				<td id="title">제목</td>

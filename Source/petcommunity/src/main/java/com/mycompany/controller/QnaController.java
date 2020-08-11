@@ -32,7 +32,9 @@ public class QnaController {
 	private QnaService qnaService;
 
 	/*
-	 * 함수 이름 : getQnaBoardList 주요 기능 : 게시판 페이지 이동 함수 내용 :
+	 * 함수 이름 : getQnaBoardList
+		주요 기능 : 게시판 페이지 이동 
+		함수 내용 :
 	 */
 	@RequestMapping(value = "/cs.do")
 	public ModelAndView getQnaBoardList() {
@@ -44,7 +46,9 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : getQnaBoardWrite 주요 기능 : 게시판 작성페이지 이동 함수 내용 : 비로그인의 경우 로그인 페이지 이동,
+	 * 함수 이름 : getQnaBoardWrite 
+	 * 주요 기능 : 게시판 작성페이지 이동 
+	 * 함수 내용 : 비로그인의 경우 로그인 페이지 이동,
 	 * 로그인의 경우 작성페이지 이동
 	 */
 	@RequestMapping("/write.do")
@@ -60,14 +64,16 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : insertQnaBoard 주요 기능 : 작성한 글 입력, 목록 페이지 이동 함수 내용 : 연결 되어있는 아이디 세팅, 파일
+	 * 함수 이름 : insertQnaBoard 
+	 * 주요 기능 : 작성한 글 입력, 목록 페이지 이동 
+	 * 함수 내용 : 연결 되어있는 아이디 세팅, 파일
 	 * 첨부시 업로드
 	 */
 
 	@RequestMapping(value = "/writeIntoQna.do", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public String insertQnaBoard(QnaVO qnavo, HttpSession session, HttpServletRequest request,
 			MultipartHttpServletRequest mtfRequest) throws IOException {
-		System.out.println("처음:" + qnavo);
+		
 		ModelAndView mv = new ModelAndView();
 		qnavo.setMemberId(((MemberVO) session.getAttribute("memberVO")).getMemberId());
 		int result = qnaService.insertQnaBoard(qnavo);
@@ -78,43 +84,49 @@ public class QnaController {
 					request.getSession().getServletContext().getRealPath("resources/imgs") + "/qnaboard/");
 			FileUpload.uploadFiles(mtfRequest, request.getSession().getServletContext().getRealPath("resources/imgs")
 					+ "/qnaboard/" + qnavo.getQuestionboardId() + "/");
-			System.out.println("ss" + request.getSession().getServletContext().getRealPath("resources/imgs")
-					+ "/qnaboard/" + qnavo.getQuestionboardId() + "/");
 		}
 		mv.setViewName("qnaBoardWrite");
-		System.out.println("write확인 :" + qnavo.getQuestionboardId());
+
 		return "redirect:/cs.do";
 	}
 
 	/*
-	 * 함수 이름 : selectQnaBoardList 주요 기능 : 게시판 목록 이동, 체크박스 및 검색어 입력시 출력, 페이징처리 함수 내용
-	 * : 연결 되어있는 아이디 세팅, 체크박스 및 검색어 해쉬맵으로 받아 매퍼 연결
+	 * 함수 이름 : selectQnaBoardList 
+	 * 주요 기능 : 게시판 목록 이동, 체크박스 및 검색어 입력시 출력, 페이징처리 
+	 * 함수 내용 : 연결 되어있는 아이디 세팅, 체크박스 및 검색어 해쉬맵으로 받아 매퍼 연결
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/qnaList.do", produces = "application/json; charset=utf-8")
 	public Map selectQnaBoardList(@RequestParam(defaultValue = "1") int curPage, QnaVO qnavo, String searchType,
 			HttpSession session, String searchWord, HttpServletRequest request) {
-
+		
 		Map map = new HashMap();
 		Map result = new HashMap();
 		MemberVO membervo = (MemberVO) session.getAttribute("memberVO");
-
 		map.put("searchType", searchType);
 		map.put("searchWord", searchWord);
+		
 		List<QnaVO> qnavoList = qnaService.selectKeyword(map);
-
+		
 		PaginationVO paginationVO = new PaginationVO(qnavoList.size(), curPage);
 		map.put("startRow", paginationVO.getStartIndex() + 1);
 		map.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
 		qnavoList = qnaService.selectQnaBoardWithPaging(map);
-
+		for(int i=0;i<qnavoList.size();i++) {
+			qnavoList.get(i).setQuestionboardUploadtime(qnavoList.get(i).getQuestionboardUploadtime().substring(0,10));
+			System.out.println("date확인"+qnavoList.get(i).getQuestionboardUploadtime().substring(0,10));
+			
+		}
+		
+		
+		
 		result.put("pagination", paginationVO);
 		result.put("QnaBoardVOList", qnavoList);
 		result.put("QnaBoardVOListSize", qnavoList.size());
+		result.put("qnaId", qnavo.getMemberId());
 		result.put("membervo", membervo);
-
+		
 		ArrayList<String> fileArrayList = new ArrayList<String>();
-			
 		for (int i = 0; i < qnavoList.size(); i++) {
 			String directoryPath = request.getSession().getServletContext().getRealPath("resources/imgs") + "/qnaboard/"
 					+ Integer.toString(qnavoList.get(i).getQuestionboardId());
@@ -127,15 +139,16 @@ public class QnaController {
 				fileArrayList.add(fileList[0].getName());		
 			}
 		}
-		System.out.println("fileArrayList: "+fileArrayList);
+	
 		result.put("fileList", fileArrayList);
-
+			
 		return result;
 	}
 
 	/*
-	 * 함수 이름 : getQnaBoardContent 주요 기능 : 게시판 상세페이지 이동 함수 내용 : 비로그인, 로그인, 관리자 구별하여
-	 * 상세페이지 이동
+	 * 함수 이름 : getQnaBoardContent 
+	 * 주요 기능 : 게시판 상세페이지 이동 
+	 * 함수 내용 : 비로그인, 로그인, 관리자 구별하여 상세페이지 이동
 	 */
 	@RequestMapping("qnaContent.do")
 	public ModelAndView getQnaBoardContent(QnaVO qnavo, HttpSession session, HttpServletRequest request) {
@@ -221,13 +234,13 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : deleteQnaBoard 주요 기능 : 게시글 삭제 후 목록페이지 이동 함수 내용 : 연결된 계정과 작성글의 아이디가
+	 * 함수 이름 : deleteQnaBoard 주요 기능 : 게시글 삭제 후 목록페이지 이동 
+	 * 함수 내용 : 연결된 계정과 작성글의 아이디가
 	 * 일치하는 경우만 삭제
 	 */
 	@RequestMapping(value = "delete.do", produces = "application/text; charset=utf-8")
 	public ModelAndView deleteQnaBoard(QnaVO qnavo) {
 		qnavo=qnaService.getQnaBoardContent(qnavo);
-		System.out.println("GroupId"+qnavo.getQuestionboardGroupId());
 
 		ModelAndView mv = new ModelAndView();
 		qnaService.deleteQnaBoard(qnavo);
@@ -238,8 +251,9 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : getReplyQnaBoard 주요 기능 : 답변하기 버튼 눌렀을 때 답변페이지 이동 함수 내용 : 그룹아이디, 작성글 제목
-	 * 출력
+	 * 함수 이름 : getReplyQnaBoard 
+	 * 주요 기능 : 답변하기 버튼 눌렀을 때 답변페이지 이동 
+	 * 함수 내용 : 그룹아이디, 작성글 제목 출력
 	 */
 	@RequestMapping("reply.do")
 	public ModelAndView getReplyQnaBoard(QnaVO qnavo) {
@@ -254,8 +268,9 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : qnaBoardReplyWrite 주요 기능 : 답변 버튼 눌렀을 때 목록페이지 이동 함수 내용 : 연결 되어있는 아이디
-	 * 세팅
+	 * 함수 이름 : qnaBoardReplyWrite 
+	 * 주요 기능 : 답변 버튼 눌렀을 때 목록페이지 이동 
+	 * 함수 내용 : 연결 되어있는 아이디 세팅
 	 */
 	@RequestMapping("replyWrite.do")
 	public ModelAndView insertReply(QnaVO qnavo, HttpSession session) {
@@ -295,7 +310,9 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : checkLogin 주요 기능 : 로그인 확인 함수 내용 : 로그인, 비로그인의 경우로 구분하여 다른 값 리턴
+	 * 함수 이름 : checkLogin 
+	 * 주요 기능 : 로그인 확인 
+	 * 함수 내용 : 로그인, 비로그인의 경우로 구분하여 다른 값 리턴
 	 */
 	@ResponseBody
 	@RequestMapping("checkLogin")
@@ -310,6 +327,29 @@ public class QnaController {
 			return "write";
 		}
 		return msg;
+	}
+	@RequestMapping("noticePage")
+	public ModelAndView getQnaNoticePage(HttpSession session) {
+		MemberVO membervo = (MemberVO)session.getAttribute("memberVO");
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("membervo", membervo);
+		mv.setViewName("qnaNoticeBoard");
+		
+		return mv;
+	}
+	
+	@RequestMapping("notice.do")
+	public ModelAndView insertQnaNotice(QnaVO qnavo, HttpSession session) {
+		System.out.println("insertQnaNotice확인");
+		ModelAndView mv = new ModelAndView();
+		MemberVO membervo=(MemberVO)session.getAttribute("memberVO");
+		qnavo.setMemberId(membervo.getMemberId());
+		qnaService.insertQnaNotice(qnavo);
+		mv.addObject("qnavo",qnavo.getMemberId());
+		
+		mv.setViewName("redirect:/cs.do");
+		return mv;
 	}
 
 }

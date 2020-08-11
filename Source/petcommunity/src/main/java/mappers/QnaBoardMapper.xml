@@ -19,8 +19,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyProperty="questionboardId" resultType="Integer" order="AFTER">
 			SELECT QUESTIONBOARD_ID_SEQ.currval FROM dual
 		</selectKey>
-		
-		
 	</insert>
 
 	<select id="getQnaBoardContent" parameterType="qna"
@@ -66,16 +64,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM QUESTIONBOARD
 		<if test='searchType=="0"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
-			OR REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')	
+			OR REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		<if test='searchType=="1"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		<if test='searchType=="2"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		<if test='searchType=="3"'>
 			WHERE REGEXP_LIKE(MEMBER_ID,'(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
 		))
@@ -91,16 +93,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM QUESTIONBOARD
 		<if test='searchType=="0"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
-			OR REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')	
+			OR REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		<if test='searchType=="1"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')	
+			
 		</if>
 		<if test='searchType=="2"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		<if test='searchType=="3"'>
 			WHERE REGEXP_LIKE(MEMBER_ID,'(*)'|| #{searchWord} ||'(*)')
+			
 		</if>
 		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
 	</select>
@@ -133,9 +139,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getMemberflag" parameterType="map" resultType="map">
-	SELECT m.member_flag
-	FROM QUESTIONBOARD q, MEMBER m
-	WHERE q.member_id=m.member_id
+		SELECT m.member_flag
+		FROM QUESTIONBOARD q, MEMBER m
+		WHERE q.member_id=m.member_id
 	
 	</select>
 	
@@ -150,8 +156,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM QUESTIONBOARD
 		WHERE QUESTIONBOARD_GROUP_ID = #{questionboardGroupId}
 	</delete>
-
-
+	
+	<select id="selectAnswerFlag" resultType="qna">
+		SELECT *
+		FROM QUESTIONBOARD
+		WHERE QUESTIONBOARD_ANSWERFLAG=3
+		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
+	</select>
+	
+	<insert id="insertQnaNotice" parameterType="qna">
+		INSERT INTO QUESTIONBOARD 
+		VALUES(QUESTIONBOARD_ID_SEQ.NEXTVAL, #{questionboardGroupId},
+		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
+		#{questionboardReadcount}+0, #{memberId},#{questionboardAnswerflag})
+	</insert>
+	
+	
 
 
 </mapper>

@@ -12,7 +12,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" /> -->
+<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" />
 <link rel="stylesheet" href="./resources/css/qnaBoardWrite.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
@@ -21,12 +21,11 @@
 <body>
 	<div class="container">
 		<div id="qnaTitle">
-			<h4>게시글 작성하기</h4>
-			<p id="qnasubtitle">QNA 게시판입니다.</p>
+			<h4>공지 작성하기</h4>
 		</div>
 		<br />
 		<br />
-		<form action="writeIntoQna.do" class="write-form" method='post' name="commitWrite" enctype="multipart/form-data">
+		<form action="notice.do" class="NoticeBoard-form" method='post' name="NoticeBoardBtn" enctype="multipart/form-data">
 
 			<!-- 글쓰기 -->
 			<br />
@@ -34,22 +33,25 @@
 			<div class="form-group">
 				<p>글 제목</p> <input type="text" class="form-control"
 					name="questionboardTitle" id="questionboardTitle"
-					placeholder="제목">${qnaContent.questionboardTitle }
+					placeholder="제목">
 			</div>
 			<div class="form-group">
 				<p>글 내용</p>
 				<textarea class="form-control" rows="5" name="questionboardContent"
-					id="questionboardContent" placeholder="내용을 입력해주세요.">${qnaContent.questionboardContent}</textarea>
+					id="questionboardContent" placeholder="내용을 입력해주세요."></textarea>
 			</div>
-			<ul class="list-group" id="file-list">
-					<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>
-				</ul>
-			<input type="hidden" name="questionboardReadcount"
+				<label>memberId : ${membervo.memberId}<br> 
+				</label>
+				<input type="hidden" name="memberId"
+				id="memberId" value="${membervo.memberId}">
+				<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
 				<input type="hidden" name="questionboardAnswerflag"
-				id="questionboardAnswerflag" value="0">
+				id="questionboardAnswerflag" value="3">
+				<input type="hidden" name="questionboardGroupId"
+				id="questionboardGroupId" value="0">
 				<span class="input-group-btn">
-					<button type="submit" class="btn btn-default" id='commitWrite'>작성완료</button>
+					<button type="submit" class="btn btn-default" id='NoticeBoardBtn'>작성완료</button>
 					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/cs.do">돌아가기</a>
 				</span>
 		</form>

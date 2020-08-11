@@ -5,16 +5,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="buy">
 
+<resultMap type="hashmap" id="buyList">
+		<id column="BUYLIST_ID" property="buyId" />
+		<id column="BUYLIST_DATE" property="buyDate" />
+		<id column="BUYLIST_TOTALPRICE" property="buyTotal" />
+		<id column="product_name" property="buyName" />
+</resultMap>
 
-<select id="mybuyList" parameterType="map" resultType="buyList">
-select BUYLIST_ID, TO_CHAR(BUYLIST_DATE,'YYYY-MM-DD')BUYLIST_DATE, BUYLIST_TOTALPRICE
-from (
-select BUYLIST_ID,BUYLIST_DATE,MEMBER_ID,BUYLIST_TOTALPRICE,ROWNUM as RNUM 
-from (select BUYLIST_ID,BUYLIST_DATE,MEMBER_ID,BUYLIST_TOTALPRICE 
-from BUYLIST where member_id=#{memberId} order by BUYLIST_ID desc))
-<![CDATA[ 
+<select id="mybuyList" parameterType="map" resultMap="buyList">
+select l.BUYLIST_ID BUYLIST_ID, TO_CHAR(l.BUYLIST_DATE,'YYYY-MM-DD')BUYLIST_DATE, l.BUYLIST_TOTALPRICE BUYLIST_TOTALPRICE,LISTAGG(p.product_name, ',') within group (order by p.product_name) product_name
+from buy b join(
+select BUYLIST_ID,BUYLIST_DATE,BUYLIST_TOTALPRICE
+    from (
+        select BUYLIST_ID,BUYLIST_DATE,MEMBER_ID,BUYLIST_TOTALPRICE,ROWNUM as RNUM 
+            from (
+                select BUYLIST_ID,BUYLIST_DATE,MEMBER_ID,BUYLIST_TOTALPRICE
+                    from BUYLIST where member_id=#{memberId} order by BUYLIST_ID desc))
+                    <![CDATA[ 
 	where RNUM>=#{startRow} and RNUM<=#{endRow}
 	]]>
+	)l on l.buylist_id = b.buylist_id join product p on b.product_id=p.product_id group by l.buylist_id , l.buylist_date, l.buylist_totalprice order by l.buylist_id desc
+
 </select>
 
 <resultMap type="hashmap" id="selectList">

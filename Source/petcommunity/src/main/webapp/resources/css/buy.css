@@ -4888,13 +4888,19 @@ h6 {
 	
 }
 
-@media (max-width:320px){
+@media (max-width:767px){
+	
+	.billing_details .contact_form .form-group {
+	width:90%;
+  margin-bottom: 20px; }
 	
 	.section_gap {
   padding: 1px 0px; 
   }
   
 	.buy-table{
+	margin:auto;
+	margin-bottom:10px;
 	
 	text-align: center;
 }

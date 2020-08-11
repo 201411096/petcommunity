@@ -201,6 +201,8 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
 }
 // machineLearning(파이썬 부분)-----
 function executePythonFileForML(imageData){
+  fs.writeFile('test.jpg', imageData, 'binary', function(err){
+  });
   var python_options = {
     mode: 'text',
     pythonPath: systemPythonPath, //python의 설치경로를 입력하는 부분
@@ -208,16 +210,18 @@ function executePythonFileForML(imageData){
     scriptPath: '',
     // args:[1],
     // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
-    args:[0, imageData]
+    args:[0, "test.jpg"]
   }
-  fs.writeFile('test.jpg', imageData, 'binary', function(err){
-  });
+
   PythonShell.run(directoryPath+"ClassifyingImage.py", python_options, function (err, results) {
     if (err) throw err;
     //results = JSON.parse(results);
     console.log('pythonshell에서 ... results 확인', results);    
-    console.log('results 타입 확인', typeof(results))
-    console.log('results %j', results)
+    console.log('results 타입 확인', typeof(results));
+    console.log('results %j', results);
+    fs.readFile("ClassifyingImage.txt", 'utf8', function(err, data){
+      console.log('파일에서 읽은 값 : ' + data);
+    });
 
   });
 }

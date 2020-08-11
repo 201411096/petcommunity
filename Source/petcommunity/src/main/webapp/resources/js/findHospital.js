@@ -370,72 +370,83 @@ function getDataWithoutPaging(){
 }
 
 
-var latitude = $('#findHospitalX').val();
-var longitude = $('#findHospitalY').val();
-var findhospitalAddress = $('#findhospitalAddress').val();
+//var latitude = $('#findhospitalX').val();
+//var longitude = $('#findhospitalY').val();
+//var findhospitalAddress = $('#findhospitalAddress').val();
 
-$(function() {
-	kakaoMapAPI();
-	$('#listButton').on('click', function(){
-		location.href='/petcommunity/findHospitallist.do';
-});
-});
+//$(function() {
+//	kakaoMapAPI();
+//	$('#listButton').on('click', function(){
+//		location.href='/petcommunity/findHospitallist.do';
+//});
+//});
+//
+//function kakaoMapAPI() {
+//
+//// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+//	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+//
+//	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+//	    mapOption = {
+//	        center: new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+//	        level: 8 // 지도의 확대 레벨
+//	    };  
+//
+//	// 지도를 생성합니다    
+//	var map = new kakao.maps.Map(mapContainer, mapOption); 
+//
+//	// 장소 검색 객체를 생성합니다
+//	var ps = new kakao.maps.services.Places(); 
+//
+//	// 키워드로 장소를 검색합니다
+//	ps.keywordSearch(' ', placesSearchCB); 
+//
+//	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+//	function placesSearchCB (data, status, pagination) {
+//	    if (status === kakao.maps.services.Status.OK) {
+//
+//	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+//	        // LatLngBounds 객체에 좌표를 추가합니다
+//	        var bounds = new kakao.maps.LatLngBounds();
+//
+//	        for (var i=0; i<data.length; i++) {
+//	            displayMarker(data[i]);    
+//	            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+//	        }       
+//
+//	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+//	        map.setBounds(bounds);
+//	    } 
+//	}
+//
+//	// 지도에 마커를 표시하는 함수입니다
+//	function displayMarker(place) {
+//	    
+//	    // 마커를 생성하고 지도에 표시합니다
+//	    var marker = new kakao.maps.Marker({
+//	        map: map,
+//	        position: new kakao.maps.LatLng(place.y, place.x) 
+//	    });
+//
+//	    // 마커에 클릭이벤트를 등록합니다
+//	    kakao.maps.event.addListener(marker, 'click', function() {
+//	        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+//	        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+//	        infowindow.open(map, marker);
+//	    });
+//	}
+//}
 
-function kakaoMapAPI() {
+//var latitude = $('#findhospitalX').val();
+//var longitude = $('#findhospitalY').val();
+//var findhospitalAddress = $('#findhospitalAddress').val();
 
-	// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
-	        level: 8 // 지도의 확대 레벨
-	    };  
-
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-	// 장소 검색 객체를 생성합니다
-	var ps = new kakao.maps.services.Places(); 
-
-	// 키워드로 장소를 검색합니다
-	ps.keywordSearch('동물병원', placesSearchCB); 
-
-	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-	function placesSearchCB (data, status, pagination) {
-	    if (status === kakao.maps.services.Status.OK) {
-
-	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-	        // LatLngBounds 객체에 좌표를 추가합니다
-	        var bounds = new kakao.maps.LatLngBounds();
-
-	        for (var i=0; i<data.length; i++) {
-	            displayMarker(data[i]);    
-	            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-	        }       
-
-	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-	        map.setBounds(bounds);
-	    } 
-	}
-
-	// 지도에 마커를 표시하는 함수입니다
-	function displayMarker(place) {
-	    
-	    // 마커를 생성하고 지도에 표시합니다
-	    var marker = new kakao.maps.Marker({
-	        map: map,
-	        position: new kakao.maps.LatLng(place.y, place.x) 
-	    });
-
-	    // 마커에 클릭이벤트를 등록합니다
-	    kakao.maps.event.addListener(marker, 'click', function() {
-	        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-	        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-	        infowindow.open(map, marker);
-	    });
-	}
-}
+//$(function() {
+//	kakaoMapAPI();
+//	$('#listButton').on('click', function(){
+//		location.href='/petcommunity/findHospitallist.do';
+//});
+//});
 
 //function kakaoMapAPI(data){
 //	$('#map').empty();
@@ -445,7 +456,7 @@ function kakaoMapAPI() {
 //        center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
 //        level: 7 // 지도의 확대 레벨
 //    };
-
+//
 //	var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 //		
 //	for(var i=0; i<data.findHospitalVOListSize; i++){
@@ -476,66 +487,66 @@ function kakaoMapAPI() {
 //
 //}
 
-
 //marker click event
 //closure를 이용한 infowindow on/off
-function makeClickListener(map, marker, infowindow) {
-	var status = 0;
-	return function() {
-		if(status==0){
-			infowindow.open(map, marker);
-			status=1;
-		}else{
-			infowindow.close(map, marker);
-			status=0;
-		}
-			
-	};
-}
-
-//현재 작업경로를 가져오는 함수
-function getContextPath() {
-	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
-}
-
-function getLocation() {
-    if (navigator.geolocation) {	// GPS를 지원하면
-      navigator.geolocation.getCurrentPosition(function(position) {
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
-        console.log('geolocation success--------------------------');
-    	console.log(latitude);
-    	console.log(longitude);
-      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
-        latitude = 37.519972628243366;
-        longitude = 126.85287648507145;
-      }, {
-        enableHighAccuracy: false,
-        maximumAge: 0,
-        timeout: Infinity
-      });
-    } else {
-      //alert('GPS를 지원하지 않습니다');
-    	console.log('GPS를 지원하지 않습니다');
-    }
-}
-
-function setCenterLocation(){
-    console.log(latitude);
-    console.log(longitude);
-	var geocoder = new kakao.maps.services.Geocoder();
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch($('#searchName').val(), function(result, status) {
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === kakao.maps.services.Status.OK) {
-	        latitude = result[0].y;
-	        longitude = result[0].x;
-	        console.log('search ... result ...');
-	        console.log(latitude);
-	        console.log(longitude);
-	    }
-	});
-}
+//function makeClickListener(map, marker, infowindow) {
+//	var status = 0;
+//	return function() {
+//		if(status==0){
+//			infowindow.open(map, marker);
+//			status=1;
+//		}else{
+//			infowindow.close(map, marker);
+//			status=0;
+//		}
+//			
+//	};
+//}
+//
+////현재 작업경로를 가져오는 함수
+//function getContextPath() {
+//	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+//}
+//
+//function getLocation() {
+//    if (navigator.geolocation) {	// GPS를 지원하면
+//      navigator.geolocation.getCurrentPosition(function(position) {
+//        latitude = position.coords.latitude;
+//        longitude = position.coords.longitude;
+//        console.log('geolocation success--------------------------');
+//    	console.log(latitude);
+//    	console.log(longitude);
+//      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
+//        latitude = 37.519972628243366;
+//        longitude = 126.85287648507145;
+//      }, {
+//        enableHighAccuracy: false,
+//        maximumAge: 0,
+//        timeout: Infinity
+//      });
+//    } else {
+//      //alert('GPS를 지원하지 않습니다');
+//    	console.log('GPS를 지원하지 않습니다');
+//    }
+//}
+//
+//function setCenterLocation(){
+//    console.log(latitude);
+//    console.log(longitude);
+//	var geocoder = new kakao.maps.services.Geocoder();
+//	// 주소로 좌표를 검색합니다
+//	geocoder.addressSearch($('#searchName').val(), function(result, status) {
+//	    // 정상적으로 검색이 완료됐으면 
+//	     if (status === kakao.maps.services.Status.OK) {
+//	        latitude = result[0].y;
+//	        longitude = result[0].x;
+//	        console.log('search ... result ...');
+//	        console.log(latitude);
+//	        console.log(longitude);
+//	    }
+//	});
+//}
+//
 
 
 $(document).ready(function(){

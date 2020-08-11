@@ -87,22 +87,174 @@
 	<br/><br/><br/>	
 
 
-			<!-- 병원 리스트 맵 영역 -->
-	<div class="form-group">
-	 <div id="map">
+			<!-- 병원 리스트 맵 영역 
+	<div class="form-group"> -->
+	 <div id="map"></div>
+	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services,clusterer,drawing"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(36.601621, 127.2983811),
+			level: 7
+		};
+
+		var map = new kakao.maps.Map(container, options);
+
+	    var positions = [
+	        {
+	            title: '월드펫동물병원', 
+	            latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
+	        },
+	        {
+	            title: '올리브동물병원', 
+	            latlng: new kakao.maps.LatLng(37.599235, 126.9589611)
+	        },
+	        {
+	            title: '누리봄동물병원', 
+	            latlng: new kakao.maps.LatLng(37.5757539, 126.9710573)
+	        },
+	        {
+	            title: '우리동물병원',
+	            latlng: new kakao.maps.LatLng(37.5786667, 127.0156223)
+	        },
+	        {
+	            title: '북악동물병원',
+	            latlng: new kakao.maps.LatLng(37.5988401, 126.960261)
+	        },
+	        {
+	            title: '현대동물병원', 
+	            latlng: new kakao.maps.LatLng(37.8799992, 127.7429144)
+	        },
+	        {
+	            title: '24시보듬동물병원', 
+	            latlng: new kakao.maps.LatLng(37.753189, 128.8939975)
+	        },
+	        {
+	            title: '아산동물의료센터', 
+	            latlng: new kakao.maps.LatLng(36.7742253,127.0109571)
+	        },
+	        {
+	            title: '내포동물의료센터', 
+	            latlng: new kakao.maps.LatLng(36.660275,126.6811263)
+	        },
+	        {
+	            title: '세종다온동물병원', 
+	            latlng: new kakao.maps.LatLng(36.601621, 127.2983811)
+	        },
+	        {
+	            title: '바른동물병원',
+	            latlng: new kakao.maps.LatLng(36.4889557, 127.1953441)
+	        },
+	        {
+	            title: '도그빌 동물병원', 
+	            latlng: new kakao.maps.LatLng(37.7588094, 128.896512)
+	        },
+	        {
+	            title: '강남 종합동물병원', 
+	            latlng: new kakao.maps.LatLng(37.8629183, 127.7499599)
+	        },
+	        {
+	            title: '거제동물메디컬센터', 
+	            latlng: new kakao.maps.LatLng(34.8883645,128.6203258)
+	        },
+	        {
+	            title: '메이동물메디컬센터', 
+	            latlng: new kakao.maps.LatLng(35.8123338, 127.1236246)
+	        },
+	        {
+	            title: '군산24시제일동물병원', 
+	            latlng: new kakao.maps.LatLng(35.9749456,126.7330588)
+	        }
+	        ,
+	        {
+	            title: '용동물병원',
+	            latlng: new kakao.maps.LatLng(35.2205922, 128.6815801)
+	        },
+	        {
+	            title: '구미옥계동물병원', 
+	            latlng: new kakao.maps.LatLng(36.1370821, 128.4224143)
+	        },
+	        {
+	            title: '케비어동물병원 논산점', 
+	            latlng: new kakao.maps.LatLng(36.2033792, 127.088827)
+	        },
+	        {
+	            title: '엔젤동물병원', 
+	            latlng: new kakao.maps.LatLng(36.8036022,127.1277523)
+	        },
+	        {
+	            title: '선샤인동물병원', 
+	            latlng: new kakao.maps.LatLng(36.1383607,128.3093119)
+	        },
+	        {
+	            title: '조은동물병원', 
+	            latlng: new kakao.maps.LatLng(36.0120904,129.3496726)
+	        }
+	        
+	        
+	    ];
+
+	    // 마커 이미지의 이미지 주소입니다
+	    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+	        
+	    for (var i = 0; i < positions.length; i ++) {
+	        
+	        // 마커 이미지의 이미지 크기 입니다
+	        var imageSize = new kakao.maps.Size(24, 35); 
+	        
+	        // 마커 이미지를 생성합니다    
+	        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+	        
+	        // 마커를 생성합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map, // 마커를 표시할 지도
+	            position: positions[i].latlng, // 마커를 표시할 위치
+	            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+	            image : markerImage // 마커 이미지 
+	        });
+	    }
+
+	 // 장소 검색 객체를 생성합니다
+		var ps = new kakao.maps.services.Places(); 
+	
+		// 키워드로 장소를 검색합니다
+		ps.keywordSearch(' ', placesSearchCB); 
+	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+		function placesSearchCB (data, status, pagination) {
+		    if (status === kakao.maps.services.Status.OK) {
+	
+		        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+		        // LatLngBounds 객체에 좌표를 추가합니다
+	        var bounds = new kakao.maps.LatLngBounds();
+
+		        for (var i=0; i<data.length; i++) {
+	            displayMarker(data[i]);    
+		            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+	        }       
+	
+	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+		        map.setBounds(bounds);
+		    } 
+		}
+
+	</script>
+	 
+	 
+	 
 	 <!-- 
 	 	<script type="text/javascript" language="javascript">
 		var htmlTag = "<src='hospital.html' />";
 	 	</script>
 		$("#map").html(htmlTag);
+    </div></div>
      -->
-	</div></div>
+	
 	 
-				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  -->
+				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  
 				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services,clusterer,drawing"></script>	
-					<input type="hidden" id="findHospitalX" name="findHospitalX" value="${findHospitalList.findHospitalX}">
-					<input type="hidden" id="findHospitalY" name="findHospitalY" value="${findHospitalList.findHospitalY}">
-					<input type="hidden" id="findhospitalAddress" name="findhospitalAddress" value="${findHospitalList.findhospitalAddress}">
+					<input type="hidden" id="findhospitalX" name="findhospitalX" value="${findHospitalList.findhospitalX}">
+					<input type="hidden" id="findhospitalY" name="findhospitalY" value="${findHospitalList.findhospitalY}">
+					<input type="hidden" id="findhospitalAddress" name="findhospitalAddress" value="${findHospitalList.findhospitalAddress}">-->
 				
 				
 	<br/><br/>

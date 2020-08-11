@@ -14,8 +14,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/js/findHospital.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-
-
+<!--  <script type = "text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+-->
 <title>게시판</title>
 </head>
 <body>
@@ -92,13 +92,36 @@
 	 <div id="map"></div>
 	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services,clusterer,drawing"></script>
 	<script>
-		var container = document.getElementById('map');
+
+/* 	d3.csv("resources/data/csv/FINDHOSPITAL_LIST.csv", encoding="charset=utf-8", function(error, data){
+		if (error) throw error;
+// 		console.log(data["findhospitalName"]);
+		/* data.forEach(function(d){
+			console.log(d.findhospitalName)
+
+				}); */
+				//console.log(data);
+				//alert('>'+data)
+				//console.log("-----------------------------------")
+				//for(var key in data){
+					//console.log("key: " + key );
+					//}
+				//console.log("-----------------------------------")
+// 				data['findhospitalName']
+	/* });
+ */ 
+
+	console.log("-----------------------------------")
+ 
+	var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(36.601621, 127.2983811),
 			level: 7
 		};
 
 		var map = new kakao.maps.Map(container, options);
+
+		
 
 	    var positions = [
 	        {
@@ -189,11 +212,58 @@
 	        {
 	            title: '조은동물병원', 
 	            latlng: new kakao.maps.LatLng(36.0120904,129.3496726)
+	        },
+	        {
+	            title: '목포동물병원', 
+	            latlng: new kakao.maps.LatLng(34.8067875, 126.3982499)
+	        },
+	        {
+	            title: '아빠손동물병원', 
+	            latlng: new kakao.maps.LatLng(34.8120871, 126.4607132)
+	        },
+	        {
+	            title: '여수동물병원', 
+	            latlng: new kakao.maps.LatLng(34.784365, 127.6931515)
+	        }
+	        ,
+	        {
+	            title: '현대종합동물병원', 
+	            latlng: new kakao.maps.LatLng(37.359095,127.8160558)
+	        }
+	        ,
+	        {
+	            title: '태백동물병원', 
+	            latlng: new kakao.maps.LatLng(37.1635465,128.9887628)
+	        },
+	        {
+	            title: '무양반려동물병원', 
+	            latlng: new kakao.maps.LatLng(36.4186268,128.1551491)
+	        },
+	        {
+	            title: '24시N동물의료센터', 
+	            latlng: new kakao.maps.LatLng(37.6574007, 127.0667307)
+	        },
+	        {
+	            title: '혜민동물병원', 
+	            latlng: new kakao.maps.LatLng(37.5145452, 127.0437252)
+	        },
+	        {
+	            title: '웨스턴동물의료센터', 
+	            latlng: new kakao.maps.LatLng(37.5551902, 126.93805571)
+	        },
+	        {
+	            title: '서울대학교 수의과대학 동물병원', 
+	            latlng: new kakao.maps.LatLng(37.459882, 126.9519053)
+	        },
+	        {
+	            title: '고양이병원 백산동물병원', 
+	            latlng: new kakao.maps.LatLng(37.4999946, 127.0393429)
 	        }
 	        
 	        
 	    ];
 
+	   
 	    // 마커 이미지의 이미지 주소입니다
 	    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
 	        
@@ -214,49 +284,8 @@
 	        });
 	    }
 
-	 // 장소 검색 객체를 생성합니다
-		var ps = new kakao.maps.services.Places(); 
-	
-		// 키워드로 장소를 검색합니다
-		ps.keywordSearch(' ', placesSearchCB); 
-	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-		function placesSearchCB (data, status, pagination) {
-		    if (status === kakao.maps.services.Status.OK) {
-	
-		        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-		        // LatLngBounds 객체에 좌표를 추가합니다
-	        var bounds = new kakao.maps.LatLngBounds();
-
-		        for (var i=0; i<data.length; i++) {
-	            displayMarker(data[i]);    
-		            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-	        }       
-	
-	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-		        map.setBounds(bounds);
-		    } 
-		}
-
 	</script>
-	 
-	 
-	 
-	 <!-- 
-	 	<script type="text/javascript" language="javascript">
-		var htmlTag = "<src='hospital.html' />";
-	 	</script>
-		$("#map").html(htmlTag);
-    </div></div>
-     -->
-	
-	 
-				<!-- 이 영역에 맵 API 를 넣어주시면 됩니다.  
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services,clusterer,drawing"></script>	
-					<input type="hidden" id="findhospitalX" name="findhospitalX" value="${findHospitalList.findhospitalX}">
-					<input type="hidden" id="findhospitalY" name="findhospitalY" value="${findHospitalList.findhospitalY}">
-					<input type="hidden" id="findhospitalAddress" name="findhospitalAddress" value="${findHospitalList.findhospitalAddress}">-->
-				
-				
+
 	<br/><br/>
 	
 			<form role="form" method="get">

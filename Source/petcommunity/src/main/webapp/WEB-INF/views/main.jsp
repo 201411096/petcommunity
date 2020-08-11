@@ -159,7 +159,7 @@
 							</div>
 						</c:forEach>
 						<div id="moreView">
-							<a href="/petcommunity/lostboardlist.do" class="site-btn">READ
+							<a href="/petcommunity/lostboardlist.do" class="site-btn" id="site-btn-read">READ
 								MORE <img
 								src="./resources/bootstrap_template/bootstrap_seyeong/img/icons/arrow-right-black.png"
 								alt="">

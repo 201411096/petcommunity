@@ -1,7 +1,6 @@
 $(function(){
 //	Chart.defaults.global.legend.display = false;
-	Chart.defaults.global.responsive = true;
-	Chart.defaults.global.maintainAspectRatio = false;
+
 	eventHandler();
 	dateOptionSetting();
 });

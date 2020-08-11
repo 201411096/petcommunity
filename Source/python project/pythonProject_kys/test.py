@@ -1,6 +1,8 @@
-import time
+import base64
 
-now = time.localtime()
+with open("a.jpg", "rb") as imageFile:
+    imagestr = base64.b64encode(imageFile.read())
+    print(imagestr)
 
-today = str(now.tm_year)+str(now.tm_mon)+str(now.tm_mday)
-print(today)
+with open("b.jpg", "wb") as imgFile:
+    imgFile.write(base64.b64decode(imagestr))

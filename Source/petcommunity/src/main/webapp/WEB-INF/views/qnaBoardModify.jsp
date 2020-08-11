@@ -13,7 +13,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" />
+<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" /> -->
 <link rel="stylesheet" href="./resources/css/qnaBoardModify.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
@@ -27,6 +27,7 @@
 	<div class="container">
 	<div id="qnaTitle">
 			<h4>게시글 수정하기</h4>
+			<p id="qnasubtitle">QNA 게시판입니다.</p>
 		</div>
 		<br /> <br />
 		<form action="/petcommunity/modify.do" method='get' name="commitWrite" enctype="multipart/form-data">

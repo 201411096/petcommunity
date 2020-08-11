@@ -12,7 +12,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" />
+<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" /> -->
 <link rel="stylesheet" href="./resources/css/qnaBoardWrite.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
@@ -22,6 +22,7 @@
 	<div class="container">
 		<div id="qnaTitle">
 			<h4>게시글 작성하기</h4>
+			<p id="qnasubtitle">QNA 게시판입니다.</p>
 		</div>
 		<br />
 		<br />

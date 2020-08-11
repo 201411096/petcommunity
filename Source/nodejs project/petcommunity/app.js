@@ -72,6 +72,14 @@ io.on('connection', function(socket){
   })
   // 공공데이터(파이썬 부분)-----
 
+  // 이미지 분류 ...
+  socket.on('ClassifyingImage', function(data){
+    console.log('받아온 데이터 타입 확인', typeof(data));
+    executePythonFileForML(data);
+  });
+  // 이미지 분류 ...
+
+  // 쪽지 알림 부분 -----
   socket.on('sendMessageData', function(sendMessageObject){
     var socketList = io.sockets.sockets;
     io.clients(function(error, clients){
@@ -82,7 +90,19 @@ io.on('connection', function(socket){
         }
       }
     });
-  })
+  });
+  socket.on('sendDelData', function(sendMessageObject){
+    var socketList = io.sockets.sockets;
+    io.clients(function(error, clients){
+      if (error) throw error;
+      for(var i=0; i<clients.length; i++){
+        if(socketList[clients[i]].nickname == sendMessageObject.messageTo){
+          io.to(socketList[clients[i]].id).emit('sendDelData', sendMessageObject);      
+        }
+      }
+    });
+  });
+  // 쪽지 알림 부분 -----
   socket.on('setNickname', function(memberId){
     socket.nickname = memberId;
   });
@@ -179,4 +199,29 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     });    
   });
 }
-// 공공데이터(파이썬 부분)-----
+// machineLearning(파이썬 부분)-----
+function executePythonFileForML(imageData){
+  fs.writeFile('test.jpg', imageData, 'binary', function(err){
+  });
+  var python_options = {
+    mode: 'text',
+    pythonPath: systemPythonPath, //python의 설치경로를 입력하는 부분
+    pythonOptions: ['-u'],
+    scriptPath: '',
+    // args:[1],
+    // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
+    args:[0, "test.jpg"]
+  }
+
+  PythonShell.run(directoryPath+"ClassifyingImage.py", python_options, function (err, results) {
+    if (err) throw err;
+    //results = JSON.parse(results);
+    console.log('pythonshell에서 ... results 확인', results);    
+    console.log('results 타입 확인', typeof(results));
+    console.log('results %j', results);
+    fs.readFile("ClassifyingImage.txt", 'utf8', function(err, data){
+      console.log('파일에서 읽은 값 : ' + data);
+    });
+
+  });
+}

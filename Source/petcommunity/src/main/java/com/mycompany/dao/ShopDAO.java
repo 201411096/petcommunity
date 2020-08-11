@@ -13,4 +13,5 @@ public interface ShopDAO {
 	public List<String> selectSearchAutoProduct(String searchSomething);
 	public List<String> selectSearchAutoShop(String searchSomething);
 	public List<String> selectSearchAutoCategory(String searchSomething);
+	public List<Map<String,String>> shoprank();
 }

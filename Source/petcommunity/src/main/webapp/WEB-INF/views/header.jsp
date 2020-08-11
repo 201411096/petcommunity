@@ -55,7 +55,7 @@
 			<ul class="main-menu">
 				<c:choose>
 					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
-						${sessionScope.memberVO.memberName}님, 안녕하세요
+						관리자/${sessionScope.memberVO.memberName}님, 안녕하세요
 						<a href="logout.do">[로그아웃]</a>
 
 					</c:when>

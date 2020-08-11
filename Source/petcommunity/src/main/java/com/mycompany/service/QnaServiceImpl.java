@@ -83,6 +83,16 @@ public class QnaServiceImpl implements QnaService{
 		
 	}
 
+	@Override
+	public void insertQnaNotice(QnaVO qnavo) {
+		qnaDAO.insertQnaNotice(qnavo);
+		
+	}
+
+	public List<QnaVO> selectAnswerFlag(QnaVO qnavo) {
+		return qnaDAO.selectAnswerFlag(qnavo);
+	}
+
 
 	
 

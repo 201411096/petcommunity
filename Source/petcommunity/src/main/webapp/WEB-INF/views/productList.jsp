@@ -31,7 +31,32 @@
 	<!-- Products page -->			
 			<!-- Product filter section -->
 	<section class="product-filter-section">
+	
 		<div class="container">
+				<!-- 스크롤 배너 시작 -->
+
+		<div class="bannerDiv">
+			<div class="glyphicon glyphicon-chevron-up" id="bannerX"></div>
+			<div id="banner">
+
+				<div id="display">
+					<span><span
+						class="glyphicon glyphicon glyphicon glyphicon-thumbs-up"
+						aria-hidden="true"></span>&nbsp;BEST 사료</span>
+								
+					<div id="" class="banner_contents">
+						<span class="badge badge-danger">1</span><a href="#" class="" id="a"></a><br>
+						<span class="badge badge-default">2</span><a href="#" id="b"></a><br>
+						<span class="badge badge-default">3</span><a href="#" id="c"></a><br>
+						<span class="badge badge-default">4</span><a href="#" id="d"></a><br>
+						<span class="badge badge-default">5</span><a href="#" id="e"></a><br>
+				
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- 스크롤 배너 끝 -->
 			<div class="section-title">
 				<h2>반려견 사료 리스트</h2>
 			</div>

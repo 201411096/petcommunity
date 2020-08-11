@@ -20,7 +20,7 @@ public class BuyServiceImpl implements BuyService{
 	BuyDAOImpl buyDAO;
 
 	@Override
-	public List<BuyListVO> buyList(Map map) {
+	public List<Map<String,String>> buyList(Map map) {
 		
 		return buyDAO.buyList(map);
 	}

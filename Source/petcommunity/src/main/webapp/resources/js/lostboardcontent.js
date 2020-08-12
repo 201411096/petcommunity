@@ -12,8 +12,7 @@ $(function() {
 	});
 	$('#updateButton').on('click', function(){
 		$('#lostBoardContentForm').attr('action', '/petcommunity/loadLostBoardUpdate.do');
-		$('#lostBoardContentForm')[0].submit();
-		
+		$('#lostBoardContentForm')[0].submit();		
 	});
 });
 

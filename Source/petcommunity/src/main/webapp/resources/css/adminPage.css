@@ -244,32 +244,6 @@ td a {
 }
 
 
-/*admin product */
-#writeBtn{
-	width:10%;
-    margin-left: 30px;
-	
-}
-
-#searchBtn{
-	width:10%;
-    margin-right: 30px;
-}
-
-#pagination_container{
-    
-    margin-left: 0px;
-    height: 100%;
-}
-
-#productDataTable{
-	text-align: center;
-}
-#productInfoButtonContainer{
-	float:right;
-}
-/* ////////////////////// */
-
 
 @media ( max-width: 767px ) {
   .input-admin-btn input{

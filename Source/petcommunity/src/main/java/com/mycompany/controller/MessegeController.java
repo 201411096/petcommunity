@@ -28,20 +28,38 @@ public class MessegeController {
 	public MessageServiceImpl messageService; 
 	@Autowired
 	public MemberServiceImpl memberService;
-//	//메시지 insert
-//	@ResponseBody
-//	@RequestMapping("/sendMessage.do")
-//	public Map message(HttpSession session, String content, String toId) {
-//		Map result = new HashMap();
-//		Map searchMap = new HashMap();
-//		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
-//		String id = mvo.getMemberId();
-//		searchMap.put("id", id);
-//		searchMap.put("toId", toId);
-//		searchMap.put("content", content);
-//		messageService.insertMessage(searchMap);
-//		return result;
-//	}
+	//메시지 insert
+	@ResponseBody
+	@RequestMapping("/sendMessage.do")
+	public Map message(HttpSession session, int startPage, int endPage, String content, String otherId) {
+		
+		Map result = new HashMap();
+		Map searchMap = new HashMap();
+		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
+		String id = mvo.getMemberId();
+		System.out.println("otherId"+otherId);
+		searchMap.put("id", id);
+		searchMap.put("startPage", startPage);
+		searchMap.put("endPage", endPage);
+		searchMap.put("otherId", otherId);
+		searchMap.put("content", content);
+		messageService.insertMessage(searchMap);
+		List<MessageVO> messageVO = messageService.getMessagePartner2(searchMap);
+		System.out.println(messageVO);
+		result.put("messageVO", messageVO);
+		result.put("messageVOSize", messageVO.size());
+//		MessageVO messageVO = messageService.addMessage(searchMap);
+//		String messageSender=messageVO.getMessageSender();
+//		String messageSendtime = messageVO.getMessageSendtime();
+//		String messageContents = messageVO.getMessageContents();
+//		String messageId = messageVO.getMessageId();
+//		result.put("messageSender", messageSender);
+//		result.put("messageSendtime", messageSendtime);
+//		result.put("messageContents", messageContents);
+//		result.put("messageId", messageId);
+		result.put("loginId", id);
+		return result;
+	}
 
 //	// 새로 쪽지 전송
 //	@ResponseBody
@@ -114,12 +132,12 @@ public class MessegeController {
 	// 검색한 id로 대화상대 찾아오기
 	@ResponseBody
 	@RequestMapping("/searchId.do")
-	public Map searchId(HttpSession session, int startPage, int endPage, String otherId, String searchNew) {
+	public Map searchId(HttpSession session, int startPage, int endPage, String otherId, String searchNew, @RequestParam (defaultValue = "1")String Id) {
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
-		String id = mvo.getMemberId();
-		searchMap.put("id", id);
+		Id = mvo.getMemberId();
+		searchMap.put("id", Id);
 		searchMap.put("otherId", otherId);
 		searchMap.put("startPage", startPage);
 		searchMap.put("endPage", endPage);
@@ -183,6 +201,31 @@ public class MessegeController {
 		result.put("messageVOSize", messageVO.size());
 		result.put("loginId", id);
 		
+		return result;
+	}
+	
+	//소켓으로 메시지 받은 대상에게 chat창에 메시지 추가
+	@ResponseBody
+	@RequestMapping("/addMessage.do")
+	public Map addMessage(String content, String id, String otherId) {
+		System.out.println("addMessage컨트롤러"+id);
+		System.out.println("addMessage컨트롤러"+otherId);
+		System.out.println("addMessage컨트롤러"+content);
+		Map result = new HashMap();
+		Map searchMap = new HashMap();
+		searchMap.put("content", content);
+		searchMap.put("id", id);
+		searchMap.put("otherId", otherId);
+		MessageVO messageVO = messageService.addMessage(searchMap);
+		String messageSender=messageVO.getMessageSender();
+		String messageSendtime = messageVO.getMessageSendtime();
+		String messageContents = messageVO.getMessageContents();
+		String messageId = messageVO.getMessageId();
+		result.put("messageSender", messageSender);
+		result.put("messageSendtime", messageSendtime);
+		result.put("messageContents", messageContents);
+		result.put("messageId", messageId);
+		result.put("loginId", otherId);
 		return result;
 	}
 	

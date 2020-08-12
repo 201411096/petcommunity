@@ -10,4 +10,5 @@ public interface MessageDAO {
 	public List<MessageVO> getMessagePartner(Map searchMap);
 	public List<MessageVO> getMessagePartner2(Map searchMap);
 	public void delMessage(String msgId);
+	public MessageVO addMessage(Map searchMap);
 }

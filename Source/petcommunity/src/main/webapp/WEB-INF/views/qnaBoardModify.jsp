@@ -13,7 +13,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" />
+<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css" /> -->
 <link rel="stylesheet" href="./resources/css/qnaBoardModify.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
@@ -27,9 +27,10 @@
 	<div class="container">
 	<div id="qnaTitle">
 			<h4>게시글 수정하기</h4>
+			<p id="qnasubtitle">QNA 게시판입니다.</p>
 		</div>
 		<br /> <br />
-		<form action="/petcommunity/modify.do" method='get' name="commitWrite">
+		<form action="/petcommunity/modify.do" method='get' name="commitWrite" enctype="multipart/form-data">
 
 			<!-- 글쓰기 -->
 			<br /> <br /> <input type="hidden" class="form-control" name="questionboardId"
@@ -45,16 +46,9 @@
 				<p>글 내용</p>
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력하세요.">${qnaContent.questionboardContent }</textarea>
-
 			</div>
-<!-- 			<div class="col-md-4 col-md-offset-10"> -->
-<!-- 				<span class="input-group-btn"> -->
 					<button type="submit" class="btn btn-default" id='commitWrite'>완료</button>
 					<a href="/petcommunity/cs.do" class="btn btn-default" id='cancelWrite'> 취소</a>
-					
-<!-- 					<button type="button" class="btn btn-default" id='cancelWrite'>취소</button> -->
-<!-- 				</span> -->
-<!-- 			</div> -->
 		</form>
 	</div>
 </body>

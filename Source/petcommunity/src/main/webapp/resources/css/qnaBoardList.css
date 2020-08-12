@@ -6,19 +6,15 @@ body{
 .container{
 	min-height:100%;
    position:relative;
-   padding-bottom:100px;	
-	
 }
 
-table tr{
-	height: 70px;
+#container{
+	height: 100%;
+	margin-bottom: 10%;
 }
 
-table td{
-	margin-top: 20px;
-}
-tr#adminList{
-	background-color: #f3f3f3;
+ul#pagination-demo{
+	margin-left: 40%;
 }
 
 input#keywordInput{
@@ -26,47 +22,26 @@ input#keywordInput{
 	margin-right: 10%;
 }
 
-ul#pagination-demo{
-	margin-left: 40%;
-}
-
 .wrapper {
 	display: grid;
 }
 
+#QnaBoardTbody{
+	height: 100%;
+}
+
 #searchBtn{
 	margin-right: 20%;
+	color: black;
+	font-size:18px;
+	font-family: 'NanumSquare', sans-serif !important; 
 }
 
-#qnatitle{
-	text-align: center;
-	color: #4a4a4a;
-}
+#writeBtn{
+	color: black;
+	font-size:18px;
 
-table.table{
-	margin-top: 5%;
-}
-
-td a{
-	color : black;
-}
-
-table th{
-	text-align: center;
-}
-
-table td{
-	text-align: center;
-	font-size: 15px;
-}
-
-td #id{
-	width: 10%;
-}
-
-td#title{
-	padding-left:5%;
-	text-align: left;
+	font-family: 'NanumSquare', sans-serif !important; 
 }
 
 .search ul{
@@ -87,6 +62,58 @@ td#title{
     font-size: 13px;
 }
 
+/* 테이블 */
+table tr{
+	height: 70px;
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+/*  table td{ */
+/* 	margin-top: 20px; */
+/* }  */
+
+tr#adminList{
+	background-color: #f3f3f3;
+}
+
+#qnatitle{
+	text-align: center;
+	color: black;
+	font-size: 30px;
+	margin-bottom: 1%;
+}
+
+#qnasubtitle{
+	font-size:18px;
+	color: gray;
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+
+td a{
+	color : black;
+}
+
+table td{
+ 	text-align: left;
+	font-size: 17px;
+}
+
+td #titleImage{
+	width: 60px;
+	height: 60px;
+}
+
+
 @media screen and (max-width: 1200px) {
    #container table th:nth-child(1), th:nth-child(5), th:nth-child(6)  { 
       display: none; 
@@ -98,8 +125,23 @@ td#title{
 
 @media screen and (max-width: 768px){
 
-	body{
+body{
 	font-family: 'NanumSquare', sans-serif !important; 	
+	
+}
+
+.container{
+	min-height:100%;
+   position:relative;
+}
+
+#container{
+	height: 100%;
+	margin-bottom: 10%;
+}
+
+ul#pagination-demo{
+	margin-left: 40%;
 }
 
 input#keywordInput{
@@ -107,53 +149,74 @@ input#keywordInput{
 	margin-right: 10%;
 }
 
-ul#pagination-demo{
-	margin-left: 40%;
-}
-
 .wrapper {
 	display: grid;
+}
+
+#QnaBoardTbody{
+	height: 100%;
 }
 
 #searchBtn{
 	margin-right: 20%;
 }
 
-#qnatitle{
-	font-size:12px;
-	text-align: center;
-	color: #4a4a4a;
+.search ul{
+	margin: auto;
+	margin-top: 5%;
 }
 
-table.table{
-	margin-top: 5%;
+#pagination-demo>li>a, #pagination-demo>li>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #636363;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #fff;
+    font-size: 13px;
+}
+
+/* 테이블 */
+table tr{
+	height: 70px;
+	text-align: center;
+	margin-bottom: 5%;
+	font-family: 'NanumSquare', sans-serif !important; 	
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 4px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+tr#adminList{
+	background-color: #f3f3f3;
+}
+
+#qnatitle{
+	text-align: center;
+	color: black;
+	margin-bottom: 7%;
+	font-size: 20px;
 }
 
 td a{
 	color : black;
 }
 
-table th{
-	text-align: center;
-}
-
 table td{
-	text-align: center;
-	font-size: 12px;
+ 	text-align: left;
+	font-size: 14px;
 }
 
-td #id{
-	width: 10%;
-}
-
-td#title{
-	padding-left:5%;
-	text-align: left;
-}
-
-.search ul{
-	margin: auto;
-	margin-top: 5%;
+td #titleImage{
+	width: 60px;
+	height: 60px;
 }
 
 #pagination-demo>li>a, #pagination-demo>li>span {

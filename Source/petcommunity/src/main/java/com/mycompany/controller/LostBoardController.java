@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,12 +50,11 @@ public class LostBoardController {
 	@Autowired
 	MemberServiceImpl memberService;
 	
-
-	
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 	
 	@ResponseBody
 	@RequestMapping(value = "/lostboardListWithPaging.do", produces = "application/json; charset=utf-8")
-	public Map getCommunityBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType, HttpServletRequest request) {
+	public Map getLostBoardList(@RequestParam(defaultValue="1") int curPage, String searchWord, String searchType, HttpServletRequest request) {
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		searchMap.put("searchType", searchType);
@@ -131,14 +132,24 @@ public class LostBoardController {
 				
 				if(userDeviceIdKey != null) {
 					
-				JSONObject json = new JSONObject();
-				json.put("to",userDeviceIdKey.trim());
-				JSONObject info = new JSONObject();
-				info.put("title", title);   // Notification title
-				info.put("body", content); // Notification body
-				info.put("link", link); // Notification link
-				json.put("notification", info);
-				
+//				JSONObject json = new JSONObject();
+//				json.put("to",userDeviceIdKey.trim());
+//				JSONObject info = new JSONObject();
+//				info.put("title", title);   // Notification title
+//				info.put("body", content); // Notification body
+//				json.put("notification", info);
+//				JSONObject data = new JSONObject();
+//				data.put("link", link); 
+//				json.put("data", data);
+
+					JSONObject json = new JSONObject();
+					json.put("to",userDeviceIdKey.trim());	
+					JSONObject info = new JSONObject();
+					info.put("title", title);   // Notification title
+					info.put("body", content); // Notification body
+//					info.put("link", link); 
+					json.put("notification", info);
+					
 				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
 				System.out.println(">" + json.toString());
 				wr.write(json.toString());

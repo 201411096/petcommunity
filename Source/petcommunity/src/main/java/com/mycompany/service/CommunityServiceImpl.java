@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.dao.CommunityDAOImpl;
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.LostBoardVO;
 
 
 @Service("communityService")
@@ -124,6 +125,18 @@ public class CommunityServiceImpl implements CommunityService{
 	@Override
 	public List<CommunityVO> getBoardListByReadCountWithPaging(Map map) {
 		return communityDAO.getBoardListByReadCountWithPaging(map);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardRank() {
+		
+		return communityDAO.getBoardRank();
+	}
+
+	@Override
+	public List<LostBoardVO> getLostRank() {
+		
+		return communityDAO.getLostRank();
 	}
 
 	

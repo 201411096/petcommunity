@@ -37,4 +37,10 @@ public class MessageDAOImpl implements MessageDAO{
 		
 	}
 
+	@Override
+	public MessageVO addMessage(Map searchMap) {
+		MessageVO result = mybatis.selectOne("messageDAO.addMessage", searchMap);
+		return result;
+	}
+
 }

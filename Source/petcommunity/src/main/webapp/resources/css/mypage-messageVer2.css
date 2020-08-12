@@ -84,7 +84,7 @@
 	border-radius: 10px;
 	max-width:70%;
 	min-width:40%;
-	background-color: #fafafa;
+	background-color: #83bb44;
 	margin-top:5px;
 	margin-bottom:5px;
 	
@@ -126,19 +126,22 @@
 .mypage-messageTime{
 	font-size:5px;
 }
+#startChat{
+	color:#83bb44;
+}
 .fa-paper-plane{
 	cursor:pointer;
 }
 .mypage-messageContent{
 	text-align: left; 
 }
-#div-chat{
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-#div-chat::-webkit-scrollbar {
-    display: none;
-}
+#div-chat{ 
+     scrollbar-width: none; 
+     -ms-overflow-style: none;
+} 
+#div-chat::-webkit-scrollbar { 
+     display: none; 
+} 
 #div-memberList {
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -167,6 +170,7 @@
 #div-send{
 	height:10%;
 	padding: 5px 2px 2px 2px;
+	background-color:silver;
 }
 	#div-memberList{
 	overflow:auto;

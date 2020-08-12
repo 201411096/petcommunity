@@ -44,4 +44,11 @@ public class ShopServiceImpl implements ShopService{
 	public List<String> selectSearchAutoCategory(String searchSomething) {
 		return shopDAO.selectSearchAutoCategory(searchSomething);
 	}
+
+
+	@Override
+	public List<Map<String,String>> shoprank() {
+		
+		return shopDAO.shoprank();
+	}
 }

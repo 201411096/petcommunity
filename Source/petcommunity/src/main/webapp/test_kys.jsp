@@ -19,6 +19,9 @@
 <a href="/petcommunity/sample_graph.do">그래프 샘플 페이지</a><br>
 <a href="/petcommunity/chat.do">채팅 페이지</a><br>
 <a href="/petcommunity/test_publicData.do">공공데이터 확인 페이지</a><br>
+<a href="/petcommunity/test_publicData2.do">공공데이터 확인 페이지2</a><br>
+<a href="/petcommunity/test_publicData3.do">공공데이터 확인 페이지3</a><br>
+<a href="/petcommunity/test_image.do">이미지 테스트 페이지</a><br>
 
 
 

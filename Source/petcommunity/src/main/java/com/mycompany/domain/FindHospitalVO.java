@@ -1,7 +1,6 @@
 package com.mycompany.domain;
 
 public class FindHospitalVO {
-	private int findhospitalId;
 	private String findhospitalName;
 	private String findhospitalTel;
 	private String cityName;
@@ -27,12 +26,7 @@ public class FindHospitalVO {
 		this.keyWord = keyWord;
 	}
 	
-	public int getFindhospitalId() {
-		return findhospitalId;
-	}
-	public void setFindhospitalId(int findhospitalId) {
-		this.findhospitalId = findhospitalId;
-	}
+	
 	public String getFindhospitalName() {
 		return findhospitalName;
 	}

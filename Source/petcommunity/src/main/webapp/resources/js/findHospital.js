@@ -188,11 +188,27 @@ var defaultOpts = {
 
 $(function(){
 	getData();
-	autoCompleteFunc();
-	autoCompleteFuncForMap();
+	//autoCompleteFunc();
+	//autoCompleteFuncForMap();
 	documentPreventKeyDown();
 	searchForMapEventHandler();
 });
+
+
+function searchForMapEventHandler(){
+	$('#searchLocation').on('click', getDataWithoutPaging);
+	$('#searchName').on('click', function(event){
+		if (event.keyCode === 13) {
+			if($('#searchName').val()!=""){
+				setCenterLocation($('#searchName').val());
+			}
+			setTimeout(function(){
+				getDataWithoutPaging();
+			}, 500);
+			
+		  };
+	});
+}
 
 function documentPreventKeyDown(){
 	document.addEventListener('keydown', function(event) {
@@ -202,43 +218,43 @@ function documentPreventKeyDown(){
 		}, true);
 }
 
-function autoCompleteFunc(){
-	$('#keywordInput').autocomplete({
-		source : function( request, response ) {
-            $.ajax({
-                   type: 'get',
-                   url: "/petcommunity/autoCompleteForFindHospital.do",
-                   dataType: "json",
-                   data:{
-                	   	"searchWord" : $('#keywordInput').val()
-                	   	
-                   },
-                   success: function(data) {
-                	   console.log('autocomplete success');
-                       //서버에서 json 데이터 response 후 목록에 추가
-                       response(
-                           $.map(data, function(item) {    //json[i] 번째 에 있는게 item 임.
-                               return {
-                                   label: item,    			//UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
-                                   value: item,    		   //사용자 값
-                               }
-                           })
-                       );
-                   },
-                   error: function(data){
-                	   console.log('autocomplete error');
-                   }
-              });
-           },
-           select : function(event, ui){
-        	   
-           },
-           appendTo :'#search-container',
-           minLength: 1,		 // 최소 글자수
-           autoFocus: true,		 //첫번째 항목 자동 포커스 기본값 false
-           delay : 500,
-	});
-}
+//function autoCompleteFunc(){
+//	$('#searchName').autocomplete({
+//		source : function( request, response ) {
+//            $.ajax({
+//                   type: 'get',
+//                   url: "/petcommunity/autoCompleteForFindHospital.do",
+//                   dataType: "json",
+//                   data:{
+//                	   	"searchWord" : $('#searchName').val()
+//                	   	
+//                   },
+//                   success: function(data) {
+//                	   console.log('autocomplete success');
+//                       //서버에서 json 데이터 response 후 목록에 추가
+//                       response(
+//                           $.map(data, function(item) {    //json[i] 번째 에 있는게 item 임.
+//                               return {
+//                                   label: item,    			//UI 에서 보여지는 글자, 실제 검색어랑 비교 대상
+//                                   value: item,    		   //사용자 값
+//                               }
+//                           })
+//                       );
+//                   },
+//                   error: function(data){
+//                	   console.log('autocomplete error');
+//                   }
+//              });
+//           },
+//           select : function(event, ui){
+//        	   
+//           },
+//           appendTo :' ',
+//           minLength: 1,		 // 최소 글자수
+//           autoFocus: true,		 //첫번째 항목 자동 포커스 기본값 false
+//           delay : 500,
+//	});
+//}
 
 function autoCompleteFuncForMap2(){
 	$('#locationForSearch').autocomplete({
@@ -346,96 +362,107 @@ function drawTable(data){
 	}
 }
 
-//function getDataWithoutPaging(){
-//	$.ajax({
-//		type : 'post',
-//		async:true,
-//		url : '/petcommunity/findhospitalListWithoutPaging.do',
-//		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-//		data : {
-//			"searchLocation" : $('#searchLocation').val(),
-//			"searchName" : $('#searchName').val()
-//		},
-//		dataType : 'json',
-//		success : function(resultData){
-//			setTimeout(function(){
-//				kakaoMapAPI(resultData);
-//			}, 2000);
-//			//kakaoMapAPI(resultData);
-//		},
-//		error:function(request,status,error){
-//			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-//		}		
-//	});
+function getDataWithoutPaging(){
+	$.ajax({
+		type : 'post',
+		async:true,
+		url : '/petcommunity/findhospitalListWithoutPaging.do',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		data : {
+			"searchLocation" : $('#searchLocation').val(),
+			"searchName" : $('#searchName').val()
+		},
+		dataType : 'json',
+		success : function(resultData){
+			setTimeout(function(){
+				kakaoMapAPI(resultData);
+			}, 2000);
+			//kakaoMapAPI(resultData);
+		},
+		error:function(request,status,error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		}		
+	});
+}
+
+
+//var latitude = $('#findhospitalX').val();
+//var longitude = $('#findhospitalY').val();
+//var findhospitalAddress = $('#findhospitalAddress').val();
+
+//$(function() {
+//	kakaoMapAPI();
+//	$('#listButton').on('click', function(){
+//		location.href='/petcommunity/findHospitallist.do';
+//});
+//});
+//
+//function kakaoMapAPI() {
+//
+//// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
+//	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+//
+//	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+//	    mapOption = {
+//	        center: new kakao.maps.LatLng(37.519972628243366, 126.85287648507145), // 지도의 중심좌표
+//	        level: 8 // 지도의 확대 레벨
+//	    };  
+//
+//	// 지도를 생성합니다    
+//	var map = new kakao.maps.Map(mapContainer, mapOption); 
+//
+//	// 장소 검색 객체를 생성합니다
+//	var ps = new kakao.maps.services.Places(); 
+//
+//	// 키워드로 장소를 검색합니다
+//	ps.keywordSearch(' ', placesSearchCB); 
+//
+//	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+//	function placesSearchCB (data, status, pagination) {
+//	    if (status === kakao.maps.services.Status.OK) {
+//
+//	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+//	        // LatLngBounds 객체에 좌표를 추가합니다
+//	        var bounds = new kakao.maps.LatLngBounds();
+//
+//	        for (var i=0; i<data.length; i++) {
+//	            displayMarker(data[i]);    
+//	            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+//	        }       
+//
+//	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+//	        map.setBounds(bounds);
+//	    } 
+//	}
+//
+//	// 지도에 마커를 표시하는 함수입니다
+//	function displayMarker(place) {
+//	    
+//	    // 마커를 생성하고 지도에 표시합니다
+//	    var marker = new kakao.maps.Marker({
+//	        map: map,
+//	        position: new kakao.maps.LatLng(place.y, place.x) 
+//	    });
+//
+//	    // 마커에 클릭이벤트를 등록합니다
+//	    kakao.maps.event.addListener(marker, 'click', function() {
+//	        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
+//	        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+//	        infowindow.open(map, marker);
+//	    });
+//	}
 //}
 
+//var latitude = $('#findhospitalX').val();
+//var longitude = $('#findhospitalY').val();
+//var findhospitalAddress = $('#findhospitalAddress').val();
 
-var latitude = $('#findHospitalX').val();
-var longitude = $('#findHospitalY').val();
-var findhospitalAddress = $('#findhospitalAddress').val();
-
-$(function() {
-	kakaoMapAPI();
-	$('#listButton').on('click', function(){
-		location.href='/petcommunity/findHospitallist.do';
-});
-});
-
-function kakaoMapAPI() {
-
-	// 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-	var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
-
-	// 지도를 생성합니다    
-	var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-	// 장소 검색 객체를 생성합니다
-	var ps = new kakao.maps.services.Places(); 
-
-	// 키워드로 장소를 검색합니다
-	ps.keywordSearch('동물병원', placesSearchCB); 
-
-	// 키워드 검색 완료 시 호출되는 콜백함수 입니다
-	function placesSearchCB (data, status, pagination) {
-	    if (status === kakao.maps.services.Status.OK) {
-
-	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-	        // LatLngBounds 객체에 좌표를 추가합니다
-	        var bounds = new kakao.maps.LatLngBounds();
-
-	        for (var i=0; i<data.length; i++) {
-	            displayMarker(data[i]);    
-	            bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-	        }       
-
-	        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-	        map.setBounds(bounds);
-	    } 
-	}
-
-	// 지도에 마커를 표시하는 함수입니다
-	function displayMarker(place) {
-	    
-	    // 마커를 생성하고 지도에 표시합니다
-	    var marker = new kakao.maps.Marker({
-	        map: map,
-	        position: new kakao.maps.LatLng(place.y, place.x) 
-	    });
-
-	    // 마커에 클릭이벤트를 등록합니다
-	    kakao.maps.event.addListener(marker, 'click', function() {
-	        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-	        infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-	        infowindow.open(map, marker);
-	    });
-	}
-}
+//$(function() {
+//	kakaoMapAPI();
+//	$('#listButton').on('click', function(){
+//		location.href='/petcommunity/findHospitallist.do';
+//});
+//});
 
 //function kakaoMapAPI(data){
 //	$('#map').empty();
@@ -475,64 +502,81 @@ function kakaoMapAPI() {
 //	
 //
 //}
-//
-//
-////marker click event
-////closure를 이용한 infowindow on/off
-//function makeClickListener(map, marker, infowindow) {
-//	var status = 0;
-//	return function() {
-//		if(status==0){
-//			infowindow.open(map, marker);
-//			status=1;
-//		}else{
-//			infowindow.close(map, marker);
-//			status=0;
-//		}
-//			
-//	};
-//}
-//
-////현재 작업경로를 가져오는 함수
-//function getContextPath() {
-//	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
-//}
-//
-//function getLocation() {
-//    if (navigator.geolocation) {	// GPS를 지원하면
-//      navigator.geolocation.getCurrentPosition(function(position) {
-//        latitude = position.coords.latitude;
-//        longitude = position.coords.longitude;
-//        console.log('geolocation success--------------------------');
-//    	console.log(latitude);
-//    	console.log(longitude);
-//      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
-//        latitude = 37.519972628243366;
-//        longitude = 126.85287648507145;
-//      }, {
-//        enableHighAccuracy: false,
-//        maximumAge: 0,
-//        timeout: Infinity
-//      });
-//    } else {
-//      //alert('GPS를 지원하지 않습니다');
-//    	console.log('GPS를 지원하지 않습니다');
-//    }
-//}
-//
-//function setCenterLocation(){
-//    console.log(latitude);
-//    console.log(longitude);
-//	var geocoder = new kakao.maps.services.Geocoder();
-//	// 주소로 좌표를 검색합니다
-//	geocoder.addressSearch($('#searchName').val(), function(result, status) {
-//	    // 정상적으로 검색이 완료됐으면 
-//	     if (status === kakao.maps.services.Status.OK) {
-//	        latitude = result[0].y;
-//	        longitude = result[0].x;
-//	        console.log('search ... result ...');
-//	        console.log(latitude);
-//	        console.log(longitude);
-//	    }
-//	});
-//}
+
+//marker click event
+//closure를 이용한 infowindow on/off
+function makeClickListener(map, marker, infowindow) {
+	var status = 0;
+	return function() {
+		if(status==0){
+			infowindow.open(map, marker);
+			status=1;
+		}else{
+			infowindow.close(map, marker);
+			status=0;
+		}
+			
+	};
+}
+
+//현재 작업경로를 가져오는 함수
+function getContextPath() {
+	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+}
+
+function getLocation() {
+    if (navigator.geolocation) {	// GPS를 지원하면
+      navigator.geolocation.getCurrentPosition(function(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        console.log('geolocation success--------------------------');
+    	console.log(latitude);
+    	console.log(longitude);
+      }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
+        latitude = 37.519972628243366;
+        longitude = 126.85287648507145;
+      }, {
+        enableHighAccuracy: false,
+        maximumAge: 0,
+        timeout: Infinity
+      });
+    } else {
+      //alert('GPS를 지원하지 않습니다');
+    	console.log('GPS를 지원하지 않습니다');
+    }
+}
+
+function setCenterLocation(){
+    console.log(latitude);
+    console.log(longitude);
+	var geocoder = new kakao.maps.services.Geocoder();
+	// 주소로 좌표를 검색합니다
+	geocoder.addressSearch($('#searchName').val(), function(result, status) {
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+	        latitude = result[0].y;
+	        longitude = result[0].x;
+	        console.log('search ... result ...');
+	        console.log(latitude);
+	        console.log(longitude);
+	    }
+	});
+}
+
+
+$(document).ready(function(){
+	$('#wordCloud').click(function(){
+        // 500 * 500 사이즈 윈도우 창을 변수로 담아서 새로 열어준다. 
+		let newWindow = window.open("","width=1000 height=1000");   
+        //newWindow라는 창에 img태그 생성해주기
+		let img = newWindow.document.createElement("img"); 
+		img.setAttribute("src","https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png");  //이미지가 저장되어있는 경로를 src 안에 넣기
+		img.setAttribute("width","1000");   //width속성 변경
+		img.setAttribute("height","1000");  //height속서 변경
+		newWindow.document.body.appendChild(img);   //body안에 가장 마지막 요소로 img 추가
+	});
+});
+
+
+
+

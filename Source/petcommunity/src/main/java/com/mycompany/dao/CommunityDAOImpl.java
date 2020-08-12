@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.LostBoardVO;
 
 
 @Repository("communityDAO")
@@ -152,6 +153,17 @@ public class CommunityDAOImpl implements CommunityDAO{
 	public List<CommunityVO> getBoardListByReadCountWithPaging(Map map) {
 		System.out.println("===>  CommunityMapper getBoardListByReadCountWithPaging() 호출");
 		return mybatis.selectList("communityDAO.getBoardListByReadCountWithPaging", map);
+	}
+
+	@Override
+	public List<CommunityVO> getBoardRank() {
+		return mybatis.selectList("communityDAO.getBoardRank");
+	}
+
+	@Override
+	public List<LostBoardVO> getLostRank() {
+	
+		return mybatis.selectList("communityDAO.getLostRank");
 	}
 	
 	

@@ -258,7 +258,78 @@
 	        {
 	            title: '고양이병원 백산동물병원', 
 	            latlng: new kakao.maps.LatLng(37.4999946, 127.0393429)
+	        },
+	        {
+	            title: '서산동물병원', 
+	            latlng: new kakao.maps.LatLng(36.7778902, 126.457463)
 	        }
+	        ,
+	        {
+	            title: '코끼리동물병원', 
+	            latlng: new kakao.maps.LatLng(35.8192217, 127.1183412)
+	        }
+	        ,
+	        {
+	            title: '이노동물병원', 
+	            latlng: new kakao.maps.LatLng(35.8206231, 127.0225475)
+	        }
+	        ,
+	        {
+	            title: '펫119동물병원', 
+	            latlng: new kakao.maps.LatLng(34.8100428, 126.4244462)
+	        }
+	        ,
+	        {
+	            title: '소망동물병원', 
+	            latlng: new kakao.maps.LatLng(37.865445, 127.7200327)
+	        }
+	        ,
+	        {
+	            title: '대명동물병원', 
+	            latlng: new kakao.maps.LatLng(38.0736168, 128.6201829)
+	        }
+	        ,
+	        {
+	            title: '신일환동물병원', 
+	            latlng: new kakao.maps.LatLng(34.7667261, 127.6607738)
+	        }
+	        ,
+	        {
+	            title: '광주TNR동물병원', 
+	            latlng: new kakao.maps.LatLng(37.4174304, 127.2752895)
+	        },
+	        {
+	            title: '내포동물의료센터', 
+	            latlng: new kakao.maps.LatLng(36.660275, 126.6811263)
+	        }
+	        ,
+	        {
+	            title: '천안모아동물병원', 
+	            latlng: new kakao.maps.LatLng(36.8182749, 127.110726)
+	        }
+	        ,
+	        {
+	            title: '킴스동물의료센터', 
+	            latlng: new kakao.maps.LatLng(36.8936109, 126.6283278)
+	        },
+	        {
+	            title: '안양본동물의료센터', 
+	            latlng: new kakao.maps.LatLng(37.3957928, 126.9717506)
+	        },
+	        {
+	            title: '24시숨동물병원', 
+	            latlng: new kakao.maps.LatLng(37.2586778, 127.0296231)
+	        },
+	        {
+	            title: '양산24시에스동물메디컬센터', 
+	            latlng: new kakao.maps.LatLng(35.3083079, 129.0102285)
+	        },
+	        {
+	            title: '랑스 종합동물병원', 
+	            latlng: new kakao.maps.LatLng(35.1836043, 128.116963)
+	        }
+	        
+	        
 	        
 	        
 	    ];

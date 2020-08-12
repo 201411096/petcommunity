@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.LostBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.CommunityService;
@@ -531,5 +532,25 @@ public class CommunityController {
 		return result;
 
 	}
+	
+	
+	// 커뮤니티 플로팅 배너 (우측 실종배너)
+			/*
+			 * 함수 이름 : getLostRank 
+			 * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+			 */
+		@ResponseBody
+		@RequestMapping(value="getLostrank.do" , produces = "application/json; charset=utf-8")
+		public Map getLostRank() {
+
+			Map result = new HashMap();
+			
+			List<LostBoardVO> list2 =communityService.getLostRank();
+
+			result.put("LostList", list2);
+
+			return result;
+
+		}
 
 }

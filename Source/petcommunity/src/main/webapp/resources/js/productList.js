@@ -157,15 +157,16 @@ function drawProductTable(data){
 
 
 /*우측 배너 js============================*/
-
-$(window).scroll(function() {
+function sendRequest(){
+	
+/*$(window).scroll(function() {
 	$('.bannerDiv').animate({
 		top : $(window).scrollTop() + "px"
 	}, {
 		queue : false,
 		duration : 500
 	});
-});
+});*/
 
 $.ajax({
 	type : 'get',
@@ -184,11 +185,7 @@ $.ajax({
 			$("#c").text(resultData[i][2].pname)
 			$("#c").attr("href", "productView.do?productId="+resultData[i][2].pId)
 
-			$("#d").text(resultData[i][3].pname)
-			$("#d").attr("href", "productView.do?productId="+resultData[i][3].pId)
 
-			$("#e").text(resultData[i][4].pname)
-			$("#e").attr("href", "productView.do?productId="+resultData[i][4].pId)
 
 		}
 
@@ -199,6 +196,12 @@ $.ajax({
 	}
 
 });
+
+}
+sendRequest();
+
+window.setInterval("sendRequest()", 2000);
+
 $(document).ready(
 		function() {
 
@@ -212,5 +215,51 @@ $(document).ready(
 
 		});
 
+$(document).ready(
+		function() {
+
+			$("#bannerX1").click(
+					function() {
+						$('#banner1').slideToggle("fast");
+						$("#bannerX1").toggleClass(
+								'glyphicon-chevron-down glyphicon-chevron-up');
+
+					});
+
+		});
+
+function sendRequest2(){
+
+	$.ajax({
+		type : 'get',
+		async : true,
+		url : '/petcommunity/getLostrank.do?',
+		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+		dataType : 'json',
+		success : function(resultData) {
+			for ( var i in resultData) {
+				$("#a1").text(resultData[i][0].lostboardLocation)
+				$("#a1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][0].lostboardId)
+
+				$("#b1").text(resultData[i][1].lostboardLocation)
+				$("#b1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][1].lostboardId)
+
+				$("#c1").text(resultData[i][2].lostboardLocation)
+				$("#c1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][2].lostboardId)
+
+			}
+
+		},
+		error : function(request, status, error) {
+			console.log("code:" + request.status + "\n" + "message:"
+					+ request.responseText + "\n" + "error:" + error);
+		}
+
+	});
+
+	}
+	sendRequest2();
+
+	window.setInterval("sendRequest2()", 2000);
 
 /*우측 배너 js============================*/

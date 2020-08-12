@@ -221,4 +221,8 @@ update communityboard set communityboard_recommend =  communityboard_recommend+1
 	select COMMUNITYBOARD_TITLE,COMMUNITYBOARD_READCOUNT,COMMUNITYBOARD_ID from COMMUNITYBOARD order by COMMUNITYBOARD_READCOUNT desc
 </select>
 
+<select id="getLostRank" resultType="lostBoard">
+	select LOSTBOARD_ID ,LOSTBOARD_TITLE,LOSTBOARD_LOCATION from LOSTBOARD order by LOSTBOARD_ID desc
+</select>
+
 </mapper>

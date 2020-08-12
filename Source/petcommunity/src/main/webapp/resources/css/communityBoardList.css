@@ -1,6 +1,10 @@
 @charset "UTF-8";
 
 @media ( max-width : 1023px ) {
+	
+	.table{
+	border: 1px solid #3333;
+	}
 	thead tr th:nth-child(5) {
 		display: none;
 	}
@@ -41,10 +45,10 @@
 /* 스크롤 배너 css */
 #banner {
 	width:100%;
-	height:550px;
+	height:400px;
 	position: absolute;
 	font-size: 10pt;
-	top: 5px;
+	top: 100px;
 	left: 0;
 	z-index: 10;
 	background: #fafafa;
@@ -53,15 +57,55 @@
 	text-align: center;
 }
 
-#bannerX{
-	display : block;
-	margin-top:10px;
-	margin-left:-20px;
-	float:left;
-	font-size: 10px;
-	font-size: 13px;
+#banner1 {
+	width:100%;
+	height:200px;
+	position: absolute;
+	font-size: 10pt;
+	top: 510px;
+	left: 290px;
+	z-index: 10;
+	background: #fafafa;
+	padding: 5px;
+	border: 1px solid #e5e5e5;
+	text-align: center;
 }
 
+#bannerX{
+	
+	display : block;
+	margin-top:100px;
+	margin-left:-20px;
+	float:left;
+	font-size: 13px;
+	
+}
+
+.glyphicon-chevron-up{
+	color: #acacac;	
+}
+.glyphicon-chevron-down{
+	color: #acacac;
+}
+
+#bannerX1{
+	position : absolute;
+	margin-top:510px;
+	margin-left:93%;
+	float:left;
+	font-size: 13px;
+	
+}
+
+.glyphicon glyphicon-chevron-up{
+	
+	
+}
+
+.glyphicon glyphicon-chevron-down{
+	background-color: #575757;
+	
+}
 #display>span {
 	margin-top:10px;
 	margin-bottom: 10px;
@@ -73,7 +117,7 @@
 
 .banner_contents {
 	width:95%;
-	min-height: 480px;
+	min-height: 200px;
 	margin: auto;
 	margin-bottom: 6px;
 	text-align: left;
@@ -84,12 +128,34 @@
 }
 .banner_contents span{
 	margin-left:3px;
+	margin-top: 12px;
+	font-size: 17px;
+	
+}
+
+.banner_contents1 span{
+	margin-left:3px;
+	margin-top: 17px;
+	font-size: 17px;
+	
+}
+
+.banner_contents1 {
+	width:95%;
+	min-height: 200px;
+	margin: auto;
+	margin-bottom: 6px;
+	text-align: left;
+}
+
+.banner_contents a{
+	margin-left:10px;
 	margin-top: 24px;
 	font-size: 17px;
 	
 }
 
-.banner_contents a{
+.banner_contents1 a{
 	margin-left:10px;
 	margin-top: 24px;
 	font-size: 17px;
@@ -101,6 +167,29 @@
 	float: right;
 	width: 290px;
 	right: -30%;
+}
+
+.Ranktitle{
+	height:9%;
+	font-size:20px;
+	background: #575757;
+	padding-top: 4px;
+	color: #fff;
+	  -webkit-border-radius:15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+	
+}
+.Ranktitle2{
+	height:18%;
+	font-size:20px;
+	background: #575757;
+	padding-top: 4px;
+	color: #fff;
+	  -webkit-border-radius:15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+	
 }
 
 

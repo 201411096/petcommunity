@@ -28,25 +28,43 @@
 		<!-- 스크롤 배너 시작 -->
 
 		<div class="bannerDiv">
-			<div class="glyphicon glyphicon-chevron-up" id="bannerX"></div>
+			<i class="glyphicon glyphicon-chevron-up" id="bannerX"></i>
 			<div id="banner">
-
+				<div class="Ranktitle">가장 많이 본 커뮤니티</div>
 				<div id="display">
-					<span><span
-						class="glyphicon glyphicon glyphicon glyphicon-thumbs-up"
-						aria-hidden="true"></span>&nbsp;가장 많이 본 커뮤니티</span>
-								
+
+
 					<div id="" class="banner_contents">
-						<span class="badge badge-danger">1</span><a href="#" class="" id="a"></a><br>
-						<span class="badge badge-default">2</span><a href="#" id="b"></a><br>
-						<span class="badge badge-default">3</span><a href="#" id="c"></a><br>
-						<span class="badge badge-default">4</span><a href="#" id="d"></a><br>
-						<span class="badge badge-default">5</span><a href="#" id="e"></a><br>
-						<span class="badge badge-default">6</span><a href="#" id="f"></a><br>
-						<span class="badge badge-default">7</span><a href="#" id="g"></a><br>
-						<span class="badge badge-default">8</span><a href="#" id="h"></a><br>
-						<span class="badge badge-default">9</span><a href="#" id="i"></a><br>
-						<span class="badge badge-default">10</span><a href="#" id="j"></a><br>
+						<span class="badge badge-danger">1</span><a href="#" class=""
+							id="a"></a><br> <span class="badge badge-default">2</span><a
+							href="#" id="b"></a><br> <span class="badge badge-default">3</span><a
+							href="#" id="c"></a><br> <span class="badge badge-default">4</span><a
+							href="#" id="d"></a><br> <span class="badge badge-default">5</span><a
+							href="#" id="e"></a><br> <span class="badge badge-default">6</span><a
+							href="#" id="f"></a><br> <span class="badge badge-default">7</span><a
+							href="#" id="g"></a><br> <span class="badge badge-default">8</span><a
+							href="#" id="h"></a><br> <span class="badge badge-default">9</span><a
+							href="#" id="i"></a><br> <span class="badge badge-default">10</span><a
+							href="#" id="j"></a><br>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!-- 스크롤 배너 끝 -->
+		
+		<!-- 스크롤 배너 시작 -->
+		<div class="bannerDiv">
+			<div class="glyphicon glyphicon-chevron-up" id="bannerX1"></div>
+			<div id="banner1">
+				<div class="Ranktitle2">최근 실종 신고 올라온 지역</div>
+				<div id="display">
+
+
+					<div id="" class="banner_contents1">
+						<span class="badge badge-danger">1</span><a href="#" id="a1"></a><br> 
+						<span class="badge badge-default">2</span><a href="#" id="b1"></a><br>
+						<span class="badge badge-default">3</span><a href="#" id="c1"></a><br>
 					</div>
 				</div>
 			</div>

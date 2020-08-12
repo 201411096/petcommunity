@@ -545,6 +545,7 @@ function drawTable(data) {
 	}
 }
 
+
 function openChatWindow() {
 	var w = 600;
 	var h = 700;
@@ -560,14 +561,15 @@ function openChatWindow() {
 			});
 }
 
-$(window).scroll(function() {
+/*$(window).scroll(function() {
 	$('.bannerDiv').animate({
 		top : $(window).scrollTop() + "px"
 	}, {
 		queue : false,
 		duration : 500
 	});
-});
+});*/
+function sendRequest(){
 
 $.ajax({
 	type : 'get',
@@ -615,6 +617,12 @@ $.ajax({
 	}
 
 });
+}
+
+sendRequest();
+
+window.setInterval("sendRequest()", 2000);
+
 $(document).ready(
 		function() {
 
@@ -627,3 +635,52 @@ $(document).ready(
 					});
 
 		});
+
+
+
+// 실종 배너
+$(document).ready(
+		function() {
+
+			$("#bannerX1").click(
+					function() {
+						$('#banner1').slideToggle("fast");
+						$("#bannerX1").toggleClass(
+								'glyphicon-chevron-down glyphicon-chevron-up');
+
+					});
+
+		});
+function sendRequest2(){
+
+$.ajax({
+	type : 'get',
+	async : true,
+	url : '/petcommunity/getLostrank.do?',
+	contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+	dataType : 'json',
+	success : function(resultData) {
+		for ( var i in resultData) {
+			$("#a1").text(resultData[i][0].lostboardLocation)
+			$("#a1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][0].lostboardId)
+
+			$("#b1").text(resultData[i][1].lostboardLocation)
+			$("#b1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][1].lostboardId)
+
+			$("#c1").text(resultData[i][2].lostboardLocation)
+			$("#c1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][2].lostboardId)
+
+		}
+
+	},
+	error : function(request, status, error) {
+		console.log("code:" + request.status + "\n" + "message:"
+				+ request.responseText + "\n" + "error:" + error);
+	}
+
+});
+
+}
+sendRequest2();
+
+window.setInterval("sendRequest2()", 2000);

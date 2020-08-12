@@ -7,26 +7,23 @@
 <html lang="zxx">
 <head>
 <!-- Stylesheets -->
-<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>	 -->
+<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>	
 <!-- Main Stylesheets -->
-<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/> -->
+<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
 <!-- nav bar -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/style.css" />
 <!-- search -->
-<link rel="stylesheet" href="resources/css/shop.css">
+<link rel="stylesheet" href="resources/css/productList.css">
 <!-- Paging -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 
 
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- autocomplete 3 cdn link -->
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 
 </head>
 <body>
@@ -78,7 +75,10 @@
 			<!-- 스크롤 배너 끝 -->
 
 			<div class="section-title">
-				<h2>반려견 사료 리스트</h2>
+				<div class="section-title">
+				<h4 id="producttitle">오키도키 굿즈</h4>
+				<p id="productsubtitle">반려견 사료 리스트입니다</p>
+			</div>
 			</div>
 			<br />
 			<form>
@@ -97,46 +97,54 @@
 			<div id="ul-div">
 				<ul class="product-filter-menu">
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="all">전체</a></li>
+						value="all">전체</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="퍼피용">퍼피용</a></li>
+						value="퍼피용">퍼피용</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="성견용">성견용</a></li>
+						value="성견용">성견용</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="전연령">전연령</a></li>
+						value="전연령">전연령</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="노견용">노견용</a></li>
+						value="노견용">노견용</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="소형견용">소형견용</a></li>
+						value="소형견용">소형견용</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="대형견용">대형견용</a></li>
+						value="대형견용">대형견용</a><span id="bar">|</span></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
 						value="비만견용">비만견용</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="임신/수유견">임신/수유견</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="그레인프리 사료">그레인프리 사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="뼈관절 사료">뼈관절 사료 잡화</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="피부모질 사료">피부모질 사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="기타 기능성 사료">기타 기능성 사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="위장개선 사료">위장개선 사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="대포장사료">대포장사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="저알러지 사료">저알러지 사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="소프트 사료">소프트 사료</a></li>
-					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="오븐에구운사료">오븐에구운사료</a></li>
 				</ul>
 			</div>
+			<div id="ul-div">
+				<ul class="product-filter-menu">
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="임신/수유견">임신/수유견</a><span id="bar">|</span></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="그레인프리 사료">그레인프리 사료</a><span id="bar">|</span></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="뼈관절 사료">뼈관절 사료 잡화</a><span id="bar">|</span></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="피부모질 사료">피부모질 사료</a><span id="bar">|</span></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="기타 기능성 사료">기타 기능성 사료</a></li>
+					</ul></div>
+					<div id="ul-div">
+						<ul class="product-filter-menu">
+							<li><a href="#" name="tagCategory" class="tagCategory"
+								value="위장개선 사료">위장개선 사료</a><span id="bar">|</span></li>
+							<li><a href="#" name="tagCategory" class="tagCategory"
+								value="대포장사료">대포장사료</a><span id="bar">|</span></li>
+							<li><a href="#" name="tagCategory" class="tagCategory"
+								value="저알러지 사료">저알러지 사료</a><span id="bar">|</span></li>
+							<li><a href="#" name="tagCategory" class="tagCategory"
+								value="소프트 사료">소프트 사료</a><span id="bar">|</span></li>
+							<li><a href="#" name="tagCategory" class="tagCategory"
+								value="오븐에구운사료">오븐에구운사료</a></li>
+						</ul>
+					</div>
 			<!-- Product filter section -->
 
 			<div id='productTable' class="row artists-row">
+			
 				<!-- forEach 사용 -->
 				<!-- 
 			<c:forEach var="shop" items="${shopList}">
@@ -170,9 +178,10 @@
 	<!-- Footer section  -->
 
 	<!-- Footer section end -->
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+		
+	<!-- autocomplete 3 cdn link -->
 	<script src="./resources/js/productList.js"></script>
-
-
 </body>
 </html>

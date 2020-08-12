@@ -160,6 +160,12 @@ body{
 	text-align: left;
 }
 
+#newproductimg{
+	width: 50px;
+	margin-left: -2%;
+	margin-bottom: -5%;
+}
+
 .banner_contents .badge-danger{
 	background-color: #a94442;
 }

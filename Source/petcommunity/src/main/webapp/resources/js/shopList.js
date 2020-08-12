@@ -140,6 +140,12 @@ function drawShopTable(data){
 	var shopnameimg = '<img id="shopnameimg" src="./resources/imgs/product_image/external/pawInHand/icon.png" alt=""/>';
 	for(var i=0; i<data.shopListSize; i++){
 		
+//		if(i<=2){
+//			var newproduct = '<img id="newproductimg" src="./resources/imgs/product_image/external/pawInHand/newicon.png" alt=""/>';
+//		}else{
+//			var newproduct='';
+//		}
+		
 		var listContent = 
 			divPrefix1 + 
 			a1 + data.shopList[i].shopLink + a2 +

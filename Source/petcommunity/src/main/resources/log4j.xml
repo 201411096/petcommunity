@@ -12,8 +12,12 @@
 	
 	<appender name="rolling" class="org.apache.log4j.RollingFileAppender">
 		<!-- 로그 파일 생성위치 -->
-		<param name="file" value="c:/logs/log.log" />
+<!-- 		<param name="file" value="../Log/log.log" /> -->
+<!-- 		<param name="file" value="${catalina.base}/logs/log4j.log" /> -->
+		<param name="file" value="D:/petcommunity/Log/log.log" />
 		<param name="Append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd_HH:mm" />
 		<!-- 로그 파일 하나당 사이즈 5m -->
 		<param name="MaxFileSize" value="5000kb" />
 		<!-- 최대 생성 파일수 ( 50개가 넘으면 순차적으로 파일이 삭제됨 -->
@@ -24,9 +28,8 @@
 		</layout>
 	</appender>	
 	<!-- Application Loggers -->
-	<logger name="com.mycompany.myapp">
+	<logger name="com.mycompany">
 		<level value="info" />
-		<appender-ref ref="rolling" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -50,6 +53,7 @@
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		<appender-ref ref="rolling" />
 	</root>
 	
 </log4j:configuration>

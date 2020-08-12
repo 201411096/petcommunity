@@ -13,6 +13,8 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="./resources/css/communityBoardList.css" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
@@ -21,49 +23,79 @@
 <title>oki doghere커뮤니티</title>
 </head>
 <body>
-
-
+<section id="backGround">
+	<h4 id="qnatitle">community</h4>
+         <p id="qnasubtitle">지역별 커뮤니티 게시판입니다.</p>
 	<div class="container">
 
 		<!-- 스크롤 배너 시작 -->
 
 		<div class="bannerDiv">
-			<div class="glyphicon glyphicon-chevron-up" id="bannerX"></div>
+			<i class="glyphicon glyphicon-chevron-up" id="bannerX"></i>
 			<div id="banner">
-
+				<div class="Ranktitle">가장 많이 본 커뮤니티</div>
 				<div id="display">
-					<span><span
-						class="glyphicon glyphicon glyphicon glyphicon-thumbs-up"
-						aria-hidden="true"></span>&nbsp;가장 많이 본 커뮤니티</span>
-								
 					<div id="" class="banner_contents">
-						<span class="badge badge-danger">1</span><a href="#" class="" id="a"></a><br>
-						<span class="badge badge-default">2</span><a href="#" id="b"></a><br>
-						<span class="badge badge-default">3</span><a href="#" id="c"></a><br>
-						<span class="badge badge-default">4</span><a href="#" id="d"></a><br>
-						<span class="badge badge-default">5</span><a href="#" id="e"></a><br>
-						<span class="badge badge-default">6</span><a href="#" id="f"></a><br>
-						<span class="badge badge-default">7</span><a href="#" id="g"></a><br>
-						<span class="badge badge-default">8</span><a href="#" id="h"></a><br>
-						<span class="badge badge-default">9</span><a href="#" id="i"></a><br>
-						<span class="badge badge-default">10</span><a href="#" id="j"></a><br>
+						<span class="badge badge-danger">1</span><a href="#" class=""
+							id="a"></a><br> <span class="badge badge-default">2</span><a
+							href="#" id="b"></a><br> <span class="badge badge-default">3</span><a
+							href="#" id="c"></a><br> <span class="badge badge-default">4</span><a
+							href="#" id="d"></a><br> <span class="badge badge-default">5</span><a
+							href="#" id="e"></a><br> <span class="badge badge-default">6</span><a
+							href="#" id="f"></a><br> <span class="badge badge-default">7</span><a
+							href="#" id="g"></a><br> <span class="badge badge-default">8</span><a
+							href="#" id="h"></a><br> <span class="badge badge-default">9</span><a
+							href="#" id="i"></a><br> <span class="badge badge-default">10</span><a
+							href="#" id="j"></a><br>
 					</div>
 				</div>
 			</div>
 
 		</div>
+
+
+		<!-- 스크롤 배너 시작 -->
+		<div class="bannerDiv">
+			<div class="glyphicon glyphicon-chevron-up" id="bannerX1"></div>
+			<div id="banner1">
+				<div class="tab_menu_container">
+					<button class="tab_menu_btn on" type="button">실종신고<span class="badge badgeNew">N</span></button>
+					<button class="tab_menu_btn" type="button" id="findRank">목격<span class="badge badgeNew">N</span></button>
+
+				</div>
+				<div class="tab_box_container">
+				<div class="tab_box on">
+	
+						<span class="badge badge-danger">1</span><a href="#" id="a1"></a><br>
+						<span class="badge badge-default">2</span><a href="#" id="b1"></a><br>
+						<span class="badge badge-default">3</span><a href="#" id="c1"></a><br>
+						<span class="badge badge-default">4</span><a href="#" id="d1"></a><br>
+						<span class="badge badge-default">5</span><a href="#" id="e1"></a><br>
+					
+				</div>
+				
+					<div class="tab_box">
+						<span class="badge badge-danger">1</span><a href="#" id="a2"></a><br>
+						<span class="badge badge-default">2</span><a href="#" id="b2"></a><br>
+						<span class="badge badge-default">3</span><a href="#" id="c2"></a><br>
+						<span class="badge badge-default">4</span><a href="#" id="d2"></a><br>
+						<span class="badge badge-default">5</span><a href="#" id="e2"></a><br>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
 		<!-- 스크롤 배너 끝 -->
-		<header>
-			<h1>
-				커뮤니티 | <span id="chatLink">채팅</span>
-			</h1>
-		</header>
-		<hr />
 
 
+<span id="chatLink">채팅</span>
 
+         
 		<section id="container">
-			<div class="col-xs-0 col-sm-2">
+					
+			<div class="col-xs-0 col-sm-3">
 				<select class="form-control" id='showBy'>
 					<option>전체보기</option>
 					<option>지역별</option>
@@ -142,9 +174,9 @@
 					<div class="input-group">
 						<input type="text" name="keyWord" class='form-control'
 							id="keywordInput" /> <span class="input-group-btn">
-							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+							<button id="searchBtn" type="button" class="btnC">검색</button>
 						</span> <span class="input-group-btn">
-							<button id="writeBtn" type="button" class="btn btn-default">글쓰기</button>
+							<button id="writeBtn" type="button" class="btnC">글쓰기</button>
 						</span>
 
 					</div>
@@ -153,7 +185,7 @@
 			</div>
 
 
-			<div class="col-md-offset-3" id='getBoardPaging'>
+			<div align="center" id='getBoardPaging'>
 				<ul class="pagination">
 					<li><a href="/petcommunity/communityBoardList.do">&#60;&#60;</a></li>
 					<li><a href="#" id='prevPage'>&#60;</a></li>
@@ -168,13 +200,15 @@
 						href="/petcommunity/communityBoardList.do?pageNo=${amountOfPage}">&#62;&#62;</a></li>
 				</ul>
 			</div>
-			<div class="col-md-offset-3" id="pagination_container">
-				<ul id="pagination-demo" class="pagination-lg"></ul>
-			</div>
+		
 
 
 
 		</section>
+			<div class="col-md-offset-3" id="pagination_container">
+				<ul id="pagination-demo" class="pagination-lg"></ul>
+			</div>
 	</div>
+	</section>
 </body>
 </html>

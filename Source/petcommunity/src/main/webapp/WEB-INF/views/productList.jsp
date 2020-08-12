@@ -7,16 +7,14 @@
 <html lang="zxx">
 <head>
 <!-- Stylesheets -->
-<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>	
+<!-- <link rel="stylesheet" href="resources/css/bootstrap.min.css"/>	 -->
 <!-- Main Stylesheets -->
-<link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/>
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+<!-- <link rel="stylesheet" href="./resources/bootstrap_template/template_01/css/style.css"/> -->
 <!-- nav bar -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/style.css" />
 <!-- search -->
-<link rel="stylesheet" href="resources/css/productList.css">
+<link rel="stylesheet" href="resources/css/shop.css">
 <!-- Paging -->
 
 
@@ -29,8 +27,6 @@
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 
 </head>
 <body>
@@ -46,19 +42,14 @@
 			<div class="bannerDiv">
 				<div class="glyphicon glyphicon-chevron-up" id="bannerX"></div>
 				<div id="banner">
-
+					<div class="Ranktitle">BEST 사료</div>
 					<div id="display">
-						<span><span
-							class="glyphicon glyphicon glyphicon glyphicon-thumbs-up"
-							aria-hidden="true"></span>&nbsp;BEST 사료</span>
+
 
 						<div id="" class="banner_contents">
-							<span class="badge badge-danger">1</span><a href="#" class=""
-								id="a"></a><br> <span class="badge badge-default">2</span><a
-								href="#" id="b"></a><br> <span class="badge badge-default">3</span><a
-								href="#" id="c"></a><br> <span class="badge badge-default">4</span><a
-								href="#" id="d"></a><br> <span class="badge badge-default">5</span><a
-								href="#" id="e"></a><br>
+							<span class="badge badge-danger">1</span><span><a href="#" id="a"></a></span><br>
+								 <span class="badge badge-default">2</span><a href="#" id="b"></a><br>
+								 <span class="badge badge-default">3</span><a href="#" id="c"></a><br>
 
 						</div>
 					</div>
@@ -66,9 +57,28 @@
 
 			</div>
 			<!-- 스크롤 배너 끝 -->
+
+			<!-- 스크롤 배너 시작 -->
+			<div class="bannerDiv">
+				<div class="glyphicon glyphicon-chevron-up" id="bannerX1"></div>
+				<div id="banner1">
+					<div class="Ranktitle2">최근 실종 신고 올라온 지역</div>
+					<div id="display">
+
+
+						<div id="" class="banner_contents1">
+							<span class="badge badge-danger">1</span><a href="#" id="a1"></a><br>
+							<span class="badge badge-default">2</span><a href="#" id="b1"></a><br>
+							<span class="badge badge-default">3</span><a href="#" id="c1"></a><br>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- 스크롤 배너 끝 -->
+
 			<div class="section-title">
-				<h4 id="producttitle">오키도키 굿즈</h4>
-				<p id="productsubtitle">반려견 사료 리스트입니다</p>
+				<h2>반려견 사료 리스트</h2>
 			</div>
 			<br />
 			<form>
@@ -87,55 +97,48 @@
 			<div id="ul-div">
 				<ul class="product-filter-menu">
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="all">전체</a><span id="bar">|</span></li>
+						value="all">전체</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="퍼피용">퍼피용</a><span id="bar">|</span></li>
+						value="퍼피용">퍼피용</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="성견용">성견용</a><span id="bar">|</span></li>
+						value="성견용">성견용</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="전연령">전연령</a><span id="bar">|</span></li>
+						value="전연령">전연령</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="노견용">노견용</a><span id="bar">|</span></li>
+						value="노견용">노견용</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="소형견용">소형견용</a><span id="bar">|</span></li>
+						value="소형견용">소형견용</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="대형견용">대형견용</a><span id="bar">|</span></li>
+						value="대형견용">대형견용</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
 						value="비만견용">비만견용</a></li>
-				</ul>
-			</div>
-			<div id="ul-div">
-				<ul class="product-filter-menu">
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="임신/수유견">임신/수유견</a><span id="bar">|</span></li>
+						value="임신/수유견">임신/수유견</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="그레인프리 사료">그레인프리 사료</a><span id="bar">|</span></li>
+						value="그레인프리 사료">그레인프리 사료</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="뼈관절 사료">뼈관절 사료 잡화</a><span id="bar">|</span></li>
+						value="뼈관절 사료">뼈관절 사료 잡화</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
-						value="피부모질 사료">피부모질 사료</a><span id="bar">|</span></li>
+						value="피부모질 사료">피부모질 사료</a></li>
 					<li><a href="#" name="tagCategory" class="tagCategory"
 						value="기타 기능성 사료">기타 기능성 사료</a></li>
-					</ul></div>
-					<div id="ul-div">
-						<ul class="product-filter-menu">
-							<li><a href="#" name="tagCategory" class="tagCategory"
-								value="위장개선 사료">위장개선 사료</a><span id="bar">|</span></li>
-							<li><a href="#" name="tagCategory" class="tagCategory"
-								value="대포장사료">대포장사료</a><span id="bar">|</span></li>
-							<li><a href="#" name="tagCategory" class="tagCategory"
-								value="저알러지 사료">저알러지 사료</a><span id="bar">|</span></li>
-							<li><a href="#" name="tagCategory" class="tagCategory"
-								value="소프트 사료">소프트 사료</a><span id="bar">|</span></li>
-							<li><a href="#" name="tagCategory" class="tagCategory"
-								value="오븐에구운사료">오븐에구운사료</a></li>
-						</ul>
-					</div>
-					<!-- Product filter section -->
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="위장개선 사료">위장개선 사료</a></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="대포장사료">대포장사료</a></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="저알러지 사료">저알러지 사료</a></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="소프트 사료">소프트 사료</a></li>
+					<li><a href="#" name="tagCategory" class="tagCategory"
+						value="오븐에구운사료">오븐에구운사료</a></li>
+				</ul>
+			</div>
+			<!-- Product filter section -->
 
-					<div id='productTable' class="row artists-row">
-						<!-- forEach 사용 -->
-						<!-- 
+			<div id='productTable' class="row artists-row">
+				<!-- forEach 사용 -->
+				<!-- 
 			<c:forEach var="shop" items="${shopList}">
 				<div class="col-lg-4 col-sm-6 artists-col">
 					<a href="${shop.shopLink }" target="_blank">
@@ -151,15 +154,15 @@
 				
 			</c:forEach>
 			 -->
-						<!--forEach 사용 끝 -->
+				<!--forEach 사용 끝 -->
 
-					</div>
-					<div id="pagination-div">
-						<div id="pagination_container">
-							<ul id="pagination-demo" class="pagination-lg"></ul>
-						</div>
-					</div>
 			</div>
+			<div id="pagination-div">
+				<div id="pagination_container">
+					<ul id="pagination-demo" class="pagination-lg"></ul>
+				</div>
+			</div>
+		</div>
 	</section>
 	<!-- Products page end -->
 

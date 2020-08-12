@@ -92,7 +92,7 @@
 
 	<script
 		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-	<df-messenger intent="WELCOME" chat-title="petcommunity"
+	<df-messenger intent="WELCOME" chat-title="petcommunity" chat-icon="resources/imgs/review_thumbnail/dialogIcon.png"
 		agent-id="2573aba7-c532-485a-a3e8-889b7d15fac1" language-code="ko"></df-messenger>
 
 <input id="hiddenId" type=hidden value="${sessionScope.memberVO.memberId}"}>

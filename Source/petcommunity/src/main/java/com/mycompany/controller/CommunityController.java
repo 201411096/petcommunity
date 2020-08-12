@@ -22,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.mycompany.domain.BuyListVO;
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.FindBoardVO;
+import com.mycompany.domain.LostBoardVO;
 import com.mycompany.domain.MemberVO;
 import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.CommunityService;
@@ -45,7 +47,7 @@ public class CommunityController {
 		List<CommunityVO> communityBoardList = communityService.getBoardList();// 게시판 리스트 가져오기
 
 		// 20개씩 보여줄때 페이지 개수 계산
-		int amountOfPage = (communityBoardList.size() - 1) / 20 + 1; // 페이지의 개수(20개씩 보여주므로 20으로 나눈후 1을 더해줌)
+		int amountOfPage = (communityBoardList.size() - 1) / 10 + 1; // 페이지의 개수(20개씩 보여주므로 20으로 나눈후 1을 더해줌)
 		int showPage = (amountOfPage - 1) / 5 + 1; // page개수 구하기
 
 		int pageNo = 1;
@@ -67,9 +69,9 @@ public class CommunityController {
 			showPageLast = showPageNo * 5 + 5; // page인덱스가 끝나는 위치
 		}
 
-		int startList = 20 * (pageNo - 1) + 1;// 게시판 해당 페이지 시작글
-		int lastList = startList + 19; // 게시판 해당 페이지 마지막글
-		if (startList - 1 == communityBoardList.size() / 20) {// 마지막 페이지일때 어디까지 불러와야 하는지 정해줌
+		int startList = 10 * (pageNo - 1) + 1;// 게시판 해당 페이지 시작글
+		int lastList = startList + 9; // 게시판 해당 페이지 마지막글
+		if (startList - 1 == communityBoardList.size() / 10) {// 마지막 페이지일때 어디까지 불러와야 하는지 정해줌
 			lastList = communityBoardList.size();
 		}
 
@@ -174,9 +176,9 @@ public class CommunityController {
 
 		vo.setKeyWord(keyword);
 
-		PaginationVO paginationVO = new PaginationVO(communityService.getBoardListBySearch(vo).size(), curPage, 20);
+		PaginationVO paginationVO = new PaginationVO(communityService.getBoardListBySearch(vo).size(), curPage, 10);
 
-		paginationVO.setRangeSize(20);
+		paginationVO.setRangeSize(10);
 		searchMap.put("startRow", paginationVO.getStartIndex() + 1);
 		searchMap.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
 		searchMap.put("keyWord", keyword);
@@ -226,9 +228,9 @@ public class CommunityController {
 			List<CommunityVO> getBoardListByLocation = communityService.getBoardListByLocation(vo);
 			Map categoryMap = new HashMap();
 			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByLocation(vo).size(), curPage,
-					20);
+					10);
 
-			paginationVO.setRangeSize(20);
+			paginationVO.setRangeSize(10);
 			categoryMap.put("startRow", paginationVO.getStartIndex() + 1);
 
 			categoryMap.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
@@ -264,8 +266,8 @@ public class CommunityController {
 			List<CommunityVO> getBoardListByReadCount = communityService.getBoardListByReadCount();
 			Map categoryMap = new HashMap();
 			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByReadCount().size(), curPage,
-					20);
-			paginationVO.setRangeSize(20);
+					10);
+			paginationVO.setRangeSize(10);
 			categoryMap.put("startRow", paginationVO.getStartIndex() + 1);
 			categoryMap.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
 			List<CommunityVO> getBoardListByReadCountWithPaging = communityService
@@ -296,8 +298,8 @@ public class CommunityController {
 			List<CommunityVO> getBoardListByRecommend = communityService.getBoardListByRecommend();
 			Map categoryMap = new HashMap();
 			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByRecommend().size(), curPage,
-					20);
-			paginationVO.setRangeSize(20);
+					10);
+			paginationVO.setRangeSize(10);
 			categoryMap.put("startRow", paginationVO.getStartIndex() + 1);
 			categoryMap.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
 			List<CommunityVO> getBoardListByRecommendWithPaging = communityService
@@ -327,8 +329,8 @@ public class CommunityController {
 			List<CommunityVO> getBoardListByReadCount = communityService.getBoardListByReadCount();
 			Map categoryMap = new HashMap();
 			PaginationVO paginationVO = new PaginationVO(communityService.getBoardListByReadCount().size(), curPage,
-					20);
-			paginationVO.setRangeSize(20);
+					10);
+			paginationVO.setRangeSize(10);
 			categoryMap.put("startRow", paginationVO.getStartIndex() + 1);
 			categoryMap.put("endRow", paginationVO.getStartIndex() + paginationVO.getPageSize());
 			List<CommunityVO> getBoardListByReadCountWithPaging = communityService
@@ -527,6 +529,46 @@ public class CommunityController {
 				
 		}
 		result.put("buyList", list2);
+
+		return result;
+
+	}
+	
+	
+	// 커뮤니티 배너 (우측 실종탭)
+			/*
+			 * 함수 이름 : getLostRank 
+			 * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+			 */
+		@ResponseBody
+		@RequestMapping(value="getLostrank.do" , produces = "application/json; charset=utf-8")
+		public Map getLostRank() {
+
+			Map result = new HashMap();
+			
+			List<LostBoardVO> list2 =communityService.getLostRank();
+
+			result.put("LostList", list2);
+
+			return result;
+
+		}
+		
+		
+		// 커뮤니티 배너 (우측 목격탭)
+		/*
+		 * 함수 이름 : getFindRank 
+		 * 함수 주요 기능 : ajax와 연결되어있음. 커뮤니티 조회수 순으로 정렬하여 List배열 형태로 받아서 넘겨준다.(페이지에서는 조회수 상위 10위까지 보여짐.)
+		 */
+	@ResponseBody
+	@RequestMapping(value="getFindrank.do" , produces = "application/json; charset=utf-8")
+	public Map getFindRank() {
+
+		Map result = new HashMap();
+		
+		List<FindBoardVO> list2 =communityService.getFindRank();
+
+		result.put("FindList", list2);
 
 		return result;
 

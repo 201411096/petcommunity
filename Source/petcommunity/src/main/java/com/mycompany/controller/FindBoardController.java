@@ -1,16 +1,23 @@
 package com.mycompany.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.Socket;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,7 +53,7 @@ import com.mycompany.domain.PaginationVO;
 import com.mycompany.service.FindBoardServiceImpl;
 import com.mycompany.service.LostBoardServiceImpl;
 import com.mycompany.service.MemberServiceImpl;
-import com.mycompany.util.FileUpload;
+import com.mycompany.util.*;
 
 @Controller
 public class FindBoardController {
@@ -58,82 +65,98 @@ public class FindBoardController {
 	MemberServiceImpl memberService;
 	
 	@ResponseBody
-	@RequestMapping("/checkDogBreed.do")
-	public String toTheDeepLearning(@RequestParam HashMap<Object, Object> param,  MultipartHttpServletRequest filelist, HttpServletRequest request) {
+	   @RequestMapping(value = "/checkDogBreed.do", produces = "application/text; charset=utf-8")
+	   public String toTheDeepLearning(@RequestParam HashMap<Object, Object> param,  MultipartHttpServletRequest filelist, HttpServletRequest request) {
 
-	    
-		Iterator<String> iter = filelist.getFileNames(); 
-	    MultipartFile mfile = null; 
-	    String fieldName = "";
-	    while (iter.hasNext()) { 
-	        fieldName = (String) iter.next(); //파일이름, 위에서 file1과 file2로 보냈으니 file1, file2로 나온다.	       
-	        mfile = filelist.getFile(fieldName);  //저장된 파일 객체
-	    }
-	
-	 File file= null; try { file = new File(mfile.getOriginalFilename());
-	 file.createNewFile(); FileOutputStream fos = new FileOutputStream(file);
-	 fos.write(mfile.getBytes());
-	 
-	 fos.close(); }catch(Exception e) { e.printStackTrace(); }
-	 
+	       String breed=null;
+	       //===========업로드할 이미지 받아오기 ========================
+	      Iterator<String> iter = filelist.getFileNames(); 
+	       MultipartFile mfile = null; 
+	       String fieldName = "";
+	       while (iter.hasNext()) { 
+	           fieldName = (String) iter.next(); //파일이름, 위에서 file1과 file2로 보냈으니 file1, file2로 나온다.          
+	           mfile = filelist.getFile(fieldName);  //저장된 파일 객체
+	       }
 	   
-	    System.out.println("파일이름" + file.getName());
-	    System.out.println(file.length()+"byte");
+	       File file= null; 
+	       try { 
+	          file = new File(mfile.getOriginalFilename());
+	          file.createNewFile(); FileOutputStream fos = new FileOutputStream(file);
+	          fos.write(mfile.getBytes());
 	    
-	    //=============python과 socket통신으로 사진 보낸후 분석 결과 받기 =========================================
-		OutputStream out=null;
-		FileInputStream fin=null;
-		BufferedOutputStream bos = null;
-		Socket soc=null;
-		
-		try {
-			soc = new Socket("192.168.0.77", 8001); // 192.168.0.77은 루프백 아이피로 자신의 아이피를 반환해주고,
-			//8001 server port
-			out = soc.getOutputStream(); // 서버에 바이트단위로 데이터를 보내는 스트림을 개통합니다.
-			DataOutputStream dout = new DataOutputStream(out); // OutputStream을 이용해 데이터 단위로 보내는 스트림을 개통합니다.
-			bos = new BufferedOutputStream(soc.getOutputStream());
-			fin = new FileInputStream(file); // FileInputStream - 파일에서 입력받는 스트림을 개통합니다.
-			
-			byte[] buffer = new byte[1024]; // 바이트단위로 임시저장하는 버퍼를 생성합니다.
-			int len; // 전송할 데이터의 길이를 측정하는 변수입니다.
-			int data = 0; // 전송횟수, 용량을 측정하는 변수입니다.
+	          fos.close(); 
+	       }catch(Exception e) { 
+	          e.printStackTrace();
+	       }	      
+	      System.out.println("파일이름" + file.getName());
+	      System.out.println(file.length()+"byte");	          
+	   //=============python과 socket통신으로 사진 보낸후 분석 결과 받기 =========================================
+	      OutputStream out=null;
+//	      InputStream in = null;
+	      FileInputStream fin=null;
+	      BufferedOutputStream bos = null;
+	      BufferedReader br = null;
+	      Socket soc=null; 
+	     
+	   //============소켓 열고 이미지 전송하기===================================      
+	      try {
+	         soc = new Socket("192.168.0.77", 8001); // 192.168.0.77은 루프백 아이피로 자신의 아이피를 반환해주고,
+      
+	         
+	         out = soc.getOutputStream(); // 서버에 바이트단위로 데이터를 보내는 스트림을 개통합니다. 
+	         bos = new BufferedOutputStream(out);
+	         fin = new FileInputStream(file); // FileInputStream - 파일에서 입력받는 스트림을 개통합니다.	         
+	         // change "1234" to "0000001234", to make sure 10 size.
+	         String flen = String.valueOf(file.length());
+	         String header = "0000000000".substring(0, 10-(int)flen.length()) +flen;
+	         byte[] buffer = new byte[1024]; // 바이트단위로 임시저장하는 버퍼를 생성합니다.
+	         int len; // 전송할 데이터의 길이를 측정하는 변수입니다.
+	         int data = 0; // 전송횟수, 용량을 측정하는 변수입니다.
+	         while ((len = fin.read(buffer)) >= 0) { // FileInputStream을 통해 파일에서 입력받은 데이터를 버퍼에 임시저장하고 그 길이를 측정합니다.
+	            data++; // 데이터의 양을 측정합니다.
+	         }         
+	         int datas = data; // 아래 for문을 통해 data가 0이되기때문에 임시저장한다.
+	         fin.close();
+	         fin = new FileInputStream(file); // FileInputStream이 만료되었으니 새롭게 개통합니다.
 
-			while ((len = fin.read(buffer)) >= 0) { // FileInputStream을 통해 파일에서 입력받은 데이터를 버퍼에 임시저장하고 그 길이를 측정합니다.
-				data++; // 데이터의 양을 측정합니다.
-			}
-				
-			int datas = data; // 아래 for문을 통해 data가 0이되기때문에 임시저장한다.
+	         len = 0;
+	         SendingDogImageThread sdt = new SendingDogImageThread(soc, bos, len, data, buffer, fin, header);
+	         boolean threadIsAlive = sdt.isAlive();
+	         sdt.start();
+	         sdt.join();//sdt가 처리될때까지 메인쓰레드는 기다림 
+	         fin.close();
 
-			fin.close();
-			fin = new FileInputStream(file); // FileInputStream이 만료되었으니 새롭게 개통합니다.
-//			dout.writeInt(data); // 데이터 전송횟수를 서버에 전송하고,
-//			dout.writeUTF(filename); // 파일의 이름을 서버에 전송합니다.
+	      //==================결과값 받기=================================
+	         
+	         
+	         br = new BufferedReader(new InputStreamReader(soc.getInputStream()));	         
+	         bos.flush();	 
+	         DogBreedClassifyingThread cw = new DogBreedClassifyingThread(soc, br);
+	         cw.start();
+	         cw.join();//cw가 처리될때까지 메인쓰레드가 기다림 
+	         
+	         while(true) { 
+	        	 breed = cw.getBreed();
+	        	 if(breed!=null)break;
+	         }
+	      }catch(Exception e1) {
+	         e1.printStackTrace();
+	      }finally {
+	         try {
+	        	fin.close();
+	            bos.close();
+	            br.close();
+	            soc.close();
+	         } catch (IOException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	      System.out.println("return");
+	      System.out.println("return값 : " + breed);
+	      
+	      return breed;
+	   }
 
-			len = 0;
-
-			for (; data > 0; data--) { // 데이터를 읽어올 횟수만큼 FileInputStream에서 파일의 내용을 읽어옵니다.
-				len = fin.read(buffer); // FileInputStream을 통해 파일에서 입력받은 데이터를 버퍼에 임시저장하고 그 길이를 측정합니다.
-				bos.write(buffer, 0, len); // 서버에게 파일의 정보(1kbyte만큼보내고, 그 길이를 보냅니다.
-			}
-
-			System.out.println("전송한 데이터 약 " + datas + " kbyte");
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				fin.close();
-				soc.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
-
-		//mv.setViewName("communityBoardList");
-		return "result";
-	}
-	
 	
 	@ResponseBody
 	@RequestMapping(value = "/findboardListWithPaging.do", produces = "application/json; charset=utf-8")
@@ -342,5 +365,5 @@ public class FindBoardController {
 			return null;
 		}	
 	}
-	
+
 }

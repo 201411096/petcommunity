@@ -123,32 +123,45 @@ function getData(tagCategory){
 
 function drawProductTable(data){
 	$('#productTable').empty();
-	var divPrefix1 = '<div class="col-lg-4 col-sm-6 artists-col">';
-	var a1 = '<a href="/petcommunity/productView.do?productId=';
+	var divPrefix1 = '<div class="col-lg-4 col-sm-6 artists-col" id="productList_product">';
+	var a1 = '<a id="productList_productName" href="/petcommunity/productView.do?productId=';
 	var a2 = '">';
 	var divPrefix2 = '<div class="artists-item">';
 	var img1 = '<img src="./resources/imgs/product_image/internal/product_image/';
 	var img2 = '.jpg" alt="">';
 	var h41 = '<h4>';
 	var h42 = '</h4>';
-	var span1 = '<span>'; 
-	var span2 = '</span>';
-	var p1 = '<p>';
-	var p2 = '</p>';
+	var span1 = '<span id="productList_productPrice">'; 
+	var span2 = ' 원</span>';
+	var p1 = '<p id="productList_feature">[ ';
+	var p2 = ' ]</p>';
 	var divSuffix = '</div>';
 	var aSuffix = '</a>';
 	
 	for(var i=0; i<data.productListSize; i++){
+		
+		if(i){
+			var newproduct = '<img id="newproductimg" src="./resources/imgs/product_image/external/pawInHand/icon.png" alt=""/>';
+		}else{
+			var newproduct='';
+		}
+		
+		
+		
+			
 		var listContent = 
 			divPrefix1 + 
 			a1 + data.productList[i].productId + a2 +
 			divPrefix2 +
 			img1 + data.productList[i].productName + img2 +
-			h41 + data.productList[i].productName + h42 +
-			span1 + data.productList[i].productPrice + span2 +
+			newproduct+
 			p1 + data.productList[i].productFeature + p2 +
+			h41 + data.productList[i].productName + h42 +aSuffix +
+			
+			span1 + data.productList[i].productPrice + span2 +
+			
 			divSuffix +
-			aSuffix +
+			
 			divSuffix;
 		$('#productTable').append(listContent);
 	}

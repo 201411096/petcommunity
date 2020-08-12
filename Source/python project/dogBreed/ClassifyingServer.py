@@ -6,54 +6,46 @@ from PIL import Image
 import os, glob, numpy as np
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
-
+import threading
 from PIL import Image
 from io import BytesIO
+import concurrent.futures
 
+def getImage(client_socket):
+    data = b''
+    header = client_socket.recv(10)
+    while 1:
+        #소켓을 통해 10240byte만큼 받음
+        img_bytes = client_socket.recv(10240)
+        print('img_bytes : ', len(img_bytes))
+        data+=img_bytes
+        #더이상 받을게 없으면 while문 나가기
+        if len(data) == int(header.decode()):
+            break
+    return data
 
-# 서버 소켓 오픈
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("", 8001))
-server_socket.listen(5)
-
-print("TCPServer Waiting for client on port 8001")
-
-while True:
-
-    # 클라이언트 요청 대기중 .
-    client_socket, address = server_socket.accept()
-    # 연결 요청 성공
-    print("I got a connection from ", address)
-
-    data = None
+def getDogBreed(client_socket):
 
     #data 변수에 byte형의 무언가를 담음
     data = b''
 
-    while 1:
-        #소켓을 통해 10240byte만큼 받음
-        img_bytes = client_socket.recv(10240)
-        print('img_byte', img_bytes)
-        data+=img_bytes
-        #더이상 받을게 없으면 while문 나가기
-        if not img_bytes:
-            break
 
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        future = executor.submit(getImage, client_socket)
+        data = future.result()
+
+    print(len(data))
+
+    print('사진 받아오기 완료')
     img_test = Image.open(BytesIO(data))
-
-
     ################### 받은 파일 분석하기 ############################
-    time.sleep(2)#이미지가 완전히 넘어올때까지 기다리기
-    #caltech_dir = "./testImg"
     image_w = 32
     image_h = 32
 
     pixels = image_h * image_w * 3
-
     X = []
-    #files = glob.glob(caltech_dir+"/2020_8_9_18_4_29.jpg")
 
-    #테스트할 이미지
+    #테스트할 이미지 지정
     test_img = img_test
     test_img = test_img.convert("RGB")
     test_img = test_img.resize((image_w, image_h))
@@ -90,10 +82,28 @@ while True:
         result = max([i[0],  i[1],  i[2], i[3]])
 
         cnt += 1
-    print('해당 사진의 견종은', round(result*100), '%의 확률로', pre_ans_str, '입니다' )
-    resultSentence = '해당 사진의 견종은', result, '의 확률로', pre_ans_str, '입니다'
+    resultSentence = '해당 사진의 견종은 ' + str(round(result*100)) + '%의 확률로 ' + str(pre_ans_str) + '입니다'
+   # client_socket.send(resultSentence.encode())
 
-client_socket.close()
+    # 바이너리(byte)형식으로 변환한다.
+    # 데이터를 클라이언트로 전송한다.
+    client_socket.sendall(bytes(resultSentence+'\r\n','UTF-8'))
+
+# 서버 소켓 오픈
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind(("", 8001))
+server_socket.listen(10)
+
+print("TCPServer Waiting for client on port 8001")
+
+while True:
+    # 클라이언트 요청 대기중 .
+    client_socket, address = server_socket.accept()
+    # 연결 요청 성공
+    print("I got a connection from ", address)
+    receive = threading.Thread(target=getDogBreed, args=(client_socket,))
+    receive.start()
+
 print("SOCKET closed... END")
 
 

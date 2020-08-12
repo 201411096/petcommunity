@@ -29,6 +29,10 @@
 				<li class="list-group-item">업로드시간 : ${lostBoardContent.lostboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>
 				<li class="list-group-item">
+				<div class='bigPictureWrapper'>
+					<div class='bigPicture'>
+					</div>
+				</div>
 					<div id="carouselExampleControls" class="carousel slide"
 						data-ride="carousel">
 						<div class="carousel-inner">

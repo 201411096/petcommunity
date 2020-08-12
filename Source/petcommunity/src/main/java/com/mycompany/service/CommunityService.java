@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.FindBoardVO;
+import com.mycompany.domain.LostBoardVO;
 
 
 public interface CommunityService {
@@ -32,4 +34,6 @@ public interface CommunityService {
 	public void dislikeContent(CommunityVO vo);
 	public List<CommunityVO> communityBoardListBySearchPaging(CommunityVO vo);
 	public List<CommunityVO> getBoardRank();
+	public List<LostBoardVO> getLostRank();
+	public List<FindBoardVO> getFindRank();
 }

@@ -10,10 +10,51 @@ ul#pagination-demo{
 	text-align: center;
 }
 
+#pagination_container{
+    text-align: center;
+    float:center;
+    margin-left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
 table#findHospitalTable{
 	text-align: center;
+	float:center;
 }
 
 table#findHospitalTable th{
 	text-align: center;
+}
+
+
+/*반응형*/
+@media screen and (max-width: 768px){
+	
+#map{
+	width:100%;
+	height:500px;
+	margin-top: 15px;
+}
+
+ul#pagination-demo{
+	text-align: center;
+}
+
+#pagination_container{
+    text-align: center;
+    float:center;
+    margin-left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+table#findHospitalTable{
+	text-align: center;
+	float:center;
+}
+
+table#findHospitalTable th{
+	text-align: center;
+}
 }

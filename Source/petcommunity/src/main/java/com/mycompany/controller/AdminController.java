@@ -34,8 +34,8 @@ public class AdminController {
 
 	/*
 	 * 함수 이름 : selectList 
-	 * 주요 기능 : 
-	 * 함수 내용 :
+	 * 주요 기능 : 판매내역 목록 출력
+	 * 함수 내용 : BuylistDate에서 판매 시간 제거, 판매날짜만 받아와서 출력
 	 */
 	@RequestMapping("/adminPage.do")
 	public ModelAndView selectList(BuylistviewVO buylistviewvo, String startDate, String endDate) {
@@ -44,9 +44,9 @@ public class AdminController {
 		List<BuylistviewVO> salesList = adminService.adminselectList(buylistviewvo);
 	
 		for (int i = 0; i < salesList.size(); i++) {
-			salesList.get(i).setBuylistDate(salesList.get(i).getBuylistDate().substring(0, 10));
-			System.out.println("salesList.get(i).getBuylistDate().substring(0, 10):"+salesList.get(i).getBuylistDate().substring(0, 10));
+			salesList.get(i).setBuylistDate(salesList.get(i).getBuylistDate().substring(0, 10));			
 		}
+		
 		mv.addObject("salesList", salesList);
 
 		return mv;
@@ -54,8 +54,8 @@ public class AdminController {
 
 	/*
 	 * 함수 이름 : selectDate
-	 * 주요 기능 : 
-	 * 함수 내용 :
+	 * 주요 기능 : 날짜 입력하여 선택한 날짜범위만 출력 
+	 * 함수 내용 : BuylistDate에서 판매 시간 제거, 판매날짜만 받아와서 출력
 	 */
 	@RequestMapping("/datesearch.do")
 	public ModelAndView selectDate(String startDate, String endDate) {
@@ -82,7 +82,6 @@ public class AdminController {
 		List<BuylistviewVO> salesList = adminService.getSearchDate(map);
 		for (int i = 0; i < salesList.size(); i++) {
 			salesList.get(i).setBuylistDate(salesList.get(i).getBuylistDate().substring(0, 10));
-			System.out.println("salesList.get(i).getBuylistDate().substring(0, 10):"+salesList.get(i).getBuylistDate().substring(0, 10));
 		}
 
 		mv.addObject("salesList", salesList);
@@ -93,15 +92,14 @@ public class AdminController {
 
 	/*
 	 * 함수 이름 : defaultMain
-	 * 주요 기능 : 넥사크로 
-	 * 함수 내용 :
+	 * 주요 기능 : 회원 목록 출력
+	 * 함수 내용 : 
 	 */
 	@RequestMapping("/selectInfo.do")
 	public ModelAndView defaultMain(MemberVO memberevo) {
 		ModelAndView mv = new ModelAndView();
 		List<MemberVO> list = adminService.getMemberList(memberevo);
-		// ----------------------------------------
-		// DB에서 받아온 값을 넥사크로로 바인딩할 수 있도록 처리
+
 		DataSet ds = new DataSet("ar");
 		ds.addColumn("memberId", DataTypes.STRING, 100);
 		ds.addColumn("memberName", DataTypes.STRING, 100);
@@ -119,18 +117,17 @@ public class AdminController {
 		}
 		mv.setViewName("all");
 		mv.addObject("ds", ds);
-		return mv; // all.jsp
+		return mv;
 	}
 
 	/*
 	 * 함수 이름 : getMemberSelect
-	 * 주요 기능 : 
-	 * 함수 내용 :
+	 * 주요 기능 : 검색조건에 맞는 회원정보 출력
+	 * 함수 내용 : combobox, searchword에 입력받은 값 해쉬맵으로 받아 매퍼 연결
 	 */
 	@RequestMapping("/searchInfo.do")
 	public ModelAndView getMemberSelect(String combobox, String searchword) throws UnsupportedEncodingException {
-		System.out.println("getMemberSelect 컨트롤러 확인1" + combobox);
-		System.out.println("getMemberSelect 컨트롤러 확인2" + searchword);
+		
 		ModelAndView mv = new ModelAndView();
 		Map map = new HashMap();
 		combobox = URLDecoder.decode(combobox, "utf-8");
@@ -172,22 +169,28 @@ public class AdminController {
 
 	/*
 	 * 함수 이름 : deleteInfo
-	 * 주요 기능 : 
-	 * 함수 내용 :
+	 * 주요 기능 : 회원 삭제
+	 * 함수 내용 : 삭제할 memberId 받아온 후 일치하는 정보 삭제, groupId 받아와서 qna게시판에 연결된 답변글 삭제 
 	 */
 	@RequestMapping("/deleteInfo.do")
 	public void deleteInfo(String memberId, HttpServletRequest request) {
 		QnaVO qnavo = new QnaVO();
 		qnavo.setMemberId(memberId);
+		
 		List<QnaVO> qnavoList = qnaService.selectQuestionGroupId(qnavo);
 		for (int i = 0; qnavoList.size() > i; i++) {
 			qnaService.deleteQnaBoardbyGroupId(qnavoList.get(i));
 		}
+		
 		adminService.deleteInfo(memberId);
 
 	}
 
-	
+	/*
+	 * 함수 이름 : managerSelect
+	 * 주요 기능 : 
+	 * 함수 내용 :
+	 */
 	@RequestMapping(value = "/managerselect.do")
 	public ModelAndView managerSelect() {
 		System.out.println("조회버튼");
@@ -215,7 +218,11 @@ public class AdminController {
 		return mv;
 	}
 
-	
+	/*
+	 * 함수 이름 : managerInsert
+	 * 주요 기능 : 
+	 * 함수 내용 :
+	 */
 	@RequestMapping(value = "/managerInsert.do")
 	public ModelAndView managerInsert(String id, String dept, String hireDate, HttpServletRequest request) {
 		
@@ -261,7 +268,11 @@ public class AdminController {
 		
 	}
 
-	
+	/*
+	 * 함수 이름 : managerdelete
+	 * 주요 기능 : 
+	 * 함수 내용 :
+	 */
 	@RequestMapping(value = "/managerdelete.do")
 	public ModelAndView managerdelete(String id) {
 

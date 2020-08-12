@@ -18,7 +18,7 @@ public class CommunityVO {
 	private String commentCount; //댓글개수 가져오기
 	//paging변수들
 	private int startList; //페이징이 시작하는 페이지
-	private int pageSize=20; //한 페이지에 보이는 글의 수
+	private int pageSize=10; //한 페이지에 보이는 글의 수
 	private int lastList; 
     private int prevPage;//이전페이지
     private int nextPage;//다음페이지

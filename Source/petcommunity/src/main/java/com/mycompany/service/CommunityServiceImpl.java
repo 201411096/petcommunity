@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mycompany.dao.CommunityDAOImpl;
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.LostBoardVO;
 
 
@@ -137,6 +138,12 @@ public class CommunityServiceImpl implements CommunityService{
 	public List<LostBoardVO> getLostRank() {
 		
 		return communityDAO.getLostRank();
+	}
+
+	@Override
+	public List<FindBoardVO> getFindRank() {
+		
+		return communityDAO.getFindRank();
 	}
 
 	

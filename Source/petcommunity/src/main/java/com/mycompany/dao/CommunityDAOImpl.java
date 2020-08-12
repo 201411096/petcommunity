@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mycompany.domain.CommentVO;
 import com.mycompany.domain.CommunityVO;
+import com.mycompany.domain.FindBoardVO;
 import com.mycompany.domain.LostBoardVO;
 
 
@@ -164,6 +165,12 @@ public class CommunityDAOImpl implements CommunityDAO{
 	public List<LostBoardVO> getLostRank() {
 	
 		return mybatis.selectList("communityDAO.getLostRank");
+	}
+
+	@Override
+	public List<FindBoardVO> getFindRank() {
+	
+		return mybatis.selectList("communityDAO.getFindRank");
 	}
 	
 	

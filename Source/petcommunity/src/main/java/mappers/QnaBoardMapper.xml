@@ -65,21 +65,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test='searchType=="0"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
 			OR REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
 		<if test='searchType=="1"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
 		<if test='searchType=="2"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
 		<if test='searchType=="3"'>
 			WHERE REGEXP_LIKE(MEMBER_ID,'(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
-		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
+			order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ANSWERFLAG asc, QUESTIONBOARD_ID 
+<!-- 		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ANSWERFLAG asc, QUESTIONBOARD_ID -->
 		))
 	<![CDATA[ 
 	where RNUM>=#{startRow} and RNUM<=#{endRow}
@@ -94,21 +91,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test='searchType=="0"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')
 			OR REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
 		<if test='searchType=="1"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_TITLE, '(*)'|| #{searchWord} ||'(*)')	
-			
 		</if>
 		<if test='searchType=="2"'>
 			WHERE REGEXP_LIKE(QUESTIONBOARD_CONTENT, '(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
 		<if test='searchType=="3"'>
 			WHERE REGEXP_LIKE(MEMBER_ID,'(*)'|| #{searchWord} ||'(*)')
-			
 		</if>
-		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
+		order by QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ANSWERFLAG asc,QUESTIONBOARD_ID 
 	</select>
 
 	<insert id="insertReply" parameterType="qna">
@@ -160,8 +153,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAnswerFlag" resultType="qna">
 		SELECT *
 		FROM QUESTIONBOARD
-		WHERE QUESTIONBOARD_ANSWERFLAG=3
-		ORDER BY QUESTIONBOARD_GROUP_ID DESC, QUESTIONBOARD_ID
+		WHERE QUESTIONBOARD_ANSWERFLAG=-1
+		ORDER BY QUESTIONBOARD_ID desc
 	</select>
 	
 	<insert id="insertQnaNotice" parameterType="qna">
@@ -170,7 +163,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
 		#{questionboardReadcount}+0, #{memberId},#{questionboardAnswerflag})
 	</insert>
-	
 	
 
 

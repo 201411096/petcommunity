@@ -124,30 +124,32 @@ function getData(tagCategory){
 function drawShopTable(data){
 	$('#shopTable').empty();
 	var divPrefix1 = '<div class="col-lg-4 col-sm-6 artists-col">';
-	var a1 = '<a href="';
+	var a1 = '<a id="productName" href="';
 	var a2 = '" target="_blank">';
 	var divPrefix2 = '<div class="artists-item">';
 	var img1 = '<img src="./resources/imgs/product_image/external/pawInHand/';
 	var img2 = '.jpg" alt="">';
 	var h41 = '<h4>';
-	var h42 = '</h4>';
-	var span1 = '<span>'; 
-	var span2 = '</span>';
+	var h42 = '<hr id="shophr"></h4>';
+	var span1 = '<span id="shopProductprice">'; 
+	var span2 = ' 원 </span>';
 	var p1 = '<p>';
 	var p2 = '</p>';
 	var divSuffix = '</div>';
 	var aSuffix = '</a>';
+	var shopnameimg = '<img id="shopnameimg" src="./resources/imgs/product_image/external/pawInHand/icon.png" alt=""/>';
 	for(var i=0; i<data.shopListSize; i++){
+		
 		var listContent = 
 			divPrefix1 + 
 			a1 + data.shopList[i].shopLink + a2 +
 			divPrefix2 +
 			img1 + data.shopList[i].shopProductname + img2 +
-			h41 + data.shopList[i].shopProductname + h42 +
+			p1+shopnameimg+p2+
+			h41 + data.shopList[i].shopProductname.substring(9,) + h42 +aSuffix+
 			span1 + data.shopList[i].shopProductprice + span2 +
-			p1 + data.shopList[i].shopName + p2 +
+//			p1 + data.shopList[i].shopName + p2 +
 			divSuffix +
-			aSuffix +
 			divSuffix;
 		$('#shopTable').append(listContent);
 	}

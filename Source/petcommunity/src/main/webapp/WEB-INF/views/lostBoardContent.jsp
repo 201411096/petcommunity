@@ -2,18 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file="../views/header.jsp"%>
+<%@include file="../views/header_kys.jsp"%>
 <html>
 <head>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="./resources/css/lostboardcontent.css" />
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 <title>게시판</title>
 </head>
@@ -28,6 +29,10 @@
 				<li class="list-group-item">업로드시간 : ${lostBoardContent.lostboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>
 				<li class="list-group-item">
+				<div class='bigPictureWrapper'>
+					<div class='bigPicture'>
+					</div>
+				</div>
 					<div id="carouselExampleControls" class="carousel slide"
 						data-ride="carousel">
 						<div class="carousel-inner">
@@ -59,9 +64,11 @@
 						</a>
 					</div>
 				</li>
+				<li class="list-group-item boardcontent-container">
+					<p class="card-text">${lostBoardContent.lostboardContent}</p>
+				</li>
 			</ul>
 			<div class="card-body">
-				<p class="card-text">${lostBoardContent.lostboardContent}</p>
 				<form id="lostBoardContentForm" action='' method='post'>	
 					<input type='hidden' id='memberId' name='memberId' value='${lostBoardContent.memberId}'>
 					<input type='hidden' id='lostboardId' name='lostboardId' value='${lostBoardContent.lostboardId}'>
@@ -74,12 +81,12 @@
 					<input type="hidden" id="lostboardLocation" name="lostboardLocation" value="${lostBoardContent.lostboardLocation}">
 					<div id="button-container">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" id="listButton">글
+							<button type="button" class="btn btn-secondary" id="listButton">글
 								목록</button>
 							<c:if test="${isWriterFlag == 1}">
-								<button type="button" class="btn btn-default" id="updateButton">글
+								<button type="button" class="btn btn-secondary" id="updateButton">글
 									수정</button>
-								<button type="button" class="btn btn-default" id='deleteButton'>글
+								<button type="button" class="btn btn-secondary" id='deleteButton'>글
 									삭제</button>
 							</c:if>
 						</span>

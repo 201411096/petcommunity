@@ -19,6 +19,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <link rel="stylesheet" href="./resources/css/adminPage.css" />
 <link rel="stylesheet" href="./resources/css/adminGraph.css" />
+<link rel="stylesheet" href="./resources/css/adminProduct.css" />
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/style.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
@@ -279,17 +280,19 @@
 			</div><!-- tab-2 end .. --> 		
 		
 			<div id="tab-3" class="tab-content">
-				<div class="search row current">
+				<!--  <div class="search row current">-->
 					<div class="col-xs-10 col-sm-10">
 						<div class="input-group">	
 							<span id="search-container">
 							<input type="text" name="searchWord" class='form-control' id="searchWord" placeholder="검색어를 입력하세요."/>
+							<button id="searchBtn" type="button" class="btn btn-default">검색</button><br/><br/>
+							<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default">상품 등록</a>
 							</span> 
-							<span class="input-group-btn"> 
-								<button id="searchBtn" type="button" class="btn btn-default" style=" width: 76px; margin-right: 10%;">검색</button>
-								<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default" style="margin-left: 100%;">상품 등록</a>
-							</span>	
-					</div></div></div>
+							<!-- <span class="input-group-btn"> 
+								<button id="searchBtn" type="button" class="btn btn-default" >검색</button>
+								
+							</span>	 -->
+					</div></div>
 					<br>
 <!-- 
 					<div id="productInfoButtonContainer">
@@ -301,7 +304,7 @@
 							</form>
 					</div></div> -->
 					
-					<br>	
+					<br/><br/><br/><br/><br/><br/>
 					
 						<form role="form" method="get">
 							<table id="productDataTable" class="table table-hover">
@@ -323,9 +326,9 @@
 										<th scope="col">상품 번호</th>
 										<th scope="col">상품명</th>
 										<th scope="col">가격</th>
-										<th scope="col">수량</th>
-										<th scope="col">카테고리</th>
-										<th scope="col">상품 내용</th>
+										<th scope="col" style="padding-left: 0px; padding-right: 0px;">수량</th>
+										<th scope="col" style="width: 56px; padding-left: 0px; padding-right: 0px;">카테고리</th>
+										<th scope="col" style="width: 56px; padding-left: 0px; padding-right: 0px;">상품내용</th>
 										<th scope="col">수정</th>
 										<th scope="col">삭제</th>
 									</tr>
@@ -334,11 +337,14 @@
 							
 								</tbody>
 							</table>
-						<div class="col-md-offset-3" id="pagination_container" style="margin-left:0px;">
+							
+					
+							
+						<div class="col-md-offset-3" id="pagination_container">
 							<ul id="pagination-demo" class="pagination-lg"></ul>
 						</div>
 						</form>
-						</div>				
+						</div>			
 			</section>
 		</div>
 	<script src="resources/js/adminProduct.js" type="text/javascript"></script>

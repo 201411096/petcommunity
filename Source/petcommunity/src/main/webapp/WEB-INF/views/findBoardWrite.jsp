@@ -79,9 +79,12 @@
 <!-- 				<input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> -->
 				<ul class="list-group" id="file-list">
 					<li class="list-group-item"> 
-						<input type="file" name="file" id='uploadImg' class="file" accept="image/gif, image/jpeg, image/png"/> 
-						<span class="selectedImg"><img src="" /></span>
-						<span id='resultOfBreed'></span>
+						<input type="file" name="file" id='uploadImg0' class="file" accept="image/gif, image/jpeg, image/png"/> 
+						<br/>
+						<span>
+							<img class="selectedImg" src="" />
+						</span>					
+						<span class="breedNotify"></span>
 					</li>
 				</ul>
 				

@@ -1,11 +1,121 @@
+
+
+/*admin product */
 #writeBtn{
-	width:100%
+	width:100%;
+    margin-left: 0px;	
 }
 
+
+#searchBtn{
+	width:20%;
+    margin-right: 0px;   
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#searchWord{
+	 width: 80%;"
+}
+
+.input-group{
+	width: 100%;
+}
+
+#pagination_container{
+    text-align: center;
+    float:center;
+    margin-left: 0px;
+    height: 100%;
+    width: 100%;
+}
 
 #productDataTable{
 	text-align: center;
+	float:center;
 }
+
 #productInfoButtonContainer{
 	float:right;
+}
+
+.search row current{
+    width: 1000px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+th{
+    padding-left: 0px;
+    padding-right: 0px;
+	text-align: center;
+}
+
+
+form{
+    margin-right: 0px;
+    width: 100%
+    margin-right: 0px;
+}
+
+
+/*반응형*/
+@media screen and (max-width: 768px){
+	
+	#writeBtn{
+	width:100%;
+    margin-left: 0px;	
+}
+
+
+#searchBtn{
+	width:20%;
+    margin-right: 0px;   
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#searchWord{
+	 width: 80%;"
+}
+
+.input-group{
+	width: 100%;
+}
+
+#pagination_container{
+    text-align: center;
+    float:center;
+    margin-left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+#productDataTable{
+	text-align: center;
+	float:center;
+}
+
+#productInfoButtonContainer{
+	float:right;
+}
+
+.search row current{
+    width: 1000px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+th{
+    padding-left: 0px;
+    padding-right: 0px;
+	text-align: center;
+}
+
+
+form{
+    margin-right: 0px;
+    width: 100%
+    margin-right: 0px;
+}
 }

@@ -32,6 +32,7 @@
 		
 			<h4 id="qnatitle">고객센터</h4>
 			<p id="qnasubtitle">QNA 게시판입니다.</p>
+		
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -64,7 +65,9 @@
 							<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
 						</span> <span class="input-group-btn">
 							<button id="writeBtn" type="submit" class="btn btn-default">글쓰기</button>
-<!-- 								<a href="/petcommunity/noticePage.do" class="btn btn-default" id="noticeBtn">공지</a> -->
+							<c:if test="${membervo.memberId eq 'admin06'}">
+								<a href="/petcommunity/noticePage.do" class="btn btn-default" id="noticeBtn">공지</a>
+							</c:if>
 						</span>
 					</div>
 				</div>

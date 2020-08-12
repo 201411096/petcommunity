@@ -135,7 +135,7 @@ function receiveMessage(){
 }
 // message toast 알림
 function toastMessage(messageContent, messageFrom, messageTo){
-	toastr["info"](messageFrom+"<br /><br />"+messageContent);
+	toastr["info"](messageFrom+'<a href="/petcommunity/searchId.do?otherId='+messageTo+'&searchNew='+messageFrom+'" target="_blank">바로가기</a>'+"<br /><br />"+messageContent);
 //	toastr["info"](messageFrom+"<br /><br />"+messageContent);
 //	toastr.info(messageFrom, messageContent, {timeOut: 5000});
 	toastr.options = {
@@ -146,7 +146,7 @@ function toastMessage(messageContent, messageFrom, messageTo){
 			  "rtl": false,
 			  "positionClass": "toast-top-right",
 			  "preventDuplicates": false,
-			  "onclick": null,
+			  "onclick": false,
 			  "showDuration": 300,
 			  "hideDuration": 1000,
 			  "timeOut": 0,

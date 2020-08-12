@@ -16,25 +16,34 @@ $(function() {
 			$('#findBoardWriteForm')[0].submit(); // ***** [0].submit ***** 
 		}
 	});
-	$(document).on('change', 'input.file', function(e){
+
+	var temp = 1;
+	$(document).on('change', 'input[id^="uploadImg"]', function(e){
 		console.log($('input.file').val());
 		if($(this).val()!=''){
-			$('#file-list').append('<li class="list-group-item"> <input type="file" name="file" class="file" accept="image/gif, image/jpeg, image/png"/> </li>');
+			$('#file-list').append('<li class="list-group-item">'+ 
+					'<input type="file" name="file" class=file id=uploadImg' + temp + ' accept="image/gif, image/jpeg, image/png"/>' + 
+					'<br/><span> <img class=selectedImg  src="" /></span>' + 
+					'<span class="breedNotify"></span></li>'					
+			);
 		}else{
 			$(this).parent().remove();
 			console.log('파일 비어있음');
 		}
-	});
-	$('#uploadImg').change(function(){
+		
 		if(this.files&&this.files[0]){
 			var reader = new FileReader;
+//			var breed = $(this).next().next().next();
+//			var image = $(this).next().next().children();
+			var breed = $(this).next().next().next();
+			var image = $(this).next().next().children();
 			reader.onload = function(data){
-				$('.selectedImg img').attr("src", data.target.result).width(150);
+				image.attr("src", data.target.result).width(150);
 			}
 			reader.readAsDataURL(this.files[0]);
 			var formData = new FormData(); 
-		
-			formData.append("file", $("#uploadImg")[0].files[0]);
+			
+			formData.append("file", $(this)[0].files[0]);
 			$.ajax({ 
 				type: 'POST', 
 				url: 'checkDogBreed.do', 
@@ -42,11 +51,15 @@ $(function() {
 				contentType: false, // 필수
 				data: formData, 
 				success: function(data) { 
+					setTimeout(()=>{
+						console.log(data);
+					}, 10000);
 					
+					breed.text("견종 알림이 : " + data);
 				} 
 			});
 			}
-	
+	temp +=1;
 	});
 });
 

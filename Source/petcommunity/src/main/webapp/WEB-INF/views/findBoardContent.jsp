@@ -28,6 +28,10 @@
 				<li class="list-group-item">업로드시간 : ${findBoardContent.findboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>
 				<li class="list-group-item">
+				<div class='bigPictureWrapper'>
+					<div class='bigPicture'>
+					</div>
+				</div>
 					<div id="carouselExampleControls" class="carousel slide"
 						data-ride="carousel">
 						<div class="carousel-inner">
@@ -37,14 +41,18 @@
 								<img src="${pageContext.request.contextPath}/resources/imgs/findboard/default/1.png" alt="...">
 							</div>
 						</c:if>
-						<c:if test="${empty fileflag}">
-							<div class="carousel-item active" data-interval='3000'>
-								<img src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${file.name}" alt="이미지가 존재하지 않습니다.">
-							</div>
+						
+						<c:if test="${empty fileflag}">						
+								<div class="carousel-item active" data-interval='3000'>							
+									<img src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${file.name}" alt="이미지가 존재하지 않습니다.">
+								</div>
 						</c:if>
+						
 							<c:forEach items="${fileList}" var="file">
 								<div class="carousel-item" data-interval='3000'>
-									<img src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${file.name}" alt="이미지가 존재하지 않습니다.">
+									
+										<img class='showImg' src="${pageContext.request.contextPath}/resources/imgs/findboard/${findBoardContent.findboardId}/${file.name}" alt="이미지가 존재하지 않습니다.">
+									
 								</div>							
 							</c:forEach>
 						</div>

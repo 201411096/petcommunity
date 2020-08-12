@@ -40,16 +40,16 @@
 				<textarea class="form-control" rows="5" name="questionboardContent"
 					id="questionboardContent" placeholder="내용을 입력해주세요."></textarea>
 			</div>
-				<label>memberId : ${membervo.memberId}<br> 
+				<label>memberId : ${member.memberId}<br> 
 				</label>
 				<input type="hidden" name="memberId"
 				id="memberId" value="${membervo.memberId}">
 				<input type="hidden" name="questionboardReadcount"
 				id="questionboardReadcount" value="0">
 				<input type="hidden" name="questionboardAnswerflag"
-				id="questionboardAnswerflag" value="3">
+				id="questionboardAnswerflag" value="-1">
 				<input type="hidden" name="questionboardGroupId"
-				id="questionboardGroupId" value="0">
+				id="questionboardGroupId" value="99999">
 				<span class="input-group-btn">
 					<button type="submit" class="btn btn-default" id='NoticeBoardBtn'>작성완료</button>
 					<a class="btn btn-default" id='cancelWrite' href="/petcommunity/cs.do">돌아가기</a>

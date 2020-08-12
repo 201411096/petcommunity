@@ -48,8 +48,7 @@ public class QnaController {
 	/*
 	 * 함수 이름 : getQnaBoardWrite 
 	 * 주요 기능 : 게시판 작성페이지 이동 
-	 * 함수 내용 : 비로그인의 경우 로그인 페이지 이동,
-	 * 로그인의 경우 작성페이지 이동
+	 * 함수 내용 : 비로그인의 경우 로그인 페이지 이동, 로그인의 경우 작성페이지 이동
 	 */
 	@RequestMapping("/write.do")
 	public ModelAndView getQnaBoardWrite(QnaVO qnavo, HttpSession session) {
@@ -66,8 +65,7 @@ public class QnaController {
 	/*
 	 * 함수 이름 : insertQnaBoard 
 	 * 주요 기능 : 작성한 글 입력, 목록 페이지 이동 
-	 * 함수 내용 : 연결 되어있는 아이디 세팅, 파일
-	 * 첨부시 업로드
+	 * 함수 내용 : 연결 되어있는 아이디 세팅, 파일 첨부시 업로드
 	 */
 
 	@RequestMapping(value = "/writeIntoQna.do", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
@@ -78,7 +76,6 @@ public class QnaController {
 		qnavo.setMemberId(((MemberVO) session.getAttribute("memberVO")).getMemberId());
 		int result = qnaService.insertQnaBoard(qnavo);
 
-		// 파일
 		if (result == 1) {
 			FileUpload.makeDirectory(
 					request.getSession().getServletContext().getRealPath("resources/imgs") + "/qnaboard/");
@@ -114,17 +111,14 @@ public class QnaController {
 		qnavoList = qnaService.selectQnaBoardWithPaging(map);
 		for(int i=0;i<qnavoList.size();i++) {
 			qnavoList.get(i).setQuestionboardUploadtime(qnavoList.get(i).getQuestionboardUploadtime().substring(0,10));
-			System.out.println("date확인"+qnavoList.get(i).getQuestionboardUploadtime().substring(0,10));
 			
 		}
-		
-		
-		
 		result.put("pagination", paginationVO);
 		result.put("QnaBoardVOList", qnavoList);
 		result.put("QnaBoardVOListSize", qnavoList.size());
-		result.put("qnaId", qnavo.getMemberId());
+		
 		result.put("membervo", membervo);
+		
 		
 		ArrayList<String> fileArrayList = new ArrayList<String>();
 		for (int i = 0; i < qnavoList.size(); i++) {
@@ -139,7 +133,6 @@ public class QnaController {
 				fileArrayList.add(fileList[0].getName());		
 			}
 		}
-	
 		result.put("fileList", fileArrayList);
 			
 		return result;
@@ -234,9 +227,9 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : deleteQnaBoard 주요 기능 : 게시글 삭제 후 목록페이지 이동 
-	 * 함수 내용 : 연결된 계정과 작성글의 아이디가
-	 * 일치하는 경우만 삭제
+	 * 함수 이름 : deleteQnaBoard 
+	 * 주요 기능 : 게시글 삭제 후 목록페이지 이동 
+	 * 함수 내용 : 연결된 계정과 작성글의 아이디가 일치하는 경우만 삭제
 	 */
 	@RequestMapping(value = "delete.do", produces = "application/text; charset=utf-8")
 	public ModelAndView deleteQnaBoard(QnaVO qnavo) {
@@ -286,8 +279,9 @@ public class QnaController {
 	}
 
 	/*
-	 * 함수 이름 : checkId 주요 기능 : 아이디 확인 함수 내용 : 연결된 아이디와 게시글 아이디 일치, 불일치, 비로그인인 경우로
-	 * 구분하여 다른 값 리턴
+	 * 함수 이름 : checkId 
+	 * 주요 기능 : 아이디 확인 
+	 * 함수 내용 : 연결된 아이디와 게시글 아이디 일치, 불일치, 비로그인인 경우로 구분하여 다른 값 리턴
 	 */
 	@ResponseBody
 	@RequestMapping("checkId")
@@ -328,6 +322,7 @@ public class QnaController {
 		}
 		return msg;
 	}
+	
 	@RequestMapping("noticePage")
 	public ModelAndView getQnaNoticePage(HttpSession session) {
 		MemberVO membervo = (MemberVO)session.getAttribute("memberVO");

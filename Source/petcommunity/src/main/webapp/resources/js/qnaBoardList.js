@@ -81,10 +81,11 @@ function drawQnaTable(data) {
 	var trSuffix = '</tr>';
 	var tdPrefix = '<td>';
 	var tdPrefix_boardId = '<td id="td_boardId" width="7%" style="text-align:left">';
-	var tdPrefix_memberId = '<td id="td_memberId" width="12% style="text-align:left">';
-	var tdPrefix_uploadtime = '<td id="td_uploadtime" width="13%">';
-	var tdPrefix_readcount = '<td id="td_readcount" width="6%">';
-	var tdPrefix_title = '<td id="title">';
+	var tdPrefix_boardImage = '<td width="10%">';
+	var tdPrefix_memberId = '<td id="td_memberId" width="12% style="text-align:center">';
+	var tdPrefix_uploadtime = '<td id="td_uploadtime" width="13%" style="text-align:center">';
+	var tdPrefix_readcount = '<td id="td_readcount" width="6%" style="text-align:center">';
+	var tdPrefix_title = '<td id="title" style="text-align:left">';
 	var tdSuffix = '</td>';
 
 	for (var i = 0; i < data.QnaBoardVOListSize; i++) {
@@ -113,7 +114,7 @@ function drawQnaTable(data) {
 
 		+= tdPrefix_boardId + data.QnaBoardVOList[i].questionboardId + tdSuffix
 
-		+ tdPrefix + preImage + tdSuffix
+		+ tdPrefix_boardImage + preImage + tdSuffix
 
 		+ tdPrefix_title
 				+ '<a href="/petcommunity/qnaContent.do?questionboardId='

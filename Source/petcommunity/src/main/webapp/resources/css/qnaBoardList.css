@@ -98,6 +98,9 @@ tr#adminList{
 	margin-bottom: 5%;
 }
 
+#tr_title{
+	text-align: center;
+}
 
 td a{
 	color : black;
@@ -108,11 +111,15 @@ table td{
 	font-size: 17px;
 }
 
+table td#td_memberId{
+ 	text-align: center;
+	font-size: 17px;
+}
+
 td #titleImage{
 	width: 60px;
 	height: 60px;
 }
-
 
 @media screen and (max-width: 1200px) {
    #container table th:nth-child(1), th:nth-child(5), th:nth-child(6)  { 

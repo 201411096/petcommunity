@@ -133,7 +133,7 @@
 				<img class="mungimg"
 					src="./resources/bootstrap_template/bootstrap_seyeong/img/main1.png"
 					alt="#"><a href="resources/imgs/wordCloud/wordCloud.png" id="readMore"
-					class="readMore"><strong>Word Cloud Here</strong></a>
+					class="readMore"><strong>강아지 연관 인기검색어</strong></a>
 			</div>
 		</section>
 

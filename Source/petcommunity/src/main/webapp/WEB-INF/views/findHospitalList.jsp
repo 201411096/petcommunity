@@ -123,6 +123,10 @@
 
 	console.log("-----------------------------------")
  
+	/* var latitude = $('#findhospitalX').val();
+	var longitude = $('#findhospitalY').val();
+	var findhospitalAddress = $('#findhospitalAddress').val(); */
+	
 	var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(36.601621, 127.2983811),
@@ -130,8 +134,11 @@
 		};
 
 		var map = new kakao.maps.Map(container, options);
-
 		
+			/* for(var i=0; i<data.findHospitalVOListSize; i++){
+				var position =  new kakao.maps.LatLng(data.findHospitalVOList[i].findhospitalX, data.findHospitalVOList[i].findhospitalY);
+				
+			 */
 
 	    var positions = [
 	        {

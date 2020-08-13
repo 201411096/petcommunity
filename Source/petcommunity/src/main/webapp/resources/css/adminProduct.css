@@ -2,7 +2,7 @@
 
 /*admin product */
 #writeBtn{
-	width:100%;
+	width: 10%;
     margin-left: 0px;
     font:normal;
    	font-size:16px;
@@ -11,14 +11,17 @@
     border-color:#e4e4e4;
     border-radius: 10px;
     background: #fff;	
+    padding-left: 0px;
+    padding-right: 0px;
+    
 }
 
 
 #searchBtn{
-	width:20%;
-    margin-right: 0px;   
     padding-left: 0px;
     padding-right: 0px;
+    width: 10%;
+    margin-right: 0px;
     font:normal;
    	font-size:16px;
   	padding: 10px 20px;
@@ -29,7 +32,7 @@
 }
 
 #searchWord{
-	 width: 75%;
+	 width: 70%;
     margin-top: 0px;
     height: 45px;
 	 
@@ -42,7 +45,7 @@
     background: #fff;
 }
 
-btn btn-warning{
+/* btn btn-warning{
 	width:100%;
     margin-left: 0px;
     font:normal;
@@ -52,10 +55,10 @@ btn btn-warning{
     border-color:#e4e4e4;
     border-radius: 10px;
     background: #fff;	
-}
+} */
 	
 
-btn btn-primary{
+button#updateProduct{
 	width:100%;
     margin-left: 0px;
     font:normal;
@@ -121,7 +124,8 @@ form{
 @media screen and (max-width: 768px){
 	
 #writeBtn{
-	width:100%;
+	
+    width: 10%;
     margin-left: 0px;
     font:normal;
    	font-size:16px;
@@ -129,12 +133,16 @@ form{
     margin-right: 5px;
     border-color:#e4e4e4;
     border-radius: 10px;
-    background: #fff;	
+    background: #fff;
+    padding-left: 0px;
+    padding-right: 0px;	
 }
 
 
 #searchBtn{
-	width:20%;
+
+	
+	width: 10%;
     margin-right: 0px;   
     padding-left: 0px;
     padding-right: 0px;
@@ -147,36 +155,11 @@ form{
     background: #fff;
 }
 
-#updateBtn{
-	width:100%;
-    margin-left: 0px;
-    font:normal;
-   	font-size:16px;
-  	padding: 10px 20px;
-    margin-right: 5px;
-    border-color:#e4e4e4;
-    border-radius: 10px;
-    background: #fff;	
-}
-	
-
-#deleteBtn{
-	width:100%;
-    margin-left: 0px;
-    font:normal;
-   	font-size:16px;
-  	padding: 10px 20px;
-    margin-right: 5px;
-    border-color:#e4e4e4;
-    border-radius: 10px;
-    background: #fff;	
-}
-
-
 #searchWord{
-	 width: 75%;
+	 width: 70%;
     margin-top: 0px;
-    height: 45px; 
+    height: 45px;
+	 
 	font:normal;
    	font-size:16px;
   	padding: 10px 20px;
@@ -185,6 +168,32 @@ form{
     border-radius: 10px;
     background: #fff;
 }
+
+/* btn btn-warning{
+	width:100%;
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
+} */
+	
+
+button#updateProduct{
+	width:100%;
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
+}
+
 
 .input-group{
 	width: 100%;
@@ -231,4 +240,5 @@ form{
     margin-right: 0px;
     width: 100%
     margin-right: 0px;
-}	
+}
+	

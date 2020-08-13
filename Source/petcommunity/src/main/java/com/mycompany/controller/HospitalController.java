@@ -120,42 +120,42 @@ public class HospitalController {
 	
 	}
 	
-	
-	@RequestMapping(value = "/autoCompleteForFindHospital.do", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
-	@ResponseBody
-	public String autoCompleteForFindHospital(FindHospitalVO vo, String searchWord) {
-		Map searchMap = new HashMap();
-		searchMap.put("searchWord", searchWord);
-		List<String> stringList = findHospitalService.selectString(searchMap);
-		if(stringList!=null) {
-			String[] array = new String[stringList.size()];
-			for(int i=0; i< stringList.size(); i++) {
-				array[i] = stringList.get(i);					 
-			}
-			Gson gson = new Gson();
-			return gson.toJson(array);
-		}else {
-			return null;
-		}
-	}
-
-	@RequestMapping(value = "/autoCompleteForMap2.do", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
-	@ResponseBody
-	public String autoCompleteForMap2(String searchWord) {
-		Map searchMap = new HashMap();
-		searchMap.put("searchWord", searchWord);
-		List<String> stringList = findHospitalService.selectString(searchMap);
-	
-		if(stringList!=null) {
-			String[] array = new String[stringList.size()];
-			for(int i=0; i< stringList.size(); i++) {
-				array[i] = stringList.get(i);
-			}
-			Gson gson = new Gson();
-			return gson.toJson(array);
-		}
-		return "";
-	}
+//	
+//	@RequestMapping(value = "/autoCompleteForFindHospital.do", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
+//	@ResponseBody
+//	public String autoCompleteForFindHospital(FindHospitalVO vo, String searchWord) {
+//		Map searchMap = new HashMap();
+//		searchMap.put("searchWord", searchWord);
+//		List<String> stringList = findHospitalService.selectString(searchMap);
+//		if(stringList!=null) {
+//			String[] array = new String[stringList.size()];
+//			for(int i=0; i< stringList.size(); i++) {
+//				array[i] = stringList.get(i);					 
+//			}
+//			Gson gson = new Gson();
+//			return gson.toJson(array);
+//		}else {
+//			return null;
+//		}
+//	}
+//
+//	@RequestMapping(value = "/autoCompleteForMap2.do", method = RequestMethod.GET, produces = "application/text; charset=utf-8")
+//	@ResponseBody
+//	public String autoCompleteForMap2(String searchWord) {
+//		Map searchMap = new HashMap();
+//		searchMap.put("searchWord", searchWord);
+//		List<String> stringList = findHospitalService.selectString(searchMap);
+//	
+//		if(stringList!=null) {
+//			String[] array = new String[stringList.size()];
+//			for(int i=0; i< stringList.size(); i++) {
+//				array[i] = stringList.get(i);
+//			}
+//			Gson gson = new Gson();
+//			return gson.toJson(array);
+//		}
+//		return "";
+//	}
 
 	@RequestMapping(value="/getGeoLocation", method= {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody

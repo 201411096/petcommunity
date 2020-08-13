@@ -32,11 +32,11 @@
 						<div class="input-group">	
 							<span id="search-container">
 							<input type="text" name="searchWord" class='form-control' id="searchWord" placeholder="검색어를 입력하세요."/>
-							<button id="searchBtn" type="button" class="btn btn-default">검색</button><br/><br/>
-							<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default">상품 등록</a>
+							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+							<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default">등록</a>
 							</span> 
 					</div></div>
-					<br><br/><br/><br/><br/><br/><br/><br/>
+					<br><br/><br/><br/>
 
 					<form role="form" method="get">
 							<table id="productDataTable" class="table table-hover">

@@ -33,8 +33,6 @@ $(function() {
 		
 		if(this.files&&this.files[0]){
 			var reader = new FileReader;
-//			var breed = $(this).next().next().next();
-//			var image = $(this).next().next().children();
 			var breed = $(this).next().next().next();
 			var image = $(this).next().next().children();
 			reader.onload = function(data){

@@ -28,6 +28,7 @@ var app = https.createServer(options, (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
 
 }).listen(3000, '192.168.0.18', () => {
+// }).listen(60005, '115.91.88.227', () => {
 // }).listen(3000, '121.171.119.57', () => {
     console.log('listening on *:3000');
 });
@@ -36,9 +37,16 @@ var io = require('socket.io')(app);
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('disconnecting', () => {
-    const rooms = Object.keys(socket.rooms);
+    // const rooms = Object.keys(socket.rooms);
     // io.to(rooms.keys[0]).emit('chat message', socket.nickname+'님이 퇴장하셨습니다.');
-    console.log(socket.rooms)
+    // console.log('room 확인 ...');
+    // console.log(socket.rooms);
+    // console.log('type 확인 ... ' + typeof(socket.rooms));
+
+    // for(var i=0; i<socket.rooms.length; i++){
+    //   console.log(i+'번째 ...');
+    //   io.to(socket.rooms[i]).emit('chat message', socket.nickname+"님이 퇴장하셨습니다.");
+    // }
   });
   socket.on('disconnect', function(){
     console.log('user disconnected');

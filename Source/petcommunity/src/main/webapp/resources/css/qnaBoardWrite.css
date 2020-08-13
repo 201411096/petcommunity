@@ -4,6 +4,10 @@ body{
 
 }
 
+#container{
+	 padding-top:5%;
+   background: #faf9f8;
+}
 .container{
 	min-height:100%;
    position:relative;

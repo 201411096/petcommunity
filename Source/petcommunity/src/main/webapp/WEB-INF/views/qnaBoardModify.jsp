@@ -24,6 +24,7 @@
 <title>게시판</title>
 </head>
 <body>
+<section id="container">
 	<div class="container">
 	<div id="qnaTitle">
 			<h4>게시글 수정하기</h4>
@@ -51,6 +52,7 @@
 					<a href="/petcommunity/cs.do" class="btn btn-default" id='cancelWrite'> 취소</a>
 		</form>
 	</div>
+	</section>
 </body>
 </html>
 <%@include file="../views/footer.jsp"%>

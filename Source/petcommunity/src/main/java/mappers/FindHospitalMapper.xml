@@ -82,6 +82,25 @@ where RNUM>=#{startRow} and RNUM<=#{endRow}
 </select>  
 
 
+<!-- 지도 검색  -->
+
+<select id="getFindHospitalForMap" parameterType="hashmap" resultType="findHospital">
+		select * from findHospital
+		where FINDHOSPITAL_ADDRESS
+		<if test = "searchName != ''">
+		and REGEXP_LIKE (FINDHOSPITAL_ADDRESS, '(*)'||#{searchName}||'(*)')
+		</if>
+		 
+	</select>
+
+
+
+
+
+
+
+
+
 
 	
 </mapper>

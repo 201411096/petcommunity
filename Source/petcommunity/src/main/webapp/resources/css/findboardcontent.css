@@ -78,5 +78,11 @@ img{
    padding-top:5%;
    background: #faf9f8;
 }
+#contentText{
+	font-size:20px;
+}
 
 
+.bgColor{
+	background:#faf9f8;
+}

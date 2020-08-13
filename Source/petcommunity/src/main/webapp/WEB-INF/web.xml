@@ -65,8 +65,8 @@
         </user-data-constraint>
     </security-constraint>
     
-<!--     <error-page> -->
-<!--     	<location>/errors.do</location> -->
-<!-- 	</error-page> -->
+    <error-page>
+    	<location>/errors.do</location>
+	</error-page>
 
 </web-app>

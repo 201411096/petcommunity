@@ -11,6 +11,8 @@ body{
 #container{
 	height: 100%;
 	margin-bottom: 10%;
+	padding-top:5%;
+   background: #faf9f8;
 }
 
 ul#pagination-demo{
@@ -32,16 +34,25 @@ input#keywordInput{
 
 #searchBtn{
 	margin-right: 20%;
-	color: black;
-	font-size:18px;
-	font-family: 'NanumSquare', sans-serif !important; 
+	font-family: 'NanumSquare', sans-serif !important;
+	 font:normal;
+   font-size:16px;
+   padding: 10px 20px;
+   margin-right: 5px;
+	border-color:#e4e4e4;
+  border-radius: 10px;
+  background: #fff;
 }
 
 #writeBtn{
-	color: black;
-	font-size:18px;
-
-	font-family: 'NanumSquare', sans-serif !important; 
+	font-family: 'NanumSquare', sans-serif !important;
+	font:normal;
+	font-size:16px;
+	padding: 10px 20px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff; 
 }
 
 .search ul{
@@ -57,8 +68,8 @@ input#keywordInput{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: #faf9f8;
+    border: 1px solid #faf9f8;
     font-size: 13px;
 }
 
@@ -181,8 +192,8 @@ input#keywordInput{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: #faf9f8;
+    border: 1px solid #faf9f8;
     font-size: 13px;
 }
 

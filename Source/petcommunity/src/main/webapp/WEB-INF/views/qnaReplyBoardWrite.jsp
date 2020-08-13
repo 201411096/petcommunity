@@ -24,8 +24,8 @@
 <title>게시판</title>
 </head>
 <body>
+<section id="container">
 	<div class="container">
-		
 		<div id="qnaTitle">
 			<h4>답변 작성하기</h4>
 			<p id="qnasubtitle">QNA 게시판입니다.</p>
@@ -59,6 +59,7 @@
 			</div>
 		</form>
 	</div>
+	</section>
 </body>
 </html>
 <%@include file="../views/footer.jsp"%>

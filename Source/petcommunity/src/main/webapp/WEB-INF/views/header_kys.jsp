@@ -17,6 +17,8 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <link href="./resources/css/toastr.css" rel="stylesheet" type="text/css" />
+	<script
+		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 <!-- Stylesheets -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/font-awesome.min.css" />
@@ -103,8 +105,6 @@
 
 	<!--====== Javascripts & Jquery ======-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-	<script
-		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
 	<script

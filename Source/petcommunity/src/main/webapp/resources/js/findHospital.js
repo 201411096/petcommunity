@@ -362,6 +362,7 @@ function drawTable(data){
 	}
 }
 
+//지도 검색
 function getDataWithoutPaging(){
 	$.ajax({
 		type : 'post',
@@ -564,18 +565,18 @@ function setCenterLocation(){
 }
 
 
-$(document).ready(function(){
-	$('#wordCloud').click(function(){
-        // 500 * 500 사이즈 윈도우 창을 변수로 담아서 새로 열어준다. 
-		let newWindow = window.open("","width=1000 height=1000");   
-        //newWindow라는 창에 img태그 생성해주기
-		let img = newWindow.document.createElement("img"); 
-		img.setAttribute("src","https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png");  //이미지가 저장되어있는 경로를 src 안에 넣기
-		img.setAttribute("width","1000");   //width속성 변경
-		img.setAttribute("height","1000");  //height속서 변경
-		newWindow.document.body.appendChild(img);   //body안에 가장 마지막 요소로 img 추가
-	});
-});
+//$(document).ready(function(){
+//	$('#wordCloud').click(function(){
+//        // 500 * 500 사이즈 윈도우 창을 변수로 담아서 새로 열어준다. 
+//		let newWindow = window.open("","width=1000 height=1000");   
+//        //newWindow라는 창에 img태그 생성해주기
+//		let img = newWindow.document.createElement("img"); 
+//		img.setAttribute("src","https://localhost:8443/petcommunity/resources/imgs/wordCloud/wordCloud.png");  //이미지가 저장되어있는 경로를 src 안에 넣기
+//		img.setAttribute("width","1000");   //width속성 변경
+//		img.setAttribute("height","1000");  //height속서 변경
+//		newWindow.document.body.appendChild(img);   //body안에 가장 마지막 요소로 img 추가
+//	});
+//});
 
 
 

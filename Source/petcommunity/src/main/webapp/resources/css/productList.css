@@ -6,6 +6,14 @@ body{
 	
 }
 
+#productTable{
+	margin-top: 3%;
+}
+.product-filter-section{
+   padding-top:5%;
+   background: #faf9f8;
+}
+
 .col-lg-4{
 	margin-top:5%;
 	margin-bottom: 5%;
@@ -27,13 +35,13 @@ body{
    margin-left: 28%;
 }
 
-#productList_feature{
+#p_feature{
 	margin-top: 2%;
 	font-size: 16px;
 	color: black;
 }
 
-#productList_feature:hover{
+#p_feature:hover{
 	margin-top: 2%;
 	font-size: 16px;
 	color: black;
@@ -43,19 +51,33 @@ body{
 	border: 1px solid #c0c0c0;
 }
 
+
+#searchBtn{
+	font:normal;
+	font-size:16px;
+	padding: 6px 16px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff;  
+	
+}
+
 .artists-item h4{
 	font-size: 17px;
 	color: black;
+	height: 30px;
+	
 }
 
-.artists-item #productList_productName:hover{
+.artists-item #p_productName:hover{
 	font-size: 17px;
 	color: gray;
 	text-decoration: none;
 
 }
 
-#productList_productPrice{
+#p_productPrice{
 	font-family: 'NanumSquare', sans-serif !important;
 	font-style: normal;
 	font-size: 17px;
@@ -81,6 +103,7 @@ body{
 	width: 100%;
 	padding: 10px 20px;
 	border-radius: 31px;
+	margin-left: -30%;
 	
 }
 
@@ -94,14 +117,11 @@ body{
 	padding: 10px 20px;
 	border-radius: 31px;
 	text-decoration: none;
-}
-
-.product-filter-menu{
-	margin-left: 18%;	
+	margin-left: -30%;
 }
 
 
-/* 스크롤 배너 css */
+/* 스크롤 배너 css ------------>>*/
 #banner {
 	width:100%;
 	height:325px;
@@ -250,7 +270,7 @@ body{
 }
 
 
-/* 스크롤 배너 css */
+/* <<----------- 스크롤 배너 css */
 #pagination-demo>li>a, #pagination-demo>li>span {
    
     position: relative;
@@ -260,13 +280,188 @@ body{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: #faf9f8;
+    border: 1px solid #faf9f8;
 }
 
 #ul-div{
 	text-align: center;
-	margin-left: -30%;
+	margin-left: -10%;
+}
+#pagination-div{
+	text-align: center;
+	position: relative;
+}
+
+#pagination_container{
+	text-align: center;
+}
+
+/* search part */
+/* #searchDiv{
+	margin-right: auto;
+	margin-left: auto;
+} */
+
+/* #serchSomething{
+	width : 10%;
+	text-align: center;
+} */
+#locationTag{
+	color : skyblue;
+}
+#searchDiv{
+	width:100%;
+}
+#searchBar{
+	width:200px;
+	float:right;
+}
+.artists-item img{
+	width: 100%;
+	margin-bottom: 5%;
+	
+}
+
+
+
+
+@media ( max-width : 767px ) {
+
+.bannerDiv {
+	display: none;
+}
+
+body{
+	font-family: 'NanumSquare', sans-serif !important; 	
+	
+}
+
+#productTable{
+	margin-top: 3%;
+}
+
+#searchBtn{
+	font:normal;
+	font-size:13px;
+	padding: 8px 16px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff;  
+}
+
+.col-lg-4{
+	margin-top:5%;
+	margin-bottom: 5%;
+}
+
+#producttitle{
+   text-align: center;
+   color: black;
+   font-size: 26px;
+   margin-bottom: 1%;
+   margin-left: 1%;
+}
+
+#productsubtitle{
+   font-size:16px;
+   color: gray;
+   text-align: center;
+   margin-bottom: 5%;
+   margin-left: 1%;
+}
+
+#p_feature{
+	margin-top: 2%;
+	font-size: 16px;
+	color: black;
+}
+
+#p_feature:hover{
+	margin-top: 2%;
+	font-size: 16px;
+	color: black;
+}
+
+#producthr{
+	border: 1px solid #c0c0c0;
+}
+
+.artists-item h4{
+	font-size: 17px;
+	color: black;
+	height: 30px;
+	margin-bottom: 10%;
+}
+
+.artists-item #p_productName:hover{
+	font-size: 17px;
+	color: gray;
+	text-decoration: none;
+
+}
+
+#p_productPrice{
+	font-family: 'NanumSquare', sans-serif !important;
+	font-style: normal;
+	font-size: 17px;
+}
+
+#newproductimg{
+	width: 50px;
+	margin-left: -2%;
+	margin-bottom: -2%;
+	margin-top: -3%;
+}
+#bar{
+	font-size: 14px;
+	color: gray;
+}
+
+.product-filter-menu > li > a {
+	color: black;
+	font-size: 12px;
+/* 	font-weight: 700; */
+	text-transform: uppercase;
+/* 	background: #ebebeb; */
+	width: 100%;
+	padding: 3px 3px;
+	border-radius: 31px;
+	margin-left: -10%;
+	
+}
+
+.product-filter-menu > li > a:hover {
+	color: gray;
+	font-size: 12px;
+/* 	font-weight: 700; */
+	text-transform: uppercase;
+/* 	background: #ebebeb; */
+	width: 100%;
+	padding: 3px 3px;
+	border-radius: 31px;
+	text-decoration: none;
+	margin-left: -10%;
+}
+
+#pagination-demo>li>a, #pagination-demo>li>span {
+   
+    position: relative;
+    float: left;
+    padding: 6px 5px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #636363;
+    text-decoration: none;
+    background-color: #faf9f8;
+    border: 1px solid #faf9f8;
+    font-size: 14px;
+}
+
+#ul-div{
+	text-align: center;
+	margin-left: -10%;
 }
 #pagination-div{
 	text-align: center;
@@ -300,23 +495,4 @@ body{
 .artists-item img{
 	width: 100%
 }
-
-
-
-
-@media ( max-width : 767px ) {
-	
-
-.bannerDiv {
-	display: none;
 }
-}
-
-/* #searchBtn{
-	position: relative;
-    left: 10px;
-				
-}
-#writeBtn{			
-	margin-left: 10px;
-} */

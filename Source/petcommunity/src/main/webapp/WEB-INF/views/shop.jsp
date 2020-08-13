@@ -44,29 +44,48 @@
 			 -->
 
 	<!-- Product filter section -->
-	<section class="product-filter-section">
+	<section id="backGround">
 		<div class="container">
+		<!-- 우측 배너 시작  -->
+		<div class="bannerDiv">
+			<div class="glyphicon glyphicon-chevron-up" id="bannerX2"></div>
+			<div id="banner2">
+				<div class="tab_menu_container">
+					<button class="tab_menu_btn on" type="button">실종신고<span class="badge badgeNew">N</span></button>
+					<button class="tab_menu_btn" type="button" id="findRank">목격<span class="badge badgeNew">N</span></button>
+
+				</div>
+				<div class="tab_box_container">
+				<div class="tab_box on">
+	
+						<span class="badge badge-danger">1</span><a href="#" id="a1"></a><br>
+						<span class="badge badge-default">2</span><a href="#" id="b1"></a><br>
+						<span class="badge badge-default">3</span><a href="#" id="c1"></a><br>
+						<span class="badge badge-default">4</span><a href="#" id="d1"></a><br>
+						<span class="badge badge-default">5</span><a href="#" id="e1"></a><br>
+					
+				</div>
+				
+					<div class="tab_box">
+						<span class="badge badge-danger">1</span><a href="#" id="a2"></a><br>
+						<span class="badge badge-default">2</span><a href="#" id="b2"></a><br>
+						<span class="badge badge-default">3</span><a href="#" id="c2"></a><br>
+						<span class="badge badge-default">4</span><a href="#" id="d2"></a><br>
+						<span class="badge badge-default">5</span><a href="#" id="e2"></a><br>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- 우측 배너 끝 -->
 			<div class="section-title">
-				<h4 id="shoptitle">유기견 후원 스토어</h4>
-				<p id="shopsubtitle">판매상품은 유기견에게 후원됩니다</p>
+				<h4 id="shoptitle">stray dog store</h4>
+				<p id="shopsubtitle">판매금액으로 유기견 후원하는 쇼핑몰입니다</p>
 			</div>
 			<br />
 			<form>
-				<div id="searchDiv">
-					<div class="input-group" id="searchBar">
-						<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
-
-						<!-- <span id="searchBar">class="col-lg-offset-4" 
-    											
-  									</span> -->
-						<span id="#searchInput-container"> <input
-							class="form-control" id="searchSomething" type="text">
-						</span> <span class="input-group-btn">
-							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-						</span>
-					</div>
-					<p style="clear: both;"></p>
-				</div>
+				
 			</form>
 			<br />
 			<div id="ul-div1">
@@ -95,6 +114,24 @@
 						class="tagCategory" value="기타 잡화">기타 잡화</a></li>
 				</ul>
 			</div>
+			<div id="searchDiv">
+					<div class="input-group" id="searchBar">
+						<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
+
+						<!-- <span id="searchBar">class="col-lg-offset-4" 
+    											
+  							
+  									</span> -->
+  									
+						<input
+							class="form-control" id="searchSomething" type="text">
+						<span class="input-group-btn">
+							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+						</span>
+						
+					</div>
+					<p style="clear: both;"></p>
+				</div>
 			<!-- Product filter section -->
 
 			<div id='shopTable' class="row artists-row">
@@ -123,14 +160,15 @@
 				</div>
 			</div>
 		</div>
-	</section>
+		</section>
+
 	<!-- Products page end -->
 
 
 	<!-- Footer section  -->
 
 	<!-- Footer section end -->
-
+<%@include file="../views/footer.jsp"%>
 
 	<script src="./resources/js/shopList.js"></script>
 

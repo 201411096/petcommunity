@@ -19,6 +19,7 @@
 <title>게시판</title>
 </head>
 <body>
+<section id="container">
 	<div class="container">
 		<div id="qnaTitle">
 			<h4>게시글 작성하기</h4>
@@ -54,7 +55,7 @@
 				</span>
 		</form>
 	</div>
-
+</section>
 </body>
 </html>
 <%@include file="../views/footer.jsp"%>

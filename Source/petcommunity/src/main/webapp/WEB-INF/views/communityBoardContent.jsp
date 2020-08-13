@@ -20,7 +20,7 @@
 <title>oki doghere커뮤니티</title>
 </head>
 <body>
-
+	<section id = "section">
 	<div class="container">
 
 	<br/><br/>
@@ -31,7 +31,7 @@
 			<div class="form-group">
 				<input type="hidden" id="forRecommend" value="${boardContent.communityboardId}">
 				<span id=communityContentTitle>${boardContent.communityboardLocation}</span>
-				<h2>${boardContent.communityboardTitle}</h2>
+				<h1>${boardContent.communityboardTitle}</h1>
 				<div id=communityContentWriter>${boardContent.memberId} <br/></div>
 				<div id=communityContentTime>${boardContent.communityboardUploadtime }</div>
 			</div>
@@ -50,7 +50,7 @@
 			
 			<br/><br/>
 			<c:if test="${not empty sessionScope.memberVO}">
-				<img src='resources/imgs/communityboard/like/like.PNG' id='like'>
+				<img src='resources/imgs/communityboard/like/like.png' id='like'>
 				<span class='text-primary' id='recommendToContent'>추천</span>
 			</c:if>
 			<!-- 댓글내용 -->		
@@ -115,5 +115,7 @@
 				</form>	
 				
 		</div>	
+		</section>
+		<%@include file="../views/footer.jsp"%>
 </body>
 </html>

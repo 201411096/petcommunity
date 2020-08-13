@@ -20,6 +20,7 @@
 #commentWriter{
 	font-size:12px;
 	font-weight: 700;
+	color : #979797;
 }
 
 #commentUploadTime{
@@ -41,5 +42,22 @@ table {
 #like{
 	cursor:pointer;
 }
-
-
+#communityContentContent{
+	font-size:20px;
+}
+#commentContent{
+	font-size:16px;
+}
+#section{
+   padding-top:5%;
+   background: #faf9f8;
+}
+button{
+	font:normal;
+    font-size:16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+	border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}

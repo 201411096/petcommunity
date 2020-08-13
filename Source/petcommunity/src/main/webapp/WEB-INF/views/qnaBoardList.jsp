@@ -30,8 +30,8 @@
 <section id="container">
 	<div class="container">
 		
-			<h4 id="qnatitle">고객센터</h4>
-			<p id="qnasubtitle">QNA 게시판입니다.</p>
+			<h4 id="qnatitle">Qna center</h4>
+			<p id="qnasubtitle">고객문의 페이지입니다.</p>
 		
 			<table class="table table-hover">
 				<thead>
@@ -87,8 +87,7 @@
 	<script src="resources/js/qnaBoardList.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
-	<script src="resources/bootstrap_template/template_01/scripts3/main.js"></script>
+
 </body>
 
 </html>

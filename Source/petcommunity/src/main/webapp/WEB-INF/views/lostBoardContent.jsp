@@ -19,14 +19,15 @@
 <title>게시판</title>
 </head>
 <body>
+	<section id='section'>
 	<div class="container">
 		<div class="card">
-			<ul class="list-group list-group-flush">
-				<li class="list-group-item">번호 : ${lostBoardContent.lostboardId}</li>
-				<li class="list-group-item">제목 : ${lostBoardContent.lostboardTitle}</li>
-				<li class="list-group-item"><a href="/petcommunity/getChatPartner.do?messageFrom=${lostBoardContent.memberId}" target="_blank" onClick="window.open(this.href, '', 'width=562, height=890'); return false;">작성자 : ${lostBoardContent.memberId}</a></li>
-				<li class="list-group-item">상태 : ${lostBoardContent.lostboardStatus}</li>
-				<li class="list-group-item">업로드시간 : ${lostBoardContent.lostboardUploadtime}</li>
+			<ul class="list-group list-group-flush" >
+				<li class="list-group-item bgColor" >번호 : ${lostBoardContent.lostboardId}</li>
+				<li class="list-group-item bgColor" >제목 : ${lostBoardContent.lostboardTitle}</li>
+				<li class="list-group-item bgColor" ><a href="/petcommunity/getChatPartner.do?messageFrom=${lostBoardContent.memberId}" target="_blank" onClick="window.open(this.href, '', 'width=562, height=890'); return false;">작성자 : ${lostBoardContent.memberId}</a></li>
+				<li class="list-group-item bgColor" >상태 : ${lostBoardContent.lostboardStatus}</li>
+				<li class="list-group-item bgColor" >업로드시간 : ${lostBoardContent.lostboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>
 				<li class="list-group-item">
 				<div class='bigPictureWrapper'>
@@ -95,7 +96,8 @@
 			</div>
 		</div>
 	</div>
-
+	</section>
+	<%@include file="../views/footer.jsp"%>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 		<script src="resources/js/lostboardcontent.js"></script>

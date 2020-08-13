@@ -24,8 +24,9 @@
 </head>
 <body>
 	<section id="container">
-		<h4 id="qnatitle">고객문의</h4>
-		<p id="qnasubtitle">QNA 게시판입니다.</p>
+		<h4 id="qnatitle">Qna center</h4>
+		<p id="qnasubtitle">고객문의 게시판입니다.</p>
+		<div id="qnaTable">
 		<table>
 			<tr>
 				<td id="title">제목</td>
@@ -58,6 +59,7 @@
 				</td>
 			</tr>
 		</table>
+		</div>
 		<div id="mulBtn">
 			<c:if test="${admin eq '1' && groupListSize eq 1}">
 				<a
@@ -72,6 +74,7 @@
 			<a class="btn btn-default" id="qnaListBtn"
 				href="/petcommunity/qnaBoardList.do">목록</a>
 		</div>
+		
 	</section>
 	<script src="resources/js/qnaBoardContent.js"></script>
 </body>

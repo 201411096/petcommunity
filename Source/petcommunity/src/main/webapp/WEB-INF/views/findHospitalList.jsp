@@ -28,20 +28,20 @@
 <title>게시판</title>
 </head>
 <body>
- 
+ <section id="BackGround">	
 <div class="container">
 	<header>
-			<h4 id="findHospital">병원 찾기</h4>
+			<h4 id="findHospital">Hospital List</h4>
 			<p id="findHospitalSub">병원 찾기 게시판입니다.</p>
 	</header>
 	<hr/>
 
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
-		<section id="container">			
+				
 			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
 				<!-- <input name="sGubun" type="radio" checked value="0" > -->
 					<label class="radio">지역별 검색</label>
-						<select class="form-control" id='cityName' name ='cityName'>
+						<select class="form-control" id='cityName' name ='cityName' style="margin-top: 0px">
 							<option >시/도</option>
 							<option >서울</option>
 							<option >인천</option>
@@ -61,12 +61,12 @@
 							<option >경남</option>
 							<option >제주</option>
 						</select>
-						<select class="form-control" id='province' name ='province'>
+						<select class="form-control" id='province' name ='province' style="margin-top: 0px">
 							<option >구/군</option>					
 						</select>
 										
 						<span class="input-group-btn" style="padding-top: 10px;">
-							<button type="button" class="btn btn-default" id='searchLocation'>지역별 검색
+							<button type="button" id="button" class="btn btn-default" id='searchLocation'>지역별 검색
 							</button>
 						</span><br/><br/>
 			 </div>
@@ -75,10 +75,10 @@
 			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
 				<!-- <input name="sGubun" type="radio" value="1"> -->	
 				  <label class="radio">병원명 검색</label>
-						<input type="text" name="keyword" id="keywordInput" class="form-control"  placeholder="검색어, 병원명을 입력하세요."/>
+						<input type="text" name="keyword" id="keywordInput" class="form-control" style="margin-top: 0px" placeholder="검색어, 병원명을 입력하세요."/>
 							
 						<span class="input-group-btn" style="padding-top: 10px;">
-							<button type="button" class="btn btn-default" id='searchName'>병원명 검색
+							<button type="button" id="button" class="btn btn-default" id='searchName'>병원명 검색
 							</button>
 						</span><br/><br/>			
 			</div>
@@ -513,7 +513,7 @@
 	
 	<!-- Footer -->
 	
-	</section></div></body></html> 
+	</div></section></body></html> 
 
 
 

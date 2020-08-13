@@ -74,3 +74,17 @@ li.boardcontent-container{
 img{
 	cursor: pointer;
 }
+#section{
+   padding-top:5%;
+   background: #faf9f8;
+   margin-bottom:10%
+    padding-bottom:5%;
+}
+#contentText{
+	font-size:20px;
+}
+
+
+.bgColor{
+	background:#faf9f8;
+}

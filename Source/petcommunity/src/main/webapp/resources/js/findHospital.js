@@ -194,21 +194,21 @@ $(function(){
 	searchForMapEventHandler();
 });
 
-
-function searchForMapEventHandler(){
-	$('#searchLocation').on('click', getDataWithoutPaging);
-	$('#searchName').on('click', function(event){
-		if (event.keyCode === 13) {
-			if($('#searchName').val()!=""){
-				setCenterLocation($('#searchName').val());
-			}
-			setTimeout(function(){
-				getDataWithoutPaging();
-			}, 500);
-			
-		  };
-	});
-}
+//
+//function searchForMapEventHandler(){
+//	$('#searchLocation').on('click', getDataWithoutPaging);
+//	$('#searchName').on('click', function(event){
+//		if (event.keyCode === 13) {
+//			if($('#searchName').val()!=""){
+//				setCenterLocation($('#searchName').val());
+//			}
+//			setTimeout(function(){
+//				getDataWithoutPaging();
+//			}, 500);
+//			
+//		  };
+//	});
+//}
 
 function documentPreventKeyDown(){
 	document.addEventListener('keydown', function(event) {
@@ -333,7 +333,11 @@ function getData(){
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
-                startPage: currentPage,
+            	prev: "이전",
+                next: "다음",
+                first: '«',
+                last: '»',
+            	startPage: currentPage,
                 totalPages: totalPages
             }));
 		},
@@ -363,28 +367,28 @@ function drawTable(data){
 }
 
 //지도 검색
-function getDataWithoutPaging(){
-	$.ajax({
-		type : 'post',
-		async:true,
-		url : '/petcommunity/findhospitalListWithoutPaging.do',
-		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		data : {
-			"searchLocation" : $('#searchLocation').val(),
-			"searchName" : $('#searchName').val()
-		},
-		dataType : 'json',
-		success : function(resultData){
-			setTimeout(function(){
-				kakaoMapAPI(resultData);
-			}, 2000);
-			//kakaoMapAPI(resultData);
-		},
-		error:function(request,status,error){
-			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-		}		
-	});
-}
+//function getDataWithoutPaging(){
+//	$.ajax({
+//		type : 'post',
+//		async:true,
+//		url : '/petcommunity/findhospitalListWithoutPaging.do',
+//		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
+//		data : {
+//			"searchLocation" : $('#searchLocation').val(),
+//			"searchName" : $('#searchName').val()
+//		},
+//		dataType : 'json',
+//		success : function(resultData){
+//			setTimeout(function(){
+//				kakaoMapAPI(resultData);
+//			}, 2000);
+//			//kakaoMapAPI(resultData);
+//		},
+//		error:function(request,status,error){
+//			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//		}		
+//	});
+//}
 
 
 //var latitude = $('#findhospitalX').val();

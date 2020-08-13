@@ -28,7 +28,11 @@ body{
 }
 
 .form-group label{
-	font-size: 15px;
+	font-size: 17px;
+}
+
+.form-group p{
+	font-size: 17px;
 }
 
 #questionboardTitle{
@@ -39,4 +43,23 @@ body{
 	font-size: 17px;
 }
 
+#commitWrite{
+	font:normal;
+font-size:16px;
+padding: 10px 20px;
+margin-right: 5px;
+border-color:#e4e4e4;
+border-radius: 10px;
+background: #fff;
+}
+
+#cancelWrite{
+	font:normal;
+font-size:16px;
+padding: 10px 20px;
+margin-right: 5px;
+border-color:#e4e4e4;
+border-radius: 10px;
+background: #fff;
+}
 

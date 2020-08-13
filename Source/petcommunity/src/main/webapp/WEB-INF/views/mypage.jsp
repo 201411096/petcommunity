@@ -159,35 +159,35 @@
 						class="memberUpdate-form" id="memberUpdate-form">
 						<div class="form-group">
 							<label for="name"><i
-								class="zmdi zmdi-account material-icons-name">이름</i></label> <input
+								class="zmdi">이름</i></label> <input
 								type="text" name="memberName" id="memberName" />
 						</div>
 						<div class="form-group">
-							<label for="tel"><i class="zmdi zmdi-phone">휴대폰 번호</i></label> <input
+							<label for="tel"><i class="zmdi">휴대폰 번호</i></label> <input
 								type="text" name="memberTel" id="memberTel" />
 						</div>
 						<div class="form-group">
-							<label for="id"><i class="zmdi zmdi-account-box">ID</i></label> <input
+							<label for="id"><i class="zmdi">ID</i></label> <input
 								type="text" id="memberId" disabled="disabled" /> <input
 								type="hidden" name="memberId" id="memberid">
 						</div>
 
 						<div class="form-group">
-							<label for="pass"><i class="zmdi zmdi-lock">비밀번호</i></label><input
+							<label for="pass"><i class="zmdi">비밀번호</i></label><input
 								type="password" name="memberPassword" id="memberPassword" />
 						</div>
 						<div class="form-group">
-							<label for="re-pass"><i class="zmdi zmdi-lock-outline">비밀번호
+							<label for="re-pass"><i class="zmdi">비밀번호
 									확인</i></label> <input type="password" name="re_pass" id="re_pass" />
 						</div>
 						<span id="passresult"></span>
 						<div class="form-group">
-							<label for="email"><i class="zmdi zmdi-email">email</i></label> <input
+							<label for="email"><i class="zmdi">email</i></label> <input
 								type="email" name="memberEmail" id="memberEmail" />
 						</div>
 
 						<div class="form-group">
-							<label class='zmdi zmdi-home'>주소</label> <input type="text"
+							<label class='zmdi'>주소</label> <input type="text"
 								id="sample2_postcode" placeholder="우편번호"> <input
 								type="button" id="addrBtn" onclick="sample2_execDaumPostcode()"
 								value="우편번호 찾기"><br> <input type="text"
@@ -242,6 +242,7 @@
 
 
 	</div>
+	<%@include file="../views/footer.jsp"%>
 	<!-- JS -->
 	<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>

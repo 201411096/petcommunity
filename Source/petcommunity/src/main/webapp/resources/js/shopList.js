@@ -151,10 +151,9 @@ function drawShopTable(data){
 			a1 + data.shopList[i].shopLink + a2 +
 			divPrefix2 +
 			img1 + data.shopList[i].shopProductname + img2 +
-			p1+shopnameimg+/*newproduct+*/p2+
-			h41 + data.shopList[i].shopProductname.substring(9,) + h42 +aSuffix+
+			p1+shopnameimg+p2+
+			h41 + data.shopList[i].shopProductname.substring(9,data.shopList[i].shopProductname.length) + h42 +aSuffix+
 			span1 + data.shopList[i].shopProductprice + span2 +
-//			p1 + data.shopList[i].shopName + p2 +
 			divSuffix +
 			divSuffix;
 		$('#shopTable').append(listContent);

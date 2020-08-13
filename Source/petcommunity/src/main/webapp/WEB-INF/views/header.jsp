@@ -56,20 +56,20 @@
 				<c:choose>
 					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
 						관리자/${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃]</a>
+						<a href="logout.do">Logout</a>
 
 					</c:when>
 
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃]</a>
+						<a href="logout.do">Logout</a>
 						<a href="mypageAnimal.do">[마이 페이지]</a>
 						<a href="productCart.do">[장바구니]</a>
 						<a href="getMessagePartner.do">[쪽지확인]</a>
 
 					</c:when>
 				</c:choose>
-
+				
 				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li>
 				<li><a href="findboardlist.do"><strong>목격했어요</strong></a></li>
 

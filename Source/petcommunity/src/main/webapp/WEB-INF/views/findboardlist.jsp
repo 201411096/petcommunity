@@ -22,6 +22,7 @@
 <title>게시판</title>
 </head>
 <body>
+<section id='section'>
 <%-- 	<jsp:include page="/header.do"></jsp:include> --%>
 	<div class="container">
 		<header>
@@ -102,9 +103,12 @@
 			</form>
 		</section>
 	</div>
+	</section>
+	<%@include file="../views/footer.jsp"%>
 	<script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/findboardlist.js"></script>
+	
 </body>
 
 </html>

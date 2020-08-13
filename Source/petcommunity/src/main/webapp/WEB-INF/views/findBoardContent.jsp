@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%-- <%@include file="../views/header.jsp"%> --%>
 <%@include file="../views/header_kys.jsp"%>
 <html>
 <head>
@@ -16,16 +17,18 @@
 <link rel="stylesheet" href="./resources/css/findboardcontent.css" />
 <title>게시판</title>
 </head>
-<body>
+<body>	
+	<section id='section'>
+
 	<div class="container">
 		<div class="card">
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">번호 : ${findBoardContent.findboardId}</li>
-				<li class="list-group-item">제목 : ${findBoardContent.findboardTitle}</li>
-				<li class="list-group-item">상태 : ${findBoardContent.findboardStatus}</li>
-				<li class="list-group-item"><a href="/petcommunity/getChatPartner.do?messageFrom=${findBoardContent.findboardName}" target="_blank" onClick="window.open(this.href, '', 'width=562, height=890'); return false;">작성자 : ${findBoardContent.findboardName}</a></li>
-				<li class="list-group-item">전화번호 : ${findBoardContent.findboardTel}</li>
-				<li class="list-group-item">업로드시간 : ${findBoardContent.findboardUploadtime}</li>
+				<li class="list-group-item bgColor" >번호 : ${findBoardContent.findboardId}</li>
+				<li class="list-group-item bgColor" >제목 : ${findBoardContent.findboardTitle}</li>
+				<li class="list-group-item bgColor" >상태 : ${findBoardContent.findboardStatus}</li>
+				<li class="list-group-item bgColor" ><a href="/petcommunity/getChatPartner.do?messageFrom=${findBoardContent.findboardName}" target="_blank" onClick="window.open(this.href, '', 'width=562, height=890'); return false;">작성자 : ${findBoardContent.findboardName}</a></li>
+				<li class="list-group-item bgColor" >전화번호 : ${findBoardContent.findboardTel}</li>
+				<li class="list-group-item bgColor" >업로드시간 : ${findBoardContent.findboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>
 				<li class="list-group-item">
 				<div class='bigPictureWrapper'>
@@ -68,7 +71,7 @@
 					</div>
 				</li>
 				<li class="list-group-item boardcontent-container">
-					<p class="card-text">${findBoardContent.findboardContent}</p>
+					<p class="card-text" id='contentText'>${findBoardContent.findboardContent}</p>
 				</li>
 			</ul>
 			<div class="card-body">
@@ -100,9 +103,12 @@
 			</div>
 		</div>
 	</div>
-
+	</section>
+	<%@include file="../views/footer.jsp"%>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 		<script src="resources/js/findboardcontent.js"></script>
+	
+
 </body>
 </html>

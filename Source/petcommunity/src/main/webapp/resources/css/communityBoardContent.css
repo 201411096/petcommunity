@@ -51,6 +51,8 @@ table {
 #section{
    padding-top:5%;
    background: #faf9f8;
+    margin-bottom:10%;
+    padding-bottom:5%;
 }
 button{
 	font:normal;
@@ -61,3 +63,4 @@ button{
     border-radius: 10px;
     background: #fff;
 }
+

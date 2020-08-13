@@ -95,3 +95,9 @@ div.infoWindowImageContainer{
 	max-width:50%;
 	margin:auto;
 }
+#section{
+   padding-top:5%;
+   background: #faf9f8;
+   margin-bottom:10%;
+    padding-bottom:5%;
+}

@@ -49,7 +49,7 @@ $(function(){
 	//클릭 이벤트
 	$(document).on("click", '.mypage-message', function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
-		$(this).css({"background-color": "rgb(193 248 130)"});
+		$(this).css({"background-color": "#ffeb33"});
 		otherId=$(this).attr("value");
 //		scrollController=1;
 		getChat(startPage, endPage);

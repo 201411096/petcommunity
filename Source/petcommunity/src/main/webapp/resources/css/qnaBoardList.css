@@ -125,6 +125,7 @@ table tr{
     line-height: 1.42857143;
     vertical-align: middle;
     border-top: 1px solid #ddd;
+    font-size: 20px;
 }
 
 /*  table td{ */
@@ -153,18 +154,24 @@ tr#adminList{
 	text-align: center;
 }
 
+td #boardtitle{
+	font-size: 20px;
+	color: #b2c7d9;
+	color: #ffeb33;
+}
+
 td a{
 	color : black;
 }
 
 table td{
  	text-align: left;
-	font-size: 17px;
+	font-size: 20px;
 }
 
 table td#td_memberId{
  	text-align: center;
-	font-size: 17px;
+	font-size: 20px;
 }
 
 td #titleImage{
@@ -307,10 +314,12 @@ table tr{
     line-height: 1.42857143;
     vertical-align: middle;
     border-top: 1px solid #ddd;
+    
 }
 
 tr#adminList{
 	background-color: #f3f3f3;
+	font-size: 20px;
 }
 
 #qnatitle{

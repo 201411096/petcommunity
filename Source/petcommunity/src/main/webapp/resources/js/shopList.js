@@ -120,7 +120,6 @@ function getData(tagCategory){
 		}		
 	});
 }
-
 function drawShopTable(data){
 	$('#shopTable').empty();
 	var divPrefix1 = '<div class="col-lg-4 col-sm-6 artists-col">';
@@ -138,21 +137,26 @@ function drawShopTable(data){
 	var divSuffix = '</div>';
 	var aSuffix = '</a>';
 	var shopnameimg = '<img id="shopnameimg" src="./resources/imgs/product_image/external/pawInHand/icon.png" alt=""/>';
+//	var newproduct ='';
 	for(var i=0; i<data.shopListSize; i++){
-		
-	/*	if(i<=2){
-			var newproduct = '<img id="newproductimg" src="./resources/imgs/product_image/external/pawInHand/newicon.png" alt=""/>';
-		}else{
-			var newproduct='';
-		}*/
-		
+//		if(productboolean==true){
+//				if(i<=2){
+//					newproduct = '<img id="newproductimg" src="./resources/imgs/product_image/external/pawInHand/newicon.png" alt=""/>';
+//				}else{
+//					newproduct = '';
+//					productboolean=false;
+//				}
+//			}else{
+//				newproduct = '';
+//			}
+//		
 		var listContent = 
 			divPrefix1 + 
 			a1 + data.shopList[i].shopLink + a2 +
 			divPrefix2 +
 			img1 + data.shopList[i].shopProductname + img2 +
-			p1+shopnameimg+/*newproduct+*/p2+
-			h41 + data.shopList[i].shopProductname.substring(9,) + h42 +aSuffix+
+			p1+shopnameimg+p2+
+			h41 + data.shopList[i].shopProductname.substring(9,data.shopList[i].length()) + h42 +aSuffix+
 			span1 + data.shopList[i].shopProductprice + span2 +
 //			p1 + data.shopList[i].shopName + p2 +
 			divSuffix +

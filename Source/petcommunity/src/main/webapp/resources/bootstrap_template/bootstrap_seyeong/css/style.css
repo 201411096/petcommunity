@@ -754,6 +754,14 @@ transparent
 	margin-bottom: -10%;
 }
 
+#findCounttitle {
+	font-family: 'MapoGoldenPier';
+/* font-family: 'NanumSquare', sans-serif !important; */
+	font-size: 23px;
+	margin-left: 63%;
+	margin-bottom: -10%;
+}
+
 .mungmung {
  	margin-top: -5%;
 	margin-left: 70%;

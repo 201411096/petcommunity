@@ -10,10 +10,8 @@
 		</layout>
 	</appender>
 	
-	<appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+	<appender name="rolling" class="org.apache.log4j.DailyRollingFileAppender">
 		<!-- 로그 파일 생성위치 -->
-<!-- 		<param name="file" value="../Log/log.log" /> -->
-<!-- 		<param name="file" value="${catalina.base}/logs/log4j.log" /> -->
 		<param name="file" value="D:/petcommunity/Log/log.log" />
 		<param name="Append" value="true" />
 		<param name="encoding" value="UTF-8" />

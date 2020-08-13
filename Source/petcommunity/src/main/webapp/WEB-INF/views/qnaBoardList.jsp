@@ -87,8 +87,7 @@
 	<script src="resources/js/qnaBoardList.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
-	<script src="./resources/bootstrap_template/template_01/js/main.js"></script>
-	<script src="resources/bootstrap_template/template_01/scripts3/main.js"></script>
+
 </body>
 
 </html>

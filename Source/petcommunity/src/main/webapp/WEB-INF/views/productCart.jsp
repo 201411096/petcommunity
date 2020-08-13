@@ -35,7 +35,7 @@
 			</header>
 			<hr/>
 
-			<table class="table">
+			<table class="table" id='cartTable'>
 				<colgroup>
 					<col id='col1'/>
 					<col id='col2'/>

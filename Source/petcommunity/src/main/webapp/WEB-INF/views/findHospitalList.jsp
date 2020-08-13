@@ -14,6 +14,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/js/findHospital.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <!--  <script type = "text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 -->
 <title>게시판</title>
@@ -22,7 +23,8 @@
  
 <div class="container">
 	<header>
-			<h1>병원 찾기</h1>
+			<h4 id="findHospital">병원 찾기</h4>
+			<p id="findHospitalSub"></p>
 	</header>
 	<hr/>
 

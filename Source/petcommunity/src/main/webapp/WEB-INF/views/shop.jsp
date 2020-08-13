@@ -44,7 +44,7 @@
 			 -->
 
 	<!-- Product filter section -->
-	
+	<section id="backGround">
 		<div class="container">
 		<!-- 우측 배너 시작  -->
 		<div class="bannerDiv">
@@ -80,26 +80,12 @@
 		</div>
 		<!-- 우측 배너 끝 -->
 			<div class="section-title">
-				<h4 id="shoptitle">유기견 후원 스토어</h4>
-				<p id="shopsubtitle">판매상품은 유기견에게 후원됩니다</p>
+				<h4 id="shoptitle">stray dog store</h4>
+				<p id="shopsubtitle">판매금액으로 유기견 후원하는 쇼핑몰입니다</p>
 			</div>
 			<br />
 			<form>
-				<div id="searchDiv">
-					<div class="input-group" id="searchBar">
-						<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
-
-						<!-- <span id="searchBar">class="col-lg-offset-4" 
-    											
-  									</span> -->
-						<span id="#searchInput-container"> <input
-							class="form-control" id="searchSomething" type="text">
-						</span> <span class="input-group-btn">
-							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-						</span>
-					</div>
-					<p style="clear: both;"></p>
-				</div>
+				
 			</form>
 			<br />
 			<div id="ul-div1">
@@ -128,6 +114,24 @@
 						class="tagCategory" value="기타 잡화">기타 잡화</a></li>
 				</ul>
 			</div>
+			<div id="searchDiv">
+					<div class="input-group" id="searchBar">
+						<!-- <input class='form-control' type="text" name="serchList" id="serchSomething"/> -->
+
+						<!-- <span id="searchBar">class="col-lg-offset-4" 
+    											
+  							
+  									</span> -->
+  									
+						<input
+							class="form-control" id="searchSomething" type="text">
+						<span class="input-group-btn">
+							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+						</span>
+						
+					</div>
+					<p style="clear: both;"></p>
+				</div>
 			<!-- Product filter section -->
 
 			<div id='shopTable' class="row artists-row">
@@ -156,6 +160,7 @@
 				</div>
 			</div>
 		</div>
+		</section>
 
 	<!-- Products page end -->
 
@@ -163,7 +168,7 @@
 	<!-- Footer section  -->
 
 	<!-- Footer section end -->
-
+<%@include file="../views/footer.jsp"%>
 
 	<script src="./resources/js/shopList.js"></script>
 

@@ -1,6 +1,31 @@
 @charset "UTF-8";
 
 /* 추가 */
+
+#backGround{
+	padding-top:5%;
+	background: #faf9f8;
+}
+
+#searchBtn{
+	  font:normal;
+   font-size:16px;
+   padding: 5px 20px;
+   margin-right: 5px;
+border-color:#e4e4e4;
+  border-radius: 10px;
+  background: #fff;
+   
+}
+
+
+
+#searchSomething{
+	margin-right:5px;
+	width:300px;
+	border-color:#e4e4e4;
+  border-radius: 10px;
+}
 body{
 	font-family: 'NanumSquare', sans-serif !important; 	
 	
@@ -326,8 +351,8 @@ body{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color:  #faf9f8;;
+    border: 1px solid   #faf9f8;;
 }
 
 #ul-div{
@@ -359,8 +384,9 @@ body{
 	width:100%;
 }
 #searchBar{
-	width:200px;
-	float:right;
+	margin-top:5%;
+	width:350px;
+	float: right;
 }
 .artists-item img{
 	width: 100%

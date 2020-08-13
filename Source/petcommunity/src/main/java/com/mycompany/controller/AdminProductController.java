@@ -99,7 +99,7 @@ public class AdminProductController {
 	public ModelAndView productDelete(HttpSession session, ProductVO productVO) {
 		ModelAndView mv = new ModelAndView();
 		adminProductService.deleteProduct(productVO);
-		mv.setViewName("/adminProductList");
+		mv.setViewName("/adminPage");
 		return mv;
 	}
 	

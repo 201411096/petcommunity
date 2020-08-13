@@ -140,18 +140,18 @@ function drawShopTable(data){
 	var shopnameimg = '<img id="shopnameimg" src="./resources/imgs/product_image/external/pawInHand/icon.png" alt=""/>';
 	for(var i=0; i<data.shopListSize; i++){
 		
-		if(i<=2){
+	/*	if(i<=2){
 			var newproduct = '<img id="newproductimg" src="./resources/imgs/product_image/external/pawInHand/newicon.png" alt=""/>';
 		}else{
 			var newproduct='';
-		}
+		}*/
 		
 		var listContent = 
 			divPrefix1 + 
 			a1 + data.shopList[i].shopLink + a2 +
 			divPrefix2 +
 			img1 + data.shopList[i].shopProductname + img2 +
-			p1+shopnameimg+newproduct+p2+
+			p1+shopnameimg+/*newproduct+*/p2+
 			h41 + data.shopList[i].shopProductname.substring(9,) + h42 +aSuffix+
 			span1 + data.shopList[i].shopProductprice + span2 +
 //			p1 + data.shopList[i].shopName + p2 +

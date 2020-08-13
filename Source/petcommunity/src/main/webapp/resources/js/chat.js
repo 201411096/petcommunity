@@ -1,4 +1,5 @@
-var socket = io("https://192.168.0.18:3000");
+//var socket = io("https://192.168.0.18:3000");
+var socket = io("https://115.91.88.227:60005");
 //var socket = io("https://121.171.119.57:3000");
 
 var curRoomName;
@@ -13,10 +14,21 @@ documentPreventKeyDown();
 chatLocationEventHandler();
 chatMessageBoxEnterListener();
 socketEventHandling();
-
+windowCloseEvent();
 //$('#chatLocation').on('change', function(){
 //	selectRoom(memberId);
 //});
+
+function windowCloseEvent(){
+	$(window).on('unload', function(){
+		var roomInfo = new Object();
+		roomInfo.prev = curRoomName; // 이전 방 정보
+		setCurRoomName(curRoomName);
+		roomInfo.cur = '__exit__'
+		roomInfo.memberId = memberId;
+		socket.emit('joinRoom', roomInfo);
+	})
+}
 
 function chatLocationEventHandler(){
 	$('#chatLocation').on('change', function(){

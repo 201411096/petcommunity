@@ -35,9 +35,10 @@
 	width:52%;
 /* 	display:inline-block; */
 	float:left;
-	border: 1px solid #2f2f2f;
+/* 	border: 1px solid #2f2f2f; */
 	margin-bottom: 10%;
 	margin-left:6%;
+	border-radius: 10px;
 }
 #div-chat{	
 /* 	width:52%; */
@@ -47,6 +48,8 @@
 /* 	display:inline-block; */
 	height:90%;
 	border: 1px solid #2f2f2f;
+	border-radius: 10px;
+	padding: 0 15px;
 }
 #chat{
 /* 	margin-bottom: 10%; */
@@ -55,6 +58,8 @@
 #div-send{
 	height:10%;
 	padding: 10px 2px 2px 2px;
+	border-radius: 10px;
+	text-align:center;
 }
 .messageTime{
 	text-align:left;
@@ -84,7 +89,7 @@
 	border-radius: 10px;
 	max-width:70%;
 	min-width:40%;
-	background-color: rgb(193 248 130);
+	background-color: #ffeb33;
 	margin-top:5px;
 	margin-bottom:5px;
 	
@@ -96,8 +101,9 @@
 	font-size:5px;
 }
 .messageContent{
-	
+	font-size:23px;
 	text-align:left;
+	font-weight:bold;
 	width:100%;
 }
 #writeMessage{
@@ -125,7 +131,7 @@
 	cursor:pointer;
 }
 .mypage-messageTime{
-	font-size:5px;
+	font-size:9px;
 }
 #startChat{
 	color:rgb(193 248 130);
@@ -139,6 +145,7 @@
 #div-chat{ 
      scrollbar-width: none; 
      -ms-overflow-style: none;
+     background-color:#b2c7d9;
 } 
 #div-chat::-webkit-scrollbar { 
      display: none; 
@@ -155,11 +162,13 @@
 	height:47%;
 	width:100%;
 /* 	display:inline-block; */
-	border: 1px solid #2f2f2f;
+/* 	border: 1px solid #2f2f2f; */
 	margin: auto;
+	border-radius: 10px;
 	}
 	#div-chat{	
 	margin: auto;
+	border-radius: 10px;
 /* 	width:52%; */
 	overflow:auto;
 /* 	margin-bottom: 10%; */
@@ -172,6 +181,8 @@
 	height:10%;
 	padding: 5px 2px 2px 2px;
 	background-color:silver;
+	border-radius: 10px;
+	text-align:center;
 }
 	#div-memberList{
 	overflow:auto;

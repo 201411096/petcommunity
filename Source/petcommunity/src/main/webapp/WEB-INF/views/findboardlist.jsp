@@ -25,9 +25,11 @@
 <section id='section'>
 <%-- 	<jsp:include page="/header.do"></jsp:include> --%>
 	<div class="container">
-		<header>
-			<h1>게시판</h1>
-		</header>
+	
+		<h4 id="qnatitle">Find board</h4>
+		<p id="qnasubtitle">목격 동물 신고 게시판</p>
+		
+		
 		<hr />
 		<section id="container">
 			<div class="form-group">
@@ -103,11 +105,12 @@
 			</form>
 		</section>
 	</div>
+	</section>
 	<%@include file="../views/footer.jsp"%>
 	<script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/findboardlist.js"></script>
-	</section>
+	
 </body>
 
 </html>

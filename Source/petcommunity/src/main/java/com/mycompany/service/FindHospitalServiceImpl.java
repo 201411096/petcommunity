@@ -50,10 +50,10 @@ public class FindHospitalServiceImpl implements FindHospitalService{
 		return findHospitalDAO.selectString(map);
 	}
 	
-	@Override
-	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
-		return findHospitalDAO.selectFindHospitalForMap(map);
-	}
+//	@Override
+//	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
+//		return findHospitalDAO.selectFindHospitalForMap(map);
+//	}
 
 	public List<Map<String, String>> getGeoLocation() {
 

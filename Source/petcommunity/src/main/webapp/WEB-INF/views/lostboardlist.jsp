@@ -24,9 +24,8 @@
 <body>
 <section id="section">
 	<div class="container">
-		<header>
-			<h1>게시판</h1>
-		</header>
+		<h4 id="qnatitle">Lost board</h4>
+		<p id="qnasubtitle">실종 동물 신고 게시판</p>
 		<hr />
 		
 		<section id="container">
@@ -106,11 +105,12 @@
 			</form>
 		</section>
 	</div>
+	</section>
 	<%@include file="../views/footer.jsp"%>
 		<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/lostboardlist.js"></script>
-	</section>
+	
 </body>
 
 </html>

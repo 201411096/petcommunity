@@ -1,4 +1,5 @@
-var socket = io("https://192.168.0.18:3000");
+//var socket = io("https://192.168.0.18:3000");
+var socket = io("https://115.91.88.227:60005");
 var startPage=0;//최초 탭 클릭 시 0~5개의 리스트, 챗만 가져옴
 var endPage=6;
 var otherId='1';//상대방 id
@@ -48,7 +49,7 @@ $(function(){
 	//클릭 이벤트
 	$(document).on("click", '.mypage-message', function(){
 		$('.mypage-message').css({"background-color": "#fafafa"});
-		$(this).css({"background-color": "#83bb44"});
+		$(this).css({"background-color": "rgb(193 248 130)"});
 		otherId=$(this).attr("value");
 //		scrollController=1;
 		getChat(startPage, endPage);

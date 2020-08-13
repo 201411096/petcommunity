@@ -34,7 +34,7 @@ $(function(){
 	//추천 버튼
 	$('#like').click(function(){
 	
-		if($('#like').attr('src')=='resources/imgs/communityboard/like/like.PNG'){		
+		if($('#like').attr('src')=='resources/imgs/communityboard/like/like.png'){		
 			$.ajax({
 	    		url: '/petcommunity/likeContent.do?communityboardId='+$("#forRecommend").val(),
 	    		type: "POST",
@@ -50,7 +50,7 @@ $(function(){
 	    		url: "/petcommunity/dislikeContent.do?communityboardId="+$("#forRecommend").val(),
 	    		type: "POST",
 	    		success : function(data){
-	    			$('#like').attr('src','resources/imgs/communityboard/like/like.PNG');
+	    			$('#like').attr('src','resources/imgs/communityboard/like/like.png');
 	    		},
 	    		error : function(){
 	    			alert("에러");

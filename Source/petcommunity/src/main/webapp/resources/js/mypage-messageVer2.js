@@ -10,15 +10,15 @@ $(function(){
 	// 소켓에 닉네임으로 사용할 id 저장
 	memberId=$("#hiddenId").val();
 	setNickname(memberId);
-	// 쪽지 탭 진입 시
-	$(".tab-link4").on("click", function(){
-		$('#message-table').css("display","block");
-		startPage=0;
-		endPage=6;
-		otherId='1';
-		$("#div-chat").empty();
-		getMypageMessage(startPage, endPage);
-	})
+//	//쪽지 탭 진입시
+//	$(".tab-link4").on("click", function(){
+//		$('#message-table').css("display","block");
+//		startPage=0;
+//		endPage=6;
+//		otherId='1';
+//		$("#div-chat").empty();
+//		getMypageMessage(startPage, endPage);
+//	})
 	// 아이디 검색 이벤트
 	$('#btn-searchSomeone').on('click', function(){
 		var searchNew='';
@@ -128,14 +128,14 @@ function receiveMessage(){
 	socket.on('sendDelData', function(data){
 		console.log('receiveMessageDelete evt');
 		 console.log(data.msgId);
-		 console.log(data.messageFrom);
+		 console.log("보낸사람"+data.messageFrom);
 		 console.log(data.messageTo);
 		 getChat(startPage, endPage);
 	});
 }
 // message toast 알림
 function toastMessage(messageContent, messageFrom, messageTo){
-	toastr["info"](messageFrom+'<a href="/petcommunity/searchId.do?otherId='+messageTo+'&searchNew='+messageFrom+'" target="_blank">바로가기</a>'+"<br /><br />"+messageContent);
+	toastr["info"](messageFrom+'<a href="/petcommunity/getChatPartner.do?messageFrom='+messageFrom+'">바로가기</a>'+"<br /><br />"+messageContent);
 //	toastr["info"](messageFrom+"<br /><br />"+messageContent);
 //	toastr.info(messageFrom, messageContent, {timeOut: 5000});
 	toastr.options = {

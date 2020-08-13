@@ -20,12 +20,12 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		String requesturl = request.getRequestURI();
-		StringBuffer logString = new StringBuffer("[preHandle_RequestURI]==>" + requesturl);
+		StringBuffer logString = new StringBuffer("[RequestURI]" + requesturl);
 		HttpSession session = request.getSession();
 		Object memberVO = session.getAttribute("memberVO");
 		
 		if(memberVO!=null) {
-			logString.append("[memberId]==>" + ((MemberVO)memberVO).getMemberId());
+			logString.append("[memberId]" + ((MemberVO)memberVO).getMemberId());
 		}
 		
 		logger.info(logString.toString());

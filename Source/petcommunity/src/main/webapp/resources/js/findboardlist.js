@@ -18,7 +18,7 @@ $(function(){
 	getLocation();
 	getDataWithoutPaging();
 	autoCompleteFunc();
-	autoCompleteFuncForMap();
+	//autoCompleteFuncForMap();
 	documentPreventKeyDown();
 	searchWordEventHandler();
 	searchBtnEventHandler();

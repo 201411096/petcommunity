@@ -48,6 +48,11 @@
 					<input id="locationForSearch" type="text" class="form-control">
 				</span>
 			</div>
+			<div id="markerGroup">
+			   <span class="markerSpan"><img alt="" src="./resources/imgs/marker/red.png">잃어버린 장소</span>
+			   <span class="markerSpan"><img alt="" src="./resources/imgs/marker/blue.png">목격한 장소</span>
+			   <span class="markerSpan2"><img alt="" src="./resources/imgs/marker/green.png">찾은 장소</span>
+			</div>
 
 			<div class="card">
 				<div id="map"></div>

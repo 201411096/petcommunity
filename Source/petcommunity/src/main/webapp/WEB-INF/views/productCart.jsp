@@ -1,31 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@include file ="../views/header.jsp" %>
+<%@include file="../views/header.jsp"%>
 <html>
 	<head>
-		<!-- 합쳐지고 최소화된 최신 CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<!-- 부가적인 테마 -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/bootstrap_ain/css/animate.css">
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/bootstrap_ain/css/flaticon.css">
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css">
+
+
 		<link rel="stylesheet" href="./resources/css/productCart.css"/>
-		<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/animate.css">
-		<link rel="stylesheet" href="./resources/bootstrap_template/bootstrap_ain/css/bootstrap.min.css">
-
-
-	    
 		
 		
-		<script src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
-	    <script src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
-	    <script src="./resources/bootstrap_template/template_01/js/jquery.slicknav.min.js"></script>
-	    <script src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
-	    <script src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
-	    <script src="./resources/bootstrap_template/template_01/js/main.js"></script>
-	    <script src="./resources/js/productCart.js"></script>
-		
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 	 	<title>장바구니</title>
 	</head>
 	<body>
@@ -93,5 +85,16 @@
 	
 			
 		</div>
+		
+		<script
+		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/owl.carousel.min.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
+	    <script src="./resources/js/productCart.js"></script>	
+		
 	</body>
 </html>

@@ -25,9 +25,11 @@
 <section id='section'>
 <%-- 	<jsp:include page="/header.do"></jsp:include> --%>
 	<div class="container">
-		<header>
-			<h1>게시판</h1>
-		</header>
+	
+		<h4 id="qnatitle">Find board</h4>
+		<p id="qnasubtitle">목격 동물 신고 게시판</p>
+		
+		
 		<hr />
 		<section id="container">
 			<div class="form-group">

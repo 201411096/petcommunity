@@ -2,22 +2,7 @@
 
 .main_btn {
   display: inline-block;
-  background: #a8c767;
-  padding: 0px 40px;
-  color: #fff;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 48px;
-  border: 1px solid #ffffff;
-  border-radius: 0px;
-  outline: none !important;
-  box-shadow: none !important;
-  text-align: center;
-  border: 1px solid #ffffff;
-  cursor: pointer;
-  transition: all 300ms linear 0s;
-  border-radius: 5px; 
+
   }
 .main_btn:hover {
     background: transparent;
@@ -76,8 +61,36 @@
 	text-align: center;	
 	width:100%;
 	align-items: center;
+	font:normal;
+    font-size:16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+	border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+	
 }
+#section{
+   padding-top:5%;
+   background: #faf9f8;
+   margin-bottom:10%;
+   padding-bottom:5%;
 
+}
+.buttons{
+	 background: #faf9f8;
+}
+section div div button{
+
+	font:normal;
+    font-size:16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+	border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+
+}
 
 @media ( max-width : 767px ) {
 	
@@ -102,9 +115,6 @@
 }
 #col5 {
 	width:20%;
-}
-[id^="productAmount"]{
-
 }
 }
 

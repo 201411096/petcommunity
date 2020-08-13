@@ -26,7 +26,7 @@
 				<li class="list-group-item bgColor" >번호 : ${findBoardContent.findboardId}</li>
 				<li class="list-group-item bgColor" >제목 : ${findBoardContent.findboardTitle}</li>
 				<li class="list-group-item bgColor" >상태 : ${findBoardContent.findboardStatus}</li>
-				<li class="list-group-item bgColor" ><a href="/petcommunity/getChatPartner.do?messageFrom=${findBoardContent.findboardName}" target="_blank" onClick="window.open(this.href, '', 'width=562, height=890'); return false;">작성자 : ${findBoardContent.findboardName}</a></li>
+				<li class="list-group-item bgColor" ><a href="/petcommunity/getChatPartner.do?messageFrom=${findBoardContent.findboardName}" target="_blank" onClick="window.open(this.href, '', 'width=562, height=890'); return false;"><span id='contentWriter'>작성자 : ${findBoardContent.findboardName}</span></a></li>
 				<li class="list-group-item bgColor" >전화번호 : ${findBoardContent.findboardTel}</li>
 				<li class="list-group-item bgColor" >업로드시간 : ${findBoardContent.findboardUploadtime}</li>
 				<li class="list-group-item"><div id="map"></div></li>

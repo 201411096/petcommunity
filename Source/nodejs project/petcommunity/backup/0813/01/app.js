@@ -37,7 +37,16 @@ var io = require('socket.io')(app);
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('disconnecting', () => {
-    console.log(socket.nickname + ' disconnecting event... ');
+    // const rooms = Object.keys(socket.rooms);
+    // io.to(rooms.keys[0]).emit('chat message', socket.nickname+'님이 퇴장하셨습니다.');
+    // console.log('room 확인 ...');
+    // console.log(socket.rooms);
+    // console.log('type 확인 ... ' + typeof(socket.rooms));
+
+    // for(var i=0; i<socket.rooms.length; i++){
+    //   console.log(i+'번째 ...');
+    //   io.to(socket.rooms[i]).emit('chat message', socket.nickname+"님이 퇴장하셨습니다.");
+    // }
   });
   socket.on('disconnect', function(){
     console.log('user disconnected');
@@ -161,6 +170,9 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
               io.to(socketList[clients[i]].id).emit('chat message', memberId + "님으로부터의 귓속말 : " + whisperContent);
               flagForCheckingTarget++;
             }
+            // if(socketList[clients[i]].nickname == memberId){ // 자신이 보내는 귓속말은 방과 상관없이 자신에게도 기록이 됨
+            //   io.to(socketList[clients[i]].id).emit('chat message', secondArgument + "님에게 귓속말 : " + whisperContent);
+            // }
           }
           if(flagForCheckingTarget==0){ // 귓속말의 대상이 접속중이지 않다면...
             io.to(socket.id).emit('chat message', '귓속말의 대상이 존재하지 않습니다.');
@@ -178,6 +190,7 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
 }
 
 // 공공데이터(파이썬 부분)-----
+//executePythonFileAndReadJsonFile(); //테스트 하는 부분
 function executePythonFileAndReadJsonFile(dataOptions, socket){
   var python_options = {
     mode: 'text',
@@ -186,7 +199,7 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     scriptPath: '',
     // args:[1],
     // args: [0, '20200801', '20200831', '3']
-    args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt, dataOptions.crawlingOption]
+    args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
   }
   PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
     if (err) throw err;
@@ -212,6 +225,7 @@ function executePythonFileForML(imageData){
     // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
     args:[0, "test.jpg"]
   }
+
   PythonShell.run(directoryPath+"ClassifyingImage.py", python_options, function (err, results) {
     if (err) throw err;
     //results = JSON.parse(results);

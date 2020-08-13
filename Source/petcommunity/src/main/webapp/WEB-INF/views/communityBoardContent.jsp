@@ -50,7 +50,7 @@
 			
 			<br/><br/>
 			<c:if test="${not empty sessionScope.memberVO}">
-				<a href='#'><img src='resources/imgs/communityboard/like/like.PNG' id='like'></a>
+				<img src='resources/imgs/communityboard/like/like.PNG' id='like'>
 				<span class='text-primary' id='recommendToContent'>추천</span>
 			</c:if>
 			<!-- 댓글내용 -->		

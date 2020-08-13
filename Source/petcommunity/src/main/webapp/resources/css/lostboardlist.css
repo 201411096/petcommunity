@@ -4,6 +4,8 @@ input#keywordInput{
 
 table#lostboardTable{
    text-align:center;
+   	table-layout: fixed;
+    width: 100%; 
 }
 table#lostboardTable th{
    text-align:center;
@@ -11,6 +13,9 @@ table#lostboardTable th{
 table#lostboardTable td{
 	width:110px;
 	height:110px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 @media screen and (min-width: 800px) {
 	table#lostboardTable img{

@@ -80,7 +80,7 @@ function cartTable(data){
 							tdPrefix + "<span id=productTotalPrice"+[i]+">"+data[i].productPrice*data[i].buycartlistCnt+'</span>원' + tdSuffix +
 							tdPrefix + 
 								'<span>'+
-									"<input type='number' id=productAmount" +[i] + ' class="form-control" min="0" value="'+data[i].buycartlistCnt+'" buycartlistId='+data[i].buycartlistId+' /> ' +
+									"<input type='number' id=productAmount" +[i] + ' class="form-control" min="0" value="'+data[i].buycartlistCnt+'" buycartlistId='+data[i].buycartlistId+'  /> ' +
 								'</span>'+
 							tdSuffix +
 							tdPrefix + "<a href=#  id=cancelImg"+[i]+" buycartlistId="+data[i].buycartlistId+ "><img src='resources/imgs/product_image/cartImg/cancelButton.png'  ></a>" + tdSuffix +

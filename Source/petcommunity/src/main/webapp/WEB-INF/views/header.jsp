@@ -65,6 +65,7 @@
 						<a href="logout.do">[로그아웃]</a>
 						<a href="mypageAnimal.do">[마이 페이지]</a>
 						<a href="productCart.do">[장바구니]</a>
+						<a href="getMessagePartner.do">[쪽지확인]</a>
 
 					</c:when>
 				</c:choose>

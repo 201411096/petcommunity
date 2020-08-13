@@ -84,7 +84,7 @@
 	border-radius: 10px;
 	max-width:70%;
 	min-width:40%;
-	background-color: #83bb44;
+	background-color: rgb(193 248 130);
 	margin-top:5px;
 	margin-bottom:5px;
 	
@@ -96,8 +96,9 @@
 	font-size:5px;
 }
 .messageContent{
+	
 	text-align:left;
-	width:auto;
+	width:100%;
 }
 #writeMessage{
  	/* margin-left:-5%; */
@@ -127,7 +128,7 @@
 	font-size:5px;
 }
 #startChat{
-	color:#83bb44;
+	color:rgb(193 248 130);
 }
 .fa-paper-plane{
 	cursor:pointer;

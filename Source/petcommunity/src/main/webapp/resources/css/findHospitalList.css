@@ -16,6 +16,72 @@ font-family: 'NanumSquare', sans-serif !important;
    margin-bottom: 5%;
 }
 
+body{
+	font-family: 'NanumSquare', sans-serif !important; 
+	font-size: 17px;
+	
+}
+
+.form-control{
+	display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-top:100px;
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+	
+
+
+#keywordInput{
+	
+	display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-top:100px;
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+	
+	
+
+#backGround{
+   padding-top:5%;
+   background: #faf9f8;
+}
+
+#button{
+	font:normal;
+   font-size:16px;
+   padding: 10px 20px;
+   margin-right: 5px;
+border-color:#e4e4e4;
+  border-radius: 10px;
+  background: #fff;
+	
+	
+}
+
 
 #map{
 	width:100%;

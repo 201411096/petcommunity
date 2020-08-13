@@ -102,7 +102,7 @@
 								src="./resources/bootstrap_template/bootstrap_seyeong/img/mung1.png">
 						</div>
 						<div class="memberCountCon" id="memberCountCon1"></div>
-						<div class="memberCountSubTitle">실종신고</div>
+						<div class="memberCountSubTitle">&nbsp실종신고</div>
 					</div>
 				</div>
 				<div class="count-row">
@@ -112,7 +112,7 @@
 								src="./resources/bootstrap_template/bootstrap_seyeong/img/mung1.png">
 						</div>
 						<div class="memberCountCon" id="memberCountCon2"></div>
-						<div class="memberCountSubTitle">목격</div>
+						<div class="memberCountSubTitle">&nbsp &nbsp 목격</div>
 					</div>
 				</div>
 				<div class="count-row">

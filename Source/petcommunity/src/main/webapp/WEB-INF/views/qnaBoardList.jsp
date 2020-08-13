@@ -30,8 +30,8 @@
 <section id="container">
 	<div class="container">
 		
-			<h4 id="qnatitle">고객센터</h4>
-			<p id="qnasubtitle">QNA 게시판입니다.</p>
+			<h4 id="qnatitle">Qna center</h4>
+			<p id="qnasubtitle">고객문의 페이지입니다.</p>
 		
 			<table class="table table-hover">
 				<thead>

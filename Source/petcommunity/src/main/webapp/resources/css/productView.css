@@ -6,6 +6,11 @@ body{
 	
 }
 
+#background_section{
+	 padding-top:5%;
+     background: #faf9f8;
+}
+
 #productTable{
 	margin-top: 3%;
 }

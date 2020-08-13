@@ -63,13 +63,20 @@
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
 						<a href="logout.do">Logout</a>
-						<a href="mypageAnimal.do">[마이 페이지]</a>
-						<a href="productCart.do">[장바구니]</a>
-						<a href="getMessagePartner.do">[쪽지확인]</a>
+						<a href="mypageAnimal.do"><img alt=""
+							src="./resources/bootstrap_template/template_01/img/gallery/mypage1.png"
+							width="23"></a>
+						<a href="getMessagePartner.do"><img alt=""
+							src="./resources/bootstrap_template/template_01/img/gallery/jjokg.png"
+							width="30"></a>
+
+						<a href="productCart.do"><img alt=""
+							src="./resources/bootstrap_template/template_01/img/gallery/cart.png"
+							width="25"></a>
 
 					</c:when>
 				</c:choose>
-				
+
 				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li>
 				<li><a href="findboardlist.do"><strong>목격했어요</strong></a></li>
 
@@ -93,13 +100,16 @@
 
 	<script
 		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-	<df-messenger intent="WELCOME" chat-title="petcommunity" chat-icon="resources/imgs/review_thumbnail/dialogIcon.png"
+	<df-messenger intent="WELCOME" chat-title="petcommunity"
+		chat-icon="resources/imgs/review_thumbnail/dialogIcon.png"
 		agent-id="2573aba7-c532-485a-a3e8-889b7d15fac1" language-code="ko"></df-messenger>
 
-<input id="hiddenId" type=hidden value="${sessionScope.memberVO.memberId}"}>
+	<input id="hiddenId" type=hidden
+		value="${sessionScope.memberVO.memberId}"}>
 
 	<!--====== Javascripts & Jquery ======-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script

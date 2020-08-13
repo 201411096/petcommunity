@@ -132,8 +132,8 @@
 			<div class="gallery-row" align="left">
 				<img class="mungimg"
 					src="./resources/bootstrap_template/bootstrap_seyeong/img/main1.png"
-					alt="#"> <a href="/petcommunity/shop.do" id="readMore"
-					class="readMore"><strong>READ MORE</strong></a>
+					alt="#"><a href="resources/imgs/wordCloud/wordCloud.png" id="readMore"
+					class="readMore"><strong>Word Cloud Here</strong></a>
 			</div>
 		</section>
 

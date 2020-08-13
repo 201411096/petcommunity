@@ -62,38 +62,46 @@
 			<div class="bannerDiv">
 				<div class="glyphicon glyphicon-chevron-up" id="bannerX1"></div>
 				<div id="banner1">
-					<div class="Ranktitle2">최근 실종 신고 올라온 지역</div>
-					<div id="display">
+					<div class="tab_menu_container">
+						<button class="tab_menu_btn on" type="button">
+							실종신고<span class="badge badgeNew">N</span>
+						</button>
+						<button class="tab_menu_btn" type="button" id="findRank">
+							목격<span class="badge badgeNew">N</span>
+						</button>
 
+					</div>
+					<div class="tab_box_container">
+						<div class="tab_box on">
 
-						<div id="" class="banner_contents1">
 							<span class="badge badge-danger">1</span><a href="#" id="a1"></a><br>
 							<span class="badge badge-default">2</span><a href="#" id="b1"></a><br>
 							<span class="badge badge-default">3</span><a href="#" id="c1"></a><br>
+							<span class="badge badge-default">4</span><a href="#" id="d1"></a><br>
+							<span class="badge badge-default">5</span><a href="#" id="e1"></a><br>
+
 						</div>
+
+						<div class="tab_box">
+							<span class="badge badge-danger">1</span><a href="#" id="a2"></a><br>
+							<span class="badge badge-default">2</span><a href="#" id="b2"></a><br>
+							<span class="badge badge-default">3</span><a href="#" id="c2"></a><br>
+							<span class="badge badge-default">4</span><a href="#" id="d2"></a><br>
+							<span class="badge badge-default">5</span><a href="#" id="e2"></a><br>
+
+						</div>
+
 					</div>
 				</div>
-
 			</div>
 			<!-- 스크롤 배너 끝 -->
 
 			<div class="section-title">
-				<h4 id="producttitle">okidoghere goods</h4>
+				<h4 id="producttitle">Okidoghere Goods</h4>
 				<p id="productsubtitle">반려견 사료 리스트입니다.</p>
 			</div>
 			<br />
-			<form>
-				<div id="searchDiv">
-					<div class="input-group" id="searchBar">
-						<span id="#searchInput-container"> <input
-							class="form-control" id="searchSomething" type="text">
-						</span> <span class="input-group-btn">
-							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
-						</span>
-					</div>
-					<p style="clear: both;"></p>
-				</div>
-			</form>
+			<form></form>
 			<br />
 			<div id="ul-div">
 				<ul class="product-filter-menu">
@@ -144,7 +152,16 @@
 				</ul>
 			</div>
 			<!-- Product filter section -->
-
+			<div id="searchDiv">
+				<div class="input-group" id="searchBar">
+					<span id="#searchInput-container"> <input
+						class="form-control" id="searchSomething" type="text">
+					</span> <span>
+						<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+					</span>
+				</div>
+				<p style="clear: both;"></p>
+			</div>
 			<div id='productTable' class="row artists-row">
 				<!-- forEach 사용 -->
 				<!-- 
@@ -179,7 +196,7 @@
 	<!-- Footer section  -->
 
 	<!-- Footer section end -->
-
+	<%@include file="../views/footer.jsp"%>
 	<script src="./resources/js/productList.js"></script>
 
 

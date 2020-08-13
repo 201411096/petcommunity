@@ -30,7 +30,7 @@
 				width="80"><br>실시간 채팅
 		</div>
 
-		<h4 id="qnatitle">community</h4>
+		<h4 id="qnatitle">Community</h4>
 		<p id="qnasubtitle">지역별 커뮤니티 게시판입니다.</p>
 		<div class="container">
 

@@ -79,6 +79,9 @@
 		</div>
 	</header>
 	<!--================Single Product Area =================-->
+	<section id="background_section">
+	<h4 id="productviewtitle">Okidoghere Goods</h4>
+		<p id="productviewsubtitle">상품 상세페이지 입니다.</p>
 	<div class="product_image_area">
 		<div class="container">
 <!-- 			<h4 id="productViewtitle">고객센터</h4> -->
@@ -97,11 +100,11 @@
 						<h3>${productInfo.productName }</h3>
 						<h2>${productInfo.productPrice }원</h2>
 						<ul class="list">
-							<li><a class="active" href="#"> <span>카테고리</span> :
-									${productInfo.productFeature }
+							<li><a class="active" href="#"> <span>카테고리</span> 
+									&nbsp; &nbsp; &nbsp; ${productInfo.productFeature }
 							</a></li>
-							<li><a href="#"> <span>재고</span> :
-									${productInfo.productCnt }
+							<li><a class="active" href="#"> <span>재고</span> 
+									&nbsp; &nbsp; &nbsp; ${productInfo.productCnt }
 							</a></li>
 						</ul>
 						<p>${productInfo.productContent }</p>
@@ -109,7 +112,8 @@
 
 							<div class="product_count">
 								<!-- 							<label for="qty">개수:</label> -->
-								<label>개수</label> <input type="text" name="productCnt" id="sst"
+								<label>CHOOSE !
+</label> <input type="text" name="productCnt" id="sst"
 									maxlength="12" value="1" title="Quantity:"
 									class="input-text qty">
 								<button
@@ -376,6 +380,7 @@
 				</div>
 			</div>
 		</div>
+	</section>
 	</section>
 	<!--================End Product Description Area =================-->
 

@@ -167,20 +167,20 @@ public class HospitalController {
         return container;
     }
 	
-	@ResponseBody
-	@RequestMapping(value="/findHospitalListWithoutPaging.do", produces="application/json; charset=utf-8")
-	public Map getFindHospitalListWithoutPaging(@RequestParam(defaultValue="") int curPage, String searchWord) {
-		System.out.println("지도 검색 컨트롤러 입장");
-		Map result = new HashMap();
-		Map searchMap = new HashMap();
-	
-		searchMap.put("searchWord", searchWord);
-	
-		List<FindHospitalVO> findHospitalVOList = findHospitalService.selectFindHospitalForMap(searchMap);
-	
-		result.put("findHospitalVOList", findHospitalVOList);
-		result.put("findHospitalVOListSize", findHospitalVOList.size());
-		return result;
-	}
+//	@ResponseBody
+//	@RequestMapping(value="/findHospitalListWithoutPaging.do", produces="application/json; charset=utf-8")
+//	public Map getFindHospitalListWithoutPaging(@RequestParam(defaultValue="") int curPage, String searchWord) {
+//		System.out.println("지도 검색 컨트롤러 입장");
+//		Map result = new HashMap();
+//		Map searchMap = new HashMap();
+//	
+//		searchMap.put("searchWord", searchWord);
+//	
+//		List<FindHospitalVO> findHospitalVOList = findHospitalService.selectFindHospitalForMap(searchMap);
+//	
+//		result.put("findHospitalVOList", findHospitalVOList);
+//		result.put("findHospitalVOListSize", findHospitalVOList.size());
+//		return result;
+//	}
 	
 }

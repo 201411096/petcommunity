@@ -123,41 +123,32 @@ function getData(tagCategory){
 
 function drawProductTable(data){
 	$('#productTable').empty();
-	var divPrefix1 = '<div class="col-lg-4 col-sm-6 artists-col" id="productList_product">';
-	var a1 = '<a id="productList_productName" href="/petcommunity/productView.do?productId=';
+	var divPrefix1 = '<div class="col-lg-4 col-sm-6 artists-col">';
+	var a1 = '<a href="/petcommunity/productView.do?productId=';
 	var a2 = '">';
 	var divPrefix2 = '<div class="artists-item">';
 	var img1 = '<img src="./resources/imgs/product_image/internal/product_image/';
 	var img2 = '.jpg" alt="">';
-	var h41 = '<h4 id="productList_productName">';
+	var h41 = '<h4>';
 	var h42 = '</h4>';
-	var span1 = '<span id="productList_productPrice">'; 
-	var span2 = ' 원</span>';
-	var p1 = '<p id="productList_feature"> ';
-	var p2 = ' </p>';
+	var span1 = '<span>'; 
+	var span2 = '</span>';
+	var p1 = '<p>';
+	var p2 = '</p>';
 	var divSuffix = '</div>';
 	var aSuffix = '</a>';
 	
 	for(var i=0; i<data.productListSize; i++){
-		
-//		if(i<=4){
-//			var newproduct = '<img id="newproductimg" src="./resources/imgs/product_image/external/pawInHand/newicon.png" alt=""/>';
-//		}else{
-//			var newproduct='';
-//		}
-		
 		var listContent = 
 			divPrefix1 + 
-			
-			divPrefix2 +
 			a1 + data.productList[i].productId + a2 +
+			divPrefix2 +
 			img1 + data.productList[i].productName + img2 +
-			p1  +data.productList[i].productFeature + p2 +
-			
-			h41 + data.productList[i].productName + h42 +aSuffix +'<hr id="producthr">'+
+			h41 + data.productList[i].productName + h42 +
 			span1 + data.productList[i].productPrice + span2 +
+			p1 + data.productList[i].productFeature + p2 +
 			divSuffix +
-			
+			aSuffix +
 			divSuffix;
 		$('#productTable').append(listContent);
 	}
@@ -166,16 +157,15 @@ function drawProductTable(data){
 
 
 /*우측 배너 js============================*/
-function sendRequest(){
-	
-/*$(window).scroll(function() {
+
+$(window).scroll(function() {
 	$('.bannerDiv').animate({
 		top : $(window).scrollTop() + "px"
 	}, {
 		queue : false,
 		duration : 500
 	});
-});*/
+});
 
 $.ajax({
 	type : 'get',
@@ -194,7 +184,11 @@ $.ajax({
 			$("#c").text(resultData[i][2].pname)
 			$("#c").attr("href", "productView.do?productId="+resultData[i][2].pId)
 
+			$("#d").text(resultData[i][3].pname)
+			$("#d").attr("href", "productView.do?productId="+resultData[i][3].pId)
 
+			$("#e").text(resultData[i][4].pname)
+			$("#e").attr("href", "productView.do?productId="+resultData[i][4].pId)
 
 		}
 
@@ -205,12 +199,6 @@ $.ajax({
 	}
 
 });
-
-}
-sendRequest();
-
-window.setInterval("sendRequest()", 2000);
-
 $(document).ready(
 		function() {
 
@@ -224,51 +212,5 @@ $(document).ready(
 
 		});
 
-$(document).ready(
-		function() {
-
-			$("#bannerX1").click(
-					function() {
-						$('#banner1').slideToggle("fast");
-						$("#bannerX1").toggleClass(
-								'glyphicon-chevron-down glyphicon-chevron-up');
-
-					});
-
-		});
-
-function sendRequest2(){
-
-	$.ajax({
-		type : 'get',
-		async : true,
-		url : '/petcommunity/getLostrank.do?',
-		contentType : 'application/x-www-form-urlencoded;charset=UTF-8',
-		dataType : 'json',
-		success : function(resultData) {
-			for ( var i in resultData) {
-				$("#a1").text(resultData[i][0].lostboardLocation)
-				$("#a1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][0].lostboardId)
-
-				$("#b1").text(resultData[i][1].lostboardLocation)
-				$("#b1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][1].lostboardId)
-
-				$("#c1").text(resultData[i][2].lostboardLocation)
-				$("#c1").attr("href", "getLostBoard.do?lostboardId="+resultData[i][2].lostboardId)
-
-			}
-
-		},
-		error : function(request, status, error) {
-			console.log("code:" + request.status + "\n" + "message:"
-					+ request.responseText + "\n" + "error:" + error);
-		}
-
-	});
-
-	}
-	sendRequest2();
-
-	window.setInterval("sendRequest2()", 2000);
 
 /*우측 배너 js============================*/

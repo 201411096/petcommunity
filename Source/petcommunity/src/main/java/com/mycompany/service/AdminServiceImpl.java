@@ -28,8 +28,6 @@ public class AdminServiceImpl implements AdminService{
 		return adminDAO.getSearchDate(map);
 	}
 
-	
-	//넥사크로 
 	public List<MemberVO> getMemberList(MemberVO membervo) {
 		return adminDAO.getgetMemberList(membervo);
 	}

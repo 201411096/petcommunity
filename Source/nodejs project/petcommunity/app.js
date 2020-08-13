@@ -222,6 +222,5 @@ function executePythonFileForML(imageData){
     fs.readFile("ClassifyingImage.txt", 'utf8', function(err, data){
       console.log('파일에서 읽은 값 : ' + data);
     });
-
   });
 }

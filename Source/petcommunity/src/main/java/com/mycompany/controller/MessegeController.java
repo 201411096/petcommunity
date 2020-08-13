@@ -85,10 +85,67 @@ public class MessegeController {
 //		result.put("memberListSize", memberList.size());
 //		return result;
 //	}
+	// 검색 상대 불러오기(링크전용)
+	@RequestMapping("/getChatPartner.do")
+	public ModelAndView getChatPartner(HttpSession session, String messageFrom) {
+		System.out.println("컨트롤 :"+messageFrom);
+		ModelAndView mv = new ModelAndView();
+		Map searchMap = new HashMap();
+		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
+		String id = mvo.getMemberId();
+		searchMap.put("id", id);
+		searchMap.put("searchNew", messageFrom);
+		searchMap.put("startPage", 0);
+		searchMap.put("endPage", 1);
+		List<MemberVO> memberList = memberService.getMemberList(searchMap);
+		for(MemberVO i: memberList) {
+			i.setMemberAddress(i.getMemberAddress().substring(0,2));
+		}
+		mv.addObject("memberList", memberList);
+		mv.setViewName("message");
+		return mv;
+	}
+	// 대화 상대 찾아오기(링크전용)
+	@RequestMapping("/getMessagePartner.do")
+	public ModelAndView getMessagePartner(HttpSession session) {
+		ModelAndView mv = new ModelAndView();
+		Map searchMap = new HashMap();
+		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");
+		String id = mvo.getMemberId();
+		searchMap.put("id", id);
+		List<MessageVO> messageList = messageService.getMessagePartner(searchMap);
+		// set을 통해 중복값 제거
+		Set<String> messagePartnerList = new HashSet<String>();
+		for(MessageVO i: messageList) {
+		String target1 = i.getMessageTarget1();
+		String target2 = i.getMessageTarget2();
+		String messageContents = i.getMessageContents();
+//		String messageSender = i.getMessageSender();
+		String messageSendTime = i.getMessageSendtime();
+//		String messageId = i.getMessageId();
+//		String messageReadflag = i.getMessageReadflag();
+		if(!target1.equals(id)) {
+			messagePartnerList.add(target1);
+//			String info = target1+"/"+messageContents+"/"+messageSendTime;
+//			messagePartnerList.add(info);
+		}
+		if(!target2.equals(id)) {
+			messagePartnerList.add(target2);
+//			String info = target2+"/"+messageContents+"/"+messageSendTime;
+//			messagePartnerList.add(info);
+		}
+	}
+		
+		
+		
+		mv.addObject("messagePartnerList", messagePartnerList);
+		mv.setViewName("message");
+		return mv;
+	}
 	// 대화상대 찾아오기 ver.2
 	@ResponseBody
 	@RequestMapping("/getMessagePartner2.do")
-	public Map getMessagePartner2(HttpSession session, int startPage, int endPage, String otherId) {
+	public Map getMessagePartner2(HttpSession session, @RequestParam (defaultValue = "0")int startPage, @RequestParam (defaultValue = "6")int endPage, @RequestParam (defaultValue = "1")String otherId) {
 		Map result = new HashMap();
 		Map searchMap = new HashMap();
 		MemberVO mvo = (MemberVO)session.getAttribute("memberVO");

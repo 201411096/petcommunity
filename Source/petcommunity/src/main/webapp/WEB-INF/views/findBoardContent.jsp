@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%-- <%@include file="../views/header.jsp"%> --%>
 <%@include file="../views/header_kys.jsp"%>
 <html>
 <head>
@@ -102,11 +103,12 @@
 			</div>
 		</div>
 	</div>
+	</section>
 	<%@include file="../views/footer.jsp"%>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 		<script src="resources/js/findboardcontent.js"></script>
-	</section>
+	
 
 </body>
 </html>

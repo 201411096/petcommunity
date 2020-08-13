@@ -40,7 +40,8 @@ div.infoWindowImageContainer{
 <script type="text/javascript">
 var contextPath = getContextPath();
 // var socket = io("https://192.168.0.18:3000");
-var socket = io("https://121.171.119.57:3000");
+// var socket = io("https://121.171.119.57:3000");
+var socket = io("https://115.91.88.227:60005");
 var publicDataFromAPI;
 var map;
 drawMap();
@@ -76,7 +77,8 @@ function waitingPublicData(){
 
 function getPublicData(){
 	var dataOptions = new Object();
-	dataOptions.dataCnt = '100';
+	dataOptions.dataCnt = '1000';
+	dataOptions.crawlingOption = '0'; //0이면 크롤링 안함
 	if($('#publicDataStartDateOption').val()==''){
 		dataOptions.startDate = '20200101';
 		console.log('startDate 안들어옴... ');

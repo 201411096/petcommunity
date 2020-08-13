@@ -36,9 +36,8 @@ var app = https.createServer(options, (req, res) => {
 var io = require('socket.io')(app);
 io.on('connection', function(socket){
   console.log('user connected');
-  socket.on('disconnecting', () => {
-    console.log(socket.nickname + ' disconnecting event... ');
-  });
+  // socket.on('disconnecting', () => {
+  // });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
@@ -186,7 +185,7 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     scriptPath: '',
     // args:[1],
     // args: [0, '20200801', '20200831', '3']
-    args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt, dataOptions.crawlingOption]
+    args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
   }
   PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
     if (err) throw err;
@@ -212,6 +211,7 @@ function executePythonFileForML(imageData){
     // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
     args:[0, "test.jpg"]
   }
+
   PythonShell.run(directoryPath+"ClassifyingImage.py", python_options, function (err, results) {
     if (err) throw err;
     //results = JSON.parse(results);

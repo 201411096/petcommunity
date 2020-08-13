@@ -1,4 +1,0 @@
-[2020-08-13 12:25:22.603] INFO  LoggerInterceptor.preHandle(LoggerInterceptor.java:31) - [RequestURI]/petcommunity/lostboardlist.do
-[2020-08-13 12:25:22.809] INFO  LoggerInterceptor.preHandle(LoggerInterceptor.java:31) - [RequestURI]/petcommunity/lostboardListWithPaging.do
-[2020-08-13 12:25:22.810] INFO  LoggerInterceptor.preHandle(LoggerInterceptor.java:31) - [RequestURI]/petcommunity/lostboardListWithoutPaging.do
-[2020-08-13 12:25:22.859] INFO  LoggerInterceptor.preHandle(LoggerInterceptor.java:31) - [RequestURI]/petcommunity/lostboardListWithPaging.do

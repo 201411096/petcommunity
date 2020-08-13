@@ -11,16 +11,14 @@ body{
 #container{
 	height: 100%;
 	margin-bottom: 10%;
+	padding-top:5%;
+   background: #faf9f8;
 }
 
 ul#pagination-demo{
 	margin-left: 40%;
 }
 
-input#keywordInput{
-	width: 90%;
-	margin-right: 10%;
-}
 
 .wrapper {
 	display: grid;
@@ -32,16 +30,25 @@ input#keywordInput{
 
 #searchBtn{
 	margin-right: 20%;
-	color: black;
-	font-size:18px;
-	font-family: 'NanumSquare', sans-serif !important; 
+	font-family: 'NanumSquare', sans-serif !important;
+	 font:normal;
+   font-size:16px;
+   padding: 10px 20px;
+   margin-right: 5px;
+	border-color:#e4e4e4;
+  border-radius: 10px;
+  background: #fff;
 }
 
 #writeBtn{
-	color: black;
-	font-size:18px;
-
-	font-family: 'NanumSquare', sans-serif !important; 
+	font-family: 'NanumSquare', sans-serif !important;
+	font:normal;
+	font-size:16px;
+	padding: 10px 20px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff; 
 }
 
 .search ul{
@@ -57,9 +64,52 @@ input#keywordInput{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: #faf9f8;
+    border: 1px solid #faf9f8;
     font-size: 13px;
+}
+#searchType{
+	width:100%;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-top:10px;
+   
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input#keywordInput{
+	width: 90%;
+	margin-right: 10%;
+	width:90%;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-top:10px;
+   
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
 /* 테이블 */
@@ -81,7 +131,7 @@ table tr{
 /* }  */
 
 tr#adminList{
-	background-color: #f3f3f3;
+	background-color: #e7e7e7;
 }
 
 #qnatitle{
@@ -151,10 +201,7 @@ ul#pagination-demo{
 	margin-left: 40%;
 }
 
-input#keywordInput{
-	width: 90%;
-	margin-right: 10%;
-}
+
 
 .wrapper {
 	display: grid;
@@ -165,7 +212,19 @@ input#keywordInput{
 }
 
 #searchBtn{
-	margin-right: 20%;
+	margin-top:5%;
+	padding: 10px 3px;
+/* 	margin-right: 10%; */
+	width: 50px;
+	font-size: 12px;
+	
+}
+
+#writeBtn{
+	margin-top:5%;
+	padding: 10px 3px;
+	width: 50px;
+	font-size: 12px;
 }
 
 .search ul{
@@ -181,9 +240,57 @@ input#keywordInput{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: #faf9f8;
+    border: 1px solid #faf9f8;
     font-size: 13px;
+    margin-right: 5%;
+}
+
+ul#pagination-demo{
+	margin-left: 25%;
+}
+
+#searchType{
+	width:50%;
+    display: block;
+    height: 34px;
+    padding: 6px 25px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-top:10px;
+   
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+input#keywordInput{
+	width: 90%;
+	margin-right: 1%;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-top:10px;
+   
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
 /* 테이블 */

@@ -74,5 +74,9 @@ li.boardcontent-container{
 img{
 	cursor: pointer;
 }
+#section{
+   padding-top:5%;
+   background: #faf9f8;
+}
 
 

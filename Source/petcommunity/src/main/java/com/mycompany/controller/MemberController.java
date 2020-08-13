@@ -147,7 +147,7 @@ public class MemberController {
 //	      mv.addObject("tokenId",tokenId);
 //	      mv.setViewName("test_token");
 //	      return mv;
-		return "redirect:/test_kys.jsp";
+		return "redirect:/index.jsp";
 	}
 
 	

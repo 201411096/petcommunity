@@ -3,7 +3,14 @@
 /*admin product */
 #writeBtn{
 	width:100%;
-    margin-left: 0px;	
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
 }
 
 
@@ -12,11 +19,55 @@
     margin-right: 0px;   
     padding-left: 0px;
     padding-right: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }
 
 #searchWord{
-	 width: 80%;"
+	 width: 75%;
+    margin-top: 0px;
+    height: 45px;
+	 
+	font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }
+
+btn btn-warning{
+	width:100%;
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
+}
+	
+
+btn btn-primary{
+	width:100%;
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
+}
+
+
 
 .input-group{
 	width: 100%;
@@ -44,6 +95,13 @@
     margin-left: 0px;
     margin-right: 0px;
 }
+
+
+body{
+    font-family: 'NanumSquare', sans-serif !important;    
+}
+
+
 
 th{
     padding-left: 0px;
@@ -62,9 +120,16 @@ form{
 /*반응형*/
 @media screen and (max-width: 768px){
 	
-	#writeBtn{
+#writeBtn{
 	width:100%;
-    margin-left: 0px;	
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
 }
 
 
@@ -73,10 +138,52 @@ form{
     margin-right: 0px;   
     padding-left: 0px;
     padding-right: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }
 
+#updateBtn{
+	width:100%;
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
+}
+	
+
+#deleteBtn{
+	width:100%;
+    margin-left: 0px;
+    font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;	
+}
+
+
 #searchWord{
-	 width: 80%;"
+	 width: 75%;
+    margin-top: 0px;
+    height: 45px; 
+	font:normal;
+   	font-size:16px;
+  	padding: 10px 20px;
+    margin-right: 5px;
+    border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }
 
 .input-group{
@@ -106,6 +213,13 @@ form{
     margin-right: 0px;
 }
 
+
+body{
+    font-family: 'NanumSquare', sans-serif !important;    
+}
+
+
+
 th{
     padding-left: 0px;
     padding-right: 0px;
@@ -117,5 +231,4 @@ form{
     margin-right: 0px;
     width: 100%
     margin-right: 0px;
-}
-}
+}	

@@ -28,7 +28,7 @@
 <title>게시판</title>
 </head>
 <body>
- <section id="backGround">
+ <section id="BackGround">	
 <div class="container">
 	<header>
 			<h4 id="findHospital">Hospital List</h4>
@@ -37,7 +37,7 @@
 	<hr/>
 
 			<!-- 도시 고를 수 있는 셀렉트박스 -->
-		<section id="container">			
+				
 			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
 				<!-- <input name="sGubun" type="radio" checked value="0" > -->
 					<label class="radio">지역별 검색</label>
@@ -513,7 +513,7 @@
 	
 	<!-- Footer -->
 	
-	</section></div></section></body></html> 
+	</div></section></body></html> 
 
 
 

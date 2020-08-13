@@ -98,4 +98,18 @@ div.infoWindowImageContainer{
 #section{
    padding-top:5%;
    background: #faf9f8;
+   margin-bottom:10%;
+    padding-bottom:5%;
+}
+#qnatitle{
+	text-align: center;
+   color: black;
+   font-size: 30px;
+   margin-bottom: 1%;
+}	
+#qnasubtitle{
+	font-size:18px;
+   color: gray;
+   text-align: center;
+	
 }

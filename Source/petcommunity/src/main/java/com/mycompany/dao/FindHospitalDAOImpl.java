@@ -56,12 +56,12 @@ public class FindHospitalDAOImpl implements FindHospitalDAO{
 		System.out.println("===>  HospitalMapper selectString() 호출");
 		return mybatis.selectList("findHospitalDAO.selectString", map);
 	}
-
-	@Override
-	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
-		System.out.println("===>  HospitalMapper selectFindHospitalForMap() 호출");
-		return mybatis.selectList("findHospitalDAO.selectFindHospitalForMap", map);
-	}
+//
+//	@Override
+//	public List<FindHospitalVO> selectFindHospitalForMap(Map map) {
+//		System.out.println("===>  HospitalMapper selectFindHospitalForMap() 호출");
+//		return mybatis.selectList("findHospitalDAO.selectFindHospitalForMap", map);
+//	}
 
 	public List<Map<String, String>> getGeoLocation() {
 		System.out.println("===>  HospitalMapper getGeoLocation() 호출"); 

@@ -21,6 +21,7 @@
 	 	<title>장바구니</title>
 	</head>
 	<body>
+	<section id='section'>
 		<div class="container">
 			<header>
 				<h1>나의 장바구니</h1><br/>
@@ -85,7 +86,7 @@
 	
 			
 		</div>
-		
+		</section>
 		<script
 		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script
@@ -95,6 +96,6 @@
 	<script
 		src="./resources/bootstrap_template/template_01/js/circle-progress.min.js"></script>
 	    <script src="./resources/js/productCart.js"></script>	
-		
+	<%@include file="../views/footer.jsp"%>
 	</body>
 </html>

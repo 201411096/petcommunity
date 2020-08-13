@@ -54,7 +54,7 @@
 			</div>
 			<form role="form" method="get">
 				<table class="table" id="lostboardTable">
-					 <caption>잃어버린 강아지를 찾아주세요!</caption>
+<%-- 					 <caption>잃어버린 강아지를 찾아주세요!</caption> --%>
 					<colgroup>
 						<col id='col1'/>
 						<col id='col2'/>

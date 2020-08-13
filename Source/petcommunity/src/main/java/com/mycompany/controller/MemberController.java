@@ -96,7 +96,7 @@ public class MemberController {
 			//----------------------------------------------------------------
 			session.setAttribute("memberVO", result);
 			result.getMemberId();
-			mv.setViewName("main");
+			mv.setViewName("redirect:/main.do");
 			return mv;
 		}
 
@@ -123,7 +123,7 @@ public class MemberController {
 		if (session != null) {
 			session.invalidate();
 		}
-		mv.setViewName("main");
+		mv.setViewName("redirect:/main.do");
 		return mv;
 
 	}

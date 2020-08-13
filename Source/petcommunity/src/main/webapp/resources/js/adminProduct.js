@@ -138,6 +138,10 @@ function getProductData(){
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
             $('#pagination-demo').twbsPagination($.extend({}, defaultOpts, {
+            	prev: "이전",
+                next: "다음",
+                first: '«',
+                last: '»',
                 startPage: currentPage,
                 totalPages: totalPages
             }));

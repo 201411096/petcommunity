@@ -80,7 +80,7 @@
 		</div>
 		<!-- 우측 배너 끝 -->
 			<div class="section-title">
-				<h4 id="shoptitle">stray dog store</h4>
+				<h4 id="shoptitle">Stray Dog </h4>
 				<p id="shopsubtitle">판매금액으로 유기견 후원하는 쇼핑몰입니다</p>
 			</div>
 			<br />

@@ -22,8 +22,8 @@
 <section id="container">
 	<div class="container">
 		<div id="qnaTitle">
-			<h4>게시글 작성하기</h4>
-			<p id="qnasubtitle">QNA 게시판입니다.</p>
+			<h4>Qna center</h4>
+			<p id="qnasubtitle">고객문의 작성 페이지 입니다.</p>
 		</div>
 		<br />
 		<br />

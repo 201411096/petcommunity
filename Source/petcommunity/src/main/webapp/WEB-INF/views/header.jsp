@@ -69,7 +69,7 @@
 
 					</c:when>
 				</c:choose>
-
+				
 				<li><a href="lostboardlist.do"><strong>잃어버렸어요</strong></a></li>
 				<li><a href="findboardlist.do"><strong>목격했어요</strong></a></li>
 

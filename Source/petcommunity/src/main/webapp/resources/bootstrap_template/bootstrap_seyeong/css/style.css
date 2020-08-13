@@ -747,10 +747,10 @@ transparent
 }
 
 .memberCountSubTitle {
-/* 	font-family: 'MapoGoldenPier'; */
-font-family: 'NanumSquare', sans-serif !important;
-	font-size: 30px;
-	margin-left: 75%;
+	font-family: 'MapoGoldenPier';
+/* font-family: 'NanumSquare', sans-serif !important; */
+	font-size: 28px;
+	margin-left: 70%;
 	margin-bottom: -10%;
 }
 
@@ -768,6 +768,7 @@ font-family: 'NanumSquare', sans-serif !important;
 }
 
 .mungimg {
+	margin-left:10px;
 	width: 100%;
 }
 
@@ -781,24 +782,24 @@ font-family: 'NanumSquare', sans-serif !important;
 
 #readMore {
 	transform: translate(-50%, -50%);
-	top: 30%;
-	left: 50%;
-	position: absolute;
-	margin-left: 20%;
-	margin-top: 30%;
-	font-size: 25px;
-	color: black;
-}
-
-#readMore:hover {
-	transform: translate(-50%, -50%);
-	top: 30%;
+	top: 28%;
 	left: 50%;
 	position: absolute;
 	margin-left: 20%;
 	margin-top: 30%;
 	font-size: 20px;
 	color: black;
+}
+
+#readMore:hover {
+	transform: translate(-50%, -50%);
+	top: 28%;
+	left: 50%;
+	position: absolute;
+	margin-left: 20%;
+	margin-top: 30%;
+	font-size: 20px;
+	color: gray;
 	text-decoration: underline;
 }
 
@@ -2358,10 +2359,10 @@ transparent
 }
 
 .memberCountSubTitle {
-/* 	font-family: 'MapoGoldenPier'; */
-font-family: 'NanumSquare', sans-serif !important;
+	font-family: 'MapoGoldenPier';
+/* font-family: 'NanumSquare', sans-serif !important; */
 	font-size: 12px;
-	margin-left: 55%;
+	margin-left: 40%;
 	margin-bottom: -10%;
 }
 
@@ -2380,6 +2381,7 @@ font-family: 'NanumSquare', sans-serif !important;
 
 .mungimg {
 	width: 100%;
+	margin-left: -1px;
 }
 
 .count-row {
@@ -2408,8 +2410,8 @@ font-family: 'NanumSquare', sans-serif !important;
 	position: absolute;
 	margin-left: 20%;
 	margin-top: 30%;
-	font-size: 20px;
-	color: black;
+	font-size: 10px;
+	color: gray;
 	text-decoration: underline;
 }
 

@@ -24,8 +24,8 @@
 </head>
 <body>
 	<section id="container">
-		<h4 id="qnatitle">고객문의</h4>
-		<p id="qnasubtitle">QNA 게시판입니다.</p>
+		<h4 id="qnatitle">Qna center</h4>
+		<p id="qnasubtitle">고객문의 게시판입니다.</p>
 		<table>
 			<tr>
 				<td id="title">제목</td>

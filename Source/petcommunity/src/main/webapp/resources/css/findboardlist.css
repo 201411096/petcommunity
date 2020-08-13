@@ -4,6 +4,8 @@ input#keywordInput{
 
 table#findboardTable{
 	text-align:center;
+	table-layout: fixed;
+    width: 100%;    
 }
 table#findboardTable th{
 	text-align:center;
@@ -11,6 +13,14 @@ table#findboardTable th{
 table#findboardTable td{
 	width:110px;
 	height:110px;
+/* 	white-space: nowrap; */
+/* 	overflow: hidden; */
+/* 	text-overflow: ellipsis; */
+	word-wrap:break-word
+}
+table#findboardTable a{
+	width:50px;
+
 }
 @media screen and (min-width: 800px) {
 	table#findboardTable img{

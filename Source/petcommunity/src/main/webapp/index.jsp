@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>메시지 창</h2>
-<form action="messegeInsert.do">
-<input type='text' id="messegeInsert"/>
-<button id="messege-btn"></button>
-</form>
+<% response.sendRedirect("/petcommunity/main.do"); %>
 </body>
 </html>

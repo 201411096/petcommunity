@@ -5,15 +5,23 @@
 <%@ include file="../views/header.jsp"%>
 <html>
 <head>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="./resources/css/findHospitalList.css">
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="resources/js/findHospital.js"></script>
+<link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+   src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="resources/css/findboardlist.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+<!-- autocomplete 3 cdn link -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
+<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="./resources/css/findHospitalList.css">
+<script src="resources/js/findHospital.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <!--  <script type = "text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 -->
@@ -24,7 +32,7 @@
 <div class="container">
 	<header>
 			<h4 id="findHospital">병원 찾기</h4>
-			<p id="findHospitalSub"></p>
+			<p id="findHospitalSub">병원 찾기 게시판입니다.</p>
 	</header>
 	<hr/>
 
@@ -76,13 +84,13 @@
 			</div>
 			
 			
-			<div class="col-xs-0 col-sm-3">
+			<!-- <div class="col-xs-0 col-sm-3">
 				<label class="radio">동물병원 워드 클라우드↓↓</label>
 				<button type="button" class="btn btn-default" id='wordCloud'>word cloud here
 				</button>
-				<!-- <a href="#" onclick="window.open('https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png', 'width=1000, height=1000')"><img src="./resources/imgs/wordCloud/동물병원.png"></a>
-	 -->
-			</div>
+				<a href="#" onclick="window.open('https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png', 'width=1000, height=1000')"><img src="./resources/imgs/wordCloud/동물병원.png"></a>
+	
+			</div> -->
 			
 			
 		
@@ -115,6 +123,10 @@
 
 	console.log("-----------------------------------")
  
+	/* var latitude = $('#findhospitalX').val();
+	var longitude = $('#findhospitalY').val();
+	var findhospitalAddress = $('#findhospitalAddress').val(); */
+	
 	var container = document.getElementById('map');
 		var options = {
 			center: new kakao.maps.LatLng(36.601621, 127.2983811),
@@ -122,8 +134,11 @@
 		};
 
 		var map = new kakao.maps.Map(container, options);
-
 		
+			/* for(var i=0; i<data.findHospitalVOListSize; i++){
+				var position =  new kakao.maps.LatLng(data.findHospitalVOList[i].findhospitalX, data.findHospitalVOList[i].findhospitalY);
+				
+			 */
 
 	    var positions = [
 	        {

@@ -35,6 +35,11 @@ var app = https.createServer(options, (req, res) => {
 var io = require('socket.io')(app);
 io.on('connection', function(socket){
   console.log('user connected');
+  socket.on('disconnecting', () => {
+    const rooms = Object.keys(socket.rooms);
+    // io.to(rooms.keys[0]).emit('chat message', socket.nickname+'님이 퇴장하셨습니다.');
+    console.log(socket.rooms)
+  });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });

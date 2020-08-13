@@ -362,6 +362,7 @@ function drawTable(data){
 	}
 }
 
+//지도 검색
 function getDataWithoutPaging(){
 	$.ajax({
 		type : 'post',

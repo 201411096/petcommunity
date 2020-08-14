@@ -1,5 +1,11 @@
 input#keywordInput{
    width: 90%;
+   	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }
 
 table#lostboardTable{

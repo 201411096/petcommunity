@@ -11,6 +11,7 @@
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/style.css" />
 <link rel="stylesheet" href="./resources/css/head.css" />
+<link rel="stylesheet" href="./resources/css/review.css" />
 
 <!-- header 끝 -->
 
@@ -161,32 +162,14 @@
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel"
 					aria-labelledby="home-tab">
-					<p>Beryl Cook is one of Britain’s most talented and amusing
-						artists .Beryl’s pictures feature women of all shapes and sizes
-						enjoying themselves .Born between the two world wars, Beryl Cook
-						eventually left Kendrick School in Reading at the age of 15, where
-						she went to secretarial school and then into an insurance office.
-						After moving to London and then Hampton, she eventually married
-						her next door neighbour from Reading, John Cook. He was an officer
-						in the Merchant Navy and after he left the sea in 1956, they
-						bought a pub for a year before John took a job in Southern
-						Rhodesia with a motor company. Beryl bought their young son a box
-						of watercolours, and when showing him how to use it, she decided
-						that she herself quite enjoyed painting. John subsequently bought
-						her a child’s painting set for her birthday and it was with this
-						that she produced her first significant work, a half-length
-						portrait of a dark-skinned lady with a vacant expression and large
-						drooping breasts. It was aptly named ‘Hangover’ by Beryl’s husband
-						and</p>
-					<p>It is often frustrating to attempt to plan meals that are
-						designed for one. Despite this fact, we are seeing more and more
-						recipe books and Internet websites that are dedicated to the act
-						of cooking for one. Divorce and the death of spouses or grown
-						children leaving for college are all reasons that someone
-						accustomed to cooking for more than one would suddenly need to
-						learn how to adjust all the cooking practices utilized before into
-						a streamlined plan of cooking that is more efficient for one
-						person creating less</p>
+						<p>급여주의사항간식의 과도한 급여는 주식의 섭취를 방해하여 영양 밸런스를 무너뜨릴 수 있으니 권장 급여량을
+							참고하여 급여량을 잘 지켜주세요.</p>
+						<p>간식 권장 급여량은 보통활동량을 가진 표준체형의 어덜트(성견, 성묘)의 하루 섭취 칼로리의 10%를
+							기준으로 계산되었습니다. 반려동물의 체형과 활동량을 고려하여 급여해주세요.</p>
+						<p>처음 급여하시는 경우 소량씩 급여하여 장이 적응할 수 있는 시간을 주세요.</p>
+						<p>식이 알러지가 있는 친구라면 반드시 원재료를 확인 후 급여해주세요.</p>
+						<p>질병 등 건강 문제가 있어 식이조절이 필요한 친구라면, 급여 전 전문의와 상담을 통해 급여해주세요.</p>
+						
 				</div>
 
 				<div class="tab-pane fade show active" id="review" role="tabpanel"
@@ -206,29 +189,29 @@
 									<div class="rating_list">
 										<h3>리뷰 ${reviewListSize} 개의 평점</h3>
 										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i>
+											<li><a href="#">5 Star <i class="fa fa-heart"></i> <i
+													class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i
+													class="fa fa-heart"></i> <i class="fa fa-heart"></i>
 													${score5Size}
 											</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i>
+											<li><a href="#">4 Star <i class="fa fa-heart"></i> <i
+													class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i
+													class="fa fa-heart"></i> <i class="fa fa-heart-o"></i>
 													${score4Size}
 											</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-													class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+											<li><a href="#">3 Star <i class="fa fa-heart"></i> <i
+													class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i
+													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i>
 													${score3Size}
 											</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i> <i
-													class="fa fa-star"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+											<li><a href="#">2 Star <i class="fa fa-heart"></i> <i
+													class="fa fa-heart"></i> <i class="fa fa-heart-o"></i> <i
+													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i>
 													${score2Size}
 											</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i> <i
-													class="fa fa-star-o"></i> <i class="fa fa-star-o"></i> <i
-													class="fa fa-star-o"></i> <i class="fa fa-star-o"></i>
+											<li><a href="#">1 Star <i class="fa fa-heart"></i> <i
+													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i> <i
+													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i>
 													${score1Size}
 											</a></li>
 										</ul>
@@ -259,7 +242,7 @@
 												</h4>
 												<c:forEach begin="1" end="${reviewList.productreviewScore }"
 													step="1">
-													<i class="fa fa-star"></i>
+													<i class="fa fa-heart"></i>
 												</c:forEach>
 											</div>
 										</div>
@@ -317,33 +300,33 @@
 								<h4>리뷰작성</h4>
 								<p>평점:</p>
 								<div id="starScoreDiv">
-									<span class="fa fa-star" value="1"></span> <span
-										class="fa fa-star" value="2"></span> <span class="fa fa-star"
-										value="3"></span> <span class="fa fa-star" value="4"></span> <span
-										class="fa fa-star" value="5"></span>
+									<span class="fa fa-heart" value="1"></span> <span
+										class="fa fa-heart" value="2"></span> <span class="fa fa-heart"
+										value="3"></span> <span class="fa fa-heart" value="4"></span> <span
+										class="fa fa-heart" value="5"></span>
 								</div>
 								<!-- 								<ul class="list" id="starScoreUl"> -->
 								<!-- 									<li> -->
 
-								<!-- 											<i class="fa fa-star" value="1"></i> -->
+								<!-- 											<i class="fa fa-heart" value="1"></i> -->
 
 								<!-- 									</li> -->
 								<!-- 									<li> -->
 
-								<!-- 											<i class="fa fa-star" value="2"></i> -->
+								<!-- 											<i class="fa fa-heart" value="2"></i> -->
 
 								<!-- 									</li> -->
 								<!-- 									<li> -->
-								<!-- 											<i class="fa fa-star" value="3"></i> -->
+								<!-- 											<i class="fa fa-heart" value="3"></i> -->
 								<!-- 									</li> -->
 								<!-- 									<li> -->
 
-								<!-- 											<i class="fa fa-star" value="4"></i> -->
+								<!-- 											<i class="fa fa-heart" value="4"></i> -->
 
 								<!-- 									</li> -->
 								<!-- 									<li> -->
 								<!-- 										<a class="starScore" value="5"> -->
-								<!-- 											<i class="fa fa-star" value="5"></i> -->
+								<!-- 											<i class="fa fa-heart" value="5"></i> -->
 								<!-- 										</a> -->
 								<!-- 									</li> -->
 								<!-- 								</ul> -->

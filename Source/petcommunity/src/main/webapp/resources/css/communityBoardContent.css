@@ -4,27 +4,28 @@
 
 #communityContentTitle{
 	color : #03C75A;
+	font-size:25px;
 }
 
 #communityContentWriter{
-	font-size:13px;
+	font-size:19px;
 	font-weight: 700;
 }
 
 #communityContentTime{
-	font-size:11px;
+	font-size:19px;
 	color : #979797;
 }
 
 
 #commentWriter{
-	font-size:12px;
+	font-size:17px;
 	font-weight: 700;
 	color : #979797;
 }
 
 #commentUploadTime{
-	font-size:10px;
+	font-size:15px;
 	color : #979797;
 	
 }
@@ -36,25 +37,25 @@ table {
 }
 
 #recommendToContent{
-	font-size:11px;
+	font-size:17px;
 }
 
 #like{
 	cursor:pointer;
 }
 #communityContentContent{
-	font-size:20px;
+	font-size:25px;
 }
 #commentContent{
-	font-size:16px;
+	font-size:22px;
 }
 #section{
    padding-top:5%;
-   background: #faf9f8;
+   background: #ffecd9;
     margin-bottom:10%;
     padding-bottom:5%;
 }
-button{
+#commentBtn{
 	font:normal;
     font-size:16px;
     padding: 10px 20px;
@@ -63,4 +64,40 @@ button{
     border-radius: 10px;
     background: #fff;
 }
-
+#goToList{
+	font:normal;
+    font-size:16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+	border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+#communityBoardDelete{
+	font:normal;
+    font-size:16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+	border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+#communityBoardModify{
+	font:normal;
+    font-size:16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+	border-color:#e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+input{
+	font-size:25px;
+}
+#writeComment{
+	font-size:21px;
+}
+hr {
+  height: 1px;
+  background-color: #969696;
+}

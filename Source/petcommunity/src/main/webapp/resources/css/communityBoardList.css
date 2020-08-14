@@ -46,7 +46,7 @@
 
 #backGround{
 	padding-top:5%;
-	background: #faf9f8;
+	background: #ffecd9;
 	margin-bottom: 10%;
 }
 
@@ -58,7 +58,12 @@
 	font-size: 17px;
 	font-weight: bold;
 }
-
+ul.pagination li a{
+	background: #ffecd9;
+}
+section div ul.pagination{
+	border : #ffecd9;
+}
 
 .form-control1{
 	width:100%;
@@ -117,11 +122,13 @@ border-color:#e4e4e4;
 }
 
 .table-hover td,.table-hover tr{
-	font-size:17px;
+	font-size:21px;
 	height: 60px;
 
 }
-
+.text-dark{
+	font-size:21px;
+}
 .table>tbody>tr>td{
 	
 	padding: 20px 0 ;
@@ -137,17 +144,17 @@ body{
 }
 	
 #qnatitle{
-	text-align: center;
+   text-align: center;
    color: black;
-   font-size: 30px;
+   font-weight: 700;
+   font-size : 50px;
    margin-bottom: 1%;
 }	
 
 #qnasubtitle{
-	font-size:18px;
+   font-size: 28px;
    color: gray;
    text-align: center;
-	
 }
 /* 스크롤 배너 css */
 #banner {
@@ -272,7 +279,9 @@ body{
 	width: 290px;
 	right: -30%;
 }
-
+select{
+	font-size:21px;
+}
 .Ranktitle{
 	height:9%;
 	font-size:20px;
@@ -333,7 +342,7 @@ body{
 	#backGround{
 	width:100%;
 
-	background: #faf9f8;
+	background: #ffecd9;
 }
 	#chatLink{
 	width:50%;

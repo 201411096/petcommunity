@@ -5,9 +5,9 @@ body{
 }
 
 .main2 ,.signup-content2 ,#tab-1,#tab-2,#tab-3{
-	padding-top:5%;
-	padding-bottom:5%;
-	 background: #faf9f8;
+	padding-bottom:1%;
+	 background: #ffecd9;
+	 margin-bottom: 10%;
 }
 
 #tab-3{
@@ -117,7 +117,7 @@ margin: auto;
   color: #222; }
   
 .form-group input {
-	background: #f7f4f2;
+	background: #fffaf4;
 	font-size:17px;
   width: 62%;
   margin-left:20%;
@@ -347,8 +347,9 @@ text-align:center;
   }
   .tedoorymain{
  width:100%;
-  background : #e9e4e0;
+  background : #fffaf4;
   padding: 25px 30px;
+  border:1px solid #858585;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;
   border-radius: 35px;
@@ -437,8 +438,8 @@ ul.tabs li{
 
 
 ul.tabs li.current{
-	 background: #faf9f8;
-	color: #615345;
+	 background: #ffecd9;
+	color: #840000;
 	
 }
 
@@ -453,7 +454,7 @@ ul.tabs li.current{
 }
 
 .mypage-table {
-	font-size:17px;
+	font-size:19px;
 	width:100%;
 }
 
@@ -486,12 +487,13 @@ ul.tabs li.current{
     line-height: 1.42857143;
     color: #636363;
     text-decoration: none;
-    background-color: #faf9f8;
+   background:#fffaf4;
     border: 1px solid #faf9f8;
     
 }
 
 .tedoory3{
+	background:#fffaf4;
 margin:auto;
 margin-bottom:50px;
   width:80%;
@@ -506,12 +508,11 @@ margin-bottom:50px;
  .tedoory3 input{
   width: 60%;
   padding: 10px 30px;
- 
  border: none;
- border-bottom : 1px solid #b6b6bc;
+ border-bottom : 2px solid #b6b6bc;
  }
  
-#pagination-demo>li>a:hover:not(.active) {border-bottom:1px solid #ddd;}
+#pagination-demo>li>a:hover:not(.active) {border-bottom:1px solid #ddd; background:#fffaf4;}
 
 
 
@@ -553,7 +554,7 @@ ul.tabs li{
 
  .tedoorymain{
  width:100%;
-  background : #f2f2f2;
+  background : #fff2e6;
   padding: 25px 8px;
   -webkit-border-radius: 35px;
   -moz-border-radius: 35px;

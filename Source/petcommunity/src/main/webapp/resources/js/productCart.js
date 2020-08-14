@@ -83,7 +83,7 @@ function cartTable(data){
 									"<input type='number' id=productAmount" +[i] + '  min="0" value="'+data[i].buycartlistCnt+'" buycartlistId='+data[i].buycartlistId+' /> ' +
 								'</span>'+
 							tdSuffix +
-							tdPrefix + "<a href=#  id=cancelImg"+[i]+" buycartlistId="+data[i].buycartlistId+ "><img src='resources/imgs/product_image/cartImg/cancelButton.png'  ></a>" + tdSuffix +
+							tdPrefix + "<a href=#  id=cancelImg"+[i]+" buycartlistId="+data[i].buycartlistId+ "><img src='resources/imgs/product_image/cartImg/cancelImg.png'  ></a>" + tdSuffix +
 							trSuffix;
 			$('#cartLists').append(listContent);
 			

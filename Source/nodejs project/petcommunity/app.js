@@ -22,20 +22,20 @@ for(var i=1; i<directoryPathArray.length; i++){
 }
 directoryPath+="/python project/pythonProject_kys/";
 // 공공데이터(파이썬 부분)-----
-
 var app = https.createServer(options, (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin,Accept,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-}).listen(3000, '192.168.0.18', () => {
-// }).listen(60005, '115.91.88.227', () => {
-// }).listen(3000, '121.171.119.57', () => {
+  }).listen(3000, '192.168.0.24', () => {
+// }).listen(3000, '192.168.0.18', () => {
+// }).listen(3000, '121.171.119.57', () => { // 집
     console.log('listening on *:3000');
 });
-
 var io = require('socket.io')(app);
+
+executePythonFileAndReadJsonFile();
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('disconnecting', () => {
@@ -178,7 +178,6 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
   }
   io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent); // 특별한 명령어 처리가 없을 경우 그 방에 포함된 사람들에게만 메시지를 보냄
 }
-
 // 공공데이터(파이썬 부분)-----
 function executePythonFileAndReadJsonFile(dataOptions, socket){
   var python_options = {
@@ -188,17 +187,37 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     scriptPath: '',
     // args:[1],
     // args: [0, '20200801', '20200831', '3']
-    args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt, dataOptions.crawlingOption]
+    // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
+    args: [0, today.toString().substring(0,4)+'0101', today.toString().substring(0,4)+'1231', 1000]
   }
-  PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
-    if (err) throw err;
-    fs.readFile('publicData_'+today+'.json', 'utf8', function(err, data){
+  fs.stat('publicData_'+today+'.json', function(err, stat) {
+    if(err == null) { // 파일이 존재할 떄
+      fs.readFile('publicData_'+today+'.json', 'utf8', function(err, data){
         data = JSON.parse(data);
         // data = data.response.body.items.item; // 수정 위치
         console.log(data);
         console.log('data 길이...' + data.length);
-        socket.emit('getPublicData', data);
-    });    
+        if(socket!=undefined){
+          socket.emit('getPublicData', data);
+        }
+          
+      });  
+    } else if(err.code === 'ENOENT') { // 파일이 존재하지 않을 때
+      PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
+        if (err) throw err;
+        fs.readFile('publicData_'+today+'.json', 'utf8', function(err, data){
+            data = JSON.parse(data);
+            // data = data.response.body.items.item; // 수정 위치
+            console.log(data);
+            console.log('data 길이...' + data.length);
+            if(socket!=undefined){
+              socket.emit('getPublicData', data);
+            }
+        });    
+      });
+    } else {
+        console.log('Some other error: ', err.code);
+    }
   });
 }
 // machineLearning(파이썬 부분)-----

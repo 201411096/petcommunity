@@ -25,7 +25,8 @@ span.input-group-btn > button#cancelWrite{
 #board_title{
 	text-align: center;
     color: black;
-    font-size: 30px;
+	font-weight: 700;
+	font-size: 50px;
     margin-bottom: 1%;
 }
 div.container label{

@@ -4,7 +4,7 @@
 
 #backGround{
 	padding-top:5%;
-	background: #faf9f8;
+	background: #ffecd9;
 	margin-bottom: 10%;
 }
 
@@ -40,12 +40,13 @@ body{
 #shoptitle{
    text-align: center;
    color: black;
-   font-size: 30px;
+   font-weight: 700;
+	font-size: 50px;
    margin-bottom: 1%;
 }
 
 #shopsubtitle{
-   font-size:18px;
+   font-size:28px;
    color: gray;
    text-align: center;
    margin-bottom: 5%;
@@ -349,11 +350,11 @@ body{
     float: left;
     padding: 6px 12px;
     margin-left: -1px;
-    line-height: 1.42857143;
+    line-height: 1.42857143;   
     color: #636363;
     text-decoration: none;
-    background-color:  #faf9f8;;
-    border: 1px solid   #faf9f8;;
+    background-color:  #ffecd9;
+    border: 1px solid   #faf9f8;
 }
 
 #ul-div{

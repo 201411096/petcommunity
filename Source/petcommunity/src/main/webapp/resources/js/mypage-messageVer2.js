@@ -431,14 +431,14 @@ function drwaWriteMessageTable(data){
 		'<table>'+
 		'<colgroup>'+	
 		'<col style="width: 20%" />'+
-		'<col style="width: 30%" />'+
-		'<col style="width: 45%" />'+
+		'<col style="width: 75%" />'+
+//		'<col style="width: 45%" />'+
 		'<col style="width: 5%" />'+
 		'</colgroup>'+
 		'<tr>'+
 			'<td><img class="mypage-messageThumbnail" src="resources/imgs/review_thumbnail'+'/thumbnail_reivew'+'.jpg" alt="썸네일"></td>'+
 			'<td class="mypage-messageId" value="'+userId+'">'+userId+'</td>'+
-			'<td></td>'+
+//			'<td></td>'+
 //			'<td class="mypage-messageTime" value="'+sendTime+'">'+sendTime.slice(2,-3)+'</td>'+
 			'<input type="hidden" value="'+userId+'"/>'+
 			iTag+

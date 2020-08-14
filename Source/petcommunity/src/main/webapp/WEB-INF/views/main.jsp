@@ -122,7 +122,7 @@
 								src="./resources/bootstrap_template/bootstrap_seyeong/img/mung1.png">
 						</div>
 						<div class="memberCountCon" id="memberCountCon3"></div>
-						<div class="memberCountSubTitle" id="findCounttitle">&nbsp &nbsp가족의 품으로 <br>&nbsp돌아간 반려동물</div>
+						<div class="memberCountSubTitle" id="findCounttitle"> &nbsp&nbsp가족의 품으로 <br>&nbsp돌아간 반려동물</div>
 					</div>
 				</div>
 			</div>

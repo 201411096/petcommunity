@@ -757,7 +757,7 @@ transparent
 #findCounttitle {
 	font-family: 'MapoGoldenPier';
 /* font-family: 'NanumSquare', sans-serif !important; */
-	font-size: 23px;
+	font-size: 22px;
 	margin-left: 63%;
 	margin-bottom: -10%;
 }
@@ -1649,26 +1649,21 @@ html, body {
 	font-style: normal;
 }
 
-/* 신비는 일곱살 
-@font-face { 
-	font-family: 'SangSangShinb7'; 
-	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.1/SangSangShinb7.woff') format('woff'); 
-	font-weight: normal; 
-	font-style: normal; }*/
-/*
- .gallery-item{
- 	font-family: 'UhBeemysen';
- 	font-size: 30px;
- }
- */
 .gallery-item {
 	font-family: 'NanumSquare';
+	margin-left:10%;
 	font-size: 30px;
+	width: 100%;
 }
 
 .gallery-left-col {
 	margin-left: 15%;
 	margin-top: 10%;
+}
+
+#findCounttitle{
+	margin-left:5%;
+	font-size: 11px;
 }
 
 .gallery-right-col {
@@ -2354,7 +2349,7 @@ transparent
 .memberCountCon {
 	font-size: 15px;
 	font-family: 'MapoGoldenPier';
-	margin-left: 55%;
+	margin-left: 60%;
 }
 
 .memberCountTitle {

@@ -20,7 +20,7 @@ ul.tabs li{
 
 ul.tabs li.current{
 	background: #ffffff;
-	color: #83bb44;
+	color: #840000;
 }
 
 .tab-content{
@@ -39,38 +39,75 @@ ul.tabs li.current{
 }
 
 #startDate{
-	width:20%;
-	margin-left: 25%;
-	margin-right: 3%;	
-	font-size: 18px;
+/* 	width:20%; */
+/* 	margin-left: 25%; */
+/* 	margin-right: 3%;	 */
+/* 	font-size: 18px; */
+width:20%;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+    margin-right:2%;
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
 #endDate{
-	width:20%;
-	font-size: 18px;
+/* 	width:20%; */
+/* 	font-size: 18px; */
+width:20%;
+    display: block;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 17px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border-style:none;
+    border: 1px solid #b3b3b3;
+    border-radius: 10px;
+  
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
 .input-group{
 	width: 100%;
 	display: inline-block;
-}
-.input-group2{
-	margin-top:-3%;
-	margin-left:60%;
+	margin-left: 22%;
 }
 
+
 #adminsearchBtn{
-	width:20%;
-	margin-right: 3%;
-	
-	color: black;
-	font-size:18px;
+font:normal;
+font-size:16px;
+padding: 10px 20px;
+margin-right: 5px;
+border-color:#e4e4e4;
+border-radius: 10px;
+background: #fff;
 }
 
 #listBtn{
-	width: 20%;
-	color: black;
-	font-size:18px;
+	font:normal;
+font-size:16px;
+padding: 10px 20px;
+
+border-color:#e4e4e4;
+border-radius: 10px;
+background: #fff;
 }
 
 #title{
@@ -82,13 +119,14 @@ tbody{
 }
 
 td a {
-	color: #00468c;
+	color: #000000;
+	font-size: 18px;
 }
 
 td a:hover {
 	color: gray;
+	font-size: 18px;
 }
-
 
 .mypage-table {
 	width:100%;
@@ -151,7 +189,7 @@ ul.tabs li{
 
 ul.tabs li.current{
 	background: #ffffff;
-	color: #83bb44;
+	color: #840000;
 }
 
 .tab-content{
@@ -168,36 +206,41 @@ ul.tabs li.current{
 .input-admin-btn input{
 	width:11%;
 }
+.input-group{
+	width: 100%;
+	margin-left: -5%;
+}
 
 #startDate{
-	width:45%;
-	margin-left: 1%;
+	width:25%;
 	font-size: 14px;
 }
 
 #endDate{
-	width:40%;
+	width:25%;
 	font-size: 14px;
 }
 
-.input-group{
-	width: 100%;
-}
-.input-group2{
-	width: 100%;
-	margin-top: 1%;
-}
+
 
 #adminsearchBtn{
-	width:30%;
-	font-size: 12px;
-	margin-left: 16%;
+font:normal;
+font-size:14px;
+padding: 8px 16px;
+margin-right: 2px;
+border-color:#e4e4e4;
+border-radius: 10px;
+background: #fff;
 }
 
 #listBtn{
-	width: 30%;
-	font-size: 12px;
-	
+	font:normal;
+font-size:14px;
+padding: 8px 16px;
+
+border-color:#e4e4e4;
+border-radius: 10px;
+background: #fff;
 }
 #title{
 	font-size: 14px;
@@ -208,7 +251,13 @@ tbody{
 }
 
 td a {
-	color: #00468c;
+	color: #000000;
+	font-size: 14px;
+}
+
+td a:hover {
+	color: gray;
+	font-size: 14px;
 }
 
 

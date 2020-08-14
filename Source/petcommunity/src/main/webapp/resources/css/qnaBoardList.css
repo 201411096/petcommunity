@@ -125,6 +125,7 @@ table tr{
     line-height: 1.42857143;
     vertical-align: middle;
     border-top: 1px solid #ddd;
+    font-size: 18px;
 }
 
 /*  table td{ */
@@ -142,6 +143,16 @@ tr#adminList{
 	margin-bottom: 1%;
 }
 
+#boardtitle a{
+	font-size: 18px;
+}
+
+#boardtitle a:hover{
+	font-size: 18px;
+	color: gray;
+	text-decoration: none;
+}
+
 #qnasubtitle{
 	font-size:18px;
 	color: gray;
@@ -153,18 +164,24 @@ tr#adminList{
 	text-align: center;
 }
 
+td #boardtitle{
+	font-size: 18px;
+	color: #b2c7d9;
+	color: #ffeb33;
+}
+
 td a{
 	color : black;
 }
 
 table td{
  	text-align: left;
-	font-size: 17px;
+	font-size: 18px;
 }
 
 table td#td_memberId{
  	text-align: center;
-	font-size: 17px;
+	font-size: 18px;
 }
 
 td #titleImage{
@@ -307,17 +324,19 @@ table tr{
     line-height: 1.42857143;
     vertical-align: middle;
     border-top: 1px solid #ddd;
+    
 }
 
 tr#adminList{
 	background-color: #f3f3f3;
+	font-size: 18px;
 }
 
 #qnatitle{
 	text-align: center;
 	color: black;
 	margin-bottom: 7%;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 td a{
@@ -326,7 +345,7 @@ td a{
 
 table td{
  	text-align: left;
-	font-size: 14px;
+	font-size: 18px;
 }
 
 td #titleImage{

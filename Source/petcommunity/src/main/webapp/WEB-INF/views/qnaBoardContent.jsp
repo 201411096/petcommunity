@@ -62,13 +62,11 @@
 		</div>
 		<div id="mulBtn">
 			<c:if test="${admin eq '1' && groupListSize eq 1}">
-				<a
-					href="/petcommunity/reply.do?questionboardGroupId=${qnaContent.questionboardGroupId}"
+				<a href="/petcommunity/reply.do?questionboardGroupId=${qnaContent.questionboardGroupId}"
 					class="btn btn-default" id="replyBtn">답변</a>
 			</c:if>
 			<button type="submit" id="deleteBtn" class="btn btn-default"
 				value="${qnaContent.questionboardId}">삭제</button>
-
 			<button type="submit" id="modifyBtn" class="btn btn-default"
 				value="${qnaContent.questionboardId}">수정</button>
 			<a class="btn btn-default" id="qnaListBtn"

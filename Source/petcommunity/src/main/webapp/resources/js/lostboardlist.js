@@ -41,7 +41,7 @@ function drawMarker(){
         
         var markerPosition = new kakao.maps.LatLng(publicDataFromAPI[i].y, publicDataFromAPI[i].x); // latitude 가 y, longitude가 x
         var imageSrc = contextPath + '/resources/imgs/marker/green.png', // 마커이미지의 주소입니다    
-	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageSize = new kakao.maps.Size(20, 30), // 마커이미지의 크기입니다
 	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
         var marker = new kakao.maps.Marker({
@@ -312,7 +312,7 @@ function kakaoMapAPI(data){
 		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);
 		
 		var imageSrc = contextPath + '/resources/imgs/marker/red.png', // 마커이미지의 주소입니다    
-	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageSize = new kakao.maps.Size(20, 30), // 마커이미지의 크기입니다
 	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
 		
@@ -353,7 +353,7 @@ function kakaoMapAPI(data){
 		var position =  new kakao.maps.LatLng(data.findBoardVOList[i].findboardX, data.findBoardVOList[i].findboardY);
 		
 		var imageSrc = contextPath + '/resources/imgs/marker/blue.png', // 마커이미지의 주소입니다    
-	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageSize = new kakao.maps.Size(20, 30), // 마커이미지의 크기입니다
 	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
 		

@@ -1,7 +1,7 @@
 //var socket = io('https://192.168.0.24:3000');
 //var socket = io("https://192.168.0.18:3000");   // 내부ip  
-//var socket = io("https://115.91.88.227:60005"); // 대회의실용
-var socket = io("https://121.171.119.57:3000"); // 집
+var socket = io("https://115.91.88.227:60005"); // 대회의실용
+//var socket = io("https://121.171.119.57:3000"); // 집
 
 var curRoomName;
 var memberId;

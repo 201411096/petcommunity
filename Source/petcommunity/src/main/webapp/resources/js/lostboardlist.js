@@ -5,8 +5,8 @@ var longitude = -1;
 //var longitude = 126.85287648507145;
 var contextPath = getContextPath();
 //var socket = io('https://192.168.0.24:3000');
-var socket = io('https://121.171.119.57:3000'); //집
-//var socket = io("https://115.91.88.227:60005");
+//var socket = io('https://121.171.119.57:3000'); //집
+var socket = io("https://115.91.88.227:60005"); //대회의실용
 var publicDataFromAPI;
 var map;
 var defaultOpts = {

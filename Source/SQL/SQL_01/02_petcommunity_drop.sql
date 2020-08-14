@@ -2,7 +2,9 @@
 drop table boardcomment;
 drop table communityboard;
 drop table findboard;
+drop table findboardcomment;
 drop table lostboard;
+drop table lostboardcomment;
 drop table questionboard;
 drop table shop;
 drop table raise;
@@ -13,6 +15,7 @@ drop table product;
 drop table buycartlist;
 drop table buy;
 drop table buylist;
+drop table findhospital;
 
 
 

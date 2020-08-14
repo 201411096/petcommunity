@@ -77,10 +77,10 @@ function cartTable(data){
 							"<a href=# id=productId"+[i]+" value="+data[i].productId +"><img src='resources/imgs/product_image/internal/product_image/".concat(data[i].productName) +".jpg' class=cartListImg /></a>"+ tdSuffix +
 							'<input type=hidden  value="+data[i].productId +" >'+
 							tdPrefix + "<span id=productName"+[i]+'>' + data[i].productName +'</span>&nbsp;(<span id=productPrice'+[i]+'>'+ data[i].productPrice + '</span>원)' +tdSuffix +
-							tdPrefix + "<span id=productTotalPrice"+[i]+">"+data[i].productPrice*data[i].buycartlistCnt+'</span>원' + tdSuffix +
+							tdPrefix + "<span id=productTotalPrice"+[i]+">"+data[i].productPrice*data[i].buycartlistCnt+'</span><span id=won>원</span>' + tdSuffix +
 							tdPrefix + 
 								'<span>'+
-									"<input type='number' id=productAmount" +[i] + ' class="form-control" min="0" value="'+data[i].buycartlistCnt+'" buycartlistId='+data[i].buycartlistId+'  /> ' +
+									"<input type='number' id=productAmount" +[i] + '  min="0" value="'+data[i].buycartlistCnt+'" buycartlistId='+data[i].buycartlistId+' /> ' +
 								'</span>'+
 							tdSuffix +
 							tdPrefix + "<a href=#  id=cancelImg"+[i]+" buycartlistId="+data[i].buycartlistId+ "><img src='resources/imgs/product_image/cartImg/cancelButton.png'  ></a>" + tdSuffix +

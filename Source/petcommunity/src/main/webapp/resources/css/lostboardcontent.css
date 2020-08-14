@@ -88,3 +88,33 @@ img{
 .bgColor{
 	background:#faf9f8;
 }
+li{
+	font-size:20px;
+}
+#contentWriter{
+	font-size:20px;
+}
+#listButton{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+#updateButton{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+#deleteButton{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}

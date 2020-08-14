@@ -28,7 +28,7 @@
 <title>게시판</title>
 </head>
 <body>
-
+	<section id="backGround">
 	<header>
 			<h4 id="findHospital">Hospital List</h4>
 			<p id="findHospitalSub">병원 찾기 게시판입니다.</p>
@@ -96,12 +96,7 @@
 	<br/><br/><br/>	
 
  -->
-			<!-- 병원 리스트 맵 영역 
-	<div class="form-group"> -->
-<!-- 	 <div id="map"></div>
-	 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries=services,clusterer,drawing"></script>
-	<script>
- -->
+
 
 	<div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -110,7 +105,7 @@
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15"> 
+                    키워드 : <input type="text" value="서울시 종로구 동물병원" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -345,8 +340,11 @@ function removeAllChildNods(el) {
 
 	
 	<!-- Footer -->
+
 	
-	</script></body></html> 
+	</script><br/><br/>
+		</section><%@include file="../views/footer.jsp"%>
+	</body></html> 
 
 
 

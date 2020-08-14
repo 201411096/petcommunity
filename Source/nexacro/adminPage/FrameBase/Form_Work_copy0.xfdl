@@ -1,54 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="manager" width="1280" height="720" titletext="manager">
+  <Form id="manager" width="1550" height="850" titletext="manager">
     <Layouts>
-      <Layout width="1280" height="720" screenid="Desktop_screen">
+      <Layout width="1550" height="850" screenid="Desktop_screen">
         <!--   <Static id="Static02_00" taborder="13" text="게시글 수" left="777" top="488" width="59" height="52"/>-->
         <!-- <Edit id="dnamev00_00" taborder="16" left="870" top="487" width="310" height="47" onchanged="Edit00_onchanged"/>-->
-        <Grid id="Grid03" taborder="7" left="731" top="150" width="505" height="492" border="1px solid black"/>
-        <Grid id="Grid01" taborder="6" left="10" top="40" width="710" height="600" border="1px solid black"/>
-        <Grid id="Grid00" taborder="0" left="30" top="60" width="668" height="560" binddataset="manager" color="transparent" border="1px solid black" cursor="pointer">
+        <Grid id="Grid03" taborder="7" left="821" top="130" width="699" height="700" border="1px solid black"/>
+        <Grid id="Grid01" taborder="6" left="10" top="40" width="790" height="790" border="1px solid black"/>
+        <Grid id="Grid00" taborder="0" left="30" top="60" width="750" height="740" binddataset="manager" color="transparent" border="1px solid black" cursor="pointer">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="125"/>
                 <Column size="134"/>
-                <Column size="131"/>
-                <Column size="126"/>
-                <Column size="151"/>
+                <Column size="165"/>
+                <Column size="130"/>
+                <Column size="192"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
+                <Row size="37" band="head"/>
+                <Row size="42"/>
               </Rows>
               <Band id="head">
-                <Cell text="아이디"/>
-                <Cell col="1" text="부서명"/>
-                <Cell col="2" text="입사일"/>
-                <Cell col="3" text="이름"/>
-                <Cell col="4" text="연락처"/>
+                <Cell text="아이디" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="1" text="부서명" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="2" text="입사일" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="3" text="이름" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="4" text="연락처" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:managerId"/>
-                <Cell col="1" text="bind:managerDept"/>
-                <Cell col="2" text="bind:managerHireDate"/>
-                <Cell col="3" text="bind:managerName"/>
-                <Cell col="4" text="bind:managerTel"/>
+                <Cell text="bind:managerId" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="1" text="bind:managerDept" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="2" text="bind:managerHireDate" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="3" text="bind:managerName" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="4" text="bind:managerTel" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="1" text="아이디" left="777" top="240" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static02" taborder="2" text="부서명" left="780" top="340" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static03" taborder="3" text="입사일" left="780" top="450" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Button id="managerDelete" taborder="5" text="삭제" left="1010" top="560" width="120" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Edit id="managerId" taborder="4" left="870" top="236" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Button id="Button00" taborder="8" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="9" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
-        <Button id="managerSelect" taborder="10" text="조회" left="745" top="60" width="115" height="60" onclick="managerSelectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black" visible="true" enableevent="true"/>
-        <Button id="managerInsert" taborder="11" text="등록" left="840" top="560" width="120" height="40" onclick="managerInsertBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Combo id="managerDept" taborder="12" text="Combo00" left="869" top="343" width="311" height="53" innerdataset="dept" codecolumn="code" datacolumn="data"/>
-        <Calendar id="managerHireDate" taborder="13" left="870" top="446" width="312" height="52"/>
+        <Static id="Static00" taborder="1" text="아이디" left="867" top="220" width="90" height="40" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Static id="Static02" taborder="2" text="부서명" left="870" top="350" width="90" height="50" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Static id="Static03" taborder="3" text="입사일" left="870" top="490" width="90" height="44" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="managerDelete" taborder="5" text="삭제" left="1360" top="740" width="120" height="50" onclick="deleteBtn_onclick" font="25px/normal &quot;나눔스퀘어 Bold&quot;" border="1px solid black"/>
+        <Edit id="managerId" taborder="4" left="1000" top="216" width="470" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="Button00" taborder="8" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="Button00_00" taborder="9" text="직원관리" left="140" top="10" width="117" height="30" onclick="Button00_00_onclick" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="managerSelect" taborder="10" text="조회" left="825" top="40" width="115" height="60" onclick="managerSelectBtn_onclick" font="25px/normal &quot;나눔스퀘어 Bold&quot;" border="1px solid black" visible="true" enableevent="true"/>
+        <Button id="managerInsert" taborder="11" text="등록" left="1190" top="740" width="120" height="50" onclick="managerInsertBtn_onclick" font="25px/normal &quot;나눔스퀘어 Bold&quot;" border="1px solid black"/>
+        <Combo id="managerDept" taborder="12" text="Combo00" left="999" top="353" width="471" height="53" innerdataset="dept" codecolumn="code" datacolumn="data" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Calendar id="managerHireDate" taborder="13" left="1000" top="486" width="472" height="52" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
       </Layout>
       <Layout name="Layout0" width="1280" height="720" mobileorientation="landscape"/>
     </Layouts>

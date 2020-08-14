@@ -17,7 +17,6 @@
  /*footer 자리 고정*/
 .footer-section{
 	margin-left:5%;
-	
 	padding-bottom: -20%;
 }
 .footer {
@@ -125,12 +124,12 @@ body{
 .footer-section{
 	height:100%;
 	margin-left:5%;
-	padding-top: 30%;
+	padding-top: 20%;
  	margin-top: -65%;
 }
 
 .col-lg-5 h5{
-	margin-top:80%;
+	margin-top:70%;
 	font-size: 18px;
 	margin-left: 5%;
 }

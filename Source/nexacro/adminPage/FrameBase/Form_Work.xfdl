@@ -1,61 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="member" width="1280" height="720" titletext="Form_Work">
+  <Form id="member" width="1550" height="850" titletext="Form_Work">
     <Layouts>
-      <Layout width="1280" height="720" screenid="Desktop_screen">
+      <Layout width="1550" height="850" screenid="Desktop_screen">
         <!--   <Static id="Static02_00" taborder="13" text="게시글 수" left="777" top="488" width="59" height="52"/>-->
         <!-- <Edit id="dnamev00_00" taborder="16" left="870" top="487" width="310" height="47" onchanged="Edit00_onchanged"/>-->
-        <Grid id="Grid03" taborder="18" left="731" top="150" width="505" height="492" border="1px solid black"/>
-        <Grid id="Grid02" taborder="17" left="730" top="40" width="506" height="100" border="1px solid black"/>
-        <Grid id="Grid01" taborder="16" left="10" top="40" width="710" height="600" border="1px solid black"/>
-        <Grid id="Grid00" taborder="0" left="30" top="60" width="668" height="560" binddataset="Dataset00" color="transparent" border="1px solid black" cursor="pointer">
+        <Grid id="Grid03" taborder="18" left="831" top="160" width="699" height="660" border="1px solid black"/>
+        <Grid id="Grid02" taborder="17" left="830" top="40" width="700" height="110" border="1px solid black"/>
+        <Grid id="Grid01" taborder="16" left="10" top="40" width="802" height="780" border="1px solid black"/>
+        <Grid id="Grid00" taborder="0" left="30" top="60" width="760" height="740" binddataset="Dataset00" color="transparent" border="1px solid black" cursor="pointer">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="80"/>
-                <Column size="83"/>
-                <Column size="177"/>
-                <Column size="172"/>
-                <Column size="154"/>
+                <Column size="111"/>
+                <Column size="117"/>
+                <Column size="135"/>
+                <Column size="144"/>
+                <Column size="251"/>
               </Columns>
               <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
+                <Row size="38" band="head"/>
+                <Row size="40"/>
               </Rows>
               <Band id="head">
-                <Cell text="아이디"/>
-                <Cell col="1" text="회원명"/>
-                <Cell col="2" text="주소"/>
-                <Cell col="3" text="연락처"/>
-                <Cell col="4" text="이메일"/>
+                <Cell text="아이디" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="1" text="회원명" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="2" text="주소" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="3" text="연락처" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="4" text="이메일" font="normal 700 24px/normal &quot;나눔스퀘어 Bold&quot;"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:memberId"/>
-                <Cell col="1" text="bind:memberName"/>
-                <Cell col="2" text="bind:memberAddress"/>
-                <Cell col="3" text="bind:memberTel"/>
-                <Cell col="4" text="bind:memberEmail"/>
+                <Cell text="bind:memberId" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="1" text="bind:memberName" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="2" text="bind:memberAddress" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="3" text="bind:memberTel" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+                <Cell col="4" text="bind:memberEmail" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Combo id="Combo00" taborder="1" text="" left="740" top="70" width="70" height="40" innerdataset="Dataset01" codecolumn="code" datacolumn="data" border="1px solid black"/>
-        <Edit id="memberInfo" taborder="2" left="820" top="70" width="240" height="40" onchanged="Edit00_onchanged" border="1px solid black"/>
-        <Button id="searchInfo" taborder="3" text="검색" left="1075" top="70" width="70" height="40" onclick="searchBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Static id="Static00" taborder="4" text="성명" left="777" top="200" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static02" taborder="5" text="아이디" left="780" top="270" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static03" taborder="6" text="주소" left="780" top="340" width="59" height="44" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Button id="deleteInfo" taborder="10" text="삭제" left="1130" top="580" width="70" height="40" onclick="deleteBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Static id="Static03_00" taborder="11" text="연락처" left="781" top="410" width="59" height="50" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Static id="Static00_00" taborder="12" text="이메일" left="780" top="483" width="59" height="40" font="bold 14px/normal &quot;HY신명조&quot;"/>
-        <Edit id="memberAddress" taborder="7" left="870" top="337" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberName" taborder="8" left="870" top="196" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberId" taborder="9" left="870" top="270" width="310" height="47" onchanged="Edit00_onchanged" visible="true" border="1px solid darkgray" color="black"/>
-        <Edit id="memberTel" taborder="13" left="870" top="407" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Edit id="memberEmail" taborder="15" left="870" top="476" width="310" height="47" onchanged="Edit00_onchanged" border="1px solid darkgray"/>
-        <Button id="selectInfo" taborder="14" text="보기" left="1155" top="70" width="70" height="40" onclick="selectBtn_onclick" font="bold 14px/normal &quot;HY신명조&quot;" border="1px solid black"/>
-        <Button id="Button00" taborder="19" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="20" text="직원관리" left="130" top="10" width="117" height="30" onclick="Button00_00_onclick"/>
+        <Combo id="Combo00" taborder="1" text="" left="850" top="70" width="140" height="50" innerdataset="Dataset01" codecolumn="code" datacolumn="data" border="1px solid black" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Edit id="memberInfo" taborder="2" left="1000" top="70" width="340" height="50" onchanged="Edit00_onchanged" border="1px solid black" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="searchInfo" taborder="3" text="검색" left="1355" top="70" width="70" height="50" onclick="searchBtn_onclick" font="24px/normal &quot;나눔스퀘어 Bold&quot;" border="1px solid black"/>
+        <Static id="Static00" taborder="4" text="성명" left="877" top="210" width="120" height="40" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Static id="Static02" taborder="5" text="아이디" left="880" top="310" width="120" height="50" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Static id="Static03" taborder="6" text="주소" left="880" top="420" width="120" height="44" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="deleteInfo" taborder="10" text="삭제" left="1390" top="720" width="90" height="60" onclick="deleteBtn_onclick" font="24px/normal &quot;나눔스퀘어 Bold&quot;" border="1px solid black"/>
+        <Static id="Static03_00" taborder="11" text="연락처" left="881" top="520" width="120" height="50" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Static id="Static00_00" taborder="12" text="이메일" left="880" top="633" width="120" height="40" font="25px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Edit id="memberAddress" taborder="7" left="1010" top="417" width="470" height="60" onchanged="Edit00_onchanged" border="1px solid darkgray" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Edit id="memberName" taborder="8" left="1010" top="206" width="470" height="60" onchanged="Edit00_onchanged" border="1px solid darkgray" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Edit id="memberId" taborder="9" left="1010" top="310" width="470" height="60" onchanged="Edit00_onchanged" visible="true" border="1px solid darkgray" color="black" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Edit id="memberTel" taborder="13" left="1010" top="517" width="470" height="60" onchanged="Edit00_onchanged" border="1px solid darkgray" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Edit id="memberEmail" taborder="15" left="1010" top="626" width="470" height="60" onchanged="Edit00_onchanged" border="1px solid darkgray" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="selectInfo" taborder="14" text="보기" left="1435" top="70" width="70" height="50" onclick="selectBtn_onclick" font="24px/normal &quot;나눔스퀘어 Bold&quot;" border="1px solid black"/>
+        <Button id="Button00" taborder="19" text="회원관리" left="10" top="10" width="117" height="30" onclick="Button00_onclick" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
+        <Button id="Button00_00" taborder="20" text="직원관리" left="140" top="10" width="117" height="30" onclick="Button00_00_onclick" font="24px/normal &quot;나눔스퀘어 Bold&quot;"/>
       </Layout>
       <Layout name="Layout0" width="1280" height="720" mobileorientation="landscape"/>
     </Layouts>

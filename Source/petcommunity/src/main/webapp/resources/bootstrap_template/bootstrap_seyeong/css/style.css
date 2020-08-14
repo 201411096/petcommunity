@@ -733,7 +733,7 @@ transparent
   ---------------------*/
 .memberCountCon {
 	font-size: 40px;
-	font-family: 'MapoGoldenPier';
+ 	font-family: 'MapoGoldenPier'; 
 	margin-left: 80%;
 }
 
@@ -746,20 +746,23 @@ transparent
 	color: #2f2f2f;
 }
 
+
 .memberCountSubTitle {
-	font-family: 'MapoGoldenPier';
+ 	font-family: 'MapoGoldenPier'; 
 /* font-family: 'NanumSquare', sans-serif !important; */
-	font-size: 28px;
+	font-size: 30px;
 	margin-left: 70%;
-	margin-bottom: -10%;
+	margin-bottom: -7%;
+	font-weight: bold;
 }
 
 #findCounttitle {
-	font-family: 'MapoGoldenPier';
+ 	font-family: 'MapoGoldenPier'; 
 /* font-family: 'NanumSquare', sans-serif !important; */
-	font-size: 22px;
-	margin-left: 63%;
+	font-size: 25px;
+	margin-left: 60%;
 	margin-bottom: -10%;
+	margin-right: -1%;
 }
 
 .mungmung {
@@ -2348,7 +2351,7 @@ transparent
   ---------------------*/
 .memberCountCon {
 	font-size: 15px;
-	font-family: 'MapoGoldenPier';
+/* 	font-family: 'MapoGoldenPier'; 
 	margin-left: 60%;
 }
 
@@ -2367,6 +2370,7 @@ transparent
 	font-size: 12px;
 	margin-left: 40%;
 	margin-bottom: -10%;
+	font-weight: bold;
 }
 
 .mungmung {

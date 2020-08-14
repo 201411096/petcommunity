@@ -6,7 +6,7 @@ body{
 
 #container{
 	 padding-top:5%;
-   background: #faf9f8;
+   background: #ffecd9;
 }
 .container{
 	min-height:100%;
@@ -20,14 +20,15 @@ body{
 	text-align: center;
 	color: black;	
 	margin-bottom: 1%;
-	font-size: 30px;
+	font-weight: 700;
+	font-size : 50px;
 }
 
 #qnasubtitle{
-	font-size:18px;
+	font-size:28px;
 	color: gray;
 	text-align: center;
-	margin-bottom: 5%;
+	margin-bottom: 3%;
 }
 
 .form-group p{

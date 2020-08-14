@@ -213,11 +213,12 @@ function drawTable(data){
 		img='<img src="resources/imgs/findboard/'+data.img[i];
 		listContent +=		
 			tdPrefix + 
-			data.findBoardVOList[i].findboardId +br+
+//			data.findBoardVOList[i].findboardId +br+
 			'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
 			img+'" alt=" "/>'+br+
-			spanPrefix + '글제목 : '+ spanSuffix + data.findBoardVOList[i].findboardTitle +'</a>' + br +
-			spanPrefix + '작성자 : ' + data.findBoardVOList[i].memberId + br + spanSuffix +
+//			spanPrefix + '글제목 : '+ spanSuffix + 
+			data.findBoardVOList[i].findboardTitle +'</a>' + br +
+//			spanPrefix + '작성자 : ' + data.findBoardVOList[i].memberId + br + spanSuffix +
 			spanPrefix + data.findBoardVOList[i].findboardUploadtime +br + spanSuffix +
 			
 			'</td>';

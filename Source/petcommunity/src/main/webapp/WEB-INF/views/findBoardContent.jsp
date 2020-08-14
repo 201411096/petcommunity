@@ -89,12 +89,12 @@
 					<input type="hidden" id="findboardLocation" name="findboardLocation" value="${findBoardContent.findboardLocation}">
 					<div id="button-container">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-secondary" id="listButton">글
+							<button type="button" class="btn btn-default" id="listButton">글
 								목록</button>
 							<c:if test="${isWriterFlag == 1}">
-								<button type="button" class="btn btn-secondary" id="updateButton">글
+								<button type="button" class="btn btn-default" id="updateButton">글
 									수정</button>
-								<button type="button" class="btn btn-secondary" id='deleteButton'>글
+								<button type="button" class="btn btn-default" id='deleteButton'>글
 									삭제</button>
 							</c:if>
 						</span>

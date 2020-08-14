@@ -6,3 +6,19 @@
 /* input.file{ */
 /* 	display:inline; */
 /* } */
+span.input-group-btn > button#writeButton{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+span.input-group-btn > button#cancelWrite{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}

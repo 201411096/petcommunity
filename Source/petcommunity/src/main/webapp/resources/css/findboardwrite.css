@@ -33,3 +33,15 @@ span.input-group-btn > button#cancelWrite{
     font-size: 30px;
     margin-bottom: 1%;
 }
+div.container label{
+	font-size:19px;
+}
+div.container select{
+	font-size:19px;
+}
+div.container option{
+	font-size:19px;
+}
+div.container input{
+	font-size:19px;
+}

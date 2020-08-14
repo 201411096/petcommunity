@@ -87,7 +87,7 @@
 			
 			<form action="writeComment.do?">
 			<div class="form-group">
-				<label>댓글달기</label>
+				<label><span id='writeComment'>댓글달기</span></label>
 				
 				<input type='hidden' name='communityboardId' value='${boardContent.communityboardId}'>
 				<c:choose>

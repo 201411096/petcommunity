@@ -29,6 +29,9 @@ span.input-group-btn > button#cancelWrite{
 	font-size: 50px;
     margin-bottom: 1%;
 }
+section#section{
+	background : #ffecd9;
+}
 div.container label{
 	font-size:19px;
 }

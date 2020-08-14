@@ -18,7 +18,7 @@
 <title>게시판</title>
 </head>
 <body>
-
+<section id='section'>
 	<div class="container">
 		<header>
 			<h1 id="board_title">실종 게시글 작성</h1>
@@ -77,7 +77,7 @@
 			</div>
 		</form>
 	</div>
-	
+</section>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 	<script src="resources/js/lostboardwrite.js"></script>

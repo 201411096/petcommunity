@@ -18,7 +18,8 @@
 <!-- Font Icon -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
-
+<link rel="stylesheet" type="text/css"
+   href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 <!-- Main css -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/style.css">

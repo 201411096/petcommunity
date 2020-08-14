@@ -191,7 +191,8 @@ h2 {
 
 .main {
   background: #faf9f8;
-  padding: 150px 0; }
+  padding: 150px 0; 
+  margin-bottom: 10%;}
 
 .clear {
   clear: both; }
@@ -278,32 +279,31 @@ figure {
   margin-bottom: 50px;
   text-align: center; }
 .findId{
-	margin-left: 25%;
+	color:#777777;
+	margin-left: 23%;
 }
-.form-submit {
-margin-top:50%;
-  display: inline-block;
-  background: #6dabe4;
-  color: #fff;
-  border-bottom: none;
-  width: auto;
-  padding: 15px 39px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  margin-top: 25px;
-  cursor: pointer; }
-  .form-submit:hover {
-    background: #4292dc; }
-
+#signin {
+	color:#575757;
+	width: 80%;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 7px 30px;
+    margin: auto;
+     border: 1px solid #cbc0b6;
+    border-radius: 10px;
+    background: #faf9f8;
+    margin-top: 2%;
+    }#signin:hover{
+    color:#575757;
+   background: #efece9;
+     	 border: 1px solid #c2b6ab;
+    }
 #signin {
   margin-top: 20px; }
 
 .signup-image-link {
-  font-size: 14px;
-  color: #2841a6;
+  font-size: 18px;
+  color: #074f9e;
   display: block;
   text-align: center; }
 
@@ -617,6 +617,7 @@ label.valid {
     padding: 10px 0;
 	}
 	.findId {
+	
     margin-left: 20%;
 }
 

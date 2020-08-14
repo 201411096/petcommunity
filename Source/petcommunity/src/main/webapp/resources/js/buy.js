@@ -1,4 +1,6 @@
 
+
+
 function getCartList(){
 	$.ajax({
 		type : 'post',
@@ -86,3 +88,8 @@ $('.main_btn').on('click', function() {
 	if (submit1 === true)
 		$('#buyfrm').submit();
 });
+
+
+
+
+

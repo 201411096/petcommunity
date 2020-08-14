@@ -66,7 +66,7 @@
         </section>
 
     </div>
-
+<%@include file="../views/footer.jsp"%>
     <!-- JS -->
     <script
 		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>

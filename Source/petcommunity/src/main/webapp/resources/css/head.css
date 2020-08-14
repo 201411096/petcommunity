@@ -32,15 +32,17 @@
      margin-top: 30px;
  }
  
- .main-menu a:nth-child(1){
-
- font-weight: bold;
- }
  
- .main-menu a:nth-child(2),.main-menu a:nth-child(3),.main-menu a:nth-child(4){
+ 
+ .header-warp .main-menu a:nth-child(2),.header-warp .main-menu a:nth-child(3),.header-warp .main-menu a:nth-child(4){
  text-decoration:none;
  color: #723838;
  padding: 5px;
+ }
+ 
+ .logout{
+ font-size:17px;
+ font-weight: bold;
  }
  
  .main-menu li {
@@ -58,7 +60,7 @@
  }
   .main-menu li a:hover {
    display: block;
-   font-size: 17px;
+   font-size: 20px;
    font-weight: 700;
    padding: 10px 0;
    color: gray;

@@ -189,7 +189,8 @@ h2 {
 
 .main {
   background: #faf9f8;
-  padding: 10px 0; }
+  padding: 10px 0; 
+  margin-bottom: 10%}
 
 .clear {
   clear: both; }
@@ -205,8 +206,7 @@ body {
 
 .container {
   width: 850px;
-  height: 500px;
-  background: #f8f7f5;
+  background: #fdfdfd;
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -287,22 +287,29 @@ figure {
     border-color: #e4e4e4;
     border-radius: 10px;
     background: #faf9f8;
-    border: 2px solid #cbc0b6;
+    border: 1px solid #cbc0b6;
     margin-top: 2%;
     }.form-submit:hover{
     color:#575757;
    background: #efece9;
-     	 border: 2px solid #c2b6ab
+     	 border: 1px solid #c2b6ab
     }
 
 #signin {
   margin-top: 16px; }
 
+
+a{
+	text-decoration:none;
+	
+}
 .signup-image-link {
-  font-size: 16px;
-  color: #2841a6;
+	
+  font-size: 18px;
+  color: #074f9e;
   display: block;
-  text-align: center; }
+  text-align: center;
+   }
 
 .term-service {
   font-size: 13px;

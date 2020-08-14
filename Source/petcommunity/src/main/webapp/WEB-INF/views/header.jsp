@@ -56,13 +56,13 @@
 				<c:choose>
 					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
 						관리자/${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">Logout</a>
+						<a href="logout.do" class="logout">Logout</a>
 
 					</c:when>
 
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">Logout</a>
+						<a href="logout.do" class="logout">Logout</a>
 						<a href="mypageAnimal.do"><img alt=""
 							src="./resources/bootstrap_template/template_01/img/gallery/mypage1.png"
 							width="23"></a>

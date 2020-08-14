@@ -22,7 +22,8 @@
 	href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css">
-
+<link rel="stylesheet" type="text/css"
+   href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 
 
 <!-- main css -->

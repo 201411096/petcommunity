@@ -13,9 +13,9 @@
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
 
-<!-- Main css -->
-<link rel="stylesheet"
-	href="./resources/bootstrap_template/template_01/css2/style.css">
+	
+	<link rel="stylesheet"
+	href="./resources/css/signup.css">
 	
 
 
@@ -132,7 +132,7 @@
 </div>
 
 	</div>
-
+<%@include file="../views/footer.jsp"%>
 	<!-- JS -->
 	<script
 		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>

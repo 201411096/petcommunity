@@ -5,7 +5,7 @@ import time
 import sys
 
 now = time.localtime()
-# today = str(now.tm_year)+str(now.tm_mon)+str(now.tm_mday) # 사용안함
+today = str(now.tm_year)+str(now.tm_mon)+str(now.tm_mday) # 사용안함
 
 def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1231', numOfRows='100'):
     pageNo = '1'
@@ -16,7 +16,7 @@ def getPublicData(beginDate=str(now.tm_year)+'0801', endDate=str(now.tm_year)+'1
     itemList = list(dataFromXml['response']['body']['items']['item'])
     for item in itemList:
         item['y'], item['x'] = getLatLng(item['happenPlace'])
-    with open('publicData.json', 'w', encoding="utf-8") as make_file:
+    with open('publicData_' + today + '.json', 'w', encoding="utf-8") as make_file:
         json.dump(itemList, make_file, ensure_ascii=False, indent=4)
 
 def getLatLng(addr):

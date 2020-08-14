@@ -36,17 +36,17 @@
 	<hr/>
 
 			<!--  도시 고를 수 있는 셀렉트박스-->
-	
-			<div class="col-xs-0 col-sm-3" style="margin-right: 0px;right: 0px;margin-left: 10px;width: 50%;">
+		<div class="searchTab">
+			<div class="col-xs-0 col-sm-3" id="provinceSection">
 				<!--  <input name="sGubun" type="radio" checked value="0" >-->
 					<table>
-					<tr style="width: 750px;">
+					<tr style="width:100px;">
 					<td>
 					<label class="radio" style="width: 100px;">
 					지역별 검색</label>
 					</td>
-						<td style="width: 200px;padding-left: 10px;padding-right: 0px;">					
-						<select class="form-control" id='cityName' name ='cityName' style="margin-top: 0px;width: 250px;">
+						<td style="width: 100px;padding-left: 10px;padding-right: 0px;">					
+						<select class="form-control" id='cityName' name ='cityName' style="margin-top: 0px;width:100px;">
 							<option >시/도</option>
 							<option >서울</option>
 							<option >인천</option>
@@ -68,7 +68,7 @@
 						</select>
 						</td>
 						<td>
-						<select class="form-control" id='province' name ='province' style="margin-top: 0px;width: 250px;">
+						<select class="form-control" id='province' name ='province' style="margin-top: 0px;width: 100px;">
 							<option >구/군</option>					
 						</select>
 						</td>
@@ -80,22 +80,24 @@
 						</td></tr></table></div>
 								
 
-			<div class="col-xs-0 col-sm-3" style="margin-right: 0px;right: 0px;margin-left: 10px;width: 530px;height: 50px;"> 
+			<div class="col-xs-0 col-sm-3" id="nameSection"> 
 				<!-- <input name="sGubun" type="radio" value="1">	 -->
 				<table>
-					<tr style="width: 750px;">
+					<tr style="width: 100px;">
 					<td>
 				  <label class="radio" style="width: 100px;">병원명 검색</label>
 				  </td>
-						<td style="width: 200px;padding-left: 10px;padding-right: 0px;">		
-						<input type="text" name="keyword" id="keywordInput" class="form-control" style="margin-top: 0px;width: 250px;" placeholder="검색어, 병원명을 입력하세요."/>
+						<td style="width:100px;padding-left: 10px;padding-right: 0px;">		
+						<input type="text" name="keyword" id="keywordInput" class="form-control" style="width: 197px;"
+						placeholder="검색어, 병원명을 입력하세요."/>
 							</td>
 						<td>
-						<span class="input-group-btn" style="margin-top: 0px;width: 250px;">
+						<span class="input-group-btn">
 							<button type="button" class="btn btn-default" id='searchName' style="margin-bottom: 0px;height: 32.988636px;padding-bottom: 0px;padding-top: 0px;">병원명 검색
 							</button>
 						</span></td></tr></table>
 			</div>
+		</div>	
 			
 		<!-- 	
 			<div class="col-xs-0 col-sm-3">
@@ -106,12 +108,7 @@
 	
 			</div>
 			 -->
-			
 		
-	<br/><br/><br/>	
-
- 
-
 	<div class="form-group">
 	 <div id="map"></div>
 

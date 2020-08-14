@@ -1,3 +1,5 @@
+var today = new Date();
+today = today.getFullYear().toString()+(today.getMonth()+1).toString()+today.getDate().toString();
 const https = require('https');
 const fs = require('fs');
 let {PythonShell} = require('python-shell');
@@ -190,7 +192,7 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
   }
   PythonShell.run(directoryPath+"PublicData.py", python_options, function (err, results) {
     if (err) throw err;
-    fs.readFile('publicData.json', 'utf8', function(err, data){
+    fs.readFile('publicData_'+today+'.json', 'utf8', function(err, data){
         data = JSON.parse(data);
         // data = data.response.body.items.item; // 수정 위치
         console.log(data);

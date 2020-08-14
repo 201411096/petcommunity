@@ -24,13 +24,13 @@
 <body>
 <section id="section">
 	<div class="container">
-		<h4 id="qnatitle">Lost board</h4>
+		<h3 id="qnatitle">Lost board</h3>
 		<p id="qnasubtitle">실종 동물 신고 게시판</p>
 		<hr />
 		
 		<section id="container">
 			<div class="form-group">
-				<label>마커 표시 시간</label>
+				<label><span class='selectText'>마커 표시 시간</span></label>
 				<select id="timeForSearch" class="form-control">
 				<option value="0">전체</option>
 				<option value="1">30분</option>
@@ -43,7 +43,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label>마커 표시 지역 검색</label>
+				<label class='selectText'>마커 표시 지역 검색</label>
 				<span id="searchForMap-container">
 					<input id="locationForSearch" type="text" class="form-control">
 				</span>

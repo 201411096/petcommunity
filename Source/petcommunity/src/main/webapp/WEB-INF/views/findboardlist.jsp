@@ -33,7 +33,7 @@
 		<hr />
 		<section id="container">
 			<div class="form-group">
-				<label>마커 표시 시간</label>
+				<label><span class='selectText'>마커 표시 시간</span></label>
 				<select id="timeForSearch" class="form-control">
 				<option value="0">전체</option>
 				<option value="1">30분</option>
@@ -46,7 +46,7 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label>마커 표시 지역 검색</label>
+				<label><span class='selectText'>마커 표시 지역 검색</span></label>
 				<span id="searchForMap-container">
 					<input id="locationForSearch" type="text" class="form-control">
 				</span>

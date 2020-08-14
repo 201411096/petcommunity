@@ -4,6 +4,9 @@ var longitude = -1;
 //var latitude = 37.519972628243366;
 //var longitude = 126.85287648507145;
 var contextPath = getContextPath();
+var socket = io('https://192.168.0.24:3000');
+//var socket = io("https://115.91.88.227:60005");
+var publicDataFromAPI;
 var map;
 var defaultOpts = {
 	visiblePages : 10,
@@ -25,7 +28,46 @@ $(function(){
 	searchBtnEventHandler();
 	writeBtnEventHandler();
 	searchForMapEventHandler();
+	waitingPublicData();
 });
+
+function drawMarker(){
+	for(var i=0; i<publicDataFromAPI.length; i++){
+		var iwContent = '<div class="marker-infowindow">'+
+						 '<div class="form-group">품종 : '+publicDataFromAPI[i].kindCd+'</div>'+
+						 '<div class="form-group">발견 장소 : '+publicDataFromAPI[i].happenPlace+'</div>'+
+						 '</div>'; 
+        if(publicDataFromAPI[i].x == 0 ) continue;
+        
+        var markerPosition = new kakao.maps.LatLng(publicDataFromAPI[i].y, publicDataFromAPI[i].x); // latitude 가 y, longitude가 x
+        var imageSrc = contextPath + '/resources/imgs/marker/green.png', // 마커이미지의 주소입니다    
+	    imageSize = new kakao.maps.Size(50, 50), // 마커이미지의 크기입니다
+	    imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+            ,image: markerImage // 마커이미지 설정
+        });
+		marker.setMap(map);
+		marker.setRange(1000);
+        var infowindow = new kakao.maps.InfoWindow({
+	        content : iwContent
+        });
+        kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
+	}
+}
+
+function waitingPublicData(){
+	socket.on('getPublicData', function(data){
+		publicDataFromAPI = data;
+ 		drawMarker(map);
+	});
+}
+
+function getPublicData(){
+	var dataOptions = new Object();
+	socket.emit('getPublicData', dataOptions);
+}
 
 function searchForMapEventHandler(){
 	$('#timeForSearch').on('change', getDataWithoutPaging);
@@ -246,6 +288,9 @@ function getDataWithoutPaging(){
 			setTimeout(function(){
 				kakaoMapAPI(resultData);
 			}, 2000);
+			setTimeout(function(){
+				getPublicData();
+			}, 2500);
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

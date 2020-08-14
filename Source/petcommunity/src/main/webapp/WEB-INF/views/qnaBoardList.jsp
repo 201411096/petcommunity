@@ -65,9 +65,6 @@
 							<button id="searchBtn" type="submit" class="btn btn-default">검색</button>
 						</span> <span class="input-group-btn">
 							<button id="writeBtn" type="submit" class="btn btn-default">글쓰기</button>
-							<c:if test="${membervo.memberId eq 'admin06'}">
-								<a href="/petcommunity/noticePage.do" class="btn btn-default" id="noticeBtn">공지</a>
-							</c:if>
 						</span>
 					</div>
 				</div>

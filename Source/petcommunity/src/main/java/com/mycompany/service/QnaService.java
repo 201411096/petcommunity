@@ -20,9 +20,6 @@ public interface QnaService {
 	public List<QnaVO> selectQnaBoardWithPaging(Map map);
 	public List<QnaVO> selectQuestionGroupId(QnaVO qnavo);
 	public void deleteQnaBoardbyGroupId(QnaVO qnavo);
-	public void insertQnaNotice(QnaVO qnavo);
-	public List<QnaVO> selectAnswerFlag(QnaVO qnavo);
-	
 
 	
 }

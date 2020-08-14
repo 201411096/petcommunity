@@ -75,15 +75,5 @@ public class QnaDAOImpl implements QnaDAO {
 		
 	}
 
-	public void insertQnaNotice(QnaVO qnavo) {
-		mybatis.insert("qnaDAO.insertQnaNotice", qnavo);
-		
-	}
-
-	public List<QnaVO> selectAnswerFlag(QnaVO qnavo) {
-		return mybatis.selectList("qnaDAO.selectAnswerFlag", qnavo);
-		
-	}
-
 
 }

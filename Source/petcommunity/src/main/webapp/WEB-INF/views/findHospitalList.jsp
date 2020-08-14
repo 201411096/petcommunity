@@ -34,13 +34,19 @@
 			<p id="findHospitalSub">병원 찾기 게시판입니다.</p>
 	</header>
 	<hr/>
-<!-- 
-			도시 고를 수 있는 셀렉트박스
-				
-			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
-				<input name="sGubun" type="radio" checked value="0" >
-					<label class="radio">지역별 검색</label>
-						<select class="form-control" id='cityName' name ='cityName' style="margin-top: 0px">
+
+			<!--  도시 고를 수 있는 셀렉트박스-->
+	
+			<div class="col-xs-0 col-sm-3" style="margin-right: 0px;right: 0px;margin-left: 10px;width: 50%;">
+				<!--  <input name="sGubun" type="radio" checked value="0" >-->
+					<table>
+					<tr style="width: 750px;">
+					<td>
+					<label class="radio" style="width: 100px;">
+					지역별 검색</label>
+					</td>
+						<td style="width: 200px;padding-left: 10px;padding-right: 0px;">					
+						<select class="form-control" id='cityName' name ='cityName' style="margin-top: 0px;width: 250px;">
 							<option >시/도</option>
 							<option >서울</option>
 							<option >인천</option>
@@ -60,29 +66,38 @@
 							<option >경남</option>
 							<option >제주</option>
 						</select>
-						<select class="form-control" id='province' name ='province' style="margin-top: 0px">
+						</td>
+						<td>
+						<select class="form-control" id='province' name ='province' style="margin-top: 0px;width: 250px;">
 							<option >구/군</option>					
 						</select>
-										
-						<span class="input-group-btn" style="padding-top: 10px;">
-							<button type="button" id="button" class="btn btn-default" id='searchLocation'>지역별 검색
+						</td>
+						<td style="margin-bottom:100px;">		
+<!-- 						<span class="input-group-btn" style="padding-top: 10px;"> -->
+							<button type="button" class="btn btn-default" id='searchLocation' style="margin-bottom: 0px;height: 32.988636px;padding-bottom: 0px;padding-top: 0px;">지역별 검색
 							</button>
-						</span><br/><br/>
-			 </div>
+<!-- 						</span> -->
+						</td></tr></table></div>
 								
 
-			<div class="col-xs-0 col-sm-3" style="margin-right: 10%;">
-				<input name="sGubun" type="radio" value="1">	
-				  <label class="radio">병원명 검색</label>
-						<input type="text" name="keyword" id="keywordInput" class="form-control" style="margin-top: 0px" placeholder="검색어, 병원명을 입력하세요."/>
-							
-						<span class="input-group-btn" style="padding-top: 10px;">
-							<button type="button" id="button" class="btn btn-default" id='searchName'>병원명 검색
+			<div class="col-xs-0 col-sm-3" style="margin-right: 0px;right: 0px;margin-left: 10px;width: 530px;height: 50px;"> 
+				<!-- <input name="sGubun" type="radio" value="1">	 -->
+				<table>
+					<tr style="width: 750px;">
+					<td>
+				  <label class="radio" style="width: 100px;">병원명 검색</label>
+				  </td>
+						<td style="width: 200px;padding-left: 10px;padding-right: 0px;">		
+						<input type="text" name="keyword" id="keywordInput" class="form-control" style="margin-top: 0px;width: 250px;" placeholder="검색어, 병원명을 입력하세요."/>
+							</td>
+						<td>
+						<span class="input-group-btn" style="margin-top: 0px;width: 250px;">
+							<button type="button" class="btn btn-default" id='searchName' style="margin-bottom: 0px;height: 32.988636px;padding-bottom: 0px;padding-top: 0px;">병원명 검색
 							</button>
-						</span><br/><br/>			
+						</span></td></tr></table>
 			</div>
 			
-			
+		<!-- 	
 			<div class="col-xs-0 col-sm-3">
 				<label class="radio">동물병원 워드 클라우드↓↓</label>
 				<button type="button" class="btn btn-default" id='wordCloud'>word cloud here
@@ -90,260 +105,412 @@
 				<a href="#" onclick="window.open('https://localhost:8443/petcommunity/resources/imgs/wordCloud/동물병원.png', 'width=1000, height=1000')"><img src="./resources/imgs/wordCloud/동물병원.png"></a>
 	
 			</div>
-			
+			 -->
 			
 		
 	<br/><br/><br/>	
 
- -->
+ 
 
+	<div class="form-group">
+	 <div id="map"></div>
 
-	<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="서울시 종로구 동물병원" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
-                </form>
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-</div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a33e4a3d21ae68ddacd68ab7eda22a2a&libraries&libraries=services"></script>
 <script>
-// 마커를 담을 배열입니다
-var markers = [];
 
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
+/* var latitude = $('#findhospitalX').val();
+var longitude = $('#findhospitalY').val();
+var findhospitalAddress = $('#findhospitalAddress').val(); */
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+var container = document.getElementById('map');
+	var options = {
+		center: new kakao.maps.LatLng(36.601621, 127.2983811),
+		level: 7
+	};
 
-// 장소 검색 객체를 생성합니다
-var ps = new kakao.maps.services.Places();  
-
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
-
-// 키워드로 장소를 검색합니다
-searchPlaces();
-
-// 키워드 검색을 요청하는 함수입니다
-function searchPlaces() {
-
-    var keyword = document.getElementById('keyword').value;
-
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
-        return false;
-    }
-
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch( keyword, placesSearchCB); 
-}
-
-// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
-function placesSearchCB(data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
-
-        // 정상적으로 검색이 완료됐으면
-        // 검색 목록과 마커를 표출합니다
-        displayPlaces(data);
-
-        // 페이지 번호를 표출합니다
-        displayPagination(pagination);
-
-    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-
-        alert('검색 결과가 존재하지 않습니다.');
-        return;
-
-    } else if (status === kakao.maps.services.Status.ERROR) {
-
-        alert('검색 결과 중 오류가 발생했습니다.');
-        return;
-
-    }
-}
-
-// 검색 결과 목록과 마커를 표출하는 함수입니다
-function displayPlaces(places) {
-
-    var listEl = document.getElementById('placesList'), 
-    menuEl = document.getElementById('menu_wrap'),
-    fragment = document.createDocumentFragment(), 
-    bounds = new kakao.maps.LatLngBounds(), 
-    listStr = '';
-    
-    // 검색 결과 목록에 추가된 항목들을 제거합니다
-    removeAllChildNods(listEl);
-
-    // 지도에 표시되고 있는 마커를 제거합니다
-    removeMarker();
-    
-    for ( var i=0; i<places.length; i++ ) {
-
-        // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(placePosition);
-
-        // 마커와 검색결과 항목에 mouseover 했을때
-        // 해당 장소에 인포윈도우에 장소명을 표시합니다
-        // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
-                displayInfowindow(marker, title);
-            });
-
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close();
-            });
-
-            itemEl.onmouseover =  function () {
-                displayInfowindow(marker, title);
-            };
-
-            itemEl.onmouseout =  function () {
-                infowindow.close();
-            };
-        })(marker, places[i].place_name);
-
-        fragment.appendChild(itemEl);
-    }
-
-    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-    listEl.appendChild(fragment);
-    menuEl.scrollTop = 0;
-
-    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    map.setBounds(bounds);
-}
-
-// 검색결과 항목을 Element로 반환하는 함수입니다
-function getListItem(index, places) {
-
-    var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
-                '   <h5>' + places.place_name + '</h5>';
-
-    if (places.road_address_name) {
-        itemStr += '    <span>' + places.road_address_name + '</span>' +
-                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    }
-                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
-
-    el.innerHTML = itemStr;
-    el.className = 'item';
-
-    return el;
-}
-
-// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-function addMarker(position, idx, title) {
-    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-        imgOptions =  {
-            spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-            spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-        },
-        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-            marker = new kakao.maps.Marker({
-            position: position, // 마커의 위치
-            image: markerImage 
-        });
-
-    marker.setMap(map); // 지도 위에 마커를 표출합니다
-    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
-    return marker;
-}
-
-// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-function removeMarker() {
-    for ( var i = 0; i < markers.length; i++ ) {
-        markers[i].setMap(null);
-    }   
-    markers = [];
-}
-
-// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i; 
-
-    // 기존에 추가된 페이지번호를 삭제합니다
-    while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild (paginationEl.lastChild);
-    }
-
-    for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
-        el.href = "#";
-        el.innerHTML = i;
-
-        if (i===pagination.current) {
-            el.className = 'on';
-        } else {
-            el.onclick = (function(i) {
-                return function() {
-                    pagination.gotoPage(i);
-                }
-            })(i);
-        }
-
-        fragment.appendChild(el);
-    }
-    paginationEl.appendChild(fragment);
-}
-
-// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-// 인포윈도우에 장소명을 표시합니다
-function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
-}
-
- // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-function removeAllChildNods(el) {   
-    while (el.hasChildNodes()) {
-        el.removeChild (el.lastChild);
-    }
-}
-
-
-
-
+	var map = new kakao.maps.Map(container, options);
 	
+		/* for(var i=0; i<data.findHospitalVOListSize; i++){
+			var position =  new kakao.maps.LatLng(data.findHospitalVOList[i].findhospitalX, data.findHospitalVOList[i].findhospitalY);
+			
+		 */
+
+    var positions = [
+        {
+            title: '월드펫동물병원', 
+            latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
+        },
+        {
+            title: '올리브동물병원', 
+            latlng: new kakao.maps.LatLng(37.599235, 126.9589611)
+        },
+        {
+            title: '누리봄동물병원', 
+            latlng: new kakao.maps.LatLng(37.5757539, 126.9710573)
+        },
+        {
+            title: '우리동물병원',
+            latlng: new kakao.maps.LatLng(37.5786667, 127.0156223)
+        },
+        {
+            title: '북악동물병원',
+            latlng: new kakao.maps.LatLng(37.5988401, 126.960261)
+        },
+        {
+            title: '현대동물병원', 
+            latlng: new kakao.maps.LatLng(37.8799992, 127.7429144)
+        },
+        {
+            title: '24시보듬동물병원', 
+            latlng: new kakao.maps.LatLng(37.753189, 128.8939975)
+        },
+        {
+            title: '아산동물의료센터', 
+            latlng: new kakao.maps.LatLng(36.7742253,127.0109571)
+        },
+        {
+            title: '내포동물의료센터', 
+            latlng: new kakao.maps.LatLng(36.660275,126.6811263)
+        },
+        {
+            title: '세종다온동물병원', 
+            latlng: new kakao.maps.LatLng(36.601621, 127.2983811)
+        },
+        {
+            title: '바른동물병원',
+            latlng: new kakao.maps.LatLng(36.4889557, 127.1953441)
+        },
+        {
+            title: '도그빌 동물병원', 
+            latlng: new kakao.maps.LatLng(37.7588094, 128.896512)
+        },
+        {
+            title: '강남 종합동물병원', 
+            latlng: new kakao.maps.LatLng(37.8629183, 127.7499599)
+        },
+        {
+            title: '거제동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(34.8883645,128.6203258)
+        },
+        {
+            title: '메이동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(35.8123338, 127.1236246)
+        },
+        {
+            title: '군산24시제일동물병원', 
+            latlng: new kakao.maps.LatLng(35.9749456,126.7330588)
+        }
+        ,
+        {
+            title: '용동물병원',
+            latlng: new kakao.maps.LatLng(35.2205922, 128.6815801)
+        },
+        {
+            title: '구미옥계동물병원', 
+            latlng: new kakao.maps.LatLng(36.1370821, 128.4224143)
+        },
+        {
+            title: '케비어동물병원 논산점', 
+            latlng: new kakao.maps.LatLng(36.2033792, 127.088827)
+        },
+        {
+            title: '엔젤동물병원', 
+            latlng: new kakao.maps.LatLng(36.8036022,127.1277523)
+        },
+        {
+            title: '선샤인동물병원', 
+            latlng: new kakao.maps.LatLng(36.1383607,128.3093119)
+        },
+        {
+            title: '조은동물병원', 
+            latlng: new kakao.maps.LatLng(36.0120904,129.3496726)
+        },
+        {
+            title: '목포동물병원', 
+            latlng: new kakao.maps.LatLng(34.8067875, 126.3982499)
+        },
+        {
+            title: '아빠손동물병원', 
+            latlng: new kakao.maps.LatLng(34.8120871, 126.4607132)
+        },
+        {
+            title: '여수동물병원', 
+            latlng: new kakao.maps.LatLng(34.784365, 127.6931515)
+        }
+        ,
+        {
+            title: '현대종합동물병원', 
+            latlng: new kakao.maps.LatLng(37.359095,127.8160558)
+        }
+        ,
+        {
+            title: '태백동물병원', 
+            latlng: new kakao.maps.LatLng(37.1635465,128.9887628)
+        },
+        {
+            title: '무양반려동물병원', 
+            latlng: new kakao.maps.LatLng(36.4186268,128.1551491)
+        },
+        {
+            title: '24시N동물의료센터', 
+            latlng: new kakao.maps.LatLng(37.6574007, 127.0667307)
+        },
+        {
+            title: '혜민동물병원', 
+            latlng: new kakao.maps.LatLng(37.5145452, 127.0437252)
+        },
+        {
+            title: '웨스턴동물의료센터', 
+            latlng: new kakao.maps.LatLng(37.5551902, 126.93805571)
+        },
+        {
+            title: '서울대학교 수의과대학 동물병원', 
+            latlng: new kakao.maps.LatLng(37.459882, 126.9519053)
+        },
+        {
+            title: '고양이병원 백산동물병원', 
+            latlng: new kakao.maps.LatLng(37.4999946, 127.0393429)
+        },
+        {
+            title: '서산동물병원', 
+            latlng: new kakao.maps.LatLng(36.7778902, 126.457463)
+        }
+        ,
+        {
+            title: '코끼리동물병원', 
+            latlng: new kakao.maps.LatLng(35.8192217, 127.1183412)
+        }
+        ,
+        {
+            title: '이노동물병원', 
+            latlng: new kakao.maps.LatLng(35.8206231, 127.0225475)
+        }
+        ,
+        {
+            title: '펫119동물병원', 
+            latlng: new kakao.maps.LatLng(34.8100428, 126.4244462)
+        }
+        ,
+        {
+            title: '소망동물병원', 
+            latlng: new kakao.maps.LatLng(37.865445, 127.7200327)
+        }
+        ,
+        {
+            title: '대명동물병원', 
+            latlng: new kakao.maps.LatLng(38.0736168, 128.6201829)
+        }
+        ,
+        {
+            title: '신일환동물병원', 
+            latlng: new kakao.maps.LatLng(34.7667261, 127.6607738)
+        }
+        ,
+        {
+            title: '광주TNR동물병원', 
+            latlng: new kakao.maps.LatLng(37.4174304, 127.2752895)
+        },
+        {
+            title: '내포동물의료센터', 
+            latlng: new kakao.maps.LatLng(36.660275, 126.6811263)
+        }
+        ,
+        {
+            title: '천안모아동물병원', 
+            latlng: new kakao.maps.LatLng(36.8182749, 127.110726)
+        }
+        ,
+        {
+            title: '킴스동물의료센터', 
+            latlng: new kakao.maps.LatLng(36.8936109, 126.6283278)
+        },
+        {
+            title: '안양본동물의료센터', 
+            latlng: new kakao.maps.LatLng(37.3957928, 126.9717506)
+        },
+        {
+            title: '24시숨동물병원', 
+            latlng: new kakao.maps.LatLng(37.2586778, 127.0296231)
+        },
+        {
+            title: '양산24시에스동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(35.3083079, 129.0102285)
+        },
+        {
+            title: '랑스 종합동물병원', 
+            latlng: new kakao.maps.LatLng(35.1836043, 128.116963)
+        },
+        {
+            title: '대명동물병원', 
+            latlng: new kakao.maps.LatLng(38.0736168, 128.6201829)
+        },
+        {
+            title: '하나동물병원', 
+            latlng: new kakao.maps.LatLng(37.2781285, 127.4480699)
+        },
+        {
+            title: '정선가축병원', 
+            latlng: new kakao.maps.LatLng(37.3794095, 128.6606759)
+        },
+        {
+            title: '인제종합동물병원', 
+            latlng: new kakao.maps.LatLng(38.0618971, 128.1681574)
+        },
+        {
+            title: '양구축협 동물병원', 
+            latlng: new kakao.maps.LatLng(38.1058889, 127.9894959)
+        },
+        {
+            title: '홍천축협동물병원', 
+            latlng: new kakao.maps.LatLng(37.6907686, 127.8823562)
+        },
+        {
+            title: '내포동물의료센터', 
+            latlng: new kakao.maps.LatLng(36.660275, 126.6811263)
+        },
+        {
+            title: '광주스카이동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(35.1506819, 126.8581309)
+        },
+        {
+            title: '바른동물병원', 
+            latlng: new kakao.maps.LatLng(35.1713798,126.869717)
+        },
+        {
+            title: '도그천사', 
+            latlng: new kakao.maps.LatLng(34.5210938, 126.2709552)
+        },
+        {
+            title: '우수영동물병원', 
+            latlng: new kakao.maps.LatLng(34.5966898, 126.3127296)
+        },
+        {
+            title: '광주동물병원', 
+            latlng: new kakao.maps.LatLng(34.6073702, 127.2845258)
+        },
+        {
+            title: '경북대학교 수의과대학 부속동물병원분원', 
+            latlng: new kakao.maps.LatLng(36.3735147, 128.1405368)
+        },
+        {
+            title: '정가축병원', 
+            latlng: new kakao.maps.LatLng(35.2102784, 127.4648492)
+        },
+        {
+            title: '마로동물병원', 
+            latlng: new kakao.maps.LatLng(35.283619, 127.293248)
+        },
+        {
+            title: '영주동물병원', 
+            latlng: new kakao.maps.LatLng(36.8238494, 128.6219593)
+        },
+        {
+            title: '박동물병원', 
+            latlng: new kakao.maps.LatLng(36.990978, 127.9292386)
+        },
+        {
+            title: '목도동물병원', 
+            latlng: new kakao.maps.LatLng(36.8711924, 127.8546245)
+        },
+        {
+            title: '대구가축병원', 
+            latlng: new kakao.maps.LatLng(36.9891621, 129.399165)
+        },
+        {
+            title: '두타동물병원', 
+            latlng: new kakao.maps.LatLng(37.4452425, 129.1676564)
+        },
+        {
+            title: '문혜동물병원', 
+            latlng: new kakao.maps.LatLng(38.1837856, 127.3220406)
+        },
+        {
+            title: '대한동물병원', 
+            latlng: new kakao.maps.LatLng(38.0921264, 127.2707395)
+        },
+        {
+            title: '대구종합가축병원', 
+            latlng: new kakao.maps.LatLng(36.5548968, 128.7551302)
+        },
+        {
+            title: '24아프리카동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(36.3454705, 127.3817274)
+        },
+        {
+            title: '명진동물병원', 
+            latlng: new kakao.maps.LatLng(37.1404275, 128.1952689)
+        },
+        {
+            title: '노형꿈동물병원', 
+            latlng: new kakao.maps.LatLng(33.4856566, 126.4743606)
+        },
+        {
+            title: '완도동물병원', 
+            latlng: new kakao.maps.LatLng(34.3164584, 126.7528319)
+        },
+        {
+            title: '남창동물병원', 
+            latlng: new kakao.maps.LatLng(34.4050713,126.6278036)
+        }
+        
+        
+        
+        
+    ];
+
+   
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        
+    for (var i = 0; i < positions.length; i ++) {
+        
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35); 
+        
+        // 마커 이미지를 생성합니다    
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+        
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지 
+        });
+    }
+
+</script></div></section>
+
+
+<br/><br/>
+
+		<form role="form" method="get">
+			<table class="table table-hover" id="findHospitalTable">	
+				<thead>
+					<tr>
+						<th>병원명</th>
+						<th>전화 번호</th>
+						<th>주소</th>
+						<th>운영 시간</th>
+					</tr>
+				</thead>
+				<tbody id="findHospitalTbody">
+
+				</tbody>
+			</table>
+		</form>
+	
+	
+<div class="col-md-offset-3" id="pagination_container">		
+	<ul id="pagination-demo" class="pagination-lg"></ul>
+</div>
+
 	<!-- Footer -->
 
 	
-	</script><br/><br/>
-		</section><%@include file="../views/footer.jsp"%>
+	<br/><br/>
+		<%@include file="../views/footer.jsp"%>
 	</body></html> 
 
 

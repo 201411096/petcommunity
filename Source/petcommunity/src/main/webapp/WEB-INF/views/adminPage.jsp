@@ -65,7 +65,7 @@
 			<ul class="tabs">
 				<li class="tab-link current" data-tab="tab-1">판매 내역</li>
 				<li class="tab-link" data-tab="tab-2">통계 그래프</li>
-				<li class="tab-link" data-tab="tab-3">관리자 페이지</li>
+				<li class="tab-link" data-tab="tab-3">상품 관리</li>
 				<li id="adminpop">계정관리</li>
 			</ul>
 			<hr />
@@ -285,8 +285,8 @@
 						<div class="input-group">	
 							<span id="search-container">
 							<input type="text" name="searchWord" class='form-control' id="searchWord" placeholder="검색어를 입력하세요."/>
-							<button id="searchBtn" type="button" class="btn btn-default">검색</button><br/><br/>
-							<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default">상품 등록</a>
+							<button id="searchBtn" type="button" class="btn btn-default">검색</button>
+							<a href="/petcommunity/loadInsertProduct.do" id="writeBtn" class="btn btn-default">등록</a>
 							</span> 
 							<!-- <span class="input-group-btn"> 
 								<button id="searchBtn" type="button" class="btn btn-default" >검색</button>
@@ -304,7 +304,7 @@
 							</form>
 					</div></div> -->
 					
-					<br/><br/><br/><br/><br/><br/><br/>
+					<br/><br/><br/><br/>
 					
 						<form role="form" method="get">
 							<table id="productDataTable" class="table table-hover">

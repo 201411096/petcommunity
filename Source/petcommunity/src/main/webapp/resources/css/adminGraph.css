@@ -23,3 +23,16 @@ div.graph-container{
 	margin : 50px;
 	height:300px;
 }
+
+div#tab-2 div.alert{
+	font-size: 25px;
+}
+div#tab-2 label{
+	font-size: 15px;
+}
+div#tab-2 select{
+	font-size: 16px;
+}
+div#tab-2 input['datetime-local']{
+	font-size: 20px;
+}

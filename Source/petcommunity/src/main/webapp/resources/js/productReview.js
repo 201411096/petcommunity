@@ -67,8 +67,8 @@ $(function(){
 	// 별점 입력 이벤트
 	$('#starScoreDiv span').click(function(){
 		starScore = $(this).attr("value");
-        $(this).parent().children("span").removeClass("fa-star-o");  /* 별점의 fa-star-o 클래스 전부 제거 */ 
-        $(this).nextAll("span").addClass("fa-star-o"); /* 클릭한 별과, 그 앞 까지 별점에 fa-star-o 클래스 추가 */
+        $(this).parent().children("span").removeClass("fa-heart-o");  /* 별점의 fa-heart-o 클래스 전부 제거 */ 
+        $(this).nextAll("span").addClass("fa-heart-o"); /* 클릭한 별과, 그 앞 까지 별점에 fa-heart-o 클래스 추가 */
         return false;
     });
 	// 리뷰버튼 클릭 이벤트
@@ -154,12 +154,12 @@ function drawStarScore(starScore){
 	var li1 = '<li>'
 	var a1 = '<a class="starScore" value="'
 	var a2 = '">'
-	var iTag1 = '<i class="fa fa-star">'
+	var iTag1 = '<i class="fa fa-heart">'
 	var iTag2 = '</i>'
 	var a3 = '</a>'
 	var li2 = '</li>'
-	var ioTag1 = '<i class="fa fa-star-o">'
-//	var li3 = '"><i class="fa fa-star-o"></i></a></li>'
+	var ioTag1 = '<i class="fa fa-heart-o">'
+//	var li3 = '"><i class="fa fa-heart-o"></i></a></li>'
 	for (var num=1; num<=5; num++){
 		if(num<=starScore){
 			var StarList = 

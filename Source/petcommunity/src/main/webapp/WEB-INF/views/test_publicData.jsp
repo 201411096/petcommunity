@@ -38,9 +38,9 @@ div.infoWindowImageContainer{
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
 <script type="text/javascript">
+//var socket = io("https://192.168.0.18:3000");
+//var socket = io("https://121.171.119.57:3000");
 var contextPath = getContextPath();
-// var socket = io("https://192.168.0.18:3000");
-// var socket = io("https://121.171.119.57:3000");
 var socket = io("https://115.91.88.227:60005");
 var publicDataFromAPI;
 var map;

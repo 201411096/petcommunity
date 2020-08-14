@@ -26,8 +26,6 @@
 </head>
 <body>
 
-	<div class="main2">
-
 		<!-- Sign up form -->
 		<div class="signup-content2">
 

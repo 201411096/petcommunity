@@ -23,8 +23,11 @@
 
 </head>
 <body>
-<div class="main2">
+
+<!-- <div class="main2"> -->
 <div class="signup-content2">
+	<h4 id="qnatitle">Message</h4>
+	<p id="qnasubtitle">실시간 쪽지.</p>
 <div class="tedoory" id="message-table">
 					<div id="div-searchSomeone">
 						<input type="text" name="searchSomeone" id="searchSomeone"
@@ -97,7 +100,7 @@
 					</div>
 				</div>
 				</div>
-				</div>
+<!-- 				</div> -->
 				
 
 

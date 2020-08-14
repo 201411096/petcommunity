@@ -126,3 +126,21 @@ div.infoWindowImageContainer{
    width:60px;
    height:40px;
 }
+td{
+	font-size:19px;
+}
+a{
+	font-size:22px;
+}
+option{
+	font-size:19px;
+}
+input{
+	font-size:19px;
+}
+.selectText{
+	font-size:19px;
+}
+select{
+	font-size:19px;
+}

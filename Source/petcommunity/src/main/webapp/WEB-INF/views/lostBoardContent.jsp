@@ -66,7 +66,7 @@
 					</div>
 				</li>
 				<li class="list-group-item boardcontent-container">
-					<p class="card-text">${lostBoardContent.lostboardContent}</p>
+					<p class="card-text" id='contentText'>${lostBoardContent.lostboardContent}</p>
 				</li>
 			</ul>
 			<div class="card-body">

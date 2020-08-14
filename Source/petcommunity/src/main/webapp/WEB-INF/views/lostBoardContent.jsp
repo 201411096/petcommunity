@@ -85,7 +85,7 @@
 							<button type="button" class="btn btn-default" id="listButton">글
 								목록</button>
 							<c:if test="${isWriterFlag != 1 }">
-								<button class="btn btn-default" id="writeBtn">목격 글 작성</button>
+								<a class="btn btn-default" href="findBoardWrite.do" id="writeBtn">목격 글 작성</a>
 							</c:if>
 							<c:if test="${isWriterFlag == 1}">
 								<button type="button" class="btn btn-default" id="updateButton">글

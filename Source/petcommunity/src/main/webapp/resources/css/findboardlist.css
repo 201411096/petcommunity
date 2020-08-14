@@ -1,5 +1,11 @@
 input#keywordInput{
 	width: 90%;
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }
 
 table#findboardTable{
@@ -129,4 +135,38 @@ div.infoWindowImageContainer{
 .markerSpan2 img{
    width:60px;
    height:40px;
+}
+td{
+	font-size:19px;
+}
+a{
+	font-size:22px;
+}
+option{
+	font-size:19px;
+}
+input{
+	font-size:19px;
+}
+.selectText{
+	font-size:19px;
+}
+select{
+	font-size:19px;
+}
+span.input-group-btn > button#writeBtn{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+span.input-group-btn > button#searchBtn{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
 }

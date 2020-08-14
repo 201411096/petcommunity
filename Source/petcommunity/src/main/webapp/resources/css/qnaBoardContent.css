@@ -144,8 +144,8 @@ body{
 }
 
 table {
-	width : 80%;
-	margin-left: 10%;
+	width : 100%;
+	margin-left: 1%;
 	
 }
 table td,th{
@@ -179,11 +179,50 @@ table td#content{
 }
 
 #mulBtn{
-	margin-top:1%;
-	margin-left: 40%;
+	margin-right:15%;
+	margin-top:5%;
 }
 
-	
+#replyBtn{
+	font:normal;
+	font-size:12px;
+	padding: 8px 16px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff;
+}
+
+#deleteBtn{
+	font:normal;
+	font-size:12px;
+	padding: 8px 16px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff;
+}
+
+#modifyBtn{
+	font:normal;
+	font-size:12px;
+	padding: 8px 16px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff;
+}
+
+#qnaListBtn{
+	font:normal;
+	font-size:12px;
+	padding: 8px 16px;
+	margin-right: 5px;
+	border-color:#e4e4e4;
+	border-radius: 10px;
+	background: #fff;
+}
+
 }
 
 

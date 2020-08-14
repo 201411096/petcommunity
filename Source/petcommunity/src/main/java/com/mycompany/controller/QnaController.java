@@ -323,28 +323,6 @@ public class QnaController {
 		return msg;
 	}
 	
-	@RequestMapping("noticePage")
-	public ModelAndView getQnaNoticePage(HttpSession session) {
-		MemberVO membervo = (MemberVO)session.getAttribute("memberVO");
-		ModelAndView mv = new ModelAndView();
-		
-		mv.addObject("membervo", membervo);
-		mv.setViewName("qnaNoticeBoard");
-		
-		return mv;
-	}
-	
-	@RequestMapping("notice.do")
-	public ModelAndView insertQnaNotice(QnaVO qnavo, HttpSession session) {
-		System.out.println("insertQnaNotice확인");
-		ModelAndView mv = new ModelAndView();
-		MemberVO membervo=(MemberVO)session.getAttribute("memberVO");
-		qnavo.setMemberId(membervo.getMemberId());
-		qnaService.insertQnaNotice(qnavo);
-		mv.addObject("qnavo",qnavo.getMemberId());
-		
-		mv.setViewName("redirect:/cs.do");
-		return mv;
-	}
+
 
 }

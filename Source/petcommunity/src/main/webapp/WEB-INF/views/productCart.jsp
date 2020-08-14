@@ -18,14 +18,13 @@
 		<link rel="stylesheet" href="./resources/css/productCart.css"/>
 		
 		
-	 	<title>장바구니</title>
+	 	<title>나의 장바구니</title>
 	</head>
 	<body>
 	<section id='section'>
 		<div class="container">
-			<header>
-				<h1>나의 장바구니</h1><br/>
-			</header>
+			<h4 id="qnatitle">My Cart List</h4>
+		<p id="qnasubtitle">장바구니 목록입니다.</p>
 			<hr/>
 
 			<table class="table" id='cartTable'>
@@ -45,21 +44,8 @@
 						<th> </th>
 					</tr>
 				</thead>
-				<tbody id="cartLists">
-				<!-- 	<tr class='cartList'>
-						<td><a href='#'><img src='resources/imgs/product_image/pawInHand/(유기동물 후원) 바이바이 bye  buy 강아지 하드케이스 그립톡 세트.jpg' class='cartListImg'/></a></td>
-						<td><span id='productName1'>상품이름 </span>&nbsp;(<span id='productPrice1'>25000</span>원)</td>
-						<td><span id='productTotalPrice1'>25000</span>원</td>
-						<td>
-							<span>
-								<input type='number' id='productAmount1' class='form-control' min="0" value='1'/>
-							</span>
-						</td>
-						<td><a href='#'><img src='resources/imgs/product_image/cartImg/cancelButton.png'></a></td>
-						
-					</tr> -->
-					
-								
+				<tbody id="cartLists">	
+											
 				</tbody>
 			</table>
 			<br/>

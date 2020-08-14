@@ -85,7 +85,7 @@ function drawQnaTable(data) {
 	var tdPrefix_memberId = '<td id="td_memberId" width="12% style="text-align:center">';
 	var tdPrefix_uploadtime = '<td id="td_uploadtime" width="13%" style="text-align:center">';
 	var tdPrefix_readcount = '<td id="td_readcount" width="6%" style="text-align:center">';
-	var tdPrefix_title = '<td id="title" style="text-align:left">';
+	var tdPrefix_title = '<td id="td_title" style="text-align:left">';
 	var tdSuffix = '</td>';
 
 	for (var i = 0; i < data.QnaBoardVOListSize; i++) {

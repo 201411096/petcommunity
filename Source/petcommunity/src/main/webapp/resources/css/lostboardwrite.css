@@ -6,3 +6,37 @@
 /* input.file{ */
 /* 	display:inline; */
 /* } */
+span.input-group-btn > button#writeButton{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+span.input-group-btn > button#cancelWrite{
+	font-size: 16px;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}
+#board_title{
+	text-align: center;
+    color: black;
+    font-size: 30px;
+    margin-bottom: 1%;
+}
+div.container label{
+	font-size:19px;
+}
+div.container select{
+	font-size:19px;
+}
+div.container option{
+	font-size:19px;
+}
+div.container input{
+	font-size:19px;
+}

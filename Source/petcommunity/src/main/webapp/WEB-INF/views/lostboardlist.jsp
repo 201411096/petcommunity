@@ -24,13 +24,14 @@
 <body>
 <section id="section">
 	<div class="container">
-		<h4 id="qnatitle">Lost board</h4>
+		<h3 id="qnatitle">Lost board</h3>
 		<p id="qnasubtitle">실종 동물 신고 게시판</p>
 		<hr />
 		
 		<section id="container">
 			<div class="form-group">
-				<label>마커 표시 시간</label>
+				<label class="col-md-2"><span class='selectText'>마커 표시 시간</span></label>
+				<div class="col-md-4">
 				<select id="timeForSearch" class="form-control">
 				<option value="0">전체</option>
 				<option value="1">30분</option>
@@ -41,13 +42,35 @@
 				<option value="6">일주일</option>
 				<option value="7">한달</option>
 				</select>
+				</div>
 			</div>
 			<div class="form-group">
-				<label>마커 표시 지역 검색</label>
+				<label class="col-md-2"><span class='selectText'>마커 표시 지역 검색</span></label>
+				<div class="col-md-4">
 				<span id="searchForMap-container">
 					<input id="locationForSearch" type="text" class="form-control">
 				</span>
+				</div>
 			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label><span class='selectText'>마커 표시 시간</span></label> -->
+<!-- 				<select id="timeForSearch" class="form-control"> -->
+<!-- 				<option value="0">전체</option> -->
+<!-- 				<option value="1">30분</option> -->
+<!-- 				<option value="2">1시간</option> -->
+<!-- 				<option value="3">3시간</option> -->
+<!-- 				<option value="4">12시간</option> -->
+<!-- 				<option value="5">하루</option> -->
+<!-- 				<option value="6">일주일</option> -->
+<!-- 				<option value="7">한달</option> -->
+<!-- 				</select> -->
+<!-- 			</div> -->
+<!-- 			<div class="form-group"> -->
+<!-- 				<label class='selectText'>마커 표시 지역 검색</label> -->
+<!-- 				<span id="searchForMap-container"> -->
+<!-- 					<input id="locationForSearch" type="text" class="form-control"> -->
+<!-- 				</span> -->
+<!-- 			</div> -->
 			<div id="markerGroup">
 			   <span class="markerSpan"><img alt="" src="./resources/imgs/marker/red.png">잃어버린 장소</span>
 			   <span class="markerSpan"><img alt="" src="./resources/imgs/marker/blue.png">목격한 장소</span>

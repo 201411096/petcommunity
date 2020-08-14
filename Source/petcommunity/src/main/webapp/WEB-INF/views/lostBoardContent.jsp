@@ -66,7 +66,7 @@
 					</div>
 				</li>
 				<li class="list-group-item boardcontent-container">
-					<p class="card-text">${lostBoardContent.lostboardContent}</p>
+					<p class="card-text" id='contentText'>${lostBoardContent.lostboardContent}</p>
 				</li>
 			</ul>
 			<div class="card-body">
@@ -82,12 +82,12 @@
 					<input type="hidden" id="lostboardLocation" name="lostboardLocation" value="${lostBoardContent.lostboardLocation}">
 					<div id="button-container">
 						<span class="input-group-btn">
-							<button type="button" class="btn btn-secondary" id="listButton">글
+							<button type="button" class="btn btn-default" id="listButton">글
 								목록</button>
 							<c:if test="${isWriterFlag == 1}">
-								<button type="button" class="btn btn-secondary" id="updateButton">글
+								<button type="button" class="btn btn-default" id="updateButton">글
 									수정</button>
-								<button type="button" class="btn btn-secondary" id='deleteButton'>글
+								<button type="button" class="btn btn-default" id='deleteButton'>글
 									삭제</button>
 							</c:if>
 						</span>

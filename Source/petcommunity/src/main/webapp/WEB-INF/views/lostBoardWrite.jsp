@@ -21,7 +21,7 @@
 
 	<div class="container">
 		<header>
-			<h1>게시글 작성하기</h1>
+			<h1 id="board_title">실종 게시글 작성</h1>
 		</header>
 		<br /> <br />
 		<form action="/petcommunity/insertLostBoard.do" method='post'

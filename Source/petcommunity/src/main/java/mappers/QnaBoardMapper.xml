@@ -149,21 +149,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM QUESTIONBOARD
 		WHERE QUESTIONBOARD_GROUP_ID = #{questionboardGroupId}
 	</delete>
-	
-	<select id="selectAnswerFlag" resultType="qna">
-		SELECT *
-		FROM QUESTIONBOARD
-		WHERE QUESTIONBOARD_ANSWERFLAG=-1
-		ORDER BY QUESTIONBOARD_ID desc
-	</select>
-	
-	<insert id="insertQnaNotice" parameterType="qna">
-		INSERT INTO QUESTIONBOARD 
-		VALUES(QUESTIONBOARD_ID_SEQ.NEXTVAL, #{questionboardGroupId},
-		#{questionboardTitle}, #{questionboardContent}, SYSDATE,
-		#{questionboardReadcount}+0, #{memberId},#{questionboardAnswerflag})
-	</insert>
-	
-
 
 </mapper>

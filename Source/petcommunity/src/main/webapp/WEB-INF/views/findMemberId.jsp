@@ -6,10 +6,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./resources/css/mypage.css">
+<link rel="stylesheet" type="text/css"
+   href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 </head>
 <body>
-	<h4>아이디 찾기</h4>
+	
 		<div class="tedoory5">
+		<h4>아이디 찾기</h4>
 			<div class="form-group">
 				<label for="memberName">이름</label> <input type="text"
 					name="memberName" id="memberName" />
@@ -22,8 +25,9 @@
 		</div>
 	
 	<br>
-	<h4>비밀번호 찾기</h4>
+	
 		<div class="tedoory5">
+		<h4>비밀번호 찾기</h4>
 			<div class="form-group">
 				<label for="memberId">아이디</label> <input type="text" name="memberId"
 					id="memberId" />

@@ -21,7 +21,7 @@
 
 	<div class="container">
 		<header>
-			<h1>실종 게시글 수정</h1>
+			<h1 id="board_title">실종 게시글 수정</h1>
 		</header>
 		<br /> <br />
 		<form action="/petcommunity/updateLostBoard.do" method='post'

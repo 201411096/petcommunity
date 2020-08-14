@@ -179,12 +179,12 @@ p {
   color: #777; }
 
 h2 {
+	font-family: 'NanumSquare', sans-serif !important; 
   line-height: 1.66;
   margin: 0;
   padding: 0;
   font-weight: bold;
   color: #222;
-  font-family: Poppins;
   font-size: 36px; }
 
 .main {
@@ -200,12 +200,13 @@ body {
   color: #222;
   background: #fff;
   font-weight: 400;
-  font-family: Poppins;
+  font-family: 'NanumSquare', sans-serif !important; 
   }
 
 .container {
-  width: 900px;
-  background: #fff;
+  width: 850px;
+  height: 500px;
+  background: #f8f7f5;
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -277,22 +278,22 @@ figure {
   text-align: center; }
 
 .form-submit {
-	margin:auto;
-  background: #6dabe4;
-  color: #fff;
-  border-bottom: none;
-  width: auto;
-  padding: 15px 39px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  margin-top: 25px;
-  cursor: pointer; }
-  .form-submit:hover {
-    background: #4292dc; }
-
+	color:#575757;
+	width: 30%;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 10px 20px;
+    margin: auto;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #faf9f8;
+    border: 2px solid #cbc0b6;
+    margin-top: 2%;
+    }.form-submit:hover{
+    color:#575757;
+   background: #efece9;
+     	 border: 2px solid #c2b6ab
+    }
 
 #signin {
   margin-top: 16px; }
@@ -312,11 +313,12 @@ figure {
 margin:auto; }
 
 .signup-form h2{
+
 	margin-left: 7%;
 }
 
 .register-form {
-	font-size:14px;
+	font-size:18px;
 	margin-left:5%;
   width: 100%; }
 
@@ -334,7 +336,7 @@ input {
   border: none;
   border-bottom: 1px solid #999;
   padding: 6px 30px;
-  font-family: Poppins;
+ background: #fefefe;
   box-sizing: border-box; }
   input::-webkit-input-placeholder {
     color: #999; }
@@ -401,7 +403,7 @@ input[type=checkbox]:not(old):checked + label > span:before {
   font-size: 11px;
   line-height: 1.2;
   text-align: center;
-  font-family: 'Material-Design-Iconic-Font';
+font-family: 'NanumSquare', sans-serif !important; 
   font-weight: bold; }
 
 .agree-term {
@@ -447,7 +449,7 @@ label.valid {
   height: 20px;
   background: transparent; }
   label.valid:after {
-    font-family: 'Material-Design-Iconic-Font';
+    font-family: 'NanumSquare', sans-serif !important; 
     content: '\f269';
     width: 100%;
     height: 100%;
@@ -616,11 +618,13 @@ label.valid {
     margin-bottom: 10px; } 
    
   input {
+  font-size:18px;
+  background: #faf9f8;
   display: block;
   border: none;
   border-bottom: 1px solid #999;
   padding: 6px 30px;
-  font-family: Poppins;
+ font-family: 'NanumSquare', sans-serif !important; 
   box-sizing: border-box; }
   input::-webkit-input-placeholder {
     color: #999; }

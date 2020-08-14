@@ -22,7 +22,8 @@
 	href="./resources/bootstrap_template/bootstrap_ain/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/bootstrap_ain/css/jquery-ui.min.css">
-
+<link rel="stylesheet" type="text/css"
+   href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 
 
 <!-- main css -->
@@ -35,7 +36,7 @@
 		<div class="container">
 			<div class="billing_details">
 				<div class="row">
-					<div class="col-lg-8">
+					<div class="col-lg-8 buyTable">
 						<h3>결제정보</h3>
 						<form class="row contact_form" id="buyfrm" action="buyInsert.do" method="post"
 							novalidate="novalidate">
@@ -139,6 +140,7 @@
 			</div>
 		</div>
 	</section>
+	<%@include file="../views/footer.jsp"%>
 	<!--================End Checkout Area =================-->
 
 	<!-- Optional JavaScript -->

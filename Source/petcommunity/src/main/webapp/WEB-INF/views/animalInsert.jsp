@@ -11,6 +11,8 @@
 <title>반려동물 등록</title>
 
 <!-- Font Icon -->
+<link rel="stylesheet" type="text/css"
+   href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css"> 
 <link rel="stylesheet"
    href="./resources/bootstrap_template/template_01/css2/fonts1/material-icon/css/material-design-iconic-font.min.css">
 

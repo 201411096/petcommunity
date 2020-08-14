@@ -11,7 +11,7 @@
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
+<link rel="stylesheet" href="./resources/css/communityBoardWrite.css" />
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="resources/js/communityBoardWrite.js"></script>
@@ -19,6 +19,7 @@
 <title>oki doghere커뮤니티</title>
 </head>
 <body>
+<section id='section'>
 
 	<div class="container">
 	<header>
@@ -63,7 +64,7 @@
 			</div>
 			<div class="form-group">
 				<label>글 내용</label>
-				<textarea class="form-control" rows="5" name="communityboardContent" id="communityboardContent" placeholder="contents"></textarea>
+				<textarea class="form-control" rows="15" name="communityboardContent" id="communityboardContent" placeholder="contents"></textarea>
 			</div>
 			<div class="form-group" id="file-group">
 				<ul class="list-group" id="file-list">
@@ -79,5 +80,7 @@
 		</form>
 
 	</div>
+	</section>
+	<%@include file="../views/footer.jsp"%>
 </body>
 </html>

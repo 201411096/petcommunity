@@ -96,7 +96,7 @@
 					</div>
 				</div>
 				<!-- 제품 상세내역 -->
-				<div class="col-lg-5 offset-lg-1">
+				<div class="col-lg-5 offset-lg-1" id="productInfoContainer">
 					<div class="s_product_text">
 						<h3>${productInfo.productName }</h3>
 						<h2>${productInfo.productPrice }원</h2>
@@ -189,27 +189,27 @@
 									<div class="rating_list">
 										<h3>리뷰 ${reviewListSize} 개의 평점</h3>
 										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-heart"></i> <i
+											<li><a href="#">5점 <i class="fa fa-heart"></i> <i
 													class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i
 													class="fa fa-heart"></i> <i class="fa fa-heart"></i>
 													${score5Size}
 											</a></li>
-											<li><a href="#">4 Star <i class="fa fa-heart"></i> <i
+											<li><a href="#">4점 <i class="fa fa-heart"></i> <i
 													class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i
 													class="fa fa-heart"></i> <i class="fa fa-heart-o"></i>
 													${score4Size}
 											</a></li>
-											<li><a href="#">3 Star <i class="fa fa-heart"></i> <i
+											<li><a href="#">3점 <i class="fa fa-heart"></i> <i
 													class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i
 													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i>
 													${score3Size}
 											</a></li>
-											<li><a href="#">2 Star <i class="fa fa-heart"></i> <i
+											<li><a href="#">2점 <i class="fa fa-heart"></i> <i
 													class="fa fa-heart"></i> <i class="fa fa-heart-o"></i> <i
 													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i>
 													${score2Size}
 											</a></li>
-											<li><a href="#">1 Star <i class="fa fa-heart"></i> <i
+											<li><a href="#">1점 <i class="fa fa-heart"></i> <i
 													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i> <i
 													class="fa fa-heart-o"></i> <i class="fa fa-heart-o"></i>
 													${score1Size}

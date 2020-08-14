@@ -25,6 +25,7 @@
 <body>
 
 <!-- <div class="main2"> -->
+<section id="background_section">
 <div class="signup-content2">
 	<h4 id="qnatitle">Message</h4>
 	<p id="qnasubtitle">실시간 쪽지.</p>
@@ -101,7 +102,7 @@
 				</div>
 				</div>
 <!-- 				</div> -->
-				
+	</section>
 
 
 <script
@@ -109,5 +110,7 @@
 	<script src="./resources/js/mypage.js"></script>
 	<script src="./resources/js/mypage-messageVer2.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>
+	
+	
 </body>
 </html>

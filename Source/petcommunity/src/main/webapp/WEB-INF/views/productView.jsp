@@ -229,7 +229,7 @@
 											<div id="review_thmbnail" class="d-flex">
 												<img
 													src="resources/imgs/review_thumbnail/thumbnail_reivew.jpg"
-													style="width: 60px; height: 60px;" alt="썸네일">
+													style="width: 60px; height: 60px; border-radius: 50%;" alt="썸네일">
 											</div>
 											<div class="media-body">
 												<p>${reviewList.productreviewUploadtime}</p>

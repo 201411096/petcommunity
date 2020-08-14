@@ -121,6 +121,7 @@ public class LostBoardController {
 				String authKey = AUTH_KEY_FCM;
 				String FMCurl = API_URL_FCM;
 				
+//				for(int i1=0; i1<2; i1++) {
 				URL url = new URL(FMCurl);
 				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				
@@ -143,20 +144,24 @@ public class LostBoardController {
 //				JSONObject data = new JSONObject();
 //				data.put("link", link); 
 //				json.put("data", data);
+				
 					
+				
 					JSONObject json = new JSONObject();
 
 					JSONObject info = new JSONObject();
 					info.put("title", title);   // Notification title
 					info.put("body", content); // Notification body
-					json.put("notification", info);
-					
+//					if(i1==0) {						
+//					json.put("notification", info);
+//					}
 					json.put("to",userDeviceIdKey.trim());	// to deviceToken
 					
 					JSONObject data = new JSONObject();
 					data.put("message", content); // data body
 					data.put("messageTitle", title); // data title
 					data.put("link", link); // data link
+					data.put("clickAction", "MainActivity"); // data 클릭액션
 					json.put("data", data);
 						
 					
@@ -168,6 +173,7 @@ public class LostBoardController {
 				wr.flush();
 				conn.getInputStream();  
 				}
+//				}
 			}
 		}
 		

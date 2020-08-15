@@ -144,19 +144,19 @@ var container = document.getElementById('map');
             latlng: new kakao.maps.LatLng(36.601621, 127.2983811)
         },
         {
-            title: '월드펫동물병원', 
+            title: '올리브동물병원', 
             latlng: new kakao.maps.LatLng(36.4889557, 127.1953441)
         },
         {
-            title: '월드펫동물병원', 
+            title: '누리봄동물병원', 
             latlng: new kakao.maps.LatLng(36.6208498, 127.2871603)
         },
         {
-            title: '월드펫동물병원', 
+            title: '우리동물병원', 
             latlng: new kakao.maps.LatLng(36.4648935, 127.2812353)
         },
         {
-            title: '월드펫동물병원', 
+            title: '소망동물병원', 
             latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
         },
         

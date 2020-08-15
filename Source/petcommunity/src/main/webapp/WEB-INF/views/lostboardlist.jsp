@@ -137,7 +137,7 @@
 	<%@include file="../views/footer.jsp"%>
 		<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=41ccd37d4644ab2ed5ed67441dda1abb&libraries=services"></script>
-	<script src="resources/js/lostboardlist.js"></script>
+	<script src="resources/js/lostboardlist.js"></script>	
 	
 </body>
 

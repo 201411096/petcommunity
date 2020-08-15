@@ -1,16 +1,20 @@
 //var socket = io("https://192.168.0.18:3000");
-var socket = io("https://115.91.88.227:60005");
+//var socket = io("https://115.91.88.227:60005"); // 대회의실용
+//var socket = io("https://121.171.119.57:3000"); // 집
 var startPage=0;//최초 탭 클릭 시 0~5개의 리스트, 챗만 가져옴
 var endPage=6;
 var otherId='1';//상대방 id
 //var scrollController=0;
 var loginId='';
+messagePageFlag =1;
 $(function(){
 	// 메시지를 받았을 때
-	receiveMessage();
+	//module_socket.js로 이동됨----------------
+	//receiveMessage(); 
 	// 소켓에 닉네임으로 사용할 id 저장
-	memberId=$("#hiddenId").val();
-	setNickname(memberId);
+//	memberId=$("#hiddenId").val();
+//	setNickname(memberId);
+	//module_socket.js로 이동됨----------------
 //	//쪽지 탭 진입시
 //	$(".tab-link4").on("click", function(){
 //		$('#message-table').css("display","block");
@@ -114,56 +118,59 @@ function sendMessageData(content, loginId, otherId){
 	   dataOptions.messageTo=otherId;
 	   socket.emit('sendMessageData', dataOptions);
 	}
+//module_socket.js로 이동됨
 // 소켓으로 massage 받음
-function receiveMessage(){
-	console.log('receiveMessage 함수 호출 확인')
-	socket.on('sendMessageData', function(data){
-	 console.log('receiveMessage evt');
-	 console.log(data.messageContent);
-	 console.log(data.messageFrom);
-	 console.log(data.messageTo);
-//	 addMessage(data);
-	 getChat(startPage, endPage);
-	 toastMessage(data.messageContent, data.messageFrom, data.messageTo);
- });
-	socket.on('sendDelData', function(data){
-		console.log('receiveMessageDelete evt');
-		 console.log(data.msgId);
-		 console.log("보낸사람"+data.messageFrom);
-		 console.log(data.messageTo);
-		 getChat(startPage, endPage);
-	});
-}
+//function receiveMessage(){
+//	console.log('receiveMessage 함수 호출 확인')
+//	socket.on('sendMessageData', function(data){
+//	 console.log('receiveMessage evt');
+//	 console.log(data.messageContent);
+//	 console.log(data.messageFrom);
+//	 console.log(data.messageTo);
+////	 addMessage(data);
+//	 getChat(startPage, endPage);
+//	 toastMessage(data.messageContent, data.messageFrom, data.messageTo);
+// });
+//	socket.on('sendDelData', function(data){
+//		console.log('receiveMessageDelete evt');
+//		 console.log(data.msgId);
+//		 console.log("보낸사람"+data.messageFrom);
+//		 console.log(data.messageTo);
+//		 getChat(startPage, endPage);
+//	});
+//}
+// module_socket.js로 이동됨
 // message toast 알림
-function toastMessage(messageContent, messageFrom, messageTo){
-	toastr["info"](messageFrom+'<a href="/petcommunity/getChatPartner.do?messageFrom='+messageFrom+'">바로가기</a>'+"<br /><br />"+messageContent);
-//	toastr["info"](messageFrom+"<br /><br />"+messageContent);
-//	toastr.info(messageFrom, messageContent, {timeOut: 5000});
-	toastr.options = {
-			  "closeButton": true,
-			  "debug": false,
-			  "newestOnTop": true,
-			  "progressBar": false,
-			  "rtl": false,
-			  "positionClass": "toast-top-right",
-			  "preventDuplicates": false,
-			  "onclick": false,
-			  "showDuration": 300,
-			  "hideDuration": 1000,
-			  "timeOut": 0,
-			  "extendedTimeOut": 0,
-			  "showEasing": "swing",
-			  "hideEasing": "linear",
-			  "showMethod": "fadeIn",
-			  "hideMethod": "fadeOut",
-			  "tapToDismiss": false
-			}
-}
+//function toastMessage(messageContent, messageFrom, messageTo){
+//	toastr["info"](messageFrom+'<a href="/petcommunity/getChatPartner.do?messageFrom='+messageFrom+'">바로가기</a>'+"<br /><br />"+messageContent);
+////	toastr["info"](messageFrom+"<br /><br />"+messageContent);
+////	toastr.info(messageFrom, messageContent, {timeOut: 5000});
+//	toastr.options = {
+//			  "closeButton": true,
+//			  "debug": false,
+//			  "newestOnTop": true,
+//			  "progressBar": false,
+//			  "rtl": false,
+//			  "positionClass": "toast-top-right",
+//			  "preventDuplicates": false,
+//			  "onclick": false,
+//			  "showDuration": 300,
+//			  "hideDuration": 1000,
+//			  "timeOut": 0,
+//			  "extendedTimeOut": 0,
+//			  "showEasing": "swing",
+//			  "hideEasing": "linear",
+//			  "showMethod": "fadeIn",
+//			  "hideMethod": "fadeOut",
+//			  "tapToDismiss": false
+//			}
+//}
+//module_socket.js로 이동됨----------------
 // 소켓 닉네임 로그인 id로 설정
-function setNickname(memberId){
-	   socket.emit('setNickname', memberId);
-	   console.log(memberId);
-	}
+//function setNickname(memberId){
+//	   socket.emit('setNickname', memberId);
+//	   console.log(memberId);
+//	}
 
 // 소켓으로 삭제 메시지 Data 보냄
 function sendDelData(msgId, loginId, otherId){

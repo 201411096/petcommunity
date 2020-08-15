@@ -107,6 +107,7 @@
 
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
+<!-- 	<script src="./resources/js/util/module_socket.js"></script> -->
 	<script src="./resources/js/mypage.js"></script>
 	<script src="./resources/js/mypage-messageVer2.js"></script>
 	<script src="./resources/bootstrap_template/template_01/js2/main.js"></script>

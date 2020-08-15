@@ -33,7 +33,7 @@ div.chatContainer{
 		background-color: #999999;
 		width : auto;
 	/* 	height: 597px; */
-		height: 91%;
+		height: 85.7%;
 		overflow : auto;
 	}
 }
@@ -42,7 +42,7 @@ div.chatContainer{
 		background-color: #999999;
 		width : auto;
 	/* 	height: 597px; */
-		height: 93.8%;
+		height: 89.9%;
 		overflow : auto;
 	}
 }
@@ -58,9 +58,25 @@ div.chatContainer{
     background-color: #f5f6f7;
     border-radius: 3px;
     font-weight: 100;
-    color: #9b9b9b
+    color: #9b9b9b;
+    height:50px;
+    font-size : 20px;
 }
 
+#chatLocation{
+	height: 50px;
+	font-size : 20px;
+}
+
+#m{
+	height: 50px;
+	font-size : 20px;
+}
+#messageSendBtn{
+	height:50px;
+	border-radius:0px;
+	font-size : 20px;
+}
 
 /* * { margin: 0; padding: 0; box-sizing: border-box; } */
 /* body { font: 13px Helvetica, Arial; } */

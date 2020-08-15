@@ -150,12 +150,18 @@ public class LostBoardController {
 					JSONObject json = new JSONObject();
 
 					JSONObject info = new JSONObject();
+					JSONObject message = new JSONObject();
 					info.put("title", title);   // Notification title
 					info.put("body", content); // Notification body
-//					if(i1==0) {						
-//					json.put("notification", info);
-//					}
+					info.put("uri", link);
+					info.put("clickAction", "MainActivity");
+					json.put("notification", info);
+//					message.put("notification", info);
+//					json.put("message", message);
+					
+					
 					json.put("to",userDeviceIdKey.trim());	// to deviceToken
+					json.put("priority","high");
 					
 					JSONObject data = new JSONObject();
 					data.put("message", content); // data body

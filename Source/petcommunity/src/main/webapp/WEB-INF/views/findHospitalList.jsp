@@ -28,15 +28,15 @@
 <title>게시판</title>
 </head>
 <body>
-	<section id="backGround">
-	<header>
-			<h4 id="findHospital">Hospital List</h4>
-			<p id="findHospitalSub">병원 찾기 게시판입니다.</p>
-	</header>
+	<section id="section">
+		<div class="container">
+
+		<h3 id="findHospital">Hospital List</h3>
+		<p id="findHospitalSub">병원 찾기 게시판입니다.</p>
 	<hr/>
 
 			<!--  도시 고를 수 있는 셀렉트박스-->
-		<div class="searchTab">
+		<section id="container">
 			<div class="col-xs-0 col-sm-3" id="provinceSection">
 				<!--  <input name="sGubun" type="radio" checked value="0" >-->
 					<table>
@@ -88,7 +88,7 @@
 				  <label class="radio" style="width: 100px;">병원명 검색</label>
 				  </td>
 						<td style="width:100px;padding-left: 10px;padding-right: 0px;">		
-						<input type="text" name="keyword" id="keywordInput" class="form-control" style="width: 197px;"
+						<input type="text" name="keyword" id="keywordInput" class="form-control" style="width: 197px;margin-right: 0px;"
 						placeholder="검색어, 병원명을 입력하세요."/>
 							</td>
 						<td>
@@ -97,7 +97,7 @@
 							</button>
 						</span></td></tr></table>
 			</div>
-		</div>	
+		
 			
 		<!-- 	
 			<div class="col-xs-0 col-sm-3">
@@ -134,10 +134,32 @@ var container = document.getElementById('map');
 		 */
 
     var positions = [
+        
         {
             title: '월드펫동물병원', 
             latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
         },
+        {
+            title: '세종다온동물병원', 
+            latlng: new kakao.maps.LatLng(36.601621, 127.2983811)
+        },
+        {
+            title: '올리브동물병원', 
+            latlng: new kakao.maps.LatLng(36.4889557, 127.1953441)
+        },
+        {
+            title: '누리봄동물병원', 
+            latlng: new kakao.maps.LatLng(36.6208498, 127.2871603)
+        },
+        {
+            title: '우리동물병원', 
+            latlng: new kakao.maps.LatLng(36.4648935, 127.2812353)
+        },
+        {
+            title: '소망동물병원', 
+            latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
+        },
+        
         {
             title: '올리브동물병원', 
             latlng: new kakao.maps.LatLng(37.599235, 126.9589611)
@@ -477,7 +499,7 @@ var container = document.getElementById('map');
         });
     }
 
-</script></div></section>
+</script></div>
 
 
 <br/><br/>
@@ -506,7 +528,7 @@ var container = document.getElementById('map');
 	<!-- Footer -->
 
 	
-	<br/><br/>
+	<br/><br/></section></div></section>
 		<%@include file="../views/footer.jsp"%>
 	</body></html> 
 

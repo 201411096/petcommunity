@@ -1,6 +1,5 @@
 var today = new Date();
 today = today.getFullYear().toString()+(today.getMonth()+1).toString()+today.getDate().toString();
-const schedule = require('node-schedule');
 const https = require('https');
 const fs = require('fs');
 let {PythonShell} = require('python-shell');
@@ -30,16 +29,13 @@ var app = https.createServer(options, (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);
 
   // }).listen(3000, '192.168.0.24', () => {
-}).listen(3000, '192.168.0.18', () => {
-// }).listen(3000, '121.171.119.57', () => { // 집
+// }).listen(3000, '192.168.0.18', () => {
+}).listen(3000, '121.171.119.57', () => { // 집
     console.log('listening on *:3000');
 });
 var io = require('socket.io')(app);
 
-const scheduler_01 = schedule.scheduleJob('0 0 0 * * *', function(){ // 매일 정각에 실행
-  executePythonFileAndReadJsonFile();
-});
-// executePythonFileAndReadJsonFile();
+executePythonFileAndReadJsonFile();
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('disconnecting', () => {

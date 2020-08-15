@@ -58,6 +58,11 @@ public class LostBoardDAOImpl implements LostBoardDAO{
 	public List<LostBoardVO> selectLostBoardForMap(Map map) {
 		return mybatis.selectList("lostBoardDAO.getLostBoardForMap", map);
 	}
+	
+	@Override
+	public List<LostBoardVO> selectLostBoardForMap2(Map map) {
+		return mybatis.selectList("lostBoardDAO.getLostBoardForMap2", map);
+	}
 
 	//알림 보낼 list추리는 함수
 	@Override

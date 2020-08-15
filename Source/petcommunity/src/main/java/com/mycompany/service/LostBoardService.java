@@ -16,6 +16,7 @@ public interface LostBoardService {
 	public int updateLostBoard(LostBoardVO lostBoardVO);
 	public List<String> selectString(Map map);
 	public List<LostBoardVO> selectLostBoardForMap(Map map);
+	public List<LostBoardVO> selectLostBoardForMap2(Map map);
 	//알림 보낼 list추리는 함수
 	public List<LostBoardVO> findPeopleByLocationOfLostPost(FindBoardVO findBoardVO);
 }

@@ -121,6 +121,16 @@
 		and lostboard_uploadtime > sysdate - #{timeForSearch}
 		</if> 
 	</select>
+	<select id="getLostBoardForMap2" parameterType="hashmap" resultType="lostBoard">
+		select * from lostboard
+		where lostboard_status = '찾음'
+		<if test = "locationForSearch != ''">
+		and REGEXP_LIKE (lostboard_location, '(*)'||#{locationForSearch}||'(*)')
+		</if>
+		<if test="timeForSearch != ''">
+		and lostboard_uploadtime > sysdate - #{timeForSearch}
+		</if> 
+	</select>
 	
 	<!-- 알림 보낼 list 찾아내는 함수 -->
 	<select id="findPeopleByLocationOfLostPost" parameterType="findBoard" resultType="lostBoard">

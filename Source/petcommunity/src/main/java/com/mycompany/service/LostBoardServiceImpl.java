@@ -60,6 +60,11 @@ public class LostBoardServiceImpl implements LostBoardService{
 		return lostBoardDAO.selectLostBoardForMap(map);
 	}
 	
+	@Override
+	public List<LostBoardVO> selectLostBoardForMap2(Map map) {
+		return lostBoardDAO.selectLostBoardForMap2(map);
+	}
+	
 	//알림 보낼 list추리는 함수
 	@Override
 	public List<LostBoardVO> findPeopleByLocationOfLostPost(FindBoardVO findBoardVO) {

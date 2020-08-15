@@ -34,8 +34,14 @@ $(function(){
 function drawMarker(){
 	for(var i=0; i<publicDataFromAPI.length; i++){
 		var iwContent = '<div class="marker-infowindow">'+
+						'<div class="form-group">'+'<공공데이터>'+'</div>'+
 						 '<div class="form-group">품종 : '+publicDataFromAPI[i].kindCd+'</div>'+
 						 '<div class="form-group">발견 장소 : '+publicDataFromAPI[i].happenPlace+'</div>'+
+						 '<div class="form-group">현재 상태 : '+publicDataFromAPI[i].processState+'</div>'+
+						 '<div class="form-group">연락처 : '+publicDataFromAPI[i].careTel+'</div>'+
+						 
+						 
+						 '<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+publicDataFromAPI[i].y+','+publicDataFromAPI[i].x+'">'+'로드뷰'+'</a>'+
 						 '</div>'; 
         if(publicDataFromAPI[i].x == 0 ) continue;
         

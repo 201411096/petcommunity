@@ -173,3 +173,10 @@ span.input-group-btn > button#searchBtn{
 div#pagination_container > ul#pagination-demo > li.page-item > a{
 	background : #ffecd9;
 }
+
+a.btn-secondary{
+	font-size: 12px;
+    border-color: #e4e4e4;
+    border-radius: 10px;
+    background: #fff;
+}

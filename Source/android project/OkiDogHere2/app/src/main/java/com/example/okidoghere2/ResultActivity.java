@@ -1,31 +1,15 @@
 package com.example.okidoghere2;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.content.ContentResolver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.net.Uri;
-import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -35,14 +19,19 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.webkit.GeolocationPermissions;
 import android.webkit.JsResult;
-import android.webkit.PermissionRequest;
-import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -52,12 +41,11 @@ import com.pedro.library.AutoPermissionsListener;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity implements AutoPermissionsListener {
+public class ResultActivity extends AppCompatActivity implements AutoPermissionsListener {
 
     private WebView webView;
     //    private String url = "https://192.168.0.19:8443/petcommunity/test_kys.jsp";
-    private static String url = "";
-    private static String urlChange = "";
+    private String pushUrl="";
     private String memberX = "";
     private String memberY = "";
     // 디바이스 권한 설정에 필요한 변수
@@ -68,23 +56,13 @@ public class MainActivity extends AppCompatActivity implements AutoPermissionsLi
     private Uri cameraImageUri = null;
     private static final int MY_PERMISSION_STORAGE = 1111;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         webView = (WebView)findViewById(R.id.webView);
-        //인텐트 받아서 url 수정
-        Intent intent = getIntent();
-        String uri = intent.getStringExtra("uri");
-        println("메인: "+uri);
-        if(uri!=null){
-            urlChange=uri;
-        }
-
-
-
-
         // 위치정보 획득 함수
         startLocationService();
         // 각종 권한 획득
@@ -196,19 +174,11 @@ public class MainActivity extends AppCompatActivity implements AutoPermissionsLi
                 println("확인된 인스턴스 id : " + instanceId);
                 // Spring js의 함수로 토큰 보내는 부분
 //                String url="https://192.168.0.19:8443/petcommunity/test_token.do?tokenId="+newToken+"&memberX="+memberX+"&memberY="+memberY;
-//                String url="https://115.91.88.227:60004/petcommunity/test_token.do?tokenId="+newToken+"&memberX="+memberX+"&memberY="+memberY;
-
-//                url ="file://android_assets/www/index.html";
-                if(urlChange.equals("")) {
-                    url="https://115.91.88.227:60004/petcommunity/test_token.do?tokenId="+newToken+"&memberX="+memberX+"&memberY="+memberY;
-                }else{
-                    url = urlChange;
-                }
-                webView.loadUrl(url);
+//                String url ="file://android_assets/www/index.html";
+                webView.loadUrl(pushUrl);
 //                webView.loadUrl("javascript:setMessage("+newToken+")");
 //                sendRegistrationToServer(newToken);
             }
-
         });
 
 //================================================================================================
@@ -358,9 +328,7 @@ public class MainActivity extends AppCompatActivity implements AutoPermissionsLi
         String title = intent.getStringExtra("title");
         String body = intent.getStringExtra("body");
         String uri = intent.getStringExtra("uri");
-        urlChange=uri;
-        webView.loadUrl(urlChange);
-
+        pushUrl = uri;
 //        println("DATA : " + from + ", " + contents);
         println("DATA : " + from + ", title: " + title + ", body:" + body );
     }
@@ -425,7 +393,7 @@ public class MainActivity extends AppCompatActivity implements AutoPermissionsLi
                 for (int i = 0; i < grantResults.length; i++){
                     // grantResult[]: 권한 허용 0, 권한 거부 -1
                     if (grantResults[i] < 0){
-                        Toast.makeText(MainActivity.this, "해당 권한을 활성화 하셔야 합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ResultActivity.this, "해당 권한을 활성화 하셔야 합니다.", Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }

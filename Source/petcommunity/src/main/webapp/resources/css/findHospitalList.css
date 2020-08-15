@@ -21,19 +21,19 @@ font-family: 'NanumSquare', sans-serif !important;
 
 #backGround{
   padding-top:5%;
-  background: #faf9f8;
+  background:  #ffecd9;
 }
 
 
 #provinceSection{
-	margin-right: 0px;right: 0px;margin-left: 10px;width: 50%; 
+	margin-right: 0px;right: 0px;margin-left: 10px;width: 100%; 
     margin-bottom: 20px;
     float:center;
     text-align: center;
 }
 
 #nameSection{ 
-	margin-right: 0px;right: 0px;margin-left: 10px;width: 50%;
+	margin-right: 0px;right: 0px;margin-left: 10px;width: 100%;
     margin-bottom: 20px;
     float:center;
     text-align: center;
@@ -64,38 +64,25 @@ body{
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-	
-.searchTab{
-	float:center;
-	text-align: center;
-}
 
 #keywordInput{
-	
-	display: block;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 17px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border-style:none;
-    border: 1px solid #b3b3b3;
+    width: 90%;
+   	font-size: 16px;
+    padding: 10px 20px;
+    border-color: #e4e4e4;
     border-radius: 10px;
-    margin-top: 0px;margin-right: 0px;
-
-  
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    background: #fff; 
+    margin-top: 0px;
+    width: 200px;
+    margin-top: 0px;
+    margin-right: 0px;
 }
 	
 	
 
 #backGround{
    padding-top:5%;
-   background: #faf9f8;
+   background:  #ffecd9;
 }
 #searchName{
 	font:normal;
@@ -231,25 +218,22 @@ body{
 
 #keywordInput{
 	
-	display: block;
-    height: 34px;
-    padding: 6px 12px;
-    font-size: 17px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
-    border-style:none;
-    border: 1px solid #b3b3b3;
+	width: 90%;
+   	font-size: 16px;
+    padding: 10px 20px;
+    border-color: #e4e4e4;
     border-radius: 10px;
-    margin-top: 0px;margin-right: 0px;
-  
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    background: #fff; 
+    margin-top: 0px;
+    width: 200px;
+    margin-top: 0px;
+    margin-right: 0px;
+   
 }
 	
-	
+#cityName{
+	margin-top: 0px;
+}	
 
 #backGround{
    padding-top:5%;

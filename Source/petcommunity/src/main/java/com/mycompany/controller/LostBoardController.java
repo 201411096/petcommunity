@@ -134,31 +134,17 @@ public class LostBoardController {
 				conn.setRequestProperty("Content-Type","application/json");
 				
 				if(userDeviceIdKey != null) {
-					
-//				JSONObject json = new JSONObject();
-//				json.put("to",userDeviceIdKey.trim());
-//				JSONObject info = new JSONObject();
-//				info.put("title", title);   // Notification title
-//				info.put("body", content); // Notification body
-//				json.put("notification", info);
-//				JSONObject data = new JSONObject();
-//				data.put("link", link); 
-//				json.put("data", data);
-				
-					
-				
-					JSONObject json = new JSONObject();
 
+					JSONObject json = new JSONObject();
 					JSONObject info = new JSONObject();
 					JSONObject message = new JSONObject();
 					info.put("title", title);   // Notification title
 					info.put("body", content); // Notification body
 					info.put("uri", link);
-					info.put("clickAction", "MainActivity");
-					json.put("notification", info);
+//					json.put("notification", info);
+//					info.put("clickAction", "MainActivity");
 //					message.put("notification", info);
 //					json.put("message", message);
-					
 					
 					json.put("to",userDeviceIdKey.trim());	// to deviceToken
 					json.put("priority","high");
@@ -167,12 +153,10 @@ public class LostBoardController {
 					data.put("message", content); // data body
 					data.put("messageTitle", title); // data title
 					data.put("link", link); // data link
-					data.put("clickAction", "MainActivity"); // data 클릭액션
 					json.put("data", data);
+//					message.put("data", data);
+//					data.put("clickAction", "MainActivity"); // data 클릭액션
 						
-					
-					
-					
 				OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
 				System.out.println(">" + json.toString());
 				wr.write(json.toString());

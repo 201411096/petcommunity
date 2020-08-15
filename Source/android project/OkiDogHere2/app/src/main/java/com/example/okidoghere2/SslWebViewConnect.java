@@ -1,12 +1,12 @@
 package com.example.okidoghere2;
 
-import android.app.Service;
-import android.content.Intent;
-import android.net.http.SslError;
-import android.os.IBinder;
-import android.webkit.SslErrorHandler;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+        import android.app.Service;
+        import android.content.Intent;
+        import android.net.http.SslError;
+        import android.os.IBinder;
+        import android.webkit.SslErrorHandler;
+        import android.webkit.WebView;
+        import android.webkit.WebViewClient;
 
 public class SslWebViewConnect extends WebViewClient {
     @Override

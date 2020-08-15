@@ -17,8 +17,6 @@
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
 <link href="./resources/css/toastr.css" rel="stylesheet" type="text/css" />
-	<script
-		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 <!-- Stylesheets -->
 <link rel="stylesheet"
 	href="./resources/bootstrap_template/template_01/css/font-awesome.min.css" />
@@ -31,14 +29,11 @@
 <link rel="stylesheet" href="./resources/css/head.css" />
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> -->
-<!-- <!-- 부가적인 테마 -->
-<!-- <link rel="stylesheet" -->
-<!-- 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마 -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -61,16 +56,23 @@
 				<c:choose>
 					<c:when test="${sessionScope.memberVO.memberFlag eq '1'}">
 						관리자/${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃]</a>
+						<a href="logout.do" class="logout">Logout</a>
 
 					</c:when>
 
 					<c:when test="${sessionScope.memberVO.memberFlag eq '0'}">				
 						${sessionScope.memberVO.memberName}님, 안녕하세요
-						<a href="logout.do">[로그아웃]</a>
-						<a href="mypageAnimal.do">[마이 페이지]</a>
-						<a href="productCart.do">[장바구니]</a>
-						<a href="getMessagePartner.do">[쪽지확인]</a>
+						<a href="logout.do" class="logout">Logout</a>
+						<a href="mypageAnimal.do"><img alt=""
+							src="./resources/bootstrap_template/template_01/img/gallery/mypage1.png"
+							width="23"></a>
+						<a href="getMessagePartner.do"><img alt=""
+							src="./resources/bootstrap_template/template_01/img/gallery/jjokg.png"
+							width="30"></a>
+
+						<a href="productCart.do"><img alt=""
+							src="./resources/bootstrap_template/template_01/img/gallery/cart.png"
+							width="25"></a>
 
 					</c:when>
 				</c:choose>
@@ -98,13 +100,18 @@
 
 	<script
 		src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-	<df-messenger intent="WELCOME" chat-title="petcommunity" chat-icon="resources/imgs/review_thumbnail/dialogIcon.png"
+	<df-messenger intent="WELCOME" chat-title="petcommunity"
+		chat-icon="resources/imgs/review_thumbnail/dialogIcon.png"
 		agent-id="2573aba7-c532-485a-a3e8-889b7d15fac1" language-code="ko"></df-messenger>
 
-<input id="hiddenId" type=hidden value="${sessionScope.memberVO.memberId}"}>
+	<input id="hiddenId" type=hidden
+		value="${sessionScope.memberVO.memberId}"}>
 
 	<!--====== Javascripts & Jquery ======-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+	<script
+		src="./resources/bootstrap_template/template_01/js/jquery-3.2.1.min.js"></script>
 	<script
 		src="./resources/bootstrap_template/template_01/js/bootstrap.min.js"></script>
 	<script

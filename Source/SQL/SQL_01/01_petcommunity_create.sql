@@ -225,6 +225,28 @@ create table manager(
     constraint manager_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID) on delete cascade
 );
 
+  CREATE OR REPLACE FORCE VIEW "TEAMPROJECT"."BUYLISTVIEW" ("BUY_ID", "BUYLIST_ID", "PRODUCT_ID", "BUY_CNT", "BUY_TOTALPRICE", "BUYLIST_DATE", "MEMBER_ID", "BUYLIST_TOTALPRICE", "PRODUCT_NAME", "PRODUCT_PRICE", "PRODUCT_CNT", "PRODUCT_FEATURE", "PRODUCT_CONTENT") AS 
+  select 
+b.buy_id as buy_id, 
+b.buylist_id as buylist_id, 
+b.product_id as product_id, 
+b.buy_cnt as buy_cnt, 
+b.buy_totalprice as buy_totalprice, 
+bl.buylist_date as buylist_date, 
+bl.member_id as member_id, 
+bl.buylist_totalprice as buylist_totalprice,
+p.product_name as product_name,
+p.product_price as product_price,
+p.product_cnt as product_cnt,
+p.product_feature as product_feature,
+p.product_content as product_content
+from buy b 
+inner join buylist bl 
+on b.buylist_id = bl.buylist_id
+inner join product p
+on b.product_id = p.product_id
+;
+
 create sequence findhospital_id_seq
 start with 10000
 maxvalue 100000

@@ -28,8 +28,8 @@ var app = https.createServer(options, (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin,Accept,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-  }).listen(3000, '192.168.0.24', () => {
-// }).listen(3000, '192.168.0.18', () => {
+  // }).listen(3000, '192.168.0.24', () => {
+}).listen(3000, '192.168.0.18', () => {
 // }).listen(3000, '121.171.119.57', () => { // 집
     console.log('listening on *:3000');
 });

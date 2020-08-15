@@ -92,8 +92,11 @@ li{
 }
 
 
-.bgColor{
-	background:#faf9f8;
+div.card-body{
+	background:#ffecd9;
+}
+div.card > ul > li{
+	background:#ffecd9;
 }
 #listButton{
 	font-size: 16px;

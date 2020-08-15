@@ -118,13 +118,15 @@ div.infoWindowImageContainer{
 	
 }
 #markerGroup{
+	margin-top:20px;
+	margin-bottom:20px;
 	float:right;
 }
 .markerSpan{
-   font-size:25px;
+   font-size:20px;
 }
 .markerSpan2{
-   font-size:25px;
+   font-size:20px;
 }
 .markerSpan img{
    width:20px;
@@ -167,4 +169,7 @@ span.input-group-btn > button#searchBtn{
     border-color: #e4e4e4;
     border-radius: 10px;
     background: #fff;
+}
+div#pagination_container > ul#pagination-demo > li.page-item > a{
+	background : #ffecd9;
 }

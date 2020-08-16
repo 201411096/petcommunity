@@ -5,7 +5,6 @@
 
 var curRoomName;
 var memberId;
-var exitSocketEventFlag = 0;
 
 setMemberValue();			// 멤버 아이디값 지정
 setCurRoomName();		// 현재 입장할 방 세팅
@@ -17,18 +16,19 @@ chatLocationEventHandler();
 chatMessageBoxEnterListener();
 socketEventHandling();
 windowCloseEvent();
+//$('#chatLocation').on('change', function(){
+//	selectRoom(memberId);
+//});
 
 function windowCloseEvent(){
 	$(window).on('unload', function(){
-		if(exitSocketEventFlag == 0){
-			var roomInfo = new Object();
-			roomInfo.prev = curRoomName; // 이전 방 정보
-			setCurRoomName(curRoomName);
-			roomInfo.cur = '__exit__'
-			roomInfo.memberId = memberId;
-			socket.emit('joinRoom', roomInfo);
-		}
-	});
+		var roomInfo = new Object();
+		roomInfo.prev = curRoomName; // 이전 방 정보
+		setCurRoomName(curRoomName);
+		roomInfo.cur = '__exit__'
+		roomInfo.memberId = memberId;
+		socket.emit('joinRoom', roomInfo);
+	})
 }
 
 function chatLocationEventHandler(){
@@ -80,7 +80,7 @@ function selectRoom(memberId){
 function listenAndAppendChatMessage(targetElement, componentElement){
 	socket.on('chat message', function(msg){
 		console.log('check in socketonevent ...');
-		$(targetElement).append($(componentElement).text(msg.messageContent));
+		$(targetElement).append($(componentElement).text(msg));
 		$(targetElement).scrollTop($(targetElement)[0].scrollHeight); // 스크롤을 맨 아래로..
 	});	
 }
@@ -93,7 +93,6 @@ function socketEventHandling(){
 			$('div.messages').empty();
 		}
 		if(socketEvent=='exitChat'){
-			exitSocketEventFlag=1;
 			console.log('exitChat event 확인');
 			var roomInfo = new Object();
 			roomInfo.prev = curRoomName; // 이전 방 정보
@@ -101,7 +100,6 @@ function socketEventHandling(){
 			roomInfo.memberId = memberId;
 			socket.emit('joinRoom', roomInfo);
 			window.close();
-			return;
 		}
 	});
 }

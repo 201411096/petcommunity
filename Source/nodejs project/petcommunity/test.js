@@ -34,8 +34,10 @@
 
 
 // 되는거 확인함
-const schedule = require('node-schedule');
+// const schedule = require('node-schedule');
  
-const j = schedule.scheduleJob('25 * * * * *', function(){
-  console.log('매 10초에 실행');
-});
+// const j = schedule.scheduleJob('25 * * * * *', function(){
+//   console.log('매 10초에 실행');
+// });
+var abc = 'guest_abcdes';
+console.log(abc);

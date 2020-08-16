@@ -9,7 +9,6 @@ const options = {
   pfx: fs.readFileSync('petcommunity.pfx'),
   passphrase: '123456'
 };
-// 공공데이터(파이썬 부분)-----
 var systemPythonPath = 'C:/ProgramData/Anaconda3/python.exe';
 var directoryPath = process.cwd();
 var directoryPathArray = directoryPath.split('\\');
@@ -22,14 +21,12 @@ for(var i=1; i<directoryPathArray.length; i++){
   directoryPath+=directoryPathArray[i];
 }
 directoryPath+="/python project/pythonProject_kys/";
-// 공공데이터(파이썬 부분)-----
+
 var app = https.createServer(options, (req, res) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin,Accept,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // }).listen(3000, '192.168.0.24', () => {
 }).listen(3000, '192.168.0.18', () => {
 // }).listen(3000, '121.171.119.57', () => { // 집
     console.log('listening on *:3000');

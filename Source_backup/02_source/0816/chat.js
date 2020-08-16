@@ -1,34 +1,34 @@
+//var socket = io('https://192.168.0.24:3000');
+//var socket = io("https://192.168.0.18:3000");   // 내부ip  
+//var socket = io("https://115.91.88.227:60005"); // 대회의실용
+//var socket = io("https://121.171.119.57:3000"); // 집
+
 var curRoomName;
 var memberId;
-var exitSocketEventFlag = 0;
-var systemMessageComponent = '<li class= "list-group-item systemMessage">';
-var receiveMessageComponent = '<li class= "list-group-item receiveMessage">';
-var sendMessageComponent = '<li class= "list-group-item sendMessage">';
-var receiveWhisperMessageComponent = '<li class= "list-group-item receiveWhisperMessage">';
-var sendWhisperMessageComponent = '<li class= "list-group-item sendWhisperMessage">';
 
 setMemberValue();			// 멤버 아이디값 지정
 setCurRoomName();		// 현재 입장할 방 세팅
 selectRoom(memberId); // 방에 참가
-listenAndAppendChatMessage('.messages', systemMessageComponent, receiveMessageComponent, sendMessageComponent, receiveWhisperMessageComponent, sendWhisperMessageComponent);
+listenAndAppendChatMessage('.messages', '<li class= "list-group-item">')
 formSetting();
 documentPreventKeyDown();
 chatLocationEventHandler();
 chatMessageBoxEnterListener();
 socketEventHandling();
 windowCloseEvent();
+//$('#chatLocation').on('change', function(){
+//	selectRoom(memberId);
+//});
 
 function windowCloseEvent(){
 	$(window).on('unload', function(){
-		if(exitSocketEventFlag == 0){
-			var roomInfo = new Object();
-			roomInfo.prev = curRoomName; // 이전 방 정보
-			setCurRoomName(curRoomName);
-			roomInfo.cur = '__exit__'
-			roomInfo.memberId = memberId;
-			socket.emit('joinRoom', roomInfo);
-		}
-	});
+		var roomInfo = new Object();
+		roomInfo.prev = curRoomName; // 이전 방 정보
+		setCurRoomName(curRoomName);
+		roomInfo.cur = '__exit__'
+		roomInfo.memberId = memberId;
+		socket.emit('joinRoom', roomInfo);
+	})
 }
 
 function chatLocationEventHandler(){
@@ -77,20 +77,10 @@ function selectRoom(memberId){
 	socket.emit('joinRoom', roomInfo);
 }
 
-function listenAndAppendChatMessage(targetElement, systemComponentElement, receiveComponentElement, sendComponentElement, receiveWhisperComponentElement, sendWhisperComponentElement){
+function listenAndAppendChatMessage(targetElement, componentElement){
 	socket.on('chat message', function(msg){
 		console.log('check in socketonevent ...');
-		if(msg.messageType=='system'){
-			$(targetElement).append($(systemComponentElement).text(msg.messageContent));
-		}else if(msg.messageType=='receive'){
-			$(targetElement).append($(receiveComponentElement).text(msg.messageContent));
-		}else if(msg.messageType=='send'){
-			$(targetElement).append($(sendComponentElement).text(msg.messageContent));
-		}else if(msg.messageType=='receive_whisper'){
-			$(targetElement).append($(receiveWhisperComponentElement).text(msg.messageContent));
-		}else if(msg.messageType=='send_whisper'){
-			$(targetElement).append($(sendWhisperComponentElement).text(msg.messageContent));
-		}		
+		$(targetElement).append($(componentElement).text(msg));
 		$(targetElement).scrollTop($(targetElement)[0].scrollHeight); // 스크롤을 맨 아래로..
 	});	
 }
@@ -103,7 +93,6 @@ function socketEventHandling(){
 			$('div.messages').empty();
 		}
 		if(socketEvent=='exitChat'){
-			exitSocketEventFlag=1;
 			console.log('exitChat event 확인');
 			var roomInfo = new Object();
 			roomInfo.prev = curRoomName; // 이전 방 정보
@@ -111,7 +100,6 @@ function socketEventHandling(){
 			roomInfo.memberId = memberId;
 			socket.emit('joinRoom', roomInfo);
 			window.close();
-			return;
 		}
 	});
 }

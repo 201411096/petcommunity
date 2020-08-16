@@ -47,11 +47,33 @@ div.chatContainer{
 	}
 }
 
-/* .messages li {  */
-/* 	padding: 5px 10px;  */
+/* 0816 주석처리 시작*/
+/* .messages li{ */
+/* 	position: relative; */
+/*     padding: 6px 8px; */
+/*     margin: 4px 0; */
+/*     background-color: #f5f6f7; */
+/*     border-radius: 3px; */
+/*     font-weight: 100; */
+/*     color: #9b9b9b; */
+/*     height:50px; */
+/*     font-size : 20px; */
 /* } */
-
-.messages li{
+/* 0816 주석처리 끝 */
+.messages li.systemMessage{
+	position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #f5f6f7;
+    border-radius: 3px;
+    font-weight: 100;
+    color: #cc6600;
+    float: left;
+/*     height:50px; */
+    font-size : 20px;
+    width : 100%;
+}
+.messages li.receiveMessage{
 	position: relative;
     padding: 6px 8px;
     margin: 4px 0;
@@ -59,7 +81,57 @@ div.chatContainer{
     border-radius: 3px;
     font-weight: 100;
     color: #9b9b9b;
-    height:50px;
+    border-radius: 10px;
+    float:left;
+    max-width:70%;
+	min-width:51%;
+/*     height:50px; */
+    font-size : 20px;
+}
+.messages li.sendMessage{
+	position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #f5f6f7;
+    border-radius: 3px;
+    font-weight: 100;
+    color: #9b9b9b;
+    border-radius: 10px;
+    float:right;
+    max-width:70%;
+	min-width:51%;
+/*     height:50px; */
+    font-size : 20px;
+}
+
+.messages li.receiveWhisperMessage{
+	position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #f5f6f7;
+    border-radius: 3px;
+    font-weight: 100;
+    color: #009900;
+    border-radius: 10px;
+    float:left;
+    max-width:70%;
+	min-width:51%;
+/*     height:50px; */
+    font-size : 20px;
+}
+.messages li.sendWhisperMessage{
+	position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #f5f6f7;
+    border-radius: 3px;
+    font-weight: 100;
+    color: #009900;
+    border-radius: 10px;
+    float:right;
+    max-width:70%;
+	min-width:51%;
+/*     height:50px; */
     font-size : 20px;
 }
 

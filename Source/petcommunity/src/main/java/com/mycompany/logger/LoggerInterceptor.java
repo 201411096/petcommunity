@@ -28,7 +28,7 @@ public class LoggerInterceptor extends HandlerInterceptorAdapter{
 			logString.append("[memberId]" + ((MemberVO)memberVO).getMemberId());
 		}
 		
-		logger.info(logString.toString());
+		//logger.info(logString.toString());
 		return super.preHandle(request, response, handler);
 	}
 

@@ -74,25 +74,24 @@ public class FindBoardController {
 	       MultipartFile mfile = null; 
 	       String fieldName = "";
 	       while (iter.hasNext()) { 
-	           fieldName = (String) iter.next(); //파일이름, 위에서 file1과 file2로 보냈으니 file1, file2로 나온다.          
+	    	   //업로드된 파일 가져오기
+	           fieldName = (String) iter.next();          
 	           mfile = filelist.getFile(fieldName);  //저장된 파일 객체
 	       }
 	   
 	       File file= null; 
 	       try { 
+	    	   //업로드 된 파일 file형식으로 변환
 	          file = new File(mfile.getOriginalFilename());
-	          file.createNewFile(); FileOutputStream fos = new FileOutputStream(file);
+	          file.createNewFile(); 
+	          FileOutputStream fos = new FileOutputStream(file);
 	          fos.write(mfile.getBytes());
-	    
 	          fos.close(); 
 	       }catch(Exception e) { 
 	          e.printStackTrace();
-	       }	      
-	      System.out.println("파일이름" + file.getName());
-	      System.out.println(file.length()+"byte");	          
+	       }	       
 	   //=============python과 socket통신으로 사진 보낸후 분석 결과 받기 =========================================
 	      OutputStream out=null;
-//	      InputStream in = null;
 	      FileInputStream fin=null;
 	      BufferedOutputStream bos = null;
 	      BufferedReader br = null;
@@ -100,9 +99,7 @@ public class FindBoardController {
 	     
 	   //============소켓 열고 이미지 전송하기===================================      
 	      try {
-	         soc = new Socket("192.168.0.18", 8001); // 192.168.0.77은 루프백 아이피로 자신의 아이피를 반환해주고,
-      
-	         
+	         soc = new Socket("192.168.0.18", 8001); // 192.168.0.77은 루프백 아이피로 자신의 아이피를 반환해주고,         
 	         out = soc.getOutputStream(); // 서버에 바이트단위로 데이터를 보내는 스트림을 개통합니다. 
 	         bos = new BufferedOutputStream(out);
 	         fin = new FileInputStream(file); // FileInputStream - 파일에서 입력받는 스트림을 개통합니다.	         
@@ -112,7 +109,8 @@ public class FindBoardController {
 	         byte[] buffer = new byte[1024]; // 바이트단위로 임시저장하는 버퍼를 생성합니다.
 	         int len; // 전송할 데이터의 길이를 측정하는 변수입니다.
 	         int data = 0; // 전송횟수, 용량을 측정하는 변수입니다.
-	         while ((len = fin.read(buffer)) >= 0) { // FileInputStream을 통해 파일에서 입력받은 데이터를 버퍼에 임시저장하고 그 길이를 측정합니다.
+	      // FileInputStream을 통해 파일에서 입력받은 데이터를 버퍼에 임시저장하고 그 길이를 측정합니다.
+	         while ((len = fin.read(buffer)) >= 0) { 
 	            data++; // 데이터의 양을 측정합니다.
 	         }         
 	         int datas = data; // 아래 for문을 통해 data가 0이되기때문에 임시저장한다.

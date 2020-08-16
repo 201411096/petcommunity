@@ -2,9 +2,6 @@ var curPage;
 var latitude = -1;
 var longitude = -1;
 var contextPath = getContextPath();
-//var socket = io('https://192.168.0.24:3000');
-//var socket = io('https://121.171.119.57:3000'); //집
-//var socket = io("https://115.91.88.227:60005"); //대회의실용
 var publicDataFromAPI;
 var map;
 var defaultOpts = {
@@ -20,7 +17,7 @@ var defaultOpts = {
 $(function(){
 	getData();
 	getLocation();
-	getDataWithoutPaging();
+	getMarkerDataAndSetMarkers();
 	autoCompleteFunc();
 	//autoCompleteFuncForMap();
 	documentPreventKeyDown();
@@ -39,8 +36,6 @@ function drawMarker(){
 						 '<div class="form-group">발견 장소 : '+publicDataFromAPI[i].happenPlace+'</div>'+
 						 '<div class="form-group">현재 상태 : '+publicDataFromAPI[i].processState+'</div>'+
 						 '<div class="form-group">연락처 : '+publicDataFromAPI[i].careTel+'</div>'+
-						 
-						 
 						 '<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+publicDataFromAPI[i].y+','+publicDataFromAPI[i].x+'">'+'로드뷰'+'</a>'+
 						 '</div>'; 
         if(publicDataFromAPI[i].x == 0 ) continue;
@@ -76,14 +71,14 @@ function getPublicData(){
 }
 
 function searchForMapEventHandler(){
-	$('#timeForSearch').on('change', getDataWithoutPaging);
+	$('#timeForSearch').on('change', getMarkerDataAndSetMarkers);
 	$('#locationForSearch').on('keydown', function(event){
 		if (event.keyCode === 13) {
 			if($('#locationForSearch').val()!=""){
 				setCenterLocation($('#locationForSearch').val());
 			}
 			setTimeout(function(){
-				getDataWithoutPaging();
+				getMarkerDataAndSetMarkers();
 			}, 500);
 			
 		  };
@@ -186,7 +181,6 @@ function autoCompleteFuncForMap(){
         	   
            },
            appendTo : '#searchForMap-container',
-//           appendTo :'#search-container',
            minLength: 1,		 // 최소 글자수
            autoFocus: false,		 //첫번째 항목 자동 포커스 기본값 false
            delay : 500,
@@ -262,12 +256,9 @@ function drawTable(data){
 		img='<img src="resources/imgs/findboard/'+data.img[i];
 		listContent +=		
 			tdPrefix + 
-//			data.findBoardVOList[i].findboardId +br+
 			'<a href=/petcommunity/getFindBoard.do?findboardId=' +data.findBoardVOList[i].findboardId + '>' +
 			img+'" alt=" "/>'+br+
-//			spanPrefix + '글제목 : '+ spanSuffix + 
 			data.findBoardVOList[i].findboardTitle +'</a>' + br +
-//			spanPrefix + '작성자 : ' + data.findBoardVOList[i].memberId + br + spanSuffix +
 			spanPrefix + data.findBoardVOList[i].findboardUploadtime +br + spanSuffix +
 			
 			'</td>';
@@ -278,7 +269,7 @@ function drawTable(data){
 	}
 }
 
-function getDataWithoutPaging(){
+function getMarkerDataAndSetMarkers(){
 	$.ajax({
 		type : 'post',
 		async:true,
@@ -296,7 +287,6 @@ function getDataWithoutPaging(){
 			setTimeout(function(){
 				getPublicData();
 			}, 2500);
-			//kakaoMapAPI(resultData);
 		},
 		error:function(request,status,error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -332,7 +322,6 @@ function kakaoMapAPI(data){
 		var iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
-//						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<div class="form-group">'+
 						'<a class="btn btn-sm btn-secondary" href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+data.lostBoardVOList[i].lostboardX+','+data.lostBoardVOList[i].lostboardY+'">'+'로드뷰'+'</a>'+
@@ -343,7 +332,6 @@ function kakaoMapAPI(data){
 			iwContent  = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
-//						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<div class="form-group">'+
 						'<a class="btn btn-sm btn-secondary" href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+data.lostBoardVOList[i].lostboardX+','+data.lostBoardVOList[i].lostboardY+'">'+'로드뷰'+'</a>'+
@@ -373,7 +361,6 @@ function kakaoMapAPI(data){
 		var iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList2[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList2[i].lostboardLocation+'</div>'+
-//						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<div class="form-group">'+
 						'<a class="btn btn-sm btn-secondary" href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList2[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+data.lostBoardVOList2[i].lostboardX+','+data.lostBoardVOList2[i].lostboardY+'">'+'로드뷰'+'</a>'+
@@ -384,7 +371,6 @@ function kakaoMapAPI(data){
 			iwContent  = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList2[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList2[i].lostboardLocation+'</div>'+
-//						'<a href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<div class="form-group">'+
 						'<a class="btn btn-sm btn-secondary" href=/petcommunity/getLostBoard.do?lostboardId='+data.lostBoardVOList2[i].lostboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+data.lostBoardVOList2[i].lostboardX+','+data.lostBoardVOList2[i].lostboardY+'">'+'로드뷰'+'</a>'+
@@ -414,7 +400,6 @@ function kakaoMapAPI(data){
 		var iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
-//						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<div class="form-group">'+
 						'<a class="btn btn-sm btn-secondary" href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+data.findBoardVOList[i].findboardX+','+data.findBoardVOList[i].findboardY+'">'+'로드뷰'+'</a>'+
@@ -425,7 +410,6 @@ function kakaoMapAPI(data){
 			iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardTitle+'</div>'+
 						'<div class="form-group">'+data.findBoardVOList[i].findboardLocation+'</div>'+
-//						'<a href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<div class="form-group">'+
 						'<a class="btn btn-sm btn-secondary" href=/petcommunity/getFindBoard.do?findboardId='+data.findBoardVOList[i].findboardId+'>'+'게시글 보러가기'+'</a>'+
 						'<a class="btn btn-sm btn-secondary" href="https://map.kakao.com/link/roadview/'+data.findBoardVOList[i].findboardX+','+data.findBoardVOList[i].findboardY+'">'+'로드뷰'+'</a>'+

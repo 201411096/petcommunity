@@ -1,4 +1,3 @@
-//var socket = io('https://192.168.0.24:3000');
 //var socket = io("https://192.168.0.18:3000");   // 내부ip  
 var socket = io("https://115.91.88.227:60005"); // 대회의실용
 //var socket = io("https://121.171.119.57:3000"); // 집
@@ -16,8 +15,6 @@ function setNickname(){
 
 function toastMessage(messageContent, messageFrom, messageTo){
 	toastr["info"](messageFrom+'<a href="/petcommunity/getChatPartner.do?messageFrom='+messageFrom+'">바로가기</a>'+"<br /><br />"+messageContent);
-//	toastr["info"](messageFrom+"<br /><br />"+messageContent);
-//	toastr.info(messageFrom, messageContent, {timeOut: 5000});
 	toastr.options = {
 			  "closeButton": true,
 			  "debug": false,
@@ -45,7 +42,6 @@ function receiveMessage(){
 	 console.log(data.messageContent);
 	 console.log(data.messageFrom);
 	 console.log(data.messageTo);
-//	 addMessage(data);
 	 if(messagePageFlag==1){
 		 getChat(startPage, endPage);
 	 }

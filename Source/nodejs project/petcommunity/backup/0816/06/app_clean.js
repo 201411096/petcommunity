@@ -29,9 +29,7 @@ var app = https.createServer(options, (req, res) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Origin,Accept,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization');
     res.setHeader('Access-Control-Allow-Credentials', true);
 
-  // }).listen(3000, '192.168.0.24', () => {
 }).listen(3000, '192.168.0.18', () => {
-// }).listen(3000, '121.171.119.57', () => { // 집
     console.log('listening on *:3000');
 });
 var io = require('socket.io')(app);
@@ -39,7 +37,6 @@ var io = require('socket.io')(app);
 const scheduler_01 = schedule.scheduleJob('0 0 0 * * *', function(){ // 매일 정각에 실행
   executePythonFileAndReadJsonFile();
 });
-
 io.on('connection', function(socket){
   console.log('user connected');
   socket.on('disconnecting', () => {
@@ -190,13 +187,14 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
     pythonPath: systemPythonPath, //python의 설치경로를 입력하는 부분
     pythonOptions: ['-u'],
     scriptPath: '',
-    // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
     args: [0, today.toString().substring(0,4)+'0101', today.toString().substring(0,4)+'1231', 1000]
   }
   fs.stat('publicData_'+today+'.json', function(err, stat) {
     if(err == null) { // 파일이 존재할 떄
       fs.readFile('publicData_'+today+'.json', 'utf8', function(err, data){
         data = JSON.parse(data);
+        console.log(data);
+        console.log('data 길이...' + data.length);
         if(socket!=undefined){
           socket.emit('getPublicData', data);
         }
@@ -206,6 +204,8 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
         if (err) throw err;
         fs.readFile('publicData_'+today+'.json', 'utf8', function(err, data){
             data = JSON.parse(data);
+            console.log(data);
+            console.log('data 길이...' + data.length);
             if(socket!=undefined){
               socket.emit('getPublicData', data);
             }

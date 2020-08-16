@@ -10,7 +10,7 @@ var exitSocketEventFlag = 0;
 setMemberValue();			// 멤버 아이디값 지정
 setCurRoomName();		// 현재 입장할 방 세팅
 selectRoom(memberId); // 방에 참가
-listenAndAppendChatMessage('.messages', '<li class= "list-group-item">')
+listenAndAppendChatMessage('.messages', '<li class= "list-group-item systemMessage">', '<li class= "list-group-item receiveMessage">', '<li class= "list-group-item sendMessage">');
 formSetting();
 documentPreventKeyDown();
 chatLocationEventHandler();
@@ -77,10 +77,20 @@ function selectRoom(memberId){
 	socket.emit('joinRoom', roomInfo);
 }
 
-function listenAndAppendChatMessage(targetElement, componentElement){
+function listenAndAppendChatMessage(targetElement, systemComponentElement, receiveComponentElement, sendComponentElement){
 	socket.on('chat message', function(msg){
 		console.log('check in socketonevent ...');
-		$(targetElement).append($(componentElement).text(msg.messageContent));
+		if(msg.messageType=='system'){
+			console.log('system message ...');
+			$(targetElement).append($(systemComponentElement).text(msg.messageContent));
+		}else if(msg.messageType=='receive'){
+			console.log('receive message ...');
+			$(targetElement).append($(receiveComponentElement).text(msg.messageContent));
+		}else if(msg.messageType=='send'){
+			console.log('send message ...');
+			$(targetElement).append($(sendComponentElement).text(msg.messageContent));
+		}
+		
 		$(targetElement).scrollTop($(targetElement)[0].scrollHeight); // 스크롤을 맨 아래로..
 	});	
 }

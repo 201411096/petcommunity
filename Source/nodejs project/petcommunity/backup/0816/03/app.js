@@ -181,8 +181,12 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
     }                                                                                                                                                 // 명령어 처리 부분 끝 ---
   }
   // io.to(msg.roomName).emit('chat message', memberId+' : '+msg.messageContent); // 특별한 명령어 처리가 없을 경우 그 방에 포함된 사람들에게만 메시지를 보냄
-  socket.broadcast.to(msg.roomName).emit('chat message', makeMessageObject('receive' , memberId+' : '+msg.messageContent));
-  io.to(socket.id).emit('chat message', makeMessageObject('send' , memberId+' : '+msg.messageContent));
+
+  if(memberId == socket.nickname || 'guest_'+socket.id==memberId){ // 특별한 명령어 처리가 없을 경우 그 방에 포함된 사람들에게만 메시지를 보냄
+    io.to(msg.roomName).emit('chat message', makeMessageObject('receive' , memberId+' : '+msg.messageContent));
+  }else{
+    io.to(msg.roomName).emit('chat message', makeMessageObject('send' , memberId+' : '+msg.messageContent));
+  }
 }
 // 공공데이터(파이썬 부분)-----
 function executePythonFileAndReadJsonFile(dataOptions, socket){

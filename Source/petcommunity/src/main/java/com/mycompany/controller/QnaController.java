@@ -33,8 +33,7 @@ public class QnaController {
 
 	/*
 	 * 함수 이름 : getQnaBoardList
-		주요 기능 : 게시판 페이지 이동 
-		함수 내용 :
+	 * 주요 기능 : 게시판 페이지 이동 
 	 */
 	@RequestMapping(value = "/cs.do")
 	public ModelAndView getQnaBoardList() {
@@ -67,7 +66,6 @@ public class QnaController {
 	 * 주요 기능 : 작성한 글 입력, 목록 페이지 이동 
 	 * 함수 내용 : 연결 되어있는 아이디 세팅, 파일 첨부시 업로드
 	 */
-
 	@RequestMapping(value = "/writeIntoQna.do", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	public String insertQnaBoard(QnaVO qnavo, HttpSession session, HttpServletRequest request,
 			MultipartHttpServletRequest mtfRequest) throws IOException {
@@ -116,9 +114,7 @@ public class QnaController {
 		result.put("pagination", paginationVO);
 		result.put("QnaBoardVOList", qnavoList);
 		result.put("QnaBoardVOListSize", qnavoList.size());
-		
 		result.put("membervo", membervo);
-		
 		
 		ArrayList<String> fileArrayList = new ArrayList<String>();
 		for (int i = 0; i < qnavoList.size(); i++) {
@@ -202,7 +198,6 @@ public class QnaController {
 	public ModelAndView QnaBoardModify(QnaVO qnavo, HttpSession session) {
 
 		ModelAndView mv = new ModelAndView();
-	
 		mv.setViewName("qnaBoardModify");
 		mv.addObject("qnaContent", qnaService.getQnaBoardContent(qnavo));
 
@@ -300,7 +295,6 @@ public class QnaController {
 			return "match";
 		}
 		return msg;
-
 	}
 
 	/*
@@ -313,7 +307,6 @@ public class QnaController {
 	public String checkLogin(QnaVO qnavo, HttpSession session) {
 
 		MemberVO membervo = (MemberVO) session.getAttribute("memberVO");
-
 		String msg = "";
 		if (session.getAttribute("memberVO") == null) {
 			return "loginRequired";

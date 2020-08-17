@@ -125,18 +125,16 @@ public class AdminController {
 	 * 주요 기능 : 검색조건에 맞는 회원정보 출력
 	 * 함수 내용 : combobox, searchword에 입력받은 값 해쉬맵으로 받아 매퍼 연결
 	 */
+	
 	@RequestMapping("/searchInfo.do")
 	public ModelAndView getMemberSelect(String combobox, String searchword) throws UnsupportedEncodingException {
-		
 		ModelAndView mv = new ModelAndView();
 		Map map = new HashMap();
 		combobox = URLDecoder.decode(combobox, "utf-8");
 		searchword = URLDecoder.decode(searchword, "utf-8");
 		map.put("combobox", combobox);
 		map.put("searchword", searchword);
-
 		MemberVO membervo = new MemberVO();
-
 		if (combobox.equals("0")) {
 			membervo.setMemberId(searchword);
 		} else if (combobox.equals("1")) {
@@ -146,7 +144,6 @@ public class AdminController {
 		}
 
 		List<MemberVO> list = adminService.getMemberSelect(map);
-
 		DataSet ds = new DataSet("ar");
 		ds.addColumn("memberId", DataTypes.STRING, 100);
 		ds.addColumn("memberName", DataTypes.STRING, 100);

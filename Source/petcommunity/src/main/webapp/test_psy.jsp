@@ -15,6 +15,7 @@
 <a href="/petcommunity/footer.do">footer</a><br>
 
 <a href="/petcommunity/adminMember.do">넥사크로</a><br>
+<a href="/petcommunity/test.do">공공</a><br>
 
 </body>
 

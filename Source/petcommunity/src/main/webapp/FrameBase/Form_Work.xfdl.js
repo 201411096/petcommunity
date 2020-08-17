@@ -333,7 +333,8 @@
         
         // User Script
         this.registerScript("Form_Work.xfdl", function() {
-        //보기 버튼 눌렸을 때
+
+        // 보기 버튼 눌렀을 때 회원정보 출력
         this.selectBtn_onclick = function(obj,e)
         {
          	this.transaction(
@@ -344,7 +345,6 @@
          			"",
          			"fn_callback"
          		);
-
         	this.fn_callback = function(svcID, errCD, errMSG){
         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
         		if(ret=="error")
@@ -354,7 +354,7 @@
         };
 
 
-        //검색 버튼 눌렸을 때
+        // 검색 버튼 눌렸을 때 받아온 combobox, memberInfo값과 일치하는 정보 출력
         this.searchBtn_onclick = function(obj,e)
         {
         	var combobox = encodeURI(this.Combo00.value,"UTF-8");
@@ -378,7 +378,9 @@
         	}
         };
 
-        //삭제 버튼 눌렸을 때
+
+
+        // 삭제 버튼 눌렸을 때
         this.deleteBtn_onclick = function(obj,e)
         {
         	var result = this.confirm("회원을 삭제하시겠습니까?");
@@ -399,12 +401,10 @@
         	this.fn_callback = function(svcID, errCD, errMSG){
         		let ret = (errMSG=="FAILED" || svcID != "urlTest04") ? "error" : "success";
         		alert("삭제되었습니다.");
-        // 		if(ret=="error")
-        // 			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
+         		if(ret=="error")
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	}
         	}
-
-
         };
 
         this.Button00_onclick = function(obj,e)

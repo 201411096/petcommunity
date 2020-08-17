@@ -122,7 +122,7 @@ var findhospitalAddress = $('#findhospitalAddress').val(); */
 
 var container = document.getElementById('map');
 	var options = {
-		center: new kakao.maps.LatLng(36.601621, 127.2983811),
+		center: new kakao.maps.LatLng(37.5786667, 127.0156223),
 		level: 7
 	};
 

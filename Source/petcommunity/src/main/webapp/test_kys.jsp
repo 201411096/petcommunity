@@ -22,7 +22,7 @@
 <a href="/petcommunity/test_publicData2.do">공공데이터 확인 페이지2</a><br>
 <a href="/petcommunity/test_publicData3.do">공공데이터 확인 페이지3</a><br>
 <a href="/petcommunity/test_image.do">이미지 테스트 페이지</a><br>
-<a href="/petcommunity/test.do">그래프 확인 페이지</a><br>
+<a href="/petcommunity/test2.do">그래프 확인 페이지</a><br>
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

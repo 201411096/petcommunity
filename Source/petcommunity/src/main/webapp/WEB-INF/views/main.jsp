@@ -132,7 +132,7 @@
 			<div class="gallery-row" align="left">
 				<img class="mungimg"
 					src="./resources/bootstrap_template/bootstrap_seyeong/img/main1.png"
-					alt="#"><a href="resources/imgs/wordCloud/wordCloud.png" id="readMore"
+					alt="#"><a href="/petcommunity/mainGraph.do" id="readMore"
 					class="readMore"><strong>강아지 연관 인기검색어</strong></a>
 			</div>
 		</section>

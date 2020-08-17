@@ -80,7 +80,7 @@ io.on('connection', function(socket){
   })
   socket.on('getMainPublicData', function(dataOptions){
     console.log('getMainPublicData 이벤트 확인 ...');
-    executePythonFileAndReadJsonFile2();
+    executePythonFileAndReadJsonFile2(dataOptions, socket);
   })
   // 공공데이터(파이썬 부분)-----
 
@@ -234,6 +234,7 @@ function executePythonFileAndReadJsonFile2(dataOptions, socket){
       fs.readFile('main_publicData_'+today+'.json', 'utf8', function(err, data){
         data = JSON.parse(data);
         if(socket!=undefined){
+          console.log("파일존재"+socket)
           socket.emit('getMainPublicData', data);
         }
       });  
@@ -243,6 +244,7 @@ function executePythonFileAndReadJsonFile2(dataOptions, socket){
         fs.readFile('main_publicData_'+today+'.json', 'utf8', function(err, data){
             data = JSON.parse(data);
             if(socket!=undefined){
+              console.log("파일존재x"+socket)
               socket.emit('getMainPublicData', data);
             }
         });    

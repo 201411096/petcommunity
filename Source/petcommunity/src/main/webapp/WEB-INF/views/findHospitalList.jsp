@@ -122,8 +122,8 @@ var findhospitalAddress = $('#findhospitalAddress').val(); */
 
 var container = document.getElementById('map');
 	var options = {
-		center: new kakao.maps.LatLng(37.5786667, 127.0156223),
-		level: 7
+		center: new kakao.maps.LatLng(37.5451492, 127.0141611),
+		level: 8
 	};
 
 	var map = new kakao.maps.Map(container, options);
@@ -140,20 +140,158 @@ var container = document.getElementById('map');
             latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
         },
         {
-            title: '세종다온동물병원', 
-            latlng: new kakao.maps.LatLng(36.601621, 127.2983811)
+            title: '더힐동물의료센터', 
+            latlng: new kakao.maps.LatLng(37.5345975, 127.0095522)
         },
         {
-            title: '올리브동물병원', 
-            latlng: new kakao.maps.LatLng(36.4889557, 127.1953441)
+            title: '동물병원메이', 
+            latlng: new kakao.maps.LatLng(37.5337087, 127.0027661)
         },
+        {
+            title: '시유동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5199656, 126.9698589)
+        },
+        {
+            title: '원스동물병원', 
+            latlng: new kakao.maps.LatLng(37.5449499, 126.9694824)
+        },
+        {
+            title: '청화종합동물병원', 
+            latlng: new kakao.maps.LatLng(37.5310945, 126.9957217)
+        },
+        {
+            title: '고양이병원 백산동물병원', 
+            latlng: new kakao.maps.LatLng(37.4999946, 127.0393429)
+        },
+        {
+            title: '예은동물병원', 
+            latlng: new kakao.maps.LatLng(37.4923809, 127.0400194)
+        },
+        {
+            title: '서울동물심장병원', 
+            latlng: new kakao.maps.LatLng(37.506653, 127.040849)
+        },
+        {
+            title: '아크리스동물의료센터', 
+            latlng: new kakao.maps.LatLng(37.5136773, 127.0618982)
+        },
+        {
+            title: '헬릭스동물메디컬센터 송파점', 
+            latlng: new kakao.maps.LatLng(37.5037457, 127.0878762)
+        },
+        {
+            title: '에코동물병원', 
+            latlng: new kakao.maps.LatLng(37.492663, 127.128098)
+        },
+        
+        {
+            title: '잠실베스트동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5049262, 127.0973953)
+        },
+        
+        {
+            title: '송파24시스마일동물병원', 
+            latlng: new kakao.maps.LatLng(37.4840951, 127.1239001)
+        },
+        
+        {
+            title: '위드펫동물병원', 
+            latlng: new kakao.maps.LatLng(37.5054441, 127.0848312)
+        },
+        
+        {
+            title: '영국동물병원', 
+            latlng: new kakao.maps.LatLng(37.4941832, 127.1330453)
+        },
+        
+        {
+            title: '원동물병원', 
+            latlng: new kakao.maps.LatLng(37.4858412, 126.9685185)
+        },
+        
+        {
+            title: '에코동물병원', 
+            latlng: new kakao.maps.LatLng(37.6059928, 126.9608104)
+        },
+        
+        
+        {
+            title: '유케어종합동물병원', 
+            latlng: new kakao.maps.LatLng(37.5049692, 126.9423935)
+        },
+        {
+            title: '보라매웰 종합동물병원', 
+            latlng: new kakao.maps.LatLng(37.4996858, 126.9222933)
+        },
+        
+        {
+            title: '24시지구촌동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.4987491, 126.8847737)
+        },
+        
+        {
+            title: '라라동물의료원', 
+            latlng: new kakao.maps.LatLng(37.4893062, 126.8916581)
+        },
+        
+        {
+            title: '구로종합동물병원', 
+            latlng: new kakao.maps.LatLng(37.5127682, 126.883701)
+        },
+        
+        {
+            title: '24시명동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5004276, 126.8482318)
+        },
+        
+        {
+            title: '푸른동물병원', 
+            latlng: new kakao.maps.LatLng(37.4884923, 126.8843609)
+        },
+        
+        {
+            title: '우리들동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5228713, 126.8648753)
+        },
+
+        
+        {
+            title: '리베동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5251751, 126.8682309)
+        },
+
+        {
+            title: '한양동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5596166, 127.0369899)
+        },
+
+        {
+            title: '24시센트럴동물메디컬센터', 
+            latlng: new kakao.maps.LatLng(37.5586363, 127.0336885)
+        },
+
+        {
+            title: '오석헌동물병원', 
+            latlng: new kakao.maps.LatLng(37.5451492, 127.0141611)
+        },
+
+        {
+            title: '하나동물병원', 
+            latlng: new kakao.maps.LatLng(37.5894645, 127.0609308)
+        },
+
+        {
+            title: '심재웅동물병원', 
+            latlng: new kakao.maps.LatLng(37.5910801, 127.0664997)
+        },
+
         {
             title: '누리봄동물병원', 
-            latlng: new kakao.maps.LatLng(36.6208498, 127.2871603)
+            latlng: new kakao.maps.LatLng(37.5791176, 127.0339359)
         },
         {
-            title: '우리동물병원', 
-            latlng: new kakao.maps.LatLng(36.4648935, 127.2812353)
+            title: 'VIP동물병원', 
+            latlng: new kakao.maps.LatLng(37.5719714, 127.0735486)
         },
         {
             title: '소망동물병원', 

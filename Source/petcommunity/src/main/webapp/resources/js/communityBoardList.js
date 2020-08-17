@@ -544,16 +544,6 @@ function drawTable(data) {
 		$('#communityList').append(listContent);
 	}
 }
-function mobilecheck(){
-	var filter = "win16|win32|win64|mac";
-	if(navigator.platform){
-		if(0 > filter.indexOf(navigator.platform.toLowerCase())){
-			return 1; // mobile;
-		}else{
-			return 0; //pc;
-		}
-	}
-}
 
 function openChatWindow() {
 	var w = 600;
@@ -562,13 +552,9 @@ function openChatWindow() {
 	var LeftPosition = (screen.width - w) / 2;
 	var TopPosition = (screen.height - h) / 2;
 	console.log();
-	$('#chatLink').on(
-			'click',
-			function() {
-				window.open("/petcommunity/chat.do", "_blank", "width=" + w
-						+ ", height=" + h + ", top=" + TopPosition + ", left="
-						+ LeftPosition + ", scrollbars=no");
-			});
+	$('#chatLink').on('click', function() {
+		window.open("/petcommunity/chat.do", "_blank", "width=" + w + ", height=" + h + ", top=" + TopPosition + ", left=" + LeftPosition + ", scrollbars=no");
+	});
 }
 
 

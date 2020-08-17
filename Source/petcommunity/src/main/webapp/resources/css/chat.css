@@ -28,18 +28,21 @@ div.chatContainer{
 /* 	height : 50%; */
 /* 	margin : auto; */
 /* } */
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 700px) {
 	div.messages{
 		background-color: #999999;
+/* 		background-color: #ff0000; */
 		width : auto;
 	/* 	height: 597px; */
+/* 		height: 85.7%; */
 		height: 85.7%;
 		overflow : auto;
 	}
 }
-@media screen and (min-height: 801px) {
+@media screen and (min-height: 701px) {
 	div.messages{
 		background-color: #999999;
+/* 		background-color: #ff0000; */
 		width : auto;
 	/* 	height: 597px; */
 		height: 89.9%;

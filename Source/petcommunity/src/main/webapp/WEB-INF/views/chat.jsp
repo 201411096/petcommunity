@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
     <title>Socket.IO chat</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./resources/css/chat.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>

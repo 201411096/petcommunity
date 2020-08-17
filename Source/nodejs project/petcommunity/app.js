@@ -35,6 +35,7 @@ var io = require('socket.io')(app);
 
 const scheduler_01 = schedule.scheduleJob('0 0 0 * * *', function(){ // 매일 정각에 실행
   executePythonFileAndReadJsonFile();
+  executePythonFileAndReadJsonFile2();
 });
 
 io.on('connection', function(socket){
@@ -76,6 +77,10 @@ io.on('connection', function(socket){
   // 공공데이터(파이썬 부분)-----
   socket.on('getPublicData', function(dataOptions){
     executePythonFileAndReadJsonFile(dataOptions, socket);
+  })
+  socket.on('getMainPublicData', function(dataOptions){
+    console.log('getMainPublicData 이벤트 확인 ...');
+    executePythonFileAndReadJsonFile2();
   })
   // 공공데이터(파이썬 부분)-----
 
@@ -205,6 +210,40 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
             data = JSON.parse(data);
             if(socket!=undefined){
               socket.emit('getPublicData', data);
+            }
+        });    
+      });
+    } else {
+        console.log('Some other error: ', err.code);
+    }
+  });
+}
+// 공공데이터 2
+
+function executePythonFileAndReadJsonFile2(dataOptions, socket){
+  var python_options = {
+    mode: 'text',
+    pythonPath: systemPythonPath, //python의 설치경로를 입력하는 부분
+    pythonOptions: ['-u'],
+    scriptPath: '',
+    // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
+    args: [1]
+  }
+  fs.stat('main_publicData_'+today+'.json', function(err, stat) {
+    if(err == null) { // 파일이 존재할 떄
+      fs.readFile('main_publicData_'+today+'.json', 'utf8', function(err, data){
+        data = JSON.parse(data);
+        if(socket!=undefined){
+          socket.emit('getMainPublicData', data);
+        }
+      });  
+    } else if(err.code === 'ENOENT') { // 파일이 존재하지 않을 때
+      PythonShell.run(directoryPath+"main_publicData.py", python_options, function (err, results) {
+        if (err) throw err;
+        fs.readFile('main_publicData_'+today+'.json', 'utf8', function(err, data){
+            data = JSON.parse(data);
+            if(socket!=undefined){
+              socket.emit('getMainPublicData', data);
             }
         });    
       });

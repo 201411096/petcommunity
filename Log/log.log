@@ -270,3 +270,4 @@
 [2020-08-17 09:53:57.035] INFO  RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:574) - Looking for @ControllerAdvice: WebApplicationContext for namespace 'appServlet-servlet': startup date [Mon Aug 17 09:53:55 KST 2020]; parent: Root WebApplicationContext
 [2020-08-17 09:53:57.091] INFO  AbstractUrlHandlerMapping.registerHandler(AbstractUrlHandlerMapping.java:373) - Mapped URL path [/resources/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
 [2020-08-17 09:53:57.346] INFO  FrameworkServlet.initServletBean(FrameworkServlet.java:509) - FrameworkServlet 'appServlet': initialization completed in 1442 ms
+[2020-08-17 10:19:50.284] INFO  XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316) - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]

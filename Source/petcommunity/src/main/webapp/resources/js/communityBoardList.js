@@ -544,11 +544,21 @@ function drawTable(data) {
 		$('#communityList').append(listContent);
 	}
 }
-
+function mobilecheck(){
+	var filter = "win16|win32|win64|mac";
+	if(navigator.platform){
+		if(0 > filter.indexOf(navigator.platform.toLowerCase())){
+			return 1; // mobile;
+		}else{
+			return 0; //pc;
+		}
+	}
+}
 
 function openChatWindow() {
 	var w = 600;
 	var h = 700;
+	
 	var LeftPosition = (screen.width - w) / 2;
 	var TopPosition = (screen.height - h) / 2;
 	console.log();

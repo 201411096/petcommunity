@@ -109,7 +109,8 @@ public class LostBoardController {
 			// push알림 title, contents
 			String title = lostBoardVO.getLostboardTitle();
 			String content = lostBoardVO.getLostboardContent();
-			String link = "https://192.168.0.19:8443/petcommunity/getLostBoard.do?lostboardId="+lostBoardVO.getLostboardId();
+//			String link = "https://192.168.0.19:8443/petcommunity/getLostBoard.do?lostboardId="+lostBoardVO.getLostboardId();
+			String link = "https://115.91.88.227:60004/petcommunity/getLostBoard.do?lostboardId="+lostBoardVO.getLostboardId();
 
 			
 			// 푸시 알림 보내기

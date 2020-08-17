@@ -214,6 +214,7 @@ public class FindBoardController {
 		System.out.println("Y :" + findBoardVO.getFindboardY());
 		String title = findBoardVO.getFindboardTitle();
 		String content = findBoardVO.getFindboardContent();
+		String link = "https://115.91.88.227:60004/petcommunity/getFindBoard.do?findboardId="+findBoardVO.getFindboardId();
 		// find 게시물 포스팅 시 위치 기준 반경 2km내 lost게시물 작성자에게 푸시 알람 보내는 소스코드
 		List<LostBoardVO> lostBoardVO = lostBoardService.findPeopleByLocationOfLostPost(findBoardVO);
 		if(lostBoardVO!=null) {
@@ -243,6 +244,7 @@ public class FindBoardController {
 					JSONObject info = new JSONObject();
 					info.put("title", title);   // Notification title
 					info.put("body", content); // Notification body
+					info.put("link", link);
 					json.put("notification", info);
 					
 					OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());

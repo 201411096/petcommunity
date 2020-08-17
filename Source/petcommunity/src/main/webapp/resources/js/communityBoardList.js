@@ -545,20 +545,16 @@ function drawTable(data) {
 	}
 }
 
-
 function openChatWindow() {
 	var w = 600;
 	var h = 700;
+	
 	var LeftPosition = (screen.width - w) / 2;
 	var TopPosition = (screen.height - h) / 2;
 	console.log();
-	$('#chatLink').on(
-			'click',
-			function() {
-				window.open("/petcommunity/chat.do", "_blank", "width=" + w
-						+ ", height=" + h + ", top=" + TopPosition + ", left="
-						+ LeftPosition + ", scrollbars=no");
-			});
+	$('#chatLink').on('click', function() {
+		window.open("/petcommunity/chat.do", "_blank", "width=" + w + ", height=" + h + ", top=" + TopPosition + ", left=" + LeftPosition + ", scrollbars=no");
+	});
 }
 
 

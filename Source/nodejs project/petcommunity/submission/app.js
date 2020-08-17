@@ -35,14 +35,10 @@ var io = require('socket.io')(app);
 
 const scheduler_01 = schedule.scheduleJob('0 0 0 * * *', function(){ // 매일 정각에 실행
   executePythonFileAndReadJsonFile();
-  executePythonFileAndReadJsonFile2();
 });
 
 io.on('connection', function(socket){
   console.log('user connected');
-  socket.on('disconnecting', () => {
-    console.log(socket.nickname + ' disconnecting event... ');
-  });
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
@@ -51,10 +47,11 @@ io.on('connection', function(socket){
     if(roomInfo.memberId!="tempMember"){ // 회원일 경우 socket의 nickname 지정
       socket.nickname = roomInfo.memberId;
     }
-    else{ // 비회원일 경우 socket의 nickname 지정
+    else{                               // 비회원일 경우 socket의 nickname 지정
       roomInfo.memberId='guest__'+socket.id;
       socket.nickname = roomInfo.memberId;
     }
+    // 그룹 입장, 퇴장 처리
     if(roomInfo.prev == roomInfo.cur){
       socket.join(roomInfo.prev);
       io.to(roomInfo.prev).emit('chat message', makeMessageObject('system', roomInfo.memberId+"님이 입장하셨습니다."));
@@ -72,15 +69,11 @@ io.on('connection', function(socket){
     }else{
       memberId = 'guest__'+socket.id;
     }
-    messageHandling(memberId, msg, socket);
+    messageHandling(memberId, msg, socket); // 메시지 처리
   });
   // 공공데이터(파이썬 부분)-----
   socket.on('getPublicData', function(dataOptions){
     executePythonFileAndReadJsonFile(dataOptions, socket);
-  })
-  socket.on('getMainPublicData', function(dataOptions){
-    console.log('getMainPublicData 이벤트 확인 ...');
-    executePythonFileAndReadJsonFile2();
   })
   // 공공데이터(파이썬 부분)-----
 
@@ -126,26 +119,9 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
   var socketList = io.sockets.sockets; // 소켓 리스트_ 소켓 아이디로 소켓의 정보를 가져올 수 있음
   if(msg.messageContent!=""){          // 메시지가 비어있는 경우가 아니라면 첫번째 인자 추출
     var tempMsg = msg.messageContent.split(" ");
-    firstArgument = tempMsg[0];
-  }
+    firstArgument = tempMsg[0];}
   if(firstArgument!=""){        // 첫번째 인자가 있는지 확인
-    if(firstArgument[0]=="/"){                                                                                                                      // 명령어 처리 부분 시작 ---
-      if(firstArgument=="/help" || firstArgument=="/도움말" || firstArgument=="/h"){   // 도움말 처리 시작 ---
-        io.to(socket.id).emit('chat message', makeMessageObject('system', '========================================'));
-        io.to(socket.id).emit('chat message', makeMessageObject('system', '귓속말 사용방법 ==> [/귓속말][/whisper][/w][/ㅈ] 상대닉네임 내용'));
-        io.to(socket.id).emit('chat message', makeMessageObject('system', '채팅창 지우기 ==> /clear'));
-        io.to(socket.id).emit('chat message', makeMessageObject('system', '채팅창 닫기 ==> /exit'));
-        io.to(socket.id).emit('chat message', makeMessageObject('system', '========================================'));
-        return;
-      }
-      if(firstArgument=="/clear" || firstArgument=="/c"){
-        io.to(socket.id).emit('eventHandling', 'clearMessageBox');
-        return;
-      }
-      if(firstArgument=="/exit"){
-        io.to(socket.id).emit('eventHandling', 'exitChat');
-        return;
-      }                                                                              // 도움말 처리 끝 ---
+    if(firstArgument[0]=="/"){                                                                                                                      // 명령어 처리 부분 시작 ---                                                                          // 도움말 처리 끝 ---
       if(firstArgument=="/w" || firstArgument=="/ㅈ" || firstArgument=="/귓속말" || firstArgument=="/whisper"){                                                                                                // 귓속말 처리 시작 ---
         secondArgument = tempMsg[1]; // 귓속말의 대상이 있는지 확인하는데 사용
         thridArgument = tempMsg[2];  // 귓속말의 내용이 있는지 확인하는데 새용
@@ -163,12 +139,10 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
           for (var i=0; i<clients.length; i++){ // 현재 접속중인 socket들을 하나씩 확인함
             if(secondArgument == memberId){
               io.to(socket.id).emit('chat message', makeMessageObject('system', '자기 자신에게는 귓속말을 전송할 수 없습니다.'));
-              return;
-            }
+              return;}
             if(socketList[clients[i]].nickname == secondArgument){ // socket의 nickname이 귓속말의 대상과 같다면 메시지를 전달함
               io.to(socketList[clients[i]].id).emit('chat message', makeMessageObject('receive_whisper', memberId + "님으로부터의 귓속말 : " + whisperContent));
-              flagForCheckingTarget++;
-            }
+              flagForCheckingTarget++;}
           }
           if(flagForCheckingTarget==0){ // 귓속말의 대상이 접속중이지 않다면...
             io.to(socket.id).emit('chat message', makeMessageObject('system', '귓속말의 대상이 존재하지 않거나 접속중이지 않습니다.'));
@@ -176,11 +150,9 @@ function messageHandling(memberId, msg, socket){ // memberId가 보내는 사람
             io.to(socket.id).emit('chat message', makeMessageObject('send_whisper', secondArgument + "님에게 귓속말 : " + whisperContent)); 
           }         
         });
-        return;
-      }                                                                                                                         // 귓속말 처리 끝 ---
+        return;}                                                                                                                         // 귓속말 처리 끝 ---
       io.to(socket.id).emit('chat message', makeMessageObject('system', '적절하지 않은 명령어입니다.'));
-      return;
-    }                                                                                                                                                 // 명령어 처리 부분 끝 ---
+      return;}                                                                                                                                                 // 명령어 처리 부분 끝 ---
   }
   socket.broadcast.to(msg.roomName).emit('chat message', makeMessageObject('receive' , memberId+' : '+msg.messageContent));
   io.to(socket.id).emit('chat message', makeMessageObject('send' , msg.messageContent));
@@ -210,40 +182,6 @@ function executePythonFileAndReadJsonFile(dataOptions, socket){
             data = JSON.parse(data);
             if(socket!=undefined){
               socket.emit('getPublicData', data);
-            }
-        });    
-      });
-    } else {
-        console.log('Some other error: ', err.code);
-    }
-  });
-}
-// 공공데이터 2
-
-function executePythonFileAndReadJsonFile2(dataOptions, socket){
-  var python_options = {
-    mode: 'text',
-    pythonPath: systemPythonPath, //python의 설치경로를 입력하는 부분
-    pythonOptions: ['-u'],
-    scriptPath: '',
-    // args: [0, dataOptions.startDate, dataOptions.endDate, dataOptions.dataCnt]
-    args: [1]
-  }
-  fs.stat('main_publicData_'+today+'.json', function(err, stat) {
-    if(err == null) { // 파일이 존재할 떄
-      fs.readFile('main_publicData_'+today+'.json', 'utf8', function(err, data){
-        data = JSON.parse(data);
-        if(socket!=undefined){
-          socket.emit('getMainPublicData', data);
-        }
-      });  
-    } else if(err.code === 'ENOENT') { // 파일이 존재하지 않을 때
-      PythonShell.run(directoryPath+"main_publicData.py", python_options, function (err, results) {
-        if (err) throw err;
-        fs.readFile('main_publicData_'+today+'.json', 'utf8', function(err, data){
-            data = JSON.parse(data);
-            if(socket!=undefined){
-              socket.emit('getMainPublicData', data);
             }
         });    
       });

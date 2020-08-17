@@ -138,25 +138,26 @@ public class GraphController {
 	public Map makeSalesHistoryChart(@RequestBody HashMap inputData) {
 		Map result = new HashMap();
 		Map graphOption = new HashMap();
-		if(inputData.get("chartType")==null) {
+		if(inputData.get("chartType")==null) {	// 차트 형태에 대한 내용이 없으면 선형 그래프로 구성
 			inputData.put("chartType", "line");
 		}
-		if(inputData.get("timeOption")==null) {
+		if(inputData.get("timeOption")==null) { // 차트 시간단위에 대한 내용이 없을 경우 timeOptionArray[2](시간단위)로 그래프를 보임
 			inputData.put("timeOption", "2");
 		}
-		if(inputData.get("startDate")=="" || inputData.get("startDate")==null) {
+		if(inputData.get("startDate")=="" || inputData.get("startDate")==null) {	// 시작 날짜에 대한 내용이 없을 경우 당일 날짜의 0시 0분 0초를 기준으로 잡음
 			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
 			Date time = new Date();
 			String strTime = format.format(time);
 			inputData.put("startDate", strTime.substring(0, 8)+"000000");
 		}
-		if(inputData.get("endDate")=="" || inputData.get("endDate")==null) {
-			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");				
+		if(inputData.get("endDate")=="" || inputData.get("endDate")==null) {	// 시작 날짜에 대한 내용이 없을 경우 당일 날짜의 23시 59분 59초를 기준으로 잡음
+			SimpleDateFormat format = new SimpleDateFormat ( "yyyyMMddHHmmss");
 			Date time = new Date();
 			String strTime = format.format(time);
 			inputData.put("endDate", strTime.substring(0, 8)+"235959");
 		}
-		String timeOptionArray [] = {"YYYYMMDDHH24MISS", "YYYYMMDDHH24MI", "YYYYMMDDHH24", "YYYYMMDD", "YYYYMM", "YYYY"};
+		String timeOptionArray [] = {"YYYYMMDDHH24MISS", "YYYYMMDDHH24MI", "YYYYMMDDHH24", "YYYYMMDD", "YYYYMM", "YYYY"}; // 초, 분, 시간, 일, 월, 년
+		// 그래프 옵션 설정(mybatis mapper에 들어갈 ... )
 		graphOption.put("timeOption", timeOptionArray[Integer.parseInt((String)inputData.get("timeOption"))]);
 		graphOption.put("startDate", ((String)inputData.get("startDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));
 		graphOption.put("endDate", ((String)inputData.get("endDate")).replaceAll("-", "").replaceAll("T", "").replaceAll(":", ""));		
@@ -164,11 +165,11 @@ public class GraphController {
 		List<Map> dataList = new ArrayList();
 		for(int i=0; i<selectList.size(); i++) {
 			HashMap data = new HashMap();
-			data.put("name", selectList.get(i).get("DAY"));
-			data.put("value", selectList.get(i).get("PRICE"));
+			data.put("name", selectList.get(i).get("DAY")); 	// Mapper의 DAY에 해당하는 값(X축에 들어갈 값들)
+			data.put("value", selectList.get(i).get("PRICE"));	// Mapper의 VALUE에 해당하는 값(Y축에 들어갈 값들)
 			dataList.add(data);
 		}
-		result.put("chartType", inputData.get("chartType"));
+		result.put("chartType", inputData.get("chartType"));	// script에서 받아온 chartType의 값을 다시 넘겨줌
 		result.put("data", dataList);
 		result.put("dataSize", dataList.size());
 		return result;

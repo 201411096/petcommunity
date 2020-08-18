@@ -8,15 +8,16 @@ var receiveWhisperMessageComponent = '<li class= "list-group-item receiveWhisper
 var sendWhisperMessageComponent = '<li class= "list-group-item sendWhisperMessage">';
 
 setMemberValue();			// 멤버 아이디값 지정
-setCurRoomName();		// 현재 입장할 방 세팅
-selectRoom(memberId); // 방에 참가
+setCurRoomName();			// 현재 입장할 방 세팅
+selectRoom(memberId); 		// 방에 참가
+// message를 받을 경우 message의 종류에 따라 채팅창에 붙임
 listenAndAppendChatMessage('.messages', systemMessageComponent, receiveMessageComponent, sendMessageComponent, receiveWhisperMessageComponent, sendWhisperMessageComponent);
-formSetting();
-documentPreventKeyDown();
-chatLocationEventHandler();
-chatMessageBoxEnterListener();
-socketEventHandling();
-windowCloseEvent();
+formSetting();				// form 이벤트 설정
+documentPreventKeyDown();	// 문서 enter key 이벤트 방지
+chatLocationEventHandler();	// 채팅방 지역 변경시 채팅방 변경 이벤트
+chatMessageBoxEnterListener(); // enter key 입력시 채팅 전송(nodejs 서버로...)
+socketEventHandling();			// socketevent 함수(/exit, /clear)
+windowCloseEvent();			// window 닫힐 경우 이벤트 지정
 
 function windowCloseEvent(){
 	$(window).on('unload', function(){
@@ -36,7 +37,7 @@ function chatLocationEventHandler(){
 		selectRoom(memberId);
 	});	
 }
-
+// 메시지 전송 이벤트
 function formSetting(){
 	$('form').submit(function(e) {
 	    e.preventDefault(); 
@@ -67,7 +68,7 @@ function documentPreventKeyDown(){
 		  };
 	}, true);
 }
-
+// 채팅그룹 변경 함수(socket)
 function selectRoom(memberId){
 	var roomInfo = new Object();
 	roomInfo.prev = curRoomName; // 이전 방 정보
@@ -76,7 +77,7 @@ function selectRoom(memberId){
 	roomInfo.memberId = memberId;
 	socket.emit('joinRoom', roomInfo);
 }
-
+// 메시지 타입에 따른 화면에 표시하는 함수
 function listenAndAppendChatMessage(targetElement, systemComponentElement, receiveComponentElement, sendComponentElement, receiveWhisperComponentElement, sendWhisperComponentElement){
 	socket.on('chat message', function(msg){
 		console.log('check in socketonevent ...');
@@ -94,7 +95,7 @@ function listenAndAppendChatMessage(targetElement, systemComponentElement, recei
 		$(targetElement).scrollTop($(targetElement)[0].scrollHeight); // 스크롤을 맨 아래로..
 	});	
 }
-
+// socketEvent함수
 function socketEventHandling(){
 	console.log('socketEventHandling function 호출 확인');
 	socket.on('eventHandling', function(socketEvent){

@@ -292,7 +292,7 @@
          	this.fn_callback = function(svcID, errCD, errMSG){
          		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
          		if(ret=="error")
-         		/*	this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);*/
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	};
 
         };
@@ -317,7 +317,7 @@
          	this.fn_callback = function(svcID, errCD, errMSG){
          		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
          		if(ret=="error")
-         			/*this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);*/
+         			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	};
         };
 
@@ -337,7 +337,7 @@
         	this.fn_callback = function(svcID, errCD, errMSG){
         		let ret = (errMSG=="FAILED" || svcID != "urlTest03") ? "error" : "success";
         		if(ret=="error")
-        			/*this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);*/
+        			this.alert("[폼이름_fn_callback] "+ret + " : " + svcID + ", " + errCD + ", " + errMSG);
         	}
         	this.managerSelect.set_enable(false);
 

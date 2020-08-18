@@ -52,7 +52,7 @@
 		<section class="hero-section">
 			<div class="hero-slider owl-carousel" align="left">
 				<img class="mungimg"
-					src="./resources/bootstrap_template/bootstrap_seyeong/img/slider/maincover1.png"
+					src="./resources/bootstrap_template/bootstrap_seyeong/img/slider/wordcloudcover.png"
 					alt="#"> <img class="mungimg"
 					src="./resources/bootstrap_template/bootstrap_seyeong/img/slider/maincover2.png"
 					alt="#">
@@ -132,8 +132,10 @@
 			<div class="gallery-row" align="left">
 				<img class="mungimg"
 					src="./resources/bootstrap_template/bootstrap_seyeong/img/main1.png"
-					alt="#"><a href="/petcommunity/mainGraph.do" id="readMore"
-					class="readMore"><strong>강아지 연관 인기검색어</strong></a>
+					alt="#"><a href="/petcommunity/mainGraph.do" id="maingraph"
+					class="maingraph"><strong>유기견 관련 통계 보러가기 -></strong></a>
+					<a href="/petcommunity/shop.do" id="readMore"
+					class="readMore"><strong>유기견 후원스토어 보러가기 -></strong></a>
 			</div>
 		</section>
 

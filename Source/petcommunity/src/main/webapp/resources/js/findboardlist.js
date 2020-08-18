@@ -1,31 +1,30 @@
-var curPage;
-var latitude = -1;
-var longitude = -1;
+var curPage;			// 현재페이지
+var latitude = -1; 		// 위도
+var longitude = -1;		// 경도
 var contextPath = getContextPath();
-var publicDataFromAPI;
-var map;
-var defaultOpts = {
+var publicDataFromAPI;  // 공공데이터포털 api에서 받아올 데이터
+var map;			    // 지도 객체를 담을 변수 
+var defaultOpts = {		// twbs-pagination plugin에서 사용할 페이징 옵션
 	visiblePages : 10,
-    onPageClick: function (event, page) {
-        $('#page-content').text('Page ' + page);
-        curPage=page;
-        console.log('clickevent확인'); // 생성하는 순간 첫 페이지를 클릭함
-        getDataInPaging();
+    onPageClick: function (event, page) { 			// page클릭시 이벤트
+        $('#page-content').text('Page ' + page); 
+        curPage=page;				  				// 현재 페이지  
+        console.log('clickevent확인'); 				// 생성하는 순간 첫 페이지를 클릭 확인
+        getDataInPaging(); 			  				// 페이지 클릭시 해당 페이지에 해당하는 게시글들을 가져오는 함수
     }
 };
 
 $(function(){
-	getData();
-	getLocation();
-	getMarkerDataAndSetMarkers();
-	autoCompleteFunc();
-	//autoCompleteFuncForMap();
-	documentPreventKeyDown();
-	searchWordEventHandler();
-	searchBtnEventHandler();
-	writeBtnEventHandler();
-	searchForMapEventHandler();
-	waitingPublicData();
+	getData();										// 검색 옵션에 맞춰 최대 게시글 수를 가져와서 페이징 구성
+	getLocation();									// 현재 위치를 가져와서 전역 변수에 담는 함수
+	getMarkerDataAndSetMarkers();					// 마커를 지도에 표시
+	autoCompleteFunc();								// 게시글 검색어 자동완성 이벤트 연결
+	documentPreventKeyDown();						// 페이지 enterkey 기본 이벤트 방지
+	searchWordEventHandler();						// 검색어 enterkey 이벤트 연결
+	searchBtnEventHandler();						// 검색 버튼 클릭 이벤트 연결
+	writeBtnEventHandler();							// 게시글 작성 버튼 이벤트 연결
+	searchForMapEventHandler();						// 지도 검색 이벤트 연결
+	waitingPublicData();							// 공공데이터를 받아오는 소켓이벤트 연결(nodejs활용)
 });
 
 function drawMarker(){
@@ -65,7 +64,7 @@ function waitingPublicData(){
 	});
 }
 
-function getPublicData(){
+function getPublicData(){ // 공공데이터를 가져오는 함수(nodejs 서버에서 파이썬 파일을 돌린 결과를 받아옴)
 	var dataOptions = new Object();
 	socket.emit('getPublicData', dataOptions);
 }
@@ -111,7 +110,7 @@ function writeBtnEventHandler(){
 	})
 }
 
-function autoCompleteFunc(){
+function autoCompleteFunc(){ // 검색어 자동완성 함수
 	$('#keywordInput').autocomplete({
 		source : function( request, response ) {
             $.ajax({
@@ -187,7 +186,7 @@ function autoCompleteFuncForMap(){
 	});
 }
 
-function getDataInPaging(){
+function getDataInPaging(){ // 페이지 클릭 시 이벤트(페이징 ul 생성시 이벤트 연결)
 	$.ajax({
 		type : 'post',
 		async:true,
@@ -210,7 +209,7 @@ function getDataInPaging(){
 	});
 }
 
-function getData(){
+function getData(){ // 페이징 생성하는 함수
 	$.ajax({
 		type : 'post',
 		async:true,
@@ -222,7 +221,6 @@ function getData(){
 				},
 		dataType : 'json',
 		success : function(resultData){
-//			drawTable(resultData); // 첫페이지 클릭이벤트가 바로 발생해서 사실 필요없는 부분이었음
             var totalPages = resultData.pagination.pageCnt;
             var currentPage = $('#pagination-demo').twbsPagination('getCurrentPage');
             $('#pagination-demo').twbsPagination('destroy');
@@ -241,7 +239,7 @@ function getData(){
 	});
 }
 
-function drawTable(data){
+function drawTable(data){ // 게시판을 그리는 함수
 	$('#findboardTbody').empty();
 	var trPrefix = '<tr>';
 	var trSuffix = '</tr>';
@@ -269,7 +267,7 @@ function drawTable(data){
 	}
 }
 
-function getMarkerDataAndSetMarkers(){
+function getMarkerDataAndSetMarkers(){ // 공공데이터로 가져온 데이터와 db의 데이터로 마커를 표시하는 함수
 	$.ajax({
 		type : 'post',
 		async:true,
@@ -302,23 +300,20 @@ function kakaoMapAPI(data){
         center: new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
         level: 7 // 지도의 확대 레벨
     };
-
-	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-		
-	for(var i=0; i<data.lostBoardVOListSize; i++){
-		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);
-		
+	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다		
+	for(var i=0; i<data.lostBoardVOListSize; i++){ // 잃어버린 게시글의 개수만큼
+		var position =  new kakao.maps.LatLng(data.lostBoardVOList[i].lostboardX, data.lostBoardVOList[i].lostboardY);		
 		var imageSrc = contextPath + '/resources/imgs/marker/red.png', // 마커이미지의 주소입니다    
 	    imageSize = new kakao.maps.Size(20, 30), // 마커이미지의 크기입니다
 	    imageOption = {offset: new kakao.maps.Point(6, 28)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-		
+		var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);		
 		var marker = new kakao.maps.Marker({
 			  position: position
 			  ,image: markerImage // 마커이미지 설정
 			});
-		marker.setMap(map);
-		marker.setRange(1000);
+		marker.setMap(map); // 마커를 맵에 표시
+		marker.setRange(1000); // 마커가 보이는 범위 지정
+		// infowindow에 들어갈 내용
 		var iwContent = '<div class="marker-infowindow">'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardTitle+'</div>'+
 						'<div class="form-group">'+data.lostBoardVOList[i].lostboardLocation+'</div>'+
@@ -445,15 +440,12 @@ function makeClickListener(map, marker, infowindow) {
 function getContextPath() {
 	   return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
 }
-
+// 현재 위치를 가져오는 함수
 function getLocation() {
     if (navigator.geolocation) {	// GPS를 지원하면
       navigator.geolocation.getCurrentPosition(function(position) {
         latitude = position.coords.latitude;
         longitude = position.coords.longitude;
-        console.log('geolocation success--------------------------');
-    	console.log(latitude);
-    	console.log(longitude);
       }, function(error) {    	  	// 좌표를 못 가져오는 경우에 실행되는 부분
         latitude = 37.519972628243366;
         longitude = 126.85287648507145;
@@ -467,10 +459,8 @@ function getLocation() {
     	console.log('GPS를 지원하지 않습니다');
     }
 }
-
+// 주소로 좌표를 검색하는 함수
 function setCenterLocation(){
-    console.log(latitude);
-    console.log(longitude);
 	var geocoder = new kakao.maps.services.Geocoder();
 	// 주소로 좌표를 검색합니다
 	geocoder.addressSearch($('#locationForSearch').val(), function(result, status) {

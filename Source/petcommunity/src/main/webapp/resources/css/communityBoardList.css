@@ -158,7 +158,7 @@ body{
 /* 스크롤 배너 css */
 #banner {
 	width:100%;
-	height:400px;
+	height:450px;
 	position: absolute;
 	font-size: 10pt;
 	top: 150px;
@@ -183,7 +183,7 @@ body{
 	height:220px;
 	position: absolute;
 	font-size: 10pt;
-	top: 565px;
+	top: 620px;
 	left: 290px;
 	z-index: 10;
 	background: #fafafa;
@@ -211,7 +211,7 @@ body{
 
 #bannerX1{
 	position : absolute;
-	margin-top:570px;
+	margin-top:625px;
 	margin-left:93%;
 	float:left;
 	font-size: 13px;

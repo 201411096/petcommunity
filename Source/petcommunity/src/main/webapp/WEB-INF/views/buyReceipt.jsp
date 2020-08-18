@@ -14,6 +14,7 @@
 
 </head>
 <body>
+<div class=back>
 	<div class="tedoory">
 		<figure>
 			<img id="buyImg"
@@ -76,6 +77,7 @@
 			</table>
 
 		</div>
+	</div>
 	</div>
 </body>
 </html>

@@ -791,10 +791,33 @@ transparent
 	margin-top: -5%;
 }
 
+#maingraph {
+	transform: translate(-50%, -50%);
+	top: 29%;
+	left: 38%;
+	position: absolute;
+	margin-left: 20%;
+	margin-top: 30%;
+	font-size: 20px;
+	color: black;
+}
+
+#maingraph:hover {
+	transform: translate(-50%, -50%);
+	top: 29%;
+	left: 38%;
+	position: absolute;
+	margin-left: 20%;
+	margin-top: 30%;
+	font-size: 20px;
+	color: gray;
+	text-decoration: none;
+}
+
 #readMore {
 	transform: translate(-50%, -50%);
-	top: 28%;
-	left: 50%;
+	top: 29%;
+	left: 58%;
 	position: absolute;
 	margin-left: 20%;
 	margin-top: 30%;
@@ -804,14 +827,14 @@ transparent
 
 #readMore:hover {
 	transform: translate(-50%, -50%);
-	top: 28%;
-	left: 50%;
+	top: 29%;
+	left: 58%;
 	position: absolute;
 	margin-left: 20%;
 	margin-top: 30%;
 	font-size: 20px;
 	color: gray;
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 .gallery-item-text h3 {

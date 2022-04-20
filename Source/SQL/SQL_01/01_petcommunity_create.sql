@@ -1,4 +1,4 @@
--- ≈◊¿Ã∫Ì ª˝º∫
+-- ÌÖåÏù¥Î∏î ÏÉùÏÑ±
 create table member(
     member_id varchar2(50),
     member_password varchar2(50),
@@ -40,7 +40,7 @@ create table lostboard(
     lostboard_location varchar2(512),
     lostboard_x varchar2(50),
     lostboard_y varchar2(50),
-    lostboard_status varchar2(50), --0 ∏¯√£¿Ω, 1 √£¿Ω
+    lostboard_status varchar2(50), --0 Î™ªÏ∞æÏùå, 1 Ï∞æÏùå
     lostboard_uploadtime date,
     lostboard_findtime date,
     lostboard_readcount number(10),
@@ -58,7 +58,7 @@ create table findboard(
     findboard_location varchar2(512),
     findboard_x varchar2(50),
     findboard_y varchar2(50),
-    findboard_status varchar2(50), --0 ∏Ò∞›, 1 ∫∏∞¸, 2 ¿Ø±‚ºæ≈Õ ¿Ã∞¸
+    findboard_status varchar2(50), --0 Î™©Í≤©, 1 Î≥¥Í¥Ä, 2 Ïú†Í∏∞ÏÑºÌÑ∞ Ïù¥Í¥Ä
     findboard_uploadtime date,
     findboard_tel varchar2(50),
     findboard_name varchar2(50),
@@ -162,7 +162,7 @@ create table findhospital(
    findhospital_y varchar2(500)
    );
 
--- ªÛ«∞
+-- ÏÉÅÌíà
 create table product(
     product_id number(30),
     product_name varchar2(200),
@@ -172,7 +172,7 @@ create table product(
     product_content varchar2(1024),
     constraint product_id primary key(product_id)
 );
--- ∏Æ∫‰
+-- Î¶¨Î∑∞
 create table productreview(
     productreview_id number(30),
     productreview_content varchar2(2048),
@@ -185,7 +185,7 @@ create table productreview(
     constraint productreview_fk_2 foreign key(product_id) references product(product_id) on delete cascade
 );
 
--- ±∏∏≈∏ÆΩ∫∆Æ
+-- Íµ¨Îß§Î¶¨Ïä§Ìä∏
 CREATE TABLE BUYLIST(
     BUYLIST_ID NUMBER(30),
     BUYLIST_DATE DATE,
@@ -195,7 +195,7 @@ CREATE TABLE BUYLIST(
     CONSTRAINT BUYLIST_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID) on delete cascade
 );
 
--- ±∏∏≈
+-- Íµ¨Îß§
 create table buy(
     buy_id number(30),
     buylist_id number(30),
@@ -207,7 +207,7 @@ create table buy(
     CONSTRAINT BUY_FK_2 FOREIGN KEY(product_id) REFERENCES product(product_id) on delete cascade
 );
 
--- ¿ÂπŸ±∏¥œ
+-- Ïû•Î∞îÍµ¨Îãà
 CREATE TABLE BUYCARTLIST(
     BUYCARTLIST_ID NUMBER(30),
     BUYCARTLIST_CNT NUMBER(30),
@@ -225,7 +225,7 @@ create table manager(
     constraint manager_FK_1 FOREIGN KEY(MEMBER_ID) REFERENCES MEMBER(MEMBER_ID) on delete cascade
 );
 
-  CREATE OR REPLACE FORCE VIEW "TEAMPROJECT"."BUYLISTVIEW" ("BUY_ID", "BUYLIST_ID", "PRODUCT_ID", "BUY_CNT", "BUY_TOTALPRICE", "BUYLIST_DATE", "MEMBER_ID", "BUYLIST_TOTALPRICE", "PRODUCT_NAME", "PRODUCT_PRICE", "PRODUCT_CNT", "PRODUCT_FEATURE", "PRODUCT_CONTENT") AS 
+  CREATE OR REPLACE FORCE VIEW "BUYLISTVIEW" ("BUY_ID", "BUYLIST_ID", "PRODUCT_ID", "BUY_CNT", "BUY_TOTALPRICE", "BUYLIST_DATE", "MEMBER_ID", "BUYLIST_TOTALPRICE", "PRODUCT_NAME", "PRODUCT_PRICE", "PRODUCT_CNT", "PRODUCT_FEATURE", "PRODUCT_CONTENT") AS 
   select 
 b.buy_id as buy_id, 
 b.buylist_id as buylist_id, 
@@ -266,12 +266,12 @@ create sequence findboardcomment_id_seq
 start with 10000
 maxvalue 100000
 cycle;
-drop sequence findboardcomment_id_seq;
+
 create sequence lostboardcomment_id_seq
 start with 10000
 maxvalue 100000
 cycle;
-drop sequence lostboardcomment_id_seq;
+
 create sequence communityboard_id_seq
 start with 10000
 maxvalue 100000
